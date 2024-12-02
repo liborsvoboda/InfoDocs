@@ -1,0 +1,615 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>accordion - EIC&amp;ESB Dokumentace</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EasyITcenter &amp; EasySYSTEMbuilder Dokumentace">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded "><a href="accordion.html" class="active"><strong aria-hidden="true">1.</strong> accordion</a></li><li class="chapter-item expanded "><a href="balloon.html"><strong aria-hidden="true">2.</strong> balloon</a></li><li class="chapter-item expanded "><a href="buttons.html"><strong aria-hidden="true">3.</strong> buttons</a></li><li class="chapter-item expanded "><a href="calendar.html"><strong aria-hidden="true">4.</strong> calendar</a></li><li class="chapter-item expanded "><a href="carousel.html"><strong aria-hidden="true">5.</strong> carousel</a></li><li class="chapter-item expanded "><a href="datepicker.html"><strong aria-hidden="true">6.</strong> datepicker</a></li><li class="chapter-item expanded "><a href="dialog.html"><strong aria-hidden="true">7.</strong> dialog</a></li><li class="chapter-item expanded "><a href="fluent-menu.html"><strong aria-hidden="true">8.</strong> fluent-menu</a></li><li class="chapter-item expanded "><a href="footer.html"><strong aria-hidden="true">9.</strong> footer</a></li><li class="chapter-item expanded "><a href="forms.html"><strong aria-hidden="true">10.</strong> forms</a></li><li class="chapter-item expanded "><a href="global.html"><strong aria-hidden="true">11.</strong> global</a></li><li class="chapter-item expanded "><a href="grid.html"><strong aria-hidden="true">12.</strong> grid</a></li><li class="chapter-item expanded "><a href="header.html"><strong aria-hidden="true">13.</strong> header</a></li><li class="chapter-item expanded "><a href="hint.html"><strong aria-hidden="true">14.</strong> hint</a></li><li class="chapter-item expanded "><a href="icons.html"><strong aria-hidden="true">15.</strong> icons</a></li><li class="chapter-item expanded "><a href="images.html"><strong aria-hidden="true">16.</strong> images</a></li><li class="chapter-item expanded "><a href="layouts.html"><strong aria-hidden="true">17.</strong> layouts</a></li><li class="chapter-item expanded "><a href="lists.html"><strong aria-hidden="true">18.</strong> lists</a></li><li class="chapter-item expanded "><a href="menus.html"><strong aria-hidden="true">19.</strong> menus</a></li><li class="chapter-item expanded "><a href="navbar.html"><strong aria-hidden="true">20.</strong> navbar</a></li><li class="chapter-item expanded "><a href="notices.html"><strong aria-hidden="true">21.</strong> notices</a></li><li class="chapter-item expanded "><a href="notify.html"><strong aria-hidden="true">22.</strong> notify</a></li><li class="chapter-item expanded "><a href="one-page-example.html"><strong aria-hidden="true">23.</strong> one-page-example</a></li><li class="chapter-item expanded "><a href="page-template.html"><strong aria-hidden="true">24.</strong> page-template</a></li><li class="chapter-item expanded "><a href="progress-bar.html"><strong aria-hidden="true">25.</strong> progress-bar</a></li><li class="chapter-item expanded "><a href="rating.html"><strong aria-hidden="true">26.</strong> rating</a></li><li class="chapter-item expanded "><a href="requirements.html"><strong aria-hidden="true">27.</strong> requirements</a></li><li class="chapter-item expanded "><a href="responsive.html"><strong aria-hidden="true">28.</strong> responsive</a></li><li class="chapter-item expanded "><a href="scroll.html"><strong aria-hidden="true">29.</strong> scroll</a></li><li class="chapter-item expanded "><a href="sidebar.html"><strong aria-hidden="true">30.</strong> sidebar</a></li><li class="chapter-item expanded "><a href="slider.html"><strong aria-hidden="true">31.</strong> slider</a></li><li class="chapter-item expanded "><a href="start-screen.html"><strong aria-hidden="true">32.</strong> start-screen</a></li><li class="chapter-item expanded "><a href="stepper.html"><strong aria-hidden="true">33.</strong> stepper</a></li><li class="chapter-item expanded "><a href="streamer.html"><strong aria-hidden="true">34.</strong> streamer</a></li><li class="chapter-item expanded "><a href="tab-control.html"><strong aria-hidden="true">35.</strong> tab-control</a></li><li class="chapter-item expanded "><a href="tables.html"><strong aria-hidden="true">36.</strong> tables</a></li><li class="chapter-item expanded "><a href="test-page.html"><strong aria-hidden="true">37.</strong> test-page</a></li><li class="chapter-item expanded "><a href="tiles.html"><strong aria-hidden="true">38.</strong> tiles</a></li><li class="chapter-item expanded "><a href="times.html"><strong aria-hidden="true">39.</strong> times</a></li><li class="chapter-item expanded "><a href="treeview.html"><strong aria-hidden="true">40.</strong> treeview</a></li><li class="chapter-item expanded "><a href="typography.html"><strong aria-hidden="true">41.</strong> typography</a></li><li class="chapter-item expanded "><a href="window.html"><strong aria-hidden="true">42.</strong> window</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Dokumentace</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="product" content="Metro UI CSS Framework">
+    <meta name="description" content="Simple responsive css framework">
+    <meta name="author" content="Sergey S. Pimenov, Ukraine, Kiev">
+<pre><code>&lt;link href=&quot;css/metro-bootstrap.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/metro-bootstrap-responsive.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;css/docs.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;link href=&quot;js/prettify/prettify.css&quot; rel=&quot;stylesheet&quot;&gt;
+
+
+&lt;!-- Load JavaScript Libraries --&gt;
+&lt;script src=&quot;js/jquery/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/jquery/jquery.widget.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/jquery/jquery.mousewheel.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/prettify/prettify.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Metro UI CSS JavaScript plugins --&gt;
+&lt;script src=&quot;js/load-metro.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- Local JavaScript --&gt;
+&lt;script src=&quot;js/docs.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;js/github.info.js&quot;&gt;&lt;/script&gt;
+
+&lt;title&gt;Metro UI CSS : Metro Bootstrap CSS Library&lt;/title&gt;
+</code></pre>
+</head>
+<body class="metro">
+    <header class="bg-dark" data-load="header.html"></header>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+            &lt;h1&gt;
+                &lt;a href=&quot;/&quot;&gt;&lt;i class=&quot;icon-arrow-left-3 fg-darker smaller&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+                Accordion&lt;small class=&quot;on-right&quot;&gt;component&lt;/small&gt;
+            &lt;/h1&gt;
+
+            &lt;p class=&quot;description&quot;&gt;
+                This component required &lt;code&gt;metro-accordion.js&lt;/code&gt;.
+            &lt;/p&gt;
+            &lt;div class=&quot;example&quot;&gt;
+                &lt;div class=&quot;tab-control&quot; data-role=&quot;tab-control&quot;&gt;
+                    &lt;ul class=&quot;tabs&quot;&gt;
+                        &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#tab1&quot;&gt;Tab1&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href=&quot;#tab2&quot;&gt;Tab2&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+
+                    &lt;div class=&quot;frames&quot;&gt;
+                        &lt;div class=&quot;frame clearfix&quot; id=&quot;tab1&quot;&gt;
+                            &lt;div class=&quot;accordion span3 place-left margin10&quot; data-role=&quot;accordion&quot; data-closeany=&quot;false&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading active&quot; href=&quot;#&quot; data-action=&quot;none&quot; &gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading active&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;accordion with-marker span3 place-left margin10&quot; data-role=&quot;accordion&quot; data-closeany=&quot;false&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;accordion with-marker span3 place-left margin10&quot; data-role=&quot;accordion&quot; data-closeany=&quot;false&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-lightBlue fg-white&quot; href=&quot;#&quot;&gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading text-right ribbed-green fg-white&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading ribbed-red fg-white&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class=&quot;frame&quot; id=&quot;tab2&quot;&gt;tab2&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;br /&gt;
+
+                &lt;div class=&quot;accordion&quot; data-role=&quot;accordion&quot; data-closeany=&quot;true&quot;&gt;
+                    &lt;div class=&quot;accordion-frame&quot;&gt;
+                        &lt;a class=&quot;active heading&quot; href=&quot;#&quot;&gt;Any components as content&lt;/a&gt;
+                        &lt;div class=&quot;content&quot;&gt;
+                            &lt;div class=&quot;grid&quot;&gt;
+                                &lt;div class=&quot;row&quot;&gt;
+                                    &lt;div class=&quot;span3&quot;&gt;
+                                        &lt;p&gt;Duis autem vel eum iriure dolor in hendrerit in vulputate. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod.&lt;/p&gt;
+                                        &lt;ul&gt;
+                                            &lt;li&gt;Item 1&lt;/li&gt;
+                                            &lt;li&gt;Item 2&lt;/li&gt;
+                                            &lt;li&gt;Item 3&lt;/li&gt;
+                                        &lt;/ul&gt;
+                                        &lt;a href=&quot;http://microsoft.com&quot;&gt;Microsoft.com&lt;/a&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&quot;span3&quot;&gt;
+                                        &lt;form&gt;
+                                            &lt;fieldset&gt;
+                                                &lt;legend&gt;Legend&lt;/legend&gt;
+                                                &lt;lable&gt;Label name&lt;/lable&gt;
+                                                &lt;div class=&quot;input-control text&quot; data-role=&quot;input-control&quot;&gt;
+                                                    &lt;input type=&quot;text&quot; placeholder=&quot;type text&quot;&gt;
+                                                    &lt;button class=&quot;btn-clear&quot; tabindex=&quot;-1&quot;&gt;&lt;/button&gt;
+                                                &lt;/div&gt;
+                                                &lt;lable&gt;Label name&lt;/lable&gt;
+                                                &lt;div class=&quot;input-control password&quot; data-role=&quot;input-control&quot;&gt;
+                                                    &lt;input type=&quot;password&quot; placeholder=&quot;type password&quot; autofocus&gt;
+                                                    &lt;button class=&quot;btn-reveal&quot; tabindex=&quot;-1&quot;&gt;&lt;/button&gt;
+                                                &lt;/div&gt;
+                                                &lt;div class=&quot;input-control checkbox&quot; data-role=&quot;input-control&quot;&gt;
+                                                    &lt;label&gt;
+                                                        &lt;input type=&quot;checkbox&quot; checked /&gt;
+                                                        &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+                                                        Check me out
+                                                    &lt;/label&gt;
+                                                &lt;/div&gt;
+
+                                                &lt;div&gt;
+                                                    &lt;div class=&quot;input-control radio default-style&quot; data-role=&quot;input-control&quot;&gt;
+                                                        &lt;label&gt;
+                                                            &lt;input type=&quot;radio&quot; name=&quot;r1&quot; checked /&gt;
+                                                            &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+                                                            R1
+                                                        &lt;/label&gt;
+                                                    &lt;/div&gt;
+                                                    &lt;div class=&quot;input-control radio  default-style&quot; data-role=&quot;input-control&quot;&gt;
+                                                        &lt;label&gt;
+                                                            &lt;input type=&quot;radio&quot; name=&quot;r1&quot; /&gt;
+                                                            &lt;span class=&quot;check&quot;&gt;&lt;/span&gt;
+                                                            R2
+                                                        &lt;/label&gt;
+                                                    &lt;/div&gt;
+                                                &lt;/div&gt;
+
+                                                &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
+                                            &lt;/fieldset&gt;
+                                        &lt;/form&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class=&quot;span4&quot;&gt;
+                                        &lt;div class=&quot;tab-control&quot; data-role=&quot;tab-control&quot;&gt;
+                                            &lt;ul class=&quot;tabs&quot;&gt;
+                                                &lt;li class=&quot;active&quot;&gt;&lt;a href=&quot;#_page_1&quot;&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+                                                &lt;li&gt;&lt;a href=&quot;#_page_2&quot;&gt;Other Tab&lt;/a&gt;&lt;/li&gt;
+                                                &lt;li&gt;&lt;a href=&quot;#_page_3&quot;&gt;&lt;i class=&quot;icon-rocket&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                                                &lt;li class=&quot;place-right&quot;&gt;&lt;a href=&quot;#_page_5&quot;&gt;&lt;i class=&quot;icon-heart&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                                                &lt;li class=&quot;place-right&quot;&gt;&lt;a href=&quot;#_page_4&quot;&gt;&lt;i class=&quot;icon-cog&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;
+                                            &lt;/ul&gt;
+
+                                            &lt;div class=&quot;frames&quot;&gt;
+                                                &lt;div class=&quot;frame&quot; id=&quot;_page_1&quot;&gt;
+                                                    &lt;p&gt;First Tab&lt;/p&gt;
+                                                &lt;/div&gt;
+                                                &lt;div class=&quot;frame&quot; id=&quot;_page_2&quot;&gt;
+                                                    &lt;p&gt;Second Tab&lt;/p&gt;
+                                                &lt;/div&gt;
+                                                &lt;div class=&quot;frame&quot; id=&quot;_page_3&quot;&gt;
+                                                    &lt;p&gt;Rocket Tab&lt;/p&gt;
+                                                &lt;/div&gt;
+                                                &lt;div class=&quot;frame&quot; id=&quot;_page_4&quot;&gt;
+                                                    &lt;p&gt;This tab placed right&lt;/p&gt;
+                                                &lt;/div&gt;
+                                                &lt;div class=&quot;frame&quot; id=&quot;_page_5&quot;&gt;
+                                                    &lt;p&gt;This tab also placed right&lt;/p&gt;
+                                                &lt;/div&gt;
+                                            &lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;accordion-frame&quot;&gt;
+                        &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Accordion in accordion&lt;/a&gt;
+                        &lt;div class=&quot;content clearfix&quot;&gt;
+                            &lt;div class=&quot;accordion span3 place-left margin10&quot; data-role=&quot;accordion&quot; data-closeany=&quot;false&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;accordion span3 place-left margin10&quot; data-role=&quot;accordion&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;accordion span3 place-left margin10&quot; data-role=&quot;accordion&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;accordion-frame&quot;&gt;
+                        &lt;a class=&quot;heading&quot; href=&quot;#&quot;&gt;Custom accordion item heading&lt;/a&gt;
+                        &lt;div class=&quot;content clearfix&quot;&gt;
+                            &lt;div class=&quot;accordion span3 place-left margin10&quot; data-role=&quot;accordion&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;active heading bg-red fg-white&quot; href=&quot;#&quot;&gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-yellow fg-white&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-green fg-white&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;accordion span3 place-left margin10&quot; data-role=&quot;accordion&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-dark fg-white text-right&quot; href=&quot;#&quot;&gt;Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;active heading bg-dark fg-white text-right&quot; href=&quot;#&quot;&gt;Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-dark fg-white text-right&quot; href=&quot;#&quot;&gt;Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;accordion span3 place-left margin10&quot; data-role=&quot;accordion&quot;&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-cyan fg-white&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;icon-rocket&quot;&gt;&lt;/i&gt; Item #1&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-cyan fg-white&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;icon-cog&quot;&gt;&lt;/i&gt; Item #2&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;div class=&quot;accordion-frame&quot;&gt;
+                                    &lt;a class=&quot;heading bg-cyan fg-white&quot; href=&quot;#&quot;&gt;&lt;i class=&quot;icon-cart&quot;&gt;&lt;/i&gt; Item #3&lt;/a&gt;
+                                    &lt;div class=&quot;content&quot;&gt;
+                                        &lt;p&gt;Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut.&lt;/p&gt;
+                                        &lt;button class=&quot;primary&quot;&gt;Activate the account&lt;/button&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+</code></pre>
+<pre class="prettyprint linenums">
+&lt;div class="accordion" data-role="accordion"&gt;
+    &lt;div class="accordion-frame"&gt;
+        &lt;a href="#" class="heading"&gt;Frame heading&lt;/a&gt;
+        &lt;div class="content"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="accordion-frame"&gt;...&lt;/div&gt;
+    &lt;div class="accordion-frame"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<pre><code>            &lt;p class=&quot;description&quot;&gt;
+                If you want to activate a specific tab of accordion, you must add class &lt;code&gt;active&lt;/code&gt; to &lt;code&gt;heading&lt;/code&gt; of frame.
+                If you want to use accordion with marker open/close, you must add class &lt;code&gt;with-marker&lt;/code&gt; to &lt;code&gt;accordion&lt;/code&gt;.
+            &lt;/p&gt;
+</code></pre>
+<pre class="prettyprint linenums">
+&lt;div class="accordion" data-role="accordion"&gt;
+    &lt;div class="accordion-frame"&gt;
+        &lt;a href="#" class="heading"&gt;Frame heading&lt;/a&gt;
+        &lt;div class="content"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="accordion-frame"&gt;
+        &lt;a href="#" class="active heading"&gt;Frame heading&lt;/a&gt;
+        &lt;div class="content"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="accordion-frame"&gt;
+        &lt;a href="#" class="heading"&gt;Frame heading&lt;/a&gt;
+        &lt;div class="content"&gt;...&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="accordion with-marker" data-role="accordion"&gt;
+    ...
+&lt;/div&gt;
+</pre>
+<pre><code>            &lt;h3&gt;Using&lt;/h3&gt;
+            &lt;p class=&quot;description&quot;&gt;
+                You can activate component manually or auto with &lt;code&gt;data-*&lt;/code&gt; api.
+            &lt;/p&gt;
+            &lt;h4&gt;Activate component with Javascript&lt;/h4&gt;
+</code></pre>
+<pre class="linenums prettyprint">
+$("#componennt_id").accordion({
+    closeAny: boolean, //true or false. if true other frames (when current opened) will be closed
+    open: function(frame){}, // when current frame opened this function will be fired
+    action: function(frame){} // when any frame opened this function will be fired
+});
+</pre>
+<pre><code>            &lt;h4&gt;Activate component with data-api&lt;/h4&gt;
+</code></pre>
+<pre class="linenums prettyprint">
+&lt;div class="accordion" data-role="accordion" data-closeany="..."&gt;...&lt;/div&gt;
+</pre>
+<pre><code>&lt;/div&gt;
+
+&lt;script src=&quot;js/hitua.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+</body>
+</html>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next" href="balloon.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next" href="balloon.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

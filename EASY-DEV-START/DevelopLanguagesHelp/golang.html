@@ -1,0 +1,931 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>golang - EIC&amp;ESB Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EIC&amp;ESB Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="adonisJs.html"><strong aria-hidden="true">1.</strong> adonisJs</a></li><li class="chapter-item expanded "><a href="aws.html"><strong aria-hidden="true">2.</strong> aws</a></li><li class="chapter-item expanded "><a href="cSharp.html"><strong aria-hidden="true">3.</strong> cSharp</a></li><li class="chapter-item expanded "><a href="curl.html"><strong aria-hidden="true">4.</strong> curl</a></li><li class="chapter-item expanded "><a href="docker.html"><strong aria-hidden="true">5.</strong> docker</a></li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">6.</strong> elasticsearch</a></li><li class="chapter-item expanded "><a href="expressJs.html"><strong aria-hidden="true">7.</strong> expressJs</a></li><li class="chapter-item expanded "><a href="gcloud.html"><strong aria-hidden="true">8.</strong> gcloud</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">9.</strong> git</a></li><li class="chapter-item expanded "><a href="golang.html" class="active"><strong aria-hidden="true">10.</strong> golang</a></li><li class="chapter-item expanded "><a href="java.html"><strong aria-hidden="true">11.</strong> java</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">12.</strong> javascript</a></li><li class="chapter-item expanded "><a href="kubernetes.html"><strong aria-hidden="true">13.</strong> kubernetes</a></li><li class="chapter-item expanded "><a href="laravel.html"><strong aria-hidden="true">14.</strong> laravel</a></li><li class="chapter-item expanded "><a href="mongodb.html"><strong aria-hidden="true">15.</strong> mongodb</a></li><li class="chapter-item expanded "><a href="mysql.html"><strong aria-hidden="true">16.</strong> mysql</a></li><li class="chapter-item expanded "><a href="nginx.html"><strong aria-hidden="true">17.</strong> nginx</a></li><li class="chapter-item expanded "><a href="nodeJs.html"><strong aria-hidden="true">18.</strong> nodeJs</a></li><li class="chapter-item expanded "><a href="php.html"><strong aria-hidden="true">19.</strong> php</a></li><li class="chapter-item expanded "><a href="pm2.html"><strong aria-hidden="true">20.</strong> pm2</a></li><li class="chapter-item expanded "><a href="puppeteer.html"><strong aria-hidden="true">21.</strong> puppeteer</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">22.</strong> python</a></li><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">23.</strong> ubuntu</a></li><li class="chapter-item expanded "><a href="vscode.html"><strong aria-hidden="true">24.</strong> vscode</a></li><li class="chapter-item expanded "><a href="xml.html"><strong aria-hidden="true">25.</strong> xml</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="golang"><a class="header" href="#golang">Golang</a></h1>
+<h2 id="summary"><a class="header" href="#summary">Summary</a></h2>
+<ul>
+<li>Introduction
+<ul>
+<li><a href="#hello-world">Hello World</a></li>
+<li><a href="#go-cli-commands">Go CLI Commands</a></li>
+<li><a href="#go-modules">Go Modules</a></li>
+</ul>
+</li>
+<li>Basic
+<ul>
+<li><a href="#basic-types">Basic Types</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#operators">Operators</a></li>
+<li><a href="#conditional-statements">Conditional Statements</a></li>
+<li><a href="#loops">Loops</a></li>
+<li><a href="#arrays">Arrays</a></li>
+<li><a href="#functions">Functions</a></li>
+</ul>
+</li>
+<li>Advanced
+<ul>
+<li><a href="#structs">Structs</a></li>
+<li><a href="#maps">Maps</a></li>
+<li><a href="#pointers">Pointers</a></li>
+<li><a href="#methods-and-interfaces">Methods and Interfaces</a></li>
+<li><a href="#errors">Errors</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#concurrency">Concurrency</a></li>
+</ul>
+</li>
+<li>Standard Libs
+<ul>
+<li><a href="#package-fmt">Package fmt</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="hello-world"><a class="header" href="#hello-world">Hello World</a></h2>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Println(&quot;Hello Gophers!&quot;)
+}
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="go-cli-commands"><a class="header" href="#go-cli-commands">Go CLI Commands</a></h2>
+<pre><code class="language-bash"># Compile &amp; Run code
+$ go run [file.go]
+
+# Compile
+$ go build [file.go]
+# Running compiled file
+$ ./hello
+
+# Test packages
+$ go test [folder]
+
+# Install packages/modules
+$ go install [package]
+
+# List installed packages/modules
+$ go list
+
+# Update packages/modules
+$ go fix
+
+# Format package sources
+$ go fmt
+
+# See package documentation
+$ go doc [package]
+
+# Add dependencies and install
+$ go get [module]
+
+# See Go environment variables
+$ go env
+
+# See version
+$ go version
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="go-modules"><a class="header" href="#go-modules">Go Modules</a></h2>
+<ul>
+<li>Go projects are called <strong>modules</strong></li>
+<li>Each module has multiple <strong>packages</strong></li>
+<li>Each package should has a scoped functionality. Packages talk to each other to compose the code</li>
+<li>A module needs at least one package, the <strong>main</strong></li>
+<li>The package main needs a entry function called <strong>main</strong></li>
+</ul>
+<pre><code class="language-bash"># Create Module
+$ go mod init [name]
+</code></pre>
+<p>Tip: By convention, modules names has the follow structure:</p>
+<p>domain.com/user/module/package</p>
+<p>Example: github.com/spf13/cobra</p>
+<hr/>
+<p><a href="#summary">Return to Summary</a></p>
+<h2 id="basic-types"><a class="header" href="#basic-types">Basic Types</a></h2>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Type</th><th style="text-align: center">Set of Values</th><th style="text-align: center">Values</th></tr></thead><tbody>
+<tr><td style="text-align: center">bool</td><td style="text-align: center">boolean</td><td style="text-align: center">true/false</td></tr>
+<tr><td style="text-align: center">string</td><td style="text-align: center">array of characters</td><td style="text-align: center">needs to be inside &quot;&quot;</td></tr>
+<tr><td style="text-align: center">int</td><td style="text-align: center">integers</td><td style="text-align: center">32 or 64 bit integer</td></tr>
+<tr><td style="text-align: center">int8</td><td style="text-align: center">8-bit integers</td><td style="text-align: center">[ -128, 128 ]</td></tr>
+<tr><td style="text-align: center">int16</td><td style="text-align: center">16-bit integers</td><td style="text-align: center">[ -32768, 32767]</td></tr>
+<tr><td style="text-align: center">int32</td><td style="text-align: center">32-bit integers</td><td style="text-align: center">[ -2147483648, 2147483647]</td></tr>
+<tr><td style="text-align: center">int64</td><td style="text-align: center">64-bit integers</td><td style="text-align: center">[ -9223372036854775808, 9223372036854775807 ]</td></tr>
+<tr><td style="text-align: center">uint8</td><td style="text-align: center">8-bit unsigned integers</td><td style="text-align: center">[ 0, 255 ]</td></tr>
+<tr><td style="text-align: center">uint16</td><td style="text-align: center">16-bit unsigned integers</td><td style="text-align: center">[ 0, 65535 ]</td></tr>
+<tr><td style="text-align: center">uint32</td><td style="text-align: center">32-bit unsigned integers</td><td style="text-align: center">[ 0, 4294967295 ]</td></tr>
+<tr><td style="text-align: center">uint64</td><td style="text-align: center">64-bit unsigned integers</td><td style="text-align: center">[ 0, 18446744073709551615 ]</td></tr>
+<tr><td style="text-align: center">float32</td><td style="text-align: center">32-bit float</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">float64</td><td style="text-align: center">64-bit float</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">complex64</td><td style="text-align: center">32-bit float with real and imaginary parts</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">complex128</td><td style="text-align: center">64-bit float with real and imaginary parts</td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">byte</td><td style="text-align: center">sets of bits</td><td style="text-align: center">alias for uint8</td></tr>
+<tr><td style="text-align: center">rune</td><td style="text-align: center">Unicode characters</td><td style="text-align: center">alias for int32</td></tr>
+</tbody></table>
+</div>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="variables"><a class="header" href="#variables">Variables</a></h2>
+<pre><code class="language-go">// Declaration
+var value int
+
+// Initialization
+value = 10
+
+// Declaration + Initialization + Type inference
+var isActive = true
+
+// Short declaration (only inside functions)
+text := &quot;Hello&quot;
+
+// Multi declaration
+var i, j, k = 1, 2, 3
+
+// Variable not initialized = Zero values
+// Numeric: 0
+// Boolean: false
+// String: &quot;&quot;
+// Special value: nil (same as null)
+
+var number int // 0
+var text string // &quot;&quot;
+var boolean bool // false
+
+// Type conversions
+// T(v) converts v to type T
+
+i := 1.234 // float
+int(i) // 1
+
+// Constants
+const pi = 3.1415
+</code></pre>
+<hr/>
+<h2 id="operators"><a class="header" href="#operators">Operators</a></h2>
+<p><a href="#summary">Return to Summary</a></p>
+<p>Arithmetic Operators
+| Symbol | Operation | Valid Types |
+|:---------:|:-------------:|:-------------:|
+| <code>+</code> | Sum | integers, floats, complex values, strings |
+| <code>-</code> | Difference | integers, floats, complex values |
+| <code>*</code> | Product | integers, floats, complex values |
+| <code>/</code> | Quotient | integers, floats, complex values |
+| <code>%</code> | Remainder | integers |
+| <code>&amp;</code> | Bitwise AND | integers |
+| <code>|</code> | Bitwise OR | integers |
+| <code>^</code> | Bitwise XOR | integers |
+| <code>&amp;^</code> | Bit clear (AND NOT) | integers |
+| <code>&lt;&lt;</code> | Left shift | integer &lt;&lt; unsigned integer |
+| <code>&gt;&gt;</code> | Right shift | integer &gt;&gt; unsigned integer |</p>
+<p>Comparison Operators
+| Symbol | Operation |
+|:---------:|:-------------:|
+| <code>==</code> | Equal |
+| <code>!=</code> | Not equal |
+| <code>&lt;</code> | Less |
+| <code>&lt;=</code> | Less or equal |
+| <code>&gt;</code> | Greater |
+| <code>&gt;=</code> | Greater or equal |</p>
+<p>Logical Operators
+| Symbol | Operation |
+|:---------:|:-------------:|
+| <code>&amp;&amp;</code> | Conditional AND |
+| <code>||</code> | Conditional OR |
+| <code>!</code> | NOT |</p>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="conditional-statements"><a class="header" href="#conditional-statements">Conditional Statements</a></h2>
+<pre><code class="language-go">// If / Else
+i := 1
+
+if i &gt; 0 {
+    // Condition is True! i is greater than zero
+} else {
+    // Condition is False! i is lower or equal to zero
+}
+
+// Else if
+i := 1
+
+if i &gt; 0 {
+    // Condition is True! i is greater than zero
+} else if i &gt; 0 &amp;&amp; i &lt; 2 {
+    // Condition is True! i greater than zero and lower than two
+} else if i &gt; 1 &amp;&amp; i &lt; 4 {
+    // Condition is True! i greater than one and lower than four
+} else {
+    // None of the above conditions is True, so it falls here
+}
+
+// If with short statements
+i := 2.567
+
+if j := int(i); j == 2 {
+    // Condition is True! j, the integer value of i, is equal to two
+} else {
+    // Condition is False! j, the integer value of i, is not equal to two
+}
+
+// Switch
+text := 'hey'
+
+switch text {
+    case 'hey':
+        // 'Hello!'
+    case 'bye':
+        // 'Byee'
+    default:
+        // 'Ok'
+}
+
+// Switch without condition
+value := 5
+
+switch {
+    case value &lt; 2:
+        // 'Hello!'
+    case value &gt;= 2 &amp;&amp; value &lt; 6:
+        // 'Byee'
+    default:
+        // 'Ok'
+}
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="loops"><a class="header" href="#loops">Loops</a></h2>
+<pre><code class="language-go">// Golang only has the for loop
+for i := 0; i &lt; 10; i++ {
+    // i
+}
+
+// The first and third parameters are ommitable
+// For as a while
+i := 0;
+
+for i &lt; 10 {
+    i++
+}
+
+// Forever loop
+for {
+
+}
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="arrays"><a class="header" href="#arrays">Arrays</a></h2>
+<pre><code class="language-go">// Declaration with specified size
+var array [3]string
+array[0] = &quot;Hello&quot;
+array[1] = &quot;Golang&quot;
+array[2] = &quot;World&quot;
+
+// Declaration and Initialization
+values := [5]int{1, 2, 3, 4, 5}
+
+// Slices: A subarray that acts as a reference of an array
+// Determining min and max
+values[1:3] // {2, 3, 4}
+
+// Determining only max will use min = 0
+values[:2] // {1, 2, 3}
+
+// Determining only min will use max = last element
+values[3:] // {3, 4}
+
+// Length: number of elements that a slice contains
+len(values) // 5
+
+// Capacity: number of elements that a slice can contain
+values = values[:1]
+len(values) // 2
+cap(values) // 5
+
+// Slice literal
+slice := []bool{true, true, false}
+
+// make function: create a slice with length and capacity
+slice := make([]int, 5, 6) // make(type, len, cap)
+
+// Append new element to slice
+slice := []int{ 1, 2 }
+slice = append(slice, 3)
+slice // { 1, 2, 3 }
+slice = append(slice, 3, 2, 1)
+slice // { 1, 2, 3, 3, 2, 1 }
+
+// For range: iterate over a slice
+slice := string[&quot;W&quot;, &quot;o&quot;, &quot;w&quot;]
+
+for i, value := range slice {
+    i // 0, then 1, then 2
+    value // &quot;W&quot;, then &quot;o&quot;, then &quot;w&quot;
+}
+
+// Skip index or value
+
+for i := range slice {
+    i // 0, then 1, then 2
+}
+
+for _, value := range slice {
+   value // &quot;W&quot;, then &quot;o&quot;, then &quot;w&quot;
+}
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<pre><code class="language-go">// Functions acts as a scoped block of code
+func sayHello() {
+    // Hello World!
+}
+sayHello() // Hello World!
+
+// Functions can take zero or more parameters, as so return zero or more parameters
+func sum(x int, y int) int {
+    return x + y
+}
+sum(3, 7) // 10
+
+// Returned values can be named and be used inside the function
+func doubleAndTriple(x int) (double, triple int) {
+    double = x * 2
+    triple = x * 3
+    return
+}
+d, t := doubleAndTriple(5)
+// d = 10
+// t = 15
+
+// Skipping one of the returned values
+_, t := doubleAndTriple(3)
+// t = 9
+
+// Functions can defer commands. Defered commands are
+// runned in a stack order after the execution and
+// returning of a function
+var aux = 0
+
+func switchValuesAndDouble(x, y int) {
+    aux = x
+    defer aux = 0 // cleaning variable to post use
+    x = y * 2
+    y = aux * 2
+}
+
+a, b = 2, 5
+switchValuesAndDouble(2, 5)
+
+// a = 10
+// b = 4
+// aux = 0
+
+// Functions can be handled as values and be anonymous functions
+func calc(fn func(int, int) int) int {
+    return fn(2, 6)
+}
+
+func sum(x, y int) int {
+    return x + y
+}
+
+func mult(x, y int) int {
+    return x * y
+}
+
+calc(sum) // 8
+calc(mult) // 12
+calc(
+    func(x, y int) int {
+		return x / y
+    }
+) // 3
+
+// Function closures: a function that returns a function
+// that remembers the original context
+func calc() func(int) int {
+    value := 0
+    return func(x int) int {
+        value += x
+        return value
+    }
+}
+
+calculator := calc()
+calculator(3) // 3
+calculator(45) // 48
+calculator(12) // 60
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="structs"><a class="header" href="#structs">Structs</a></h2>
+<p>Structs are a way to arrange data in specific formats.</p>
+<pre><code class="language-go">// Declaring a struct
+type Person struct {
+    Name string
+    Age int
+}
+
+// Initializing
+person := Person{&quot;John&quot;, 34}
+person.Name // &quot;John&quot;
+person.Age // 34
+
+person2 := Person{Age: 20}
+person2.Name // &quot;&quot;
+person2.Age // 20
+
+person3 := Person{}
+person3.Name // &quot;&quot;
+person3.Age // 0
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="maps"><a class="header" href="#maps">Maps</a></h2>
+<p>Maps are data structures that holds values assigneds to a key.</p>
+<pre><code class="language-go">// Declaring a map
+var cities map[string]string
+
+// Initializing
+cities = make(map[string]string)
+cities // nil
+
+// Insert
+cities[&quot;NY&quot;] = &quot;EUA&quot;
+
+// Retrieve
+newYork = cities[&quot;NY&quot;]
+newYork // &quot;EUA&quot;
+
+// Delete
+delete(cities, &quot;NY&quot;)
+
+// Check if a key is setted
+value, ok := cities[&quot;NY&quot;]
+ok // false
+value // &quot;&quot;
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="pointers"><a class="header" href="#pointers">Pointers</a></h2>
+<p>Pointers are a direct reference to a memory address that some variable or value is being stored.</p>
+<pre><code class="language-go">// Pointers has *T type
+var value int
+var pointer *int
+
+// Point to a variable memory address with &amp;
+value = 3
+pointer = &amp;value
+
+pointer // 3
+pointer = 20
+pointer // 20
+pointer += 5
+pointer // 25
+
+// Pointers to structs can access the attributes
+type Struct struct {
+    X int
+}
+
+s := Struct{3}
+pointer := &amp;s
+
+s.X // 3
+</code></pre>
+<p>Obs: Unlike C, Go doesn't have pointer arithmetics.</p>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="methods-and-interfaces"><a class="header" href="#methods-and-interfaces">Methods and Interfaces</a></h2>
+<p>Go doesn't have classes. But you can implement methods, interfaces and almost everything contained in OOP, but in what gophers call &quot;Go Way&quot;</p>
+<pre><code class="language-go">type Dog struct {
+    Name string
+}
+
+func (dog *Dog) bark() string {
+    return dog.Name + &quot; is barking!&quot;
+}
+
+dog := Dog{&quot;Rex&quot;}
+dog.bark() // Rex is barking!
+</code></pre>
+<p>Interfaces are implicitly implemented. You don't need to inform that your struct are correctly implementing a interface if it already has all methods with the same name of the interface.
+All structs implement the <code>interface{}</code> interface. This empty interface means the same as <code>any</code>.</p>
+<pre><code class="language-go">// Car implements Vehicle interface
+type Vehicle interface {
+    Accelerate()
+}
+
+type Car struct {
+
+}
+
+func (car *Car) Accelerate() {
+    return &quot;Car is moving on ground&quot;
+}
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="errors"><a class="header" href="#errors">Errors</a></h2>
+<p>Go doesn't support <code>throw</code>, <code>try</code>, <code>catch</code> and other common error handling structures. Here, we use <code>error</code> package to build possible errors as a returning parameter in functions</p>
+<pre><code class="language-go">import &quot;errors&quot;
+
+// Function that contain a logic that can cause a possible exception flow 
+func firstLetter(text string) (string, error) {
+    if len(text) &lt; 1 {
+        return nil, errors.New(&quot;Parameter text is empty&quot;)
+    }
+    return string(text[0]), nil
+}
+
+a, errorA := firstLetter(&quot;Wow&quot;)
+a // &quot;W&quot;
+errorA // nil
+
+b, errorB := firstLetter(&quot;&quot;)
+b // nil
+errorB // Error(&quot;Parameter text is empty&quot;)
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
+<p>Go has a built-in library to unit testing. In a separate file you insert tests for functionalities of a file and run <code>go test package</code> to run all tests of the actual package or <code>go test path</code> to run a specific test file.</p>
+<pre><code class="language-go">// main.go
+func Sum(x, y int) int {
+    return x + y
+}
+
+// main_test.go
+import ( 
+    &quot;testing&quot;
+    &quot;reflect&quot;
+)
+
+func TestSum(t *testing.T) {
+    x, y := 2, 4
+    expected := 2 + 4
+
+    if !reflect.DeepEqual(Sum(x, y), expected) {
+        t.Fatalf(&quot;Function Sum not working as expected&quot;)
+    }
+}
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="concurrency"><a class="header" href="#concurrency">Concurrency</a></h2>
+<p>One of the main parts that make Go attractive is its form to handle with concurrency. Different than parallelism, where tasks can be separated in many cores that the machine processor have, in concurrency we have routines that are more lightweight than threads and can run asynchronously, with memory sharing and in a single core.</p>
+<pre><code class="language-go">// Consider a common function, but that function can delay itself because some processing
+func show(from string) {
+	for i := 0; i &lt; 3; i++ {
+		fmt.Printf(&quot;%s : %d\n&quot;, from, i)
+	}
+}
+
+// In a blocking way...
+func main() {
+	show(&quot;blocking1&quot;)
+	show(&quot;blocking2&quot;)
+
+	fmt.Println(&quot;done&quot;)
+}
+/*  blocking1: 0
+    blocking1: 1
+    blocking1: 2
+    blocking2: 0
+    blocking2: 1
+    blocking2: 2
+    done 
+*/
+
+// Go routines are a function (either declared previously or anonymous) called with the keyword go
+func main() {
+	go show(&quot;routine1&quot;)
+	go show(&quot;routine2&quot;)
+
+	go func() {
+		fmt.Println(&quot;going&quot;)
+	}()
+
+	time.Sleep(time.Second)
+
+	fmt.Println(&quot;done&quot;)
+}
+
+/*  Obs: The result will depends of what processes first
+    routine2: 0
+    routine2: 1
+    routine2: 2
+    going
+    routine1: 0
+    routine1: 1
+    routine1: 2
+    done
+*/
+
+// Routines can share data with channels
+// Channels are queues that store data between multiple routines
+msgs := make(chan string)
+
+go func(channel chan string) {
+    channel &lt;- &quot;ping&quot;
+}(msgs)
+
+go func(channel chan string) {
+    channel &lt;- &quot;pong&quot;
+}(msgs)
+
+fmt.Println(&lt;-msgs) // pong
+fmt.Println(&lt;-msgs) // ping
+
+// Channels can be bufferized. Buffered channels will accept a limited number of values and when someone try to put belong their limit, it will throw and error
+numbers := make(chan int, 2)
+
+msgs&lt;-0
+msgs&lt;-1
+msgs&lt;-2
+
+// fatal error: all goroutines are asleep - deadlock!
+
+// Channels can be passed as parameter where the routine can only send or receive
+numbers := make(chan int)
+
+go func(sender chan&lt;- int) {
+    sender &lt;- 10
+}(numbers)
+
+go func(receiver &lt;-chan int) {
+    fmt.Println(&lt;-receiver) // 10
+}(numbers)
+
+time.Sleep(time.Second)
+
+// When working with multiple channels, the select can provide a control to execute code accordingly of what channel has bring a message
+c1 := make(chan string)
+c2 := make(chan string)
+
+select {
+case msg1 := &lt;-c1:
+    fmt.Println(&quot;received&quot;, msg1)
+case msg2 := &lt;-c2:
+    fmt.Println(&quot;received&quot;, msg2)
+default:
+    fmt.Println(&quot;no messages&quot;)
+}
+
+go func() {
+    time.Sleep(1 * time.Second)
+    c1 &lt;- &quot;channel1 : one&quot;
+}()
+go func() {
+    time.Sleep(2 * time.Second)
+    c2 &lt;- &quot;channel2 : one&quot;
+}()
+
+for i := 0; i &lt; 2; i++ {
+    select {
+    case msg1 := &lt;-c1:
+        fmt.Println(&quot;received&quot;, msg1)
+    case msg2 := &lt;-c2:
+        fmt.Println(&quot;received&quot;, msg2)
+    }
+}
+
+/*
+    no messages
+    received channel1: one
+    received channel2: one
+*/
+
+// Channels can be closed and iterated
+channel := make(chan int, 5)
+
+for i := 0; i &lt; 5; i++ {
+    channel &lt;- i
+}
+
+close(channel)
+
+for value := range channel {
+    fmt.Println(value)
+}
+
+/*
+    0
+    1
+    2
+    3
+    4
+*/
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+<h2 id="package-fmt"><a class="header" href="#package-fmt">Package <code>fmt</code></a></h2>
+<pre><code class="language-go">import &quot;fmt&quot;
+
+fmt.Print(&quot;Hello World&quot;) // Print in console
+fmt.Println(&quot;Hello World&quot;) // Print and add a new line in end
+fmt.Printf(&quot;%s is %d years old&quot;, &quot;John&quot;, 32) // Print with formatting
+fmt.Errorf(&quot;User %d not found&quot;, 123) // Print a formatted error
+</code></pre>
+<p><a href="#summary">Return to Summary</a></p>
+<hr/>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="git.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="java.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="git.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="java.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

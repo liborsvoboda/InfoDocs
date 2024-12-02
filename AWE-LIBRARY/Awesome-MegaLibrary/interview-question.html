@@ -1,0 +1,694 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>interview-question - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html" class="active"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="awesome-interviews"><a class="header" href="#awesome-interviews">Awesome Interviews <a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" /></a></a></h1>
+<blockquote>
+<p>A curated list of lists of technical interview questions.</p>
+</blockquote>
+<p><a href="awesome.html">What makes for an awesome list?</a></p>
+<p>Please read the <a href="contributing.html">contribution guidelines</a> or the <a href="create-list.html">creating a list guide</a> if you want to contribute.</p>
+<p><strong>Check out my <a href="https://t.me/botcube">channel</a> or <a href="https://medium.com/@MaximAbramchuk">blog</a>.</strong></p>
+<h3 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h3>
+<ul>
+<li>
+<p><a href="#programming-languagesframeworksplatforms">Programming Languages/Frameworks/Platforms</a></p>
+<ul>
+<li><a href="#android">Android</a></li>
+<li><a href="#angularjs">AngularJS</a></li>
+<li><a href="#backbonejs">BackboneJS</a></li>
+<li><a href="#c">C++</a></li>
+<li><a href="#c-1">C</a></li>
+<li><a href="#c-2">C♯</a></li>
+<li><a href="#net">.NET</a></li>
+<li><a href="#clojure">Clojure</a></li>
+<li><a href="#css">CSS</a></li>
+<li><a href="#django">Django</a></li>
+<li><a href="#emberjs">EmberJS</a></li>
+<li><a href="#erlang">Erlang</a></li>
+<li><a href="#golang">Golang</a></li>
+<li><a href="#html">HTML</a></li>
+<li><a href="#ionic">Ionic</a></li>
+<li><a href="#ios">iOS</a></li>
+<li><a href="#java">Java</a></li>
+<li><a href="#javascript">JavaScript</a></li>
+<li><a href="#knockoutjs">KnockoutJS</a></li>
+<li><a href="#less">Less</a></li>
+<li><a href="#lisp">Lisp</a></li>
+<li><a href="#nodejs">NodeJS</a></li>
+<li><a href="#objective-c">Objective-C</a></li>
+<li><a href="#php">PHP</a></li>
+<li><a href="#python">Python</a></li>
+<li><a href="#reactjs">ReactJS</a></li>
+<li><a href="#ruby-on-rails">Rails</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#sass">Sass</a></li>
+<li><a href="#scala">Scala</a></li>
+<li><a href="#shell">Shell</a></li>
+<li><a href="#swift">Swift</a></li>
+<li><a href="#wordpress">Wordpress</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#database-technologies">Database technologies</a></p>
+<ul>
+<li><a href="#cassandra">Cassandra</a></li>
+<li><a href="#microsoft-access">Microsoft Access</a></li>
+<li><a href="#mongodb">MongoDB</a></li>
+<li><a href="#mysql">MySQL</a></li>
+<li><a href="#neo4j">Neo4j</a></li>
+<li><a href="#oracle">Oracle</a></li>
+<li><a href="#postgres">Postgres</a></li>
+<li><a href="#sql">SQL</a></li>
+<li><a href="#sql-lite">SQL Lite</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#os">OS</a></p>
+<ul>
+<li><a href="#linux">Linux</a></li>
+<li><a href="#windows">Windows</a></li>
+</ul>
+</li>
+<li>
+<p><a href="#algorithms">Algorithms</a></p>
+</li>
+<li>
+<p><a href="#coding-exercises">Coding exercises</a></p>
+</li>
+<li>
+<p><a href="#comprehensive-lists">Comprehensive lists</a></p>
+</li>
+<li>
+<p><a href="#design-patterns">Design patterns</a></p>
+</li>
+<li>
+<p><a href="#data-structures">Data structures</a></p>
+</li>
+<li>
+<p><a href="#networks">Networks</a></p>
+</li>
+<li>
+<p><a href="#security">Security</a></p>
+</li>
+<li>
+<p><a href="#data-science">Data Science</a></p>
+</li>
+</ul>
+<h2 id="programming-languagesframeworksplatforms"><a class="header" href="#programming-languagesframeworksplatforms">Programming Languages/Frameworks/Platforms</a></h2>
+<h3 id="android"><a class="header" href="#android">Android</a></h3>
+<ul>
+<li><a href="http://www.careerride.com/android-interview-questions.aspx">10 Android interview question answers for Freshers</a></li>
+<li><a href="http://www.toptal.com/android/interview-questions">14 Essential Android Interview Questions from top 3% developers company</a></li>
+<li><a href="http://career.guru99.com/50-android-interview-questions-answers/">50 android interview questions &amp; answers</a>.</li>
+<li><a href="https://www.quora.com/What-are-good-job-interview-questions-for-an-Android-developer">A couple of Android questions posted by Quora users</a></li>
+<li><a href="http://www.tutorialspoint.com/android/android_interview_questions.htm">A great list of Android interview questions covering all the aspects of this career</a></li>
+<li><a href="https://github.com/derekargueta/Android-Interview-Questions">Collection of Android and Java related questions and topics, including general developer questions, Java core, Data structures, Build Tools, Programming Paradigms, Core Android, Databases and etc</a></li>
+<li><a href="https://medium.com/@neteinstein/not-another-android-interviews-article-the-questions-3dedafa30bec">Collection of Android and Java questions divided by experience</a></li>
+</ul>
+<h3 id="angularjs"><a class="header" href="#angularjs">AngularJS</a></h3>
+<ul>
+<li><a href="http://www.toptal.com/angular-js/interview-questions">10 Essential AngularJS Interview Questions from top 3% developers company</a></li>
+<li><a href="https://github.com/gdi2290/ngExam">An AngularJS exam with questions from beginner to expert by @gdi2290 from @AngularClass</a></li>
+<li><a href="https://www.codementor.io/angularjs/tutorial/angularjs-interview-questions-sample-answers">29 AngularJS Interview Questions – Can You Answer Them All? Great Article from Codementor</a></li>
+<li><a href="http://www.web-technology-experts-notes.in/2014/11/angularjs-interview-questions-and-answers-for-experienced.html">AngularJS interview questions and answers for experienced developers</a></li>
+<li><a href="http://www.tutorialspoint.com/angularjs/angularjs_interview_questions.htm">AngularJS Interview Questions which have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of AngularJS</a></li>
+<li><a href="http://www.codeproject.com/Articles/891718/AngularJS-Interview-Questions-and-Answers">This article discusses the top 50 Most occurred AngularJS interview question with answers</a></li>
+<li><a href="http://career.guru99.com/top-25-angular-js-interview-questions/">Top 25 Angularjs Interview Questions and Quiz</a></li>
+</ul>
+<h3 id="backbonejs"><a class="header" href="#backbonejs">BackboneJS</a></h3>
+<ul>
+<li><a href="http://www.toptal.com/backbone-js/interview-questions">8 Essential Backbonejs Interview Questions from top 3% developers company</a></li>
+<li><a href="http://www.web-technology-experts-notes.in/2015/01/backbone-js-interview-questions-and-answers.html">Backbonejs Interview Questions And Answers from web technology experts notes</a></li>
+<li><a href="http://career.guru99.com/top-25-backbone-js-interview-questions/">Top 25 Backbone.js interview questions</a></li>
+</ul>
+<h3 id="c"><a class="header" href="#c">C++</a></h3>
+<ul>
+<li><a href="http://www.sanfoundry.com/cplusplus-interview-questions-answers/">1000+ Multiple Choice Questions &amp; Answers in C++ with explanations</a></li>
+<li><a href="http://www.careerride.com/C++-Interview-questions-Answer.aspx">200 C++ interview questions and answers</a></li>
+<li><a href="http://www.toptal.com/c-plus-plus/interview-questions">18 Essential C++ Interview Questions from top 3% developers company</a></li>
+<li><a href="http://a4academics.com/interview-questions/57-c-plus-plus/419-cpp-interview-questions-answers">C++ Interview Questions and Answers for Freshers and Experienced developers</a></li>
+<li><a href="http://www.geekinterview.com/Interview-Questions/Languages/C-Plus-Plus">C++ Interview Questions from GeekInterview</a></li>
+<li><a href="http://www.geeksforgeeks.org/c-plus-plus/">C++ Programming Q&amp;A and quizzes from computer science portal for geeks</a></li>
+<li><a href="http://www.indiabix.com/cpp-programming/questions-and-answers/">C++ Programming Questions and Answers related to such topics as OOPs concepts, Object and Classes, Functions, Constructors and Destructors, Inheritance and etc</a></li>
+<li><a href="https://github.com/haoel/leetcode">LeetCode Problems' Solutions written in C++</a></li>
+<li><a href="https://pangara.com/blog/cplusplus-interview-questions">25 Fundamental C++ Interview Questions</a></li>
+</ul>
+<h3 id="c-1"><a class="header" href="#c-1">C</a></h3>
+<ul>
+<li><a href="http://placement.freshersworld.com/power-preparation/technical-interview-questions/C-programming-answers-21419">165 C interview questions</a></li>
+<li><a href="http://www.cquestions.com/2010/10/c-interview-questions-and-answers.html">Basic C language technical frequently asked interview questions and answers It includes data structures, pointers interview questions and answers for experienced</a></li>
+<li><a href="http://www.indiabix.com/technical/c/">C Programming Interview Questions and Answers for such topics as Bits and Bytes, Preprocessors, Functions, Strings, Language basics and etc</a></li>
+<li><a href="http://www.tutorialspoint.com/cprogramming/cprogramming_interview_questions.htm">C Programming Interview Questions have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of C Programming</a></li>
+<li><a href="http://geeksquiz.com/commonly-asked-c-programming-interview-questions-set-1/">First set of commonly asked C programming interview questions from computer science portal for geeks</a></li>
+<li><a href="http://geeksquiz.com/commonly-asked-c-programming-interview-questions-set-2/">Second set of commonly asked C programming interview questions from computer science portal for geeks</a></li>
+</ul>
+<h3 id="c-2"><a class="header" href="#c-2">C♯</a></h3>
+<ul>
+<li><a href="http://www.toptal.com/c-sharp/interview-questions">6 Essential C# Interview Question from top 3% developers company</a></li>
+<li><a href="http://www.dotnetfunda.com/interviews/cat/6/csharp">C# interview questions from dotnetfunda.com</a></li>
+<li><a href="http://a4academics.com/interview-questions/52-dot-net-interview-questions/417-c-oops-interview-questions-and-answers">Top 100 C# Interview Questions and Answers</a></li>
+<li><a href="http://career.guru99.com/top-50-c-sharp-interview-questions-answers/">Top 50 C# Interview Questions &amp; Answers</a></li>
+</ul>
+<h3 id="net"><a class="header" href="#net">.NET</a></h3>
+<ul>
+<li><a href="http://www.careerride.com/ASPNet-Questions.aspx">300 ASPNET interview questions and answers</a></li>
+<li><a href="http://www.indiabix.com/technical/dotnet/">Great list of NET interview questions covering all the NET platform topics</a></li>
+<li><a href="http://www.dotnetcurry.com/dotnetinterview/70/dotnet-interview-questions-answers-beginners">NET Interview Questions and Answers for Beginners which consists of the most frequently asked questions in NET This list of 100+ questions and answers gauge your familiarity with the NET platform</a></li>
+<li><a href="http://stackoverflow.com/questions/365489/questions-every-good-net-developer-should-be-able-to-answer">Questions gathered by community of the StackOverflow</a></li>
+<li><a href="http://www.hanselman.com/blog/WhatGreatNETDevelopersOughtToKnowMoreNETInterviewQuestions.aspx">What Great NET Developers Ought To Know (More NET Interview Questions)</a></li>
+</ul>
+<h3 id="clojure"><a class="header" href="#clojure">Clojure</a></h3>
+<ul>
+<li><a href="http://www.learningclojure.com/2014/05/fizz-buzz-interview-question.html">Classic 'Fizz Buzz' interview question for Clojure developers</a></li>
+<li><a href="http://ita2zguide.blogspot.com.by/p/cc.html">Clojure Interview Questions for experienced devs</a></li>
+<li><a href="https://github.com/dpetrovics/coding-exercises">Coding exercises in Clojure, handy practice for technical interview questions</a></li>
+<li><a href="https://www.reddit.com/r/Clojure/comments/34qhha/clojure_coding_job_interview_experience/">Experience and questions from Clojure developer interview collected by Reddit users</a></li>
+<li><a href="https://github.com/DerekCuevas/interview-cake-clj">Interview cake Clojure solutions</a></li>
+</ul>
+<h3 id="css"><a class="header" href="#css">CSS</a></h3>
+<ul>
+<li><a href="http://www.skilledup.com/articles/25-css-interview-questions-answers">25 helpful CSS interview questions and answers</a></li>
+<li><a href="http://www.careerride.com/Interview-Questions-CSS.aspx">CSS interview questions and answers for freshers and experienced candidates Also there you can find CSS online practice tests to fight written tests and certification exams on CSS</a></li>
+<li><a href="http://www.techrepublic.com/blog/software-engineer/css-interview-questions-and-answers/">Development hiring managers and potential interviewees may find there sample CSS proficiency interview Q&amp;As and code snippets useful</a></li>
+<li><a href="https://css-tricks.com/interview-questions-css/">Interview Questions and Exercises About CSS</a></li>
+<li><a href="http://career.guru99.com/top-50-csscascading-style-sheet-interview-questions/">Top 50 CSS(Cascading Style Sheet) Interview Questions covering the most of tricky CSS moments</a></li>
+</ul>
+<h3 id="django"><a class="header" href="#django">Django</a></h3>
+<ul>
+<li><a href="http://insights.dice.com/2014/04/30/interview-questions-pythondjango-developers/">Some abstract interview questions for Python/Django developers</a></li>
+<li><a href="http://www.ilian.io/django-interview-questions/">Some Django basic interview questions to establish the basic level of the candidates</a></li>
+<li><a href="http://blog.jayapal.in/2010/11/django-interview-question.html">Some Django/Python interview questions from Jaypal personal blog</a></li>
+<li><a href="http://www.goodinterviewquestions.net/top-10-django-interview-questions-and-answers/">Top 10 Django interview questions with their answers that you can encounter during the job interview for web developer</a></li>
+<li><a href="http://career.guru99.com/top-16-django-interview-questions/">Top 16 Django Interview Questions for both freshers and experienced developers</a></li>
+</ul>
+<h3 id="emberjs"><a class="header" href="#emberjs">EmberJS</a></h3>
+<ul>
+<li><a href="http://www.toptal.com/emberjs/interview-questions">8 Essential Emberjs Interview Questions from top 3% developers company</a></li>
+<li><a href="http://career.guru99.com/top-25-ember-js-interview-questions/">Top 25 Emberjs Interview Questions for both freshers and experienced developers</a></li>
+</ul>
+<h3 id="erlang"><a class="header" href="#erlang">Erlang</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/top-22-erlang-interview-questions/">Top 22 Erlang Interview Questions for both freshers and experienced developers</a></li>
+</ul>
+<h3 id="golang"><a class="header" href="#golang">Golang</a></h3>
+<ul>
+<li><a href="https://github.com/mrekucci/epi">Solutions for Elements of Programming Interviews problems written in Golang</a></li>
+<li><a href="https://github.com/efischer19/golang_ctci">Solutions for some basic coding interview tasks written in Go</a></li>
+<li><a href="http://career.guru99.com/top-20-go-programming-interview-questions/">Top 20 GO Programming Interview Questions for both freshers and experienced developers</a></li>
+</ul>
+<h3 id="html"><a class="header" href="#html">HTML</a></h3>
+<ul>
+<li><a href="http://www.sitepoint.com/10-typical-html-interview-exercises/">10 Typical HTML Interview Exercises from SitePoint.com</a></li>
+<li><a href="http://www.toptal.com/html5/interview-questions">12 Essential HTML5 Interview Questions from top 3% developers company</a></li>
+<li><a href="http://www.skilledup.com/articles/html-html5-interview-questions-answers">35 Helpful HTML &amp; HTML5 Interview Questions &amp; Answers</a></li>
+<li><a href="http://www.codeproject.com/Articles/702051/important-HTML-Interview-questions-with-answe">40 important HTML 5 Interview questions with answers</a></li>
+<li><a href="http://www.careerride.com/Interview-Questions-HTML.aspx">HTML interview questions and answers for freshers and experienced candidates Also find HTML online practice tests to fight written tests and certification exams on HTML</a></li>
+<li><a href="http://career.guru99.com/top-50-html-interview-questions/">Top 50 HTML Interview Questions for both freshers and experienced developers</a></li>
+<li><a href="http://www.javatpoint.com/html-interview-questions">Common HTML interview questions for freshers</a></li>
+</ul>
+<h3 id="ionic"><a class="header" href="#ionic">Ionic</a></h3>
+<ul>
+<li><a href="http://www.codeandyou.com/p/ionic-interview-questions.html">23 Beginner Level Ionic Framework Questions</a></li>
+</ul>
+<h3 id="ios"><a class="header" href="#ios">iOS</a></h3>
+<ul>
+<li><a href="http://www.toptal.com/ios/interview-questions">12 Essential iOS Interview Questions from top 3% developers company</a></li>
+<li><a href="https://www.codementor.io/ios/tutorial/ios-interview-tips-questions-answers-objective-c">20 iOS Developer Interview Questions and Answers for getting you ready for your interview</a></li>
+<li><a href="https://github.com/CameronBanga/iOS-Developer-and-Designer-Interview-Questions">A small guide to help those looking to hire a developer or designer for iOS work While tailored for iOS, many questions could be used for Android developers or designers as well A great self-test if you're looking to keep current or practice for your own interview</a></li>
+<li><a href="http://www.raywenderlich.com/53962/ios-interview-questions">All you need to know about iOS technical interview including some tips for preparing, questions and some coding exercises</a></li>
+<li><a href="https://blackpixel.com/writing/2013/04/interview-questions-for-ios-and-mac-developers-1.html">Interview Questions for iOS and Mac Developers from the CEO of Black Pixel</a></li>
+<li><a href="http://www.geekinterview.com/Interview-Questions/iOS">iOS Interview Questions and Answers including such topics as Development Basics, App states and multitasking, App states, Core app objects</a></li>
+<li><a href="https://www.codementor.io/ios/tutorial/ios-interview-questions-for-senior-developers">iOS Interview Questions For Senior Developers</a></li>
+<li><a href="https://medium.com/ios-os-x-development/ios-interview-questions-13840247a57a">50 iOS Interview Questions And Answers 1</a></li>
+<li><a href="https://medium.com/ios-os-x-development/50-ios-interview-questions-and-answers-part-2-45f952230b9f">50 iOS Interview Questions And Answers Part 2</a></li>
+<li><a href="https://medium.com/ios-os-x-development/50-ios-interview-questions-and-answers-part-3-3fad146b6c3d">50 iOS Interview Questions And Answers Part 3</a></li>
+<li><a href="https://medium.com/@duruldalkanat/50-ios-interview-questions-and-answers-part-4-6f26b26341a">50 iOS Interview Questions And Answers Part 4</a></li>
+<li><a href="https://www.upwork.com/i/interview-questions/ios/">10 iOS interview questions and answers</a></li>
+<li><a href="https://github.com/9magnets/iOS-Developer-and-Designer-Interview-Questions#tech">iOS Developer and Designer Interview Questions</a></li>
+<li><a href="http://www.thecrazyprogrammer.com/2015/11/ios-interview-questions-and-answers.html">IOS Interview Questions and Answers</a></li>
+</ul>
+<h3 id="java"><a class="header" href="#java">Java</a></h3>
+<ul>
+<li><a href="http://www.javacodegeeks.com/2014/04/java-interview-questions-and-answers.html">115 Java Interview Questions and Answers – The ULTIMATE List</a></li>
+<li><a href="https://www.codementor.io/java/tutorial/java-interview-sample-questions-answers">37 Java Interview Questions to Practice With from Codementor</a></li>
+<li><a href="http://www.toptal.com/java/interview-questions">20 Essential Java Interview Questions</a></li>
+<li><a href="https://github.com/svozniuk/java-interviews">A collection of Java interview questions and answers to them The questions were gathered all around the Internet The answers are partly written by the commiters, partly copy-pasted from all possible sources</a></li>
+<li><a href="https://github.com/donbeave/interview">Data Structures and Algorithms in Java which can be useful in interview process</a></li>
+<li><a href="https://blog.udemy.com/java-interview-questions/">Java Interview Questions: How to crack the TOP 15 questions</a></li>
+<li><a href="http://www.javatpoint.com/corejava-interview-questions">There is the list of 201 core java interview questions The answers of the core java interview questions are short and to the point The core java interview questions are categorized in Basics of java interview questions, OOPs interview questions, String Handling interview questions, Multithreading interview questions, collection interview questions, JDBC interview questions etc</a></li>
+<li><a href="http://java67.blogspot.com.by/2012/09/top-10-tricky-java-interview-questions-answers.html">Top 10 Tricky Java interview questions and Answers</a></li>
+<li><a href="http://javahungry.blogspot.com/2013/06/top-25-most-frequently-asked-core-java.html">Top 25 Most Frequently Asked Interview Core Java Interview Questions And Answers</a></li>
+<li><a href="http://java67.blogspot.sg/2015/03/top-40-core-java-interview-questions-answers-telephonic-round.html">Top 40 Core Java Interview Questions Answers from Telephonic Round</a></li>
+<li><a href="https://www.interviewcake.com/java-interview-questions">Interview Cake Java Interview Questions</a></li>
+</ul>
+<h3 id="javascript"><a class="header" href="#javascript">JavaScript</a></h3>
+<ul>
+<li><a href="https://medium.com/javascript-scene/10-interview-questions-every-javascript-developer-should-know-6fa6bdf5ad95">10 Interview Questions Every JavaScript Developer Should Know</a></li>
+<li><a href="https://www.codementor.io/javascript/tutorial/21-essential-javascript-tech-interview-practice-questions-answers">21 Essential JavaScript Interview Questions from best mentors all over the world</a></li>
+<li><a href="http://www.toptal.com/javascript/interview-questions">25 Essential JavaScript Interview Questions from top 3% developers company</a></li>
+<li><a href="http://www.sitepoint.com/5-javascript-interview-exercises/">5 More JavaScript Interview Exercises</a></li>
+<li><a href="http://www.sitepoint.com/5-typical-javascript-interview-exercises/">5 Typical JavaScript Interview Exercises</a></li>
+<li><a href="http://www.techrepublic.com/blog/software-engineer/javascript-interview-questions-and-answers/">Development hiring managers and potential interviewees may find these sample JavaScript proficiency interview Q&amp;As and code snippets useful</a></li>
+<li><a href="https://github.com/nishant8BITS/101-JavaScript-Interview-Question">JavaScript 101 interview Question</a></li>
+<li><a href="http://www.tutorialspoint.com/javascript/javascript_interview_questions.htm">JavaScript Interview Questions have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of JavaScript</a></li>
+<li><a href="http://www.thatjsdude.com/interview/js2.html">JS: Basics and Tricky Questions</a></li>
+<li><a href="http://thatjsdude.com/interview/js1.html">JS: Interview Algorithm</a></li>
+<li><a href="https://github.com/kolodny/exercises">Some basic javascript coding challenges and interview questions</a></li>
+<li><a href="https://github.com/csvenja/javascript-exercises">Some JavaScript interview exercises</a></li>
+<li><a href="https://www.reddit.com/r/javascript/comments/3rb88w/ten_questions_ive_been_asked_most_more_than_once">Ten Questions I've Been Asked, Most More Than Once, Over Six Technical JavaScript / Front-End Engineer Job Interviews.</a></li>
+<li><a href="http://career.guru99.com/top-85-javascript-interview-questions/">Top 85 JavaScript Interview Questions</a></li>
+<li><a href="https://www.interviewcake.com/javascript-interview-questions">Interview Cake JavaScript Interview Questions</a></li>
+<li><a href="https://performancejs.com/post/hde6d32/The-Best-Frontend-JavaScript-Interview-Questions-(written-by-a-Frontend-Engineer)">The Best Frontend JavaScript Interview Questions (written by a Frontend Engineer)</a></li>
+</ul>
+<h3 id="knockoutjs"><a class="header" href="#knockoutjs">KnockoutJS</a></h3>
+<ul>
+<li><a href="http://www.code-sample.com/2014/01/knockout-js-interview-questions-and.html">15 interview questions from CodeSample.com</a></li>
+<li><a href="http://www.codeproject.com/Articles/987899/KnockoutJS-interview-questions">20 questions you might be asked about KnockoutJS in an interview for both freshers and experienced developers</a></li>
+</ul>
+<h3 id="less"><a class="header" href="#less">Less</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/top-25-less-interview-questions/">Top 25 LESS Interview Questions</a></li>
+</ul>
+<h3 id="lisp"><a class="header" href="#lisp">Lisp</a></h3>
+<ul>
+<li><a href="http://www.sanfoundry.com/lisp-mcqs-class/">10 LISP Questions &amp; Answers</a></li>
+<li><a href="http://career.guru99.com/top-18-lisp-interview-questions/">Top 18 Lisp Interview Questions from Career Guru</a></li>
+</ul>
+<h3 id="nodejs"><a class="header" href="#nodejs">NodeJS</a></h3>
+<ul>
+<li><a href="http://www.toptal.com/nodejs/interview-questions">7 Essential Nodejs Interview Questions from top 3% developers company</a></li>
+<li><a href="http://www.lazyquestion.com/interview-questions-and-answer/nodejs">Node.js Interview Questions &amp; Answers from LazyQuestion.com</a></li>
+<li><a href="http://www.tutorialspoint.com/nodejs/nodejs_interview_questions.htm">Node.JS Interview Questions have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of Node.JS</a></li>
+<li><a href="https://blog.risingstack.com/node-js-interview-questions/">There are two sides of the table: you either want to hire Nodejs developers or you want to get hired as a Nodejs developer This list helps you navigate a bit in this space, giving you some questions to ask, and a list of questions you should know the answer to</a></li>
+<li><a href="http://career.guru99.com/top-25-interview-questions-on-node-js/">Top 25 Nodejs Interview Questions &amp; Answers from Career Guru</a></li>
+</ul>
+<h3 id="objective-c"><a class="header" href="#objective-c">Objective-C</a></h3>
+<ul>
+<li><a href="http://insights.dice.com/2015/07/21/interview-qs-objective-c-swift/">Interview Qs for Objective-C and Swift</a></li>
+<li><a href="http://andras.palfi.hu/iosobjc-interview-questions/">iOS/ObjC Interview Questions</a></li>
+</ul>
+<h3 id="php"><a class="header" href="#php">PHP</a></h3>
+<ul>
+<li><a href="http://www.careerride.com/PHP-Interview-Questions.aspx">100 PHP interview questions and answers from CareerRide.com</a></li>
+<li><a href="http://www.toptal.com/php/interview-questions">14 Essential PHP Interview Questions from top 3% developers company</a></li>
+<li><a href="http://www.woodstitch.com/resources/php-interview-questions.php">20 Common PHP Job Interview Questions and Answers</a></li>
+<li><a href="https://github.com/developerquestions/php-questions">Basic PHP interview questions</a></li>
+<li><a href="http://phpinterviewquestions.co.in/">PHP interview questions and answers for freshers</a></li>
+<li><a href="http://career.guru99.com/top-100-php-interview-questions-answers/">Top 100 PHP Interview Questions &amp; Answers from CareerGuru</a></li>
+<li><a href="https://www.codementor.io/php/tutorial/php-interview-questions-sample-answers">25 PHP Interview Questions</a></li>
+</ul>
+<h3 id="python"><a class="header" href="#python">Python</a></h3>
+<ul>
+<li><a href="http://www.careerride.com/python-interview-questions.aspx">50 Python interview questions and answers</a></li>
+<li><a href="http://www.toptal.com/python/interview-questions">8 Essential Python Interview Questions from top 3% developers company</a></li>
+<li><a href="https://github.com/sigmavirus24/python-interview-questions">A listing of questions that could potentially be asked for a python job listing</a></li>
+<li><a href="http://www.bogotobogo.com/python/python_interview_questions.php">Interview Questions for both beginners and experts</a></li>
+<li><a href="https://www.interviewcake.com/python-interview-questions">Interview Cake Python Interview Questions</a></li>
+<li><a href="https://docs.python.org/2/faq/programming.html">Python Frequently Asked Questions (Programming)</a></li>
+<li><a href="https://www.reddit.com/r/Python/comments/1knw7z/python_interview_questions">Python interview questions collected by Reddit users</a></li>
+<li><a href="http://www.questionscompiled.com/python-interview-questions.html">Python Interview Questions from questionscompiled</a></li>
+<li><a href="http://career.guru99.com/top-25-python-interview-questions/">Top 25 Python Interview Questions from Career Guru</a></li>
+<li><a href="https://www.youtube.com/watch?v=DEwgZNC-KyE">Python Interview 10 questions from Corey Schafer</a></li>
+</ul>
+<h3 id="ruby-on-rails"><a class="header" href="#ruby-on-rails">Ruby on Rails</a></h3>
+<ul>
+<li><a href="http://web.archive.org/web/20160505234502/http://legeek.org/10-best-ruby-and-rails-interview-questions-and-answers">10 (best) Ruby (and Rails) interview questions (and answers)</a></li>
+<li><a href="http://www.careerride.com/ruby-on-rails-interview-questions.aspx">20 Ruby on Rails interview questions and answers from CareerRide.com</a></li>
+<li><a href="http://www.toptal.com/ruby-on-rails/interview-questions">8 Essential Ruby on Rails Interview Questions from top 3% developers company</a></li>
+<li><a href="https://github.com/rishiip/ruby-on-rails-interview-questions">A list of common questions with answers ask during interview of ruby on rails job</a></li>
+<li><a href="http://anilpunjabi.tumblr.com/post/25948339235/ruby-and-rails-interview-questions-and-answers">Ruby And Ruby On Rails interview Q&amp;A</a></li>
+<li><a href="https://srikantmahapatra.wordpress.com/2013/11/07/ruby-on-rails-interview-questions-and-answers/">Some of the most frequently asked Ruby on Rails questions and how to answer them confidently</a></li>
+<li><a href="https://www.codementor.io/ruby-on-rails/tutorial/ruby-on-rails-interview-questions">11 Ruby on Rails Interview Practice Questions</a></li>
+</ul>
+<h3 id="reactjs"><a class="header" href="#reactjs">ReactJS</a></h3>
+<ul>
+<li><a href="https://www.reddit.com/r/reactjs/comments/3m5equ/react_what_interview_questions_to_expect/">Reddit users share their expectations from ReactJS interview</a></li>
+<li><a href="http://interview-questions-247.appspot.com/reactjs-interview-questions-set-1">This is a first in the series of interview questions related with ReactJS</a></li>
+<li><a href="http://interview-questions-247.appspot.com/reactjs-interview-questions-set-3">This quiz intends to test your understanding around ReactJS fundamentals (Set 3)</a></li>
+<li><a href="http://interview-questions-247.appspot.com/reactjs-interview-questions-set-2">This quiz intends to test your understanding around ReactJS fundamentals</a></li>
+<li><a href="https://www.codementor.io/reactjs/tutorial/5-essential-reactjs-interview-questions">5 Essential React.js Interview Questions</a></li>
+<li><a href="https://tylermcginnis.com/react-interview-questions/">React Interview Questions</a></li>
+</ul>
+<h3 id="ruby"><a class="header" href="#ruby">Ruby</a></h3>
+<ul>
+<li><a href="http://www.toptal.com/ruby/interview-questions">11 Essential Ruby Interview Questions from top 3% developers company</a></li>
+<li><a href="https://gist.github.com/ryansobol/5252653">15 Questions to Ask During a Ruby Interview</a></li>
+<li><a href="https://github.com/undr/ruby-trivia">A list of questions about Ruby programming you can use to quiz yourself</a></li>
+<li><a href="http://technology.customink.com/blog/2015/11/23/the-art-of-ruby-technical-interviews/">The Art of Ruby Technical Interview</a></li>
+<li><a href="https://www.interviewcake.com/ruby-interview-questions">Interview Cake Ruby Interview Questions</a></li>
+</ul>
+<h3 id="sass"><a class="header" href="#sass">Sass</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/top-17-sass-interview-questions/">Top 17 Sass Interview Questions from Career Guru</a></li>
+</ul>
+<h3 id="scala"><a class="header" href="#scala">Scala</a></h3>
+<ul>
+<li><a href="http://insights.dice.com/2014/09/12/4-interview-questions-scala-developers/">4 Interview Questions for Scala Developers</a></li>
+<li><a href="http://www.scala-lang.org/old/faq">A list of Frequently Asked Questions and their answers, sorted by category</a></li>
+<li><a href="https://github.com/Jarlakxen/Scala-Interview-Questions">A list of helpful Scala related questions you can use to interview potential candidates</a></li>
+<li><a href="http://programmers.stackexchange.com/questions/58145/how-scala-developers-are-being-interviewed">How Scala Developers Are Being Interviewed</a></li>
+<li><a href="https://github.com/peterarsentev/Scala-Interview-Questions-Answers">Scala Interview Questions/Answers including Language Questions, Functional Programming Questions, Reactive Programming Questions</a></li>
+<li><a href="http://career.guru99.com/top-25-interview-questions-on-scala/">Top 25 Scala Interview Questions &amp; Answers from top 3% developers company</a></li>
+</ul>
+<h3 id="sharepoint"><a class="header" href="#sharepoint">SharePoint</a></h3>
+<ul>
+<li><a href="http://www.rajeshg.me/2013/05/sharepoint-developer-2010-interview.html">Sharepoint Interview Question For Developer</a></li>
+</ul>
+<h3 id="shell"><a class="header" href="#shell">Shell</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/shell-scripting-interview-questions/">Top 50 Shell Scripting Interview Questions from Career Guru</a></li>
+</ul>
+<h3 id="swift"><a class="header" href="#swift">Swift</a></h3>
+<ul>
+<li><a href="http://www.skilledup.com/articles/5-swift-questions-ios-job-interview">5 Swift questions for your iOS job interview</a></li>
+<li><a href="http://www.toptal.com/swift/interview-questions">9 Essential Swift Interview Questions from top 3% developers company</a></li>
+<li><a href="https://github.com/diwu/LeetCode-Solutions-in-Swift">Get prepared for your next iOS job interview by studying high quality LeetCode solutions in Swift 2.1</a></li>
+<li><a href="http://www.raywenderlich.com/110982/swift-interview-questions-answers">Swift Interview Questions and Answers for both freshers and beginners</a></li>
+<li><a href="http://mycodetips.com/swift-ios/swift-programming-language-interview-questions-answers-987.html">Swift Programming Language Interview Questions And Answers from mycodetips.com</a></li>
+<li><a href="http://blog.udacity.com/2014/11/your-top-10-swift-questions-answered.html">Your top 10 Swift questions answered</a></li>
+</ul>
+<h3 id="wordpress"><a class="header" href="#wordpress">Wordpress</a></h3>
+<ul>
+<li><a href="https://pangara.com/blog/45-wordpress-interview-questions-and-answers">Top 45 Wordpress interview questions</a></li>
+</ul>
+<h2 id="database-technologies"><a class="header" href="#database-technologies">Database technologies</a></h2>
+<h3 id="cassandra"><a class="header" href="#cassandra">Cassandra</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/top-23-cassandra-interview-questions/">Top 23 Cassandra Interview Questions from Career Guru</a></li>
+</ul>
+<h3 id="microsoft-access"><a class="header" href="#microsoft-access">Microsoft Access</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/top-16-ms-access-database-interview-questions/">Top 16 Microsoft Access Database Interview Questions from Career Guru</a></li>
+</ul>
+<h3 id="mongodb"><a class="header" href="#mongodb">MongoDB</a></h3>
+<ul>
+<li><a href="http://theprofessionalspoint.blogspot.com.by/2014/01/28-mongodb-nosql-database-interview.html">28 MongoDB NoSQL Database Interview Questions and Answers</a></li>
+<li><a href="http://www.globalguideline.com/interview_questions/Questions.php?sc=MongoDB%5D(http://www.globalguideline.com/interview_questions/Questions.php?sc=MongoDB)">MongoDB frequently Asked Questions by expert members with experience in MongoDB These questions and answers will help you strengthen your technical skills, prepare for the new job test and quickly revise the concepts</a></li>
+<li><a href="http://www.javatpoint.com/mongodb-interview-questions">MongoDB Interview Questions from JavaTPointcom</a></li>
+<li><a href="http://www.tutorialspoint.com/mongodb/mongodb_interview_questions.htm">MongoDB Interview Questions that have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of MongoDB</a></li>
+<li><a href="http://career.guru99.com/top-20-mongodb-interview-questions/">Top 20 MongoDB interview questions from Career Guru</a></li>
+</ul>
+<h3 id="mysql"><a class="header" href="#mysql">MySQL</a></h3>
+<ul>
+<li><a href="http://www.tecmint.com/10-mysql-database-interview-questions-for-beginners-and-intermediates/">10 MySQL Database Interview Questions for Beginners and Intermediates</a></li>
+<li><a href="http://www.careerride.com/MySQL-Interview-Questions.aspx">100 MySQL interview questions</a></li>
+<li><a href="http://www.tecmint.com/basic-mysql-interview-questions-for-database-administrators/">15 Basic MySQL Interview Questions for Database Administrators</a></li>
+<li><a href="http://www.javatpoint.com/mysql-interview-questions">28 MySQL interview questions from JavaTPoint.com</a></li>
+<li><a href="http://www.testingbrain.com/interview/mysql-interview-questions.html">40 Basic MySQL Interview Questions with Answers</a></li>
+<li><a href="http://career.guru99.com/top-50-mysql-interview-questions-answers/">Top 50 MySQL Interview Questions &amp; Answers from Career Guru</a></li>
+</ul>
+<h3 id="neo4j"><a class="header" href="#neo4j">Neo4j</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/top-20-ne04j-interview-questions/">Top 20 Neo4j Interview Questions from Career Guru</a></li>
+</ul>
+<h3 id="oracle"><a class="header" href="#oracle">Oracle</a></h3>
+<ul>
+<li><a href="http://www.coolinterview.com/type.asp?iType=57">General Oracle Interview Questions &amp; Answers</a></li>
+</ul>
+<h3 id="postgres"><a class="header" href="#postgres">Postgres</a></h3>
+<ul>
+<li><a href="http://www.dotnetfunda.com/interviews/cat/208/postgresql">13 PostgreSQL Interview Q&amp;A</a></li>
+<li><a href="http://nazafbtemplate.blogspot.com.by/2014/06/frequently-asked-basic-postgresql.html">Frequently Asked Basic PostgreSQL Interview Questions and Answers</a></li>
+<li><a href="http://www.globalguideline.com/interview_questions/Questions.php?sc=postgresqk_database_%5D(http://www.globalguideline.com/interview_questions/Questions.php?sc=postgresqk_database_)">PostgreSQL Interview Preparation Guide</a></li>
+<li><a href="http://www.coolinterview.com/type.asp?iType=411">PostgreSQL Interview Q&amp;A from CoolInterview.com</a></li>
+</ul>
+<h3 id="sql"><a class="header" href="#sql">SQL</a></h3>
+<ul>
+<li><a href="http://java67.blogspot.com.by/2013/04/10-frequently-asked-sql-query-interview-questions-answers-database.html">10 Frequently asked SQL Query Interview Questions</a></li>
+<li><a href="http://www.toptal.com/sql/interview-questions">18 Essential SQL Interview Questions from top 3% developers company</a></li>
+<li><a href="http://www.indiabix.com/technical/sql-server-common-questions/">Common Interview Questions and Answers</a></li>
+<li><a href="http://www.indiabix.com/technical/sql-server-general-questions/">General Interview Questions and Answers</a></li>
+<li><a href="https://github.com/XD-DENG/SQL-exercise">Schema, Questions &amp; Solutions for SQL Exercising</a></li>
+<li><a href="http://www.tutorialspoint.com/sql/sql_interview_questions.htm">SQL Interview Questions that have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of SQL</a></li>
+<li><a href="http://dwbi.org/database/sql/72-top-20-sql-interview-questions-with-answers">Top 20 SQL Interview Questions with Answers</a></li>
+</ul>
+<h3 id="sql-lite"><a class="header" href="#sql-lite">SQL Lite</a></h3>
+<ul>
+<li><a href="http://career.guru99.com/top-20-sql-lite-interview-questions/">Top 20 SQL LITE  Interview Questions from Career Guru</a></li>
+</ul>
+<h2 id="os"><a class="header" href="#os">OS</a></h2>
+<h3 id="linux"><a class="header" href="#linux">Linux</a></h3>
+<ul>
+<li><a href="https://www.linux.com/news/featured-blogs/200-libby-clark/842913-10-job-interview-questions-for-linux-sysadmins">10 Job Interview Questions for Linux System Administrators from Linux.com</a></li>
+<li><a href="http://www.tecmint.com/useful-random-linux-interview-questions-and-answers/">10 Useful Random Linux Interview Questions and Answers</a></li>
+<li><a href="http://www.tecmint.com/basic-linux-interview-questions-and-answers/">11 Basic Linux Interview Questions and Answers</a></li>
+<li><a href="http://www.toptal.com/linux/interview-questions">11 Essential Linux Interview Questions from top 3% developers company</a></li>
+<li><a href="http://computernetworkingnotes.com/rhce-interview-questions/linux-interview-questions-answers.html">Some basic Linux questions from ComputerNetworkingNotes.com</a></li>
+<li><a href="http://www.linuxtechi.com/experience-linux-admin-interview-questions/">Top 30 Linux System Admin Interview Questions &amp; Answers</a></li>
+<li><a href="http://career.guru99.com/top-50-linux-interview-questions/">Top 50 Linux Interview Questions from Career Guru</a></li>
+<li><a href="https://github.com/chassing/linux-sysadmin-interview-questions">Linux System Administrator/DevOps Interview Questions</a></li>
+</ul>
+<h3 id="windows"><a class="header" href="#windows">Windows</a></h3>
+<ul>
+<li><a href="http://www.brentozar.com/archive/2009/07/top-10-interview-questions-for-windows-sysadmins/">Top 10 Interview Questions for Windows Administrators</a></li>
+<li><a href="http://career.guru99.com/top-22-windows-server-interview-questions/">Top 22 Windows Server Interview Questions from Career Guru</a></li>
+<li><a href="http://www.01world.in/p/windows.html">Windows Admin Interview Questions &amp; Answers</a></li>
+</ul>
+<h2 id="algorithms"><a class="header" href="#algorithms">Algorithms</a></h2>
+<ul>
+<li><a href="http://java2novice.com/java-interview-programs/">A great list of Java interview questions</a></li>
+<li><a href="https://github.com/sagivo/algorithms">Algorithms playground for common interview questions written in Ruby</a></li>
+<li><a href="https://github.com/EvgenyKarkan/EKAlgorithms">EKAlgorithms contains some well known CS algorithms &amp; data structures</a></li>
+<li><a href="http://www.shiftedup.com/2015/05/07/five-programming-problems-every-software-engineer-should-be-able-to-solve-in-less-than-1-hour">Five programming problems every Software Engineer should be able to solve in less than 1 hour</a></li>
+<li><a href="http://www.programcreek.com/2012/11/top-10-algorithms-for-coding-interview/">Top 10 Algorithms for Coding Interview</a></li>
+<li><a href="http://javarevisited.blogspot.com.by/2013/03/top-15-data-structures-algorithm-interview-questions-answers-java-programming.html">Top 15 Data Structures and Algorithm Interview Questions for Java programmer</a></li>
+</ul>
+<h2 id="coding-exercises"><a class="header" href="#coding-exercises">Coding exercises</a></h2>
+<ul>
+<li><a href="https://github.com/mre/the-coding-interview">Common interview questions and puzzles solved in a number of languages</a></li>
+<li><a href="https://github.com/donnemartin/interactive-coding-challenges">Interactive, test-driven Python coding challenges (algorithms and data structures) typically found in coding interviews or coding competitions</a></li>
+<li><a href="https://github.com/roseperrone/interview-questions">Interview questions solved in python</a></li>
+</ul>
+<h2 id="comprehensive-lists"><a class="header" href="#comprehensive-lists">Comprehensive lists</a></h2>
+<ul>
+<li><a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions">A list of helpful front-end related questions you can use to interview potential candidates, test yourself or completely ignore</a></li>
+<li><a href="http://www.aperfectmix.com/free_web_design/front-end-interview-questions.html">Front End Developer Interview Questions</a></li>
+<li><a href="https://github.com/starandtina/backend-interview-questions">Some simple questions to interview potential backend candidates</a></li>
+</ul>
+<h2 id="design-patterns"><a class="header" href="#design-patterns">Design Patterns</a></h2>
+<ul>
+<li><a href="http://www.tutorialspoint.com/design_pattern/design_pattern_interview_questions.htm">Design Pattern Interview Questions that have been designed specially to get you acquainted with the nature of questions you may encounter during your interview for the subject of Design Pattern</a></li>
+<li><a href="https://github.com/kamranahmedse/design-patterns-for-humans">Design Patterns for Humans™ - An ultra-simplified explanation</a></li>
+<li><a href="https://github.com/iluwatar/java-design-patterns">Design patterns implemented in Java</a></li>
+</ul>
+<h2 id="data-structures"><a class="header" href="#data-structures">Data structures</a></h2>
+<ul>
+<li><a href="http://javarevisited.blogspot.com.by/2013/03/top-15-data-structures-algorithm-interview-questions-answers-java-programming.html">Top 15 Data Structures and Algorithm Interview Questions for Java programmer</a></li>
+<li><a href="http://career.guru99.com/top-50-data-structure-interview-questions/">Top 50 Data Structure Interview Questions from Career Guru</a></li>
+</ul>
+<h2 id="networks"><a class="header" href="#networks">Networks</a></h2>
+<ul>
+<li><a href="http://career.guru99.com/top-100-networking-interview-questions-answers/">Top 100 Networking Interview Questions &amp; Answers from Career Guru</a></li>
+</ul>
+<h2 id="security"><a class="header" href="#security">Security</a></h2>
+<ul>
+<li><a href="http://careers.simplicable.com/careers/new/101-IT-security-interview-questions">101 IT Security Interview Questions</a></li>
+<li><a href="http://searchsecurity.techtarget.com/tip/How-to-prepare-for-an-information-security-job-interview">How to prepare for an information security job interview?</a></li>
+<li><a href="https://danielmiessler.com/study/infosec_interview_questions/">Information Security Interview Questions from Daniel Miessler</a></li>
+<li><a href="http://resources.infosecinstitute.com/top-50-information-security-interview-questions/">Top 50 Information Security Interview Questions for freshers and experts</a></li>
+</ul>
+<h2 id="data-science"><a class="header" href="#data-science">Data Science</a></h2>
+<ul>
+<li><a href="https://www.dezyre.com/article/-data-science-interview-questions-for-top-tech-companies/189">Data Science Interview Questions for Top Tech Companies</a></li>
+<li><a href="http://www.datasciencecentral.com/profiles/blogs/66-job-interview-questions-for-data-scientists">66 Job Interview Questions for Data Scientists</a></li>
+</ul>
+<h3 id="license"><a class="header" href="#license">License</a></h3>
+<p><a href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://i.creativecommons.org/p/zero/1.0/88x31.png" alt="CC0" /></a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="interledger.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="javascript-learning.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="interledger.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="javascript-learning.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

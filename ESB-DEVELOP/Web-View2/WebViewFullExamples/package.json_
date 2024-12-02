@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "devDependencies": {
+    "eslint": "^4.14.0",
+    "stylelint": "^8.4.0"
+  },
+  "scripts": {
+    "lint:css": "stylelint",
+    "lint:css:all": "stylelint -- \"**/*.css\"",
+    "lint:js": "eslint --config .eslintrc.json --ignore-path .eslintignore",
+    "lint:js:all": "npm run lint:js -- \"**/*.js\"",
+    "test": "npm run lint:js:all"
+  }
+}

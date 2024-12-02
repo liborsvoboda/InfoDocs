@@ -1,0 +1,799 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>java - EIC&amp;ESB Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EIC&amp;ESB Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="adonisJs.html"><strong aria-hidden="true">1.</strong> adonisJs</a></li><li class="chapter-item expanded "><a href="aws.html"><strong aria-hidden="true">2.</strong> aws</a></li><li class="chapter-item expanded "><a href="cSharp.html"><strong aria-hidden="true">3.</strong> cSharp</a></li><li class="chapter-item expanded "><a href="curl.html"><strong aria-hidden="true">4.</strong> curl</a></li><li class="chapter-item expanded "><a href="docker.html"><strong aria-hidden="true">5.</strong> docker</a></li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">6.</strong> elasticsearch</a></li><li class="chapter-item expanded "><a href="expressJs.html"><strong aria-hidden="true">7.</strong> expressJs</a></li><li class="chapter-item expanded "><a href="gcloud.html"><strong aria-hidden="true">8.</strong> gcloud</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">9.</strong> git</a></li><li class="chapter-item expanded "><a href="golang.html"><strong aria-hidden="true">10.</strong> golang</a></li><li class="chapter-item expanded "><a href="java.html" class="active"><strong aria-hidden="true">11.</strong> java</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">12.</strong> javascript</a></li><li class="chapter-item expanded "><a href="kubernetes.html"><strong aria-hidden="true">13.</strong> kubernetes</a></li><li class="chapter-item expanded "><a href="laravel.html"><strong aria-hidden="true">14.</strong> laravel</a></li><li class="chapter-item expanded "><a href="mongodb.html"><strong aria-hidden="true">15.</strong> mongodb</a></li><li class="chapter-item expanded "><a href="mysql.html"><strong aria-hidden="true">16.</strong> mysql</a></li><li class="chapter-item expanded "><a href="nginx.html"><strong aria-hidden="true">17.</strong> nginx</a></li><li class="chapter-item expanded "><a href="nodeJs.html"><strong aria-hidden="true">18.</strong> nodeJs</a></li><li class="chapter-item expanded "><a href="php.html"><strong aria-hidden="true">19.</strong> php</a></li><li class="chapter-item expanded "><a href="pm2.html"><strong aria-hidden="true">20.</strong> pm2</a></li><li class="chapter-item expanded "><a href="puppeteer.html"><strong aria-hidden="true">21.</strong> puppeteer</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">22.</strong> python</a></li><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">23.</strong> ubuntu</a></li><li class="chapter-item expanded "><a href="vscode.html"><strong aria-hidden="true">24.</strong> vscode</a></li><li class="chapter-item expanded "><a href="xml.html"><strong aria-hidden="true">25.</strong> xml</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h3 id="hello-world-ghost"><a class="header" href="#hello-world-ghost">HELLO WORLD :ghost:</a></h3>
+<pre><code class="language-java">//Text file name HelloWorld.java
+public class HelloWorld {
+  // main() is the method
+  public static void main (String[] args)
+    //Prints &quot;Hello World&quot; in the terminal window.
+    System.out.println(&quot;Hello World&quot;);
+}
+</code></pre>
+<h3 id="compilation--executing-java-code"><a class="header" href="#compilation--executing-java-code">COMPILATION &amp; EXECUTING JAVA CODE</a></h3>
+<ul>
+<li>Goto your program directory in terminal (Assumed JAVA Path is set)</li>
+<li>After for compile your code</li>
+</ul>
+<blockquote>
+<p><strong>javac HelloWorld.java (your program file name)</strong></p>
+</blockquote>
+<ul>
+<li>For run program </li>
+</ul>
+<blockquote>
+<p><strong>java HelloWorld (main class name)</strong></p>
+</blockquote>
+<h3 id="data-types"><a class="header" href="#data-types">DATA TYPES</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Type</th><th style="text-align: center">Set of values</th><th style="text-align: center">Values</th><th style="text-align: center">Operators</th></tr></thead><tbody>
+<tr><td style="text-align: center">int</td><td style="text-align: center">integers</td><td style="text-align: center">between -2^31 and + (2^31)-1</td><td style="text-align: center">+ - * / %</td></tr>
+<tr><td style="text-align: center">double</td><td style="text-align: center">floating-point numbers</td><td style="text-align: center">real numbers</td><td style="text-align: center">+ - * /</td></tr>
+<tr><td style="text-align: center">boolean</td><td style="text-align: center">boolean values</td><td style="text-align: center">true or false</td><td style="text-align: center">&amp;&amp; || !</td></tr>
+<tr><td style="text-align: center">char</td><td style="text-align: center">characters</td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
+<tr><td style="text-align: center">String</td><td style="text-align: center">sequences of characters</td><td style="text-align: center"></td><td style="text-align: center"></td></tr>
+</tbody></table>
+</div>
+<h3 id="declaration-and-assignment-statements"><a class="header" href="#declaration-and-assignment-statements">DECLARATION AND ASSIGNMENT STATEMENTS</a></h3>
+<pre><code class="language-java">//Declaration statement
+int a,b;
+
+//Assignment statement
+a = 13212; //a is the variable name; 13212 is the literal which is assign to the variable a
+
+//Initialization statement
+int c = a + b;
+</code></pre>
+<h3 id="comparison-operators"><a class="header" href="#comparison-operators">COMPARISON OPERATORS</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Operation</th><th style="text-align: center">Meaning</th></tr></thead><tbody>
+<tr><td style="text-align: center">==</td><td style="text-align: center">equal</td></tr>
+<tr><td style="text-align: center">!=</td><td style="text-align: center">not equal</td></tr>
+<tr><td style="text-align: center">&lt;</td><td style="text-align: center">less than</td></tr>
+<tr><td style="text-align: center">&gt;</td><td style="text-align: center">greater than</td></tr>
+<tr><td style="text-align: center">&lt;=</td><td style="text-align: center">less than or equal</td></tr>
+<tr><td style="text-align: center">&gt;=</td><td style="text-align: center">greater than or equal</td></tr>
+</tbody></table>
+</div>
+<h3 id="printing"><a class="header" href="#printing">PRINTING</a></h3>
+<pre><code class="language-java">  String s = &quot;Happy Coding Folks!!&quot;
+  void System.out.print(String s) //print s
+  void System.out.println(String s) //print s, followed by a newline
+  void System.out.println() //print a newline
+</code></pre>
+<h3 id="parsing-command-line-arguments"><a class="header" href="#parsing-command-line-arguments">PARSING COMMAND-LINE ARGUMENTS</a></h3>
+<pre><code class="language-java">  String s = &quot;Java is the best!!&quot;
+  int Integer.parseInt(String s) //convert s to an int value
+  double Double.parseDouble(String) //convert s to a double value
+  long Long.parseLong(String s) // convert s to a long value
+</code></pre>
+<h3 id="math-library"><a class="header" href="#math-library">MATH LIBRARY</a></h3>
+<pre><code class="language-java">  Public Class Math{
+    double abs(double a)    // absolute value of a
+    double max(double a, double b)  //maximum of a and b
+    double min(double a, dobule a)  //minimum of a and b
+    double sin(double theta) //sine of theta
+    double cos(double theta) //cosine of theta
+    double tan(double theta) //tangent of theta
+    double toRadians(double degrees) // convert angle from degrees to radians
+    double toDegrees(double radians)  // convert angle from radians to degrees
+    double exp(double a)  // exponential (e^a)
+    double pow(double a, double p) //raise a to the bth power (a^b)
+    double random() //random in [0,1)
+    double sqrt(double a)  //square root of a
+    }
+</code></pre>
+<h3 id="examples-of-type-conversion"><a class="header" href="#examples-of-type-conversion">EXAMPLES OF TYPE CONVERSION</a></h3>
+<div class="table-wrapper"><table><thead><tr><th style="text-align: center">Expression</th><th style="text-align: center">Expression type</th><th style="text-align: center">Expression value</th></tr></thead><tbody>
+<tr><td style="text-align: center">(1 + 2 + 3 + 4) / 4.0</td><td style="text-align: center">double</td><td style="text-align: center">2.5</td></tr>
+<tr><td style="text-align: center">Math.sqrt(4)</td><td style="text-align: center">double</td><td style="text-align: center">2.0</td></tr>
+<tr><td style="text-align: center">&quot;123343&quot; + 99</td><td style="text-align: center">String</td><td style="text-align: center">&quot;12334399&quot;</td></tr>
+<tr><td style="text-align: center">11 * 0.25</td><td style="text-align: center">double</td><td style="text-align: center">2.75</td></tr>
+<tr><td style="text-align: center">(int) 11 * 0.25</td><td style="text-align: center">double</td><td style="text-align: center">2.75</td></tr>
+<tr><td style="text-align: center">11 * (int) 0.25</td><td style="text-align: center">int</td><td style="text-align: center">0</td></tr>
+<tr><td style="text-align: center">(int) (11 * 0.25)</td><td style="text-align: center">int</td><td style="text-align: center">2</td></tr>
+</tbody></table>
+</div>
+<h3 id="conditional--loop-statement"><a class="header" href="#conditional--loop-statement">CONDITIONAL &amp; LOOP STATEMENT</a></h3>
+<h4 id="anatomy-of-conditional-statement"><a class="header" href="#anatomy-of-conditional-statement">ANATOMY OF CONDITIONAL STATEMENT</a></h4>
+<blockquote>
+<p>IF Statement</p>
+</blockquote>
+<pre><code class="language-java">  if (x&gt;y) { // x &gt; y is the boolean expression
+   //Sequence of statements
+   x = y;
+  } 
+</code></pre>
+<blockquote>
+<p>IF-ELSE STATEMENT</p>
+</blockquote>
+<pre><code class="language-java">   if (BOOLEAN EXPRESSION) { 
+   //Sequence of statements
+   } else {
+   //Sequence of statements
+   }
+</code></pre>
+<blockquote>
+<p>NESTED IF STATEMENT</p>
+</blockquote>
+<pre><code class="language-java">   if (BOOLEAN EXPRESSION) { 
+   //Sequence of statements
+   } else if {
+   //Sequence of statements
+   }
+   .
+   .
+   .
+   else {
+   //Sequence of statements
+   }
+</code></pre>
+<blockquote>
+<p>SWITCH STATEMENT</p>
+</blockquote>
+<pre><code class="language-java">  switch (VARIABLE TO EVALUATE ITS VALUE) {
+    case value: Statement; break;
+    ...
+    ...
+    ...
+    default: Statement; break;
+  }
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">  int month = 8;
+        String monthString;
+        switch (month) {
+            case 1:  monthString = &quot;January&quot;;
+                     break;
+            case 2:  monthString = &quot;February&quot;;
+                     break;
+            case 3:  monthString = &quot;March&quot;;
+                     break;
+            case 4:  monthString = &quot;April&quot;;
+                     break;
+            case 5:  monthString = &quot;May&quot;;
+                     break;
+            case 6:  monthString = &quot;June&quot;;
+                     break;
+            case 7:  monthString = &quot;July&quot;;
+                     break;
+            case 8:  monthString = &quot;August&quot;;
+                     break;
+            case 9:  monthString = &quot;September&quot;;
+                     break;
+            case 10: monthString = &quot;October&quot;;
+                     break;
+            case 11: monthString = &quot;November&quot;;
+                     break;
+            case 12: monthString = &quot;December&quot;;
+                     break;
+            default: monthString = &quot;Invalid month&quot;;
+                     break;
+        }
+</code></pre>
+<h4 id="anatomy-of-a-loop--statement"><a class="header" href="#anatomy-of-a-loop--statement">ANATOMY OF A LOOP  STATEMENT</a></h4>
+<blockquote>
+<p>FOR LOOP STATEMENT</p>
+</blockquote>
+<pre><code class="language-java">  for (declare and initialize a loop control variable; loop-continuation condition/s; increment or decrement of the variable of control)
+  {
+    //Statement
+  }
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">  for (int i = 0; i &lt;= n; i++) {
+     System.out.println(i);
+  }
+</code></pre>
+<blockquote>
+<p>Enhanced for loop/for-each </p>
+</blockquote>
+<pre><code class="language-java">for(dataType item : array) {
+    ...
+}
+
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">    // array of numbers
+    int[] numbers = {100, 200, 300, 400};
+    
+    // for each loop 
+    for (int number: numbers) {
+      System.out.println(number);
+</code></pre>
+<blockquote>
+<p>WHILE LOOP STATEMENT</p>
+</blockquote>
+<pre><code class="language-java">    while(condition){  //till condition will be true.
+    //code to be executed 
+    }
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">  //Initialization is a separate statement
+  int power = 1;
+
+  while ( power &lt;= 10/2 ) // power &lt;= n/2 is an example of the loop-continuation condition
+  {
+    System.out.println(power);
+  }
+</code></pre>
+<blockquote>
+<p>DO-WHILE LOOP STATEMENT</p>
+</blockquote>
+<pre><code class="language-java">  do{ //always run one time even if condition would be false
+    //Statement
+  } while(loop-continuation condition);
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">    int i=1;  
+    do{  
+      System.out.println(i);  
+      i++;  
+    }while(i&lt;=10); 
+</code></pre>
+<h3 id="array"><a class="header" href="#array">ARRAY</a></h3>
+<blockquote>
+<p>ARRAY DECLARATION</p>
+</blockquote>
+<pre><code class="language-java">    int[]           ai;        // array of int
+    short[][]       as;        // array of array of short
+    short           s,         // scalar short
+                    aas[][];   // array of array of short
+    Object[]        ao;        // array of Object
+    Collection&lt;?&gt;[] ca;  // array of Collection of unknown type
+</code></pre>
+<blockquote>
+<p>DECLARATION OF ARRAY VARIABLE</p>
+</blockquote>
+<pre><code class="language-java">  Exception ae[]  = new Exception[3];
+  Object aao[][]  = new Exception[2][3];
+  int[] factorial = { 1, 1, 2, 6, 24, 120, 720, 5040 };
+  char ac[]       = { 'n', 'o', 't', ' ', 'a', ' ',
+                      'S', 't', 'r', 'i', 'n', 'g' };
+  String[] aas    = { &quot;array&quot;, &quot;of&quot;, &quot;String&quot;, };
+</code></pre>
+<h3 id="access-modifiers"><a class="header" href="#access-modifiers">ACCESS MODIFIERS</a></h3>
+<ol>
+<li>defualt(No keyword required) </li>
+<li>private</li>
+<li>public</li>
+<li>protected </li>
+</ol>
+<h3 id="non-access-modifiers"><a class="header" href="#non-access-modifiers">NON ACCESS MODIFIERS</a></h3>
+<ol>
+<li>static </li>
+<li>final </li>
+<li>transient</li>
+<li>abstract</li>
+<li>synchronized</li>
+<li>volatile </li>
+</ol>
+<h2 id="object-oriented-programming-oops-concept-clipboard"><a class="header" href="#object-oriented-programming-oops-concept-clipboard">Object Oriented Programming (OOPs) Concept :clipboard:</a></h2>
+<h3 id="object"><a class="header" href="#object">OBJECT</a></h3>
+<pre><code class="language-java">  //Declare a variable, object name
+  String s;
+
+  //Invoke a contructor to create an object
+  s = new String (&quot;Hello World&quot;);
+
+  //Invoke an instance method that operates on the object's value
+  char c = s.chartAt(4);
+</code></pre>
+<blockquote>
+<p>INSTANCE VARIABLES</p>
+</blockquote>
+<pre><code class="language-java">  public class Charge {
+    //Instance variable declarations
+    private final double rx, ry;
+    private final double q;
+  }
+</code></pre>
+<h3 id="methods"><a class="header" href="#methods">METHODS</a></h3>
+<pre><code class="language-java">  public static double sum (int a, int b) { //double is the return type, sum is the method's name, a and b are two arguments of type int;
+    int result; //local variable
+    result = a + b;
+    return result;//return statement;
+  }
+</code></pre>
+<h3 id="class-declaration"><a class="header" href="#class-declaration">CLASS DECLARATION</a></h3>
+<pre><code class="language-java">class MyClass {
+    // field, constructor, and 
+    // method declarations
+}
+</code></pre>
+<p><strong>Example:</strong></p>
+<pre><code class="language-java">    public class Bicycle {
+        // the Bicycle class has
+        // three fields
+        public int cadence;
+        public int gear;
+        public int speed;
+        // the Bicycle class has
+        // one constructor
+        public Bicycle(int startCadence, int startSpeed, int startGear) {
+            gear = startGear;
+            cadence = startCadence;
+            speed = startSpeed;
+        }
+        // the Bicycle class has
+        // four methods
+        public void setCadence(int newValue) {
+            cadence = newValue;
+        }   
+        public void setGear(int newValue) {
+            gear = newValue;
+        }   
+        public void applyBrake(int decrement) {
+            speed -= decrement;
+        }  
+        public void speedUp(int increment) {
+            speed += increment;
+        }
+}
+</code></pre>
+<blockquote>
+<p>DECLARING CLASSESS IMPLEMENTATING AN INTERFACE AND EXTENDING PARENT CLASS</p>
+</blockquote>
+<pre><code class="language-java">class MyClass extends MySuperClass implements YourInterface {
+    // field, constructor, and
+    // method declarations
+}
+</code></pre>
+<ul>
+<li>MyClass is a subclass of MySuperClass and that it implements the YourInterface interface.</li>
+</ul>
+<blockquote>
+<p>CONSTRUCTORS</p>
+</blockquote>
+<ul>
+<li>A class contains constructors that are invoked to create objects from the class blueprint.</li>
+<li>Constructor declarations look like method declarations—except that they use the name of the class and have no return type</li>
+<li>Each and every class has defualt No-args constructor.</li>
+</ul>
+<pre><code class="language-java">  public class Bicycle{
+      
+      private int gear;
+      private int cadence;
+      private int speed;
+     
+      public Bicycle(int startCadence, int startSpeed, int startGear) { //args-constructor
+        gear = startGear;
+        cadence = startCadence;
+        speed = startSpeed;
+      }
+
+      public Bicycle(){//No-args constructor
+        super();
+      }
+  }
+</code></pre>
+<h3 id="polymorphism"><a class="header" href="#polymorphism">POLYMORPHISM</a></h3>
+<ul>
+<li>Polymorphism is the concept where an object behaves differently in different situations.</li>
+<li>There are two types of polymorphism 
+<ol>
+<li>compile time polymorphism </li>
+<li>runtime polymorphism.</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-compile-time-polymorphism"><a class="header" href="#1-compile-time-polymorphism">1. Compile Time Polymorphism</a></h4>
+<ul>
+<li>Compile-time polymorphism is achieved by method overloading.</li>
+<li>method overloading is creating multiple method with methods name is same and arguments are different. </li>
+</ul>
+<pre><code class="language-java">  public class Circle {
+
+    public void draw(){
+      System.out.println(&quot;Drwaing circle with default color Black and diameter 1 cm.&quot;);
+    }
+
+    public void draw(int diameter){ //method draw() overloaded.
+      System.out.println(&quot;Drwaing circle with default color Black and diameter&quot;+diameter+&quot; cm.&quot;);
+    }
+
+    public void draw(int diameter, String color){ //method draw() overloaded.
+      System.out.println(&quot;Drwaing circle with color&quot;+color+&quot; and diameter&quot;+diameter+&quot; cm.&quot;);
+    }
+  }
+</code></pre>
+<h4 id="2-run-time-polymorphism"><a class="header" href="#2-run-time-polymorphism">2. Run Time Polymorphism</a></h4>
+<ul>
+<li>Run-time polymorphism is achieved by method overriding.</li>
+<li>Runtime polymorphism is implemented when we have an <strong>“IS-A”</strong> relationship between objects.</li>
+<li>method overriding is the subclass has to override the superclass method.</li>
+</ul>
+<pre><code class="language-java">    public interface Shape {
+
+	    public void draw();
+    }
+</code></pre>
+<pre><code class="language-java">    public class Circle implements Shape{
+
+      @Override
+      public void draw(){
+        System.out.println(&quot;Drwaing circle&quot;);
+      }
+
+    }
+</code></pre>
+<pre><code class="language-java">    public class Square implements Shape {
+
+      @Override
+      public void draw() {
+        System.out.println(&quot;Drawing Square&quot;);
+      }
+
+    }
+</code></pre>
+<ul>
+<li><code>Shape</code> is the superclass and there are two subclasses <code>Circle</code> and <code>Square</code></li>
+<li>Below is an example of runtime polymorphism.</li>
+</ul>
+<pre><code class="language-java">    Shape sh = new Circle();
+    sh.draw();
+
+    Shape sh1 = getShape(); //some third party logic to determine shape
+    sh1.draw();
+</code></pre>
+<h3 id="inheritance"><a class="header" href="#inheritance">INHERITANCE</a></h3>
+<ul>
+<li>Inheritance is the mechanism of code reuse. </li>
+<li>The object that is getting inherited is called the superclass and the object that inherits the superclass is called a subclass.</li>
+<li>We use <code>extends</code> keyword in java to implement inheritance from class.</li>
+<li>We use <code>implements</code> keyword in java to implement inheritance from interface.</li>
+</ul>
+<pre><code class="language-java">    public class Superclass{
+      // methods and fields
+    }
+</code></pre>
+<pre><code class="language-java">    public interface Superinterface{
+      // methods and fields
+    }
+</code></pre>
+<pre><code class="language-java">    public class Subclass extends Superclass implements Superinterface{
+      // methods and fields
+    }
+</code></pre>
+<h3 id="abstraction"><a class="header" href="#abstraction">Abstraction</a></h3>
+<ul>
+<li>Abstraction is the concept of hiding the internal details and describing things in simple terms.</li>
+<li>Abstraction can be achieved by two ways.
+<ol>
+<li>Abstract Class</li>
+<li>Interface</li>
+</ol>
+</li>
+</ul>
+<h4 id="1-abstract-class"><a class="header" href="#1-abstract-class">1. Abstract Class</a></h4>
+<ul>
+<li>An abstract class must be declared with an <code>abstract</code> keyword.</li>
+<li>It can have abstract and non-abstract methods.</li>
+<li>It cannot be instantiated.</li>
+<li>It can have constructors and static methods also.</li>
+<li>It can have final methods which will force the subclass not to change the body of the method.</li>
+</ul>
+<pre><code class="language-java">    abstract class Flower{
+        abstract String Smell(); //abstract method.
+        String Oil(){  // non-abstract method. 
+           System.out.println(&quot;Flower Oil is good.&quot;);
+         }
+    }
+
+    public class Lily extends Flower{
+        private String Smell(){ // implementation of abstarct method.
+          System.out.println(&quot;Lily smell's lovender.&quot;);
+        }
+    }
+</code></pre>
+<h4 id="2-interface"><a class="header" href="#2-interface">2. Interface</a></h4>
+<ul>
+<li>Interface is a blueprint of a <strong>class</strong>.</li>
+<li>It can have only abstract methods. [Except Java 8 and next versions.]</li>
+<li>Since Java 8, we can have <strong>default and static</strong> methods in an interface.</li>
+</ul>
+<pre><code class="language-java">    interface print{  
+        void printPaper();  
+    }  
+    public class A4 implements print{  
+        public void printPaper(){
+          System.out.println(&quot;A4 Page Printed. &quot;);
+        }  
+    }
+</code></pre>
+<h3 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h3>
+<ul>
+<li>Encapsulation is used for access restriction to class members and methods.</li>
+<li>Encapsulation is the technique used to implement abstraction in OOP.</li>
+<li>As in encapsulation, the data in a class is hidden from other classes, so it is also known as <strong>data-hiding</strong>.</li>
+<li>Encapsulation can be achieved by Declaring all the variables in the class as private and writing public methods in the class to set and get the values of variables.</li>
+<li>Best example of Encapsulation is POJO (Plain-Java-Object-Class).</li>
+</ul>
+<pre><code class="language-java">   public class User {
+       private String username;
+       private String password;
+
+       public String getUsername() {
+         return username;
+       }
+
+       public void setUsername(String username) {
+         this.username = username;
+       }
+
+       public String getPassword() {
+         return password;
+       }
+
+       public void setPassword(String password) {
+         this.password = password;
+       }
+   }
+</code></pre>
+<h2 id="advance-data-type"><a class="header" href="#advance-data-type">ADVANCE DATA TYPE</a></h2>
+<ul>
+<li><strong>STACK DATA TYPE</strong></li>
+</ul>
+<pre><code class="language-java">  public class Stack&lt;Item&gt; implements Iterable &lt;Item&gt;
+
+  Stack()   //create an empty stack
+  boolean isEmpty() //return if the stack empty
+  void push(Item item) // push an item onto the stack
+  Item pop() //return and remove the item that was inserted most recently
+  int size() //number of item on stack
+</code></pre>
+<ul>
+<li><strong>QUEUE DATA TYPE</strong></li>
+</ul>
+<pre><code class="language-java">  public class Queue&lt;Item&gt; implements Iterable&lt;Item&gt;
+
+  Queue()  //create an empty queue
+  boolean isEmpty()  //return if the queue empty
+  void enqueue(Item item) // insert an item onto queue
+  Item dequeue()  //return and remove the item that was inserted least recently
+  int size() //number of item on queue
+</code></pre>
+<ul>
+<li><strong>ITERABLE</strong></li>
+</ul>
+<pre><code class="language-java">//import Iterator
+import java.util.Iterator;
+
+public class Queue&lt;Item&gt; implements Iterable&lt;Item&gt; { 
+
+//FIFO queue
+  private Node first;
+  private Node last;
+  private class Node {
+    Item item;
+    Node next;
+  }
+
+  public void enqueue (Item item)
+  ...
+
+  public Item dequeue()
+  ...
+
+}
+</code></pre>
+<ul>
+<li><strong>SYMBOL TABLE DATA TYPE</strong></li>
+</ul>
+<pre><code class="language-java">  public class ST&lt;Key extends Comparable&lt;Key&gt;, Value&gt;
+
+  ST()  //create and empty symbol table
+  void put(Key key, Value val)  //associate val with key
+  Value get(Key key)  //value associated with key
+  void remove(Key key) //remove key (and its associated value)
+  boolean contains (Key key)  //return if there is a value associated with key
+  int size()  //number of key-value pairs
+  Iterable&lt;Key&gt; keys()  // all keys in the symbol table
+</code></pre>
+<ul>
+<li><strong>SET DATA TYPE</strong></li>
+</ul>
+<pre><code class="language-java">  public class Set&lt;Key extends Comparable&lt;Key&gt;&gt; implements Iterable&lt;Key&gt;
+  Set() //create an empty set
+  boolean isEmpty()  //return if the set is empty
+  void add (Key key)  //add key to the set
+  void remove(Key key)  //remove key from set
+  boolean contains(Key key) //return if the key is in the set
+  int size() //number of elements in set
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="golang.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="javascript.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="golang.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="javascript.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

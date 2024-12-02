@@ -1,0 +1,85 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <!-- MSBUILD Project File -->
+  <PropertyGroup>
+    <DefaultClrNameSpace>SDKSamples</DefaultClrNameSpace>
+    <AssemblyName>ImagingSnippetGallery_csharp</AssemblyName>
+    <TargetType>winexe</TargetType>
+    <Configuration>Release</Configuration>
+    <BuildSystem>MSBuild</BuildSystem>
+    <HostInBrowser>False</HostInBrowser>
+    <ProductVersion>10.0.20821</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{16E6E143-14D0-4C4A-9E46-A7365E451F10}</ProjectGuid>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <!--Import the target file that contains all the common targets -->
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ApplicationDefinition Include="MyApp.xaml" />
+    <Page Include="SampleViewer.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BitmapDecoderExample.cs" />
+    <Compile Include="BitmapSourceExample.cs" />
+    <Compile Include="MyApp.xaml.cs">
+      <DependentUpon>MyApp.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RenderTargetBitmapExample_Encode.cs" />
+    <Compile Include="SampleViewer.xaml.cs">
+      <DependentUpon>SampleViewer.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChainedBitmapSourcesExample.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CroppedBitmapExample.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormatConvertedBitmapExample.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FormatConvertedBitmapExample2.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="TransformedBitmapExample.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="PixelFormatsExample.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ColorConvertedBitmapExample.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="RenderTargetBitmapExample.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="sampleImages\waterlilies.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Data" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+</Project>

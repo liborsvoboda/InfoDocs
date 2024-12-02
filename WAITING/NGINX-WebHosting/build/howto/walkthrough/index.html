@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/walkthrough/">
+<meta property="og:title" content="NGINX Unit: Walkthrough">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Bottle" href="../bottle/" />
+<link rel="prev" title="Security Checklist" href="../security/" />
+
+<title>Walkthrough — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="walkthrough">
+<h1>Walkthrough<a class="headerlink" href="#walkthrough" title="Permalink to this heading">§</a></h1>
+<p>OK, so you’ve decided to give Unit a try with your web app of choice.  You may
+be looking for ways to run it faster with less config overhead, streamlining
+your technology stack, or simply be tech-curious.  In any case:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Step</th>
+<th class="head">Things to do</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>Check the prerequisites</strong></td>
+<td><ol class="first last arabic simple">
+<li>Verify that Unit <a class="reference internal" href="../../installation/#source-prereqs"><span class="std std-ref">supports</span></a> your
+platform and app language version.</li>
+<li>If possible, ensure the app can run beside Unit to rule out
+external issues.</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>Get Unit on the system</strong></td>
+<td><ol class="first last arabic simple">
+<li>Install Unit with the language modules you need.  Your options:<ul>
+<li>Official <strong>.deb/.rpm</strong> <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">packages</span></a></li>
+<li>Docker <a class="reference internal" href="../../installation/#installation-docker"><span class="std std-ref">images</span></a></li>
+<li>Third-party <a class="reference internal" href="../../installation/#installation-community-repos"><span class="std std-ref">packages</span></a></li>
+<li>Source <a class="reference internal" href="../../installation/#source"><span class="std std-ref">build</span></a></li>
+</ul>
+</li>
+<li>Configure and launch Unit on your system:<ul>
+<li>Our own and third-party packages <a class="reference internal" href="../../installation/#installation-precomp-startup"><span class="std std-ref">rely on</span></a> <strong class="program">systemctl</strong> or
+<strong class="program">service</strong>.</li>
+<li>Containerized Unit can be <a class="reference internal" href="../docker/"><span class="doc">run</span></a> with common
+<strong class="program">docker</strong> commands.</li>
+<li>If none of the above applies, customize Unit’s <a class="reference internal" href="../source/#source-startup"><span class="std std-ref">startup</span></a> manually.</li>
+</ul>
+</li>
+</ol>
+</td>
+</tr>
+<tr class="row-even"><td><strong>Prepare</strong>&nbsp;<strong>the</strong>&nbsp;<strong>app</strong>&nbsp;<strong>for</strong>&nbsp;<strong>Unit</strong></td>
+<td><ol class="first last arabic simple">
+<li><em>(Only applies to :ref:`Go &lt;configuration-go&gt;`)</em> Patch
+your app to run on Unit.</li>
+<li>Choose <a class="reference internal" href="../../configuration/#configuration-applications"><span class="std std-ref">common</span></a> options such as
+app type, working directory, user/group.</li>
+<li>Add <a class="reference internal" href="../../configuration/#configuration-languages"><span class="std std-ref">language-specific</span></a>
+settings such as index, entry module, or executable.</li>
+</ol>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>Plug the app into Unit</strong></td>
+<td><ol class="first last arabic simple">
+<li><em>(Optional)</em> Add Unit-wide <a class="reference internal" href="../../configuration/#configuration-stngs"><span class="std std-ref">settings</span></a> to
+your app’s config to run it smoothly.</li>
+<li><a class="reference internal" href="../../controlapi/#configuration-mgmt"><span class="std std-ref">Upload</span></a> your config into Unit to spin up
+the app.</li>
+<li><em>(Optional)</em> Set up a <a class="reference internal" href="../../configuration/#configuration-routes"><span class="std std-ref">route</span></a> to your app
+to benefit from internal routing.</li>
+<li><em>(Optional)</em> Upload a <a class="reference internal" href="../../certificates/#configuration-ssl"><span class="std std-ref">certificate bundle</span></a>
+if you want to support SSL/TLS.</li>
+<li>Finally, set up a <a class="reference internal" href="../../configuration/#configuration-listeners"><span class="std std-ref">listener</span></a> to make
+your app publicly available.</li>
+</ol>
+</td>
+</tr>
+</tbody>
+</table>
+<p>For the details of each step, see specific documentation sections.</p>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\walkthrough.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

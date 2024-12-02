@@ -1,0 +1,342 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>git - EIC&amp;ESB Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EIC&amp;ESB Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="adonisJs.html"><strong aria-hidden="true">1.</strong> adonisJs</a></li><li class="chapter-item expanded "><a href="aws.html"><strong aria-hidden="true">2.</strong> aws</a></li><li class="chapter-item expanded "><a href="cSharp.html"><strong aria-hidden="true">3.</strong> cSharp</a></li><li class="chapter-item expanded "><a href="curl.html"><strong aria-hidden="true">4.</strong> curl</a></li><li class="chapter-item expanded "><a href="docker.html"><strong aria-hidden="true">5.</strong> docker</a></li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">6.</strong> elasticsearch</a></li><li class="chapter-item expanded "><a href="expressJs.html"><strong aria-hidden="true">7.</strong> expressJs</a></li><li class="chapter-item expanded "><a href="gcloud.html"><strong aria-hidden="true">8.</strong> gcloud</a></li><li class="chapter-item expanded "><a href="git.html" class="active"><strong aria-hidden="true">9.</strong> git</a></li><li class="chapter-item expanded "><a href="golang.html"><strong aria-hidden="true">10.</strong> golang</a></li><li class="chapter-item expanded "><a href="java.html"><strong aria-hidden="true">11.</strong> java</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">12.</strong> javascript</a></li><li class="chapter-item expanded "><a href="kubernetes.html"><strong aria-hidden="true">13.</strong> kubernetes</a></li><li class="chapter-item expanded "><a href="laravel.html"><strong aria-hidden="true">14.</strong> laravel</a></li><li class="chapter-item expanded "><a href="mongodb.html"><strong aria-hidden="true">15.</strong> mongodb</a></li><li class="chapter-item expanded "><a href="mysql.html"><strong aria-hidden="true">16.</strong> mysql</a></li><li class="chapter-item expanded "><a href="nginx.html"><strong aria-hidden="true">17.</strong> nginx</a></li><li class="chapter-item expanded "><a href="nodeJs.html"><strong aria-hidden="true">18.</strong> nodeJs</a></li><li class="chapter-item expanded "><a href="php.html"><strong aria-hidden="true">19.</strong> php</a></li><li class="chapter-item expanded "><a href="pm2.html"><strong aria-hidden="true">20.</strong> pm2</a></li><li class="chapter-item expanded "><a href="puppeteer.html"><strong aria-hidden="true">21.</strong> puppeteer</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">22.</strong> python</a></li><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">23.</strong> ubuntu</a></li><li class="chapter-item expanded "><a href="vscode.html"><strong aria-hidden="true">24.</strong> vscode</a></li><li class="chapter-item expanded "><a href="xml.html"><strong aria-hidden="true">25.</strong> xml</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>git init            # initiates git in the current directory
+git remote add origin https://github.com/repo_name.git        # add remote reposiory
+git clone <address> # creates a git repo from given address (get the address from your git-server)
+git clone <address> -b &lt;branch_name&gt; &lt;path/to/directory&gt;  # clones a git repo from the address into the given directory and checkout's the given branch
+git clone <address> -b &lt;branch_name&gt; --single-branch  # Clones a single branch</p>
+<p>git add &lt;file_name&gt;   # adds(stages) file.txt to the git
+git add *          # adds(stages) all new modifications, deletions, creations to the git
+git reset file.txt # Removes file.txt from the stage
+git reset --hard   # Throws away all your uncommitted changes, hard reset files to HEAD
+git reset --soft &lt;commit_id&gt; # moves the head pointer
+git reset --mixed &lt;commit_id&gt; # moves the head pointer and then copies the files from the commit it is now pointing to the staging area,</p>
+<h1 id="the-default-when-no-argument-is-provided"><a class="header" href="#the-default-when-no-argument-is-provided">the default when no argument is provided</a></h1>
+<p>git reset -hard &lt;commit_id&gt; # moves the head pointer and then copies the files from the commit it is now pointing to the staging area </p>
+<h1 id="and-working-directory-thus-throw-away-all-uncommitted-changes"><a class="header" href="#and-working-directory-thus-throw-away-all-uncommitted-changes">and working directory thus, throw away all uncommitted changes</a></h1>
+<h1 id="git-reset"><a class="header" href="#git-reset">git reset</a></h1>
+<h1 id="1-move-head-and-current-branch"><a class="header" href="#1-move-head-and-current-branch">1. Move HEAD and current branch</a></h1>
+<h1 id="2-reset-the-staging-area"><a class="header" href="#2-reset-the-staging-area">2. Reset the staging area</a></h1>
+<h1 id="3-reset-the-working-area"><a class="header" href="#3-reset-the-working-area">3. Reset the working area</a></h1>
+<h1 id="--soft--1"><a class="header" href="#--soft--1">--soft = (1)</a></h1>
+<h1 id="--mixed--1--2-default"><a class="header" href="#--mixed--1--2-default">--mixed = (1) &amp; (2) (default)</a></h1>
+<h1 id="--hard--1--2--3"><a class="header" href="#--hard--1--2--3">--hard = (1) &amp; (2) &amp; (3)</a></h1>
+<p>git rm file.txt    # removes file.txt both from git and file system
+git rm --cached file.txt # only removes file.txt both from git index
+git status         # shows the modifications and stuff that are not staged yet</p>
+<p>git branch                         # shows all the branches (current branch is shown with a star)
+git branch -a                     # shows all the branches local and remote</p>
+<p>git branch my-branch               # creates my-branch
+git branch -d my-branch            # deletes my-branch
+git checkout my-branch         	   # switches to my-branch
+git merge my-branch                # merges my-branch to current branch
+git push origin --delete my-branch # delete remote branch
+git branch -m <new-branch-name>    # rename the branch
+git checkout --orphan &lt;branch_name&gt; # checkout a branch with no commit history
+git branch -vv                     # list all branches and their upstreams, as well as last commit on branch
+git branch -a                      # List all local and remote branches</p>
+<p>git cherry-pick &lt;commit_id&gt;                     # merge the specified commit
+git cherry-pick &lt;commit_id_A&gt;^..&lt;commit_id_B&gt;   # pick the entire range of commits where A is older than B ( the ^ is for including A as well )</p>
+<p>git remote                         # shows the remotes
+git remote -v                      # shows the remote for pull and push
+git remote add my-remote <address> # creates a remote (get the address from your git-server)
+git remote rm my-remote            # Remove a remote</p>
+<p>git log                      # shows the log of commits</p>
+<h1 id="git-log-by-default-uses-less-command-so-you-can-use-these-fnext-page-bprev-page-search-nnext-match-pprev-match-qquit"><a class="header" href="#git-log-by-default-uses-less-command-so-you-can-use-these-fnext-page-bprev-page-search-nnext-match-pprev-match-qquit">git log by default uses less command so you can use these: f=next page, b=prev page, search=/<query>, n=next match, p=prev match, q=quit</a></h1>
+<p>git log --no-pager    # shows the log of commits without less command
+git log --oneline            # shows the log of commits, each commit in a single line</p>
+<p>git log --oneline --graph --decorate    # shows the log of commits, each commit in a single line with graph 
+git log --since=<time>                    # shows the log of commits since given time
+git log -- &lt;file_name&gt;
+git log -p &lt;file_name&gt;       # change over time for a specific file
+git log <Branch1> ^<Branch2> # lists commit(s) in branch1 that are not in branch2
+git log -n <x>               # lists the last x commits
+git log -n <x> --oneline     # lists the last x commits, each commit in single line
+git grep --heading --line-number '&lt;string/regex&gt;' # Find lines matching the pattern in tracked files
+git log --grep='&lt;string/regex&gt;'                   # Search Commit log</p>
+<p>git reflog                       # record when the tips of branches and other references were updated in the local repository.
+git ls-files                     # show information about files in the index and the working tree</p>
+<p>git commit -m &quot;msg&quot;          # commit changes with a msg
+git commit -m &quot;title&quot; -m &quot;description&quot; # commit changes with a title and description
+git commit --amend           # combine staged changes with the previous commit, or edit the previous commit message without changing its snapshot
+git commit --amend --no-edit # amends a commit without changing its commit message
+git commit --amend --author='Author Name <a href="mailto:email@address.com">email@address.com</a>'    # Amend the author of a commit
+git push my-remote my-branch # pushes the commits to the my-remote in my-branch (does not push the tags)
+git revert <commit-id>       # Undo a commit by creating a new commit</p>
+<p>git show                    # shows one or more objects (blobs, trees, tags and commits).
+git diff                     # show changes between commits, commit and working tree
+git diff HEAD               #show changes between working directory vs last commit
+git diff --staged HEAD    #show changes between stage area vs last commit</p>
+<p>git diff --color             # show colored diff
+git diff --staged            # Shows changes staged for commit</p>
+<p>git tag                           # shows all the tags
+git tag -a v1.0 -m &quot;msg&quot;          # creates an annotated tag
+git show v1.0                     # shows the description of version-1.0 tag
+git tag --delete v1.0             # deletes the tag in local directory
+git push --delete my-remote v1.0  # deletes the tag in my-remote (be carefore to not delete a branch)
+git push my-remote my-branch v1.0 # push v1.0 tag to my-remote in my-branch
+git fetch --tags                  # pulls the tags from remote</p>
+<p>git pull my-remote my-branch   # pulls and tries to merge my-branch from my-remote to the current branch git pull = git fetch &amp;&amp; get merge</p>
+<p>git stash                            # stashes the staged and unstaged changes (git status will be clean after it)
+git stash -u                         # stash everything including new untracked files (but not .gitignore)
+git stash save &quot;msg&quot;                 # stash with a msg
+git stash list                       # list all stashes
+git stash pop                        # delete the recent stash and applies it
+git stash pop stash@{2}              # delete the {2} stash and applies it
+git stash show                       # shows the description of stash
+git stash apply                      # keep the stash and applies it to the git
+git stash branch my-branch stash@{1} # creates a branch from your stash
+git stash drop stash@{1}             # deletes the {1} stash
+git stash clear                      # clears all the stash</p>
+<p>git rebase -i &lt;commit_id&gt;         # Rebase commits from a commit ID
+git rebase --abort                # Abort a running rebase
+git rebase --continue             # Continue rebasing after fixing all conflicts</p>
+<p>git clean -f                      # clean untracked files permanently
+git clean -f -d/git clean -fd     # To remove directories permanently
+git clean -f -X/git clean -fX    # To remove ignored files permanently
+git clean -f -x/git clean -fx     # To remove ignored and non-ignored files permanently
+git clean -d --dry-run            # shows what would be deleted</p>
+<p>git config --global --list                   # lists the git configuration for all repos
+git config --global --edit                   # opens an editor to edit the git config file
+git config --global alias.<handle> <command> # add git aliases to speed up workflow , eg.</p>
+<h1 id="if--handle-is-st-and-command-is-status-then-running-git-st-would-execute-git-status"><a class="header" href="#if--handle-is-st-and-command-is-status-then-running-git-st-would-execute-git-status">if  handle is st and command is status then running git st would execute git status</a></h1>
+<p>git config --global core.editor &lt;editor_name&gt;      # config default editor</p>
+<p>git archive &lt;branch_name&gt; --format=zip --outpute=./&lt;archive_name&gt;.zip # create an archive of files from a named tree</p>
+<p>.gitignore</p>
+<h1 id="is-a-file-including-names-of-stuff-that-you-dont-want-to-be-staged-or-tracked"><a class="header" href="#is-a-file-including-names-of-stuff-that-you-dont-want-to-be-staged-or-tracked">is a file including names of stuff that you don&quot;t want to be staged or tracked.</a></h1>
+<h1 id="you-usually-keep-your-local-files-like-database-media-etc-here"><a class="header" href="#you-usually-keep-your-local-files-like-database-media-etc-here">You usually keep your local files like database, media, etc here.</a></h1>
+<h1 id="you-can-find-good-resources-online-about-ignoring-specific-files-in-your-project-files"><a class="header" href="#you-can-find-good-resources-online-about-ignoring-specific-files-in-your-project-files">You can find good resources online about ignoring specific files in your project files.</a></h1>
+<h1 id="gitignore-is-also-get-ignored"><a class="header" href="#gitignore-is-also-get-ignored">.gitignore is also get ignored</a></h1>
+<p>.git</p>
+<h1 id="is-a-hidden-directory-in-repo-directory-including-git-files-it-is-created-after-git-init"><a class="header" href="#is-a-hidden-directory-in-repo-directory-including-git-files-it-is-created-after-git-init">is a hidden directory in repo directory including git files. It is created after &quot;git init&quot;.</a></h1>
+<h1 id="some-useful-notes"><a class="header" href="#some-useful-notes">Some useful notes:</a></h1>
+<h1 id="better-commit-messages"><a class="header" href="#better-commit-messages">Better Commit messages:</a></h1>
+<h1 id="key-to-effective-debugging"><a class="header" href="#key-to-effective-debugging">Key to Effective Debugging</a></h1>
+<h1 id="for-the-commit-message-to-help-in-debugging-effectively-ensure-that-it-is-short-and-use-an-imperative"><a class="header" href="#for-the-commit-message-to-help-in-debugging-effectively-ensure-that-it-is-short-and-use-an-imperative">For the commit message to help in debugging effectively, ensure that it is short and use an imperative</a></h1>
+<h1 id="mood-spoken-or-written-as-if-giving-a-command-or-instruction-when-constructing-them"><a class="header" href="#mood-spoken-or-written-as-if-giving-a-command-or-instruction-when-constructing-them">mood (spoken or written as if giving a command or instruction) when constructing them.</a></h1>
+<h1 id="also-use-feature-tense-for-commit-messages"><a class="header" href="#also-use-feature-tense-for-commit-messages">Also use feature tense for commit messages.</a></h1>
+<h1 id="the-first-word-in-your-commit-message-should-be-one-of-these"><a class="header" href="#the-first-word-in-your-commit-message-should-be-one-of-these">The first word in your commit message should be one of these:</a></h1>
+<h1 id="add"><a class="header" href="#add">Add</a></h1>
+<h1 id="create"><a class="header" href="#create">Create</a></h1>
+<h1 id="refactor"><a class="header" href="#refactor">Refactor</a></h1>
+<h1 id="fix"><a class="header" href="#fix">Fix</a></h1>
+<h1 id="release"><a class="header" href="#release">Release</a></h1>
+<h1 id="document"><a class="header" href="#document">Document</a></h1>
+<h1 id="modify"><a class="header" href="#modify">Modify</a></h1>
+<h1 id="update"><a class="header" href="#update">Update</a></h1>
+<h1 id="remove"><a class="header" href="#remove">Remove</a></h1>
+<h1 id="delete-etc"><a class="header" href="#delete-etc">Delete etc...</a></h1>
+<h1 id="about-resetting"><a class="header" href="#about-resetting">About resetting:</a></h1>
+<h1 id="use-git-revert-instead-of-git-reset-in-shared-repositories"><a class="header" href="#use-git-revert-instead-of-git-reset-in-shared-repositories">Use git revert instead of git reset in shared repositories</a></h1>
+<h1 id="git-revert-creates-a-new-commit-that-introduces-the-opposite-changes-from-the-specified-commit"><a class="header" href="#git-revert-creates-a-new-commit-that-introduces-the-opposite-changes-from-the-specified-commit">git revert creates a new commit that introduces the opposite changes from the specified commit.</a></h1>
+<h1 id="revert-does-not-change-history-the-original-commit-stays-in-the-repository"><a class="header" href="#revert-does-not-change-history-the-original-commit-stays-in-the-repository">Revert does not change history the original commit stays in the repository</a></h1>
+<h1 id="difference-between--and--in-git"><a class="header" href="#difference-between--and--in-git">Difference between ~ and ^ in git:</a></h1>
+<h1 id="-or-n"><a class="header" href="#-or-n">&gt; ^ or ^n</a></h1>
+<h1 id="no-args--1-the-first-parent-commit"><a class="header" href="#no-args--1-the-first-parent-commit">&gt;no args: == ^1: the first parent commit</a></h1>
+<h1 id="n-the-nth-parent-commit"><a class="header" href="#n-the-nth-parent-commit">&gt;n: the nth parent commit</a></h1>
+<h1 id="-or-n-1"><a class="header" href="#-or-n-1">&gt; ~ or ~n</a></h1>
+<h1 id="no-args--1-the-first-commit-back-following-1st-parent"><a class="header" href="#no-args--1-the-first-commit-back-following-1st-parent">&gt;no args: == ~1: the first commit back, following 1st parent</a></h1>
+<h1 id="n-number-of-commits-back-following-only-1st-parent"><a class="header" href="#n-number-of-commits-back-following-only-1st-parent">&gt;n: number of commits back, following only 1st parent</a></h1>
+<h1 id="note--and--can-be-combined"><a class="header" href="#note--and--can-be-combined">note: ^ and ~ can be combined</a></h1>
+<h1 id="some-tools-to-improve-git-skill-by-visualizing-it"><a class="header" href="#some-tools-to-improve-git-skill-by-visualizing-it">Some tools to improve git skill by visualizing it:</a></h1>
+<h1 id="httpsgit-schoolgithubiovisualizing-git"><a class="header" href="#httpsgit-schoolgithubiovisualizing-git">https://git-school.github.io/visualizing-git/</a></h1>
+<h1 id="httpslearngitbranchingjsorg"><a class="header" href="#httpslearngitbranchingjsorg">https://learngitbranching.js.org/</a></h1>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="gcloud.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="golang.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="gcloud.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="golang.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,140 @@
+/*
+ *	SETTINGS/CONTROLS
+ *	---------------------------------------------
+ */
+
+.rapid-controls select,
+.rapid-controls button {
+	display: inline-block;
+
+	/* Select has a margin-top */
+	vertical-align: bottom;
+}
+
+.rapid-controls select {
+	margin-right: .4rem;
+	width: auto;
+}
+
+/*
+ *	STATUSES
+ *	---------------------------------------------
+ */
+
+.sudoku-status {
+	margin-top: 24px;
+	padding: 13px 20px;
+	background: #f2f2f2;
+}
+
+/*
+ *	SUDOKU BOARD
+ *	---------------------------------------------
+ */
+
+#sudoku-board {
+	display: inline-block;
+	position: relative;
+	width: auto;
+
+	/* Top margin for the jaggedy edge */
+	margin: 12px 0 2rem;
+
+	padding: .8rem;
+	font-size: 1.25em;
+	text-align: center;
+	background: #eaeaea;
+	-webkit-box-shadow: 0 15px 24px 0 hsla(0, 0%, 0%, .25);
+	-moz-box-shadow: 0 15px 24px 0 hsla(0, 0%, 0%, .25);
+	box-shadow: 0 15px 24px 0 hsla(0, 0%, 0%, .25);
+}
+
+#sudoku-board::before,
+#sudoku-board::after {
+	display: block;
+	position: absolute;
+	left: 0;
+	content: "";
+}
+
+#sudoku-board::before {
+	top: -12px;
+	right: 0;
+	height: 12px;
+	background:
+		linear-gradient(
+			45deg, transparent 33.333%,
+			#eaeaea 33.333%, #eaeaea 66.667%,
+			transparent 66.667%
+		),
+		linear-gradient(
+			-45deg, transparent 33.333%,
+			#eaeaea 33.333%, #eaeaea 66.667%,
+			transparent 66.667%
+		);
+	background-size: 12px 24px;
+
+}
+
+#sudoku-board table,
+#sudoku-board tr,
+#sudoku-board td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+#sudoku-board table {
+	width: auto;
+}
+
+#sudoku-board > table {
+	border: 2px solid #000;
+}
+
+/* Override table zebra-striping */
+#sudoku-board tbody tr:nth-child(2n+1) {
+	background: transparent;
+}
+
+/* Actual number cells */
+#sudoku-board td td {
+	border: 1px solid rgba(0, 0, 0, .3);
+	width: 2.5em;
+	height: 2.5em;
+	line-height: 2.5em;
+	vertical-align: middle;
+}
+
+#sudoku-board .static-value {
+	font-weight: 600;
+}
+
+#sudoku-board input {
+	height: 2.5em;
+	padding: 0;
+	border: 0;
+	text-align: center;
+	background: transparent;
+	color: #4b4b4b;
+}
+
+#sudoku-board input:hover {
+	background: #ffff00;
+}
+
+#sudoku-board input:active,
+#sudoku-board input:focus {
+	outline: 2px solid #000;
+	background: #fff;
+	color: #000;
+}
+
+@media (min-width: 60em) {
+
+	#sudoku-board {
+		padding: 3.2rem;
+		font-size: 1.5em;
+	}
+
+}

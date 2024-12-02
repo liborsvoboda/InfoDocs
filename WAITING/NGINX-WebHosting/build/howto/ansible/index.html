@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/ansible/">
+<meta property="og:title" content="NGINX Unit: Unit in Ansible">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="NGINX Integration" href="../integration/" />
+<link rel="prev" title="Building From Source" href="../source/" />
+
+<title>Unit in Ansible — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="unit-in-ansible">
+<h1>Unit in Ansible<a class="headerlink" href="#unit-in-ansible" title="Permalink to this heading">§</a></h1>
+<p>The <a class="reference external" href="https://galaxy.ansible.com/steampunk/unit">Ansible collection</a> by <a class="reference external" href="https://steampunk.si">XLAB
+Steampunk</a> provides a number of Unit-related tasks
+that you can use with Ansible; some of them simplify installation and setup,
+while others provide common configuration steps.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Ansible 2.9+ required; the collection relies on official packages and
+supports Debian only.</p>
+<p class="last">A brief intro by the collection’s authors can be found <a class="reference external" href="https://docs.steampunk.si/unit/quickstart.html">here</a>; a behind-the-scenes
+blog post is <a class="reference external" href="https://steampunk.si/blog/why-and-how-of-the-nginx-unit-ansible-collection/">here</a>.</p>
+</div>
+<p>First, install the collection:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ansible-galaxy<span class="w"> </span>collection<span class="w"> </span>install<span class="w"> </span>steampunk.unit
+</pre></div>
+</div>
+<p>After installation, you can use it in a playbook.  Consider this <a class="reference internal" href="../../configuration/#configuration-python"><span class="std std-ref">WSGI app</span></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="n">start_response</span><span class="p">(</span><span class="s2">&quot;200 OK&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Hello, Python on Unit!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This <a class="reference external" href="https://docs.ansible.com/ansible/latest/playbook_guide/playbooks_intro.html">playbook</a>
+installs Unit with the Python language module, copies the app’s file, and runs
+the app:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install and run NGINX Unit</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit_hosts</span>
+<span class="w">  </span><span class="nt">become</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Unit</span>
+<span class="w">      </span><span class="nt">include_role</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">steampunk.unit.install</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create a directory for our application</span>
+<span class="w">      </span><span class="nt">file</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain"><span class=nxt_hint title="Directory where the app will be stored on the host">/var/www</span></span>
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">directory</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Copy application</span>
+<span class="w">      </span><span class="nt">copy</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">src</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain"><span class=nxt_hint title="Note that the application's code is copied from a subdirectory">files/wsgi.py</span></span>
+<span class="w">        </span><span class="nt">dest</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain"><span class=nxt_hint title="Filename on the host">/var/www/wsgi.py</span></span>
+<span class="w">        </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;644&quot;</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Add application config to Unit</span>
+<span class="w">      </span><span class="nt"><span class=nxt_hint title="Task that configures a Python app in Unit">steampunk.unit.python_app</span></span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain"><span class=nxt_hint title="Becomes the application's name in the configuration">sample</span></span>
+<span class="w">        </span><span class="nt">module</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain"><span class=nxt_hint title="Goes straight to 'module' in the application's configuration">wsgi</span></span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain"><span class=nxt_hint title="Again, goes straight to the application's configuration">/var/www</span></span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Expose application via port 3000</span>
+<span class="w">      </span><span class="nt"><span class=nxt_hint title="This task configures a listener in Unit">steampunk.unit.listener</span></span><span class="p">:</span>
+<span class="w">        </span><span class="nt">pattern</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;<span class=nxt_hint title="The listener's name in the configuration">*:3000</span>&quot;</span>
+<span class="w">        </span><span class="nt">pass</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain"><span class=nxt_hint title="Goes straight to 'pass' in the listener's configuration">applications/sample</span></span>
+</pre></div>
+</div>
+<p>The final preparation step is the <a class="reference external" href="https://docs.ansible.com/ansible/latest/inventory_guide/intro_inventory.html">host inventory</a>
+that lists your managed hosts’ addresses:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">all</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">children</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">unit_hosts</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">hosts</span><span class="p">:</span>
+<span class="w">        </span><span class="nt"><span class=nxt_hint title="Arbitrary host address">203.0.113.1</span></span><span class="p">:</span>
+</pre></div>
+</div>
+<p>With everything in place, start the playbook:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ansible-playbook<span class="w"> </span>-i<span class="w"> </span><span class=nxt_hint title="Inventory filename">inventory.yaml</span><span class="w"> </span><span class=nxt_hint title="Playbook filename">playbook.yaml</span>
+
+<span class="go">      PLAY [Install and run NGINX Unit] ***</span>
+
+<span class="go">      ...</span>
+
+<span class="go">      TASK [Expose application via port 3000] ***</span>
+<span class="go">      ok: [203.0.113.1]</span>
+
+<span class="go">      PLAY RECAP ********************************</span>
+<span class="go">      203.0.113.1                  : ok=15   changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0</span>
+</pre></div>
+</div>
+<p>If it’s OK, try the app at the host address from the inventory and the port
+number set in the playbook:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span><span class="m">203</span>.0.113.1:3000
+
+<span class="go">      Hello, Python on Unit!</span>
+</pre></div>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\ansible.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/contents/">
+<meta property="og:title" content="NGINX Unit: &lt;no title&gt;">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Universal web app server" href="../" />
+
+<title>&lt;no title&gt; — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../">
+            <img src="../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul>
+<li class="toctree-l1"><a class="reference internal" href="../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keyfeatures/">Key features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../keyfeatures/#flexibility">Flexibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keyfeatures/#performance">Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keyfeatures/#security-robustness">Security &amp; robustness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../keyfeatures/#supported-app-languages">Supported app languages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../news/">News</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../news/2024/">2024</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2024/../../../news/2024/unit-1.33.0-released">Unit 1.33.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2024/../../../news/2024/unit-1.32.1-released">Unit 1.32.1 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2024/../../../news/2024/fermyon-spin-rust-sdk">Wasm Components: Working with the Spin SDK for Rust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2024/../../../news/2024/wasm-component-model-part-2">The WebAssembly Component Model - Part 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2024/../../../news/2024/wasm-component-model-part-1">The WebAssembly Component Model - Part 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2024/../../../news/2024/unit-1.32.0-released">Unit 1.32.0 Released</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../news/2023/">2023</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2023/../../../news/2023/unit-1.31.1-released">Unit 1.31.1 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2023/https://www.nginx.com/blog/server-side-webassembly-nginx-unit/">Server-Side WebAssembly with NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2023/../../../news/2023/unit-1.31.0-released">Unit 1.31.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2023/https://www.youtube.com/watch?v=EZbcc6D03Io">NGINX Unit Community Call No.1 (recording)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2023/../../../news/2023/nginx-unit-community-call-no-1">NGINX Unit Community Call No.1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2023/../../../news/2023/unit-1.30.0-released">Unit 1.30.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2023/#unit1291released">Unit 1.29.1 Released</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../news/2022/">2022</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2022/../../../news/2022/unit-1.29.0-released">Unit 1.29.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2022/https://youtube.com/shorts/H8qIT-jUQtA">Announcing the NGINX Unit Video Series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2022/../../../news/2022/unit-cve-no-impact">Unit Not Impacted By CVE-2022-35256, CVE-2022-40674</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2022/../../../news/2022/unit-1.28.0-released">Unit 1.28.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2022/../../../news/2022/unit-1.27.0-released">Unit 1.27.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2022/https://habr.com/en/post/646397/">Comparing PHP-FPM, NGINX Unit, and Laravel Octane</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../news/2021/">2021</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/../../../news/2021/unit-1.26.1-released">Unit 1.26.1 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/../../../news/2021/unit-1.26.0-released">Unit 1.26.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/../../../news/2021/unit-1.25.0-released">Unit 1.25.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://www.nginx.com/blog/running-spring-boot-applications-zero-trust-environment-nginx-unit/">Running Spring Boot Applications in a Zero Trust Environment with
+NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://www.nginx.com/blog/nginx-unit-updates-for-summer-2021-now-available/">Updates to NGINX Unit for Summer 2021</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://www.nginx.com/blog/demoing-nginx-at-sprint-2-0/">Demoing NGINX at Sprint 2.0 – From Blast Off to Stable Orbit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://www.nginx.com/blog/what-are-namespaces-cgroups-how-do-they-work/">What Are Namespaces and cgroups, and How Do They Work?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/../../../news/2021/unit-1.24.0-released">Unit 1.24.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://medium.com/analytics-vidhya/well-done-nginx-unit-a70960de68b7">Well Done &#64; NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://www.youtube.com/watch?v=CTDnonMlo4w">NGINX Unit with CakePHP 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://www.youtube.com/watch?v=absaan-8y1Q">NGINX Unit 1.23 - SNI Deep Dive</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/../../../news/2021/unit-1.23.0-released">Unit 1.23.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/https://www.youtube.com/watch?v=sDWrogpVyOQ">NGINX Unit 1st Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2021/../../../news/2021/unit-1.22.0-released">Unit 1.22.0 Released</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../news/2020/">2020</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/nginx-unit-updates-for-autumn-2020-now-available/">Updates to NGINX Unit for Autumn 2020</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/../../../news/2020/unit-1.21.0-released">Unit 1.21.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/../../../news/2020/unit-1.20.0-released">Unit 1.20.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/automating-installation-wordpress-with-nginx-unit-on-ubuntu/">Automating Installation of WordPress with NGINX Unit on Ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/../../../news/2020/unit-1.19.0-released">Unit 1.19.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/filesystem-isolation-nginx-unit/">Filesystem Isolation in NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/nginx-unit-1-18-0-now-available/">NGINX Unit 1.18.0 Adds Filesystem Isolation and Other Enhancements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/../../../news/2020/unit-1.18.0-released">Unit 1.18.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/building-application-stacks-with-nginx-unit/">Building Application Stacks With NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/../../../news/2020/unit-1.17.0-released">Unit 1.17.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/nginx-unit-1-16-0-now-available/">NGINX Unit 1.16.0 Introduces New Yet Familiar Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/nginx-unit-adds-assembly-language-support/">NGINX Unit Adds Assembly Language Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/../../../news/2020/unit-1.16.0-released">Unit 1.16.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/../../../news/2020/unit-1.15.0-released">Unit 1.15.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2020/https://www.nginx.com/blog/nginx-unit-1-14-0-now-available/">NGINX Unit 1.13.0 and 1.14.0 Introduce Reverse Proxying and
+Address-Based Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../news/2019/">2019</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.14.0-released">Unit 1.14.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.13.0-released">Unit 1.13.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.nginx.com/blog/application-isolation-nginx-unit/">Application Isolation with NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://octopus.com/blog/why-use-nginx-unit">What are the benefits of using NGINX Unit?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.nginx.com/blog/nginx-unit-1-11-0-now-available/">NGINX Unit 1.11.0 Is Now Available, Introduces Static File Serving</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.12.0-released">Unit 1.12.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.youtube.com/watch?v=2_svSq8guOQ&amp;list=PLGz_X9w9raXf3fVkUnWB-g9siSZIIVjYW">NGINX Open Source, NGINX Plus, &amp; Unit 2019 Update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.youtube.com/watch?v=izcCI_TXCYk&amp;list=PLGz_X9w9raXf3fVkUnWB-g9siSZIIVjYW">NGINX Unit Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.youtube.com/watch?v=iU9PE88Jfs8&amp;list=PLGz_X9w9raXf3fVkUnWB-g9siSZIIVjYW">NGINX Unit: Make the App Server Part of Your Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.11.0-released">Unit 1.11.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.nginx.com/blog/nginx-unit-1-10-0-now-available/">NGINX Unit 1.10.0 Is Now Available</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.10.0-released">Unit 1.10.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.9.0-released">Unit 1.9.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.nginx.com/blog/nginx-unit-modern-app-server-for-modern-apps/">NGINX Unit: A Modern App Server for Modern Apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://sudonull.com/post/7528-Compare-PHP-FPM-PHP-PPM-Nginx-Unit-React-PHP-and-RoadRunner">Compare PHP FPM, PHP PPM, Nginx Unit, React PHP and RoadRunner</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/https://www.nginx.com/blog/nginx-unit-1-8-0-now-available/">NGINX Unit 1.8.0 Is Now Available, Introduces Internal Routing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.8.0-released">Unit 1.8.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2019/../../../news/2019/unit-1.7.1-released">Unit 1.7.1 Released</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../news/2018/">2018</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.7-released">Unit 1.7 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.nginx.com/blog/configuring-nginx-unit-for-production-applications-serving-django-project/">NGINX Conf 2018: Configuring NGINX Unit for Production Applications
+– Serving a Django Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.youtube.com/watch?v=BZAgM2WU5cw">How to use Falcon on NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.6-released">Unit 1.6 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.nginx.com/blog/nginx-unit-1-5-available-now/">NGINX Unit Now Supports TLS and JavaScript Apps with Node.js</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.5-released">Unit 1.5 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://medium.com/house-organ/what-an-absolute-unit-a36851e72554">What An Absolute Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.nginx.com/blog/nginx-application-platform-clustering-api-management-service-mesh-capabilities/">Updating the NGINX Application Platform with New Clustering, API
+Management, and Service Mesh Capabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.nginx.com/blog/nginx-unit-updating-apps-with-100-percent-uptime/">NGINX Unit: Updating Apps with 100% Uptime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.4-released">Unit 1.4 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.youtube.com/watch?v=TdzGzXIxJNM&amp;list=PLGz_X9w9raXf3fVkUnWB-g9siSZIIVjYW">What is NGINX Unit?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.3-released">Unit 1.3 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.nginx.com/blog/three-ways-nginx-scales-applications-running-in-docker-containers/">Three Ways NGINX Scales Applications Running in Docker Containers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.2-released">Unit 1.2 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.1-released">Unit 1.1 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.nginx.com/blog/nginx-unit-1-0-released/">Announcing NGINX Unit 1.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-1.0-released">Unit 1.0 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.nginx.com/blog/updating-nginx-application-platform/">Updating the NGINX Application Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://www.speedshop.co/2018/03/28/nginx-unit-for-ruby.html">A New Ruby Application Server: NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-beta-0.7-released">Unit Beta 0.7 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-beta-0.6-released">Unit Beta 0.6 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/https://itnext.io/performance-comparison-between-nginx-unit-and-uwsgi-python3-4511fc172a4c">Concurrency comparison between NGINX Unit and uWSGI (python3)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2018/../../../news/2018/unit-beta-0.4-released">Unit Beta 0.4 Released</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../news/2017/">2017</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../news/2017/https://unit.nginx.org/CHANGES.txt">Unit Beta 0.3 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2017/https://www.nginx.com/blog/nginx-unit-progress-and-next-steps/">NGINX Unit, Three Months In: Progress and Next Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2017/#unitbeta02released">Unit Beta 0.2 Released</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2017/https://www.nginx.com/blog/introducing-nginx-unit/">Introducing NGINX Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2017/https://www.youtube.com/watch?v=5dL2RokJfxU&amp;list=PLGz_X9w9raXf3fVkUnWB-g9siSZIIVjYW">NGINX Unit OpenShift Service Catalog Integration Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../news/2017/https://www.youtube.com/watch?v=I4IWEz2lBWU&amp;list=PLGz_X9w9raXf3fVkUnWB-g9siSZIIVjYW">NGINX Unit In-Depth Demo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../installation/#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/#official-packages">Official packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#amazon-linux">Amazon Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#debian">Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#fedora">Fedora</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#rhel-and-derivatives">RHEL and derivatives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#ubuntu">Ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#macos">macOS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation/#macos-homebrew">Homebrew</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#node-js">Node.js</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#startup-and-shutdown">Startup and shutdown</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../installation/#startup-shutdown-amazondebianfedorarhelubuntu">Amazon, Debian, Fedora, RHEL, Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../installation/#startup-shutdown-macoshomebrew">macOS (Homebrew)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/#community-repositories">Community Repositories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-alpine">Alpine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-alt">ALT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-arch">Arch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-freebsd">FreeBSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-gentoo">Gentoo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-netbsd">NetBSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-nix">Nix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-openbsd">OpenBSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#community-remisrpm">Remi's RPM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/#docker-images">Docker Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../installation/#initial-configuration">Initial configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../installation/#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../controlapi/">Control API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../controlapi/#openapi-specification">OpenAPI specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controlapi/#quick-start">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controlapi/#api-manipulation">API manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../controlapi/#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#listeners">Listeners</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#ssl-tls-configuration">SSL/TLS configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#ip-protocol-forwarding">IP, protocol forwarding</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#overwriting-protocol-scheme">Overwriting protocol scheme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#originating-ip-identification">Originating IP identification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#routes">Routes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#route-steps">Route steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#matching-conditions">Matching conditions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#match-resolution">Match resolution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#pattern-syntax">Pattern syntax</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#handling-actions">Handling actions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#uri-rewrite">URI rewrite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#response-headers">Response headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#instant-responses-redirects">Instant responses, redirects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#static-files">Static files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#mime-filtering">MIME filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#path-restrictions">Path restrictions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#fallback-action">Fallback action</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#proxying">Proxying</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#load-balancing">Load balancing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#applications">Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#process-management">Process management</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#process-isolation">Process isolation</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../configuration/#using-control-groups">Using control groups</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../configuration/#changing-root-directory">Changing root directory</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#request-limits">Request limits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#application-processes">Application processes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#go">Go</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#java">Java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#node-js">Node.js</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#perl">Perl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#php">PHP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#targets">Targets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#configuration-python-targets">Targets</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#ruby">Ruby</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#webassembly">WebAssembly</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#unit-wasm-wasm-wasi-component">wasm-wasi-component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../configuration/#unit-wasm-unit-wasm">unit-wasm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/#access-log">Access log</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#custom-log-formatting">Custom log formatting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../configuration/#conditional-access-log">Conditional access log</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unitctl/">CLI (unitctl)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../unitctl/#download-binaries">Download binaries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unitctl/#build-from-source">Build from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../unitctl/#using-unitctl">Using unitctl</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#list-and-create-instances-of-unit">List and create instances of Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#list-and-restart-running-apps">List and restart running apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../unitctl/#options">Options</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#fetch-active-listeners">Fetch active listeners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#check-the-status-of-unit">Check the status of Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#send-configuration-payloads-to-unit">Send configuration payloads to Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#edit-current-configuration">Edit current configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#importing-the-configuration-from-a-folder">Importing the configuration from a folder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#exporting-the-configuration-from-unit">Exporting the configuration from Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../unitctl/#wait-for-a-socket-to-be-available">Wait for a socket to be available</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/">How-to</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../howto/docker/">Unit in Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/docker/#apps-in-a-containerized-unit">Apps in a Containerized Unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/docker/#containerized-apps">Containerized Apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/docker/#multilanguage-images">Multilanguage Images</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/docker/#startup-customization">Startup Customization</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/source/">Building From Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/source/#installing-required-software">Installing Required Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#prereq-debianubuntu">Debian, Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#prereq-amazonfedorarhel">Amazon, Fedora, RHEL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#prereq-freebsd">FreeBSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#prereq-solaris">Solaris</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/source/#configuring-sources">Configuring Sources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#directory-structure">Directory Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/source/#configuring-modules">Configuring Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-go">Go</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-java">Java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-nodejs">Node.js</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-perl">Perl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-php">PHP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-python">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-ruby">Ruby</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-webassembly">WebAssembly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#modules-unit-wasm">Unit-Wasm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/source/#building-and-installing-unit">Building and Installing Unit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#embedded-language-modules">Embedded Language Modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/source/#external-language-modules">External Language Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/source/#startup-and-shutdown">Startup and Shutdown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/integration/">NGINX Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/integration/#fronting-unit-with-nginx">Fronting Unit with NGINX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/integration/#securely-proxying-unit-s-control-api">Securely Proxying Unit’s Control API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/certbot/">TLS with Certbot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/certbot/#generating-certificates">Generating Certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/certbot/#renewing-certificates">Renewing Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/modules/">Language Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/modules/#external-language-modules">External Language Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/modules/#embedded-language-modules">Embedded Language Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/modules/#packaging-custom-modules">Packaging Custom Modules</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../howto/modules/#packages-deb">.deb</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../howto/modules/#packages-rpm">.rpm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/samples/">App Samples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#go">Go</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#java">Java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#node-js">Node.js</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#perl">Perl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#php">PHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#python">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#ruby">Ruby</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/samples/#webassembly-wasm">WebAssembly (Wasm)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/samples/#web-assembly-wasm-wasi-component">wasm-wasi-component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/samples/#web-assembly-unit-wasm">unit-wasm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/security/">Security Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/security/#update-unit-regularly">Update Unit Regularly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/security/#secure-socket-and-state">Secure Socket and State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/security/#configure-ssl-tls">Configure SSL/TLS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/security/#error-proof-your-routes">Error-Proof Your Routes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/security/#protect-app-data">Protect App Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/security/#prune-debug-and-access-logs">Prune Debug and Access Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/security/#add-restrictions-isolation">Add Restrictions, Isolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/#frameworks">Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/bottle/">Bottle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cakephp/">CakePHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/catalyst/">Catalyst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/codeigniter/">CodeIgniter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/django/">Django</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/djangochannels/">Django Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/express/">Express</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/falcon/">Falcon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/fastapi/">FastAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/flask/">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/guillotina/">Guillotina</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/koa/">Koa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/laravel/">Laravel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/lumen/">Lumen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/pyramid/">Pyramid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/quart/">Quart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/responder/">Responder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rails/">Ruby on Rails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/sanic/">Sanic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/springboot/">Spring Boot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/starlette/">Starlette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/symfony/">Symfony</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/yii/">Yii</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/zope/">Zope</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/#applications">Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/apollo/">Apollo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/bugzilla/">Bugzilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/datasette/">Datasette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/dokuwiki/">DokuWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/drupal/">Drupal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/grafana/">Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/jira/">Jira</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/joomla/">Joomla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/mailman/">Mailman Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/matomo/">Matomo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/mediawiki/">MediaWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/mercurial/">Mercurial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/modx/">MODX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/moin/">MoinMoin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/nextcloud/">NextCloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/opengrok/">OpenGrok</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/phpbb/">phpBB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/phpmyadmin/">phpMyAdmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/plone/">Plone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/redmine/">Redmine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/reviewboard/">Review Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/roundcube/">Roundcube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/trac/">Trac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/wordpress/">WordPress</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#logging">Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/#router-events">Router events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/#debug-events">Debug Events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../troubleshooting/#debug-log-installingfromourrepos">Installing From Our Repos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../troubleshooting/#debug-log-runningfromdockerimages">Running From Docker Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../troubleshooting/#debug-log-buildingfromsource">Building From Source</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#core-dumps">Core Dumps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/#core-dumps-linuxsystemd">Linux: systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/#core-dumps-linuxmanualsetup">Linux: Manual Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../troubleshooting/#core-dumps-freebsd">FreeBSD</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting/#getting-support">Getting Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../community/">Community</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../community/#meetings-and-discussions">Meetings and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community/#reporting-bugs-and-issues">Reporting bugs and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community/#reporting-security-concerns">Reporting security concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community/#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../community/#source-code">Source Code</a></li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/contents.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

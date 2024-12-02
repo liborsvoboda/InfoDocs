@@ -1,0 +1,3 @@
+- [Mission](/mission)
+- [Testimonials](/testimonials)
+- [Contact Us](/contact-us)

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/sanic/">
+<meta property="og:title" content="NGINX Unit: Sanic">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Spring Boot" href="../springboot/" />
+<link rel="prev" title="Ruby on Rails" href="../rails/" />
+
+<title>Sanic — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#frameworks">Frameworks</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../bottle/">Bottle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cakephp/">CakePHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../catalyst/">Catalyst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../codeigniter/">CodeIgniter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../django/">Django</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../djangochannels/">Django Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../express/">Express</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../falcon/">Falcon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fastapi/">FastAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flask/">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../guillotina/">Guillotina</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../koa/">Koa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../laravel/">Laravel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lumen/">Lumen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pyramid/">Pyramid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../quart/">Quart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../responder/">Responder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rails/">Ruby on Rails</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Sanic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../springboot/">Spring Boot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../starlette/">Starlette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../symfony/">Symfony</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../yii/">Yii</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../zope/">Zope</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="sanic">
+<h1>Sanic<a class="headerlink" href="#sanic" title="Permalink to this heading">§</a></h1>
+<p>To run apps built with the <a class="reference external" href="https://sanic.dev/">Sanic</a> web framework
+using Unit:</p>
+<ol class="arabic">
+<li><p class="first">Install <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">Unit</span></a> with a Python 3.7+ language module.</p>
+</li>
+<li><p>Create a virtual environment to install Sanic’s <a class="reference external" href="https://sanic.dev/en/guide/getting-started.html">PIP package</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class=nxt_ph title="Path to the application directory; use a real path in your configuration">/path/to/app/</span>
+<span class="gp">$ </span><span class=nxt_hint title="Make sure your virtual environment version matches the module version">python3 --version</span>
+<span class="go">      Python <span class=nxt_hint title="Major version, minor version, and revision number">3.Y.Z</span></span>
+<span class="gp">$ </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span><span class=nxt_hint title="Arbitrary name of the virtual environment">venv</span>
+<span class="gp">$ </span><span class="nb">source</span><span class="w"> </span><span class=nxt_hint title="Name of the virtual environment from the previous command">venv</span>/bin/activate
+<span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>sanic
+<span class="gp">$ </span>deactivate
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Create your virtual environment with a Python version that matches the
+language module from Step&nbsp;1 up to the minor number (<strong>3.Y</strong> in this
+example).  Also, the app <strong>type</strong> in Step&nbsp;5 must <a class="reference internal" href="../../configuration/#configuration-apps-common"><span class="std std-ref">resolve</span></a> to a similarly matching version; Unit doesn’t
+infer it from the environment.</p>
+</div>
+</li>
+<li><p class="first">Let’s try a version of a <a class="reference external" href="ttps://sanic.dev/en/guide/basics/response.html#methods">tutorial app</a>,
+saving it as <strong>/path/to/app/asgi.py</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sanic</span> <span class="kn">import</span> <span class="n">Sanic</span>
+<span class="kn">from</span> <span class="nn">sanic.response</span> <span class="kn">import</span> <span class="n">json</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">Sanic</span><span class="p">()</span>
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">test</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">json</span><span class="p">({</span><span class="s2">&quot;hello&quot;</span><span class="p">:</span> <span class="s2">&quot;world&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run the following command so Unit can access <span class=nxt_hint title="If the application uses several directories, run the command for each one">
+                         the application directory</span>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>chown<span class="w"> </span>-R<span class="w"> </span><span class=nxt_hint title="User and group that Unit's router runs as by default">unit:unit</span><span class="w"> </span><span class=nxt_ph title="Path to the application files such as /data/www/app/; use a real path in your commands">/path/to/app/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <strong>unit:unit</strong> user-group pair is available only with <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">official
+packages</span></a>, Docker <a class="reference internal" href="../../installation/#installation-docker"><span class="std std-ref">images</span></a>, and some <a class="reference internal" href="../../installation/#installation-community-repos"><span class="std std-ref">third-party repos</span></a>.  Otherwise, account names may differ; run
+the <strong class="program">ps aux | grep unitd</strong> command to be sure.</p>
+</div>
+<p>For further details, including permissions, see the <a class="reference internal" href="../security/#security-apps"><span class="std std-ref">security checklist</span></a>.</p>
+</li>
+<li><p class="first">Next, <a class="reference internal" href="../../configuration/#configuration-python"><span class="std std-ref">prepare</span></a> the Sanic configuration for
+Unit (use real values for <strong>type</strong>, <strong>home</strong>, and <strong>path</strong>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;*:80&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/sanic&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;applications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;sanic&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python 3.<span class=nxt_ph title="Must match language module version and virtual environment version">Y</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the ASGI module">/path/to/app/</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;home&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the virtual environment, if any">/path/to/app/venv/</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_hint title="ASGI module filename with extension omitted">asgi</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;callable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_hint title="Name of the callable in the module to run">app</span>&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Upload the updated configuration.  Assuming the JSON above was added to
+<code class="file docutils literal notranslate"><span class="pre">config.json</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@config.json<span class="w"> </span>--unix-socket<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class=nxt_hint title="Path to the config section in Unit's control API">http://localhost/config/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference internal" href="../../controlapi/#configuration-socket"><span class="std std-ref">control socket</span></a> path may vary; run
+<strong class="program">unitd -h</strong> or see <a class="reference internal" href="../source/#source-startup"><span class="std std-ref">Startup and Shutdown</span></a> for details.</p>
+</div>
+<p>After a successful update, your app should be available on the listener’s IP
+address and port:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost
+
+<span class="go">      {&quot;hello&quot;:&quot;world&quot;}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\sanic.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/grafana/">
+<meta property="og:title" content="NGINX Unit: Grafana">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Jira" href="../jira/" />
+<link rel="prev" title="Drupal" href="../drupal/" />
+
+<title>Grafana — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#applications">Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apollo/">Apollo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bugzilla/">Bugzilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasette/">Datasette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dokuwiki/">DokuWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../drupal/">Drupal</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jira/">Jira</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../joomla/">Joomla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mailman/">Mailman Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../matomo/">Matomo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mediawiki/">MediaWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mercurial/">Mercurial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modx/">MODX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moin/">MoinMoin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nextcloud/">NextCloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opengrok/">OpenGrok</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../phpbb/">phpBB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../phpmyadmin/">phpMyAdmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plone/">Plone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../redmine/">Redmine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reviewboard/">Review Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../roundcube/">Roundcube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../trac/">Trac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../wordpress/">WordPress</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="grafana">
+<h1>Grafana<a class="headerlink" href="#grafana" title="Permalink to this heading">§</a></h1>
+<p>Here, we install Grafana from <a class="reference external" href="https://github.com/grafana/grafana/blob/main/contribute/developer-guide.md">sources</a>
+so we can <a class="reference internal" href="../../configuration/#configuration-go"><span class="std std-ref">configure it</span></a> to run on Unit.</p>
+<ol class="arabic">
+<li><p class="first">Install <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">Unit</span></a> with a Go language module.</p>
+<p>Also, make sure Unit’s Go module is available at <strong>$GOPATH</strong>.</p>
+</li>
+<li><p class="first">Download Grafana’s source files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>go<span class="w"> </span>get<span class="w"> </span>github.com/grafana/grafana
+</pre></div>
+</div>
+</li>
+<li><p class="first">Update the code, adding Unit to Grafana’s protocol list.  You can either
+apply a patch (<a class="reference download internal" download="" href="../../_downloads/626b50fd97c76a7215539b7bd884cf2c/grafana.patch"><code class="xref download docutils literal notranslate"><span class="pre">grafana.patch</span></code></a>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class=nxt_hint title="The path where the previous step saves the application's files">$GOPATH/src/github.com/grafana/grafana</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-O<span class="w"> </span>https://unit.nginx.org/_downloads/grafana.patch
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>patch<span class="w"> </span>-p1<span class="w"> </span>&lt;<span class="w"> </span>grafana.patch
+</pre></div>
+</div>
+<p>Or update the sources manually.  In <strong>conf/defaults.ini</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1">#################################### Server ##############################</span>
+<span class="k">[server]</span>
+<span class="c1"># Protocol (http, https, socket, unit)</span>
+<span class="hll"><span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">unit</span>
+</span></pre></div>
+</div>
+<p>In <strong>pkg/api/http_server.go</strong>:</p>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="hll"><span class="w">    </span><span class="s">&quot;unit.nginx.org/go&quot;</span>
+</span><span class="w">    </span><span class="s">&quot;os&quot;</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">)</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">switch</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">Protocol</span><span class="w"> </span><span class="p">{</span>
+
+<span class="c1">// ...</span>
+
+<span class="k">case</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">HTTP</span><span class="p">,</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">HTTPS</span><span class="p">,</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">HTTP2</span><span class="p">:</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
+<span class="w">    </span><span class="nx">listener</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">Listen</span><span class="p">(</span><span class="s">&quot;tcp&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hs</span><span class="p">.</span><span class="nx">httpSrv</span><span class="p">.</span><span class="nx">Addr</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">errutil</span><span class="p">.</span><span class="nx">Wrapf</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;failed to open listener on address %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">hs</span><span class="p">.</span><span class="nx">httpSrv</span><span class="p">.</span><span class="nx">Addr</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="k">case</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">SOCKET</span><span class="p">:</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
+<span class="w">    </span><span class="nx">listener</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">net</span><span class="p">.</span><span class="nx">ListenUnix</span><span class="p">(</span><span class="s">&quot;unix&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">net</span><span class="p">.</span><span class="nx">UnixAddr</span><span class="p">{</span><span class="nx">Name</span><span class="p">:</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">SocketPath</span><span class="p">,</span><span class="w"> </span><span class="nx">Net</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unix&quot;</span><span class="p">})</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">errutil</span><span class="p">.</span><span class="nx">Wrapf</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;failed to open listener for socket %s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">SocketPath</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="hll"><span class="k">case</span><span class="w"> </span><span class="nx">setting</span><span class="p">.</span><span class="nx">UNIT</span><span class="p">:</span>
+</span><span class="hll"><span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span>
+</span><span class="hll"><span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">unit</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="nx">hs</span><span class="p">.</span><span class="nx">httpSrv</span><span class="p">.</span><span class="nx">Addr</span><span class="p">,</span><span class="w"> </span><span class="nx">hs</span><span class="p">.</span><span class="nx">macaron</span><span class="p">)</span>
+</span><span class="hll"><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ErrServerClosed</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">        </span><span class="nx">hs</span><span class="p">.</span><span class="nx">log</span><span class="p">.</span><span class="nx">Debug</span><span class="p">(</span><span class="s">&quot;server was shutdown gracefully&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+</span><span class="hll"><span class="w">    </span><span class="p">}</span>
+</span></pre></div>
+</div>
+<p>In <strong>pkg/setting/setting.go</strong>:</p>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">     </span><span class="nx">HTTP</span><span class="w">              </span><span class="nx">Scheme</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;http&quot;</span>
+<span class="w">     </span><span class="nx">HTTPS</span><span class="w">             </span><span class="nx">Scheme</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;https&quot;</span>
+<span class="w">     </span><span class="nx">SOCKET</span><span class="w">            </span><span class="nx">Scheme</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;socket&quot;</span>
+<span class="hll"><span class="w">     </span><span class="nx">UNIT</span><span class="w">              </span><span class="nx">Scheme</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;unit&quot;</span>
+</span><span class="w">     </span><span class="nx">DEFAULT_HTTP_ADDR</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;0.0.0.0&quot;</span>
+<span class="w"> </span><span class="p">)</span>
+
+<span class="w"> </span><span class="c1">// ...</span>
+
+<span class="w"> </span><span class="nx">Protocol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">HTTP</span>
+<span class="w"> </span><span class="nx">protocolStr</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">valueAsString</span><span class="p">(</span><span class="nx">server</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;protocol&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;http&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="c1">// ...</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">protocolStr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;https&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nx">Protocol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">HTTPS</span>
+<span class="w">     </span><span class="nx">CertFile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Key</span><span class="p">(</span><span class="s">&quot;cert_file&quot;</span><span class="p">).</span><span class="nx">String</span><span class="p">()</span>
+<span class="w">     </span><span class="nx">KeyFile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Key</span><span class="p">(</span><span class="s">&quot;cert_key&quot;</span><span class="p">).</span><span class="nx">String</span><span class="p">()</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">protocolStr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;h2&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nx">Protocol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">HTTP2</span>
+<span class="w">     </span><span class="nx">CertFile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Key</span><span class="p">(</span><span class="s">&quot;cert_file&quot;</span><span class="p">).</span><span class="nx">String</span><span class="p">()</span>
+<span class="w">     </span><span class="nx">KeyFile</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Key</span><span class="p">(</span><span class="s">&quot;cert_key&quot;</span><span class="p">).</span><span class="nx">String</span><span class="p">()</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">protocolStr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;socket&quot;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">     </span><span class="nx">Protocol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">SOCKET</span>
+<span class="w">     </span><span class="nx">SocketPath</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">server</span><span class="p">.</span><span class="nx">Key</span><span class="p">(</span><span class="s">&quot;socket&quot;</span><span class="p">).</span><span class="nx">String</span><span class="p">()</span>
+<span class="w"> </span><span class="p">}</span>
+<span class="hll"><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="nx">protocolStr</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;unit&quot;</span><span class="w"> </span><span class="p">{</span>
+</span><span class="hll"><span class="w">     </span><span class="nx">Protocol</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">UNIT</span>
+</span><span class="hll"><span class="w"> </span><span class="p">}</span>
+</span></pre></div>
+</div>
+</li>
+<li><p class="first">Build Grafana:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class=nxt_hint title="The path where the previous step saves the application's files">$GOPATH/src/github.com/grafana/grafana</span>
+<span class="gp">$ </span><span class=nxt_hint title="Installs dependencies">go get ./...</span>
+<span class="gp">$ </span>go<span class="w"> </span>run<span class="w"> </span>build.go<span class="w"> </span>setup
+<span class="gp">$ </span>go<span class="w"> </span>run<span class="w"> </span>build.go<span class="w"> </span>build
+<span class="gp">$ </span>yarn<span class="w"> </span>install<span class="w"> </span>--pure-lockfile
+<span class="gp">$ </span>yarn<span class="w"> </span>start
+</pre></div>
+</div>
+<p>Note the directory where the newly built <strong>grafana-server</strong> is placed,
+usually <strong>$GOPATH/bin/</strong>; it’s used for the <strong>executable</strong> option in
+the Unit configuration.</p>
+</li>
+<li><p class="first">Run the following commands so Unit can access Grafana’s files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>chown<span class="w"> </span>-R<span class="w"> </span><span class=nxt_hint title="User and group that Unit's router runs as by default">unit:unit</span><span class="w"> </span><span class=nxt_hint title="Path to the application's files">$GOPATH/src/github.com/grafana/grafana</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>chown<span class="w"> </span><span class=nxt_hint title="User and group that Unit's router runs as by default">unit:unit</span><span class="w"> </span><span class=nxt_hint title="Path to the application's executable">$GOPATH/bin/grafana-server</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <strong>unit:unit</strong> user-group pair is available only with
+<a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">official packages</span></a>, Docker <a class="reference internal" href="../../installation/#installation-docker"><span class="std std-ref">images</span></a>, and some <a class="reference internal" href="../../installation/#installation-community-repos"><span class="std std-ref">third-party repos</span></a>.  Otherwise, account names may differ;
+run the <strong class="program">ps aux | grep unitd</strong> command to be sure.</p>
+</div>
+<p>For further details, including permissions, see the <a class="reference internal" href="../security/#security-apps"><span class="std std-ref">security checklist</span></a>.</p>
+</li>
+<li><p class="first">Next, <a class="reference internal" href="../../configuration/#configuration-php"><span class="std std-ref">prepare</span></a> the configuration (replace
+<strong>$GOPATH</strong> with its value in <strong>executable</strong> and
+<strong>working_directory</strong>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;*:3000&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/grafana&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;applications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;grafana&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;executable&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Replace with the environment variable's value"><span class=nxt_var>$GOPATH</span></span><span class=nxt_hint title="Path to the application's executable">/bin/grafana-server</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;external&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;working_directory&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Replace with the environment variable's value"><span class=nxt_var>$GOPATH</span></span><span class=nxt_hint title="Path to the application's files">/src/github.com/grafana/grafana/</span>&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../../configuration/#configuration-go"><span class="std std-ref">Go application options</span></a> and the Grafana <a class="reference external" href="https://grafana.com/docs/grafana/latest/administration/configuration/#static_root_path">docs</a>
+for details.</p>
+</li>
+<li><p class="first">Upload the updated configuration.  Assuming the JSON above was added to
+<code class="file docutils literal notranslate"><span class="pre">config.json</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@config.json<span class="w"> </span>--unix-socket<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class=nxt_hint title="Path to the config section in Unit's control API">http://localhost/config/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference internal" href="../../controlapi/#configuration-socket"><span class="std std-ref">control socket</span></a> path may vary; run
+<strong class="program">unitd -h</strong> or see <a class="reference internal" href="../source/#source-startup"><span class="std std-ref">Startup and Shutdown</span></a> for details.</p>
+</div>
+<p>After a successful update, Grafana should be available on the listener’s IP
+and port:</p>
+<a class="reference internal image-reference" href="../../_images/grafana.png"><img alt="Grafana on Unit - Setup Screen" src="../../_images/grafana.png" style="width: 100%;" /></a>
+</li>
+</ol>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\grafana.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

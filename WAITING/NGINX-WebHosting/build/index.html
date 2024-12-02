@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="go-import" content="unit.nginx.org git https://github.com/nginx/unit" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/">
+<meta property="og:title" content="NGINX Unit: Universal web app server">
+<meta content="A lightweight web app server that combines several layers of the typical application stack into a single component." name="og:description" />
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Key features" href="keyfeatures/" />
+
+<title>Universal web app server — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+            <img src="_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="howto/">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="universal-web-app-server">
+<h1>Universal web app server<a class="headerlink" href="#universal-web-app-server" title="Permalink to this heading">§</a></h1>
+<p>NGINX Unit is a lightweight and versatile application runtime
+that provides the essential components for your web application
+as a single open-source server:
+running application code
+(including WebAssembly),
+serving static assets,
+handling TLS and request routing.</p>
+<p>Unit was created by
+<a class="reference external" href="https://nginx.org/en/">nginx</a>
+team members from scratch
+to be highly efficient
+and fully configurable at runtime.
+The latest version is 1.33.0,
+released on Sep 18, 2024.</p>
+<ul class="simple">
+<li>See a quickstart
+<a class="reference external" href="https://github.com/nginx/unit/">guide</a>
+on our GitHub page.</li>
+<li>Browse the
+<a class="reference external" href="/CHANGES.txt">changelog</a>,
+see the release notes in the
+<a class="reference internal" href="news/"><span class="doc">news</span></a>
+archive,
+or subscribe to
+our RSS
+<a class="reference external" href="/rss.xml">feed</a>.</li>
+<li>Check out the discussion of our
+<a class="reference internal" href="keyfeatures/"><span class="doc">key features</span></a>
+for further details.</li>
+<li>Peek at our future plans
+with a GitHub-based
+<a class="reference external" href="https://github.com/orgs/nginx/projects/1">roadmap</a>.</li>
+</ul>
+<div class="video">
+  <div>
+    <iframe src="https://www.youtube.com/embed/NaaS1qOBnuw"
+            allowfullscreen>
+    </iframe>
+  </div>
+
+  <div>
+    <iframe src="https://www.youtube.com/embed/thEX-oQHfDA?start=545"
+            allowfullscreen>
+    </iframe>
+  </div>
+</div><p>Watch the entire NGINX Unit tutorial course
+<a class="reference external" href="https://www.youtube.com/playlist?list=PLGz_X9w9raXdV3vuPUu0kKBSBjG9rPaUf">here</a>.</p>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/index.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

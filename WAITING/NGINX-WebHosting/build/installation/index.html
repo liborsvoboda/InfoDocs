@@ -1,0 +1,3242 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/installation/">
+<meta property="og:title" content="NGINX Unit: Installation">
+<meta content="Download official packages, use third-party repositories, or configure a custom build from source." name="og:description" />
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Control API" href="../controlapi/" />
+<link rel="prev" title="News of 2017" href="../news/2017/" />
+
+<title>Installation — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../">
+            <img src="../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news/">News</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#official-packages">Official packages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#amazon-linux">Amazon Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debian">Debian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fedora">Fedora</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rhel-and-derivatives">RHEL and derivatives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ubuntu">Ubuntu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#macos">macOS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#macos-homebrew">Homebrew</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#node-js">Node.js</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#startup-and-shutdown">Startup and shutdown</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#startup-shutdown-amazondebianfedorarhelubuntu">Amazon, Debian, Fedora, RHEL, Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#startup-shutdown-macoshomebrew">macOS (Homebrew)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#community-repositories">Community Repositories</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#community-alpine">Alpine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-alt">ALT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-arch">Arch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-freebsd">FreeBSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-gentoo">Gentoo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-netbsd">NetBSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-nix">Nix</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-openbsd">OpenBSD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-remisrpm">Remi's RPM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-images">Docker Images</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initial-configuration">Initial configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this heading">§</a></h1>
+<p>You can install NGINX Unit in four alternative ways:</p>
+<ul class="simple">
+<li>Choose from our official <a class="reference internal" href="#installation-precomp-pkgs"><span class="std std-ref">binary packages</span></a>
+for a few popular systems.
+They’re as easy to use as any other packaged software
+and suit most purposes straight out of the box.</li>
+<li>If your preferred OS or language version
+is missing from the official package list,
+try <a class="reference internal" href="#installation-community-repos"><span class="std std-ref">third-party repositories</span></a>.
+Be warned, though: we don’t maintain them.</li>
+<li>Run our <a class="reference internal" href="#installation-docker"><span class="std std-ref">Docker official images</span></a>,
+prepackaged with varied language combinations.</li>
+<li>To fine-tune Unit to your goals,
+download the <a class="reference internal" href="#source"><span class="std std-ref">sources</span></a>,
+install the <a class="reference internal" href="../howto/source/#source-prereq-build"><span class="std std-ref">toolchain</span></a>,
+and <a class="reference internal" href="../howto/source/#source-config-src"><span class="std std-ref">build</span></a> a custom binary from scratch;
+just make sure you know what you’re doing.</li>
+</ul>
+<div class="section" id="prerequisites">
+<span id="source-prereqs"></span><h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading">§</a></h2>
+<p>Unit compiles and runs on various Unix-like operating systems, including:</p>
+<ul class="simple">
+<li>FreeBSD&nbsp;10 or later</li>
+<li>Linux&nbsp;2.6 or later</li>
+<li>macOS&nbsp;10.6 or later</li>
+<li>Solaris&nbsp;11</li>
+</ul>
+<p>It also supports most modern instruction set architectures, such as:</p>
+<ul class="simple">
+<li>ARM</li>
+<li>IA-32</li>
+<li>PowerPC</li>
+<li>MIPS</li>
+<li>S390X</li>
+<li>x86-64</li>
+</ul>
+<p>App languages and platforms that Unit can run
+(including several versions of the same language):</p>
+<ul class="simple">
+<li>Go&nbsp;1.6 or later</li>
+<li>Java&nbsp;8 or later</li>
+<li>Node.js&nbsp;8.11 or later</li>
+<li>PHP&nbsp;5, 7, 8</li>
+<li>Perl&nbsp;5.12 or later</li>
+<li>Python&nbsp;2.6, 2.7, 3</li>
+<li>Ruby&nbsp;2.0 or later</li>
+<li>WebAssembly Components WASI&nbsp;0.2</li>
+</ul>
+<p>Optional dependencies:</p>
+<ul class="simple">
+<li>OpenSSL 1.0.1 or later for <a class="reference internal" href="../certificates/#configuration-ssl"><span class="std std-ref">TLS</span></a> support</li>
+<li>PCRE (8.0 or later) or PCRE2 (10.23 or later)
+for <a class="reference internal" href="../configuration/#configuration-routes-matching-patterns-regex"><span class="std std-ref">regular expression matching</span></a></li>
+<li>The
+<a class="reference external" href="https://nginx.org/en/docs/njs/">njs</a>
+scripting language</li>
+<li>Wasmtime for WebAssembly Support</li>
+</ul>
+</div>
+<div class="section" id="official-packages">
+<span id="installation-precomp-pkgs"></span><h2>Official packages<a class="headerlink" href="#official-packages" title="Permalink to this heading">§</a></h2>
+<p>Installing an official precompiled Unit binary package
+is best on most occasions;
+they’re available for:</p>
+<ul class="simple">
+<li>Amazon&nbsp;Linux <a class="reference internal" href="#amazon-ami"><span class="std std-ref">AMI</span></a>,
+Amazon&nbsp;Linux&nbsp;<a class="reference internal" href="#amazon-20lts"><span class="std std-ref">2</span></a>,
+Amazon&nbsp;Linux&nbsp;<a class="reference internal" href="#amazon-2023"><span class="std std-ref">2023</span></a></li>
+<li>Debian&nbsp;<a class="reference internal" href="#debian-9"><span class="std std-ref">9</span></a>,
+<a class="reference internal" href="#debian-10"><span class="std std-ref">10</span></a>,
+<a class="reference internal" href="#debian-11"><span class="std std-ref">11</span></a>,
+<a class="reference internal" href="#debian-12"><span class="std std-ref">12</span></a></li>
+<li>Fedora&nbsp;<a class="reference internal" href="#fedora-29"><span class="std std-ref">29</span></a>,
+<a class="reference internal" href="#fedora-3130"><span class="std std-ref">30</span></a>,
+<a class="reference internal" href="#fedora-3130"><span class="std std-ref">31</span></a>,
+<a class="reference internal" href="#fedora-32"><span class="std std-ref">32</span></a>,
+<a class="reference internal" href="#fedora-3433"><span class="std std-ref">33</span></a>,
+<a class="reference internal" href="#fedora-3433"><span class="std std-ref">34</span></a>,
+<a class="reference internal" href="#fedora-3635"><span class="std std-ref">35</span></a>,
+<a class="reference internal" href="#fedora-3635"><span class="std std-ref">36</span></a>,
+<a class="reference internal" href="#fedora-37"><span class="std std-ref">37</span></a>,
+<a class="reference internal" href="#fedora-38"><span class="std std-ref">38</span></a></li>
+<li>RHEL&nbsp;<a class="reference internal" href="#rhel-6x"><span class="std std-ref">6</span></a>,
+<a class="reference internal" href="#rhel-7x"><span class="std std-ref">7</span></a>,
+<a class="reference internal" href="#rhel-8x"><span class="std std-ref">8</span></a>,
+<a class="reference internal" href="#rhel-9x"><span class="std std-ref">9</span></a></li>
+<li>Ubuntu&nbsp;<a class="reference internal" href="#ubuntu-1604"><span class="std std-ref">16.04</span></a>,
+<a class="reference internal" href="#ubuntu-1804"><span class="std std-ref">18.04</span></a>,
+<a class="reference internal" href="#ubuntu-1910"><span class="std std-ref">19.10</span></a>,
+<a class="reference internal" href="#ubuntu-2004"><span class="std std-ref">20.04</span></a>,
+<a class="reference internal" href="#ubuntu-2010"><span class="std std-ref">20.10</span></a>,
+<a class="reference internal" href="#ubuntu-2104"><span class="std std-ref">21.04</span></a>,
+<a class="reference internal" href="#ubuntu-2110"><span class="std std-ref">21.10</span></a>,
+<a class="reference internal" href="#ubuntu-2204"><span class="std std-ref">22.04</span></a>,
+<a class="reference internal" href="#ubuntu-2210"><span class="std std-ref">22.10</span></a>,
+<a class="reference internal" href="#ubuntu-2304"><span class="std std-ref">23.04</span></a></li>
+</ul>
+<p>The packages include core executables,
+developer files,
+and support for individual languages.
+We also maintain a Homebrew <a class="reference internal" href="#macos-homebrew"><span class="std std-ref">tap</span></a> for
+macOS users and a <a class="reference internal" href="#installation-nodejs-package"><span class="std std-ref">module</span></a> for Node.js
+at the <a class="reference external" href="https://www.npmjs.com/package/unit-http">npm</a> registry.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For details of packaging custom modules
+that install alongside the official Unit,
+see <a class="reference internal" href="../howto/modules/#modules-pkg"><span class="std std-ref">here</span></a>.</p>
+</div>
+<details id=repo-install_
+            onclick="window.location.hash='#repo-install'">
+            <summary><span>Repo installation script</span></summary><div class="docutils container">
+<p>We provide a <a class="reference external" href="https://github.com/nginx/unit/tree/master/tools">script</a>
+that adds our official repos on the systems we support:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>https://raw.githubusercontent.com/nginx/unit/master/tools/setup-unit<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>setup-unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>./setup-unit<span class="w"> </span>repo-config
+</pre></div>
+</div>
+<p>Use it at your discretion;
+explicit steps are provided below
+for each distribution.</p>
+</div>
+</details><div class="section" id="amazon-linux">
+<span id="installation-precomp-amazon"></span><h3>Amazon Linux<a class="headerlink" href="#amazon-linux" title="Permalink to this heading">§</a></h3>
+<div class="nxt_tabs docutils container">
+<input name=amazon type=radio
+            id=amazon_0 class=nojs checked/>
+            <label for=amazon_0 id=amazon-2023>
+            <a href=#amazon-2023 onclick="nxt_tab_click(event)">2023</a></label><div class="docutils container">
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/amzn/2023/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc17<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python39<span class="w"> </span>unit-python311<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=amazon type=radio
+            id=amazon_1 class=nojs />
+            <label for=amazon_1 id=amazon-20lts>
+            <a href=#amazon-20lts onclick="nxt_tab_click(event)">2.0 LTS</a></label><div class="docutils container">
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/amzn2/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python27<span class="w"> </span>unit-python37<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=amazon type=radio
+            id=amazon_2 class=nojs />
+            <label for=amazon_2 id=amazon-ami>
+            <a href=#amazon-ami onclick="nxt_tab_click(event)">AMI</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.22+ packages aren’t built for Amazon Linux AMI.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/amzn/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-perl<span class="w"> </span>unit-php<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-python27<span class="w"> </span>unit-python34<span class="w"> </span>unit-python35<span class="w"> </span>unit-python36
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="debian">
+<span id="installation-precomp-deb"></span><h3>Debian<a class="headerlink" href="#debian" title="Permalink to this heading">§</a></h3>
+<div class="nxt_tabs docutils container">
+<input name=debian type=radio
+            id=debian_0 class=nojs checked/>
+            <label for=debian_0 id=debian-12>
+            <a href=#debian-12 onclick="nxt_tab_click(event)">12</a></label><div class="docutils container">
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ bookworm unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ bookworm unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc17<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python3.11<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=debian type=radio
+            id=debian_1 class=nojs />
+            <label for=debian_1 id=debian-11>
+            <a href=#debian-11 onclick="nxt_tab_click(event)">11</a></label><div class="docutils container">
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ bullseye unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ bullseye unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.9<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=debian type=radio
+            id=debian_2 class=nojs />
+            <label for=debian_2 id=debian-10>
+            <a href=#debian-10 onclick="nxt_tab_click(event)">10</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.28+ packages aren’t built for Debian 10.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: i386, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ buster unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ buster unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.7<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=debian type=radio
+            id=debian_3 class=nojs />
+            <label for=debian_3 id=debian-9>
+            <a href=#debian-9 onclick="nxt_tab_click(event)">9</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.22+ packages aren’t built for Debian 9.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: i386, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ stretch unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/debian/ stretch unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.5<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="fedora">
+<span id="installation-precomp-fedora"></span><h3>Fedora<a class="headerlink" href="#fedora" title="Permalink to this heading">§</a></h3>
+<div class="nxt_tabs docutils container">
+<input name=fedora type=radio
+            id=fedora_0 class=nojs checked/>
+            <label for=fedora_0 id=fedora-38>
+            <a href=#fedora-38 onclick="nxt_tab_click(event)">38</a></label><div class="docutils container">
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/fedora/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python311<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=fedora type=radio
+            id=fedora_1 class=nojs />
+            <label for=fedora_1 id=fedora-37>
+            <a href=#fedora-37 onclick="nxt_tab_click(event)">37</a></label><div class="docutils container">
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/fedora/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python311<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=fedora type=radio
+            id=fedora_2 class=nojs />
+            <label for=fedora_2 id=fedora-3635>
+            <a href=#fedora-3635 onclick="nxt_tab_click(event)">36, 35</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.31+ packages aren’t built for Fedora 36 and Fedora 35.
+These distributions are obsolete;
+please update.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/fedora/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python39<span class="w"> </span>unit-python310<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=fedora type=radio
+            id=fedora_3 class=nojs />
+            <label for=fedora_3 id=fedora-3433>
+            <a href=#fedora-3433 onclick="nxt_tab_click(event)">34, 33</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.27+ packages aren’t built for Fedora 33 and Fedora 34.
+These distributions are obsolete;
+please update.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/fedora/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python39<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=fedora type=radio
+            id=fedora_4 class=nojs />
+            <label for=fedora_4 id=fedora-32>
+            <a href=#fedora-32 onclick="nxt_tab_click(event)">32</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.24+ packages aren’t built for Fedora 32.
+These distributions are obsolete;
+please update.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/fedora/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python38<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=fedora type=radio
+            id=fedora_5 class=nojs />
+            <label for=fedora_5 id=fedora-3130>
+            <a href=#fedora-3130 onclick="nxt_tab_click(event)">31, 30</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.20+ packages aren’t built for Fedora 30;
+1.22+ packages aren’t built for Fedora 31.
+These distributions are obsolete;
+please update.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/fedora/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python27<span class="w"> </span>unit-python37<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=fedora type=radio
+            id=fedora_6 class=nojs />
+            <label for=fedora_6 id=fedora-29>
+            <a href=#fedora-29 onclick="nxt_tab_click(event)">29</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.20+ packages aren’t built for Fedora 29.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/fedora/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python27<span class="w"> </span>unit-python37<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="rhel-and-derivatives">
+<span id="installation-precomp-rhel"></span><span id="installation-precomp-centos"></span><h3>RHEL and derivatives<a class="headerlink" href="#rhel-and-derivatives" title="Permalink to this heading">§</a></h3>
+<div class="nxt_tabs docutils container">
+<input name=rhel type=radio
+            id=rhel_0 class=nojs checked/>
+            <label for=rhel_0 id=rhel-9x>
+            <a href=#rhel-9x onclick="nxt_tab_click(event)">9.x</a></label><div class="docutils container">
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/rhel/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module and build Go apps">unit-devel</span><span class="w"> </span>unit-go<span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python39<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=rhel type=radio
+            id=rhel_1 class=nojs />
+            <label for=rhel_1 id=rhel-8x>
+            <a href=#rhel-8x onclick="nxt_tab_click(event)">8.x</a></label><div class="docutils container">
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/rhel/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python27<span class="w"> </span>unit-python36<span class="w"> </span>unit-python38<span class="w"> </span>unit-python39<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=rhel type=radio
+            id=rhel_2 class=nojs />
+            <label for=rhel_2 id=rhel-7x>
+            <a href=#rhel-7x onclick="nxt_tab_click(event)">7.x</a></label><div class="docutils container">
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Official packages for CentOS 7.x are also available.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/rhel/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python27<span class="w"> </span>unit-python36
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=rhel type=radio
+            id=rhel_3 class=nojs />
+            <label for=rhel_3 id=rhel-6x>
+            <a href=#rhel-6x onclick="nxt_tab_click(event)">6.x</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.20+ packages aren’t built for RHEL 6.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: i386, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/yum.repos.d/unit.repo</strong>:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[unit]</span>
+<span class="na">name</span><span class="o">=</span><span class="s">unit repo</span>
+<span class="na">baseurl</span><span class="o">=</span><span class="s">https://packages.nginx.org/unit/rhel/$releasever/$basearch/</span>
+<span class="na">gpgkey</span><span class="o">=</span><span class="s">https://unit.nginx.org/keys/nginx-keyring.gpg</span>
+<span class="na">gpgcheck</span><span class="o">=</span><span class="s">1</span>
+<span class="na">enabled</span><span class="o">=</span><span class="s">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-devel</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../controlapi/#configuration-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Use these steps
+for binary-compatible distributions:
+AlmaLinux,
+CentOS,
+Oracle Linux,
+or Rocky Linux.</p>
+</div>
+</div>
+<div class="section" id="ubuntu">
+<span id="installation-precomp-ubuntu"></span><h3>Ubuntu<a class="headerlink" href="#ubuntu" title="Permalink to this heading">§</a></h3>
+<div class="nxt_tabs docutils container">
+<input name=ubuntu type=radio
+            id=ubuntu_0 class=nojs checked/>
+            <label for=ubuntu_0 id=ubuntu-2304>
+            <a href=#ubuntu-2304 onclick="nxt_tab_click(event)">23.04</a></label><div class="docutils container">
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ lunar unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ lunar unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module and build Go apps">unit-dev</span><span class="w"> </span>unit-go<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-jsc17<span class="w"> </span>unit-jsc18<span class="w"> </span>unit-jsc19<span class="w"> </span>unit-jsc20<span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python3.11<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_1 class=nojs />
+            <label for=ubuntu_1 id=ubuntu-2210>
+            <a href=#ubuntu-2210 onclick="nxt_tab_click(event)">22.10</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.31+ packages aren’t built for Ubuntu 22.10.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ kinetic unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ kinetic unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module and build Go apps">unit-dev</span><span class="w"> </span>unit-go<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-jsc17<span class="w"> </span>unit-jsc18<span class="w"> </span>unit-jsc19<span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.10<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_2 class=nojs />
+            <label for=ubuntu_2 id=ubuntu-2204>
+            <a href=#ubuntu-2204 onclick="nxt_tab_click(event)">22.04</a></label><div class="docutils container">
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ jammy unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ jammy unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module and build Go apps">unit-dev</span><span class="w"> </span>unit-go<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-jsc16<span class="w"> </span>unit-jsc17<span class="w"> </span>unit-jsc18<span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.10<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_3 class=nojs />
+            <label for=ubuntu_3 id=ubuntu-2110>
+            <a href=#ubuntu-2110 onclick="nxt_tab_click(event)">21.10</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.28+ packages aren’t built for Ubuntu 21.10.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ impish unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ impish unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc11<span class="w"> </span>unit-jsc16<span class="w"> </span>unit-jsc17<span class="w"> </span>unit-jsc18<span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.9<span class="w"> </span>unit-python3.10<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_4 class=nojs />
+            <label for=ubuntu_4 id=ubuntu-2104>
+            <a href=#ubuntu-2104 onclick="nxt_tab_click(event)">21.04</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.27+ packages aren’t built for Ubuntu 21.04.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ hirsute unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ hirsute unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc11<span class="w"> </span>unit-jsc15<span class="w"> </span>unit-jsc16<span class="w"> </span>unit-jsc17<span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.9<span class="w"> </span>unit-ruby
+<span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_5 class=nojs />
+            <label for=ubuntu_5 id=ubuntu-2010>
+            <a href=#ubuntu-2010 onclick="nxt_tab_click(event)">20.10</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.25+ packages aren’t built for Ubuntu 20.10.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ groovy unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ groovy unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc11<span class="w"> </span>unit-jsc13<span class="w"> </span>unit-jsc14<span class="w"> </span>unit-jsc15<span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python3.8<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_6 class=nojs />
+            <label for=ubuntu_6 id=ubuntu-2004>
+            <a href=#ubuntu-2004 onclick="nxt_tab_click(event)">20.04</a></label><div class="docutils container">
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ focal unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ focal unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.8<span class="w"> </span>unit-ruby<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_7 class=nojs />
+            <label for=ubuntu_7 id=ubuntu-1910>
+            <a href=#ubuntu-1910 onclick="nxt_tab_click(event)">19.10</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.20+ packages aren’t built for Ubuntu 19.10.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architecture: x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ eoan unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ eoan unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.7<span class="w"> </span>unit-python3.8<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_8 class=nojs />
+            <label for=ubuntu_8 id=ubuntu-1804>
+            <a href=#ubuntu-1804 onclick="nxt_tab_click(event)">18.04</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.31+ packages aren’t built for Ubuntu 18.04.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: arm64, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ bionic unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ bionic unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-jsc11<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-php<span class="w"> </span>unit-python2.7<span class="w"> </span>unit-python3.6<span class="w"> </span>unit-python3.7<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=ubuntu type=radio
+            id=ubuntu_9 class=nojs />
+            <label for=ubuntu_9 id=ubuntu-1604>
+            <a href=#ubuntu-1604 onclick="nxt_tab_click(event)">16.04</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.24+ packages aren’t built for Ubuntu 16.04.
+This distribution is obsolete;
+please update.</p>
+</div>
+<p>Supported architectures: arm64, i386, x86-64.</p>
+<ol class="arabic">
+<li><p class="first">Download and save NGINX’s signing key:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/nginx-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>https://unit.nginx.org/keys/nginx-keyring.gpg
+</pre></div>
+</div>
+<p>This eliminates the
+“packages cannot be authenticated”
+warnings
+during installation.</p>
+</li>
+<li><p class="first">To configure Unit’s repository,
+create the following file named
+<strong>/etc/apt/sources.list.d/unit.list</strong>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>deb [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ xenial unit
+deb-src [signed-by=/usr/share/keyrings/nginx-keyring.gpg] https://packages.nginx.org/unit/ubuntu/ xenial unit
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install the core package
+and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">unit-dev</span><span class="w"> </span>unit-jsc8<span class="w"> </span>unit-perl<span class="w"> </span>unit-php<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>unit-python2.7<span class="w"> </span>unit-python3.5<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="macos">
+<span id="homebrew"></span><span id="installation-macos"></span><h3>macOS<a class="headerlink" href="#macos" title="Permalink to this heading">§</a></h3>
+<div class="nxt_tabs nxt_toc docutils container">
+<input name=macos type=radio
+            id=macos_0 class=nojs checked/>
+            <label for=macos_0 id=macos-homebrew>
+            <a href=#macos-homebrew onclick="nxt_tab_click(event)">Homebrew</a></label><div class="docutils container">
+<p>To install Unit on macOS,
+use the official Homebrew
+<a class="reference external" href="https://github.com/nginx/homebrew-unit">tap</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>brew<span class="w"> </span>install<span class="w"> </span>nginx/unit/unit
+</pre></div>
+</div>
+<p>This deploys the core Unit binary
+and the prerequisites for the
+<a class="reference internal" href="#installation-nodejs-package"><span class="std std-ref">Node.js</span></a>
+language module.</p>
+<p>To install the Java, Perl, Python, and Ruby language modules
+from Homebrew:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>brew<span class="w"> </span>install<span class="w"> </span>unit-java<span class="w"> </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python<span class="w"> </span>unit-python3<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkill<span class="w"> </span>unitd<span class="w">  </span><span class="c1"># Stop Unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>unitd<span class="w">        </span><span class="c1"># Start Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/usr/local/var/run/unit/control.sock</strong> (Intel), <strong>/opt/homebrew/var/run/unit/control.sock</strong> (Apple Silicon)</td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/usr/local/var/log/unit/unit.log</strong> (Intel), <strong>/opt/homebrew/var/log/unit/unit.log</strong> (Apple Silicon)</td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>nobody</strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To run Unit as <strong>root</strong> on macOS:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">OBJC_DISABLE_INITIALIZE_FORK_SAFETY</span><span class="o">=</span>YES
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo<span class="w"> </span>--preserve-env<span class="o">=</span>OBJC_DISABLE_INITIALIZE_FORK_SAFETY<span class="w"> </span><span class=nxt_ph title="Unit's executable pathname">/path/to/unitd</span><span class="w"> </span>...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="node-js">
+<span id="installation-nodejs-package"></span><h3>Node.js<a class="headerlink" href="#node-js" title="Permalink to this heading">§</a></h3>
+<p>Unit’s npm-hosted Node.js
+<a class="reference external" href="https://www.npmjs.com/package/unit-http">module</a>
+is called
+<strong class="program">unit-http</strong>.
+Install it
+to run Node.js apps on Unit:</p>
+<ol class="arabic">
+<li><p class="first">First, install the <strong>unit-dev/unit-devel</strong>
+<a class="reference internal" href="#installation-precomp-pkgs"><span class="std std-ref">package</span></a>;
+it’s needed to build <strong class="program">unit-http</strong>.</p>
+</li>
+<li><p class="first">Next, build and install <strong class="program">unit-http</strong> globally
+(this requires <strong class="program">npm</strong> and <strong class="program">node-gyp</strong>):</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>--unsafe-perm<span class="w"> </span>unit-http
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The <strong class="program">unit-http</strong> module is platform dependent
+due to optimizations;
+you can’t move it across systems
+with the rest of <strong>node-modules</strong>.
+Global installation avoids such scenarios;
+just
+<a class="reference internal" href="../configuration/#configuration-nodejs"><span class="std std-ref">relink</span></a>
+the migrated app.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">It’s entirely possible to run
+<a class="reference internal" href="../configuration/#configuration-nodejs"><span class="std std-ref">Node.js apps</span></a>
+on Unit
+without mentioning <strong>unit-http</strong> in your app sources.
+However, you can explicitly use <strong>unit-http</strong> in your code
+instead of the built-in <strong>http</strong>,
+but mind that such frameworks as Express may require extra
+<a class="reference internal" href="../howto/express/"><span class="doc">changes</span></a>.</p>
+</li>
+</ol>
+<p>If you update Unit later,
+make sure to update the module as well:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>npm<span class="w"> </span>update<span class="w"> </span>-g<span class="w"> </span>--unsafe-perm<span class="w"> </span>unit-http
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can also
+<a class="reference internal" href="../howto/source/#modules-nodejs"><span class="std std-ref">configure</span></a>
+and
+<a class="reference internal" href="../howto/source/#source-bld-src-ext"><span class="std std-ref">install</span></a>
+the <strong class="program">unit-http</strong> module from sources.</p>
+</div>
+<details id=multiple-nodejs-versions_
+            onclick="window.location.hash='#multiple-nodejs-versions'">
+            <summary><span>Working with multiple Node.js versions</span></summary><div class="docutils container">
+<p>To use Unit with multiple Node.js versions side by side,
+we recommend
+<a class="reference external" href="https://github.com/nvm-sh/nvm">Node Version Manager</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-o-<span class="w"> </span>https://raw.githubusercontent.com/nvm-sh/nvm/<span class=nxt_ph title="nvm version">x.y.z</span>/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+</pre></div>
+</div>
+<p>Install the versions you need
+and select the one you want to use with Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvm<span class="w"> </span>install<span class="w"> </span><span class="m">18</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvm<span class="w"> </span>install<span class="w"> </span><span class="m">16</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nvm<span class="w"> </span>use<span class="w"> </span><span class="m">18</span>
+<span class="go">      Now using node <span class=nxt_hint title="Note the version numbers">v18.12.1</span> (npm v8.19.2)</span>
+</pre></div>
+</div>
+<p>Having selected the specific version,
+install the <strong class="program">node-gyp</strong> module:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>node-gyp
+</pre></div>
+</div>
+<p>Next, clone the Unit source code
+to build a <strong class="program">unit-http</strong> module
+for the selected Node.js version:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginx/unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">pwd</span>
+<span class="go">      <span class=nxt_hint title="Note the path to the source code">/home/user/unit</span></span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>nodejs
+
+<span class="go">      configuring nodejs module</span>
+<span class="go">      checking for node ... found</span>
+<span class="go">       + node version <span class=nxt_hint title="Should be the version selected with nvm">v18.12.1</span></span>
+<span class="go">      checking for npm ... found</span>
+<span class="go">       + npm version <span class=nxt_hint title="Should be the version selected with npm">8.19.2</span></span>
+<span class="go">      checking for node-gyp ... found</span>
+<span class="go">       + node-gyp version v9.3.0</span>
+</pre></div>
+</div>
+<p>Point to Unit’s header files and libraries in the source code directory
+to build the module:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">CPPFLAGS</span><span class="o">=</span><span class="s2">&quot;-I/home/user/unit/include/&quot;</span><span class="w"> </span><span class="nv">LDFLAGS</span><span class="o">=</span><span class="s2">&quot;-L/home/user/unit/lib/&quot;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>make<span class="w"> </span>node-install
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>npm<span class="w"> </span>list<span class="w"> </span>-g
+
+<span class="go">      /home/vagrant/.nvm/versions/node/v18.12.1/lib</span>
+<span class="go">      ├── corepack@0.14.2</span>
+<span class="go">      ├── node-gyp@9.3.0</span>
+<span class="go">      ├── npm@8.19.2</span>
+<span class="go">      └── unit-http@1.29.0</span>
+</pre></div>
+</div>
+<p>That’s all;
+use the newly built module to run your
+<a class="reference internal" href="../configuration/#configuration-nodejs"><span class="std std-ref">Node.js apps</span></a>
+on Unit as usual.</p>
+</div>
+</details></div>
+<div class="section" id="startup-and-shutdown">
+<span id="installation-precomp-startup"></span><h3>Startup and shutdown<a class="headerlink" href="#startup-and-shutdown" title="Permalink to this heading">§</a></h3>
+<div class="nxt_tabs nxt_toc docutils container">
+<input name=startup-shutdown type=radio
+            id=startup-shutdown_0 class=nojs checked/>
+            <label for=startup-shutdown_0 id=startup-shutdown-amazondebianfedorarhelubuntu>
+            <a href=#startup-shutdown-amazondebianfedorarhelubuntu onclick="nxt_tab_click(event)">Amazon, Debian, Fedora, RHEL, Ubuntu</a></label><div class="docutils container">
+<p>Enable Unit to launch automatically at system startup:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>unit
+</pre></div>
+</div>
+<p>Start or restart Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>Stop a running Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>stop<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>Disable Unit’s automatic startup:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>disable<span class="w"> </span>unit
+</pre></div>
+</div>
+</div>
+<input name=startup-shutdown type=radio
+            id=startup-shutdown_1 class=nojs />
+            <label for=startup-shutdown_1 id=startup-shutdown-macoshomebrew>
+            <a href=#startup-shutdown-macoshomebrew onclick="nxt_tab_click(event)">macOS (Homebrew)</a></label><div class="docutils container">
+<p>Start Unit as a daemon:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>unitd
+</pre></div>
+</div>
+<p>Stop all Unit’s processes:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkill<span class="w"> </span>unitd
+</pre></div>
+</div>
+<p>For startup options, see
+<a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">below</span></a>.</p>
+</div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Restarting Unit is necessary
+after installing or uninstalling any language modules
+to pick up the changes.</p>
+</div>
+</div>
+</div>
+<div class="section" id="community-repositories">
+<span id="installation-community-repos"></span><h2>Community Repositories<a class="headerlink" href="#community-repositories" title="Permalink to this heading">§</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">These distributions are maintained by their respective communities,
+not NGINX.
+Use them with caution.</p>
+</div>
+<div class="nxt_tabs nxt_toc docutils container" id="installation-remirepo">
+<span id="installation-nix"></span><span id="installation-gnt-prtg"></span><span id="installation-freebsd-pkgs-prts"></span><span id="installation-scls"></span><span id="installation-archlinux-aur"></span><span id="installation-alpine-apk"></span><input name=community type=radio
+            id=community_0 class=nojs checked/>
+            <label for=community_0 id=community-alpine>
+            <a href=#community-alpine onclick="nxt_tab_click(event)">Alpine</a></label><div class="docutils container">
+<p>To install Unit’s core executables
+from the Alpine Linux
+<a class="reference external" href="https://pkgs.alpinelinux.org/packages?name=unit*">packages</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apk<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apk<span class="w"> </span>upgrade
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apk<span class="w"> </span>add<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>To install service manager files
+and specific language modules:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apk<span class="w"> </span>add<span class="w"> </span>unit-openrc<span class="w"> </span>unit-perl<span class="w"> </span>unit-php7<span class="w"> </span>unit-python3<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>service<span class="w"> </span>unit<span class="w"> </span>restart<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><div class="first highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">service unit enable</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">service unit restart</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">service unit stop</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">service unit disable</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_1 class=nojs />
+            <label for=community_1 id=community-alt>
+            <a href=#community-alt onclick="nxt_tab_click(event)">ALT</a></label><div class="docutils container">
+<p>To install Unit’s core executables
+and specific language modules
+from the Sisyphus
+<a class="reference external" href="https://packages.altlinux.org/en/sisyphus/srpms/unit">packages</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt-get<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt-get<span class="w"> </span>install<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt-get<span class="w"> </span>install<span class="w"> </span>unit-perl<span class="w"> </span>unit-php<span class="w"> </span>unit-python3<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>service<span class="w"> </span>unit<span class="w"> </span>restart<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>Versions of these packages
+with the <strong>*-debuginfo</strong> suffix
+contain symbols for
+<a class="reference internal" href="../troubleshooting/#troubleshooting-core-dumps"><span class="std std-ref">debugging</span></a>.</p>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>_unit</strong> (mind the <strong>_</strong> prefix)</td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><div class="first highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">service unit enable</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">service unit restart</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">service unit stop</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">service unit disable</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_2 class=nojs />
+            <label for=community_2 id=community-arch>
+            <a href=#community-arch onclick="nxt_tab_click(event)">Arch</a></label><div class="docutils container">
+<p>To install Unit’s core executables and all language modules,
+clone the
+<a class="reference external" href="https://aur.archlinux.org/pkgbase/nginx-unit/">Arch User Repository (AUR)</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://aur.archlinux.org/nginx-unit.git
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>nginx-unit
+</pre></div>
+</div>
+<p>Before proceeding further,
+verify that the <strong>PKGBUILD</strong> and the accompanying files
+aren’t malicious or untrustworthy.
+AUR packages are user produced without pre-moderation;
+use them at your own risk.</p>
+<p>Next, build the package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>makepkg<span class="w"> </span>-si
+</pre></div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/run/nginx-unit.control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/nginx-unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>nobody</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><div class="first highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">systemctl enable unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">systemctl restart unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">systemctl stop unit</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">systemctl disable unit</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_3 class=nojs />
+            <label for=community_3 id=community-freebsd>
+            <a href=#community-freebsd onclick="nxt_tab_click(event)">FreeBSD</a></label><div class="docutils container">
+<p>To install Unit from
+<a class="reference external" href="https://docs.freebsd.org/en/books/handbook/ports/#pkgng-intro">FreeBSD packages</a>,
+get the core package and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">libunit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>unit-java8<span class="w">  </span><span class="se">\</span>
+<span class="w">                 </span>unit-perl5.36<span class="w">  </span><span class="se">\</span>
+<span class="w">                 </span>unit-php81<span class="w"> </span>unit-php82<span class="w"> </span>unit-php83<span class="w">  </span><span class="se">\</span>
+<span class="w">                 </span>unit-python39<span class="w">  </span><span class="se">\</span>
+<span class="w">                 </span>unit-ruby3.2<span class="w">  </span><span class="se">\</span>
+<span class="w">                 </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>service<span class="w"> </span>unitd<span class="w"> </span>restart<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>To install Unit from
+<a class="reference external" href="https://docs.freebsd.org/en/books/handbook/ports/#ports-using">FreeBSD ports</a>,
+start by updating your port collection.</p>
+<p>With <strong class="program">portsnap</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>portsnap<span class="w"> </span>fetch<span class="w"> </span>update
+</pre></div>
+</div>
+<p>With <strong class="program">git</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+</pre></div>
+</div>
+<p>Next, browse to the port path
+to build and install the core Unit port:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/www/unit/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Repeat the steps for the other ports you need:
+<a class="reference external" href="https://www.freshports.org/devel/libunit/">libunit</a>
+(required to install the Node.js
+<a class="reference internal" href="#installation-nodejs-package"><span class="std std-ref">module</span></a>
+and build
+<a class="reference internal" href="../configuration/#configuration-go"><span class="std std-ref">Go apps</span></a>),
+<a class="reference external" href="https://www.freshports.org/www/unit-java/">unit-java</a>,
+<a class="reference external" href="https://www.freshports.org/www/unit-perl/">unit-perl</a>,
+<a class="reference external" href="https://www.freshports.org/www/unit-php/">unit-php</a>,
+<a class="reference external" href="https://www.freshports.org/www/unit-python/">unit-python</a>,
+<a class="reference external" href="https://www.freshports.org/www/unit-ruby/">unit-ruby</a>,
+or
+<a class="reference external" href="https://www.freshports.org/www/unit-wasm/">unit-wasm</a>.
+After that, restart Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>service<span class="w"> </span>unitd<span class="w"> </span>restart<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>www</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><div class="first highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">service unitd enable</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">service unitd restart</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">service unitd stop</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">service unitd disable</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_4 class=nojs />
+            <label for=community_4 id=community-gentoo>
+            <a href=#community-gentoo onclick="nxt_tab_click(event)">Gentoo</a></label><div class="docutils container">
+<p>To install Unit using
+<a class="reference external" href="https://wiki.gentoo.org/wiki/Handbook:X86/Full/Portage">Portage</a>,
+update the repository
+and install the
+<a class="reference external" href="https://packages.gentoo.org/packages/www-servers/nginx-unit">package</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>emerge<span class="w"> </span>--sync
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>emerge<span class="w"> </span>www-servers/nginx-unit
+</pre></div>
+</div>
+<p>To install specific language modules and features,
+apply the corresponding
+<a class="reference external" href="https://packages.gentoo.org/packages/www-servers/nginx-unit">USE flags</a>.</p>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/run/nginx-unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/nginx-unit</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>nobody</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><div class="first highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">rc-update add nginx-unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">rc-service nginx-unit restart</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">rc-service nginx-unit stop</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">rc-update del nginx-unit</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_5 class=nojs />
+            <label for=community_5 id=community-netbsd>
+            <a href=#community-netbsd onclick="nxt_tab_click(event)">NetBSD</a></label><div class="docutils container">
+<p>To install Unit’s core package
+and the other packages you need
+from the
+<a class="reference external" href="https://cdn.netbsd.org/pub/pkgsrc/current/pkgsrc/www/unit/index.html">NetBSD Packages Collection</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span><span class=nxt_hint title="Required to install the Node.js module">libunit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-perl<span class="w">  </span><span class="se">\</span>
+<span class="w">          </span>unit-python2.7<span class="w">  </span><span class="se">\</span>
+<span class="w">          </span>unit-python3.8<span class="w"> </span>unit-python3.9<span class="w"> </span>unit-python3.10<span class="w"> </span>unit-python3.11<span class="w"> </span>unit-python3.12<span class="w">  </span><span class="se">\</span>
+<span class="w">          </span>unit-ruby31<span class="w"> </span>unit-ruby32<span class="w"> </span>unit-ruby33
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>service<span class="w"> </span>unit<span class="w"> </span>restart<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>To build Unit manually,
+start by updating the package collection:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/pkgsrc<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>cvs<span class="w"> </span>update<span class="w"> </span>-dP
+</pre></div>
+</div>
+<p>Next, browse to the package path
+to build and install the core Unit binaries:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/pkgsrc/www/unit/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span>build<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Repeat the steps for the other packages you need:
+<a class="reference external" href="https://cdn.netbsd.org/pub/pkgsrc/current/pkgsrc/devel/libunit/index.html">libunit</a>
+(required to install the Node.js
+<a class="reference internal" href="#installation-nodejs-package"><span class="std std-ref">module</span></a>
+and build
+<a class="reference internal" href="../configuration/#configuration-go"><span class="std std-ref">Go apps</span></a>),
+<a class="reference external" href="https://cdn.netbsd.org/pub/pkgsrc/current/pkgsrc/www/unit-perl/index.html">unit-perl</a>,
+<a class="reference external" href="https://cdn.netbsd.org/pub/pkgsrc/current/pkgsrc/www/unit-php/index.html">unit-php</a>,
+<a class="reference external" href="https://cdn.netbsd.org/pub/pkgsrc/current/pkgsrc/www/unit-python/index.html">unit-python</a>,
+or
+<a class="reference external" href="https://cdn.netbsd.org/pub/pkgsrc/current/pkgsrc/www/unit-ruby/index.html">unit-ruby</a>.</p>
+<p>Note that <strong>unit-php</strong> packages require the PHP package
+to be built with the <strong>php-embed</strong> option.
+To enable the option for <strong>lang/php82</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;PKG_OPTIONS.php82=php-embed&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/etc/mk.conf
+</pre></div>
+</div>
+<p>After that, restart Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>service<span class="w"> </span>unit<span class="w"> </span>restart<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><p class="first">First, add Unit’s startup script
+to the <strong>/etc/rc.d/</strong> directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>cp<span class="w"> </span>/usr/pkg/share/examples/rc.d/unit<span class="w"> </span>/etc/rc.d/
+</pre></div>
+</div>
+<p>After that, you can start and stop Unit as follows:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">service unit restart</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">service unit stop</span>
+</pre></div>
+</div>
+<p>To enable or disable Unit’s automatic startup,
+edit <strong>/etc/rc.conf</strong>:</p>
+<div class="last highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable service:</span>
+<span class="na">unit</span><span class="o">=</span><span class="s">YES</span>
+
+<span class="c1"># Disable service:</span>
+<span class="na">unit</span><span class="o">=</span><span class="s">NO</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_6 class=nojs />
+            <label for=community_6 id=community-nix>
+            <a href=#community-nix onclick="nxt_tab_click(event)">Nix</a></label><div class="docutils container">
+<p>To install Unit’s core executables and all language modules
+using the
+<a class="reference external" href="https://nixos.org">Nix</a>
+package manager,
+update the channel,
+check if Unit’s available,
+and install the
+<a class="reference external" href="https://github.com/NixOS/nixpkgs/tree/master/pkgs/servers/http/unit">package</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>nix-channel<span class="w"> </span>--update
+<span class="gp">$ </span>nix-env<span class="w"> </span>-qa<span class="w"> </span><span class="s1">&#39;unit&#39;</span>
+<span class="gp">$ </span>nix-env<span class="w"> </span>-i<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>This installs most embedded language modules
+and such features as SSL or IPv6 support.
+For a full list of optionals,
+see the
+<a class="reference external" href="https://github.com/NixOS/nixpkgs/blob/master/pkgs/servers/http/unit/default.nix">package definition</a>;
+for a <strong>.nix</strong> configuration file defining an app,
+see
+<a class="reference external" href="https://github.com/NixOS/nixpkgs/blob/master/nixos/tests/web-servers/unit-php.nix">this sample</a>.</p>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/run/unit/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><p class="first">Add <strong>services.unit.enable = true;</strong> to
+<strong>/etc/nixos/configuration.nix</strong>
+and rebuild the system configuration:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>nixos-rebuild<span class="w"> </span>switch
+</pre></div>
+</div>
+<p>After that, use <strong class="program">systemctl</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">systemctl enable unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">systemctl restart unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">systemctl stop unit</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">systemctl disable unit</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_7 class=nojs />
+            <label for=community_7 id=community-openbsd>
+            <a href=#community-openbsd onclick="nxt_tab_click(event)">OpenBSD</a></label><div class="docutils container">
+<p>To install Unit from
+<a class="reference external" href="https://www.openbsd.org/faq/faq15.html">OpenBSD packages</a>,
+get the core package and other packages you need:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-perl
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-php74
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-php80
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-php81
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-php82
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-php83
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-python
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg_add<span class="w"> </span>unit-ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>rcctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>To install Unit from
+<a class="reference external" href="https://pkgsrc.se/www/unit">OpenBSD ports</a>,
+start by updating your port collection,
+for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/usr/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cvs<span class="w"> </span>-d<span class="w"> </span>anoncvs@anoncvs.spacehopper.org:/cvs<span class="w"> </span>checkout<span class="w"> </span>-P<span class="w"> </span>ports
+</pre></div>
+</div>
+<p>Next, browse to the port path to build and install Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/www/unit/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+<p>This also installs the language modules for Perl, PHP, Python, and Ruby;
+other modules can be built and installed from
+<a class="reference internal" href="#source"><span class="std std-ref">source</span></a>.
+After that, restart Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>rcctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/unit/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>_unit</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><div class="first highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">rcctl enable unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">rcctl restart unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">rcctl stop unit</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">rcctl disable unit</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=community type=radio
+            id=community_8 class=nojs />
+            <label for=community_8 id=community-remisrpm>
+            <a href=#community-remisrpm onclick="nxt_tab_click(event)">Remi's RPM</a></label><div class="docutils container">
+<p><a class="reference external" href="https://blog.remirepo.net/post/2019/01/14/PHP-with-the-NGINX-unit-application-server">Remi’s RPM repository</a>,
+which hosts the latest versions of the PHP stack
+for Fedora and RHEL,
+also has the core Unit package and the PHP modules.</p>
+<p>To use Remi’s versions of Unit’s packages,
+configure the
+<a class="reference external" href="https://blog.remirepo.net/pages/Config-en">repository</a>
+first.
+Remi’s PHP language modules are also compatible
+with the core Unit package from
+<a class="reference internal" href="#installation-precomp-pkgs"><span class="std std-ref">our own
+repository</span></a>.</p>
+<p>Next, install Unit and the PHP modules you want:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>--enablerepo<span class="o">=</span>remi<span class="w"> </span>unit<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>php54-unit-php<span class="w"> </span>php55-unit-php<span class="w"> </span>php56-unit-php<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>php70-unit-php<span class="w"> </span>php71-unit-php<span class="w"> </span>php72-unit-php<span class="w"> </span>php73-unit-php<span class="w"> </span>php74-unit-php<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>php80-unit-php<span class="w"> </span>php81-unit-php<span class="w"> </span>php82-unit-php
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit<span class="w">  </span><span class="c1"># Necessary for Unit to pick up any changes in language module setup</span>
+</pre></div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">socket</span></a></td>
+<td><strong>/run/unit/control.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td><strong>/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>nobody</strong></td>
+</tr>
+<tr class="row-even"><td>Startup and shutdown</td>
+<td><div class="first highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable Unit to launch automatically at system startup">systemctl enable unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Start or restart Unit; one-time action">systemctl restart unit</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Stop a running Unit; one-time action">systemctl stop unit</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Disable Unit's automatic startup">systemctl disable unit</span>
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="docker-images">
+<span id="installation-docker"></span><h2>Docker Images<a class="headerlink" href="#docker-images" title="Permalink to this heading">§</a></h2>
+<p>Unit’s Docker images
+come in several language-specific flavors:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tag</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-minimal</span></code></td>
+<td>No language modules;
+based on the <strong>debian:bullseye-slim</strong>
+<a class="reference external" href="https://hub.docker.com/_/debian">image</a>.</td>
+</tr>
+<tr class="row-odd"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-go1.21</span></code></td>
+<td>Single-language;
+based on the <strong>golang:1.21</strong>
+<a class="reference external" href="https://hub.docker.com/_/golang">image</a>.</td>
+</tr>
+<tr class="row-even"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-jsc11</span></code></td>
+<td>Single-language;
+based on the <strong>eclipse-temurin:11-jdk</strong>
+<a class="reference external" href="https://hub.docker.com/_/eclipse-temurin">image</a>.</td>
+</tr>
+<tr class="row-odd"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-node20</span></code></td>
+<td>Single-language;
+based on the <strong>node:20</strong>
+<a class="reference external" href="https://hub.docker.com/_/node">image</a>.</td>
+</tr>
+<tr class="row-even"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-perl5.38</span></code></td>
+<td>Single-language;
+based on the <strong>perl:5.38</strong>
+<a class="reference external" href="https://hub.docker.com/_/perl">image</a>.</td>
+</tr>
+<tr class="row-odd"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-php8.2</span></code></td>
+<td>Single-language;
+based on the <strong>php:8.2-cli</strong>
+<a class="reference external" href="https://hub.docker.com/_/php">image</a>.</td>
+</tr>
+<tr class="row-even"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-python3.11</span></code></td>
+<td>Single-language;
+based on the <strong>python:3.11</strong>
+<a class="reference external" href="https://hub.docker.com/_/python">image</a>.</td>
+</tr>
+<tr class="row-odd"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-ruby3.2</span></code></td>
+<td>Single-language;
+based on the <strong>ruby:3.2</strong>
+<a class="reference external" href="https://hub.docker.com/_/ruby">image</a>.</td>
+</tr>
+<tr class="row-even"><td><code class="samp docutils literal notranslate"><span class="pre">1.33.0-wasm</span></code></td>
+<td>Single-language;
+based on the <strong>debian:bullseye-slim</strong>
+<a class="reference external" href="https://hub.docker.com/_/debian">image</a>.</td>
+</tr>
+</tbody>
+</table>
+<details id=inst-lang-docker_
+            onclick="window.location.hash='#inst-lang-docker'">
+            <summary><span>Customizing language versions in Docker images</span></summary><div class="docutils container">
+<p>To build a custom language version image,
+clone and rebuild the sources locally
+with Docker installed:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>build-&lt;language<span class="w"> </span>name&gt;&lt;language<span class="w"> </span>version&gt;<span class="w"> </span>VERSIONS_&lt;language<span class="w"> </span>name&gt;<span class="o">=</span>&lt;language<span class="w"> </span>version&gt;
+</pre></div>
+</div>
+<p>The <strong class="program">make</strong> utility parses the command line
+to extract the language name and version;
+these values must reference an existing official language image
+to be used as the base for the build.
+If not sure whether an official image exists
+for a specific language version,
+follow the links in the tag table above.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Unit relies on the official Docker images,
+so any customization method offered by their maintainers
+is equally applicable;
+to tailor a Unit image to your needs,
+see the quick reference for its base image.</p>
+</div>
+<p>The language name can be
+<strong>go</strong>, <strong>jsc</strong>, <strong>node</strong>, <strong>perl</strong>,
+<strong>php</strong>, <strong>python</strong>, or <strong>ruby</strong>;
+the version is defined as <strong>&lt;major&gt;.&lt;minor&gt;</strong>,
+except for <strong>jsc</strong> and <strong>node</strong>
+that take only major version numbers
+(as seen in the tag table).
+Thus, to create an image with Python 3.10
+and tag it as <strong>unit:|version|-python3.10</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginx/unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>checkout<span class="w"> </span><span class="p">|</span>version<span class="p">|</span><span class="w">  </span><span class="c1"># Optional; use to choose a specific Unit version</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>pkg/docker/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span>build-<span class=nxt_ph title="Language name and version">python3.10</span><span class="w"> </span><span class="nv">VERSIONS_<span class=nxt_ph title="Language name">python</span></span><span class="o">=</span><span class=nxt_ph title="Language version">3.10</span>
+</pre></div>
+</div>
+<p>For details, see the
+<a class="reference external" href="https://github.com/nginx/unit/blob/master/pkg/docker/Makefile">Makefile</a>.
+For other customization scenarios, see the
+<a class="reference internal" href="../howto/docker/"><span class="doc">Docker howto</span></a>.</p>
+</div>
+</details><details id=inst-pre-official-docker_
+            onclick="window.location.hash='#inst-pre-official-docker'">
+            <summary><span>Images with pre-1.29.1 Unit versions</span></summary><div class="docutils container">
+Before Unit 1.29.1 was released,
+our Docker images were available
+from the official
+<a class="reference external" href="https://hub.docker.com/r/nginx/unit/">NGINX repository</a>
+on Docker Hub.</div>
+</details><details id=inst-legacy-docker_
+            onclick="window.location.hash='#inst-legacy-docker'">
+            <summary><span>Images with pre-1.22.0 Unit versions</span></summary><div class="docutils container">
+<p>Before Unit 1.22.0 was released,
+the following tagging scheme was used:</p>
+<blockquote>
+<div><table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tag</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>&lt;version&gt;-full</strong></td>
+<td>Contains modules for all languages that Unit then supported.</td>
+</tr>
+<tr class="row-odd"><td><strong>&lt;version&gt;-minimal</strong></td>
+<td>No language modules were included.</td>
+</tr>
+<tr class="row-even"><td><strong>&lt;version&gt;-&lt;language&gt;</strong></td>
+<td>A specific language module
+such as <strong>1.21.0-ruby2.3</strong> or <strong>1.21.0-python2.7</strong>.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+</details><p>You can obtain the images from these sources:</p>
+<div class="nxt_tabs docutils container">
+<input name=docker type=radio
+            id=docker_0 class=nojs checked/>
+            <label for=docker_0 id=docker-dockerhub>
+            <a href=#docker-dockerhub onclick="nxt_tab_click(event)">Docker Hub</a></label><div class="docutils container">
+<p>To install and run Unit from
+<a class="reference external" href="https://hub.docker.com/_/unit">official builds</a>
+at Docker Hub:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>pull<span class="w"> </span>unit:<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>unit:<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>
+</pre></div>
+</div>
+</div>
+<input name=docker type=radio
+            id=docker_1 class=nojs />
+            <label for=docker_1 id=docker-amazonecrpublicgallery>
+            <a href=#docker-amazonecrpublicgallery onclick="nxt_tab_click(event)">Amazon ECR Public Gallery</a></label><div class="docutils container">
+<p>To install and run Unit from NGINX’s
+<a class="reference external" href="https://gallery.ecr.aws/nginx/unit">repository</a>
+at Amazon ECR Public Gallery:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>pull<span class="w"> </span>public.ecr.aws/nginx/unit:<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>public.ecr.aws/nginx/unit:<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>
+</pre></div>
+</div>
+</div>
+<input name=docker type=radio
+            id=docker_2 class=nojs />
+            <label for=docker_2 id=docker-packagesnginxorg>
+            <a href=#docker-packagesnginxorg onclick="nxt_tab_click(event)">packages.nginx.org</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s 1.30+ image tarballs aren’t published on the website;
+this channel is deprecated.</p>
+</div>
+<p>To install and run Unit
+from the tarballs stored on our
+<a class="reference external" href="https://packages.nginx.org/unit/docker/">website</a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-O<span class="w"> </span>https://packages.nginx.org/unit/docker/1.29.1/nginx-unit-<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>.tar.gz
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-O<span class="w"> </span>https://packages.nginx.org/unit/docker/1.29.1/nginx-unit-<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>.tar.gz.sha512
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sha512sum<span class="w"> </span>-c<span class="w"> </span>nginx-unit-<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>.tar.gz.sha512
+<span class="go">      nginx-unit-<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>.tar.gz: OK</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>load<span class="w"> </span>&lt;<span class="w"> </span>nginx-unit-<span class=nxt_ph title="Specific image tag; see above for a complete list">TAG</span>.tar.gz
+</pre></div>
+</div>
+</div>
+</div>
+<p>Runtime details:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Control <a class="reference internal" href="../howto/security/#sec-socket"><span class="std std-ref">socket</span></a></td>
+<td><strong>/var/run/control.unit.sock</strong></td>
+</tr>
+<tr class="row-even"><td>Log <a class="reference internal" href="../troubleshooting/#troubleshooting-log"><span class="std std-ref">file</span></a></td>
+<td>Forwarded to the
+<a class="reference external" href="https://docs.docker.com/config/containers/logging/">Docker log collector</a></td>
+</tr>
+<tr class="row-odd"><td>Non-privileged <a class="reference internal" href="../howto/security/#security-apps"><span class="std std-ref">user and group</span></a></td>
+<td><strong>unit</strong></td>
+</tr>
+</tbody>
+</table>
+<p>For more details,
+see the repository pages
+(<a class="reference external" href="https://hub.docker.com/_/unit">Docker Hub</a>,
+<a class="reference external" href="https://gallery.ecr.aws/nginx/unit">Amazon ECR Public Gallery</a>)
+and our
+<a class="reference internal" href="../howto/docker/"><span class="doc">Docker howto</span></a>.</p>
+<div class="section" id="initial-configuration">
+<span id="installation-docker-init"></span><h3>Initial configuration<a class="headerlink" href="#initial-configuration" title="Permalink to this heading">§</a></h3>
+<p>The official images support initial container configuration,
+implemented with an <strong>ENTRYPOINT</strong>
+<a class="reference external" href="https://docs.docker.com/engine/reference/builder/#entrypoint">script</a>.
+First, the script checks the Unit
+<a class="reference internal" href="../howto/source/#source-config-src-state"><span class="std std-ref">state directory</span></a>
+in the container
+(<strong>/var/lib/unit/</strong>).
+If it’s empty,
+the script processes certain file types
+in the container’s <strong>/docker-entrypoint.d/</strong> directory:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">File Type</th>
+<th class="head">Purpose/Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>.pem</strong></td>
+<td><a class="reference internal" href="../certificates/#configuration-ssl"><span class="std std-ref">Certificate bundles</span></a>,
+uploaded under respective names:
+<strong>cert.pem</strong> to <strong>/certificates/cert</strong>.</td>
+</tr>
+<tr class="row-odd"><td><strong>.json</strong></td>
+<td><a class="reference internal" href="../controlapi/#configuration-mgmt"><span class="std std-ref">Configuration snippets</span></a>, uploaded
+to the <strong>/config</strong> section of Unit’s configuration.</td>
+</tr>
+<tr class="row-even"><td><strong>.sh</strong></td>
+<td><span class=nxt_hint title="Use shebang in your scripts to specify a custom shell">
+                         Shell scripts</span>,
+run after the <strong>.pem</strong> and <strong>.json</strong> files are uploaded;
+must be executable.</td>
+</tr>
+</tbody>
+</table>
+<p>The script warns about any other file types
+in <strong>/docker-entrypoint.d/</strong>.</p>
+<p>This mechanism enables
+customizing your containers at startup,
+reusing configurations,
+and automating workflows to reduce manual effort.
+To use the feature,
+add <strong>COPY</strong> directives for certificate bundles,
+configuration fragments,
+and shell scripts
+to your <strong>Dockerfile</strong> derived from an official image:</p>
+<div class="highlight-docker notranslate"><div class="highlight"><pre><span></span><span class="k">FROM</span><span class="w"> </span><span class="s">unit:1.33.0-minimal</span>
+<span class="k">COPY</span><span class="w"> </span>./*.pem<span class="w">  </span>/docker-entrypoint.d/
+<span class="k">COPY</span><span class="w"> </span>./*.json<span class="w"> </span>/docker-entrypoint.d/
+<span class="k">COPY</span><span class="w"> </span>./*.sh<span class="w">   </span>/docker-entrypoint.d/
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Mind that running Unit even once populates its state directory;
+this prevents the script from executing,
+so this script-based initialization must occur
+before you run Unit in your derived container.</p>
+</div>
+<p>This feature comes in handy
+if you want to tie Unit
+to a certain app configuration for later use.
+For ad-hoc initialization,
+you can mount a directory with configuration files
+to a container at startup:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>--mount<span class="w">  </span><span class="se">\</span>
+<span class="w">         </span><span class="nv">type</span><span class="o">=</span>bind,src<span class="o">=</span><span class=nxt_ph title="Use a real path instead">/path/to/config/files/</span>,dst<span class="o">=</span>/docker-entrypoint.d/<span class="w">  </span><span class="se">\</span>
+<span class="w">         </span>unit:1.33.0-minimal<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="source-code">
+<span id="source"></span><h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this heading">§</a></h2>
+<p>You can get Unit’s source code
+from our official GitHub repository
+or as a tarball.</p>
+<div class="nxt_tabs docutils container">
+<input name=get-source type=radio
+            id=get-source_0 class=nojs checked/>
+            <label for=get-source_0 id=get-source-git>
+            <a href=#get-source-git onclick="nxt_tab_click(event)">Git</a></label><div class="docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginx/unit<span class="w">            </span><span class="c1"># Latest updates to the repository</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="c1"># -- or --</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span><span class="m">1</span>.33.0<span class="w"> </span>https://github.com/nginx/unit<span class="w">  </span><span class="c1"># Specific version tag; see https://github.com/nginx/unit/tags</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>unit
+</pre></div>
+</div>
+</div>
+<input name=get-source type=radio
+            id=get-source_1 class=nojs />
+            <label for=get-source_1 id=get-source-tarball>
+            <a href=#get-source-tarball onclick="nxt_tab_click(event)">Tarball</a></label><div class="docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-O<span class="w"> </span>https://sources.nginx.org/unit/unit-1.33.0.tar.gz
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar<span class="w"> </span>xzf<span class="w"> </span>unit-1.33.0.tar.gz
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>unit-1.33.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>To build Unit and specific language modules from these sources,
+refer to the
+<a class="reference internal" href="../howto/source/"><span class="doc">source code howto</span></a>;
+to package custom modules, see the
+<a class="reference internal" href="../howto/modules/#modules-pkg"><span class="std std-ref">module howto</span></a>.</p>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/installation.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

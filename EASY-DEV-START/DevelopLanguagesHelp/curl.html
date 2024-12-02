@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>curl - EIC&amp;ESB Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EIC&amp;ESB Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="adonisJs.html"><strong aria-hidden="true">1.</strong> adonisJs</a></li><li class="chapter-item expanded "><a href="aws.html"><strong aria-hidden="true">2.</strong> aws</a></li><li class="chapter-item expanded "><a href="cSharp.html"><strong aria-hidden="true">3.</strong> cSharp</a></li><li class="chapter-item expanded "><a href="curl.html" class="active"><strong aria-hidden="true">4.</strong> curl</a></li><li class="chapter-item expanded "><a href="docker.html"><strong aria-hidden="true">5.</strong> docker</a></li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">6.</strong> elasticsearch</a></li><li class="chapter-item expanded "><a href="expressJs.html"><strong aria-hidden="true">7.</strong> expressJs</a></li><li class="chapter-item expanded "><a href="gcloud.html"><strong aria-hidden="true">8.</strong> gcloud</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">9.</strong> git</a></li><li class="chapter-item expanded "><a href="golang.html"><strong aria-hidden="true">10.</strong> golang</a></li><li class="chapter-item expanded "><a href="java.html"><strong aria-hidden="true">11.</strong> java</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">12.</strong> javascript</a></li><li class="chapter-item expanded "><a href="kubernetes.html"><strong aria-hidden="true">13.</strong> kubernetes</a></li><li class="chapter-item expanded "><a href="laravel.html"><strong aria-hidden="true">14.</strong> laravel</a></li><li class="chapter-item expanded "><a href="mongodb.html"><strong aria-hidden="true">15.</strong> mongodb</a></li><li class="chapter-item expanded "><a href="mysql.html"><strong aria-hidden="true">16.</strong> mysql</a></li><li class="chapter-item expanded "><a href="nginx.html"><strong aria-hidden="true">17.</strong> nginx</a></li><li class="chapter-item expanded "><a href="nodeJs.html"><strong aria-hidden="true">18.</strong> nodeJs</a></li><li class="chapter-item expanded "><a href="php.html"><strong aria-hidden="true">19.</strong> php</a></li><li class="chapter-item expanded "><a href="pm2.html"><strong aria-hidden="true">20.</strong> pm2</a></li><li class="chapter-item expanded "><a href="puppeteer.html"><strong aria-hidden="true">21.</strong> puppeteer</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">22.</strong> python</a></li><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">23.</strong> ubuntu</a></li><li class="chapter-item expanded "><a href="vscode.html"><strong aria-hidden="true">24.</strong> vscode</a></li><li class="chapter-item expanded "><a href="xml.html"><strong aria-hidden="true">25.</strong> xml</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>#!/bin/bash
+##############################################################################</p>
+<h1 id="basics"><a class="header" href="#basics">BASICS</a></h1>
+<p>##############################################################################</p>
+<h1 id="help"><a class="header" href="#help">help</a></h1>
+<p>curl -h                 # help
+curl --help             # same as -h
+curl --manual           # whole man page</p>
+<h1 id="verbose"><a class="header" href="#verbose">verbose</a></h1>
+<p>curl -v                 # verbose
+curl -vv                # even more verbose</p>
+<h1 id="redirect-output-to-the-file"><a class="header" href="#redirect-output-to-the-file">redirect output to the file</a></h1>
+<p>curl http://url/file &gt; file</p>
+<h1 id="write-to-file-instead-of-stdout"><a class="header" href="#write-to-file-instead-of-stdout">write to file instead of stdout</a></h1>
+<p>curl -o file http://url/file
+curl --output file http://url/file</p>
+<h1 id="write-output-to-a-file-named-as-the-remote-file"><a class="header" href="#write-output-to-a-file-named-as-the-remote-file">write output to a file named as the remote file</a></h1>
+<p>curl -o file http://url/file
+curl --output file http://url/file</p>
+<h1 id="execute-remote-script"><a class="header" href="#execute-remote-script">execute remote script</a></h1>
+<p>bash &lt;(curl -s http://url/myscript.sh)</p>
+<h1 id="download-headers"><a class="header" href="#download-headers">download headers</a></h1>
+<p>curl -I url             # display header</p>
+<h1 id="basic-authentification"><a class="header" href="#basic-authentification">basic authentification</a></h1>
+<p>curl --user username:password http://example.com/
+curl -u username:password http://example.com/</p>
+<h1 id="ssl"><a class="header" href="#ssl">SSL</a></h1>
+<h1 id="-k---insecure-allow-insecure-server-connections-when-using-ssl"><a class="header" href="#-k---insecure-allow-insecure-server-connections-when-using-ssl">-k, --insecure allow insecure server connections when using SSL</a></h1>
+<p>curl -k https://server_with_self_signed_cert/endpoint
+curl --insecure https://server_with_self_signed_cert/endpoint</p>
+<h1 id="http-request"><a class="header" href="#http-request">HTTP request</a></h1>
+<h1 id="-x---request--specify-request-command-to-use"><a class="header" href="#-x---request--specify-request-command-to-use">-X, --request <command> specify request command to use</a></h1>
+<h1 id="example"><a class="header" href="#example">example:</a></h1>
+<p>curl -X GET http://url/endpoint</p>
+<h1 id="http-header"><a class="header" href="#http-header">HTTP header</a></h1>
+<h1 id="-h---header-headerfile-pass-custom-headers-to-server"><a class="header" href="#-h---header-headerfile-pass-custom-headers-to-server">-H, --header <a href="mailto:header/@file">header/@file</a> pass custom header(s) to server</a></h1>
+<h1 id="example-1"><a class="header" href="#example-1">example:</a></h1>
+<p>curl -H 'user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.163 Safari/537.36' http://url/endpoing</p>
+<h1 id="http-post-data"><a class="header" href="#http-post-data">HTTP POST data</a></h1>
+<h1 id="-d---data------http-post-data"><a class="header" href="#-d---data------http-post-data">-d, --data <data>     HTTP POST data</a></h1>
+<h1 id="-d---data-data------http-post-data-from-file"><a class="header" href="#-d---data-data------http-post-data-from-file">-d, --data @data      HTTP POST data from file</a></h1>
+<h1 id="example-2"><a class="header" href="#example-2">example:</a></h1>
+<p>curl -d '{json}' -H 'Content-Type: application/json' http://url/endpoint</p>
+<h1 id="config-file"><a class="header" href="#config-file">config file</a></h1>
+<p>curl -K file            #
+#or                     # Read config from a file
+curl --config file      #
+$HOME/.curlrc           # Default config file in UNIX-like systems</p>
+<p>##############################################################################</p>
+<h1 id="write-out-parameters"><a class="header" href="#write-out-parameters">WRITE OUT PARAMETERS</a></h1>
+<p>##############################################################################</p>
+<h1 id="-w---write-out--use-output-format-after-completion"><a class="header" href="#-w---write-out--use-output-format-after-completion">-w, --write-out <format> Use output FORMAT after completion</a></h1>
+<h1 id="example-3"><a class="header" href="#example-3">example:</a></h1>
+<p>curl -w %{size_header} --silent -o /dev/null http://gogle.com # print size of header when you accessing google.com</p>
+<h1 id="format-supported"><a class="header" href="#format-supported">FORMAT supported:</a></h1>
+<h1 id="content_type--------shows-the-content-type-of-the-requested-document-if-there-was-any"><a class="header" href="#content_type--------shows-the-content-type-of-the-requested-document-if-there-was-any">%{content_type}       # shows the Content-Type of the requested document, if there was any.</a></h1>
+<h1 id="filename_effective--shows-the-ultimate-filename-that-curl-writes-out-to"><a class="header" href="#filename_effective--shows-the-ultimate-filename-that-curl-writes-out-to">%{filename_effective} # shows the ultimate filename that curl writes out to.</a></h1>
+<pre><code>                    # This is only meaningful if curl is told to write to a file with
+                    # the --remote-name or --output option. It's most useful in combination
+                    #  with the --remote-header-name option.
+</code></pre>
+<h1 id="ftp_entry_path------shows-the-initial-path-curl-ended-up-in-when-logging-on-to-the-remote-ftp-server"><a class="header" href="#ftp_entry_path------shows-the-initial-path-curl-ended-up-in-when-logging-on-to-the-remote-ftp-server">%{ftp_entry_path}     # shows the initial path curl ended up in when logging on to the remote FTP server.</a></h1>
+<h1 id="response_code-------shows-the-numerical-response-code-that-was-found-in-the-last-transfer"><a class="header" href="#response_code-------shows-the-numerical-response-code-that-was-found-in-the-last-transfer">%{response_code}      # shows the numerical response code that was found in the last transfer.</a></h1>
+<h1 id="http_connect--------shows-the-numerical-code-that-was-found-in-the-last-response-from-a-proxy"><a class="header" href="#http_connect--------shows-the-numerical-code-that-was-found-in-the-last-response-from-a-proxy">%{http_connect}       # shows the numerical code that was found in the last response (from a proxy)</a></h1>
+<pre><code>                    # to a curl CONNECT request.
+</code></pre>
+<h1 id="local_ip------------shows-the-ip-address-of-the-local-end-of-the-most-recently-done-connectioncan"><a class="header" href="#local_ip------------shows-the-ip-address-of-the-local-end-of-the-most-recently-done-connectioncan">%{local_ip}           # shows the IP address of the local end of the most recently done connection—can</a></h1>
+<pre><code>                    # be either IPv4 or IPv6
+</code></pre>
+<h1 id="local_port----------shows-the-local-port-number-of-the-most-recently-made-connection"><a class="header" href="#local_port----------shows-the-local-port-number-of-the-most-recently-made-connection">%{local_port}         # shows the local port number of the most recently made connection</a></h1>
+<h1 id="num_connects--------shows-the-number-of-new-connects-made-in-the-recent-transfer"><a class="header" href="#num_connects--------shows-the-number-of-new-connects-made-in-the-recent-transfer">%{num_connects}       # shows the number of new connects made in the recent transfer.</a></h1>
+<h1 id="num_redirects-------shows-the-number-of-redirects-that-were-followed-in-the-request"><a class="header" href="#num_redirects-------shows-the-number-of-redirects-that-were-followed-in-the-request">%{num_redirects}      # shows the number of redirects that were followed in the request.</a></h1>
+<h1 id="redirect_url--------shows-the-actual-url-a-redirect-would-take-you-to-when-an-http-request"><a class="header" href="#redirect_url--------shows-the-actual-url-a-redirect-would-take-you-to-when-an-http-request">%{redirect_url}       # shows the actual URL a redirect would take you to when an HTTP request</a></h1>
+<pre><code>                    # was made without -L to follow redirects.
+</code></pre>
+<h1 id="remote_ip-----------shows-the-remote-ip-address-of-the-most-recently-made-connectioncan-be"><a class="header" href="#remote_ip-----------shows-the-remote-ip-address-of-the-most-recently-made-connectioncan-be">%{remote_ip}          # shows the remote IP address of the most recently made connection—can be</a></h1>
+<pre><code>                    # either IPv4 or IPv6.
+</code></pre>
+<h1 id="remote_port---------shows-the-remote-port-number-of-the-most-recently-made-connection"><a class="header" href="#remote_port---------shows-the-remote-port-number-of-the-most-recently-made-connection">%{remote_port}        # shows the remote port number of the most recently made connection.</a></h1>
+<h1 id="size_download-------shows-the-total-number-of-bytes-that-were-downloaded"><a class="header" href="#size_download-------shows-the-total-number-of-bytes-that-were-downloaded">%{size_download}      # shows the total number of bytes that were downloaded.</a></h1>
+<h1 id="size_header---------shows-the-total-number-of-bytes-of-the-downloaded-headers"><a class="header" href="#size_header---------shows-the-total-number-of-bytes-of-the-downloaded-headers">%{size_header}        # shows the total number of bytes of the downloaded headers.</a></h1>
+<h1 id="size_request--------shows-the-total-number-of-bytes-that-were-sent-in-the-http-request"><a class="header" href="#size_request--------shows-the-total-number-of-bytes-that-were-sent-in-the-http-request">%{size_request}       # shows the total number of bytes that were sent in the HTTP request.</a></h1>
+<h1 id="size_upload---------shows-the-total-number-of-bytes-that-were-uploaded"><a class="header" href="#size_upload---------shows-the-total-number-of-bytes-that-were-uploaded">%{size_upload}        # shows the total number of bytes that were uploaded.</a></h1>
+<h1 id="speed_download------shows-the-average-download-speed-that-curl-measured-for-the-complete-download"><a class="header" href="#speed_download------shows-the-average-download-speed-that-curl-measured-for-the-complete-download">%{speed_download}     # shows the average download speed that curl measured for the complete download</a></h1>
+<pre><code>                    # in bytes per second.
+</code></pre>
+<h1 id="speed_upload--------shows-the-average-upload-speed-that-curl-measured-for-the-complete-upload-in"><a class="header" href="#speed_upload--------shows-the-average-upload-speed-that-curl-measured-for-the-complete-upload-in">%{speed_upload}       # shows the average upload speed that curl measured for the complete upload in</a></h1>
+<pre><code>                    # bytes per second.
+</code></pre>
+<h1 id="ssl_verify_result---shows-the-result-of-the-ssl-peer-certificate-verification-that-was-requested"><a class="header" href="#ssl_verify_result---shows-the-result-of-the-ssl-peer-certificate-verification-that-was-requested">%{ssl_verify_result}  # shows the result of the SSL peer certificate verification that was requested.</a></h1>
+<pre><code>                    # 0 means the verification was successful.
+</code></pre>
+<h1 id="time_appconnect-----shows-the-time-in-seconds-it-took-from-the-start-until-the-sslsshetc-connecthandshake"><a class="header" href="#time_appconnect-----shows-the-time-in-seconds-it-took-from-the-start-until-the-sslsshetc-connecthandshake">%{time_appconnect}    # shows the time, in seconds, it took from the start until the SSL/SSH/etc connect/handshake</a></h1>
+<pre><code>                    # to the remote host was completed.
+</code></pre>
+<h1 id="time_connect--------shows-the-time-in-seconds-it-took-from-the-start-until-the-tcp-connect-to-the-remote"><a class="header" href="#time_connect--------shows-the-time-in-seconds-it-took-from-the-start-until-the-tcp-connect-to-the-remote">%{time_connect}       # shows the time, in seconds, it took from the start until the TCP connect to the remote</a></h1>
+<pre><code>                    # host (or proxy) was completed.
+</code></pre>
+<h1 id="time_namelookup-----shows-the-time-in-seconds-it-took-from-the-start-until-the-name-resolving-was-completed"><a class="header" href="#time_namelookup-----shows-the-time-in-seconds-it-took-from-the-start-until-the-name-resolving-was-completed">%{time_namelookup}    # shows the time, in seconds, it took from the start until the name resolving was completed.</a></h1>
+<h1 id="time_pretransfer----shows-the-time-in-seconds-it-took-from-the-start-until-the-file-transfer-was-just-about"><a class="header" href="#time_pretransfer----shows-the-time-in-seconds-it-took-from-the-start-until-the-file-transfer-was-just-about">%{time_pretransfer}   # shows the time, in seconds, it took from the start until the file transfer was just about</a></h1>
+<pre><code>                    # to begin. This includes all pre-transfer commands and negotiations that are specific to
+                    # the particular protocol(s) involved.
+</code></pre>
+<h1 id="time_redirect-------shows-the-time-in-seconds-it-took-for-all-redirection-steps-including-name-lookup-connect"><a class="header" href="#time_redirect-------shows-the-time-in-seconds-it-took-for-all-redirection-steps-including-name-lookup-connect">%{time_redirect}      # shows the time, in seconds, it took for all redirection steps including name lookup, connect,</a></h1>
+<pre><code>                    # pre-transfer and transfer before the final transaction was started. time_redirect shows
+                    # the complete execution time for multiple redirections.
+</code></pre>
+<h1 id="time_starttransfer--shows-the-time-in-seconds-it-took-from-the-start-until-the-first-byte-was-just-about-to"><a class="header" href="#time_starttransfer--shows-the-time-in-seconds-it-took-from-the-start-until-the-first-byte-was-just-about-to">%{time_starttransfer} # shows the time, in seconds, it took from the start until the first byte was just about to</a></h1>
+<pre><code>                    # be transferred. This includes time_pretransfer and also the time the server needed
+                    # to calculate the result.
+</code></pre>
+<h1 id="time_total----------shows-the-total-time-in-seconds-that-the-full-operation-lasted-the-time-will-be-displayed"><a class="header" href="#time_total----------shows-the-total-time-in-seconds-that-the-full-operation-lasted-the-time-will-be-displayed">%{time_total}         # shows the total time, in seconds, that the full operation lasted. The time will be displayed</a></h1>
+<pre><code>                    # with millisecond resolution.
+</code></pre>
+<h1 id="url_effective-------shows-the-url-that-was-fetched-last-this-is-particularly-meaningful-if-you-have-told-curl"><a class="header" href="#url_effective-------shows-the-url-that-was-fetched-last-this-is-particularly-meaningful-if-you-have-told-curl">%{url_effective}      # shows the URL that was fetched last. This is particularly meaningful if you have told curl</a></h1>
+<pre><code>                    # to follow Location: headers (with -L)</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="cSharp.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="docker.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="cSharp.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="docker.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

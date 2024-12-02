@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/source/">
+<meta property="og:title" content="NGINX Unit: Building From Source">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Unit in Ansible" href="../ansible/" />
+<link rel="prev" title="Unit in Docker" href="../docker/" />
+
+<title>Building From Source — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building From Source</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-required-software">Installing Required Software</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prereq-debianubuntu">Debian, Ubuntu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prereq-amazonfedorarhel">Amazon, Fedora, RHEL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prereq-freebsd">FreeBSD</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prereq-solaris">Solaris</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-sources">Configuring Sources</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#directory-structure">Directory Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-modules">Configuring Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#modules-go">Go</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-java">Java</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-nodejs">Node.js</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-perl">Perl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-php">PHP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-python">Python</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-ruby">Ruby</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-webassembly">WebAssembly</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#modules-unit-wasm">Unit-Wasm</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#building-and-installing-unit">Building and Installing Unit</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#embedded-language-modules">Embedded Language Modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#external-language-modules">External Language Modules</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#startup-and-shutdown">Startup and Shutdown</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="building-from-source">
+<h1>Building From Source<a class="headerlink" href="#building-from-source" title="Permalink to this heading">§</a></h1>
+<p>After you’ve obtained Unit’s <a class="reference internal" href="../../installation/#source"><span class="std std-ref">source code</span></a>, configure
+and compile it to fine-tune and run a custom Unit build.</p>
+<div class="section" id="installing-required-software">
+<span id="source-prereq-build"></span><h2>Installing Required Software<a class="headerlink" href="#installing-required-software" title="Permalink to this heading">§</a></h2>
+<p>Before configuring and compiling Unit, install the required build tools and the
+library files for the <span class=nxt_hint title="Go, Java, Node.js, PHP, Perl, Python, and Ruby are supported">
+                         required languages</span> and all other features you want in your
+Unit, such as TLS or regular expressions.</p>
+<p>The commands below assume you are configuring Unit with all supported languages
+and features (<strong>X</strong>, <strong>Y</strong>, and <strong>Z</strong> denote major, minor, and
+revision numbers, respectively); omit the packages you won’t use.</p>
+<div class="nxt_tabs nxt_toc docutils container">
+<input name=prereq type=radio
+            id=prereq_0 class=nojs checked/>
+            <label for=prereq_0 id=prereq-debianubuntu>
+            <a href=#prereq-debianubuntu onclick="nxt_tab_click(event)">Debian, Ubuntu</a></label><div class="docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>build-essential
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>golang
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>curl<span class="w"> </span>-sL<span class="w"> </span>https://deb.nodesource.com/setup_<span class=nxt_ph title="Node.js 8.11 or later is supported">VERSION</span>.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="w"> </span>-<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>apt<span class="w"> </span>install<span class="w"> </span>nodejs
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>node-gyp
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>php-dev<span class="w"> </span>libphp-embed
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>libperl-dev
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>python<span class=nxt_ph title="Both Python 2 and Python 3 are supported">X</span>-dev
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>ruby-dev<span class="w"> </span>ruby-rack
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>openjdk-<span class=nxt_ph title="Java 8 or later is supported. Different JDKs may be used">X</span>-jdk
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>libssl-dev
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>libpcre2-dev
+</pre></div>
+</div>
+</div>
+<input name=prereq type=radio
+            id=prereq_1 class=nojs />
+            <label for=prereq_1 id=prereq-amazonfedorarhel>
+            <a href=#prereq-amazonfedorarhel onclick="nxt_tab_click(event)">Amazon, Fedora, RHEL</a></label><div class="docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>gcc<span class="w"> </span>make
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>golang
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>curl<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>curl<span class="w"> </span>-sL<span class="w"> </span>https://rpm.nodesource.com/setup_<span class=nxt_ph title="Node.js 8.11 or later is supported">VERSION</span>.x<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash<span class="w"> </span>-<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>yum<span class="w"> </span>install<span class="w"> </span>nodejs
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>node-gyp
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>php-devel<span class="w"> </span>php-embedded
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>perl-devel<span class="w"> </span>perl-libs
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>python<span class=nxt_ph title="Both Python 2 and Python 3 are supported">X</span>-devel
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>ruby-devel<span class="w"> </span>rubygem-rack
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>java-<span class=nxt_ph title="Java 8 or later is supported. Different JDKs may be used">X.Y.Z</span>-openjdk-devel
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>openssl-devel
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>pcre2-devel
+</pre></div>
+</div>
+</div>
+<input name=prereq type=radio
+            id=prereq_2 class=nojs />
+            <label for=prereq_2 id=prereq-freebsd>
+            <a href=#prereq-freebsd onclick="nxt_tab_click(event)">FreeBSD</a></label><div class="docutils container">
+<p>Ports:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/lang/go/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/www/node/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/www/npm/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>i<span class="w"> </span>-g<span class="w"> </span>node-gyp
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/lang/php<span class=nxt_ph title="PHP versions 5, 7, and 8 are supported">XY</span>/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/lang/perl<span class=nxt_ph title="Perl 5.12 or later is supported">X.Y</span>/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/lang/python/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/lang/ruby<span class=nxt_ph title="Ruby 2.0 or later is supported">XY</span>/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/java/openjdk<span class=nxt_ph title="Java 8 or later is supported. Different JDKs may be used">X</span>/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/security/openssl/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">cd</span><span class="w"> </span>/usr/ports/devel/pcre2/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make<span class="w"> </span>install<span class="w"> </span>clean
+</pre></div>
+</div>
+<p>Packages:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>go
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>node<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>pkg<span class="w"> </span>install<span class="w"> </span>npm<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>i<span class="w"> </span>-g<span class="w"> </span>node-gyp
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>php<span class=nxt_ph title="PHP versions 5, 7, and 8 are supported">XY</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>perl<span class=nxt_ph title="Perl 5.12 or later is supported">X</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>python
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>ruby<span class=nxt_ph title="Ruby 2.0 is supported">XY</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>openjdk<span class=nxt_ph title="Java 8 or later is supported. Different JDKs may be used">X</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>openssl
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>pcre2
+</pre></div>
+</div>
+</div>
+<input name=prereq type=radio
+            id=prereq_3 class=nojs />
+            <label for=prereq_3 id=prereq-solaris>
+            <a href=#prereq-solaris onclick="nxt_tab_click(event)">Solaris</a></label><div class="docutils container">
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>gcc
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>golang
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>php-<span class=nxt_ph title="PHP versions 5, 7, and 8 are supported">XY</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>ruby
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>jdk-<span class=nxt_ph title="Java 8 or later is supported. Different JDKs may be used">X</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>openssl
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkg<span class="w"> </span>install<span class="w"> </span>pcre
+</pre></div>
+</div>
+<p>Also, use <strong class="program">gmake</strong> instead of <strong class="program">make</strong> when <a class="reference internal" href="#source-bld-src"><span class="std std-ref">building
+and installing</span></a> Unit on Solaris.</p>
+</div>
+</div>
+<details id=source-njs_
+            onclick="window.location.hash='#source-njs'">
+            <summary><span>Enabling njs</span></summary><div class="docutils container">
+<p>To build Unit with <a class="reference external" href="https://nginx.org/en/docs/njs/">njs</a> support,
+download the <strong class="program">njs</strong> code to the same parent directory
+as the Unit code.</p>
+<p><strong>0.8.2</strong> is the latest version of <strong class="program">njs</strong> that Unit supports.
+Make sure you are in the correct branch before configuring the binaries.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginx/njs.git
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>njs
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span><span class="m">0</span>.8.2<span class="w"> </span><span class="m">0</span>.8.2
+</pre></div>
+</div>
+<p>Next, configure and build the <strong class="program">njs</strong> binaries. Make sure to use the
+<cite>--no-zlib</cite> and <cite>--no-libxml2</cite> options to avoid
+conflicts with Unit’s dependencies:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span><span class=nxt_hint title="Ensures Unit can link against the resulting library">--no-zlib --no-libxml2</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>make
+</pre></div>
+</div>
+<p>Point to the resulting source and build directories when <a class="reference internal" href="#source-config-src-njs"><span class="std std-ref">configuring</span></a> the Unit code.</p>
+</div>
+</details><details id=source-wasm_
+            onclick="window.location.hash='#source-wasm'">
+            <summary><span>Enabling WebAssembly</span></summary><div class="docutils container">
+<div class="nxt_tabs docutils container">
+<input name=source-enable-webassembly type=radio
+            id=source-enable-webassembly_0 class=nojs checked/>
+            <label for=source-enable-webassembly_0 id=source-enable-webassembly-wasm-wasi-component>
+            <a href=#source-enable-webassembly-wasm-wasi-component onclick="nxt_tab_click(event)">wasm-wasi-component</a></label><div class="docutils container">
+<p>To build Unit with support for the WebAssembly Component Model,
+you need <strong>rust</strong> version 1.76.0+, <strong>cargo</strong> and the developer
+package for <strong>clang</strong> as mentioned in the
+<a class="reference internal" href="#source-prereq-build"><span class="std std-ref">Required Software Section</span></a>.</p>
+<p>Next please refer to
+<a class="reference internal" href="#modules-webassembly"><span class="std std-ref">Configuring Modules - WebAssembly</span></a> for
+further instructions.</p>
+</div>
+<input name=source-enable-webassembly type=radio
+            id=source-enable-webassembly_1 class=nojs />
+            <label for=source-enable-webassembly_1 id=source-enable-webassembly-unit-wasm>
+            <a href=#source-enable-webassembly-unit-wasm onclick="nxt_tab_click(event)">unit-wasm</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The <strong>unit-wasm</strong> module is deprecated.
+We recommend using <strong>wasm-wasi-component</strong> instead,
+available in Unit 1.32.0 and later, which supports
+WebAssembly Components using standard WASI 0.2 interfaces.</p>
+</div>
+<p>To build Unit with the <a class="reference external" href="https://webassembly.org">WebAssembly</a>
+language module,
+you need the
+<a class="reference external" href="https://wasmtime.dev">Wasmtime</a>
+runtime.
+Download the C API
+<a class="reference external" href="https://github.com/bytecodealliance/wasmtime/releases/">files</a>
+suitable for your OS and architecture
+to the same parent directory
+as the Unit code,
+for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>..
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>-O-<span class="w"> </span>https://github.com/bytecodealliance/wasmtime/releases/download/v12.0.0/wasmtime-v12.0.0-x86_64-linux-c-api.tar.xz<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>Jxf<span class="w"> </span>-<span class="w">  </span><span class="c1"># Unpacks to the current directory</span>
+</pre></div>
+</div>
+<p>Point to the resulting <strong>include</strong> and <strong>lib</strong> directories when
+<a class="reference internal" href="#modules-webassembly"><span class="std std-ref">configuring</span></a> the Unit code.</p>
+<p>To build WebAssembly apps that run on Unit, you need
+the <a class="reference external" href="https://github.com/WebAssembly/wasi-sdk">wasi-sysroot</a> SDK:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>-O-<span class="w"> </span>https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-20/wasi-sysroot-20.0.tar.gz<span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>zxf<span class="w"> </span>-
+</pre></div>
+</div>
+<p>When building the apps, add the following environment variable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WASI_SYSROOT=<span class=nxt_ph title="wasi-sysroot directory">/path/to/wasi-sysroot-dir/</span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</details></div>
+<div class="section" id="configuring-sources">
+<span id="source-config-src"></span><h2>Configuring Sources<a class="headerlink" href="#configuring-sources" title="Permalink to this heading">§</a></h2>
+<p>To run system compatibility checks and generate a <strong>Makefile</strong> with core
+build instructions for Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span><span class=nxt_ph title="See the table below">COMPILE-TIME OPTIONS</span>
+</pre></div>
+</div>
+<p>Finalize the resulting <strong>Makefile</strong> by configuring the <a class="reference internal" href="#source-modules"><span class="std std-ref">language
+modules</span></a> you need before proceeding further.</p>
+<p>General options and settings that control compilation, runtime privileges,
+or support for certain features:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--help</strong></td>
+<td><p class="first">Displays a summary of common <strong class="program">./configure</strong> options.</p>
+<p class="last">For language-specific details, run <strong class="command">./configure &lt;language&gt;
+--help</strong> or see <a class="reference internal" href="#source-modules"><span class="std std-ref">below</span></a>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--cc=pathname</strong></td>
+<td><p class="first">Custom C compiler pathname.</p>
+<p class="last">The default is <strong>cc</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--cc-opt=options</strong>, <strong>--ld-opt=options</strong></td>
+<td>Extra options for the C compiler and linker.</td>
+</tr>
+<tr class="row-even"><td><strong>--group=name</strong>, <strong>--user=name</strong></td>
+<td><p class="first">Group name and username to run Unit’s non-privileged <a class="reference internal" href="../security/#security-apps"><span class="std std-ref">processes</span></a>.</p>
+<p class="last">The defaults are <code class="xref std std-option docutils literal notranslate"><span class="pre">--user</span></code>’s primary group and
+<strong>nobody</strong>, respectively.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--debug</strong></td>
+<td>Turns on the <a class="reference internal" href="../../troubleshooting/#troubleshooting-dbg-log"><span class="std std-ref">debug log</span></a>.</td>
+</tr>
+<tr class="row-even"><td><strong>--no-ipv6</strong></td>
+<td>Turns off IPv6 support.</td>
+</tr>
+<tr class="row-odd"><td><strong>--no-unix-sockets</strong></td>
+<td>Turns off UNIX domain sockets support for control and routing.</td>
+</tr>
+<tr class="row-even"><td><strong>--openssl</strong></td>
+<td><p class="first">Turns on OpenSSL support.  Make sure OpenSSL (1.0.1+) header files and
+libraries are in your compiler’s path; it can be set with the
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--cc-opt</span></code> and <code class="xref std std-option docutils literal notranslate"><span class="pre">--ld-opt</span></code> options or the
+<span class="target" id="index-0"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">CFLAGS</span></code> and <span class="target" id="index-1"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">LDFLAGS</span></code> environment variables when
+running <strong class="program">./configure</strong>.</p>
+<p class="last">For details of TLS configuration in Unit, see <a class="reference internal" href="../../certificates/#configuration-ssl"><span class="std std-ref">SSL/TLS certificates</span></a>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p id="source-config-src-pcre">By default, Unit relies on the locally installed version of the <a class="reference external" href="https://www.pcre.org">PCRE</a> library to support regular expressions in <a class="reference internal" href="../../configuration/#configuration-routes"><span class="std std-ref">routes</span></a>; if both major versions are present, Unit selects
+PCRE2.  Two additional options alter this behavior:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--no-regex</strong></td>
+<td>Turns off regex support; any attempts to use a regex in Unit
+configuration cause an error.</td>
+</tr>
+<tr class="row-even"><td><strong>--no-pcre2</strong></td>
+<td>Ignores PCRE2; the older PCRE 8.x library is used instead.</td>
+</tr>
+</tbody>
+</table>
+<p id="source-config-src-njs">Unit also supports the use of <a class="reference external" href="https://nginx.org/en/docs/njs/">njs</a> scripts
+in configuration; to enable this feature, use the respective option:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--njs</strong></td>
+<td>Turns on <strong class="program">njs</strong> support; requires <strong>--openssl</strong>.</td>
+</tr>
+</tbody>
+</table>
+<p>When <code class="xref std std-option docutils literal notranslate"><span class="pre">--njs</span></code> is enabled, the <code class="xref std std-option docutils literal notranslate"><span class="pre">--cc-opt</span></code> and
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--ld-opt</span></code> option values should point to the <strong>src/</strong>
+and <strong>build/</strong> subdirectories of the <strong class="program">njs</strong> source code.
+For example, if you cloned the <strong class="program">njs</strong> repo beside the Unit repo:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>--njs<span class="w"> </span>--openssl<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>--cc-opt<span class="o">=</span><span class="s2">&quot;-I../njs/src/ -I../njs/build/&quot;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>--ld-opt<span class="o">=</span><span class="s2">&quot;-L../njs/build/&quot;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">              </span>...
+</pre></div>
+</div>
+<p>The next option group customizes Unit’s runtime <a class="reference internal" href="#source-dir"><span class="std std-ref">directory
+structure</span></a>:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--prefix=PREFIX</strong></td>
+<td><p class="first" id="source-config-src-prefix">Destination directory prefix for <a class="reference internal" href="#source-dir"><span class="std std-ref">path options</span></a>:
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--bindir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--sbindir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--includedir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--libdir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--modulesdir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--datarootdir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--mandir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--localstatedir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--libstatedir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--runstatedir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--logdir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--tmpdir</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--control</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--pid</span></code>,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--log</span></code>.</p>
+<p class="last">The default is <strong>/usr/local</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--exec-prefix=EXEC_PREFIX</strong></td>
+<td><p class="first">Destination directory prefix for the executable directories only.</p>
+<p class="last">The default is the <strong>PREFIX</strong> value.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--bindir=BINDIR</strong>, <strong>--sbindir=SBINDIR</strong></td>
+<td><p class="first">Directory paths for client and server executables.</p>
+<p class="last">The defaults are <strong>EXEC_PREFIX/bin</strong> and <strong>EXEC_PREFIX/sbin</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--includedir=INCLUDEDIR</strong>, <strong>--libdir=LIBDIR</strong></td>
+<td><p class="first">Directory paths for <strong class="program">libunit</strong> header files and libraries.</p>
+<p class="last">The defaults are <strong>PREFIX/include</strong> and <strong>EXEC_PREFIX/lib</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--modulesdir=MODULESDIR</strong></td>
+<td><p class="first">Directory path for Unit’s language <a class="reference internal" href="../modules/"><span class="doc">modules</span></a>.</p>
+<p class="last">The default is <strong>LIBDIR/unit/modules</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--datarootdir=DATAROOTDIR</strong>, <strong>--mandir=MANDIR</strong></td>
+<td><p class="first">Directory path for <strong>unitd(8)</strong> data storage and its subdirectory
+where the <strong class="program">man</strong> page is installed.</p>
+<p class="last">The defaults are <strong>PREFIX/share</strong> and <strong>DATAROOTDIR/man</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--localstatedir=LOCALSTATEDIR</strong></td>
+<td><p class="first">Directory path where Unit stores its runtime state, PID file,
+control socket, and logs.</p>
+<p class="last">The default is <strong>PREFIX/var</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--libstatedir=LIBSTATEDIR</strong></td>
+<td><p class="first" id="source-config-src-state">Directory path where Unit’s runtime state (configuration, certificates,
+other resources) is stored between runs.  If you migrate your
+installation, copy the entire directory.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The directory is sensitive and must be owned by <strong>root</strong> with
+<strong>700</strong> permissions.  Don’t change its contents externally; use
+the config API to ensure integrity.</p>
+</div>
+<p class="last">The default is <strong>LOCALSTATEDIR/run/unit</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--logdir=LOGDIR</strong>, <strong>--log=LOGFILE</strong></td>
+<td><p class="first">Directory path and filename for Unit’s <a class="reference internal" href="../../troubleshooting/#troubleshooting-log"><span class="std std-ref">log</span></a>.</p>
+<p class="last">The defaults are <strong>LOCALSTATEDIR/log/unit</strong> and
+<strong>LOGDIR/unit.log</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--runstatedir=RUNSTATEDIR</strong></td>
+<td><p class="first">Directory path where Unit stores its PID file and control socket.</p>
+<p class="last">The default is <strong>LOCALSTATEDIR/run/unit</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--pid=pathname</strong></td>
+<td><p class="first">Pathname for the PID file of Unit’s <strong class="program">main</strong> <a class="reference internal" href="../security/#security-apps"><span class="std std-ref">process</span></a>.</p>
+<p class="last">The default is <strong>RUNSTATEDIR/unit.pid</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--control=SOCKET</strong></td>
+<td><p class="first"><a class="reference internal" href="../../controlapi/#configuration-mgmt"><span class="std std-ref">Control API</span></a> socket address in IPv4, IPv6,
+or UNIX domain format:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>--control<span class="o">=</span><span class="m">127</span>.0.0.1:8080
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>--control<span class="o">=[</span>::1<span class="o">]</span>:8080
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>--control<span class="o">=</span>unix:/path/to/control.unit.sock<span class="w">  </span><span class="c1"># Note the unix: prefix</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Avoid exposing an unprotected control socket in public networks.  Use
+<a class="reference internal" href="../integration/#nginx-secure-api"><span class="std std-ref">NGINX</span></a> or a different solution such as SSH
+for security and authentication.</p>
+</div>
+<p class="last">The default is <strong>unix:RUNSTATEDIR/control.unit.sock</strong>, created as
+<strong>root</strong> with <strong>600</strong> permissions.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--tmpdir=TMPDIR</strong></td>
+<td><p class="first">Defines the temporary file storage location (used to dump large request
+bodies).</p>
+<p class="last">The default value is <strong>/tmp</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="directory-structure">
+<span id="source-dir"></span><h3>Directory Structure<a class="headerlink" href="#directory-structure" title="Permalink to this heading">§</a></h3>
+<p>By default, <strong class="command">make install</strong> installs Unit at the following pathnames:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Directory</th>
+<th class="head">Default Path</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>bin</strong> directory</td>
+<td><strong>/usr/local/bin/</strong></td>
+</tr>
+<tr class="row-odd"><td><strong>sbin</strong> directory</td>
+<td><strong>/usr/local/sbin/</strong></td>
+</tr>
+<tr class="row-even"><td><strong>lib</strong> directory</td>
+<td><strong>/usr/local/lib/</strong></td>
+</tr>
+<tr class="row-odd"><td><strong>include</strong> directory</td>
+<td><strong>/usr/local/include/</strong></td>
+</tr>
+<tr class="row-even"><td><strong>tmp</strong> directory</td>
+<td><strong>/tmp/</strong></td>
+</tr>
+<tr class="row-odd"><td>Man pages</td>
+<td><strong>/usr/local/share/man/</strong></td>
+</tr>
+<tr class="row-even"><td>Language modules</td>
+<td><strong>/usr/local/lib/unit/modules/</strong></td>
+</tr>
+<tr class="row-odd"><td>Runtime state</td>
+<td><strong>/usr/local/var/lib/unit/</strong></td>
+</tr>
+<tr class="row-even"><td>PID file</td>
+<td><strong>/usr/local/var/run/unit/unit.pid</strong></td>
+</tr>
+<tr class="row-odd"><td>Log file</td>
+<td><strong>/usr/local/var/log/unit/unit.log</strong></td>
+</tr>
+<tr class="row-even"><td>Control API socket</td>
+<td><strong>unix:/usr/local/var/run/unit/control.unit.sock</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The defaults are designed to work for most cases; to customize this layout,
+set the <code class="xref std std-option docutils literal notranslate"><span class="pre">--prefix</span></code> and its related options during <a class="reference internal" href="#source-config-src-prefix"><span class="std std-ref">configuration</span></a>, defining the resulting file structure.</p>
+</div>
+</div>
+<div class="section" id="configuring-modules">
+<span id="source-modules"></span><h2>Configuring Modules<a class="headerlink" href="#configuring-modules" title="Permalink to this heading">§</a></h2>
+<p>Next, configure a module for each language you want to use with Unit.  The
+<strong class="command">./configure &lt;language&gt;</strong> commands set up individual language modules
+and place module-specific instructions in the <strong>Makefile</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To run apps in several versions of a language, build and install a module
+for each version.  To package custom modules, see the module <a class="reference internal" href="../modules/#modules-pkg"><span class="std std-ref">howto</span></a>.</p>
+</div>
+<div class="nxt_tabs nxt_toc docutils container">
+<input name=modules type=radio
+            id=modules_0 class=nojs checked/>
+            <label for=modules_0 id=modules-go>
+            <a href=#modules-go onclick="nxt_tab_click(event)">Go</a></label><div class="docutils container">
+<p>When you run <strong class="command">./configure go</strong>, Unit sets up the Go package that
+lets your applications <a class="reference internal" href="../../configuration/#configuration-go"><span class="std std-ref">run on Unit</span></a>.  To use the
+package, <a class="reference internal" href="#source-bld-src-ext"><span class="std std-ref">install</span></a> it in your Go environment.
+Available configuration options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--go=pathname</strong></td>
+<td><p class="first">Specific Go executable pathname, also used in <a class="reference internal" href="#source-bld-src-ext"><span class="std std-ref">make</span></a> targets.</p>
+<p class="last">The default is <strong>go</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--go-path=directory</strong></td>
+<td><p class="first">Custom directory path for Go package installation.</p>
+<p class="last">The default is <strong>$GOPATH</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Running <strong class="program">./configure go</strong> doesn’t alter the <span class="target" id="index-2"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">GOPATH</span></code>
+<a class="reference external" href="https://github.com/golang/go/wiki/GOPATH">environment variable</a>, so
+configure-time <code class="xref std std-option docutils literal notranslate"><span class="pre">--go-path</span></code> and compile-time <span class="target" id="index-3"></span><code class="xref std std-envvar docutils literal notranslate"><span class="pre">$GOPATH</span></code>
+must be coherent for Go to find the resulting package.</p>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nv">GOPATH</span><span class="o">=</span>&lt;Go<span class="w"> </span>package<span class="w"> </span>installation<span class="w"> </span>path&gt;<span class="w"> </span><span class="nv">GO111MODULE</span><span class="o">=</span>auto<span class="w"> </span>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span><span class=nxt_ph title="Executable name">app</span><span class="w"> </span><span class=nxt_ph title="Application source code">app.go</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input name=modules type=radio
+            id=modules_1 class=nojs />
+            <label for=modules_1 id=modules-java>
+            <a href=#modules-java onclick="nxt_tab_click(event)">Java</a></label><div class="docutils container">
+<p>When you run <strong class="command">./configure java</strong>, the script configures a module
+to support running <a class="reference external" href="https://download.oracle.com/otndocs/jcp/servlet-3_1-fr-spec/index.html">Java Web Applications</a>
+on Unit.  Available command options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--home=directory</strong></td>
+<td><p class="first">Directory path for Java utilities and header files to build the
+module.</p>
+<p class="last">The default is the <strong>java.home</strong> setting.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--jars=directory</strong></td>
+<td><p class="first">Directory path for Unit’s custom <strong>.jar</strong> files.</p>
+<p class="last">The default is the Java module path.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--lib-path=directory</strong></td>
+<td><p class="first">Directory path for the <strong>libjvm.so</strong> library.</p>
+<p class="last">The default is based on JDK settings.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--local-repo=directory</strong></td>
+<td><p class="first">Directory path for the local <strong>.jar</strong> repository.</p>
+<p class="last">The default is <strong>$HOME/.m2/repository/</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--repo=directory</strong></td>
+<td><p class="first">URL path for the remote Maven repository.</p>
+<p class="last">The default is <strong>http://central.maven.org/maven2/</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--module=basename</strong></td>
+<td><p class="first">Resulting module’s name (<strong>&lt;basename&gt;.unit.so</strong>), also used
+in <a class="reference internal" href="#source-bld-src-emb"><span class="std std-ref">make</span></a> targets.</p>
+<p class="last">The default is <strong>java</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>To configure a module called <strong>java11.unit.so</strong> with OpenJDK&nbsp;11.0.1:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>java<span class="w"> </span>--module<span class="o">=</span>java11<span class="w">  </span><span class="se">\</span>
+<span class="w">                   </span>--home<span class="o">=</span>/Library/Java/JavaVirtualMachines/jdk-11.0.1.jdk/Contents/Home
+</pre></div>
+</div>
+</div>
+<input name=modules type=radio
+            id=modules_2 class=nojs />
+            <label for=modules_2 id=modules-nodejs>
+            <a href=#modules-nodejs onclick="nxt_tab_click(event)">Node.js</a></label><div class="docutils container">
+<p>When you run <strong class="command">./configure nodejs</strong>, Unit sets up the
+<strong class="program">unit-http</strong> module that lets your applications <a class="reference internal" href="../../configuration/#configuration-nodejs"><span class="std std-ref">run on Unit</span></a>.  Available configuration options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--local=directory</strong></td>
+<td><p class="first">Local directory path where the resulting module is installed.</p>
+<p class="last">By default, the module is installed globally <a class="reference internal" href="../../installation/#installation-nodejs-package"><span class="std std-ref">(recommended)</span></a>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--node=pathname</strong></td>
+<td><p class="first">Specific Node.js executable pathname, also used in
+<a class="reference internal" href="#source-bld-src-ext"><span class="std std-ref">make</span></a> targets.</p>
+<p class="last">The default is <strong>node</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--npm=pathname</strong></td>
+<td><p class="first">Specific <strong class="program">npm</strong> executable pathname.</p>
+<p class="last">The default is <strong>npm</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--node-gyp=pathname</strong></td>
+<td><p class="first">Specific <strong class="program">node-gyp</strong> executable pathname.</p>
+<p class="last">The default is <strong>node-gyp</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<input name=modules type=radio
+            id=modules_3 class=nojs />
+            <label for=modules_3 id=modules-perl>
+            <a href=#modules-perl onclick="nxt_tab_click(event)">Perl</a></label><div class="docutils container">
+<p>When you run <strong class="command">./configure perl</strong>, the script configures a module
+to support running Perl scripts as applications on Unit.  Available
+command options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--perl=pathname</strong></td>
+<td><p class="first">Specific Perl executable pathname.</p>
+<p class="last">The default is <strong>perl</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--module=basename</strong></td>
+<td><p class="first">Resulting module’s name (<strong>&lt;basename&gt;.unit.so</strong>), also
+used in <a class="reference internal" href="#source-bld-src-emb"><span class="std std-ref">make</span></a> targets.</p>
+<p class="last">The default is the filename of the <code class="xref std std-option docutils literal notranslate"><span class="pre">--perl</span></code> executable.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>To configure a module called <strong>perl-5.20.unit.so</strong> for Perl&nbsp;5.20.2:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>perl<span class="w"> </span>--module<span class="o">=</span>perl-5.20<span class="w">  </span><span class="se">\</span>
+<span class="w">                   </span>--perl<span class="o">=</span>perl5.20.2
+</pre></div>
+</div>
+</div>
+<input name=modules type=radio
+            id=modules_4 class=nojs />
+            <label for=modules_4 id=modules-php>
+            <a href=#modules-php onclick="nxt_tab_click(event)">PHP</a></label><div class="docutils container">
+<p>When you run <strong class="command">./configure php</strong>, the script configures a custom
+SAPI module linked with the <strong class="program">libphp</strong> library to support running
+PHP applications on Unit.  Available command options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--config=pathname</strong></td>
+<td><p class="first">Pathname of the <strong class="program">php-config</strong> script used to set up
+the resulting module.</p>
+<p class="last">The default is <strong>php-config</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--lib-path=directory</strong></td>
+<td><p class="first">Directory path of the <strong class="program">libphp</strong> library file
+(<strong>libphp*.so</strong> or <strong>libphp*.a</strong>), usually available with
+an <code class="xref std std-option docutils literal notranslate"><span class="pre">--enable-embed</span></code> PHP build:</p>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>php-config<span class="w"> </span>--php-sapis
+
+<span class="go">      ... embed ...</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--lib-static</strong></td>
+<td>Links the static <strong class="program">libphp</strong> library (<strong>libphp*.a</strong>)
+instead of the dynamic one (<strong>libphp*.so</strong>); requires
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--lib-path</span></code>.</td>
+</tr>
+<tr class="row-even"><td><strong>--module=basename</strong></td>
+<td><p class="first">Resulting module’s name (<strong>&lt;basename&gt;.unit.so</strong>), also
+used in <a class="reference internal" href="#source-bld-src-emb"><span class="std std-ref">make</span></a> targets.</p>
+<p class="last">The default is <code class="xref std std-option docutils literal notranslate"><span class="pre">--config</span></code>’s filename minus the <cite>-config</cite>
+suffix; thus, <strong>--config=/path/php7-config</strong> yields
+<strong>php7.unit.so</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>To configure a module called <strong>php70.unit.so</strong> for PHP&nbsp;7.0:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>php<span class="w"> </span>--module<span class="o">=</span>php70<span class="w">  </span><span class="se">\</span>
+<span class="w">                  </span>--config<span class="o">=</span>/usr/lib64/php7.0/bin/php-config<span class="w">  </span><span class="se">\</span>
+<span class="w">                  </span>--lib-path<span class="o">=</span>/usr/lib64/php7.0/lib64
+</pre></div>
+</div>
+</div>
+<input name=modules type=radio
+            id=modules_5 class=nojs />
+            <label for=modules_5 id=modules-python>
+            <a href=#modules-python onclick="nxt_tab_click(event)">Python</a></label><div class="docutils container">
+<p>When you run <strong class="command">./configure python</strong>, the script configures a
+module to support running Python scripts as applications on Unit.
+Available command options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--config=pathname</strong></td>
+<td><p class="first">Pathname of the <strong class="program">python-config</strong> script used to
+set up the resulting module.</p>
+<p class="last">The default is <strong>python-config</strong>.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--lib-path=directory</strong></td>
+<td>Custom directory path of the Python runtime library to use with
+Unit.</td>
+</tr>
+<tr class="row-odd"><td><strong>--module=basename</strong></td>
+<td><p class="first">Resulting module’s name (<strong>&lt;basename&gt;.unit.so</strong>), also
+used in <a class="reference internal" href="#source-bld-src-emb"><span class="std std-ref">make</span></a> targets.</p>
+<p class="last">The default is <code class="xref std std-option docutils literal notranslate"><span class="pre">--config</span></code>’s filename minus the <cite>-config</cite>
+suffix; thus, <strong>/path/python3-config</strong> turns into
+<strong>python3</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Python interpreter set by <strong class="program">python-config</strong> must be
+compiled with the <code class="xref std std-option docutils literal notranslate"><span class="pre">--enable-shared</span></code> <a class="reference external" href="https://docs.python.org/3/using/configure.html#linker-options">option</a>.</p>
+</div>
+<p>To configure a module called <strong>py33.unit.so</strong> for Python&nbsp;3.3:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>python<span class="w"> </span>--module<span class="o">=</span>py33<span class="w">  </span><span class="se">\</span>
+<span class="w">                     </span>--config<span class="o">=</span>python-config-3.3
+</pre></div>
+</div>
+</div>
+<input name=modules type=radio
+            id=modules_6 class=nojs />
+            <label for=modules_6 id=modules-ruby>
+            <a href=#modules-ruby onclick="nxt_tab_click(event)">Ruby</a></label><div class="docutils container">
+<p>When you run <strong class="program">./configure ruby</strong>, the script configures a module
+to support running Ruby scripts as applications on Unit.  Available
+command options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--module=basename</strong></td>
+<td><p class="first">Resulting module’s name (<strong>&lt;basename&gt;.unit.so</strong>), also
+used in <a class="reference internal" href="#source-bld-src-emb"><span class="std std-ref">make</span></a> targets.</p>
+<p class="last">The default is the filename of the <code class="xref std std-option docutils literal notranslate"><span class="pre">--ruby</span></code> executable.</p>
+</td>
+</tr>
+<tr class="row-even"><td><strong>--ruby=pathname</strong></td>
+<td><p class="first">Specific Ruby executable pathname.</p>
+<p class="last">The default is <strong>ruby</strong>.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>To configure a module called <strong>ru23.unit.so</strong> for Ruby&nbsp;2.3:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>ruby<span class="w"> </span>--module<span class="o">=</span>ru23<span class="w">  </span><span class="se">\</span>
+<span class="w">                   </span>--ruby<span class="o">=</span>ruby23
+</pre></div>
+</div>
+</div>
+<input name=modules type=radio
+            id=modules_7 class=nojs />
+            <label for=modules_7 id=modules-webassembly>
+            <a href=#modules-webassembly onclick="nxt_tab_click(event)">WebAssembly</a></label><div class="docutils container">
+<p id="modules-webassembly">When you run <strong class="program">./configure wasm-wasi-component</strong>,
+the script configures a module to support running WebAssembly
+components on Unit.</p>
+<p>The module doesn’t accept any extra configuration parameters.
+The module’s basename is wasm-wasi-component.</p>
+</div>
+<input name=modules type=radio
+            id=modules_8 class=nojs />
+            <label for=modules_8 id=modules-unit-wasm>
+            <a href=#modules-unit-wasm onclick="nxt_tab_click(event)">Unit-Wasm</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit 1.32.0 and later support the WebAssembly Component Model and WASI
+0.2 APIs.
+We recommend using the new implementation.</p>
+</div>
+<p>When you run <strong class="program">./configure wasm</strong>, the script configures a module
+to support running WebAssembly applications on Unit.
+Available command options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--module=basename</strong></td>
+<td>Resulting module’s name (<strong>&lt;basename&gt;.unit.so</strong>), also
+used in <a class="reference internal" href="#source-bld-src-emb"><span class="std std-ref">make</span></a> targets.</td>
+</tr>
+<tr class="row-even"><td><strong>--runtime=basename</strong></td>
+<td><p class="first">The WebAssembly runtime to use.</p>
+<p class="last">The default is <strong>wasmtime</strong>.</p>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--include-path=path</strong></td>
+<td>The directory path to the runtime’s header files.</td>
+</tr>
+<tr class="row-even"><td><strong>--lib-path=path</strong></td>
+<td>The directory path to the runtime’s library files.</td>
+</tr>
+<tr class="row-odd"><td><strong>--rpath=&lt;path&gt;</strong></td>
+<td><p class="first">The directory path that designates the run-time library search
+path.</p>
+<p class="last">If specified without a value,
+assumes the <strong>--lib-path</strong> value.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>To configure a module called <strong>wasm.unit.so</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>wasm<span class="w"> </span>--include-path<span class="o">=</span><span class=nxt_ph title="Runtime's header directory">/path/to/wasmtime</span>/include<span class="w">  </span><span class="se">\</span>
+<span class="w">                   </span>--lib-path<span class="o">=</span><span class=nxt_ph title="Runtime's library directory">/path/to/wasmtime</span>/lib<span class="w"> </span><span class="se">\</span>
+<span class="w">                   </span>--rpath
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="building-and-installing-unit">
+<span id="source-bld-src"></span><h2>Building and Installing Unit<a class="headerlink" href="#building-and-installing-unit" title="Permalink to this heading">§</a></h2>
+<p>To build and install Unit’s executables and language modules that you have
+<strong class="program">./configure</strong>’d earlier:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span>install
+</pre></div>
+</div>
+<p>Mind that <strong>make install</strong> requires setting up Unit’s <a class="reference internal" href="#source-dir"><span class="std std-ref">directory
+structure</span></a> with <strong class="program">./configure</strong> first.</p>
+<p>To run Unit from the build directory tree without installing:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>--prefix<span class="o">=</span>./build
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./build/sbin/unitd
+</pre></div>
+</div>
+<p>You can also build and install language modules individually; the specific
+method depends on whether the language module is embedded in Unit (Java, Perl,
+PHP, Python, Ruby) or packaged externally (Go, Node.js).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For further details about Unit’s language modules, see <a class="reference internal" href="../modules/"><span class="doc">Working With Language Modules</span></a>.</p>
+</div>
+<div class="section" id="embedded-language-modules">
+<span id="source-bld-src-emb"></span><h3>Embedded Language Modules<a class="headerlink" href="#embedded-language-modules" title="Permalink to this heading">§</a></h3>
+<p>To build and install the modules for Java, PHP, Perl, Python, or Ruby after
+configuration, run <strong class="command">make &lt;module basename&gt;</strong> and <strong class="command">make
+&lt;module basename&gt;-install</strong>, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span><span class=nxt_hint title="This is the --module option value from ./configure perl">perl-5.20</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span><span class=nxt_hint title="This is the --module option value from ./configure perl">perl-5.20</span>-install
+</pre></div>
+</div>
+</div>
+<div class="section" id="external-language-modules">
+<span id="source-bld-src-ext"></span><h3>External Language Modules<a class="headerlink" href="#external-language-modules" title="Permalink to this heading">§</a></h3>
+<p>To build and install the modules for Go and Node.js globally after
+configuration, run <strong class="command">make &lt;go&gt;-install</strong> and <strong class="command">make
+&lt;node&gt;-install</strong>, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span><span class=nxt_hint title="This is the --go option value from ./configure go">go</span>-install
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span><span class=nxt_hint title="This is the --node option value from ./configure nodejs">node</span>-install
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>To install the Node.js module locally, run <strong class="command">make
+&lt;node&gt;-local-install</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span><span class=nxt_hint title="This is the --node option value from ./configure nodejs">node</span>-local-install
+</pre></div>
+</div>
+<p>If you haven’t specified the <code class="xref std std-option docutils literal notranslate"><span class="pre">--local</span></code> <a class="reference internal" href="#modules-nodejs"><span class="std std-ref">directory</span></a> with <strong class="program">./configure nodejs</strong>
+earlier, provide it here:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nv">DESTDIR</span><span class="o">=</span>/your/project/directory/<span class="w"> </span>make<span class="w"> </span>node-local-install
+</pre></div>
+</div>
+<p>If both options are specified, <code class="xref std std-option docutils literal notranslate"><span class="pre">DESTDIR</span></code> prefixes the
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--local</span></code> value set by <strong class="program">./configure nodejs</strong>.</p>
+<p class="last">Finally, mind that global installation is preferable for the Node.js module.</p>
+</div>
+<p>If you customized the executable pathname with <code class="xref std std-option docutils literal notranslate"><span class="pre">--go</span></code> or
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--node</span></code>, use the following pattern:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>nodejs<span class="w"> </span>--node<span class="o">=</span><span class=nxt_hint title="Executable pathname">/usr/local/bin/node8.12</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span><span class=nxt_hint title="Executable pathname becomes a part of the target">/usr/local/bin/node8.12</span>-install
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./configure<span class="w"> </span>go<span class="w"> </span>--go<span class="o">=</span><span class=nxt_hint title="Executable pathname">/usr/local/bin/go1.7</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>make<span class="w"> </span><span class=nxt_hint title="Executable pathname becomes a part of the target">/usr/local/bin/go1.7</span>-install
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="startup-and-shutdown">
+<span id="source-startup"></span><h2>Startup and Shutdown<a class="headerlink" href="#startup-and-shutdown" title="Permalink to this heading">§</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>We advise installing Unit from <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">precompiled packages</span></a>; in this case, startup is <a class="reference internal" href="../../installation/#installation-precomp-startup"><span class="std std-ref">configured</span></a> automatically.</p>
+<p class="last">Even if you install Unit otherwise, avoid manual startup.  Instead,
+configure a service manager (<strong class="program">OpenRC</strong>, <strong class="program">systemd</strong>, and so
+on) or create an <strong class="program">rc.d</strong> script to launch the Unit daemon using the
+options below.</p>
+</div>
+<p>The startup command depends on the directories you set with
+<strong class="program">./configure</strong>, but their default values place the <strong class="program">unitd</strong>
+binary in a well-known place, so:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Your PATH environment variable should list a path to unitd">unitd</span><span class="w"> </span><span class=nxt_ph title="See the table below">RUNTIME OPTIONS</span>
+</pre></div>
+</div>
+<p>Run <strong class="command">unitd -h</strong> or <strong class="command">unitd --version</strong> to list Unit’s
+compile-time settings.  Usually, the defaults don’t require overrides; still,
+the following runtime options are available.  For their compile-time
+counterparts, see <a class="reference internal" href="#source-config-src"><span class="std std-ref">here</span></a>.</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>--help</strong>, <strong>-h</strong></td>
+<td>Displays a summary of the command-line options and their defaults.</td>
+</tr>
+<tr class="row-even"><td><strong>--version</strong></td>
+<td>Displays Unit’s version and the <strong class="program">./configure</strong> settings it was
+built with.</td>
+</tr>
+<tr class="row-odd"><td><strong>--no-daemon</strong></td>
+<td>Runs Unit in non-daemon mode.</td>
+</tr>
+<tr class="row-even"><td><strong>--control socket</strong></td>
+<td><p class="first">Control API socket address in IPv4, IPv6, or UNIX domain format:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>unitd<span class="w"> </span>--control<span class="w"> </span><span class="m">127</span>.0.0.1:8080
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>unitd<span class="w"> </span>--control<span class="w"> </span><span class="o">[</span>::1<span class="o">]</span>:8080
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>unitd<span class="w"> </span>--control<span class="w"> </span><span class=nxt_hint title="Note the unix: prefix">unix:/path/to/control.unit.sock</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><strong>--control-mode</strong></td>
+<td>Sets the permission of the UNIX domain control socket. Default: 0600</td>
+</tr>
+<tr class="row-even"><td><strong>--control-user</strong></td>
+<td>Sets the owner of the UNIX domain control socket.</td>
+</tr>
+<tr class="row-odd"><td><strong>--control-group</strong></td>
+<td>Sets the group of the UNIX domain control socket.</td>
+</tr>
+<tr class="row-even"><td><strong>--group name</strong>, <strong>--user name</strong></td>
+<td>Group name and user name used to run Unit’s non-privileged
+<a class="reference internal" href="../security/#security-apps"><span class="std std-ref">processes</span></a>.</td>
+</tr>
+<tr class="row-odd"><td><strong>--log pathname</strong></td>
+<td>Pathname for Unit’s <a class="reference internal" href="../../troubleshooting/#troubleshooting-log"><span class="std std-ref">log</span></a>.</td>
+</tr>
+<tr class="row-even"><td><strong>--modules directory</strong></td>
+<td>Directory path for Unit’s language <a class="reference internal" href="../modules/"><span class="doc">modules</span></a>
+(<strong>*.unit.so</strong> files).</td>
+</tr>
+<tr class="row-odd"><td><strong>--pid pathname</strong></td>
+<td>Pathname for the PID file of Unit’s <strong class="program">main</strong> <a class="reference internal" href="../security/#security-apps"><span class="std std-ref">process</span></a>.</td>
+</tr>
+<tr class="row-even"><td><strong>--state directory</strong></td>
+<td>Directory path for Unit’s state storage.</td>
+</tr>
+<tr class="row-odd"><td><strong>--tmp directory</strong></td>
+<td>Directory path for Unit’s temporary file storage.</td>
+</tr>
+</tbody>
+</table>
+<p>Finally, to stop a running Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>pkill<span class="w"> </span>unitd
+</pre></div>
+</div>
+<p>This command signals all Unit’s processes to terminate in a graceful manner.</p>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\source.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

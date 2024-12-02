@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/integration/">
+<meta property="og:title" content="NGINX Unit: NGINX Integration">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="TLS with Certbot" href="../certbot/" />
+<link rel="prev" title="Unit in Ansible" href="../ansible/" />
+
+<title>NGINX Integration — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">NGINX Integration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#fronting-unit-with-nginx">Fronting Unit with NGINX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#securely-proxying-unit-s-control-api">Securely Proxying Unit’s Control API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="nginx-integration">
+<h1>NGINX Integration<a class="headerlink" href="#nginx-integration" title="Permalink to this heading">§</a></h1>
+<p>Unit is a potent and versatile server in its own right.  However, if you’re
+used to NGINX’s rich feature set, you can deploy it in front of Unit; one
+notable use case for NGINX here is securing the Unit control socket.</p>
+<div class="section" id="fronting-unit-with-nginx">
+<h2>Fronting Unit with NGINX<a class="headerlink" href="#fronting-unit-with-nginx" title="Permalink to this heading">§</a></h2>
+<p>Configure a <a class="reference internal" href="../../configuration/#configuration-listeners"><span class="std std-ref">listener</span></a> in Unit:</p>
+<blockquote>
+<div><div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;<span class=nxt_ph title="Socket address where NGINX proxies requests">127.0.0.1:8080</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Unit's internal request destination">...</span>&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;forwarded&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;client_ip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_hint title="The header field set by NGINX">X-Forwarded-For</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;<span class=nxt_ph title="The IP address where NGINX runs">127.0.0.1</span>&quot;</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Here, <strong>forwarded</strong> is optional; it enables identifying the
+<a class="reference internal" href="../../configuration/#configuration-listeners-xff"><span class="std std-ref">originating IPs</span></a> of requests proxied from
+<strong>source</strong>.</p>
+<p>In NGINX configuration, create an upstream in the <strong>http</strong> context, adding
+the listener’s socket as a <strong>server</strong>:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">upstream</span><span class="w"> </span><span class="s">unit_backend</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">server</span><span class="w"> </span><span class="s"><span class=nxt_ph title="Unit's listener socket address">127.0.0.1:8080</span></span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s"><span class=nxt_hint title="Arbitrary location">/unit/</span></span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://unit_backend</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s"><span class=nxt_hint title="Unit's listener must list the same name in client_ip/header">X-Forwarded-For</span></span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A more compact alternative would be a direct <strong>proxy_pass</strong> in your
+<strong>location</strong>:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">http</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">location</span><span class="w"> </span><span class="s"><span class=nxt_hint title="Arbitrary location">/unit/</span></span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://<span class=nxt_ph title="Unit's listener socket address">127.0.0.1:8080</span></span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s">Host</span><span class="w"> </span><span class="nv">$host</span><span class="p">;</span>
+<span class="w">            </span><span class="kn">proxy_set_header</span><span class="w"> </span><span class="s"><span class=nxt_hint title="Unit's listener must list the same name in client_ip/header">X-Forwarded-For</span></span><span class="w"> </span><span class="nv">$proxy_add_x_forwarded_for</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <strong>proxy_set_header X-Forwarded-For</strong> directives work together with the
+listener’s <strong>client_ip</strong> option.</p>
+<p>For details, see the <a class="reference external" href="https://nginx.org">NGINX documentation</a>.  Commercial
+support and advanced features are <a class="reference external" href="https://www.nginx.com">also available</a>.</p>
+</div>
+<div class="section" id="securely-proxying-unit-s-control-api">
+<span id="nginx-secure-api"></span><h2>Securely Proxying Unit’s Control API<a class="headerlink" href="#securely-proxying-unit-s-control-api" title="Permalink to this heading">§</a></h2>
+<p>By default, Unit exposes its <a class="reference internal" href="../../controlapi/#configuration-mgmt"><span class="std std-ref">control API</span></a> via a UNIX
+domain socket.  These sockets aren’t network accessible, so the API is local
+only.  To enable secure remote access, you can use NGINX as a reverse proxy.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Avoid exposing an unprotected control socket to public networks.  Use NGINX
+or a different solution such as SSH for security and authentication.</p>
+</div>
+<p>Use this configuration template for NGINX (replace placeholders in
+<strong>ssl_certificate</strong>, <strong>ssl_certificate_key</strong>,
+<strong>ssl_client_certificate</strong>, <strong>allow</strong>, <strong>auth_basic_user_file</strong>,
+and <strong>proxy_pass</strong> with real values):</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">server</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="c1"># Configure SSL encryption</span>
+<span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">443</span><span class="w"> </span><span class="s">ssl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">ssl_certificate</span><span class="w"> </span><span class="s"><span class=nxt_ph title="Path to your PEM file; use a real path in your configuration">/path/to/ssl/cert.pem</span></span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_certificate_key</span><span class="w"> </span><span class="s"><span class=nxt_ph title="Path to your key file; use a real path in your configuration">/path/to/ssl/cert.key</span></span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># SSL client certificate validation</span>
+<span class="w">    </span><span class="kn">ssl_client_certificate</span><span class="w"> </span><span class="s"><span class=nxt_ph title="Path to certification authority PEM file; use a real path in your configuration">/path/to/ca.pem</span></span><span class="p">;</span>
+<span class="w">    </span><span class="kn">ssl_verify_client</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># Network ACLs</span>
+<span class="w">    </span><span class="kn">allow</span><span class="w"> </span><span class="s"><span class=nxt_ph title="Replicate and update as needed with allowed IPs and network CIDRs">1.2.3.4</span></span><span class="p">;</span>
+<span class="w">    </span><span class="kn">deny</span><span class="w"> </span><span class="s">all</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1"># HTTP Basic authentication</span>
+<span class="w">    </span><span class="kn">auth_basic</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
+<span class="w">    </span><span class="kn">auth_basic_user_file</span><span class="w"> </span><span class="s"><span class=nxt_ph title="Path to your htpasswd file">/path/to/htpasswd</span></span><span class="p">;</span>
+
+<span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://unix:<span class=nxt_ph title="Path to Unit's control socket">/path/to/control.unit.sock</span></span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The same approach works for an IP-based control socket:</p>
+<div class="highlight-nginx notranslate"><div class="highlight"><pre><span></span><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://<span class=nxt_ph title="Unit's control socket address">127.0.0.1:8080</span></span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\integration.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

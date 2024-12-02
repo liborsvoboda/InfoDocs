@@ -1,0 +1,523 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>tauri - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html" class="active"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <!--lint disable awesome-heading awesome-toc awesome-github double-link -->
+<div align="center">
+<h1 id="awesome-tauri"><a class="header" href="#awesome-tauri">Awesome Tauri</a></h1>
+<p>A curated collection of the best stuff from the Tauri ecosystem and community.</p>
+<br />
+<p><a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" alt="Awesome" /></a></p>
+</div>
+<h2 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h2>
+<ul>
+<li><a href="#getting-started">Getting Started</a>
+<ul>
+<li><a href="#guides">Guides</a></li>
+<li><a href="#tutorials">Tutorials</a></li>
+<li><a href="#templates">Templates</a></li>
+</ul>
+</li>
+<li><a href="#development">Development</a>
+<ul>
+<li><a href="#plugins">Plugins</a></li>
+<li><a href="#integrations">Integrations</a></li>
+<li><a href="#articles">Articles</a></li>
+</ul>
+</li>
+<li><a href="#applications">Applications</a>
+<ul>
+<li><a href="#audio--video">Audio &amp; Video</a></li>
+<li><a href="#chatgpt-clients">ChatGPT clients</a></li>
+<li><a href="#data">Data</a></li>
+<li><a href="#developer-tools">Developer tools</a></li>
+<li><a href="#email--feeds">Email &amp; Feeds</a></li>
+<li><a href="#file-management">File management</a></li>
+<li><a href="#finance">Finance</a></li>
+<li><a href="#gaming">Gaming</a></li>
+<li><a href="#information">Information</a></li>
+<li><a href="#learning">Learning</a></li>
+<li><a href="#networking">Networking</a></li>
+<li><a href="#office--writing">Office &amp; Writing</a></li>
+<li><a href="#productivity">Productivity</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#social-media">Social media</a></li>
+<li><a href="#utilities">Utilities</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="getting-started"><a class="header" href="#getting-started">Getting Started</a></h2>
+<h3 id="guides"><a class="header" href="#guides">Guides</a></h3>
+<ul>
+<li><a href="https://tauri.app/about/intro/">Introduction</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Official introduction to Tauri.</li>
+<li><a href="https://tauri.app/v1/guides/getting-started/prerequisites/">Getting Started</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Official getting started with Tauri docs.</li>
+<li><a href="https://github.com/tauri-apps/create-tauri-app">create-tauri-app</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Rapidly scaffold your Tauri app.</li>
+</ul>
+<h3 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h3>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=zawhqLA7N9Y&amp;ab_channel=chrisbiscardi">Create Tauri App with React</a> - Chris Biscardi shows how easy it is to wire up a Rust crate with a JS module and communicate between them.</li>
+<li><a href="https://thinkgo.io/post/2023/02/publish_tauri_to_apples_app_store/">Publish to Apple's App Store</a> - Details all the steps needed to publish your Mac app to the app store. Includes a sample bash script.</li>
+<li><a href="https://youtube.com/playlist?list=PLmWYh0f8jKSjt9VC5sq2T3mFETasG2p2L">Tauri &amp; ReactJS - Creating Modern Desktop Apps</a> - Creating a modern desktop application with Tauri.</li>
+</ul>
+<h3 id="templates"><a class="header" href="#templates">Templates</a></h3>
+<ul>
+<li><a href="https://github.com/maximegris/angular-tauri">angular-tauri</a> - Angular with Typescript, SASS, and Hot Reload.</li>
+<li><a href="https://github.com/charlesxsh/tauri-angular-boilerplate">tauri-angular-template</a> - Angular template</li>
+<li><a href="https://github.com/rome-user/tauri-clojurescript-template">tauri-clojurescript-template</a> - Minimal ClojureScript template with Shadow CLJS and React.</li>
+<li><a href="https://github.com/marc2332/tauri-deno-starter">tauri-deno-starter</a> - React template using esbuild with Deno.</li>
+<li><a href="https://gitlab.com/cristofa/tauri-leptos-template">tauri-leptos-template</a> - Leptos template</li>
+<li><a href="https://github.com/kvnxiao/tauri-nextjs-template">tauri-nextjs-template</a> - Next.js (SSG) template, with TailwindCSS, opinionated linting, and GitHub Actions preconfigured.</li>
+<li><a href="https://github.com/HuakunShen/tauri-nuxt-template">tauri-nuxt-template</a> - Nuxt3 template.</li>
+<li><a href="https://github.com/Alfredoes234/tauri-preact-rsbuild-template">tauri-preact-rsbuild-template</a> - Preact template that uses rsbuild, rather than vite.</li>
+<li><a href="https://github.com/elibroftw/modern-desktop-app-template">tauri-react-mantine-vite-template</a> - React Mantine template featuring custom titlebar for Windows, auto publish action, auto update, and more.</li>
+<li><a href="https://github.com/henrhie/tauri-react-parcel-template">tauri-react-parcel-template</a> - React template with Parcel as build tool, TypeScript and hot module replacement.</li>
+<li><a href="https://github.com/JonasKruckenberg/tauri-rescript-template">tauri-rescript-template</a> - Tauri, ReScript, and React template.</li>
+<li><a href="https://github.com/AR10Dev/tauri-solid-ts-tailwind-vite">tauri-solid-ts-tailwind-vite-template</a> - SolidJS Template preconfigured to use Vite, TypeScript, Tailwind CSS, ESLint and Prettier.</li>
+<li><a href="https://github.com/probablykasper/tauri-svelte-template">tauri-svelte-template</a> - Svelte template with cross-platform GitHub action builds, Vite, TypeScript, Svelte Preprocess, hot module replacement, ESLint and Prettier.</li>
+<li><a href="https://github.com/deid84/tauri-sveltekit-admin-template">tauri-sveltekit-template</a> - SvelteKit Admin template with cross-platform GitHub action builds, Vite, TypeScript, Svelte Preprocess, hot module replacement, ESLint and Prettier.</li>
+<li><a href="https://github.com/JonasKruckenberg/tauri-sycamore-template">tauri-sycamore-template</a> - Tauri and Sycamore template.</li>
+<li><a href="https://github.com/Uninen/tauri-vue-template">tauri-vue-template</a> - Vue template with TypeScript, Vite + HMR, Vitest, Tailwind CSS, ESLint, and GitHub Actions.</li>
+<li><a href="https://github.com/skymen/tauri-vue-template">tauri-vue-template-2</a> - Another vue template with Javascript, Vite, Pinia, Vue Router and Github Actions.</li>
+</ul>
+<h2 id="development"><a class="header" href="#development">Development</a></h2>
+<h3 id="plugins"><a class="header" href="#plugins">Plugins</a></h3>
+<ul>
+<li><a href="https://github.com/tauri-apps/tauri-plugin-authenticator">tauri-plugin-authenticator</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Interface with hardware security keys.</li>
+<li><a href="https://github.com/tauri-apps/tauri-plugin-log">tauri-plugin-log</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Configurable logging.</li>
+<li><a href="https://github.com/tauri-apps/tauri-plugin-sql">tauri-plugin-sql</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Interface with SQL databases.</li>
+<li><a href="https://github.com/tauri-apps/tauri-plugin-store">tauri-plugin-store</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Persistent key value storage.</li>
+<li><a href="https://github.com/tauri-apps/tauri-plugin-stronghold">tauri-plugin-stronghold</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Encrypted, secure, p2p database.</li>
+<li><a href="https://github.com/tauri-apps/tauri-plugin-window-state">tauri-plugin-window-state</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Persist window sizes and positions.</li>
+<li><a href="https://github.com/tauri-apps/window-vibrancy">window-vibrancy</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Make your windows vibrant.</li>
+<li><a href="https://github.com/tauri-apps/window-shadows">window-shadows</a> <img src="https://img.shields.io/badge/official-FFC131?&amp;logo=tauri&amp;logoColor=black" alt="officially maintained" /> - Add native shadows to your windows.</li>
+<li><a href="https://github.com/JonasKruckenberg/tauri-plugin-positioner">tauri-plugin-positioner</a> - Move windows to common locations.</li>
+<li><a href="https://github.com/JonasKruckenberg/tauri-plugin-graphql">tauri-plugin-graphql</a> - Type-safe IPC for Tauri using GraphQL.</li>
+<li><a href="https://github.com/lzdyes/tauri-plugin-sqlite">tauri-plugin-sqlite</a> - Interface to SQLite.</li>
+<li><a href="https://github.com/timfish/sentry-tauri">sentry-tauri</a> - Capture JavaScript errors, Rust panics and native crash minidumps to Sentry.</li>
+<li><a href="https://github.com/aptabase/tauri-plugin-aptabase">tauri-plugin-aptabase</a> - Privacy-first and minimalist analytics for desktop and mobile apps.</li>
+<li><a href="https://github.com/CrossCopy/tauri-plugin-clipboard">tauri-plugin-clipboard</a> - Clipboard plugin for reading/writing clipboard text/image, and monitoring clipboard update.</li>
+<li><a href="https://github.com/MatsDK/TauRPC">taurpc</a> - Typesafe IPC wrapper for Tauri commands and events.</li>
+<li><a href="https://github.com/c2r0b/tauri-plugin-context-menu">tauri-plugin-context-menu</a> - Native context menu.</li>
+<li><a href="https://github.com/HuakunShen/tauri-plugin-network">tauri-plugin-network</a> - Tools for reading network information and scanning network.</li>
+<li><a href="https://github.com/deid84/tauri-plugin-serialport">tauri-plugin-serialport</a> - Cross-compatible serialport communication tool.</li>
+<li><a href="https://github.com/HuakunShen/tauri-plugin-system-info">tauri-plugin-system-info</a> - Detailed system information.</li>
+<li><a href="https://github.com/wyhaya/tauri-plugin-theme">tauri-plugin-theme</a> - Dynamically change Tauri App theme.</li>
+<li><a href="https://github.com/ahkohd/tauri-awesome-rpc">tauri-awesome-rpc</a> - Custom invoke system that leverages WebSocket.</li>
+<li><a href="https://github.com/ahkohd/tauri-nspanel">tauri-nspanel</a> - Convert a window to panel.</li>
+</ul>
+<h3 id="integrations"><a class="header" href="#integrations">Integrations</a></h3>
+<ul>
+<li><a href="https://github.com/amrbashir/vite-plugin-tauri">vite-plugin-tauri</a> - Integrate Tauri in a Vite project to build cross-platform apps.</li>
+<li><a href="https://git.kaki87.net/KaKi87/axios-tauri-adapter">axios-tauri-adapter</a> - <code>axios</code> adapter for the <code>@tauri-apps/api/http</code> module.</li>
+<li><a href="https://github.com/probablykasper/svelte-tauri-filedrop">svelte-tauri-filedrop</a> - File drop handling component for Svelte.</li>
+<li><a href="https://github.com/astrodon/astrodon">Astrodon</a> - Make Tauri desktop apps with Deno.</li>
+<li><a href="https://codeberg.org/crapsilon/ngx-tauri">ngx-tauri</a> - Small lib to wrap around functions from tauri modules, to integrate easier with Angular.</li>
+<li><a href="https://github.com/KilleenCode/tauri-update-cloudflare">tauri-update-cloudflare</a> - One-click deploy a Tauri Update Server to Cloudflare.</li>
+<li><a href="https://github.com/persiliao/axios-tauri-api-adapter">axios-tauri-api-adapter</a> - Makes it easy to use Axios in Tauri, <code>axios</code> adapter for the <code>@tauri-apps/api/http</code> module.</li>
+<li><a href="https://git.kaki87.net/KaKi87/tauri-update-server">tauri-update-server</a> - Automatically interface the Tauri updater with git repository releases.</li>
+<li><a href="https://github.com/ahkohd/tauri-macos-spotlight-example">tauri-macos-spotlight-example</a> - Example macOS Spotlight app project.</li>
+</ul>
+<h3 id="articles"><a class="header" href="#articles">Articles</a></h3>
+<ul>
+<li><a href="https://medium.com/p/6f90de5b098">Getting Started Using Tauri Mobile</a> <img src="https://img.shields.io/badge/paid-FFC131?&amp;logoColor=black" alt="paid" /> - Ed Rutherford outlines how to create a mobile app with Tauri.</li>
+<li><a href="https://blog.moonguard.dev/how-to-use-local-sqlite-database-with-tauri">How to use local SQLite database with Tauri and Rust</a> - Guide to setup and use SQLite database with Tauri and Rust.</li>
+<li><a href="https://blog.moonguard.dev/manage-state-with-tauri">Managing State in Desktop Applications with Rust and Tauri</a> - How to share and manage any kind of state globally in Tauri apps.</li>
+<li><a href="https://blog.moonguard.dev/setting-up-actix-in-tauri">Setting up Actix Web in a Tauri App</a> - How to setup a HTTP server with Tauri and Actix Web.</li>
+<li><a href="https://rfdonnelly.github.io/posts/tauri-async-rust-process/">Tauri's async process</a> - Rob Donnelly dives deep into Async with Tauri.</li>
+</ul>
+<h2 id="applications"><a class="header" href="#applications">Applications</a></h2>
+<h3 id="audio--video"><a class="header" href="#audio--video">Audio &amp; Video</a></h3>
+<ul>
+<li><a href="https://cider.sh">Cider</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - 3rd Party Client for Apple Music, Complete with Audio Lab.</li>
+<li><a href="https://github.com/mmpneo/curses">Curses</a> - Speech-to-Text and Text-to-Speech captions for OBS, VRChat, Twitch chat and more.</li>
+<li><a href="https://github.com/lzdyes/douyin-downloader">Douyin Downloader</a> - Cross-platform douyin video downloader.</li>
+<li><a href="https://hypetrigger.io/">Hypetrigger</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Detect highlight clips in video with FFMPEG + Tensorflow on the GPU.</li>
+<li><a href="https://github.com/jellyfin/jellyfin-vue">Jellyfin Vue</a> - GUI client for a Jellyfin server based on Vue.js and Tauri.</li>
+<li><a href="https://github.com/Trivernis/mediarepo">mediarepo</a> - Tag-based media management application.</li>
+<li><a href="https://github.com/probablykasper/mr-tagger">Mr Tagger</a> - Music file tagging app.</li>
+</ul>
+<h3 id="chatgpt-clients"><a class="header" href="#chatgpt-clients">ChatGPT clients</a></h3>
+<ul>
+<li><a href="https://github.com/Bin-Huang/chatbox">chatbox</a> - Cross-platform desktop application for ChatGPT API (OpenAI API), also a prompt debugging and management tool.</li>
+<li><a href="https://github.com/lencx/ChatGPT">ChatGPT</a> - Cross-platform ChatGPT desktop application.</li>
+<li><a href="https://github.com/Poordeveloper/chatgpt-app">ChatGPT App</a> - Cross-platform ChatGPT App and more.</li>
+<li><a href="https://github.com/Synaptrix/ChatGPT-Desktop">ChatGPT-Desktop</a> - Cross-platform productivity ChatGPT assistant launcher.</li>
+<li><a href="https://github.com/taecontrol/orion">Orion</a> - Cross-platform app that lets you create multiple AI assistants with specific goals powered with ChatGPT.</li>
+<li><a href="https://github.com/dubisdev/quickgpt">QuickGPT</a> - Lightweight AI assistant for Windows.</li>
+</ul>
+<h3 id="data"><a class="header" href="#data">Data</a></h3>
+<ul>
+<li><a href="https://github.com/fuyoo/bs-redis-desktop-client">BS Redis Desktop Client</a> - The Best Surprise Redis Desktop Client.</li>
+<li><a href="https://dataflare.app">Dataflare</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> <img src="https://img.shields.io/badge/paid-FFC131?&amp;logoColor=black" alt="paid" /> - Simple and elegant database manager.</li>
+<li><a href="https://mason.app">Mason</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Seamlessly query, visualize and share data with your team.</li>
+<li><a href="https://pgmagic.app/?ref=awesometauri">pgMagic🪄</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> <img src="https://img.shields.io/badge/paid-FFC131?&amp;logoColor=black" alt="paid" /> - GUI client to talk to Postgres in SQL or with natural language. <code>TAURIRULES</code> for 20% off.</li>
+</ul>
+<h3 id="developer-tools"><a class="header" href="#developer-tools">Developer tools</a></h3>
+<ul>
+<li><a href="https://github.com/ahqsoftwares/tauri-ahq-store">AHQ Store</a> - Publish, Update and Install apps to the Windows-specific AHQ Store.</li>
+<li><a href="https://github.com/zenoxs/tauri-appcenter-companion">AppCenter Companion</a> - Regroup, build and track your <code>VS App Center</code> apps.</li>
+<li><a href="https://aptakube.com/">Aptakube</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Multi-cluster Kubernetes UI.</li>
+<li><a href="https://clawsapp.com/">claws</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Visual interface for the AWS CLI.</li>
+<li><a href="https://www.dev-box.app/">DevBox</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Many useful tools for developers, like generators, viewers, converters, etc.</li>
+<li><a href="https://github.com/egoist/dropcode">Dropcode</a> - Simple and lightweight code snippet manager.</li>
+<li><a href="https://github.com/zsmatrix62/echoo-app">Echoo</a> - Offline/Online utilities for developers on MacOS &amp; Windows.</li>
+<li><a href="https://gitbutler.com">GitButler</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - GitButler is a new Source Code Management system.</li>
+<li><a href="https://github.com/colinlienard/gitlight">GitLight</a> - GitHub &amp; GitLab notifications on your desktop.</li>
+<li><a href="https://hoppscotch.com/download">Hoppscotch</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Trusted by millions of developers to build, test and share APIs.</li>
+<li><a href="https://github.com/hcavarsan/kftray">KFtray</a> - A tray application that manages port forwarding in Kubernetes.</li>
+<li><a href="https://github.com/Web3-Builders-Alliance/soda">Soda</a> - Generate source code from an IDL.</li>
+<li><a href="https://github.com/tw93/Pake">Pake</a> - Turn any webpage into a desktop app with Rust with ease.</li>
+<li><a href="https://github.com/Ironclad/rivet">Rivet</a> - Visual programming environment for creating AI features and agents.</li>
+<li><a href="https://tablex-tan.vercel.app/">TableX</a> - Table viewer for modern developers</li>
+<li><a href="https://github.com/dedSyn4ps3/tauri-mobile-test">Tauri Mobile Test</a> - Create and build cross-platform mobile applications.</li>
+<li><a href="https://www.verbcode.com">verbcode</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> <img src="https://img.shields.io/badge/paid-FFC131?&amp;logoColor=black" alt="paid" /> - Simplify your localization journey</li>
+<li><a href="https://yaak.app">Yaak</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Interact with REST and GraphQL APIs</li>
+</ul>
+<h3 id="email--feeds"><a class="header" href="#email--feeds">Email &amp; Feeds</a></h3>
+<ul>
+<li><a href="https://alduin.stouder.io/">Alduin</a> - Alduin is a free and open source RSS, Atom and JSON feed reader that allows you to keep track of your favorite websites.</li>
+<li><a href="https://github.com/chezhe/aleph">Aleph</a> - Aleph is an RSS reader &amp; podcast client.</li>
+<li><a href="https://github.com/KM8Oz/BULKUS">BULKUS</a> - Email validation software.</li>
+<li><a href="https://github.com/zhanglun/lettura">Lettura</a> - Open-source feed reader for macOS.</li>
+<li><a href="https://github.com/mdSilo/mdSilo-app">mdsilo Desktop</a> - Feed reader and knowledge base.</li>
+</ul>
+<h3 id="file-management"><a class="header" href="#file-management">File management</a></h3>
+<ul>
+<li><a href="https://github.com/enassi/enassi">enassi</a> - Encryption assistant that encrypts and stores your notes and files.</li>
+<li><a href="https://github.com/HuakunShen/ezup">EzUp</a> - File and Image uploader. Designed for blog writing and note taking.</li>
+<li><a href="https://github.com/naaive/orange">Orange</a> - Cross-platform file search engine that can quickly locate files or folders based on keywords.</li>
+<li><a href="https://payload.app/">Payload</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Drag &amp; drop file transfers over local networks.</li>
+<li><a href="https://github.com/spacedriveapp/spacedrive">Spacedrive</a> - A file explorer from the future.</li>
+<li><a href="https://github.com/a5huynh/spyglass">Spyglass</a> - Personal search engine that indexes your files/folders, cloud accounts, and whatever interests you on the internet.</li>
+<li><a href="https://github.com/adileo/squirreldisk">SquirrelDisk</a> - Beautiful cross-platform disk usage analysis tool.</li>
+<li><a href="https://github.com/probablykasper/time-machine-inspector">Time Machine Inspector</a> - Find out what's taking up your Time Machine backup space.</li>
+<li><a href="https://github.com/kimlimjustin/xplorer">Xplorer</a> - Customizable, modern and cross-platform File Explorer.</li>
+</ul>
+<h3 id="finance"><a class="header" href="#finance">Finance</a></h3>
+<ul>
+<li><a href="https://github.com/Orbitale/Compotes">Compotes</a> - Local bank account operations storage to vizualize them as graphs and customize them with rules and tags for better filtering.</li>
+<li><a href="https://github.com/Rabbit-Company/CryptoBal-Desktop">CryptoBal</a> - Desktop application for monitoring your crypto assets.</li>
+<li><a href="https://github.com/matthias-wright/ghorbu-wallet">Ghorbu Wallet</a> - Cross-platform desktop HD wallet for Bitcoin.</li>
+<li><a href="https://github.com/nymtech/nym/tree/develop/nym-wallet">nym-wallet</a> - The Nym desktop wallet enables you to use the Nym network and take advantage of its key capabilities.</li>
+<li><a href="https://github.com/ustaxes/ustaxes">UsTaxes</a> - Free, private, open-source US tax filings.</li>
+</ul>
+<h3 id="gaming"><a class="header" href="#gaming">Gaming</a></h3>
+<ul>
+<li><a href="https://github.com/wearrrrr/9Launcher">9Launcher</a> - Modern Cross-platform launcher for Touhou Project Games.</li>
+<li><a href="https://github.com/Tnze/ffxiv-best-craft">BestCraft</a> - Crafting simulator with solver algorithms for Final Fantasy XIV(FF14).</li>
+<li><a href="https://clear.adithya.zip">clear</a> - Clean and minimalist video game library manager and launcher.</li>
+<li><a href="https://github.com/philipborg/CubeShuffle">CubeShuffle</a> - Card game shuffling utility.</li>
+<li><a href="https://github.com/franciscoBSalgueiro/en-croissant">En Croissant</a> - Chess database and game analysis app.</li>
+<li><a href="https://github.com/fishfight/FishLauncher">FishLauncher</a> - Cross-platform launcher for <code>Fish Fight</code>.</li>
+<li><a href="https://github.com/open-goal/launcher">OpenGOAL</a> - Cross-platform installer, mod-manager and launcher for <code>OpenGOAL</code>; the reverse engineered PC ports of the Jak and Daxter series.</li>
+<li><a href="https://github.com/Raphiiko/OyasumiVR">OyasumiVR</a> - Software that helps you sleep in virtual reality, for use with SteamVR, VRChat, and more.</li>
+<li><a href="https://github.com/Gawdl3y/Resolute">Resolute</a> - User-friendly, cross-platform mod manager for the game Resonite.</li>
+<li><a href="https://github.com/Tormak9970/Steam-Art-Manager">Steam Art Manager</a> - Tool for customizing the art of your Steam games.</li>
+<li><a href="https://github.com/BTMuli/TeyvatGuide">Teyvat Guide</a> - Game Tool for Genshin Impact player.</li>
+</ul>
+<h3 id="information"><a class="header" href="#information">Information</a></h3>
+<ul>
+<li><a href="https://github.com/breadthe/seismic">Seismic</a> - Taskbar app for USGS earthquake tracking.</li>
+<li><a href="https://github.com/awkj/stockman">Stockman</a> - Display stock info on mac menubar.</li>
+</ul>
+<h3 id="learning"><a class="header" href="#learning">Learning</a></h3>
+<ul>
+<li><a href="https://github.com/oguzkaganeren/manjaro-starter">Manjaro Starter</a> - Documentation and support app for new Manjaro users.</li>
+<li><a href="https://github.com/ZaneH/piano-trainer">Piano Trainer</a> - Practice piano chords, scales, and more using your MIDI keyboard.</li>
+<li><a href="https://github.com/hiltontj/solars">Solars</a> - Visualize the planets of our solar system.</li>
+<li><a href="https://github.com/syre-data/syre">Syre</a> - Scientific data assistant.</li>
+</ul>
+<h3 id="networking"><a class="header" href="#networking">Networking</a></h3>
+<ul>
+<li><a href="https://github.com/clash-verge-rev/clash-verge-rev">Clash Verge Rev</a> - Continuation of Clash Verge, a rule-based proxy.</li>
+<li><a href="https://github.com/vicanso/cyberapi">CyberAPI</a> - API tool client for developer.</li>
+<li><a href="https://github.com/jexpe-apps/jexpe">Jexpe</a> - Cross-platform, open source SSH and SFTP client that makes connecting to your remote servers easy.</li>
+<li><a href="https://github.com/samirdjelal/mail-dev">Mail-Dev</a> - Cross-platform, local SMTP server for email testing/debugging.</li>
+<li><a href="https://github.com/rustdesk/rustdesk-server">RustDesk</a> - Self-hosted server for RustDesk, an open source remote desktop.</li>
+<li><a href="https://github.com/TheBlindM/T-Shell">T-Shell</a> - An open-source SSH, SFTP intelligent command line terminal application.</li>
+<li><a href="https://github.com/TunnlTo/desktop-app">TunnlTo</a> - Windows WireGuard VPN client built for split tunneling.</li>
+<li><a href="https://github.com/upvpn/upvpn-app">UpVPN</a> - WireGuard VPN client for Linux, macOS, and Windows.</li>
+<li><a href="https://github.com/windht/watcher">Watcher</a> - API manager built for a easier use to manage and collaborate.</li>
+<li><a href="https://github.com/stefanodevenuto/wirefish">Wirefish</a> - Cross-platform packet sniffer and analyzer.</li>
+</ul>
+<h3 id="office--writing"><a class="header" href="#office--writing">Office &amp; Writing</a></h3>
+<ul>
+<li><a href="https://github.com/samirdjelal/bidirectional">Bidirectional</a> - Write Arabic text in apps that don't support bidirectional text.</li>
+<li><a href="https://github.com/FPurchess/blank">Blank</a> - Minimalistic, opinionated markdown editor made for writing.</li>
+<li><a href="https://enso.sonnet.io">Ensō</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Write now, edit later. Ensō is a writing tool that helps you enter a state of flow.</li>
+<li><a href="https://github.com/BigIskander/Handwriting-keyboard-for-Linux-tesseract">Handwriting keyboard</a> - Handwriting keyboard for Linux X11 desktop environment.</li>
+<li><a href="https://github.com/ahmedkapro/journalv">JournalV</a> - Journaling app for your days and dreams.</li>
+<li><a href="https://github.com/drl990114/MarkFlowy">MarkFlowy</a> - Modern markdown editor application with built-in ChatGPT extension.</li>
+<li><a href="https://github.com/maqi1520/mdx-editor/tree/tauri-app">MDX Editor</a> - Versatile WeChat typesetting editor and cross-platform Markdown note-taking software.</li>
+<li><a href="https://github.com/ruralad/notedown">Notedown</a> - Minimal, local-first cross-platform note taking app.</li>
+<li><a href="https://github.com/tywil04/parchment">Parchment</a> - Simple local-only cross-platform text editor with basic markdown support.</li>
+<li><a href="https://yibiao.fun/">Semanmeter</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - OCR and document conversion software.</li>
+<li><a href="https://github.com/opensourcecheemsburgers/ubiquity">Ubiquity</a> - Cross-platform markdown editor; built with Yew, Tailwind, and DaisyUI.</li>
+</ul>
+<h3 id="productivity"><a class="header" href="#productivity">Productivity</a></h3>
+<ul>
+<li><a href="https://github.com/HubertK05/banban">Banban</a> - Kanban board with tags, categories and markdown support.</li>
+<li><a href="https://github.com/rajatkulkarni95/buildlog">BuildLog</a> - Menu bar for keeping track of Vercel Deployments.</li>
+<li><a href="https://github.com/GHGHGHKO/dalgona">Dalgona</a> - GIF meme finder app for Windows and macOS.</li>
+<li><a href="https://github.com/mikaelkristiansson/gitbar">GitBar</a> - System tray app for GitHub reviews.</li>
+<li><a href="https://github.com/Gitification-App/gitification">Gitification</a> - Menu bar app for managing Github notifications.</li>
+<li><a href="https://github.com/codad5/google-task-tauri">Google Task Desktop Client</a> - Google Task Desktop Client</li>
+<li><a href="https://github.com/trobonox/kanri">Kanri</a> - Cross-platform, offline-first Kanban board app with a focus on simplicity and user experience.</li>
+<li><a href="https://github.com/zxh3/kianalol">Kianalol</a> - Spotlight-like efficiency tool for swift website access.</li>
+<li><a href="https://github.com/linksaas/desktop">Link Saas</a> - Efficiency tools for software development teams.</li>
+<li><a href="https://github.com/Brendonovich/macrograph">MacroGraph</a> - Visual programming for content creators.</li>
+<li><a href="https://github.com/mrjackwills/obliqoro">Obliqoro</a> - Oblique Strategies meets Pomodoro.</li>
+<li><a href="https://github.com/g07cha/pomodoro">Pomodoro</a> - Time management tool based on Pomodoro technique.</li>
+<li><a href="https://github.com/probablykasper/remind-me-again">Remind Me Again</a> - Toggleable reminders app for Mac, Linux and Windows.</li>
+<li><a href="https://danielulrich.com/en/timechunks/">TimeChunks</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Time tracking for freelancers without timers and HH:MM:SS inputs.</li>
+<li><a href="https://github.com/SeakMengs/WindowPet">WindowPet</a> - Overlay app that lets you have adorable companions such as pets and anime characters on your screen.</li>
+<li><a href="https://zawee.net">Zawee</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Experience the synergy of Kanban boards, note-taking, file sharing, and more, seamlessly integrated into one powerful application.</li>
+</ul>
+<h3 id="security"><a class="header" href="#security">Security</a></h3>
+<ul>
+<li><a href="https://github.com/Levminer/authme">Authme</a> - Two-factor (2FA) authentication app for desktop.</li>
+<li><a href="https://codeberg.org/Calciumdibromid/CaBr2">Calciumdibromid</a> - Generate &quot;experiment wise safety sheets&quot; in compliance to European law.</li>
+<li><a href="https://github.com/angeldollface/gluhny">Gluhny</a> A graphical interface to validate IMEI numbers.</li>
+<li><a href="https://github.com/OneKeePass/desktop">OneKeePass</a> - Secure, modern, cross-platform and KeePass compatible password manager.</li>
+<li><a href="https://github.com/padloc/padloc">Padloc</a> - Modern, open source password manager for individuals and teams.</li>
+<li><a href="https://github.com/kunalsin9h/secops">Secops</a> - Ubuntu Operating System security made easy.</li>
+<li><a href="https://github.com/pwltr/tauthy">Tauthy</a> - Cross-platform TOTP authentication client.</li>
+</ul>
+<h3 id="social-media"><a class="header" href="#social-media">Social media</a></h3>
+<ul>
+<li><a href="https://github.com/SpikeHD/Dorion">Dorion</a> - Light weight third-party Discord client with support for plugins and themes.</li>
+<li><a href="https://github.com/iohzrd/identia">Identia</a> - Decentralized social media on IPFS.</li>
+<li><a href="https://github.com/probablykasper/kadium">Kadium</a> - App for staying on top of YouTube channel uploads.</li>
+<li><a href="https://git.kaki87.net/KaKi87/scraper-instagram-gui-desktop">Scraper Instagram GUI Desktop</a> - Alternative Instagram front-end for desktop.</li>
+</ul>
+<h3 id="utilities"><a class="header" href="#utilities">Utilities</a></h3>
+<ul>
+<li><a href="https://github.com/dhextras/age-timer-tauri">AgeTimer</a> - Desktop utility that counts your age in real-time.</li>
+<li><a href="https://github.com/billyjacoby/browsernaut">Browsernaut</a> - Browser picker for macOS.</li>
+<li><a href="https://github.com/lesterhnu/clipboard">Clipboard Record</a> - Record Clipboard Content.</li>
+<li><a href="https://github.com/0-don/clippy">Clippy</a> - Modern &amp; Fast Clipboard Manager.</li>
+<li><a href="https://fancyapps.com/freebies/">Fancy Screen Recorder</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Record entire screen or a selected area, trim and save as a GIF or video.</li>
+<li><a href="https://github.com/spieglt/flyingcarpet">Flying Carpet</a> - File transfer between Android, iOS, Linux, macOS, and Windows over auto-configured hotspot.</li>
+<li><a href="https://www.imagefly.dev/?ref=awesometauri">Imagefly</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Powerful offline image processing toolkit for Windows, Linux and macOS</li>
+<li><a href="https://janereader.com">Jane Reader</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - Modern and distraction-free epub reader.</li>
+<li><a href="https://github.com/KittyCAD/modeling-app">KittyCAD</a> - Modern 3D mechanical/hardware design. Build 3D models with both code and WYSIWYG editors.</li>
+<li><a href="https://github.com/dubisdev/key-on-screen">KoS - Key on Screen</a> - Show in your screen the keys you are pressing.</li>
+<li><a href="https://github.com/ChurchTao/Lanaya">Lanaya</a> - Easy to use, cross-platform clipboard management.</li>
+<li><a href="https://github.com/linka-app/linka">Linka!</a> - AI powered, easy to use, cross-platform bookmark management tool.</li>
+<li><a href="https://github.com/Akylas/mbview-rs">MBTiles Viewer</a> - MBTiles Viewer and Inspector.</li>
+<li><a href="https://github.com/ZaneH/metronome">Metronome</a> - Visual metronome for Windows, Linux and macOS.</li>
+<li><a href="https://overlayed.dev">Overlayed</a> - Voice chat overlay for Discord.</li>
+<li><a href="https://github.com/zhanglun/pavo">Pavo</a> - Cross-platform desktop wallpaper application.</li>
+<li><a href="https://github.com/angeldollface/peekaboo">Peekaboo</a> A graphical interface to display images.</li>
+<li><a href="https://github.com/kkoomen/pointless">Pointless</a> - Endless drawing canvas.</li>
+<li><a href="https://github.com/pot-app/pot-desktop">Pot</a> - Cross-platform Translation Software.</li>
+<li><a href="https://github.com/RoundedCorners/Application">Rounded Corners</a> - Rounded Corners app for Windows.</li>
+<li><a href="https://github.com/dubisdev/runmath">RunMath</a> - Keyboard-first calculator for Windows.</li>
+<li><a href="https://github.com/Nicify/sensi-mouse">SensiMouse</a> - Easily change macOS system-wide mouse sensitivity and acceleration settings.</li>
+<li><a href="https://github.com/breadthe/sd-buddy">Stable Diffusion Buddy</a> - Desktop UI companion for the self-hosted Mac version of Stable Diffusion.</li>
+<li><a href="https://github.com/cablehead/stacks">Stacks</a> - Modern and capable clipboard manager for macOS. Seeking Linux and Windows contributions.</li>
+<li><a href="https://github.com/sprout2000/tauview">Tauview</a> - Minimalist image viewer for macOS and Linux based on Leaflet.js.</li>
+<li><a href="https://github.com/acarl005/toerings">ToeRings</a> - Conky Seamod inspired system monitor app.</li>
+<li><a href="https://toolcat.app">Toolcat</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - All-in-one toolkit for developers and creators.</li>
+<li><a href="https://github.com/openscopeproject/TrguiNG">TrguiNG</a> - Remote GUI for Transmission torrent daemon.</li>
+<li><a href="https://github.com/ParthJadhav/verve">Verve</a> - Launcher for accessing and opening applications, files and documents.</li>
+<li><a href="https://github.com/zeet2020/wallpaper-changer-tauri">Wallpaper changer</a> - Simple wallpaper changer app.</li>
+<li><a href="https://usezap.sh/?ref=awesometauri">Zap</a> <img src="https://img.shields.io/badge/closed%20source-FFC131?&amp;logoColor=black" alt="closed source" /> - macOS spotlight-like dock that makes navigating apps convenient.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="sysadmin.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="terraform.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="sysadmin.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="terraform.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

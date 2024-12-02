@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/controlapi/">
+<meta property="og:title" content="NGINX Unit: Control API">
+<meta content="Learn the basics of Unit's control API." name="og:description" />
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Configuration" href="../configuration/" />
+<link rel="prev" title="Installation" href="../installation/" />
+
+<title>Control API — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../">
+            <img src="../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Control API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#openapi-specification">OpenAPI specification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quick-start">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-manipulation">API manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="control-api">
+<span id="configuration-api"></span><h1>Control API<a class="headerlink" href="#control-api" title="Permalink to this heading">§</a></h1>
+<p>Unit’s configuration is JSON-based,
+accessible via a RESTful control API,
+and entirely manageable over HTTP.
+The control API provides a root object
+(<strong>/</strong>)
+that comprises four primary options:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Object</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>/certificates</strong></td>
+<td>Responsible for SSL/TLS
+<a class="reference internal" href="../certificates/"><span class="doc">certificate management</span></a>.</td>
+</tr>
+<tr class="row-odd"><td><strong>/config</strong></td>
+<td>Used for general
+<a class="reference internal" href="../configuration/"><span class="doc">configuration management</span></a>.</td>
+</tr>
+<tr class="row-even"><td><strong>/control</strong></td>
+<td>Queried for
+<a class="reference internal" href="../configuration/#configuration-proc-mgmt"><span class="std std-ref">application restart</span></a>.</td>
+</tr>
+<tr class="row-odd"><td><strong>/status</strong></td>
+<td>Queried for
+<a class="reference internal" href="../statusapi/"><span class="doc">usage statistics</span></a>.</td>
+</tr>
+</tbody>
+</table>
+<p id="configuration-socket">The API is exposed through a socket
+whose type and address depend on the
+<a class="reference internal" href="../installation/"><span class="doc">installation method</span></a>.
+Its compile-time setting can be overridden at
+<a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">startup</span></a>.
+For consistency and
+<a class="reference internal" href="../howto/security/#security-socket-state"><span class="std std-ref">security</span></a>,
+our examples use Unix domain sockets
+unless stated otherwise.
+Example queries use <strong class="program">curl</strong>,
+and URIs are prefixed with <strong>http://localhost</strong>
+as the utility expects
+(the hostname is irrelevant for Unit itself),
+but you can use any HTTP tool you like.
+For instance, Visual Studio Code users
+may benefit from this
+<a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=Stanislav.vscode-nginx-unit">third-party extension</a>.</p>
+<details id=no-config-files_
+            onclick="window.location.hash='#no-config-files'">
+            <summary><span>No configuration files used</span></summary><div class="docutils container">
+<p>The control API is the single source of truth
+about Unit’s configuration.
+There are no configuration files
+that can or should be manipulated;
+this is a deliberate design choice
+made to avoid issues such as:</p>
+<ul class="simple">
+<li>Undetected invalid states:
+Configuration files can be saved in an invalid state,
+and the issue won’t be seen
+until reload or startup.
+The control API avoids this
+by validating configuration changes on the fly.</li>
+<li>Too broad or too narrow configuration file permissions:
+If a configuration file is inaccessible,
+it can’t be loaded;
+if it’s public,
+sensitive data may leak.
+The control API has a single manageable point of entry.</li>
+<li>Unpredictable behavior:
+In a configuration file hierarchy,
+it’s easy to lose track and misconfigure something.
+With the control API,
+the entire configuration is a single, organized, and navigatable entity.</li>
+</ul>
+</div>
+</details><details id=conf-replication_
+            onclick="window.location.hash='#conf-replication'">
+            <summary><span>Replicating Unit states</span></summary><div class="docutils container">
+<p>Although Unit is fully dynamic,
+sometimes you just want to copy an existing setup
+without extra modification.
+Unit’s
+<a class="reference internal" href="../howto/source/#source-config-src-state"><span class="std std-ref">state directories</span></a>
+are interchangeable
+as long as Unit version stays the same,
+so you can use a shortcut to replicate a Unit instance.
+Also, this works with the Docker
+<a class="reference internal" href="../howto/docker/"><span class="doc">images</span></a>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit’s state can change its structure between versions
+and must not be edited by external means.</p>
+</div>
+<p>On the machine where the <em>reference</em> Unit instance runs,
+find out where the state is stored:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>-h
+
+<span class="go">      --state DIRECTORY    set state directory name</span>
+<span class="go">                           default: &quot;<span class=nxt_ph title="The value we're looking for">/path/to/reference/unit/state</span>&quot;</span>
+</pre></div>
+</div>
+<p>Double-check that the state location isn’t overridden at startup:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ps<span class="w"> </span>ax<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>unitd
+<span class="go">      ...</span>
+<span class="go">      unit: main v1.33.0 [unitd --state <span class=nxt_ph title="The runtime value overrides the default">/runtime/path/to/reference/unit/state</span> ... ]</span>
+</pre></div>
+</div>
+<p>Repeat these commands on the second machine
+to see where the target instance stores its state.</p>
+<p>Stop both Unit instances, for example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>stop<span class="w"> </span>unit
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Stop and start commands may differ
+if Unit was installed from a
+<a class="reference internal" href="../installation/#installation-community-repos"><span class="std std-ref">non-official</span></a>
+repo or built from
+<a class="reference internal" href="../installation/#source"><span class="std std-ref">source</span></a>.</p>
+</div>
+<p>Copy the reference state directory to the target state directory
+by arbitrary means;
+make sure to include subdirectories and hidden files.
+Finally, restart both Unit instances:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>systemctl<span class="w"> </span>restart<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>If you run your Unit instances manually,
+<strong>--state</strong> can be used to set the state directory at
+<a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">startup</span></a>.</p>
+<p>After restart,
+the target instance picks up the configuration
+you’ve copied to the state directory.</p>
+</div>
+</details><div class="section" id="openapi-specification">
+<span id="controlapi-openapi"></span><h2>OpenAPI specification<a class="headerlink" href="#openapi-specification" title="Permalink to this heading">§</a></h2>
+<blockquote>
+<div><p>For a more formal approach
+to Unit’s control API,
+download the
+<a class="reference external" href="https://raw.githubusercontent.com/nginx/unit/master/docs/unit-openapi.yaml">OpenAPI specification</a>
+or try the interactive Docker
+<a class="reference download internal" download="" href="../_downloads/b16e6c96d59a63357f36a3f0c11bf14c/unit-openapi.Dockerfile"><code class="xref download docutils literal notranslate"><span class="pre">version</span></code></a>.
+First, build the image
+and run a container:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>build<span class="w"> </span>--tag<span class="o">=</span>unit-openapi<span class="w"> </span>-f<span class="w"> </span>unit-openapi.Dockerfile<span class="w"> </span>.
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>run<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8765</span>:8765<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:8080<span class="w"> </span>unit-openapi
+</pre></div>
+</div>
+<p>Next, open <strong>http://localhost:8765</strong> in a browser.</p>
+<p>To use this image against a pre-existing Unit instance,
+type in the address and port of the instance’s
+<a class="reference internal" href="#configuration-socket"><span class="std std-ref">control socket</span></a>
+(only IP sockets are supported now)
+on the page:</p>
+<a class="reference internal image-reference" href="../_images/openapi.png"><img alt="Unit's OpenAPI Image Page - Customizing Control Socket Address" src="../_images/openapi.png" style="width: 100%;" /></a>
+</div></blockquote>
+</div>
+<div class="section" id="quick-start">
+<span id="configuration-quickstart"></span><h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading">§</a></h2>
+<p>For a brief intro,
+we configure Unit to serve a static file.
+Suppose you saved this as <strong>/www/data/index.html</strong>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Welcome to NGINX Unit!<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">         </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="kt">em</span><span class="p">;</span>
+<span class="w">         </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="kc">auto</span><span class="p">;</span>
+<span class="w">         </span><span class="k">font-family</span><span class="p">:</span><span class="w"> </span><span class="n">Tahoma</span><span class="p">,</span><span class="w"> </span><span class="n">Verdana</span><span class="p">,</span><span class="w"> </span><span class="n">Arial</span><span class="p">,</span><span class="w"> </span><span class="kc">sans-serif</span><span class="p">;</span>
+<span class="w">         </span><span class="p">}</span>
+<span class="w">      </span><span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Welcome to NGINX Unit!<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>If you see this page, the NGINX Unit web server is successfully
+         installed and working.  Further configuration is required.
+      <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>For online documentation and support, please refer to
+         <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://unit.nginx.org/&quot;</span><span class="p">&gt;</span>unit.nginx.org<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>.<span class="p">&lt;</span><span class="nt">br</span><span class="p">/&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">em</span><span class="p">&gt;</span>Thank you for using NGINX Unit.<span class="p">&lt;/</span><span class="nt">em</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Now, Unit should
+<a class="reference internal" href="../configuration/#configuration-listeners"><span class="std std-ref">listen</span></a>
+on a port that
+<a class="reference internal" href="../configuration/#configuration-routes"><span class="std std-ref">routes</span></a>
+the incoming requests to a <strong>share</strong> action,
+which serves the file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;127.0.0.1:8080&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;routes&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;share&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/www/data<span class=nxt_var>$uri</span>&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To configure Unit,
+<strong>PUT</strong> this snippet to the <strong>/config</strong> section via the
+<a class="reference internal" href="../howto/source/#source-startup"><span class="std std-ref">control socket</span></a>.
+Working with JSON in the command line can be cumbersome;
+instead, save and upload it as <strong>snippet.json</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@snippet.json<span class="w"> </span>--unix-socket<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config
+
+<span class="go">      {</span>
+<span class="go">          &quot;success&quot;: &quot;Reconfiguration done.&quot;</span>
+<span class="go">      }</span>
+</pre></div>
+</div>
+<p>To confirm this works,
+query the listener.
+Unit responds with the <strong>index.html</strong> file
+from the <strong>share</strong> directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-i<span class="w"> </span><span class="m">127</span>.0.0.1:8080
+
+<span class="go">      HTTP/1.1 200 OK</span>
+<span class="go">      Content-Type: text/html</span>
+<span class="go">      Server: Unit/1.28.0</span>
+
+<span class="go">      &lt;!DOCTYPE html&gt;</span>
+<span class="go">      &lt;html&gt;</span>
+<span class="go">         &lt;head&gt;</span>
+<span class="go">            &lt;title&gt;Welcome to NGINX Unit!&lt;/title&gt;</span>
+<span class="go">            ...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="api-manipulation">
+<span id="configuration-mgmt"></span><h2>API manipulation<a class="headerlink" href="#api-manipulation" title="Permalink to this heading">§</a></h2>
+<p>To address parts of the control API,
+query the
+<a class="reference internal" href="#configuration-socket"><span class="std std-ref">control socket</span></a>
+over HTTP;
+URI path segments of your API requests must be the names of its
+<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc8259#section-4">JSON object</a>
+members or indexes of its
+<a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc8259#section-5">JSON array</a>
+elements.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you often configure Unit manually, JSON command-line tools such as
+<a class="reference external" href="https://stedolan.github.io/jq/">jq</a> and <a class="reference external" href="https://jpmens.net/2016/03/05/a-shell-command-to-create-json-jo/">jo</a> may
+come in handy.</p>
+</div>
+<p>The API supports the following HTTP methods:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Method</th>
+<th class="head">Action</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>GET</strong></td>
+<td>Returns the entity at the request URI
+as a JSON value in the HTTP response body.</td>
+</tr>
+<tr class="row-odd"><td><strong>POST</strong></td>
+<td>Updates the <em>array</em> at the request URI,
+appending the JSON value
+from the HTTP request body.</td>
+</tr>
+<tr class="row-even"><td><strong>PUT</strong></td>
+<td>Replaces the entity at the request URI
+and returns a status message
+in the HTTP response body.</td>
+</tr>
+<tr class="row-odd"><td><strong>DELETE</strong></td>
+<td>Deletes the entity at the request URI
+and returns a status message
+in the HTTP response body.</td>
+</tr>
+</tbody>
+</table>
+<p>Before a change,
+Unit checks the difference it makes in the entire configuration;
+if there’s none,
+nothing is done.
+Thus, you can’t restart an app
+by reuploading its unchanged configuration
+(but there’s a
+<a class="reference internal" href="../configuration/#configuration-proc-mgmt"><span class="std std-ref">way</span></a>
+of restarting apps).</p>
+<p>Unit performs actual reconfiguration steps
+as gracefully as possible:
+running tasks expire naturally,
+connections are properly closed,
+processes end smoothly.</p>
+<p>Any type of update can be done with different URIs,
+provided you supply the right JSON:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{ &quot;pass&quot;: &quot;applications/blogs&quot; }&#39;</span><span class="w"> </span>--unix-socket<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config/listeners/127.0.0.1:8300
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;applications/blogs&quot;&#39;</span><span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/config/listeners/127.0.0.1:8300/pass
+</pre></div>
+</div>
+<p>However, the first command replaces the <em>entire</em> listener,
+dropping any other options you could have configured,
+whereas the second one replaces only the <strong>pass</strong> value
+and leaves other options intact.</p>
+</div>
+<div class="section" id="examples">
+<span id="conf-examples"></span><h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">§</a></h2>
+<p>To minimize typos and effort,
+avoid embedding JSON payload in your commands;
+instead, store your configuration snippets for review and reuse.
+For instance, save your application object as <strong>wiki.json</strong>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wsgi&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;www-wiki&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;www-wiki&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/www/wiki/&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Use it to set up an application called <strong>wiki-prod</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@wiki.json<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config/applications/wiki-prod
+</pre></div>
+</div>
+<p>Use it again to set up a development version of the same app
+called <strong>wiki-dev</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@wiki.json<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config/applications/wiki-dev
+</pre></div>
+</div>
+<p>Toggle the <strong>wiki-dev</strong> app to another source code directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;/www/wiki-dev/&quot;&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config/applications/wiki-dev/path
+</pre></div>
+</div>
+<p>Next, boost the process count for the production app
+to warm it up a bit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;5&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config/applications/wiki-prod/processes
+</pre></div>
+</div>
+<p>Add a listener for the <strong>wiki-prod</strong> app
+to accept requests at all host IPs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{ &quot;pass&quot;: &quot;applications/wiki-prod&quot; }&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="s1">&#39;http://localhost/config/listeners/*:8400&#39;</span>
+</pre></div>
+</div>
+<p>Plug the <strong>wiki-dev</strong> app into the listener to test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;applications/wiki-dev&quot;&#39;</span><span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class="s1">&#39;http://localhost/config/listeners/*:8400/pass&#39;</span>
+</pre></div>
+</div>
+<p>Then rewire the listener,
+adding a URI-based route to the development version of the app:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>&lt;&lt;<span class="w"> </span>EOF<span class="w"> </span>&gt;<span class="w"> </span>config.json
+
+<span class="go">    [</span>
+<span class="go">        {</span>
+<span class="go">            &quot;match&quot;: {</span>
+<span class="go">                &quot;uri&quot;: &quot;/dev/*&quot;</span>
+<span class="go">            },</span>
+
+<span class="go">            &quot;action&quot;: {</span>
+<span class="go">                &quot;pass&quot;: &quot;applications/wiki-dev&quot;</span>
+<span class="go">            }</span>
+<span class="go">        }</span>
+<span class="go">    ]</span>
+<span class="go">    EOF</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@config.json<span class="w"> </span>--unix-socket<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config/routes
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;routes&quot;&#39;</span><span class="w"> </span>--unix-socket<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="s1">&#39;http://localhost/config/listeners/*:8400/pass&#39;</span>
+</pre></div>
+</div>
+<p>Next, change the <strong>wiki-dev</strong>’s URI prefix
+in the <strong>routes</strong> array,
+using its index (0):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;/development/*&quot;&#39;</span><span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/config/routes/0/match/uri
+</pre></div>
+</div>
+<p>Append a route to the prod app:
+<strong>POST</strong> always adds to the array end,
+so there’s no need for an index:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;match&quot;: {&quot;uri&quot;: &quot;/production/*&quot;}, \</span>
+<span class="s1">       &quot;action&quot;: {&quot;pass&quot;: &quot;applications/wiki-prod&quot;}}&#39;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">        </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/config/routes/
+</pre></div>
+</div>
+<p>Otherwise, use <strong>PUT</strong> with the array’s last index
+(0 in our sample)
+<em>plus one</em>
+to add the new item at the end:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;match&quot;: {&quot;uri&quot;: &quot;/production/*&quot;}, \</span>
+<span class="s1">       &quot;action&quot;: {&quot;pass&quot;: &quot;applications/wiki-prod&quot;}}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">       </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/config/routes/1/
+</pre></div>
+</div>
+<p>To get the complete <strong>/config</strong> section:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span>http://localhost/config/
+
+<span class="go">    {</span>
+<span class="go">        &quot;listeners&quot;: {</span>
+<span class="go">            &quot;*:8400&quot;: {</span>
+<span class="go">                &quot;pass&quot;: &quot;routes&quot;</span>
+<span class="go">            }</span>
+<span class="go">        },</span>
+
+<span class="go">        &quot;applications&quot;: {</span>
+<span class="go">            &quot;wiki-dev&quot;: {</span>
+<span class="go">                &quot;type&quot;: &quot;python&quot;,</span>
+<span class="go">                &quot;module&quot;: &quot;wsgi&quot;,</span>
+<span class="go">                &quot;user&quot;: &quot;www-wiki&quot;,</span>
+<span class="go">                &quot;group&quot;: &quot;www-wiki&quot;,</span>
+<span class="go">                &quot;path&quot;: &quot;/www/wiki-dev/&quot;</span>
+<span class="go">            },</span>
+
+<span class="go">            &quot;wiki-prod&quot;: {</span>
+<span class="go">                &quot;type&quot;: &quot;python&quot;,</span>
+<span class="go">                &quot;processes&quot;: 5,</span>
+<span class="go">                &quot;module&quot;: &quot;wsgi&quot;,</span>
+<span class="go">                &quot;user&quot;: &quot;www-wiki&quot;,</span>
+<span class="go">                &quot;group&quot;: &quot;www-wiki&quot;,</span>
+<span class="go">                &quot;path&quot;: &quot;/www/wiki/&quot;</span>
+<span class="go">            }</span>
+<span class="go">        },</span>
+
+<span class="go">        &quot;routes&quot;: [</span>
+<span class="go">            {</span>
+<span class="go">                &quot;match&quot;: {</span>
+<span class="go">                    &quot;uri&quot;: &quot;/development/*&quot;</span>
+<span class="go">                },</span>
+
+<span class="go">                &quot;action&quot;: {</span>
+<span class="go">                    &quot;pass&quot;: &quot;applications/wiki-dev&quot;</span>
+<span class="go">                }</span>
+<span class="go">            },</span>
+<span class="go">            {</span>
+<span class="go">                &quot;action&quot;: {</span>
+<span class="go">                    &quot;pass&quot;: &quot;applications/wiki-prod&quot;</span>
+<span class="go">                }</span>
+<span class="go">            }</span>
+<span class="go">        ]</span>
+<span class="go">    }</span>
+</pre></div>
+</div>
+<p>To obtain the <strong>wiki-dev</strong> application object:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/config/applications/wiki-dev
+
+<span class="go">    {</span>
+<span class="go">        &quot;type&quot;: &quot;python&quot;,</span>
+<span class="go">        &quot;module&quot;: &quot;wsgi&quot;,</span>
+<span class="go">        &quot;user&quot;: &quot;www-wiki&quot;,</span>
+<span class="go">        &quot;group&quot;: &quot;www-wiki&quot;,</span>
+<span class="go">        &quot;path&quot;: &quot;/www/wiki-dev/&quot;</span>
+<span class="go">    }</span>
+</pre></div>
+</div>
+<p>You can save JSON returned by such requests
+as <strong>.json</strong> files for update or review:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/config/<span class="w"> </span>&gt;<span class="w"> </span>config.json
+</pre></div>
+</div>
+<p>To drop the listener on <strong>*:8400</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class="s1">&#39;http://localhost/config/listeners/*:8400&#39;</span>
+</pre></div>
+</div>
+<p>Mind that you can’t delete objects that other objects rely on,
+such as a route still referenced by a listener:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>http://localhost/config/routes
+
+<span class="go">     {</span>
+<span class="go">         &quot;error&quot;: &quot;Invalid configuration.&quot;,</span>
+<span class="go">         &quot;detail&quot;: &quot;Request \&quot;pass\&quot; points to invalid location \&quot;routes\&quot;.&quot;</span>
+<span class="go">     }</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/controlapi.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

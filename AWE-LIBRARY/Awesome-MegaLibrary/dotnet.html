@@ -1,0 +1,1135 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>dotnet - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html" class="active"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="awesome-net"><a class="header" href="#awesome-net">Awesome .NET!</a></h1>
+<p><a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" /></a> 
+<a href="https://travis-ci.org/quozd/awesome-dotnet"><img src="https://api.travis-ci.org/quozd/awesome-dotnet.svg" alt="Build Status" /></a>
+<a href="https://gitter.im/quozd/awesome-dotnet?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt="Join the chat at https://gitter.im/quozd/awesome-dotnet" /></a></p>
+<p>A collection of awesome .NET libraries, tools, frameworks, and software.</p>
+<p>Inspired by <a href="https://github.com/markets/awesome-ruby">awesome-ruby</a>, <a href="https://github.com/ziadoz/awesome-php">awesome-php</a>, <a href="https://github.com/vinta/awesome-python">awesome-python</a>, <a href="https://github.com/dypsilon/frontend-dev-bookmarks">frontend-dev-bookmarks</a> and <a href="https://github.com/dreikanter/ruby-bookmarks">ruby-bookmarks</a>.</p>
+<p>Contributions are always welcome! Please take a look at the <a href="https://github.com/quozd/awesome-dotnet/blob/master/CONTRIBUTING.md">contribution guidelines and quality standard</a> pages first. We accept proprietary and commercial software too.</p>
+<p>Thanks to all <a href="https://github.com/quozd/awesome-dotnet/graphs/contributors">contributors</a>, you're awesome and wouldn't be possible without you! The goal is to build a categorized community-driven collection of very well-known resources.</p>
+<h1 id="license"><a class="header" href="#license">License</a></h1>
+<p><a href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://licensebuttons.net/p/zero/1.0/88x31.png" alt="CC0" /></a></p>
+<p>To the extent possible under law, <a href="https://github.com/quozd">Vitali Fokin</a> has waived all copyright and related or neighboring rights to this work.</p>
+<h1 id="table-of-contents"><a class="header" href="#table-of-contents">Table of Contents</a></h1>
+<ul>
+<li><a href="#awesome-dotnet">Awesome DotNet</a>
+<ul>
+<li><a href="#algorithms-and-data-structures">Algorithms and Data Structures</a></li>
+<li><a href="#api">API</a></li>
+<li><a href="#application-frameworks">Application Frameworks</a></li>
+<li><a href="#application-templates">Application Templates</a></li>
+<li><a href="#artificial-intelligence">Artificial Intelligence</a></li>
+<li><a href="#assembly-manipulation">Assembly Manipulation</a></li>
+<li><a href="#assets">Assets</a></li>
+<li><a href="#authentication-and-authorization">Authentication and Authorization</a></li>
+<li><a href="#books">Books</a></li>
+<li><a href="#build-automation">Build Automation</a></li>
+<li><a href="#caching">Caching</a></li>
+<li><a href="#cli">CLI</a></li>
+<li><a href="#clr">CLR</a></li>
+<li><a href="#cms">CMS</a></li>
+<li><a href="#code-analysis-and-metrics">Code Analysis and Metrics</a></li>
+<li><a href="#code-snippets">Code Snippets</a></li>
+<li><a href="#compilers-transpilers-and-languages">Compilers, Transpilers and Languages</a></li>
+<li><a href="#compression">Compression</a></li>
+<li><a href="#continuous-integration">Continuous Integration</a></li>
+<li><a href="#cryptography">Cryptography</a></li>
+<li><a href="#database">Database</a></li>
+<li><a href="#database-drivers">Database Drivers</a></li>
+<li><a href="#datetime">DateTime</a></li>
+<li><a href="#decompilation">Decompilation</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#directx">DirectX</a></li>
+<li><a href="#distributed-computing">Distributed Computing</a></li>
+<li><a href="#dlr">DLR</a></li>
+<li><a href="#documentation">Documentation</a></li>
+<li><a href="#e-commerce-and-payments">E-Commerce and Payments</a></li>
+<li><a href="#environment-management">Environment Management</a></li>
+<li><a href="#etl">ETL</a></li>
+<li><a href="#exceptions">Exceptions</a></li>
+<li><a href="#extensions">Extensions librairies</a></li>
+<li><a href="#functional-programming">Functional programming</a></li>
+<li><a href="#game">Game</a></li>
+<li><a href="#gis">GIS</a></li>
+<li><a href="#git-tools">Git Tools</a></li>
+<li><a href="#graphics">Graphics</a></li>
+<li><a href="#gui">GUI</a></li>
+<li><a href="#html-and-css">HTML and CSS</a></li>
+<li><a href="#http">HTTP</a></li>
+<li><a href="#ide">IDE</a></li>
+<li><a href="#image-processing">Image Processing</a></li>
+<li><a href="#install-tools">Install Tools</a></li>
+<li><a href="#internationalization">Internationalization</a></li>
+<li><a href="#interoperability">Interoperability</a></li>
+<li><a href="#ioc">IoC</a></li>
+<li><a href="#javascript-engines">JavaScript Engines</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#mail">Mail</a></li>
+<li><a href="#machine-learning-and-data-science">Machine Learning and Data Science</a></li>
+<li><a href="#markdown-processors">Markdown Processors</a></li>
+<li><a href="#mathematics">Mathematics</a></li>
+<li><a href="#media">Media</a></li>
+<li><a href="#metrics">Metrics</a></li>
+<li><a href="#micro-framework">Micro Framework</a></li>
+<li><a href="#minification">Minification</a></li>
+<li><a href="#misc">Misc</a></li>
+<li><a href="#mvvm">MVVM</a></li>
+<li><a href="#object-to-object-mapping">Object to object mapping</a></li>
+<li><a href="#office">Office</a></li>
+<li><a href="#orm">ORM</a></li>
+<li><a href="#package-management">Package Management</a></li>
+<li><a href="#pdf">PDF</a></li>
+<li><a href="#profiler">Profiler</a></li>
+<li><a href="#protocols">Protocols</a></li>
+<li><a href="#push-notifications">Push Notifications</a></li>
+<li><a href="#queue">Queue</a></li>
+<li><a href="#reactive-programming">Reactive Programming</a></li>
+<li><a href="#scheduling">Scheduling</a></li>
+<li><a href="#sdk-and-api-clients">SDK and API Clients</a></li>
+<li><a href="#search">Search</a></li>
+<li><a href="#serialization">Serialization</a></li>
+<li><a href="#sms-and-phone-calls">SMS and Phone Calls</a></li>
+<li><a href="#state-machines">State machines</a></li>
+<li><a href="#static-site-generators">Static Site Generators</a></li>
+<li><a href="#style-guide">Style Guide</a></li>
+<li><a href="#template-engine">Template Engine</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#tools">Tools</a></li>
+<li><a href="#trading">Trading</a></li>
+<li><a href="#ui-automation">UI Automation</a></li>
+<li><a href="#visual-studio-plugins">Visual Studio Plugins</a></li>
+<li><a href="#web-browsers">Web Browsers</a></li>
+<li><a href="#web-frameworks">Web Frameworks</a></li>
+<li><a href="#web-servers">Web Servers</a></li>
+<li><a href="#websocket">WebSocket</a></li>
+<li><a href="#windows-services">Windows Services</a></li>
+<li><a href="#wpf">WPF</a></li>
+<li><a href="#other-lists">Other Lists</a></li>
+</ul>
+</li>
+<li><a href="#other-lists">Other Lists</a></li>
+<li><a href="#resources">Resources</a></li>
+</ul>
+<h2 id="algorithms-and-data-structures"><a class="header" href="#algorithms-and-data-structures">Algorithms and Data structures</a></h2>
+<ul>
+<li><a href="https://github.com/SolutionsDesign/Algorithmia">Algorithmia</a> - Algorithm and data-structure library for .NET 3.5 and up. Algorithmia contains sophisticated algorithms and data-structures like graphs, priority queues, command, undo-redo and more. </li>
+<li><a href="https://github.com/aalhour/C-Sharp-Algorithms">C# Algorithms</a> - A C# plug-and-play class-library project of standard Data Structures and Algorithms. It contains 35+ Data Structures and 30+ Algorithms designed as Object-Oriented isolated components.</li>
+</ul>
+<h2 id="api"><a class="header" href="#api">API</a></h2>
+<ul>
+<li><a href="https://github.com/NancyFx/Nancy">NancyFx</a> - Lightweight, low-ceremony, framework for building HTTP based services on .Net and Mono</li>
+<li><a href="https://www.asp.net/web-api">ASP.NET WebAPI</a> - Framework that makes it easy to build HTTP services that reach a broad range of clients, including browsers and mobile devices</li>
+<li><a href="http://breeze.github.io/doc-net/">Breeze</a> - Api framework enabling rich data access by using the OData 3 protocol. Client libraries available for Javascript and C#.</li>
+<li><a href="https://github.com/Microsoft/Mobius">Mobius: C# API for Spark</a> - Mobius adds C# language binding to Apache Spark, enabling the implementation of Spark driver code and data processing operations in C#.</li>
+<li><a href="https://github.com/ServiceStack/ServiceStack">ServiceStack</a> - Thoughtfully architected, obscenely fast, thoroughly enjoyable web services for all</li>
+<li><a href="https://github.com/Nelibur/Nelibur">Nelibur</a> - Nelibur is message based web service framework on the pure WCF. Nelibur simplifies creating high-performance and message based web services and you certainly have all the power of the WCF.</li>
+<li><a href="https://github.com/WebApiContrib/WebAPIContrib">WebAPI Contrib</a> - Collection of open source projects to help improve your work with ASP.NET Web API</li>
+</ul>
+<h2 id="application-frameworks"><a class="header" href="#application-frameworks">Application Frameworks</a></h2>
+<ul>
+<li><a href="https://github.com/aspnetboilerplate/aspnetboilerplate">ASP.NET Boilerplate</a> - A starting point for new modern ASP.NET MVC web applications with best practices and most popular tools.</li>
+<li><a href="https://github.com/ASP-NET-Core-Boilerplate/Framework">ASP.NET MVC Boilerplate Framework</a> - ASP.NET MVC Extensions and Helper NuGet packages.</li>
+<li><a href="https://github.com/dotnet/orleans">Orleans</a> - Orleans is a framework that provides a straight-forward approach to building distributed high-scale computing applications, without the need to learn and apply complex concurrency or other scaling patterns</li>
+<li><a href="https://github.com/dotnet/corefx">CoreFX</a> -  The corefx repo contains the library implementation (called &quot;CoreFX&quot;) for .NET Core. It includes System.Collections, System.IO, System.Xml and many other components. It builds and runs on Windows. You can 'watch' the repo to see Linux and Mac support being added over the next few months.</li>
+<li><a href="https://github.com/MarimerLLC/csla">CSLA .NET</a> - business layer development framework http://cslanet.com/</li>
+<li><a href="https://github.com/mono/mono">Mono</a> - Mono open source ECMA CLI, C# and .NET implementation</li>
+<li><a href="https://github.com/mono/mono-addins">Mono-Addins</a> - Mono.Addins is a generic framework for creating extensible applications, and for creating add-ins which extend those applications</li>
+<li><a href="https://github.com/peasy/Peasy.NET">peasy</a> - Peasy is a middle tier framework that offers an easy to use and flexible rules engine and was designed to address common challenges such as concurrency handling, transactional support, fault tolerance, threading, scalability, async and multiple client support, and easy testability, all without a huge learning curve!</li>
+<li><a href="https://github.com/spring-projects/spring-net">Spring.Net</a> - Spring.NET is an open source application framework that makes building  enterprise .NET applications easier</li>
+<li><a href="https://github.com/Azure/DotNetty">DotNetty</a> - DotNetty is a port of Netty, asynchronous event-driven network application framework for rapid development of maintainable high performance protocol servers &amp; clients. </li>
+</ul>
+<h2 id="application-templates"><a class="header" href="#application-templates">Application Templates</a></h2>
+<ul>
+<li><a href="https://github.com/kriasoft/aspnet-starter-kit">ASP.NET Core Starter Kit</a> - backend: .NET Core, EF Core, C#; frontend: Babel, Webpack, React, CSS Modules</li>
+<li><a href="https://github.com/ASP-NET-Core-Boilerplate/Templates">ASP.NET MVC Boilerplate</a> - Professional ASP.NET MVC templates for building secure, fast, robust and adaptable web applications or sites. It provides the minimum amount of code required on top of the default MVC template provided by Microsoft.</li>
+<li><a href="https://github.com/NonFactors/MVC6.Template">MVC.Template</a> - ASP.NET Core MVC project starter template.</li>
+<li><a href="https://github.com/fsprojects/ProjectScaffold">ProjectScaffold</a> - A prototypical .NET solution recommended by the F# Foundation---includes file system setup, Paket for dependencies and FAKE for build/test automation. By default, build process also compiles documentation and generates NuGet packages.</li>
+<li><a href="https://github.com/volkanceylan/Serenity">Serene</a> - Serenity is an ASP.NET MVC application platform designed to simplify and shorten development of data-centric business applications with a service based architecture. Serene is a starter template to build Serenity applications.</li>
+<li><a href="https://github.com/LigerShark/side-waffle">Side-Waffle</a> - Large collection of useful templates for Web and Desktop development.</li>
+<li><a href="https://github.com/Windows-XAML/Template10">Template10</a> - Windows 10 templates with design patterns.</li>
+</ul>
+<h2 id="artificial-intelligence"><a class="header" href="#artificial-intelligence">Artificial Intelligence</a></h2>
+<ul>
+<li><a href="http://aimlbot.sourceforge.net/">AIMLBot (Program#)</a> - A small, fast, standards-compliant yet easily customizable implementation of an AIML (Artificial Intelligence Markup Language) based chatter bot in C#.</li>
+<li><a href="http://simlbot.com/">SIML</a> - Synthetic Intelligence Markup Language, a next generation Chatbot &amp; Digital Assistant Language.</li>
+</ul>
+<h2 id="assembly-manipulation"><a class="header" href="#assembly-manipulation">Assembly Manipulation</a></h2>
+<ul>
+<li><a href="https://github.com/Fody/Fody">Fody</a> - Extensible tool for weaving .net assemblies</li>
+<li><a href="https://github.com/jbevain/cecil">Mono.Cecil</a> - Cecil is a library to generate and inspect programs and libraries in the ECMA CIL form.</li>
+</ul>
+<h2 id="assets"><a class="header" href="#assets">Assets</a></h2>
+<ul>
+<li><a href="https://github.com/andrewdavey/cassette">Cassette</a> - Manages .NET web application assets (scripts, css and templates)</li>
+<li><a href="https://github.com/ajorkowski/NodeAssets">NodeAssets</a> - Asset Manager for .net that has live css updates using SignalR and can optionally leverage NodeJS compilers</li>
+<li><a href="https://github.com/Taritsyn/BundleTransformer">Bundle Transformer</a> - Modular extension for <a href="http://aspnetoptimization.codeplex.com/">Microsoft ASP.NET Web Optimization Framework</a>. Its modules supports LESS, Sass, CoffeeScript, TypeScript, Mustache, Handlebars, Autoprefixer along with a bunch of different JS and CSS minifiers.</li>
+<li><a href="https://github.com/ServiceStack/Bundler">Bundler</a> - Compile &amp; Minify Less/Sass/Stylus/Css/JS/CoffeeScript/LiveScript files. Integrates with MVC and ServiceStack</li>
+<li><a href="https://github.com/jetheredge/SquishIt">SquishIt</a> - Lets you <em>easily</em> bundle some css and javascript</li>
+</ul>
+<h2 id="authentication-and-authorization"><a class="header" href="#authentication-and-authorization">Authentication and Authorization</a></h2>
+<ul>
+<li><a href="https://aspnetidentity.codeplex.com/">ASP.NET Identity</a> - New membership system for ASP.NET applications</li>
+<li><a href="https://github.com/DotNetOpenAuth/DotNetOpenAuth">DotNetOpenAuth</a> - A C# implementation of the OpenID, OAuth and InfoCard protocols</li>
+<li><a href="https://github.com/logibit/logibit.hawk/">Logibit Hawk</a> - A F# <a href="https://github.com/hueniverse/hawk#usage-example">Hawk</a> authentication library</li>
+<li><a href="https://github.com/IdentityModel">IdentityModel</a> - Helper library for identity &amp; access control in .NET 4.5 and MVC4/Web API.</li>
+<li><a href="https://github.com/IdentityServer">IdentityServer</a> - Extensible OAuth2 and OpenID Connect provider framework.</li>
+<li><a href="https://github.com/danielcrenna/vault/tree/master/oauth">OAuth</a> - A very lightweight library for generating OAuth 1.0a signatures written in C#</li>
+<li><a href="http://rimdev.io/stuntman/">Stuntman</a> - Stuntman is a library for impersonating users during development leveraging .NET Claims Identity.</li>
+</ul>
+<h2 id="books"><a class="header" href="#books">Books</a></h2>
+<ul>
+<li><a href="https://www.manning.com/books/dotnet-core-in-action">.NET Core in Action</a> - teaches how to write applications and libraries with .NET Core. <strong>[$]</strong></li>
+<li>C# in Depth - <a href="https://www.manning.com/books/c-sharp-in-depth-third-edition">3rd edition</a>, <a href="https://www.manning.com/books/c-sharp-in-depth-fourth-edition">4th edition (early access)</a> - deep dive into the details of the C# language. <strong>[$]</strong></li>
+<li><a href="https://www.microsoftpressstore.com/store/clr-via-c-sharp-9780735667457">CLR via C#</a> - Dig deep and master the intricacies of the common language runtime, C#, and .NET development. <strong>[$]</strong></li>
+<li><a href="https://www.manning.com/books/functional-programming-in-c-sharp">Functional Programming in C#</a> - teaches how to best leverage the functional features of the C# language. <strong>[$]</strong></li>
+<li><a href="https://www.manning.com/books/microservices-in-net-core">Microservices in .NET Core</a> - shows you how to build maintainable, secure and operations-friendly microservices using Nancy and .NET Core. <strong>[$]</strong></li>
+<li><a href="https://www.manning.com/books/dependency-injection-in-dot-net">Dependency Injection in .NET</a> <a href="https://www.manning.com/books/dependency-injection-in-dot-net-second-edition">2nd edition</a> - teaches you to use Dependency Injection to reduce hard-coded dependencies between application components in .NET. <strong>[$]</strong></li>
+</ul>
+<h2 id="build-automation"><a class="header" href="#build-automation">Build Automation</a></h2>
+<ul>
+<li><a href="https://github.com/psake/psake">Psake</a> - .NET-based build automation tool written in PowerShell</li>
+<li><a href="https://github.com/fsharp/FAKE">FAKE</a> - F# Make, a cross platform build automation system</li>
+<li><a href="https://github.com/nightroman/Invoke-Build">Invoke-Build</a> - PowerShell build and test automation tool inspired by Psake.</li>
+<li><a href="https://github.com/Microsoft/msbuild">MSBuild</a> - The Microsoft Build Engine (MSBuild) is the build platform for .NET and Visual Studio</li>
+<li><a href="https://github.com/cake-build/cake">Cake</a> - Cake (C# Make) is a cross platform build automation system with a C# DSL.</li>
+<li><a href="https://github.com/yevhen/Nake">Nake</a> - Magic script-based C# task runner</li>
+</ul>
+<h2 id="caching"><a class="header" href="#caching">Caching</a></h2>
+<ul>
+<li><a href="https://github.com/aliostad/CacheCow">CacheCow</a> - An ASP.NET Web API HTTP caching implementation both on client and server</li>
+<li><a href="https://github.com/akavache/Akavache">Akavache</a> - An asynchronous, persistent key-value store</li>
+<li><a href="https://github.com/MichaCo/CacheManager">CacheManager</a> - A common interface and abstraction layer for caching.</li>
+<li><a href="https://bitbucket.org/glav/cacheadapter">CacheAdapter</a> - Another common cache abstraction layer for caching with enhanced cache API usage.</li>
+<li><a href="https://github.com/FoundatioFx/Foundatio#caching">Foundatio</a> - A common interface with in memory, redis and hybrid implementations.</li>
+<li><a href="https://github.com/joakimskoog/Cashew">Cashew</a> - a .NET library for caching responses easily with an HttpClient through an API that is simple and elegant yet powerful.</li>
+</ul>
+<h2 id="cli"><a class="header" href="#cli">CLI</a></h2>
+<ul>
+<li><a href="https://github.com/gsscoder/commandline">Command Line Parser</a> - The Command Line Parser Library offers to CLR applications a clean and concise API for manipulating command line arguments and related tasks</li>
+<li><a href="https://github.com/fclp/fluent-command-line-parser">Fluent Command Line Parser</a> - A simple, strongly typed .NET C# command line parser library using a fluent easy to use interface</li>
+<li><a href="https://github.com/adamabdelhamed/PowerArgs">Power Args</a> - PowerArgs converts command line arguments into .NET objects that are easy to program against. It also provides a ton of optional capabilities such as argument validation, auto generated usage, tab completion, and plenty of extensibility</li>
+<li><a href="https://github.com/fsprojects/Argu">Argu</a> - Declarative CLI argument &amp; XML configuration parser for F# applications.</li>
+<li><a href="http://www.appccelerate.com/commandlineparser.html">Appccelerate - Command Line Parser</a> - A command line parser with fluent definition syntax, different argument types, required and optional arguments, value restrictions, aliases, type conversion and semi-automatic usage help message composition</li>
+<li><a href="https://github.com/tomakita/Colorful.Console">Colorful.Console</a> - Colorful console output.</li>
+<li><a href="https://github.com/Nick-Lucas/EntryPoint">EntryPoint</a> - Composable CLI Argument Parser for .Net Core &amp; .Net Framework 4.5+.</li>
+<li><a href="https://github.com/nemec/clipr">clipr</a> - A CLI library inspired by Python's argparse that transforms a command line into a strongly-typed object. It supports custom argument types, automated (and localized) help generation, and a variety of ways to store parsed arguments.</li>
+<li><a href="https://github.com/tonerdo/readline">ReadLine</a> - A GNU-Readline like library for .NET/.NET Core.</li>
+<li><a href="https://github.com/rpetz/SharpNetSH">SharpNetSH</a> - A simple netsh library for C#.</li>
+</ul>
+<h2 id="clr"><a class="header" href="#clr">CLR</a></h2>
+<ul>
+<li><a href="https://github.com/dotnet/coreclr">CoreCLR</a> - The coreclr repo contains the complete runtime implementation (called &quot;CoreCLR&quot;) for .NET Core. It includes RyuJIT, the .NET GC, native interop and many other components. It builds and runs on Windows. You can 'watch' the repo to see Linux and Mac support being added over the next few months.</li>
+</ul>
+<h2 id="cms"><a class="header" href="#cms">CMS</a></h2>
+<ul>
+<li><a href="https://github.com/Orckestra/C1-CMS-Foundation">Composite C1</a> - A web CMS that focus on UX and adaptability</li>
+<li><a href="https://github.com/i7media/mojoportal">mojoPortal </a> - MojoPortal is an extensible, cross database, mobile friendly, web content management system (CMS) and web application framework written in C# ASP.NET</li>
+<li><a href="https://github.com/n2cms/n2cms">N2CMS</a> - Open source, lightweight, code-first CMS able to seamlessly integrate into any MVC project.</li>
+<li><a href="https://github.com/OrchardCMS/Orchard">Orchard </a> - Free, open source, community-focused project aimed at delivering applications and reusable components on the ASP.NET platform</li>
+<li><a href="https://github.com/PiranhaCMS/Piranha">Piranha CMS</a> - Piranha is the fun, fast and lightweight .NET framework for developing cms-based web applications with an extra bite. It's built on ASP.NET MVC and Web Pages and is fully compatible with both Visual Studio and WebMatrix. http://piranhacms.org</li>
+<li><a href="https://github.com/umbraco/Umbraco-CMS">Umbraco</a> - Umbraco is a free open source Content Management System built on the ASP.NET platform</li>
+<li><a href="http://www.bettercms.com">BetterCMS</a> - Open Source .NET Intuitive User Interface for Developer and Publisher</li>
+<li><a href="http://www.dnnsoftware.com/community/download">DotNetNuke</a> - DNN Platform is our free, open source web CMS and the foundation of every professional DNN solution. Over 750,000 organizations worldwide have built websites powered by the DNN Platform.</li>
+</ul>
+<h2 id="code-analysis-and-metrics"><a class="header" href="#code-analysis-and-metrics">Code Analysis and Metrics</a></h2>
+<ul>
+<li><a href="https://github.com/dotnet/roslyn-analyzers">.NET Compiler Platform (&quot;Roslyn&quot;) Analyzers</a> - A number of Roslyn diagnostic analyzers initially developed to help flesh out the design and implementation of the static analysis APIs.</li>
+<li><a href="http://www.ndepend.com">NDepend</a> - is a Visual Studio and VS Team Services extension that estimates your .NET code quality and Technical-Debt, that lets create code rules with C# LINQ syntax, visualize code structure and focus on changes and evolution.<strong>[$]</strong></li>
+<li><a href="https://github.com/alhardy/AppMetrics">App.Metrics</a> - App Metrics is an open-source and cross-platform .NET library used to record and report metrics within an application and reports it's health. See the <a href="http://app-metrics.io/">docs</a> for me details.</li>
+<li><a href="http://www.codemaid.net/">CodeMaid</a> - Visual studio extension to cleanup, dig through and simplify C#, C++, F#, VB, PHP, JSON, XAML, XML, ASP, HTML, CSS, LESS, SCSS, JavaScript and TypeScript coding.</li>
+<li><a href="https://github.com/StyleCop">StyleCop</a> - StyleCop analyzes C# source code to enforce a set of style and consistency rules</li>
+<li><a href="https://github.com/spouliot/gendarme">Gendarme</a> - Extensible rule-based tool to find problems in .NET applications and libraries</li>
+<li><a href="https://github.com/Recognos/Metrics.NET">Metrics-Net</a> - Capturing CLR and application-level metrics. So you know what's going on.</li>
+<li><a href="https://github.com/alhardy/aspnet-metrics">AspNet.Metrics</a> - Capturing CLR, application-level web request metrics. Middleware and extensions using Metrics-Net</li>
+<li><a href="https://github.com/dotnet/BenchmarkDotNet">BenchmarkDotNet</a> - Powerful .NET library for benchmarking.</li>
+<li><a href="http://www.codinion.com/">Codinion</a> - Enhanced syntax highlighting for C# and some other &quot;Visual&quot; features.</li>
+<li><a href="https://github.com/realvizu/NsDepCop">NsDepCop</a> - Static code analysis tool to enforce namespace dependency rules in C# projects.</li>
+</ul>
+<h2 id="code-snippets"><a class="header" href="#code-snippets">Code Snippets</a></h2>
+<ul>
+<li><a href="https://dotnetfiddle.net/">.NET Fiddle</a> - Write, compile and run C# code in the browser. The C# equivalent of JSFiddle.</li>
+<li><a href="http://gistlyn.com/">Gistlyn</a> - Create, run and share your executable C# Github Gists.</li>
+<li><a href="https://sharplab.io/">TryRoslyn</a> - Run C# code using different branches and versions of Roslyn.</li>
+</ul>
+<h2 id="compilers-transpilers-and-languages"><a class="header" href="#compilers-transpilers-and-languages">Compilers, Transpilers and Languages</a></h2>
+<ul>
+<li><a href="https://github.com/bridgedotnet/Bridge">Bridge.NET</a> - Open Source C# to JavaScript Compiler http://bridge.net/</li>
+<li><a href="https://github.com/clojure/clojure-clr">ClojureCLR</a> - A port of Clojure to the CLR, part of the Clojure project</li>
+<li><a href="https://github.com/fsharp/fsharp/">F#</a> -  The F# compiler, core library and tools - a functional programming language for safer, faster, better code writing.</li>
+<li><a href="http://funscript.info/">FunScript</a> - F# to JavaScript compiler with JQuery etc. mappings through a TypeScript type provider.</li>
+<li><a href="https://github.com/leppie/IronScheme">IronScheme</a> - R6RS Scheme compiler, runtime and many standard libraries</li>
+<li><a href="https://github.com/sq/JSIL">JSIL</a> - CIL to Javascript Compiler http://jsil.org/</li>
+<li><a href="https://github.com/mono/mono-basic">Mono-basic</a> - Visual Basic Compiler and Runtime</li>
+<li><a href="https://github.com/rsdn/nemerle">Nemerle</a> - Nemerle is a high-level statically-typed programming language for the .NET platform. It offers functional, object-oriented and imperative features. It has a simple C#-like syntax and a powerful meta-programming system. </li>
+<li><a href="https://github.com/praeclarum/Netjs">Netjs</a> - .NET to TypeScript and JavaScript compiler. Portable Class Libraries work great for this. You can even pass EXEs.</li>
+<li><a href="https://github.com/p-org/P">P</a> - P is a language for asynchronous event-driven programming.</li>
+<li><a href="https://github.com/dotnet/roslyn">Roslyn</a> - The .NET Compiler Platform (&quot;Roslyn&quot;) provides open-source C# and Visual Basic compilers with rich code analysis APIs. It enables building code analysis tools with the same APIs that are used by Visual Studio.</li>
+<li><a href="https://github.com/Testura/Testura.Code">Testura.Code</a> - Wrapper around the Roslyn API and used for generation, saving and and compiling C# code. It provides methods and helpers to generate classes, methods, statements and expressions.</li>
+<li><a href="https://github.com/Microsoft/visualfsharp">VisualFSharp</a> - The Visual F# compiler and tools</li>
+<li><a href="https://github.com/fable-compiler/Fable">Fable</a> - F# to JavaScript Compiler</li>
+<li><a href="https://github.com/nessos/LinqOptimizer">LinqOptimizer</a> - An automatic query optimizer-compiler for Sequential and Parallel LINQ</li>
+<li><a href="https://github.com/antiufo/roslyn-linq-rewrite">Roslyn-linq-rewrite</a> - Compiles C# code by first rewriting the syntax trees of LINQ expressions using plain procedural code, minimizing allocations and dynamic dispatch.</li>
+</ul>
+<h2 id="compression"><a class="header" href="#compression">Compression</a></h2>
+<ul>
+<li><a href="https://github.com/adamhathcock/sharpcompress">SharpCompress</a> - SharpCompress is a compression library for .NET/Mono/Silverlight/WP7 that can unrar, un7zip, unzip, untar unbzip2 and ungzip with forward-only reading and file random access APIs. Write support for zip/tar/bzip2/gzip are implemented</li>
+<li><a href="https://github.com/haf/DotNetZip.Semverd">DotNetZip.Semverd</a> - An open-source project that delivers a .NET library for handling ZIP files, and some associated tools. (fork of <a href="http://dotnetzip.codeplex.com"><strong>Unmaintained</strong> DotNetZip</a>)</li>
+<li><a href="http://icsharpcode.github.io/SharpZipLib/">SharpZipLib</a> - a Zip, GZip, Tar and BZip2 library written entirely in C# for the .NET platform</li>
+<li><a href="https://snappy.machinezoo.com/">Snappy for Windows</a> - Snappy compression library for .NET baked on PInvoke</li>
+<li><a href="https://github.com/jeffesp/Snappy.Sharp">Snappy.Sharp</a> - An implementation of Google's Snappy compression algorithm in C#.</li>
+</ul>
+<h2 id="continuous-integration"><a class="header" href="#continuous-integration">Continuous Integration</a></h2>
+<ul>
+<li><a href="http://www.jetbrains.com/teamcity/">TeamCity</a> - Ready to work, extensible and developer-friendly build server — out of the box <strong>[$]</strong></li>
+<li><a href="http://www.cruisecontrolnet.org/">CruiseControl.NET</a> - an Automated Continuous Integration server, implemented using the .NET Framework</li>
+<li><a href="http://www.myget.org/">MyGet</a> - Continuous Integration and Deployment, Hosted Package Repository for NuGet, NPM, Bower and VSIX. <strong>[<a href="https://www.myget.org/opensource">Free for OSS</a>]</strong> <strong>[$]</strong></li>
+<li><a href="https://www.appveyor.com/">AppVeyor</a> - .NET Continuous Integration and Deployment as a service. <strong>[$]</strong> <strong>[Free for OSS]</strong></li>
+</ul>
+<h2 id="cryptography"><a class="header" href="#cryptography">Cryptography</a></h2>
+<ul>
+<li><a href="https://bouncycastle.org/">BouncyCastle</a> - Together with the .Net System.Security.Cryptography, the reference implementation for cryptographic algorithms on the CLR.</li>
+<li><a href="http://hashlib.codeplex.com/">HashLib</a> - HashLib is a collection of nearly all hash algorithms you've ever seen, it supports almost everything and is very easy to use</li>
+<li><a href="https://github.com/adamcaudill/libsodium-net">libsodium-net</a> - libsodium for .NET - A secure cryptographic library</li>
+<li><a href="https://github.com/Pkcs11Interop/Pkcs11Interop">Pkcs11Interop</a> - Managed .NET wrapper for unmanaged PKCS#11 libraries that provide access to the cryptographic hardware</li>
+<li><a href="https://github.com/bitbeans/StreamCryptor">StreamCryptor</a> - Stream encryption &amp; decryption with libsodium and protobuf</li>
+<li><a href="https://github.com/sdrapkin/SecurityDriven.Inferno">SecurityDriven.Inferno</a> - .NET crypto library. Professionally audited.</li>
+</ul>
+<h2 id="database"><a class="header" href="#database">Database</a></h2>
+<ul>
+<li><a href="https://github.com/BrightstarDB/BrightstarDB">BrightstarDb</a> - BrightstarDB is a native .NET RDF triple store</li>
+<li><a href="https://github.com/EventStore/EventStore">Event Store</a> - The open-source, functional database with Complex Event Processing in JavaScript. https://geteventstore.com</li>
+<li><a href="https://github.com/mbdavid/LiteDB">LiteDB</a> - A .NET NoSQL Document Store in a single data file - http://www.litedb.org</li>
+<li><a href="https://github.com/ravendb/ravendb">RavenDB</a> - A linq enabled document database for .NET</li>
+<li><a href="https://github.com/JasperFx/marten">Marten</a> - Postgresql as a Document Database and Event Store for .Net Applications</li>
+<li><a href="https://github.com/realm/realm-dotnet">Realm Xamarin</a> - A fast, easy-to-use alternative to SQLite &amp; ORMs - https://realm.io/docs/xamarin/latest/</li>
+<li><a href="https://github.com/yevhen/Streamstone">Streamstone</a> - Event store for Azure Table Storage</li>
+<li><a href="https://github.com/apache/ignite">Ignite</a> - Distributed in-memory platform: document database with SQL and LINQ support; distributed computations; distributed services and events.</li>
+<li><a href="https://github.com/sebastienros/yessql">Yessql</a> - A .NET document database working on any RDBMS</li>
+<li><a href="https://github.com/ttu/json-flatfile-datastore">JsonFlatFileDataStore</a> - Simple JSON flat file data store with support for typed and dynamic data</li>
+</ul>
+<h2 id="database-drivers"><a class="header" href="#database-drivers">Database Drivers</a></h2>
+<ul>
+<li><a href="https://dev.mysql.com/downloads/connector/net/">MySQL Connector</a> - Connector/Net is a fully-managed ADO.NET driver for MySQL</li>
+<li><a href="https://github.com/npgsql/Npgsql">Npgsql</a> - .Net data provider for Postgresql</li>
+<li><a href="https://github.com/mongodb/mongo-csharp-driver">MongoDB</a> - Official MongoDB C# Driver</li>
+<li><a href="https://github.com/bchavez/RethinkDb.Driver/">RethinkDb.Driver</a> - A RethinkDB database driver in C# striving for 100% ReQL API compatibility and completeness.</li>
+<li><a href="https://github.com/ServiceStack/ServiceStack.Redis">ServiceStack Redis</a> - .NET's leading C# Redis Client</li>
+<li><a href="https://github.com/StackExchange/StackExchange.Redis">StackExchange Redis</a> - General purpose redis client from StackExchange</li>
+<li><a href="https://github.com/datastax/csharp-driver">Cassandra</a> - DataStax .NET Driver for Apache Cassandra</li>
+<li><a href="https://github.com/couchbase/couchbase-net-client">Couchbase</a> - Official couchbase .NET client library, based on the Enyim memcached client</li>
+<li><a href="https://sourceforge.net/projects/firebird/">Firebird.NET</a> - The .NET Data provider is written in C# and provides a high-performance, native implementation of the Firebird API</li>
+</ul>
+<h2 id="datetime"><a class="header" href="#datetime">Datetime</a></h2>
+<ul>
+<li><a href="https://github.com/nodatime/nodatime">NodaTime</a> - Noda Time is an alternative date and time API for .NET. It helps you to think about your data more clearly, and express operations on that data more precisely. http://nodatime.org/</li>
+<li><a href="https://github.com/joaomatossilva/DateTimeExtensions">DateTimeExtensions</a> - Common Date Time operations on the form of extensions to System.DateTime, including holidays and working days calculations on several culture locales.</li>
+<li><a href="https://github.com/exceptionless/Exceptionless.DateTimeExtensions">Exceptionless.DateTimeExtensions</a> - DateTimeRange, Business Day and various DateTime, DateTimeOffset, TimeSpan extension methods.</li>
+</ul>
+<h2 id="decompilation"><a class="header" href="#decompilation">Decompilation</a></h2>
+<ul>
+<li><a href="https://github.com/0xd4d/dnSpy">dnSpy</a> - open-source .NET assembly browser, editor, decompiler and debugger</li>
+<li><a href="http://ilspy.net/">ILSpy</a> - ILSpy is the open-source .NET assembly browser and decompiler</li>
+<li><a href="https://github.com/telerik/JustDecompileEngine">JustDecompile Engine</a> - The decompilation engine of <a href="http://www.telerik.com/products/decompiler.aspx">JustDecompile</a></li>
+<li><a href="https://www.jetbrains.com/decompiler/">dotPeek</a> - Free-of-charge standalone tool based on ReSharper's bundled decompiler. It can reliably decompile any .NET assembly into equivalent C# or IL code. It can create Visual Studio solutions based on the original binary files in a straight-forward way. <strong>[Proprietary]</strong> <strong>[Free]</strong></li>
+</ul>
+<h2 id="deployment"><a class="header" href="#deployment">Deployment</a></h2>
+<ul>
+<li><a href="https://github.com/thomasvm/unfold">Unfold</a> - Powershell-based deployment solution for .net web applications</li>
+<li><a href="https://github.com/DbUp/DbUp">DbUp</a> - .NET library that helps you to deploy changes to SQL Server databases. It tracks which SQL scripts have been run already, and runs the change scripts that are needed to get your database up to date</li>
+<li><a href="https://github.com/OctopusDeploy/OctoPack">Octo Pack</a> - Used to build nuget packages of your application for deployment using tools such as Octopus Deploy</li>
+</ul>
+<h2 id="directx"><a class="header" href="#directx">DirectX</a></h2>
+<ul>
+<li><a href="https://slimdx.org/">SlimDX</a> - DirectX framework wrapper for .NET applications</li>
+<li><a href="https://github.com/sharpdx/SharpDX">SharpDX</a> - SharpDX is an open-source project delivering the full DirectX API for .Net on all Windows platforms, allowing the development of high performance game, 2D and 3D graphics rendering as well as realtime sound application.</li>
+</ul>
+<h2 id="distributed-computing"><a class="header" href="#distributed-computing">Distributed Computing</a></h2>
+<ul>
+<li><a href="https://github.com/dotnet/orleans">Orleans</a> - Orleans is a framework that provides a straight-forward approach to building distributed high-scale computing applications, without the need to learn and apply complex concurrency or other scaling patterns. It was created by Microsoft Research.</li>
+<li><a href="https://github.com/OrleansContrib/Orleankka">Orleankka</a> - Orleankka is a functional API for Microsoft Orleans framework. It is highly suitable for scenarios where having composable, uniform communication interface is preferable, such as: CQRS, event-sourcing, re-routing, FSM, etc. Additional API avaiable for F# called Orleankka.FSharp. </li>
+<li><a href="https://github.com/akkadotnet/akka.net">Akka.net</a> - Akka.NET is a port of the popular Java/Scala framework Akka to .NET. This is a community driven port and is not affiliated with Typesafe who makes the original Java/Scala version.</li>
+<li><a href="https://github.com/Abc-Arbitrage/Zebus">Zebus</a> - Zebus is a lightweight, higlhy versatile, peer to peer service bus, built with CQRS principles in mind. It allows applications to communicate with each other in a fast and easy manner. Most of the complexity is hidden in the library and you can focus on writing code that matters to you, not debugging messaging code. A very fundamental base for any distributed application.</li>
+<li><a href="https://github.com/Prolucid/FsShelter">FsShelter</a> - F# library for authoring <a href="https://storm.apache.org">Apache Storm</a> components and topologies. Offering high-level abstractions for distributed and fault-tolerant event stream processing.</li>
+<li><a href="https://github.com/FoundatioFx/Foundatio#jobs">Foundatio</a> - Pluggable foundation blocks for building distributed apps.</li>
+<li><a href="https://github.com/mbraceproject">MBrace</a> - Integrated Data Scripting for the Cloud</li>
+<li><a href="https://github.com/AsynkronIT/protoactor-dotnet">protoactor-dotnet</a> - Proto Actor - Ultra fast distributed actors for Golang and C#</li>
+</ul>
+<h2 id="dlr"><a class="header" href="#dlr">DLR</a></h2>
+<ul>
+<li><a href="https://github.com/manojlds/cmd">cmd</a> - C# library to run external programs in a simpler way. Demonstration of &quot;dynamic&quot; features of C#.</li>
+</ul>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<ul>
+<li><a href="https://github.com/EWSoftware/SHFB">Sandcastle</a> - Sandcastle Help File Builder similar to NDoc</li>
+<li><a href="https://github.com/Geaz/sharpDox">SharpDox</a> - A c# documentation tool</li>
+<li><a href="https://github.com/KirillOsenkov/SourceBrowser">SourceBrowser</a> - Source browser website generator that powers https://referencesource.microsoft.com and http://source.roslyn.io</li>
+<li><a href="https://github.com/domaindrivendev/Swashbuckle">Swashbuckle</a> - Seamlessly adds a swagger to WebApi projects!</li>
+<li><a href="http://fsprojects.github.io/FSharp.Formatting/">F# Formatting</a> - Tools for documenting F# and C# projects from F# Script files, Markdown documents and inline XML or Markdown comments</li>
+<li><a href="https://github.com/dotnet/docfx">DocFX</a> - Tools for building and publishing API documentation for .NET projects</li>
+<li><a href="https://github.com/FransBouma/DocNet">DocNet</a> - Your friendly static documentation generator, using markdown files to build the content. </li>
+</ul>
+<h2 id="e-commerce-and-payments"><a class="header" href="#e-commerce-and-payments">E-Commerce and Payments</a></h2>
+<ul>
+<li><a href="https://github.com/paypal/merchant-sdk-dotnet">Paypal Merchant SDK</a> - Official Paypal Merchant SDK for .NET</li>
+<li><a href="https://github.com/nopSolutions/nopCommerce">NopCommerce</a> - nopCommerce. Free open-source ecommerce shopping cart (ASP.NET MVC)</li>
+<li><a href="https://github.com/ServiceStack/Stripe">ServiceStack.Stripe</a> - Typed .NET clients for stripe.com REST APIs</li>
+<li><a href="https://github.com/smartstoreag/SmartStoreNET">SmartStoreNET</a> - Free ASP.NET MVC Ecommerce Shopping Cart Solution https://www.smartstore.com/en/net</li>
+<li><a href="https://github.com/stripe/stripe-dotnet">Stripe.Net</a> - Stripe.net is a full service .net api for https://stripe.com/</li>
+<li><a href="https://github.com/beyourmarket/beyourmarket">BeYourMarket</a> - BeYourMarket is a peer-to-peer marketplace framework http://beyourmarket.com</li>
+<li><a href="https://github.com/VirtoCommerce/vc-platform">Virto Commerce</a> - Virto Commerce is the second generation release and is the only enterprise level e-commerce product fully available under Open Source license. Virto Commerce is based on .NET 4.5 with extensive use of MVC, IoC, EF, Azure, Angular JS and many other cutting edge technologies. It can be deployed in Microsoft Cloud (Azure), Amazon Web Services (AWS) and on-premise. https://virtocommerce.com</li>
+<li><a href="https://github.com/simplcommerce/simplcommerce">SimplCommerce</a> - Super simple ecommerce system built on .NET Core. Simple to use and easy to customize. Thanks to .NET Core, you can run the SimplCommerce on Windows, Linux. With various RDBMS: Microsoft SQL Server, PostgreSQL, MySQL</li>
+</ul>
+<h2 id="environment-management"><a class="header" href="#environment-management">Environment Management</a></h2>
+<ul>
+<li><a href="https://github.com/dotnet/cli">Dotnet CLI</a> - The cross-platform .NET Core command line toolchain utility.</li>
+</ul>
+<h2 id="etl"><a class="header" href="#etl">ETL</a></h2>
+<ul>
+<li><a href="https://reactiveetl.codeplex.com/">Reactive ETL</a> - Reactive ETL is a rewrite of Rhino ETL using the reactive extensions for .NET</li>
+</ul>
+<h2 id="exceptions"><a class="header" href="#exceptions">Exceptions</a></h2>
+<ul>
+<li><a href="https://github.com/exceptionless/Exceptionless.Net">Exceptionless</a> - Exceptionless .NET Client</li>
+</ul>
+<h2 id="extensions"><a class="header" href="#extensions">Extensions</a></h2>
+<ul>
+<li><a href="https://github.com/zzzprojects/Z.ExtensionMethods">Z.ExtensionMethods</a> - Over a 1000 useful extension methods</li>
+</ul>
+<h2 id="functional-programming"><a class="header" href="#functional-programming">Functional programming</a></h2>
+<ul>
+<li><a href="https://github.com/louthy/language-ext">language-ext</a> - This library uses and abuses the features of C# 6+ to provide a functional 'Base class library', that, if you squint, can look like extensions to the language itself. It also includes an 'Erlang like' process system (actors) that can optionally persist messages and state to Redis (note you can use it without Redis for in-app messaging). The process system additionally supports Rx streams of messages and state allowing for a complete system of reactive events and message dispatch.</li>
+<li><a href="https://github.com/nlkl/Optional">Optional</a> - A robust option type for C#</li>
+</ul>
+<h2 id="game"><a class="header" href="#game">Game</a></h2>
+<ul>
+<li><a href="https://github.com/MonoGame/MonoGame">MonoGame</a> - One framework for creating powerful cross-platform games</li>
+<li><a href="https://github.com/mono/CocosSharp">CocosSharp</a> - CocosSharp is a C# implementation of the Cocos2D and Cocos3D APIs that runs on any platform where MonoGame runs</li>
+<li><a href="https://github.com/AdamsLair/duality">Duality</a> - Duality is a 2D game development framework. Focused on modularity, comes with a visual editor.</li>
+<li><a href="https://xenko.com/">Xenko</a> - Xenko is a 2D/3D cross-platform game engine featuring a scene editor, particles, physically based rendering (PBR), scripting, and much more</li>
+<li><a href="https://waveengine.net/Engine">Wave Engine</a> - Wave engine is a free c# component-based modern game engine which allows you to create cross-platform games supporting kinect, oculusrift, vuforia, cardboard, leapmotion and much more. <strong>[Free][Proprietary]</strong></li>
+<li><a href="https://github.com/xamarin/urho">UrhoSharp</a> - UrhoSharp is a C# implementation of the Urho3D game engine that runs on iOS, Mac, Windows, Android and Linux systems</li>
+<li><a href="https://github.com/prime31/Nez">Nez</a> - Nez is a free 2D focused framework that works with MonoGame and FNA</li>
+</ul>
+<h2 id="gis"><a class="header" href="#gis">GIS</a></h2>
+<ul>
+<li><a href="https://github.com/NetTopologySuite/NetTopologySuite/">NetTopologySuite</a>  A .NET GIS solution that is fast and reliable for the .NET platform</li>
+<li><a href="https://github.com/SharpMap">SharpMap</a> An easy-to-use mapping library for use in web and desktop applications</li>
+<li><a href="http://www.osmsharp.com/">OsmSharp</a> - C# library to work with OpenStreetMap (OSM) data. Provides reading, writing and route-planning for OSM data.</li>
+<li><a href="https://github.com/alatas/GeoJSON4EntityFramework">GeoJSON4EntityFramework</a> - A library to create GeoJSON from Entity Framework Spatial Data or Well-Known Text (WKT) inputs.</li>
+</ul>
+<h2 id="git-tools"><a class="header" href="#git-tools">Git Tools</a></h2>
+<ul>
+<li><a href="https://github.com/jakubgarfield/Bonobo-Git-Server">Bonobo Git Server</a> - Bonobo Git Server for Windows is a web application you can install on your IIS and easily manage and connect to your git repositories. https://bonobogitserver.com/</li>
+<li><a href="https://github.com/gitextensions/gitextensions">GitExtensions</a> - GitExtensions is a shell extension, a Visual Studio 2008/2010/2012/2013 plugin and a standalone Git repository tool. http://gitextensions.github.io/</li>
+<li><a href="https://github.com/GitTools/GitLink">GitLink</a> - let's users step through their code hosted on GitHub or BitBucket</li>
+<li><a href="https://github.com/GitTools/GitVersion">GitVersion</a> - Generate a Semantic Version Number based on the state of your Git Repository</li>
+<li><a href="https://github.com/libgit2/libgit2sharp">LibGit2Sharp</a> - LibGit2Sharp brings all the might and speed of libgit2, a native Git implementation, to the managed world of .Net and Mono.</li>
+<li><a href="https://github.com/mono/ngit">NGit</a> - NGit is a port of JGit to C#</li>
+<li><a href="https://github.com/dahlbyk/posh-git">posh-git</a> - A PowerShell environment for Git</li>
+<li><a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows">Git Credential Manager for Windows</a> - Helps solving issues of credentials, made by Microsoft</li>
+</ul>
+<h2 id="graphics"><a class="header" href="#graphics">Graphics</a></h2>
+<ul>
+<li><a href="https://github.com/speps/LibTessDotNet">LibTessDotNet</a> - .NET port of the famous GLU Tessellator, triangulates polygons</li>
+<li><a href="https://github.com/oxyplot/">Oxyplot</a> - OxyPlot is a cross-platform plotting library for .NET</li>
+<li><a href="https://github.com/opentk/opentk">OpenTK</a> - The Open Toolkit is an advanced, low-level C# library that wraps OpenGL, OpenCL and OpenAL</li>
+<li><a href="https://github.com/praeclarum/NGraphics">NGraphics</a> - NGraphics is a cross-platform library for rendering vector graphics on .NET</li>
+<li><a href="https://github.com/beto-rodriguez/Live-Charts">Live-Charts</a> - An Animated, MVVM oriented and modern charting library</li>
+</ul>
+<h2 id="gui"><a class="header" href="#gui">GUI</a></h2>
+<ul>
+<li><a href="https://github.com/MahApps/MahApps.Metro">MahApps.Metro</a> - Toolkit for creating Metro styled WPF apps</li>
+<li><a href="https://github.com/timheuer/callisto">Callisto</a> - A control toolkit for Windows 8 XAML applications. Contains some UI controls to make it easier to create Windows UI style apps for the Windows Store in accordance with Windows UI guidelines.</li>
+<li><a href="http://objectlistview.sourceforge.net/cs/index.html">ObjectListView</a> - ObjectListView is a C# wrapper around a .NET ListView. It makes the ListView much easier to use and teaches it some new tricks</li>
+<li><a href="https://sourceforge.net/projects/dockpanelsuite/">DockPanelSuite</a> - The Visual Studio inspired docking library for .NET WinForms</li>
+<li><a href="https://github.com/icsharpcode/AvalonEdit">AvalonEdit</a> - The WPF-based text editor component used in SharpDevelop</li>
+<li><a href="https://github.com/mono/xwt">XWT</a> - A cross-platform UI toolkit for creating desktop applications with .NET and Mono</li>
+<li><a href="https://github.com/mono/gtk-sharp">Gtk#</a> - Gtk# is a Mono/.NET binding to the cross platform Gtk+ GUI toolkit and the foundation of most GUI apps built with Mono</li>
+<li><a href="https://github.com/ButchersBoy/MaterialDesignInXamlToolkit">MaterialDesignInXamlToolkit</a> - Toolkit for creating Material styled WPF apps</li>
+<li><a href="https://github.com/picoe/Eto">Eto.Forms</a> - Cross platform GUI framework for desktop and mobile applications in .NET and Mono</li>
+<li><a href="https://github.com/ButchersBoy/Dragablz">Dragablz</a> - Dragable, tearable WPF tab control (similar to Chrome) which supports layouts and is full themeable, including themese compatible with MahApps and Material Design.</li>
+<li><a href="https://github.com/fluentribbon/Fluent.Ribbon">Fluent.Ribbon</a> - Fluent Ribbon Control Suite is a library that implements an Office- and Windows 8-like Ribbon for WPF.</li>
+<li><a href="http://officeribbon.codeplex.com/">Office Ribbon</a> - A library that implements MS Office Ribbon for WinForms.</li>
+<li><a href="https://github.com/AvaloniaUI/Avalonia">Perspex</a> - A multi-platform .NET UI framework.</li>
+<li><a href="https://github.com/IgnaceMaes/MaterialSkin">MaterialSkin</a> - Theming .NET WinForms, C# or VB.Net, to Google's Material Design Principles.</li>
+<li><a href="https://github.com/xamarin/Xamarin.Forms">Xamarin.Forms</a> - Build native UIs for iOS, Android and Windows from a single, shared C# codebase.</li>
+<li><a href="https://github.com/MISoftware/SciterSharp">SciterSharp</a> - Create .NET cross-platform desktop apps using not just HTML, but all features of Sciter engine: CSS3, SVG, scripting, AJAX, &lt;video&gt;... Sciter is free for commercial use</li>
+<li><a href="http://emptykeys.com/ui_library">Empty Keys UI</a> - Multi-platform and multi-engine XAML based user interface library <strong>[Free][Proprietary]</strong> </li>
+<li><a href="https://github.com/Microsoft/UWPCommunityToolkit">UWP Community Toolkit</a> - The UWP Community Toolkit is a collection of helper functions, custom controls, and app services. It simplifies and demonstrates common developer tasks building UWP apps for Windows 10.</li>
+<li><a href="https://github.com/jacobslusser/ScintillaNET">ScintillaNET</a> - Windows Forms control for the Scintilla text editor component (Scintilla is used by Notepad++)</li>
+<li><a href="https://github.com/PavelTorgashov/FastColoredTextBox">FastColoredTextBox</a> - Fast Colored TextBox is text editor component for .NET. Allows you to create custom text editor with syntax highlighting. It works well with small, medium, large and very-very large files.</li>
+<li><a href="https://github.com/AvaloniaUI/Avalonia">Avalonia</a> - A multi-platform .NET UI framework (formerly known as Perspex).</li>
+<li><a href="https://github.com/firstfloorsoftware/mui">Modern UI for WPF - MUI</a> - Set of controls and styles to convert WPF applications into a great looking Modern UI apps.</li>
+<li><a href="https://github.com/prasannavl/WinApi">WinApi</a> - A simple, direct, ultra-thin CLR library for high-performance Win32 Native Interop with automation, windowing, DirectX, OpenGL and Skia helpers.</li>
+</ul>
+<h2 id="html-and-css"><a class="header" href="#html-and-css">HTML and CSS</a></h2>
+<ul>
+<li><a href="https://github.com/AngleSharp/AngleSharp">AngleSharp</a> - Complete HTML5 DOM and CSS3 OM construction</li>
+<li><a href="https://github.com/dotless/dotless">dotless</a> - .NET Port of the ruby Less CSS lib http://www.dotlesscss.org</li>
+<li><a href="https://github.com/TylerBrinks/ExCSS">ExCSS</a> - CSS3 parser Library for C#</li>
+<li><a href="http://fluentbootstrap.com">FluentBootstrap</a> - Makes the Bootstrap CSS framework easier to use from ASP.NET MVC or WebPages.</li>
+<li><a href="http://htmlagilitypack.codeplex.com/">HtmlAgilityPack</a> - an agile HTML parser that builds a read/write DOM and supports plain XPATH or XSLT</li>
+<li><a href="https://github.com/Taritsyn/LibSassHost">LibSass Host</a> - .NET wrapper around the <a href="http://sass-lang.com/libsass">libSass</a> library with the ability to support a virtual file system</li>
+</ul>
+<h2 id="http"><a class="header" href="#http">HTTP</a></h2>
+<ul>
+<li><a href="https://github.com/haf/Http.fs">Http.fs</a> - A functional HTTP client for <code>[F#]</code>.</li>
+<li><a href="https://github.com/restsharp/RestSharp">RestSharp</a> - Simple REST and HTTP API Client for .NET</li>
+<li><a href="http://tmenier.github.io/Flurl/">Flurl.Http</a> - Fluent, portable, testable REST/HTTP client library</li>
+<li><a href="https://github.com/EasyHttp/EasyHttp">EasyHttp</a> - Http Library for C#</li>
+<li><a href="https://github.com/paulcbetts/refit">Refit</a> - The automatic type-safe REST library for Xamarin and .NET</li>
+<li><a href="https://github.com/canton7/RestEase">RestEase</a> - Easy-to-use typesafe REST API client library, which is simple and customisable. Heavily inspired by Refit</li>
+<li><a href="https://github.com/jeffijoe/httpclientgoodies.net">HttpClientGoodies</a> - utilities for working with <code>HttpClient</code></li>
+</ul>
+<h2 id="ide"><a class="header" href="#ide">IDE</a></h2>
+<ul>
+<li><a href="https://github.com/icsharpcode/SharpDevelop">SharpDevelop</a> - A free IDE for .NET programming languages</li>
+<li><a href="https://github.com/mono/monodevelop">MonoDevelop</a> - MonoDevelop is a cross platform IDE mostly aimed at Mono/.NET developers</li>
+<li><a href="https://www.visualstudio.com/vs/visual-studio-express/">Visual Studio Express</a> - The free lightweight version of Visual Studio for .NET programming.</li>
+<li><a href="https://msdn.microsoft.com/en-us/visual-studio-community-vs.aspx">Visual Studio Community</a> - A full-Featured IDE - Free</li>
+<li><a href="http://dotnetpad.codeplex.com">Waf DotNetPad</a> - A simple and fast code editor that makes fun program with C# or Visual Basic.</li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a> - Excellent free editor from Microsoft, based on GitHub Atom.</li>
+<li><a href="http://ionide.io/">Ionide</a> - An Atom Editor and Visual Studio Code package suite for cross platform F# development.</li>
+<li><a href="https://www.jetbrains.com/rider/">Rider</a> - A cross-platform C# IDE based on the IntelliJ platform and ReSharper</li>
+<li><a href="https://github.com/aelij/RoslynPad">RoslynPad</a> - A simple C# editor based on Roslyn and AvalonEdit.</li>
+<li><a href="https://consulo.io">Consulo</a> - A cross-platform IDE with C# &amp; Java support, fork of IntelliJ IDEA Community Edition</li>
+</ul>
+<h2 id="image-processing"><a class="header" href="#image-processing">Image Processing</a></h2>
+<ul>
+<li><a href="https://imageresizing.net/">ImageResizer</a> - Add commands to image URLs to get altered versions in milliseconds. Resizing, editing etc of images in real-time.</li>
+<li><a href="https://github.com/JimBobSquarePants/ImageProcessor">ImageProcessor</a> - Open-source .NET library to manipulate images on-the-fly.</li>
+<li><a href="http://dynamicimage.apphb.com/">DynamicImage</a> - High-performance open-source image manipulation library for ASP.NET.</li>
+<li><a href="https://github.com/drewnoakes/metadata-extractor-dotnet">MetadataExtractor</a> - Extracts Exif, IPTC, XMP, ICC and other metadata from image files.</li>
+<li><a href="http://www.emgu.com/wiki/index.php/Main_Page">Emgu CV</a> - Cross-platform .NET wrapper for the OpenCV library.</li>
+<li><a href="https://github.com/dajuric/dot-imaging">DotImaging</a> - Minimalistic .NET imaging portable platform</li>
+<li><a href="https://github.com/dlemstra/Magick.NET">Magick.NET</a> - .NET wrapper for the ImageMagick library.</li>
+</ul>
+<h2 id="install-tools"><a class="header" href="#install-tools">Install tools</a></h2>
+<ul>
+<li><a href="http://wixtoolset.org/">Wix Toolset</a> - The most powerful set of tools available to create your Windows installation experience</li>
+<li><a href="https://github.com/squirrel/squirrel.windows">Squirrel</a> - Squirrel is both a set of tools and a library, to completely manage both installation and updating your Desktop Windows application.</li>
+<li><a href="https://github.com/chocolatey/choco">Chocolatey</a> - like yum or apt-get, but for Windows.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=TomEnglert.Wax">Wax</a> - An interactive editor for WiX projects.</li>
+</ul>
+<h2 id="internationalization"><a class="header" href="#internationalization">Internationalization</a></h2>
+<ul>
+<li><a href="https://github.com/turquoiseowl/i18n">i18n</a> - Smart internationalization for ASP.NET MVC</li>
+<li><a href="https://github.com/jeffijoe/MessageFormat.NET">MessageFormat.NET</a> - ICU MessageFormat implementation in .NET lets you write contextual UI messages (PCL library)</li>
+<li><a href="https://github.com/tom-englert/ResXResourceManager">ResX Resource Manager</a> - The most popular free tool to localize all kind of applications with resx-based resources.</li>
+</ul>
+<h2 id="interoperability"><a class="header" href="#interoperability">Interoperability</a></h2>
+<ul>
+<li><a href="https://github.com/mono/CppSharp">CppSharp</a> - Tools to surface C++ APIs to C#</li>
+<li><a href="https://github.com/mono/sharpen">Sharpen</a> - Sharpen is an Eclipse plugin created by db4o that allows you to convert your Java project into C#</li>
+<li><a href="https://github.com/mono/cxxi">CXXI</a> - C++ interop framework</li>
+<li><a href="https://github.com/pythonnet/pythonnet">pythonnet</a> - Python and .NET interop framework</li>
+</ul>
+<h2 id="ioc"><a class="header" href="#ioc">IoC</a></h2>
+<ul>
+<li><a href="https://github.com/castleproject/Windsor">Castle Windsor</a> - Castle Windsor is best of breed, mature Inversion of Control container available for .NET and Silverlight</li>
+<li><a href="https://github.com/unitycontainer/unity">Unity</a> - Lightweight extensible dependency injection container with support for constructor, property, and method call injection</li>
+<li><a href="https://github.com/autofac/Autofac">Autofac</a> - An addictive .NET IoC container</li>
+<li><a href="https://bitbucket.org/dadhi/dryioc">DryIoc</a> - Simple, fast all fully featured IoC container.</li>
+<li><a href="https://github.com/ninject/ninject">Ninject</a> - The ninja of .net dependency injectors</li>
+<li><a href="https://structuremap.github.io/">StructureMap</a> - The original IoC/DI Container for .Net</li>
+<li><a href="https://github.com/spring-projects/spring-net">Spring.Net</a> - Spring.NET is an open source application framework that makes building  enterprise .NET applications easier</li>
+<li><a href="https://github.com/seesharper/LightInject">LightInject</a> - A ultra lightweight IoC container</li>
+<li><a href="https://github.com/simpleinjector/SimpleInjector">Simple Injector</a> - Simple Injector is an easy-to-use Dependency Injection (DI) library for .NET 4+ that supports Silverlight 4+, Windows Phone 8, Windows 8 including Universal apps and Mono.</li>
+<li><a href="https://github.com/aspnet/DependencyInjection">Microsoft.Extensions.DependencyInjection</a> - The default IoC container for ASP.NET Core applications.</li>
+<li><a href="https://github.com/khellang/Scrutor">Scrutor</a> - Assembly scanning extensions for Microsoft.Extensions.DependencyInjection.</li>
+<li><a href="https://github.com/Microsoft/vs-mef">VS MEF</a> - Managed Extensibility Framework (MEF) implementation used by Visual Studio.</li>
+</ul>
+<h2 id="javascript-engines"><a class="header" href="#javascript-engines">JavaScript Engines</a></h2>
+<ul>
+<li><a href="https://github.com/Microsoft/ClearScript">ClearScript</a> - A library that makes it easy to add scripting to your .NET applications. It currently supports JavaScript (via V8 and JScript) and VBScript.</li>
+<li><a href="https://github.com/tjanczuk/edge">Edge.js</a> - Run .NET and Node.js code in-process on Windows, MacOS, and Linux</li>
+<li><a href="https://github.com/sebastienros/jint">Jint</a> - JavaScript interpreter for .NET which provides full ECMA 5.1 compliance and can run on any .NET platform.</li>
+<li><a href="https://github.com/paulbartrum/jurassic">Jurassic</a> - A implementation of the ECMAScript language and runtime. It aims to provide the best performing and most standards-compliant implementation of JavaScript for .NET.</li>
+</ul>
+<h2 id="logging"><a class="header" href="#logging">Logging</a></h2>
+<ul>
+<li><a href="https://github.com/sgryphon/essential-diagnostics">Essential Diagnostics</a> - Extends the inbuilt features of System.Diagnostics namespace to provide flexible logging</li>
+<li><a href="https://github.com/nlog/NLog/">NLog</a> - NLog - Advanced .NET and Silverlight Logging</li>
+<li><a href="https://github.com/ihtfw/Logazmic">Logazmic</a> - Open source nlog viewer for Windows</li>
+<li><a href="https://elmah.github.io/">ELMAH</a> - Official ELMAH site</li>
+<li><a href="https://github.com/alexbeletsky/elmah-mvc">Elmah MVC</a> - Elmah for MVC</li>
+<li><a href="http://logary.github.io/">Logary</a> - Logary is a high performance, multi-target logging, metric, tracing and health-check library for mono and .Net. .Net's answer to DropWizard. Supports many targets, built for micro-services.</li>
+<li><a href="https://logging.apache.org/log4net/">Log4Net</a> - The Apache log4net library is a tool to help the programmer output log statements to a variety of output targets</li>
+<li><a href="https://github.com/serilog/serilog">Serilog</a> - A no-nonsense logging library for the NoSQL era. Combines the best of traditional and structured diagnostic logging in an easy-to-use package.</li>
+<li><a href="https://github.com/NickCraver/StackExchange.Exceptional">StackExchange.Exceptional</a> - Error handler used for the Stack Exchange network</li>
+<li><a href="https://github.com/MicrosoftArchive/semantic-logging">Semantic Logging Application Block (SLAB)</a> - Extends the inbuilt features of System.Diagnostics.Tracing namespace (EventSource class) to log to several sinks including Azure Tables, Databases, files (JSON, XML, text). Supports in-process and out-of-process logging through ETW, and Rx for real-time filtering/aggregating of events.</li>
+<li><a href="https://github.com/FoundatioFx/Foundatio#logging">Foundatio</a> - A fluent logging api that can be used to log messages throughout your application. </li>
+<li><a href="https://github.com/exceptionless/Exceptionless.Net">Exceptionless</a> - Exceptionless .NET Client</li>
+<li><a href="https://onloupe.com">Loupe</a> - Centralized .NET logging and monitoring. <strong>[Proprietary]</strong> <strong>[Free Tier]</strong></li>
+<li><a href="https://elmah.io">elmah.io</a> - Cloud logging for .NET web applications using ELMAH. Find bugs before you go live. Powerful search, API, integration with Slack, GitHub, Visual Studio and more. <strong>[<a href="https://elmah.io/sponsorship/opensource">Free for OSS</a>]</strong> <strong>[$]</strong></li>
+</ul>
+<h2 id="machine-learning-and-data-science"><a class="header" href="#machine-learning-and-data-science">Machine Learning and Data Science</a></h2>
+<ul>
+<li><a href="http://infernet.azurewebsites.net/default.aspx">Infer.NET</a> - A framework for running Bayesian inference in graphical models. It can also be used for probabilistic programming. <strong>[<a href="http://infernet.azurewebsites.net/docs/Frequently%20Asked%20Questions.aspx">Proprietary</a>]</strong> <strong>[Free]</strong> <strong>[Research]</strong></li>
+<li><a href="http://accord-framework.net/">Accord.NET</a> - Machine learning framework combined with audio and image processing libraries (computer vision, computer audition, signal processing and statistics).</li>
+<li><a href="https://github.com/dajuric/accord-net-extensions">Accord.NET Extensions</a> - Advanced image processing and computer vision algorithms made as fluent extensions.</li>
+<li><a href="http://www.aforgenet.com/">AForge.NET</a> - Framework for developers and researchers in the fields of Computer Vision and Artificial Intelligence (image processing, neural networks, genetic algorithms, machine learning, robotics).</li>
+<li><a href="http://bluemountaincapital.github.io/Deedle/">Deedle</a> - Data frame and (time) series library for exploratory data manipulation with C# and F# support</li>
+<li><a href="https://fslab.org/">FsLab</a> - A collection of data science and machine learning libraries for F# and .NET</li>
+<li><a href="https://github.com/sethjuarez/numl">numl</a> - Designed to include the most popular supervised and unsupervised learning algorithms while minimizing the friction involved with creating the predictive models.</li>
+<li><a href="http://bluemountaincapital.github.io/FSharpRProvider/">R Provider</a> - Type provider that exposes R packages and functions in a type-safe way to F# callers</li>
+<li><a href="http://fsharp.github.io/FSharp.Data/">F# Data</a> - F# type providers for accessing XML, JSON, CSV and HTML files (based on sample documents) and for accessing WorldBank data</li>
+<li><a href="https://github.com/Spreads/Spreads/">Spreads</a> - Series and Panels for Real-time and Exploratory Analysis of Data Streams. Spreads library is optimized for performance and memory usage. It is several times faster than other open source projects.</li>
+</ul>
+<h2 id="markdown-processors"><a class="header" href="#markdown-processors">Markdown Processors</a></h2>
+<ul>
+<li><a href="https://code.google.com/archive/p/markdownsharp">MarkdownSharp</a> - Open source C# implementation of Markdown processor, as featured on Stack Overflow.</li>
+<li><a href="http://fsprojects.github.io/FSharp.Formatting/">F# Formatting</a> - Tools for documenting F# and C# projects.  The library contains extensible Markdown parser as a core component.</li>
+<li><a href="https://github.com/Knagis/CommonMark.NET">CommonMark.NET</a> - Implementation of CommonMark specification in C# for converting Markdown documents to HTML. Optimized for maximum performance and portability.</li>
+<li><a href="https://github.com/lunet-io/markdig">markdig</a> - A fast, powerful, CommonMark compliant, extensible Markdown processor for .NET.</li>
+</ul>
+<h2 id="mail"><a class="header" href="#mail">Mail</a></h2>
+<ul>
+<li><a href="https://github.com/lukencode/FluentEmail">FluentEmail</a> - A Fluent Wrapper for System.Net.Mail with razor templating support.</li>
+<li><a href="https://github.com/jstedfast/MailKit">MailKit</a> - A complete cross-platform mail stack including IMAP, POP3, SMTP, authentication and more. Built on top of MimeKit.</li>
+<li><a href="https://github.com/jstedfast/MimeKit">MimeKit</a> - A cross-platform .NET MIME creation and parser library with support for S/MIME, PGP, TNEF and Unix mbox spools.</li>
+<li><a href="https://github.com/milkshakesoftware/PreMailer.Net">PreMailer.Net</a> - C# library that moves your stylesheets to inline style attributes, for maximum compatibility with E-mail clients.</li>
+</ul>
+<h2 id="mathematics"><a class="header" href="#mathematics">Mathematics</a></h2>
+<ul>
+<li><a href="https://www.mathdotnet.com/">MathNet</a> - Math.NET is an opensource initiative to build and maintain toolkits covering fundamental mathematics, targetting advanced but also every day needs of .Net developers</li>
+<li><a href="https://github.com/Microsoft/automatic-graph-layout">Microsoft Automatic Graph Layout</a> - A set of tools for graph layout and viewing.</li>
+<li><a href="https://github.com/Stratajet/UnitConversion">UnitConversion</a> - Expansible Unit Conversion Library for .Net Core and .Net Framework</li>
+</ul>
+<h2 id="media"><a class="header" href="#media">Media</a></h2>
+<ul>
+<li><a href="https://github.com/mono/taglib-sharp">TagLib#</a> - TagLib# (aka taglib-sharp) is a library for reading and writing
+metadata in media files, including video, audio, and photo formats</li>
+<li><a href="https://github.com/naudio/NAudio">NAudio</a> - Playback, decode and encode audio in a variety of file formats such as MP3, MP4, WAV, AIFF, Speex, etc.</li>
+</ul>
+<h2 id="metrics"><a class="header" href="#metrics">Metrics</a></h2>
+<ul>
+<li><a href="https://github.com/Pereingo/statsd-csharp-client">C# StatsD Client</a> - C# client for Etsy's StatsD</li>
+<li><a href="https://github.com/FoundatioFx/Foundatio#metrics">Foundatio</a> - A common interface with in memory, redis, StatsD, and Metrics.NET implementations.</li>
+</ul>
+<h2 id="micro-framework"><a class="header" href="#micro-framework">Micro Framework</a></h2>
+<ul>
+<li><a href="https://github.com/NETMF/netmf-interpreter">.NET Micro Framework Interpreter</a> - Microsoft® .NET Micro Framework (NETMF) for developing embedded applications on small devices using Visual Studio</li>
+</ul>
+<h2 id="minification"><a class="header" href="#minification">Minification</a></h2>
+<ul>
+<li><a href="http://ajaxmin.codeplex.com/">Microsoft Ajax Minifier</a> - Contains JS and CSS minifiers which have a highest performance, because its have been specifically designed for .NET. Optionally produce Source Maps for JS code.</li>
+<li><a href="https://github.com/Taritsyn/WebMarkupMin">Web Markup Minifier</a> - .NET library that contains a set of markup minifiers. The objective of this project is to improve the performance of web applications by reducing the size of HTML, XHTML and XML code.</li>
+</ul>
+<h2 id="misc"><a class="header" href="#misc">Misc</a></h2>
+<ul>
+<li><a href="http://csharppad.com">CSharp Pad</a> - A web based C# REPL with awesome code completion.</li>
+<li><a href="https://github.com/yagopv/AzureCrawler">AzureCrawler</a> - Take HTML Snapshots for your Angular, Ember, Durandal or any JavaScript applications</li>
+<li><a href="https://github.com/pmlyon/BitSharp">BitSharp</a> - C# Bitcoin Node</li>
+<li><a href="http://www.csscript.net/">CSScript</a> - CS-Script is a CLR based scripting system which usesC# as a programming language. CS-Script currently targets Microsoft implementation of CLR (.NET 2.0/3.0/3.5/4.0/4.5) with full support on Mono. Comes with many additional features, such as script hosting.</li>
+<li><a href="https://github.com/JoshClose/CsvHelper">CsvHelper</a> - Library to help reading and writing CSV files https://github.com/JoshClose/CsvHelper</li>
+<li><a href="https://github.com/joaomatossilva/FlatMapper">FlatMapper</a> - A library to import and export data from and to plain text files in a Linq compatible way.</li>
+<li><a href="https://github.com/JeremySkinner/FluentValidation">FluentValidation</a> - A small validation library for .NET that uses a fluent interface and lambda expressions for building validation rules.</li>
+<li><a href="https://github.com/Humanizr/Humanizer">Humanizer</a> - Humanizer meets all your .NET needs for manipulating and displaying strings, enums, dates, times, timespans, numbers and quantities</li>
+<li><a href="http://www.linqpad.net">LINQPad</a> - a C#/VB/F# scratchpad that instantly executes any expression, statement block or program with rich output formatting and a wealth of features. Also lets you interactively query databases in LINQ. [$]</li>
+<li><a href="https://github.com/App-vNext/Polly">Polly</a> - Express transient-exception-handling and resilience policies such as Retry, Wait-and-Retry, Circuit Breaker, and Bulkhead Isolation in a fluent manner. Fully thread-safe and full async support.  (4.0 / 4.5 / .Net Core / .Net Standard / Xamarin).</li>
+<li><a href="https://github.com/TheBerkin/Rant">Rant</a> - The Rant Procedural Text Generation DSL http://berkin.me/rant/</li>
+<li><a href="https://github.com/scriptcs/scriptcs">ScriptCS</a> - Write C# apps with a text editor, nuget and the power of Roslyn!</li>
+<li><a href="https://github.com/jbakic/Shielded">Shielded</a> - Software Transactional Memory (STM) implementation for .NET</li>
+<li><a href="https://ilmergemsbuild.codeplex.com/">MSBuild ILMerge task</a> - MSBuild ILMerge task is a NuGet package allows you to use the famous ILMerge utility in automated builds and/or Visual Studio projects.</li>
+<li><a href="https://github.com/reactjs/React.NET">ReactJS.NET</a> - ReactJS.NET is a library that makes it easier to use Babel along with Facebook's React and JSX from C#.</li>
+<li><a href="https://github.com/AdaptiveConsulting/Aeron.NET">Aeron.NET</a> - Efficient reliable UDP unicast, UDP multicast, and IPC message transport - .NET port of Aeron</li>
+<li><a href="https://github.com/eiriktsarpalis/TypeShape">TypeShape</a> - TypeShape is a small, extensible F# library for practical generic programming</li>
+<li><a href="https://github.com/nessos/Streams">Streams</a> - A lightweight F#/C# library for efficient functional-style pipelines on streams of data.</li>
+<li><a href="https://github.com/jbogard/MediatR">MediatR</a> - Simple, unambitious mediator implementation in .NET </li>
+<li><a href="https://github.com/warden-stack/Warden">Warden</a> - Define &quot;health checks&quot; for your applications, resources and infrastructure. Keep your Warden on the watch </li>
+<li><a href="https://github.com/omar/ByteSize">ByteSize</a> - ByteSize is a utility class that makes byte size representation in code easier by removing ambiguity of the value being represented. ByteSize is to bytes what System.TimeSpan is to time.</li>
+<li><a href="https://github.com/anakic/jot">Jot</a> - a library for persisting and restoring application state (a better alternative to .settings files).</li>
+<li><a href="https://github.com/mayuanyang/Mediator.Net">Mediator.Net</a> - A simple mediator for .Net for sending command, publishing event and request response with pipelines supported</li>
+<li><a href="https://github.com/TylerBrinkley/Enums.NET">Enums.NET</a> - Enums.NET is a high-performance type-safe .NET enum utility library</li>
+</ul>
+<h2 id="mvvm"><a class="header" href="#mvvm">MVVM</a></h2>
+<ul>
+<li><a href="https://github.com/Caliburn-Micro/Caliburn.Micro">Caliburn.Micro</a> - A small, yet powerful framework, designed for building applications across all XAML platforms. Its strong support for MV* patterns will enable you to build your solution quickly, without the need to sacrifice code quality or testability.</li>
+<li><a href="https://mvvmlight.codeplex.com/">MVVM Light Toolkit</a> - The main purpose of the toolkit is to accelerate the creation and development of MVVM applications in WPF, Silverlight, Windows Store (RT) and for Windows Phone</li>
+<li><a href="http://catelproject.com/">Catel</a> - Catel is an application development platform with the focus on MVVM (WPF, Silverlight, Windows Phone and WinRT) and MVC (ASP.NET MVC). The core of Catel contains an IoC container, models, validation, memento, message mediator, argument checking, etc.</li>
+<li><a href="http://updatecontrols.net/cs/">UpdateControls</a> - Update Controls does not require that you implement INotifyPropertyChanged or declare a DependencyProperty. It connects controls directly to CLR properties. This makes it perfect for the Model/View/ViewModel pattern.</li>
+<li><a href="https://github.com/reactiveui/reactiveui/">ReactiveUI</a> - An MVVM framework for .NET that integrates the Reactive Extensions (Rx) framework, enabling developers to build elegant, testable applications using WPF, Windows Store Apps, WP8 or Xamarin.</li>
+<li><a href="http://okraframework.github.io">Okra App Framework</a> - An app centric MVVM framework for Windows 8.1 built with dependency injection in mind, including a full set of Visual Studio MVVM templates.</li>
+<li><a href="https://github.com/PrismLibrary/Prism">Prism</a> - A cross-platform desktop and mobile MVVM development framework.</li>
+<li><a href="http://waf.codeplex.com">WPF Application Framework (WAF)</a> - A lightweight Framework that helps you to create well structured WPF Applications. It supports you in applying a Layered Architecture and the Model-View-ViewModel pattern.</li>
+<li><a href="https://github.com/MvvmCross/MvvmCross">MVVMCross</a> - Cross-platform mvvm mobile development framework for WPF, Silverlight for WP7 and WP8, Mono for Android, MonoTouch for iOS, Windows Universal projects (WPA8.1 and Windows 8.1 Store apps). Makes extensive use of Portable Class Libraries (PCL) to provide maintainable cross platform C# native applications.</li>
+<li><a href="https://github.com/canton7/stylet/">Stylet</a> - Minimal MVVM framework inspired by Caliburn Micro, with good documentation, high test coverage, and its own IoC container</li>
+<li><a href="https://github.com/tgjones/gemini">Gemini</a> - IDE framework similar in concept to the Visual Studio Shell. Built on WPF, AvalonDock, and Caliburn Micro.</li>
+<li><a href="https://github.com/tom-englert/TomsToolbox">Toms Toolbox</a> - Visual Composition framework to easily build modularized MVVM applications based on the <a href="https://docs.microsoft.com/en-us/dotnet/framework/mef/index">Managed Extensibility Framework (MEF)</a>.</li>
+</ul>
+<h2 id="object-to-object-mapping"><a class="header" href="#object-to-object-mapping">Object to object mapping</a></h2>
+<ul>
+<li><a href="https://github.com/AutoMapper/AutoMapper">AutoMapper</a> - A convention-based object-object mapper in .NET. http://automapper.org</li>
+<li><a href="https://github.com/TinyMapper/TinyMapper">TinyMapper</a> - A tiny and quick object mapper for .Net.</li>
+<li><a href="https://github.com/fluentsprings/ExpressMapper">ExpressMapper</a> - A lightweight, lighting fast .Net mapper to map one type of object(s) to another in automated and easy way. ExpressMapper relies completely on the expression trees.</li>
+</ul>
+<h2 id="office"><a class="header" href="#office">Office</a></h2>
+<ul>
+<li><a href="https://github.com/Excel-DNA/ExcelDna">ExcelDna</a> - ExcelDna makes it easier to create and deploy Excel Add-Ins using C#, F# or VB .NET</li>
+<li><a href="https://github.com/ClosedXML/ClosedXML">ClosedXML</a> - ClosedXML makes it easier for developers to create Excel 2007/2010 files</li>
+<li><a href="http://npoi.codeplex.com/">NPOI</a> - This project is the .NET version of POI Java project at http://poi.apache.org/.</li>
+<li><a href="http://epplus.codeplex.com/">EPPlus</a> - EPPlus is a .net library that reads and writes Excel 2007/2010 files using the Open Office Xml format (xlsx).</li>
+<li><a href="https://github.com/officedev/open-xml-sdk">Open XML SDK</a> - The Open XML SDK provides open-source libraries for working with Open XML Documents (DOCX, XLSX, and PPTX).</li>
+</ul>
+<h2 id="orm"><a class="header" href="#orm">ORM</a></h2>
+<ul>
+<li><a href="https://github.com/aspnet/EntityFramework6">Entity Framework 6</a> - Object-relational mapper that enables .NET developers to work with relational data using domain-specific objects</li>
+<li><a href="https://github.com/aspnet/EntityFrameworkCore">Entity Framework Core</a> - Object-relational mapper that enables .NET developers to work with relational data using domain-specific objects</li>
+<li><a href="https://github.com/igor-tkachev/bltoolkit">BL Toolkit</a> - Business Logic Toolkit for .NET</li>
+<li><a href="https://github.com/StackExchange/Dapper">Dapper</a> - A simple object mapper for .NET by <a href="https://stackexchange.github.io/">StackExchange</a></li>
+<li><a href="https://github.com/tmsmith/Dapper-Extensions">Dapper Extensions</a> - Small library that complements Dapper by adding basic CRUD operations (Get, Insert, Update, Delete) for your POCOs</li>
+<li><a href="https://github.com/MoonStorm/Dapper.FastCRUD">Dapper.FastCRUD</a> - The fastest micro-orm extension for Dapper</li>
+<li><a href="https://github.com/nhibernate">NHibernate</a> - NHibernate Object Relational Mapper</li>
+<li><a href="https://github.com/jagregory/fluent-nhibernate">Fluent NHibernate</a> - Fluent, XML-less, compile safe, automated, convention-based mappings for NHibernate.</li>
+<li><a href="https://github.com/fluentmigrator/fluentmigrator">FluentMigrator</a> - Fluent Migrations framework for .net</li>
+<li><a href="https://github.com/ServiceStack/ServiceStack.OrmLite">ServiceStack.OrmLite</a> - Light, simple and fast convention-based POCO ORM <strong>[<a href="https://github.com/ServiceStack/ServiceStack.OrmLite/blob/master/license.txt">Free for OSS</a>]</strong> <strong>[$]</strong></li>
+<li><a href="https://github.com/FransBouma/Massive">Massive</a> - A small, happy, data access tool that will love you forever.</li>
+<li><a href="https://github.com/linq2db/linq2db">LINQ to DB</a> - The fastest LINQ database access library offering a simple, light, fast, and type-safe layer between your POCO objects and your database.</li>
+<li><a href="https://github.com/TrevorPilley/MicroLite">MicroLite ORM</a> MicroLite ORM is a micro Object Relational Mapper for the .NET framework. It is designed to be easy to use, extensible and testable.</li>
+<li><a href="https://github.com/CollaboratingPlatypus/PetaPoco">PetaPoco</a> - A tiny ORM-ish thing for your POCOs</li>
+<li><a href="https://github.com/tmenier/AsyncPoco">AsyncPoco</a> - A long-&quot;awaited&quot; fully asynchronous PetaPoco fork</li>
+<li><a href="https://github.com/schotime/NPoco">NPoco</a> - Simple microORM that maps the results of a query onto a POCO object. Based on Schotime's branch of PetaPoco</li>
+<li><a href="https://github.com/Nick-Lucas/LimeBean">Limebean</a> - Hybrid ORM which uses SQL fragments and doesn't require Model Classes.</li>
+<li><a href="https://www.llblgen.com">LLBLGen Pro</a> - Entity Modeling solution for Entity Framework, NHibernate, Linq to SQL and its own ORM framework: LLBLGen Pro Runtime Framework. <strong>[$][Free Lite version]</strong></li>
+<li><a href="https://github.com/jonwagner/Insight.Database">Insight.Database</a> - Insight.Database is a fast, lightweight, micro-orm for .NET</li>
+<li><a href="http://maxtoroq.github.io/DbExtensions/">DbExtensions</a> - Data-access framework with a strong focus on query composition, granularity and code aesthetics.</li>
+</ul>
+<h2 id="package-management"><a class="header" href="#package-management">Package Management</a></h2>
+<ul>
+<li><a href="https://www.nuget.org/">NuGet</a> - THE .NET Package Manager</li>
+<li><a href="http://www.myget.org/">MyGet</a> - Hosted Package Repository for NuGet, NPM, Bower and VSIX. Also provides CI as-a-Service. <strong>[<a href="https://www.myget.org/opensource">Free for OSS</a>]</strong> <strong>[$]</strong></li>
+<li><a href="https://github.com/fsprojects/Paket">Paket</a> - A package dependency manager for .NET with support for NuGet packages and GitHub repositories. http://fsprojects.github.io/Paket/</li>
+</ul>
+<h2 id="pdf"><a class="header" href="#pdf">PDF</a></h2>
+<ul>
+<li><a href="https://github.com/itext/itextsharp">ITextSharp</a> - iText is a PDF library that allows you to CREATE, ADAPT, INSPECT and MAINTAIN documents in the Portable Document Format (PDF)<strong>[$]****[Free for OSS]</strong></li>
+</ul>
+<h2 id="profiler"><a class="header" href="#profiler">Profiler</a></h2>
+<ul>
+<li><a href="https://github.com/MiniProfiler/dotnet">MiniProfiler</a> - A simple but effective mini-profiler for ASP.NET websites</li>
+<li><a href="https://github.com/glimpse/glimpse">Glimpse</a> - The open source diagnostics platform for the web</li>
+</ul>
+<h2 id="protocols"><a class="header" href="#protocols">Protocols</a></h2>
+<ul>
+<li><a href="https://github.com/sshnet/SSH.NET">SSH.NET</a> - A Secure Shell (SSH) library for .NET, optimized for parallelism. Provides SSH commands, SFTP/SCP uploads and downloads, and SOCKS4/SOCKS5/HTTP proxies.</li>
+<li><a href="https://github.com/hgupta9/FluentFTP">FluentFTP</a> - An FTP and FTPS library for .NET, optimized for speed. Provides extensive FTP commands, file uploads/downloads and FTP proxies.</li>
+<li><a href="https://docs.sharpsnmp.com/en/latest/">SharpSnmpLib</a> - An open source SNMP implementation for .NET/Mono/Xamarin. Versioin 1, 2c, and 3 are supported.</li>
+</ul>
+<h2 id="push-notifications"><a class="header" href="#push-notifications">Push Notifications</a></h2>
+<ul>
+<li><a href="https://github.com/Redth/PushSharp">PushSharp</a> - A server-side library for sending Push Notifications to iOS, OSX, Android, Chrome, Windows Phone, Windows 8, Blackberry, and Amazon devices.</li>
+</ul>
+<h2 id="queue"><a class="header" href="#queue">Queue</a></h2>
+<ul>
+<li><a href="https://github.com/dotnetcore/CAP">CAP</a> - An EventBus with local persistent message functionality for RabbitMQ or Kafka.</li>
+<li><a href="https://github.com/Particular/NServiceBus">NServiceBus</a> - The most popular service bus for .NET</li>
+<li><a href="https://github.com/HangfireIO/Hangfire">Hangfire</a> - Incredibly easy way to perform fire-and-forget, delayed and recurring tasks inside ASP.NET applications</li>
+<li><a href="https://github.com/rabbitmq/rabbitmq-dotnet-client">RabbitMQ.NET</a> - Implementation of an AMQP client library for C#, and a binding exposing AMQP services via WCF</li>
+<li><a href="https://github.com/zeromq/netmq">NetMQ</a> - NetMQ is 100% native C# port of ZeroMQ</li>
+<li><a href="https://github.com/MassTransit/MassTransit">MassTransit</a> - MassTransit is lean service bus implementation for building loosely coupled applications using the .NET Framework.</li>
+<li><a href="https://github.com/rebus-org/Rebus">Rebus</a> - Rebus is a lean service bus implementation for .NET, similar in nature to NServiceBus and MassTransit, only leaner</li>
+<li><a href="https://github.com/tenor/RestBus">RestBus</a> - A service oriented .NET messaging library for RabbitMQ. </li>
+<li><a href="https://github.com/pardahlman/RawRabbit">RawRabbit</a> - A modern .NET Core library for RabbitMQ.</li>
+<li><a href="https://github.com/EasyNetQ/EasyNetQ">EasyNetQ</a> - An easy to use .NET API for RabbitMQ</li>
+<li><a href="https://github.com/Warewolf-ESB/Warewolf">Warewolf ESB</a> - An easy to use service bus and microservices platform. Easily build applications and services in a visual IDE.</li>
+<li><a href="https://github.com/Microsoft/CSharpClient-for-Kafka">Kafka Client</a> - .Net implementation of the Apache Kafka Protocol that provides basic functionality through Producer/Consumer classes.</li>
+<li><a href="https://github.com/FoundatioFx/Foundatio#queues">Foundatio</a> - A common interface with in memory, redis and azure implementations.</li>
+<li><a href="https://github.com/jet/kafunk">Kafunk</a> - F# Kafka client from Jet</li>
+</ul>
+<h2 id="reactive-programming"><a class="header" href="#reactive-programming">Reactive Programming</a></h2>
+<ul>
+<li><a href="https://github.com/Reactive-Extensions/Rx.NET">Rx.NET</a> - The Reactive Extensions (Rx) is a library for composing asynchronous and event-based programs using observable sequences and LINQ-style query operators</li>
+<li><a href="https://github.com/RolandPheasant/DynamicData">Dynamic Data</a> - Reactive Extensions (Rx) for collections</li>
+</ul>
+<h2 id="scheduling"><a class="header" href="#scheduling">Scheduling</a></h2>
+<ul>
+<li><a href="https://github.com/fluentscheduler/FluentScheduler">FluentScheduler</a> - Task scheduler with fluent interface that runs automated jobs from your application</li>
+<li><a href="https://github.com/atifaziz/NCrontab">NCrontab</a> - Class library for parsing &amp; formatting <a href="http://crontab.org/">crontab</a> expressions as well as calculating occurrences of time based on a crontab schedule</li>
+<li><a href="https://github.com/quartznet/quartznet">QuartzNet</a> - Quartz Enterprise Scheduler .NET</li>
+<li><a href="https://github.com/HangfireIO">Hangfire</a> - An easy way to perform fire-and-forget, delayed and recurring tasks inside .NET apps</li>
+<li><a href="https://github.com/leosperry/Chroniton">Chroniton</a> - A simple, fully integrable, and customizable library for running strongly typed jobs (tasks) on schedules.</li>
+<li><a href="https://github.com/Azure/durabletask">DurableTask</a> - This framework allows users to write long running persistent workflows in C# using the async/await capabilities.</li>
+</ul>
+<h2 id="sdk-and-api-clients"><a class="header" href="#sdk-and-api-clients">SDK and API Clients</a></h2>
+<ul>
+<li><a href="https://github.com/aws/aws-sdk-net">AWS SDK</a> - The AWS SDK for .NET enables .NET developers to easily work with Amazon Web Services</li>
+<li><a href="https://github.com/Azure/azure-powershell">Azure PowerShell</a> - A set of PowerShell cmdlets for developers and administrators to develop, deploy and manage Microsoft Azure applications</li>
+<li><a href="https://github.com/octokit/octokit.net">Octokit.NET</a> - A GitHub API client library for .NET</li>
+<li><a href="https://github.com/DropNet/DropNet">DropNet</a> - Client Library for the Dropbox API</li>
+</ul>
+<h2 id="search"><a class="header" href="#search">Search</a></h2>
+<ul>
+<li><a href="https://github.com/elastic/elasticsearch-net">Elasticsearch .NET</a> - Elasticsearch.Net &amp; NEST</li>
+<li><a href="https://github.com/Yegoroff/PlainElastic.Net">PlainElastic.Net</a> - Plain .Net client for ElasticSearch</li>
+<li><a href="https://github.com/SolrNet/SolrNet">SolrNet</a> - Solr client for .Net</li>
+<li><a href="https://github.com/solr-express/solr-express">SolrExpress</a>) - A simple and lightweight query .NET library for Solr, in a controlled, buildable and fail fast way</li>
+<li><a href="http://lucenenet.apache.org/">Lucene.net</a> - Lucene.Net is a port of the Lucene search engine library, written in C# and targeted at .NET runtime users</li>
+</ul>
+<h2 id="serialization"><a class="header" href="#serialization">Serialization</a></h2>
+<ul>
+<li><a href="https://github.com/mgravell/protobuf-net">Protobuf.NET</a> - Protocol buffers is the name of the binary serialization format used by Google for much of their data communications</li>
+<li><a href="https://github.com/JamesNK/Newtonsoft.Json">Json.NET</a> - Popular high-performance JSON framework for .NET</li>
+<li><a href="https://github.com/ServiceStack/ServiceStack.Text">ServiceStack.Text</a> - JSON, JSV and CSV Text Serializers used in servicestack.net</li>
+<li><a href="https://github.com/msgpack/msgpack-cli">Msgpack-Cli</a> - MessagePack implementation for Common Language Infrastructure</li>
+<li><a href="https://github.com/kevin-montrose/Jil">Jil</a> - Fast .NET JSON Serializer, built on Sigil (used by StackOverflow)</li>
+<li><a href="https://github.com/hultqvist/ProtoBuf">ProtoBuf</a> - Generate C# code for protocol buffer serialization from a .proto specification.</li>
+<li><a href="http://fsharp.github.io/FSharp.Data/">F# Data</a> - F# type providers for accessing XML, JSON, CSV and HTML files (based on sample documents) and for accessing WorldBank data</li>
+<li><a href="https://github.com/Microsoft/bond">Bond</a> - cross-platform framework for working with schematized data. It supports cross-language de/serialization and powerful generic mechanisms for efficiently manipulating data.</li>
+<li><a href="https://github.com/akkadotnet/Hyperion">Hyperion</a> - A high performance polymorphic serializer for the .NET framework.</li>
+<li><a href="https://github.com/MarcosMeli/FileHelpers">FileHelpers</a> - free and easy to use .NET library to import or export data from fixed length or delimited records in files, strings or streams.</li>
+<li><a href="https://github.com/mbraceproject/FsPickler">FsPickler</a> - A fast multi-format message serializer for .NET</li>
+<li><a href="https://github.com/antmicro/Migrant">Migrant</a> - Fast and flexible serialization framework usable on undecorated classes.</li>
+</ul>
+<h2 id="sms-and-phone-calls"><a class="header" href="#sms-and-phone-calls">SMS and Phone calls</a></h2>
+<ul>
+<li><a href="https://github.com/twilio/twilio-csharp">Twilio-csharp</a> - A C#/.NET Library for sending and receiving phone calls and text messages with Twilio.</li>
+</ul>
+<h2 id="state-machines"><a class="header" href="#state-machines">State machines</a></h2>
+<ul>
+<li><a href="https://github.com/dotnet-state-machine/stateless">Stateless</a> - Create state machines and lightweight state machine-based workflows directly in .NET code</li>
+<li><a href="https://github.com/MassTransit/Automatonymous">Automatonymous</a> - A state machine library for .Net - allows you to write fluent style state machines</li>
+<li><a href="http://www.appccelerate.com/statemachine.html">Appccelerate - State Machine</a> - A powerful state machine library - configured with a fluent api and synchrounous and asynchronous state transition support</li>
+<li><a href="https://github.com/prasannavl/LiquidState">LiquidState</a> - Efficient asynchronous and synchronous state machines for .NET</li>
+</ul>
+<h2 id="static-site-generators"><a class="header" href="#static-site-generators">Static Site Generators</a></h2>
+<ul>
+<li><a href="https://github.com/fsprojects/FsBlog/">FsBlog</a> - Blog aware, static site generation using F#</li>
+<li><a href="https://github.com/Code52/pretzel">Pretzel</a> - A site generation tool (and then some) for .NET platforms</li>
+<li><a href="https://github.com/Sandra/Sandra.Snow">Sandra.Snow</a> - Jekyll inspired static site generation for .NET</li>
+<li><a href="https://wyam.io/">Wyam</a> - A simple to use, highly modular, and extremely configurable static content generator</li>
+</ul>
+<h2 id="style-guide"><a class="header" href="#style-guide">Style Guide</a></h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/4678178/style-guide-for-c">C# Style Guide</a> - StackOverflow Q &amp; A on style guides</li>
+<li><a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions">C# Coding Conventions</a> - Official MSDN C# code conventions</li>
+</ul>
+<h2 id="template-engine"><a class="header" href="#template-engine">Template Engine</a></h2>
+<ul>
+<li><a href="https://github.com/Antaris/RazorEngine">RazorEngine</a> - Open source templating engine based on Microsoft's Razor parsing engine</li>
+<li><a href="https://github.com/jdiamond/Nustache">Nustache</a> - Open source library for logic-less templates</li>
+<li><a href="https://github.com/stubbleorg/stubble">Stubble</a> - Trimmed down {{mustache}} templates in .NET. Successor of Nustache.</li>
+<li><a href="https://github.com/dotliquid/dotliquid">DotLiquid</a> - C# port of the Ruby Liquid templating language</li>
+<li><a href="https://github.com/jehugaleahsa/mustache-sharp">Mustache Sharp</a> - An extension of the mustache text template engine for .NET.</li>
+</ul>
+<h2 id="testing"><a class="header" href="#testing">Testing</a></h2>
+<ul>
+<li><a href="https://github.com/AutoFixture/AutoFixture">AutoFixture</a> - AutoFixture is an open source framework for .NET designed to minimize the 'Arrange' phase of your unit tests</li>
+<li><a href="https://github.com/TestStack/TestStack.BDDfy">BDDfy</a> - BDDfy is the simplest BDD framework EVER!</li>
+<li><a href="https://github.com/bchavez/Bogus">Bogus</a> - A simple and sane fake data generator for C#. Based on and ported from the famed faker.js.</li>
+<li><a href="https://github.com/EamonNerbonne/ExpressionToCode">ExpressionToCode</a> - Use plain C# syntax in assertions that include both the expression expression and subexpression values in the failure message.</li>
+<li><a href="https://github.com/FakeItEasy/FakeItEasy">FakeItEasy</a> - The easy mocking library for .NET https://fakeiteasy.github.io</li>
+<li><a href="https://github.com/fluentassertions/fluentassertions">Fluent Assertions</a> - A set of .NET extension methods that allow you to more naturally specify the expected outcome of a TDD or BDD-style test</li>
+<li><a href="https://github.com/stirno/FluentAutomation">FluentAutomation</a> - Simple Fluent API for UI Automation</li>
+<li><a href="https://github.com/fscheck/FsCheck">FsCheck</a> - Random Testing for .NET.</li>
+<li><a href="https://github.com/mausch/Fuchu">Fuchu</a> - A unit-testing library for F# with tests-as-values which makes DSLs extemely easy to create.</li>
+<li><a href="https://github.com/machine/machine.specifications">Machine.Specifications</a> - Machine.Specifications (MSpec) is a context/specification framework that removes language noise and simplifies tests.</li>
+<li><a href="https://github.com/Moq/moq4">Moq</a> - The most popular and friendly mocking framework for .NET</li>
+<li><a href="https://github.com/garethdown44/nbuilder">NBuilder</a> - Rapid generation of test objects</li>
+<li><a href="http://www.ncrunch.net">NCrunch</a> - An automated continuous &amp; concurrent testing tool for Visual Studio. <strong>[$]</strong></li>
+<li><a href="http://nsubstitute.github.io/">NSubstitute</a> - A friendly substitute for .NET mocking frameworks</li>
+<li><a href="https://github.com/nunit/nunit">NUnit</a> - A unit-testing framework for all .Net languages</li>
+<li><a href="https://github.com/ayende/rhino-mocks">Rhino Mocks</a> - Dynamic Mocking Framework for .NET</li>
+<li><a href="https://github.com/shouldly/shouldly">Shouldly</a> - Shouldly is an assertion framework which focuses on giving great error messages when the assertion fails while being simple and terse.</li>
+<li><a href="https://github.com/techtalk/SpecFlow/">SpecFlow</a> - Binding business requirements to .Net code</li>
+<li><a href="https://github.com/xbehave/xbehave.net">xBehave.net</a> - A BDD/TDD framework based on xUnit.net and inspired by Gherkin. http://xbehave.github.io</li>
+<li><a href="https://github.com/xunit/xunit">xUnit</a> - xUnit.net is a free, open source, community-focused unit testing tool for the .NET Framework</li>
+<li><a href="https://github.com/lefthandedgoat/canopy">Canopy</a> - Canopy is a free, open source F# web automation and testing framework </li>
+<li><a href="https://github.com/haf/expecto">Expecto</a> - A smooth testing framework for F# with tests as values. Unit testing, property based testing, performance testing and stress testing.</li>
+</ul>
+<h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
+<ul>
+<li><a href="http://www.telerik.com/fiddler">Fiddler</a> -  The free web debugging proxy for any browser, system or platform</li>
+<li><a href="https://github.com/OpenLiveWriter/OpenLiveWriter">Open Live Writer</a> - Blog writer which integrated with WordPress, Blogger, et. al. Open Live Writer makes it easy to write, preview, and post to your blog. For more information see http://openlivewriter.org .</li>
+<li><a href="https://github.com/thedillonb/CodeHub">CodeHub</a> - CodeHub is the best way to browse and maintain your GitHub repositories on any iOS device!</li>
+<li><a href="https://github.com/ShareX/ShareX">ShareX</a> - ShareX is a free and open source program that lets you capture or record any area of your screen and share it with a single press of a key. It also allows uploading images, text or other types of files to over 80 supported destinations you can choose from.</li>
+<li><a href="https://github.com/cedrozor/myrtille">Myrtille</a> - A native HTML4/5 Remote Desktop Protocol client, HTTP gateway written in C# for .NET</li>
+<li><a href="https://github.com/Opserver/Opserver">Opserver</a> - Stack Exchange's Monitoring System</li>
+<li><a href="https://catlight.io">CatLight</a> - Build status notifications for TFS/Jenkins/Travis/Appveyor. Cross-platform desktop app based on .Net Core and Electron. <strong>[Free][Proprietary]</strong></li>
+<li><a href="https://github.com/hallatore/Netling">Netling</a> - A load tester client for easy web testing. It is extremely fast while using little CPU or memory.</li>
+<li><a href="https://github.com/ChangemakerStudios/Papercut">Papercut</a> - Papercut is an open source (.NET based) test email viewer that runs locally with a built-in SMTP server designed to receive and notify of test email messages.</li>
+<li><a href="https://github.com/Microsoft/VisualStudioUninstaller">Visual Studio Uninstaller</a> - Uninstall and clean up all components of Visual Studio.</li>
+</ul>
+<h2 id="trading"><a class="header" href="#trading">Trading</a></h2>
+<ul>
+<li><a href="https://github.com/QuantConnect/Lean">Lean</a> - Lean Engine is an open-source fully managed C# algorithmic trading engine built for desktop and cloud usage. https://www.quantconnect.com/lean/</li>
+<li><a href="https://github.com/StockSharp/StockSharp">StockSharp</a> - Trading and algorithmic trading open source platform (stock markets, forex, bitcoins and options). http://stocksharp.com</li>
+</ul>
+<h2 id="ui-automation"><a class="header" href="#ui-automation">UI Automation</a></h2>
+<ul>
+<li><a href="https://github.com/atata-framework/atata">Atata</a> - Automated web testing full featured framework based on Selenium WebDriver.</li>
+<li><a href="http://mwinapi.sourceforge.net/">Managed Windows API</a> - Introspect and automate third-party Windows / VC++ applications without needing its source code.</li>
+</ul>
+<h2 id="visual-studio-plugins"><a class="header" href="#visual-studio-plugins">Visual Studio Plugins</a></h2>
+<ul>
+<li><a href="https://github.com/madskristensen/WebEssentials2013">Web Essentials</a> - Web Essentials extends Visual Studio with lots of new features that web developers have been missing for many years</li>
+<li><a href="https://github.com/jaredpar/VsVim">VsVIM</a> - VIM in Visual Studio</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=NuGetTeam.NuGetPackageManager">Nuget Package Manager</a> - NuGet is the package manager for the Microsoft development platform including .NET</li>
+<li><a href="https://github.com/ligershark/side-waffle">SideWaffle</a> - A collection of Item Templates for Visual Studio 2012/2013 that makes any web developer's life much easier</li>
+<li><a href="http://www.jetbrains.com/resharper/">Resharper</a> - Developer Productivity Tool for Visual Studio <strong>[$]</strong></li>
+<li><a href="http://vsrefactoringessentials.com/">Refactoring Essentials</a> - Open source extension for C# and VB.NET refactorings, including code best practice analyzers.</li>
+<li><a href="https://github.com/Microsoft/CodeContracts">CodeContracts</a> - Source code for the CodeContracts tools for .NET</li>
+<li><a href="https://github.com/laurentkempe/GitDiffMargin">Git Diff Margin</a> - Displays live Git changes of the currently edited file on Visual Studio margin and scroll bar</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=VisualStudioProductTeam.ProductivityPowerTools">Productivity Power Tools</a> - A set of extensions to Visual Studio Professional (and above) which improves developer productivity.</li>
+<li><a href="https://www.visualstudiogallery.msdn.microsoft.com/f4d9c2b5-d6d7-4543-a7a5-2d7ebabc2496">VSColorOutput</a> - Color highlighting for Build, Find and Debug output windows. Custom match patterns and colors can be added.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=VisualStudioPlatformTeam.DeveloperAssistant">Developer Assistant</a> - Developer Assistant for Visual Studio enables developers to find and reuse over 21 million code snippets and code sample projects from within the Visual Studio IDE.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=HippoCampSoftwareLtd.CodeLineage">CodeLineage</a> - Easy access to a cumulative diff view between file revisions (supports svn, git, mercurial, perforce).</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=CodeValueLtd.OzCode">OzCode</a> - OzCode is a Visual Studio Extension which cuts down on debugging time and increases productivity by detecting and isolating bugs, making them easy to fix. <strong>[$]</strong></li>
+</ul>
+<h2 id="web-browsers"><a class="header" href="#web-browsers">Web Browsers</a></h2>
+<ul>
+<li><a href="https://github.com/cefsharp/CefSharp/">CefSharp</a> - HTML5, CSS3 and JS web browser powered by Chromium, for WinForms and WPF</li>
+</ul>
+<h2 id="web-frameworks"><a class="header" href="#web-frameworks">Web Frameworks</a></h2>
+<ul>
+<li><a href="https://aspnetwebstack.codeplex.com/">ASP.NET MVC</a> - ASP.NET is a free web framework for building great web sites and applications</li>
+<li><a href="https://github.com/DarthFubuMVC/fubumvc">FubuMVC</a> - A front-controller style MVC framework for .NET</li>
+<li><a href="https://github.com/NancyFx/Nancy">NancyFx</a> - Lightweight, low-ceremony, framework for building HTTP based services on .Net and Mono</li>
+<li><a href="https://github.com/tjanczuk/iisnode">IISNode</a> - Host NodeJS applications in IIS</li>
+<li><a href="https://suave.io/">Suave.IO</a> - Framework/library/web server that makes you cry tears of joy after finishing your project ahead-of-time when you look at the beautiful code you've written in <code>[F#]</code>.</li>
+<li><a href="https://github.com/riganti/dotvvm">DotVVM</a> - MVVM framework for people who don't like to write JavaScript, with OWIN and ASP.NET Core support and a free extension for Visual Studio 2015 and 2017.</li>
+<li><a href="https://github.com/dustinmoris/Giraffe">Giraffe</a> - Functional (F#) ASP.NET Core micro framework for building rich web applications</li>
+</ul>
+<h2 id="web-servers"><a class="header" href="#web-servers">Web Servers</a></h2>
+<ul>
+<li><a href="https://github.com/aspnet/KestrelHttpServer">Kestrel</a> -  A web server for ASP.NET Core based on libuv</li>
+<li><a href="https://github.com/unosquare/embedio">EmbedIO</a> - Web server built on Mono and cross-platform</li>
+<li><a href="https://github.com/mono/xsp">XSP</a> - Mono's ASP.NET hosting server. This module includes an Apache Module, a FastCGI module that can be hooked to other web servers as well as a standalone server used for testing (similar to Microsoft's Cassini)</li>
+</ul>
+<h2 id="websocket"><a class="header" href="#websocket">WebSocket</a></h2>
+<ul>
+<li><a href="https://github.com/statianzo/Fleck">Fleck</a> - Fleck is a WebSocket server implementation in C#. Branched from the Nugget project</li>
+<li><a href="https://github.com/SignalR/SignalR">SignalR</a> - Library for ASP.NET developers that makes it incredibly simple to add real-time web functionality to your applications</li>
+<li><a href="https://github.com/kerryjiang/SuperSocket">SuperSocket</a> - SuperSocket is a light weight extensible socket application framework</li>
+<li><a href="https://github.com/sta/websocket-sharp">Websocket-Sharp</a> - A C# implementation of the WebSocket protocol client and server</li>
+<li><a href="https://websocket4net.codeplex.com">WebSocket4NET</a> - WebSocket client for .NET 2.0+, Xamarin, Mono, Silverlight, Windows Phone, &amp; WinRT</li>
+<li><a href="https://crossertech.com/">Crossertech</a> - Provides a great set of tools for you to build real-time applications on the Microsoft.NET plattform and much more. <strong>[$]</strong></li>
+<li><a href="https://github.com/Code-Sharp/WampSharp">WampSharp</a> - A C# implementation of <a href="http://wamp-proto.org/">The Web Application Messaging Protocol</a> - a protocol that provides messaging patterns of Remote Procedure Calls and Publish/Subscribe over WebSockets.</li>
+<li><a href="https://github.com/StackExchange/NetGain">NetGain</a> - A high performance websocket server library powering Stack Overflow.</li>
+<li><a href="https://github.com/NVentimiglia/Websockets.PCL">Websockets.PCL</a> - WebSockets.PCL is a portable class library, profile 259, C# WebSocket implementation.</li>
+</ul>
+<h2 id="windows-services"><a class="header" href="#windows-services">Windows Services</a></h2>
+<ul>
+<li><a href="https://github.com/Topshelf/Topshelf">TopShelf</a> - An easy service hosting framework for building Windows services using .NET</li>
+</ul>
+<h2 id="wpf"><a class="header" href="#wpf">WPF</a></h2>
+<ul>
+<li><a href="https://github.com/tom-englert/DataGridExtensions">Data Grid Extensions</a> - Modular extensions for the WPF DataGrid control, like filtering, additional column events, extended star-size column behavior, and more...</li>
+</ul>
+<h2 id="other-lists"><a class="header" href="#other-lists">Other Lists</a></h2>
+<ul>
+<li><a href="https://github.com/tallesl/net-libraries-that-make-your-life-easier">.NET-libraries-that-make-your-life-easier</a> - Open Source .NET libraries that make your life easier</li>
+<li><a href="https://github.com/aloisdg/awesome-linq">awesome-LINQ</a> - A curated collection of awesome LINQ libraries, tools, and more.</li>
+<li><a href="https://github.com/Cybermaxs/awesome-analyzers">awesome-analyzers</a> - A curated list of .NET Compiler Platform (&quot;Roslyn&quot;) diagnostic analyzers and code fixes.</li>
+<li><a href="https://github.com/aalhour/C-Sharp-Algorithms">C# Algorithms, Data Structures</a> - A list of algorithms and data structures implementations.</li>
+<li><a href="https://github.com/thangchung/awesome-dotnet-core">Awesome .NET Core</a> - A collection of awesome .NET core libraries, tools, frameworks and software</li>
+<li><a href="https://github.com/jpsingleton/ANCLAFS">ASP.NET Core Library and Framework Support</a> - A list of what .NET libraries and frameworks are currently supported by ASP.NET Core and .NET Core).</li>
+<li><a href="https://github.com/adamsitnik/awesome-dot-net-performance">Awesome .NET Performance</a> - A curated list of awesome .NET Performance books, courses, trainings, conference talks, blogs and most inspiring open source contributors.</li>
+<li><a href="https://github.com/heynickc/awesome-ddd">awesome-ddd</a> - A curated list of Domain-Driven Design (DDD), Command Query Responsibility Segregation (CQRS), Event Sourcing, and Event Storming resources</li>
+<li><a href="https://github.com/RyanNielson/awesome-unity">Awesome Unity</a> - A categorized community-driven collection of high-quality awesome Unity assets, projects, and resources.</li>
+<li><a href="https://github.com/benoitjadinon/awesome-xamarin">Awesome Xamarin</a> - A collection of interesting libraries/tools for Xamarin mobile projects.</li>
+</ul>
+<h1 id="resources"><a class="header" href="#resources">Resources</a></h1>
+<ul>
+<li><a href="https://csharpdigest.net/">Weekly C# Digest</a> - Weekly email newsletter with manually curated top 5 links from the .NET community.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="dotnet-core.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="echarts.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="dotnet-core.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="echarts.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

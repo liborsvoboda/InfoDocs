@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+    <!-- Project properties -->
+    <PropertyGroup>
+        <AssemblyName>MahApps.Metro.Tests</AssemblyName>
+        <RootNamespace>MahApps.Metro.Tests</RootNamespace>
+
+        <IsTestProject>true</IsTestProject>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        
+        <!-- Workaround for https://github.com/dotnet/sourcelink/issues/91 -->
+        <DeterministicSourcePaths Condition="'$(EnableSourceLink)' == ''">false</DeterministicSourcePaths>
+        
+        <Nullable>annotations</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(DefineConstants.Contains(NETCOREAPP)) == false">
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+    </ItemGroup>
+
+    <ItemGroup Condition="$(DefineConstants.Contains(NETCOREAPP)) == true">
+        <!-- Use NLS instead of ICU https://docs.microsoft.com/en-us/dotnet/standard/globalization-localization/globalization-icu -->
+        <RuntimeHostConfigurationOption Include="System.Globalization.UseNls" Value="true" />
+
+        <PackageReference Include="System.Configuration.ConfigurationManager" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="xunit" />
+        <PackageReference Include="xunit.runner.visualstudio" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile DependentUpon="%(Filename)" SubType="Code" Update="**\obj\**\*.g$(DefaultLanguageSourceExtension)" />
+        <Compile DependentUpon="%(Filename)" SubType="Designer" Update="**\*.xaml$(DefaultLanguageSourceExtension)" />
+    </ItemGroup>
+</Project>

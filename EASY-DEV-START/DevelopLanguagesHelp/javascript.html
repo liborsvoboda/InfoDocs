@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>javascript - EIC&amp;ESB Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EIC&amp;ESB Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="adonisJs.html"><strong aria-hidden="true">1.</strong> adonisJs</a></li><li class="chapter-item expanded "><a href="aws.html"><strong aria-hidden="true">2.</strong> aws</a></li><li class="chapter-item expanded "><a href="cSharp.html"><strong aria-hidden="true">3.</strong> cSharp</a></li><li class="chapter-item expanded "><a href="curl.html"><strong aria-hidden="true">4.</strong> curl</a></li><li class="chapter-item expanded "><a href="docker.html"><strong aria-hidden="true">5.</strong> docker</a></li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">6.</strong> elasticsearch</a></li><li class="chapter-item expanded "><a href="expressJs.html"><strong aria-hidden="true">7.</strong> expressJs</a></li><li class="chapter-item expanded "><a href="gcloud.html"><strong aria-hidden="true">8.</strong> gcloud</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">9.</strong> git</a></li><li class="chapter-item expanded "><a href="golang.html"><strong aria-hidden="true">10.</strong> golang</a></li><li class="chapter-item expanded "><a href="java.html"><strong aria-hidden="true">11.</strong> java</a></li><li class="chapter-item expanded "><a href="javascript.html" class="active"><strong aria-hidden="true">12.</strong> javascript</a></li><li class="chapter-item expanded "><a href="kubernetes.html"><strong aria-hidden="true">13.</strong> kubernetes</a></li><li class="chapter-item expanded "><a href="laravel.html"><strong aria-hidden="true">14.</strong> laravel</a></li><li class="chapter-item expanded "><a href="mongodb.html"><strong aria-hidden="true">15.</strong> mongodb</a></li><li class="chapter-item expanded "><a href="mysql.html"><strong aria-hidden="true">16.</strong> mysql</a></li><li class="chapter-item expanded "><a href="nginx.html"><strong aria-hidden="true">17.</strong> nginx</a></li><li class="chapter-item expanded "><a href="nodeJs.html"><strong aria-hidden="true">18.</strong> nodeJs</a></li><li class="chapter-item expanded "><a href="php.html"><strong aria-hidden="true">19.</strong> php</a></li><li class="chapter-item expanded "><a href="pm2.html"><strong aria-hidden="true">20.</strong> pm2</a></li><li class="chapter-item expanded "><a href="puppeteer.html"><strong aria-hidden="true">21.</strong> puppeteer</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">22.</strong> python</a></li><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">23.</strong> ubuntu</a></li><li class="chapter-item expanded "><a href="vscode.html"><strong aria-hidden="true">24.</strong> vscode</a></li><li class="chapter-item expanded "><a href="xml.html"><strong aria-hidden="true">25.</strong> xml</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>/* *******************************************************************************************</p>
+<ul>
+<li>GLOBAL OBJECTS &gt; OBJECT</li>
+<li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object</li>
+<li>******************************************************************************************* */</li>
+</ul>
+<p>// Global object: properties
+Object.length                                        // length is a property of a function object, and indicates how many arguments the function expects, i.e. the number of formal parameters. This number does not include the rest parameter. Has a value of 1.
+Object.prototype                                     // Represents the Object prototype object and allows to add new properties and methods to all objects of type Object.</p>
+<p>// Methods of the Object constructor
+Object.assign(target, ...sources)                    // Copies the values of all enumerable own properties from one or more source objects to a target object. method is used to copy the values of all enumerable own properties from one or more source objects to a target object. It will return the target object
+Object.create(MyObject)                              // Creates a new object with the specified prototype object and properties. The object which should be the prototype of the newly-created object.
+Object.defineProperty(obj, prop, descriptor)         // Adds the named property described by a given descriptor to an object.
+Object.defineProperties(obj, props)                  // Adds the named properties described by the given descriptors to an object.
+Object.entries(obj)                                  // Returns an array containing all of the [key, value] pairs of a given object's own enumerable string properties.
+Object.freeze(obj)                                   // Freezes an object: other code can't delete or change any properties.
+Object.getOwnPropertyDescriptor(obj, prop)           // Returns a property descriptor for a named property on an object.
+Object.getOwnPropertyDescriptors(obj)                // Returns an object containing all own property descriptors for an object.
+Object.getOwnPropertyNames(obj)                      // Returns an array containing the names of all of the given object's own enumerable and non-enumerable properties.
+Object.getOwnPropertySymbols(obj)                    // Returns an array of all symbol properties found directly upon a given object.
+Object.getPrototypeOf(obj)                           // Returns the prototype of the specified object.
+Object.is(value1, value2);                           // Compares if two values are the same value. Equates all NaN values (which differs from both Abstract Equality Comparison and Strict Equality Comparison).
+Object.isExtensible(obj)                             // Determines if extending of an object is allowed.
+Object.isFrozen(obj)                                 // Determines if an object was frozen.
+Object.isSealed(obj)                                 // Determines if an object is sealed.
+Object.keys(obj)                                     // Returns an array containing the names of all of the given object's own enumerable string properties.
+Object.preventExtensions(obj)                        // Prevents any extensions of an object.
+Object.seal(obj)                                     // Prevents other code from deleting properties of an object.
+Object.setPrototypeOf(obj, prototype)                // Sets the prototype (i.e., the internal [[Prototype]] property).
+Object.values(obj)                                   // Returns an array containing the values that correspond to all of a given object's own enumerable string properties.</p>
+<p>// Object instances and Object prototype object (Object.prototype.property or Object.prototype.method())
+// Properties
+obj.constructor                                      // Specifies the function that creates an object's prototype.
+obj.<strong>proto</strong>                                        // Points to the object which was used as prototype when the object was instantiated.</p>
+<p>// Methods
+obj.hasOwnProperty(prop)                             // Returns a boolean indicating whether an object contains the specified property as a direct property of that object and not inherited through the prototype chain.
+prototypeObj.isPrototypeOf(object)                   // Returns a boolean indicating whether the object this method is called upon is in the prototype chain of the specified object.
+obj.propertyIsEnumerable(prop)                       // Returns a boolean indicating if the internal ECMAScript [[Enumerable]] attribute is set.
+obj.toLocaleString()                                 // Calls toString().
+obj.toString()                                       // Returns a string representation of the object.
+object.valueOf()                                     // Returns the primitive value of the specified object.</p>
+<p>/* *******************************************************************************************</p>
+<ul>
+<li>GLOBAL OBJECTS &gt; ARRAY</li>
+<li>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array</li>
+<li>******************************************************************************************* */</li>
+</ul>
+<p>// Global object: properties
+Array.length                                         // Reflects the number of elements in an array.
+Array.prototype                                      // Represents the prototype for the Array constructor and allows to add new properties and methods to all Array objects.</p>
+<p>// Global object: methods
+Array.from(arrayLike[, mapFn[, thisArg]])            // Creates a new Array instance from an array-like or iterable object.
+Array.isArray(obj)                                   // Returns true if a variable is an array, if not false.
+Array.of(element0[, element1[, ...[, elementN]]])    // Creates a new Array instance with a variable number of arguments, regardless of number or type of the arguments.</p>
+<p>// Instance: properties
+arr.length                                           // Reflects the number of elements in an array.</p>
+<p>// Instance: mutator methods
+arr.copyWithin(target, start, end)                   // Copies a sequence of array elements within the array.
+arr.fill(value, start, end)                          // Fills all the elements of an array from a start index to an end index with a static value.
+arr.pop()                                            // Removes the last element from an array and returns that element.
+arr.flat()                                           // merges nested array into one single array
+arr.push([element1[, ...[, elementN]]])              // Adds one or more elements to the end of an array and returns the new length of the array.
+arr.reverse()                                        // Reverses the order of the elements of an array in place — the first becomes the last, and the last becomes the first.
+arr.shift()                                          // Removes the first element from an array and returns that element.
+arr.sort()                                           // Sorts the elements of an array in place and returns the array.
+array.splice(start, deleteCount, item1, item2, ...)  // Adds and/or removes elements from an array.
+arr.unshift([element1[, ...[, elementN]]])           // Adds one or more elements to the front of an array and returns the new length of the array.</p>
+<p>// Instance: accessor methods
+arr.concat(value1[, value2[, ...[, valueN]]])        // Returns a new array comprised of this array joined with other array(s) and/or value(s).
+arr.includes(searchElement, fromIndex)               // Determines whether an array contains a certain element, returning true or false as appropriate.
+arr.indexOf(searchElement[, fromIndex])              // Returns the first (least) index of an element within the array equal to the specified value, or -1 if none is found.
+arr.join(separator)                                  // Joins all elements of an array into a string.
+arr.lastIndexOf(searchElement, fromIndex)            // Returns the last (greatest) index of an element within the array equal to the specified value, or -1 if none is found.
+arr.slice(begin, end)                                // Extracts a section of an array and returns a new array.
+arr.toString()                                       // Returns a string representing the array and its elements. Overrides the Object.prototype.toString() method.
+arr.toLocaleString(locales, options)                 // Returns a localized string representing the array and its elements. Overrides the Object.prototype.toLocaleString() method.</p>
+<p>// Instance: iteration methods
+arr.entries()                                        // Returns a new Array Iterator object that contains the key/value pairs for each index in the array.
+arr.every(callback[, thisArg])                       // Returns true if every element in this array satisfies the provided testing function.
+arr.filter(callback[, thisArg])                      // Creates a new array with all of the elements of this array for which the provided filtering function returns true.
+arr.find(callback[, thisArg])                        // Returns the found value in the array, if an element in the array satisfies the provided testing function or undefined if not found.
+arr.findIndex(callback[, thisArg])                   // Returns the found index in the array, if an element in the array satisfies the provided testing function or -1 if not found.
+arr.forEach(callback[, thisArg])                     // Calls a function for each element in the array.
+arr.keys()                                           // Returns a new Array Iterator that contains the keys for each index in the array.
+arr.map(callback[, initialValue])                    // Creates a new array with the results of calling a provided function on every element in this array.
+arr.reduce(callback[, initialValue])                 // Apply a function against an accumulator and each value of the array (from left-to-right) as to reduce it to a single value.
+arr.reduceRight(callback[, initialValue])            // Apply a function against an accumulator and each value of the array (from right-to-left) as to reduce it to a single value.
+arr.some(callback[, initialValue])                   // Returns true if at least one element in this array satisfies the provided testing function.
+arr.values()                                         // Returns a new Array Iterator object that contains the values for each index in the array.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="java.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="kubernetes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="java.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="kubernetes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

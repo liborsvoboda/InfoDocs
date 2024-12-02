@@ -1,0 +1,483 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>vscode - EIC&amp;ESB Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EIC&amp;ESB Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="adonisJs.html"><strong aria-hidden="true">1.</strong> adonisJs</a></li><li class="chapter-item expanded "><a href="aws.html"><strong aria-hidden="true">2.</strong> aws</a></li><li class="chapter-item expanded "><a href="cSharp.html"><strong aria-hidden="true">3.</strong> cSharp</a></li><li class="chapter-item expanded "><a href="curl.html"><strong aria-hidden="true">4.</strong> curl</a></li><li class="chapter-item expanded "><a href="docker.html"><strong aria-hidden="true">5.</strong> docker</a></li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">6.</strong> elasticsearch</a></li><li class="chapter-item expanded "><a href="expressJs.html"><strong aria-hidden="true">7.</strong> expressJs</a></li><li class="chapter-item expanded "><a href="gcloud.html"><strong aria-hidden="true">8.</strong> gcloud</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">9.</strong> git</a></li><li class="chapter-item expanded "><a href="golang.html"><strong aria-hidden="true">10.</strong> golang</a></li><li class="chapter-item expanded "><a href="java.html"><strong aria-hidden="true">11.</strong> java</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">12.</strong> javascript</a></li><li class="chapter-item expanded "><a href="kubernetes.html"><strong aria-hidden="true">13.</strong> kubernetes</a></li><li class="chapter-item expanded "><a href="laravel.html"><strong aria-hidden="true">14.</strong> laravel</a></li><li class="chapter-item expanded "><a href="mongodb.html"><strong aria-hidden="true">15.</strong> mongodb</a></li><li class="chapter-item expanded "><a href="mysql.html"><strong aria-hidden="true">16.</strong> mysql</a></li><li class="chapter-item expanded "><a href="nginx.html"><strong aria-hidden="true">17.</strong> nginx</a></li><li class="chapter-item expanded "><a href="nodeJs.html"><strong aria-hidden="true">18.</strong> nodeJs</a></li><li class="chapter-item expanded "><a href="php.html"><strong aria-hidden="true">19.</strong> php</a></li><li class="chapter-item expanded "><a href="pm2.html"><strong aria-hidden="true">20.</strong> pm2</a></li><li class="chapter-item expanded "><a href="puppeteer.html"><strong aria-hidden="true">21.</strong> puppeteer</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">22.</strong> python</a></li><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">23.</strong> ubuntu</a></li><li class="chapter-item expanded "><a href="vscode.html" class="active"><strong aria-hidden="true">24.</strong> vscode</a></li><li class="chapter-item expanded "><a href="xml.html"><strong aria-hidden="true">25.</strong> xml</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="visual-studio-cheatsheet"><a class="header" href="#visual-studio-cheatsheet">Visual Studio CheatSheet</a></h1>
+<h2 id="shortcuts"><a class="header" href="#shortcuts">Shortcuts</a></h2>
+<h3 id="linux"><a class="header" href="#linux">Linux</a></h3>
+<h4 id="general"><a class="header" href="#general">General</a></h4>
+<ul>
+<li><code>Ctrl</code>+<code>Shift</code>+<code>P</code>, <code>F1</code>:  Show Command Palette</li>
+<li><code>Ctrl</code>+<code>P</code>: Quick Open, Go to File</li>
+<li><code>Ctrl</code>+<code>Shift</code>+<code>N</code>: New window/instance</li>
+<li><code>Ctrl</code>+<code>W</code>: Close window/instance</li>
+<li><code>Ctrl</code>+<code>,</code>: User Settings</li>
+<li><code>Ctrl</code>+<code>K</code>, <code>Ctrl</code>+<code>S</code>: Keyboard Shortcuts</li>
+</ul>
+<h4 id="basic-editing"><a class="header" href="#basic-editing">Basic editing</a></h4>
+<ul>
+<li><code>Ctrl</code>+<code>X</code>: Cut line (empty selection)</li>
+<li><code>Ctrl</code>+<code>C</code>: Copy line (empty selection)</li>
+<li><code>Ctrl</code>+<code>↓/↑</code>: Move line down / up</li>
+<li><code>Ctrl</code>+<code>Shift</code>+<code>K</code>: Delete line</li>
+<li><code>Ctrl</code>+<code>Enter</code> / <code>Ctrl</code>+<code>Shift</code>+<code>Enter</code>: Insert line below / above </li>
+<li><code>Ctrl</code>+<code>Shift</code>+<code>\</code>: Jump to matching bracket</li>
+<li><code>Ctrl</code>+<code>]</code> / <code>Ctrl</code>+<code>[</code>: Indent / Outdent line</li>
+<li><code>Ctrl</code>+<code>Home</code> / <code>End</code>: Go to beginning / end of file</li>
+<li><code>Ctrl</code>+<code>↑ / ↓</code>: Scroll line up / down</li>
+<li><code>Alt</code>+<code>PgUp</code> / <code>PgDn</code>: Scroll page up / down</li>
+<li><code>Ctrl</code>+<code>Shift</code>+<code>[ / ]</code>: Fold / unfold region</li>
+<li><code>Ctrl</code>+<code>K</code>, <code>Ctrl</code>+<code>[ / ]</code>: Fold / unfold all subregions</li>
+<li><code>Ctrl</code>+<code>K</code>, <code>Ctrl</code>+<code>0</code> / <code>Ctrl</code>+<code>K</code>, <code>Ctrl</code>+<code>J</code>: Fold /Unfold all regions</li>
+<li><code>Ctrl</code>+<code>K</code>, <code>Ctrl</code>+<code>C</code>: Add line comment</li>
+<li><code>Ctrl</code>+<code>K</code>, <code>Ctrl</code>+<code>U</code>: Remove line comment</li>
+<li><code>Ctrl</code>+<code>/</code>: Toggle line comment</li>
+<li><code>Ctrl</code>+<code>Shift</code>+<code>A</code>: Toggle block comment</li>
+<li><code>Alt</code>+<code>Z</code>: Toggle word wrap</li>
+</ul>
+<h2 id="useful-extensions"><a class="header" href="#useful-extensions">Useful Extensions</a></h2>
+<h3 id="html--css"><a class="header" href="#html--css">HTML &amp; CSS</a></h3>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-csscomb"><code>CSScomb</code></a>: Coding style formatter for CSS, Less, SCSS and Saas.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-puglint"><code>Puglint</code></a>: Linter and style checker for pug.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=Syler.sass-indented"><code>Sass</code></a>: Indented Sass syntax highlighting, autocomplete &amp; snippets.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-scss"><code>SCSS IntelliSense</code></a>: Advanced autocompletion and refactoring support for SCSS.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=mikeburgh.xml-format"><code>XML Format</code></a>: Format XML documents.</p>
+</li>
+</ul>
+<h3 id="javascript-node--npm"><a class="header" href="#javascript-node--npm">JavaScript, Node &amp; NPM</a></h3>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=wix.vscode-import-cost"><code>Import Cost</code></a>: This extension will display inline in the editor the size of the imported package.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint"><code>ESLint</code></a>: Integrates ESLint into VS Code</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=eg2.vscode-npm-script"><code>NPM</code></a>: NPM support for VS Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense"><code>NPM Intellisense</code></a>: Visual Studio Code plugin that autocompletes NPM modules in import statements.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=pflannery.vscode-versionlens"><code>Version Lens</code></a>: Shows the latest version for each package using code lens.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=octref.vetur"><code>Vetur</code></a>: Vue tooling for VS Code.</p>
+</li>
+</ul>
+<h3 id="php"><a class="header" href="#php">PHP</a></h3>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=calebporzio.better-phpunit"><code>Better PHPUnit</code></a>: A better PHPUnit test runner.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ryannaddy.laravel-artisan"><code>Laravel Artisan</code></a>: Laravel Artisan commands within Visual Studio Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=junstyle.php-cs-fixer"><code>PHP CS Fixer</code></a>: PHP CS Fixer extension for VS Code, php formatter, php code beautify tool.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=rexshi.phpdoc-comment-vscode-plugin"><code>PHP Doc Comment VSCode Plugin</code></a>: Add phpdoc @param and @return tag for selected function signatures.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=felixfbecker.php-intellisense"><code>PHP IntelliSense</code></a>: Advanced Autocompletion and Refactoring support for PHP.</p>
+</li>
+</ul>
+<h3 id="perl"><a class="header" href="#perl">Perl</a></h3>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=cfgweb.vscode-perl"><code>Perl</code></a>: Code intelligence for the Perl language.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=d9705996.perl-toolbox"><code>Perl Toolbox</code></a>: Perl Toolbox for linting and syntax checking for Perl.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=torrentalle.perl-moose"><code>Perl Moose</code></a>: Perl Moose syntax highlight support for Visual Studio Code.</p>
+</li>
+</ul>
+<h3 id="git"><a class="header" href="#git">Git</a></h3>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=donjayamanne.githistory"><code>Git History</code></a>: View git log, file history, compare branches or commits.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=codezombiech.gitignore"><code>Gitignore</code></a>: An extension for Visual Studio Code that assists you in working with .gitignore files.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens"><code>GitLens</code></a>: Visualize code authorship, code lens, seamlessly Git blame annotations and more.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=Vtrois.gitmoji-vscode"><code>Gitmoji</code></a>: An emoji tool for your git commit messages.</p>
+</li>
+</ul>
+<h3 id="themes"><a class="header" href="#themes">Themes</a></h3>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme"><code>Material Icon Theme</code></a>: Material Design Icons for Visual Studio Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=whizkydee.material-palenight-theme"><code>Palenight Theme</code></a>: An elegant and juicy material-like theme for Visual Studio Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=huacat.office-theme"><code>Office Theme</code></a> A Microsoft Office theme for Visual Studio Code.</p>
+</li>
+</ul>
+<h3 id="handy"><a class="header" href="#handy">Handy</a></h3>
+<ul>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments"><code>Better comments</code></a>: Improve your code commenting by annotating with alert, informational, TODOs, and more!</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome"><code>Debugger for Chrome</code></a>: Debug your JavaScript code in the Chrome browser.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig"><code>EditorConfig for VS Code</code></a>: EditorConfig Support for Visual Studio Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=sleistner.vscode-fileutils"><code>File Utils</code></a>: A convenient way of creating, duplicating, moving, renaming and deleting files and directories.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=samverschueren.final-newline"><code>Final-Newline</code></a>: Inserts a final newline when saving the document.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle"><code>Formatting Toggle</code></a>: A VS Code extension that allows you to toggle the formatter (Prettier, Beautify, …) ON and OFF with a simple click.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=ziyasal.vscode-open-in-github"><code>Open in Github/Bitbucket...</code></a>: Jump to a source code line in Github / Bitbucket, Gitlab, VisualStudio.com</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=huazaierli.openchrome&amp;ssr=false#overview"><code>OpenChrome</code></a>: Open file with Chrome.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=IBM.output-colorizer"><code>Output Colorizer</code></a>: Syntax Highlighting for log files.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode"><code>Prettier - Code formatter</code></a>: VS Code plugin for prettier/prettier.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager"><code>Project Manager</code></a>: Easily switch between projects.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client"><code>REST Client</code></a>: REST Client for Visual Studio Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=cssho.vscode-svgviewer"><code>SVG Viewer</code></a>: SVG Viewer for Visual Studio Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=formulahendry.terminal"><code>Terminal</code></a>: Terminal for Visual Studio Code.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=dariofuzinato.vue-peek"><code>Vue Peek</code></a>: Allows peek and goto definition for Vue single-file components.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare"><code>VS Live Share</code></a>: Real-time collaborative development from the comfort of your favorite tools.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=midnightsyntax.vscode-wrap-console-log"><code>Wrap Console Log</code></a>: Wrap to console.log by word or selection.</p>
+</li>
+<li>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer"><code>Bracket Pair Colorizer</code></a>: Allows matching brackets to be identified with colours. </p>
+</li>
+</ul>
+<h2 id="my-settings"><a class="header" href="#my-settings">My Settings</a></h2>
+<pre><code class="language-javascript">{
+    // Controls the font size in pixels
+    &quot;editor.fontSize&quot;: 14,
+
+    // Render vertical rulers after a certain number of
+    // monospace characters. Use multiple values for multiple
+    // rulers. No rulers are drawn if array is empty
+    &quot;editor.rulers&quot;: [100],
+
+    // The number of spaces a tab is equal to
+    &quot;editor.tabSize&quot;: 2,
+
+    &quot;[python]&quot;: {
+        &quot;editor.tabSize&quot;: 4
+    },
+
+    // Controls the line height
+    &quot;editor.lineHeight&quot;: 22,
+
+    // Controls the font family
+    &quot;editor.fontFamily&quot;: &quot;Fira Code&quot;,
+
+    // Enables font ligatures
+    &quot;editor.fontLigatures&quot;: true,
+
+    // Controls whether snippets are shown with other suggestions and how they are sorted.
+    &quot;editor.snippetSuggestions&quot;: &quot;top&quot;,
+
+    // Ignore extension recommendations
+    &quot;extensions.ignoreRecommendations&quot;: false,
+
+    // Controls auto save of dirty files
+    &quot;files.autoSave&quot;: &quot;afterDelay&quot;,
+
+    // Controls the delay in ms after which a dirty file is saved automatically
+    &quot;files.autoSaveDelay&quot;: 1000,
+
+    // Configure glob patterns for excluding files and folders
+    &quot;files.exclude&quot;: {
+        &quot;.yarn&quot;: true,
+        &quot;**/*.pyc&quot;: true
+    },
+
+    // Insert a final new line at the end of the file when saving it
+    &quot;files.insertFinalNewline&quot;: true,
+
+    // Confirm before synchronizing git repositories
+    &quot;git.confirmSync&quot;: false,
+
+    // Commit all changes when there are no staged changes
+    &quot;git.enableSmartCommit&quot;: true,
+
+    // Whether to lint Python files using pylint
+    &quot;python.linting.pylintEnabled&quot;: false,
+
+    // Whether to lint Python files using flake8
+    &quot;python.linting.flake8Enabled&quot;: true,
+
+    // Configure glob patterns for excluding files and folders in
+    // searches. Inherits all glob patterns from the files.exclude setting.
+    &quot;search.exclude&quot;: {
+        &quot;**/.git&quot;: true,
+        &quot;**/.nuxt&quot;: true,
+        &quot;**/build&quot;: true,
+        &quot;**/data&quot;: true,
+        &quot;**/dist&quot;: true,
+        &quot;**/env&quot;: true
+    },
+
+    // Adjust the zoom level of the window. The original size is 0
+    // and each increment above (e.g. 1) or below (e.g. -1) represents
+    // zooming 20% larger or smaller. You can also enter decimals to
+    // adjust the zoom level with a finer granularity.
+    &quot;window.zoomLevel&quot;: 0,
+
+    // Overrides colors from the currently selected color theme.
+    &quot;workbench.colorCustomizations&quot;: {
+        &quot;statusBar.background&quot;: &quot;#8252be&quot;,
+        &quot;statusBar.foreground&quot;: &quot;#eeffff&quot;,
+        &quot;titleBar.activeBackground&quot;: &quot;#282b3c&quot;,
+        &quot;titleBar.activeForeground&quot;: &quot;#eeefff&quot;
+    },
+
+    // Specifies the color theme used in the workbench
+    &quot;workbench.colorTheme&quot;: &quot;Material Palenight&quot;,
+
+    // Specifies the icon theme used in the workbench
+    &quot;workbench.iconTheme&quot;: &quot;material-icon-theme&quot;,
+
+    // Controls font aliasing method in the workbench
+    &quot;workbench.fontAliasing&quot;: &quot;antialiased&quot;,
+    &quot;explorer.confirmDragAndDrop&quot;: false
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="ubuntu.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="xml.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="ubuntu.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="xml.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

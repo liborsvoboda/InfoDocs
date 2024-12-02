@@ -1,0 +1,1709 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Nugets - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html" class="active"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="-awesome-nuget-packages"><a class="header" href="#-awesome-nuget-packages">📦 Awesome Nuget Packages <a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" /></a> <a href="http://makeapullrequest.com"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" /></a></a></h1>
+<pre><code>A collection of awesome and top .NET packages sorted by most popular needs.
+</code></pre>
+<h2 id="give-a-star-"><a class="header" href="#give-a-star-">Give a Star! ⭐️</a></h2>
+<p>If you liked this repository or find it useful, please give it a star. Thanks!</p>
+<h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
+<ul>
+<li><a href="#object-mapper">Object Mapper</a></li>
+<li><a href="#ioc">IoC</a></li>
+<li><a href="#task-scheduler--background-job">Task Scheduler/Background Job</a></li>
+<li><a href="#serialization">Serialization</a></li>
+<li><a href="#database-database-drivers-and-migration">Database, Database Drivers, and Migration</a></li>
+<li><a href="#orm-and-micro-orm">ORM</a></li>
+<li><a href="#nosql">NoSQL</a></li>
+<li><a href="#messaging-and-queue">Messaging and Queue</a></li>
+<li><a href="#http-client--rest">Http Client - REST</a></li>
+<li><a href="#mail-and-smtp-server">Mail and SMTP Server</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#csv-excel-word-and-pdf">CSV, Excel, Word, and PDF</a></li>
+<li><a href="#datetime">DateTime</a></li>
+<li><a href="#linq">Linq</a></li>
+<li><a href="#reflection-and-expression">Reflection and Expression</a></li>
+<li><a href="#validation">Validation</a></li>
+<li><a href="#htmlparser">HtmlParser</a></li>
+<li><a href="#profling-tracing-and-metrics">Profiler</a></li>
+<li><a href="#caching">Caching</a></li>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#openapi">OpenAPI</a></li>
+<li><a href="#logging">Logging</a></li>
+<li><a href="#console">Console</a></li>
+</ul>
+<h2 id="libraries"><a class="header" href="#libraries">Libraries</a></h2>
+<!--
+	🟡 Recommended - 🟢 Good to know - 🟣 Other options / Possibilities
+-->
+<h3 id="object-mapper"><a class="header" href="#object-mapper">Object Mapper</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/AutoMapper/AutoMapper"><strong>AutoMapper</strong></a> </p>
+<blockquote>
+<p>A convention-based object-object mapper in .NET</p>
+</blockquote>
+<p><a href="https://github.com/AutoMapper/AutoMapper"><img src="https://img.shields.io/github/stars/AutoMapper/AutoMapper?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/AutoMapper"><img src="https://img.shields.io/nuget/dt/AutoMapper?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/riok/mapperly"><strong>Mapperly</strong></a></p>
+<blockquote>
+<p>A .NET source generator for generating object mappings. No runtime reflection.</p>
+</blockquote>
+<p><a href="https://github.com/riok/mapperly"><img src="https://img.shields.io/github/stars/riok/mapperly?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Riok.Mapperly"><img src="https://img.shields.io/nuget/dt/Riok.Mapperly?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/MapsterMapper/Mapster"><strong>Maspter</strong></a></p>
+<blockquote>
+<p>A fast, fun and stimulating object to object Mapper</p>
+</blockquote>
+<p><a href="https://github.com/MapsterMapper/Mapster"><img src="https://img.shields.io/github/stars/MapsterMapper/Mapster?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Mapster"><img src="https://img.shields.io/nuget/dt/Mapster?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="ioc"><a class="header" href="#ioc">IoC</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/autofac/Autofac"><strong>Autofac</strong></a></p>
+<blockquote>
+<p>Autofac is an IoC container for .NET. It manages the dependencies between classes so that applications stay easy to change as they grow in size and complexity.</p>
+</blockquote>
+<p><a href="https://github.com/autofac/Autofac"><img src="https://img.shields.io/github/stars/autofac/Autofac?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Autofac"><img src="https://img.shields.io/nuget/dt/Autofac?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="task-scheduler--background-job"><a class="header" href="#task-scheduler--background-job">Task Scheduler / Background Job</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/HangfireIO/Hangfire"><strong>HangFire</strong></a></p>
+<blockquote>
+<p>An easy way to perform background job processing in your .NET and .NET Core applications. No Windows Service or separate process required.</p>
+</blockquote>
+<p><a href="https://github.com/HangfireIO/Hangfire"><img src="https://img.shields.io/github/stars/HangfireIO/Hangfire?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Hangfire"><img src="https://img.shields.io/nuget/dt/Hangfire?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/quartznet/quartznet"><strong>Quartz.NET</strong></a></p>
+<blockquote>
+<p>Quartz Enterprise Scheduler .NET</p>
+</blockquote>
+<p><a href="https://github.com/quartznet/quartznet"><img src="https://img.shields.io/github/stars/quartznet/quartznet?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Quartz"><img src="https://img.shields.io/nuget/dt/Quartz?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/jamesmh/coravel"><strong>Coravel</strong></a></p>
+<blockquote>
+<p>Near-zero config .NET Core micro-framework that makes advanced application features like Task Scheduling, Caching, Queuing, Event Broadcasting, and more a breeze!</p>
+</blockquote>
+<p><a href="https://github.com/jamesmh/coravel"><img src="https://img.shields.io/github/stars/jamesmh/coravel?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Coravel"><img src="https://img.shields.io/nuget/dt/Coravel?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="serialization"><a class="header" href="#serialization">Serialization</a></h3>
+<ul>
+<li>
+<p>Json Serializer</p>
+<ul>
+<li>
+<p><a href="https://github.com/JamesNK/Newtonsoft.Json"><strong>Newtonsoft.Json (Json.NET)</strong></a></p>
+<blockquote>
+<p>Json .NET is a popular high-performance JSON framework for .NET</p>
+</blockquote>
+<p><a href="https://github.com/JamesNK/Newtonsoft.Json"><img src="https://img.shields.io/github/stars/JamesNK/Newtonsoft.Json?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Newtonsoft.Json"><img src="https://img.shields.io/nuget/dt/Newtonsoft.Json?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Binary Serializer</p>
+<ul>
+<li>
+<p><a href="https://github.com/neuecc/MessagePack-CSharp"><strong>MessagePack</strong></a></p>
+<blockquote>
+<p>Extremely Fast MessagePack (MsgPack) Serializer for .NET</p>
+</blockquote>
+<p><a href="https://github.com/neuecc/MessagePack-CSharp"><img src="https://img.shields.io/github/stars/neuecc/MessagePack-CSharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MessagePack"><img src="https://img.shields.io/nuget/dt/MessagePack?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/protobuf-net/protobuf-net"><strong>Protobuf-Net</strong></a></p>
+<blockquote>
+<p>protobuf-net is a contract based serializer for .NET code, that happens to write data in the &quot;protocol buffers&quot; serialization format engineered by Google.</p>
+</blockquote>
+<p><a href="https://github.com/protobuf-net/protobuf-net"><img src="https://img.shields.io/github/stars/protobuf-net/protobuf-net?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/protobuf-net"><img src="https://img.shields.io/nuget/dt/protobuf-net?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>XML Serializer</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/dotnet/api/system.xml.serialization.xmlserializer"><strong>System.Xml.XmlSerializer</strong></a></p>
+<blockquote>
+<p>Provides classes for serializing objects to the Extensible Markup Language (XML) and deserializing XML data to objects.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/System.Xml.XmlSerializer"><img src="https://img.shields.io/nuget/dt/System.Xml.XmlSerializer?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="database-database-drivers-and-migration"><a class="header" href="#database-database-drivers-and-migration">Database, Database Drivers, and Migration</a></h3>
+<ul>
+<li>
+<p>Database</p>
+<ul>
+<li>
+<p><a href="https://github.com/mbdavid/litedb"><strong>LiteDB</strong></a></p>
+<blockquote>
+<p>LiteDB is a small, fast and lightweight .NET NoSQL embedded database.</p>
+</blockquote>
+<p><a href="https://github.com/mbdavid/litedb"><img src="https://img.shields.io/github/stars/mbdavid/litedb?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/LiteDB"><img src="https://img.shields.io/nuget/dt/LiteDB?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/ravendb/ravendb"><strong>RavenDB.Client</strong></a></p>
+<blockquote>
+<p>An ACID NoSQL Document Database.</p>
+</blockquote>
+<p><a href="https://github.com/ravendb/ravendb"><img src="https://img.shields.io/github/stars/ravendb/ravendb?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/RavenDB.Client"><img src="https://img.shields.io/nuget/dt/RavenDB.Client?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Database Connector</p>
+<ul>
+<li>
+<p><a href="https://github.com/npgsql/Npgsql"><strong>Npgsql</strong></a></p>
+<blockquote>
+<p>Npgsql is the .NET data provider for PostgreSQL.</p>
+</blockquote>
+<p><a href="https://github.com/npgsql/Npgsql"><img src="https://img.shields.io/github/stars/npgsql/Npgsql?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Npgsql"><img src="https://img.shields.io/nuget/dt/Npgsql?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/mongodb/mongo-csharp-driver"><strong>MongoDB.Driver</strong></a></p>
+<blockquote>
+<p>The official MongoDB C#/.NET Driver provides asynchronous interaction with MongoDB.</p>
+</blockquote>
+<p><a href="https://github.com/mongodb/mongo-csharp-driver"><img src="https://img.shields.io/github/stars/mongodb/mongo-csharp-driver?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MongoDB.Driver"><img src="https://img.shields.io/nuget/dt/MongoDB.Driver?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/downloads"><strong>MySql.Data</strong></a></p>
+<blockquote>
+<p>MySql.Data.MySqlClient .NET Core Class Library.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/MySql.Data"><img src="https://img.shields.io/nuget/dt/MySql.Data?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Database Migrations</p>
+<ul>
+<li>
+<p><a href="https://github.com/fluentmigrator/fluentmigrator"><strong>FluentMigrator</strong></a></p>
+<blockquote>
+<p>Fluent Migrator is a migration framework for .NET much like Ruby on Rails Migrations.</p>
+</blockquote>
+<p><a href="https://github.com/fluentmigrator/fluentmigrator"><img src="https://img.shields.io/github/stars/fluentmigrator/fluentmigrator?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/FluentMigrator"><img src="https://img.shields.io/nuget/dt/FluentMigrator?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="orm-and-micro-orm"><a class="header" href="#orm-and-micro-orm">ORM and Micro-ORM</a></h3>
+<ul>
+<li>
+<p>ORM</p>
+<ul>
+<li>
+<p><a href="https://github.com/dotnet/ef6"><strong>Entity Framework</strong></a></p>
+<blockquote>
+<p>Entity Framework 6 (EF6) is an object-relational mapper that enables .NET developers to work with relational data using domain-specific objects. It eliminates the need for most of the data-access code that developers usually need to write.</p>
+</blockquote>
+<p><a href="https://github.com/dotnet/ef6"><img src="https://img.shields.io/github/stars/dotnet/ef6?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/EntityFramework"><img src="https://img.shields.io/nuget/dt/EntityFramework?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/dotnet/efcore"><strong>Entity Framework Core</strong></a></p>
+<blockquote>
+<p>EF Core is a modern object-database mapper for .NET. It supports LINQ queries, change tracking, updates, and schema migrations.</p>
+</blockquote>
+<p><a href="https://github.com/dotnet/efcore"><img src="https://img.shields.io/github/stars/dotnet/efcore?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore"><img src="https://img.shields.io/nuget/dt/Microsoft.EntityFrameworkCore?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/linq2db/linq2db"><strong>linq2db</strong></a></p>
+<blockquote>
+<p>Linq to database provider.</p>
+</blockquote>
+<p><a href="https://github.com/linq2db/linq2db"><img src="https://img.shields.io/github/stars/linq2db/linq2db?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/linq2db"><img src="https://img.shields.io/nuget/dt/linq2db?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Micro ORM</p>
+<ul>
+<li>
+<p><a href="https://github.com/StackExchange/Dapper"><strong>Dapper</strong></a></p>
+<blockquote>
+<p>Dapper - a simple object mapper for .NET</p>
+</blockquote>
+<p><a href="https://github.com/StackExchange/Dapper"><img src="https://img.shields.io/github/stars/StackExchange/Dapper?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Dapper"><img src="https://img.shields.io/nuget/dt/Dapper?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/ServiceStack/ServiceStack.OrmLite"><strong>ServiceStack.OrmLite</strong></a></p>
+<blockquote>
+<p>Fast, Simple, Typed ORM for .NET</p>
+</blockquote>
+<p><a href="https://github.com/ServiceStack/ServiceStack.OrmLite"><img src="https://img.shields.io/github/stars/ServiceStack/ServiceStack.OrmLite?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/ServiceStack.OrmLite"><img src="https://img.shields.io/nuget/dt/ServiceStack.OrmLite?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Entity Framework Core Extensions and Helpers</p>
+<ul>
+<li>
+<p><a href="https://github.com/borisdj/EFCore.BulkExtensions"><strong>EFCore.BulkExtensions</strong></a></p>
+<blockquote>
+<p>Entity Framework Core Bulk Batch Extensions for Insert Update Delete and Read (CRUD) operations on SQL Server and SQLite.</p>
+</blockquote>
+<p><a href="https://github.com/borisdj/EFCore.BulkExtensions"><img src="https://img.shields.io/github/stars/borisdj/EFCore.BulkExtensions?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/EFCore.BulkExtensions"><img src="https://img.shields.io/nuget/dt/EFCore.BulkExtensions?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/zzzprojects/EntityFramework-Plus"><strong>Z.EntityFramework.Plus.EFCore</strong></a></p>
+<blockquote>
+<p>Entity Framework Plus extends your DbContext with must-haves features: Include Filter, Auditing, Caching, Query Future, Batch Delete, Batch Update, and more.</p>
+</blockquote>
+<p><a href="https://github.com/zzzprojects/EntityFramework-Plus"><img src="https://img.shields.io/github/stars/zzzprojects/EntityFramework-Plus?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Z.EntityFramework.Plus.EFCore"><img src="https://img.shields.io/nuget/dt/Z.EntityFramework.Plus.EFCore?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/VahidN/EFCoreSecondLevelCacheInterceptor"><strong>EF Core Second Level Cache Interceptor</strong></a></p>
+<blockquote>
+<p>Entity Framework Core Second Level Caching Library.</p>
+</blockquote>
+<p><a href="https://github.com/VahidN/EFCoreSecondLevelCacheInterceptor"><img src="https://img.shields.io/github/stars/VahidN/EFCoreSecondLevelCacheInterceptor?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/EFCoreSecondLevelCacheInterceptor"><img src="https://img.shields.io/nuget/dt/EFCoreSecondLevelCacheInterceptor?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Entity Framework Core Providers</p>
+<ul>
+<li>
+<p><a href="https://github.com/dotnet/efcore"><strong>Microsoft.EntityFrameworkCore.SqlServer</strong></a></p>
+<blockquote>
+<p>Microsoft SQL Server database provider for Entity Framework Core.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer"><img src="https://img.shields.io/nuget/dt/Microsoft.EntityFrameworkCore.SqlServer?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/dotnet/efcore"><strong>Microsoft.EntityFrameworkCore.InMemory</strong></a></p>
+<blockquote>
+<p>In-memory database provider for Entity Framework Core (to be used for testing purposes).</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory"><img src="https://img.shields.io/nuget/dt/Microsoft.EntityFrameworkCore.InMemory?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework-core.html"><strong>MySql.Data.EntityFrameworkCore</strong></a></p>
+<blockquote>
+<p>MySql database provider for Entity Framework Core.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/MySql.Data.EntityFrameworkCore"><img src="https://img.shields.io/nuget/dt/MySql.Data.EntityFrameworkCore?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/npgsql/efcore.pg"><strong>Npgsql.EntityFrameworkCore.PostgreSQL</strong></a></p>
+<blockquote>
+<p>Entity Framework Core provider for PostgreSQL.</p>
+</blockquote>
+<p><a href="https://github.com/npgsql/efcore.pg"><img src="https://img.shields.io/github/stars/npgsql/efcore.pg?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL"><img src="https://img.shields.io/nuget/dt/Npgsql.EntityFrameworkCore.PostgreSQL?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Dapper Extensions and Helpers</p>
+<ul>
+<li>
+<p><a href="https://github.com/StackExchange/Dapper"><strong>Dapper.Contrib</strong></a></p>
+<blockquote>
+<p>The official collection of get, insert, update and delete helpers for Dapper.net. Also handles lists of entities and optional &quot;dirty&quot; tracking of interface-based entities.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/Dapper.Contrib"><img src="https://img.shields.io/nuget/dt/Dapper.Contrib?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/StackExchange/Dapper"><strong>Dapper.SqlBuilder</strong></a></p>
+<blockquote>
+<p>The Dapper SqlBuilder component, for building SQL queries dynamically.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/Dapper.SqlBuilder"><img src="https://img.shields.io/nuget/dt/Dapper.SqlBuilder?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/henkmollema/Dapper-FluentMap"><strong>Dapper.FluentMap</strong></a></p>
+<blockquote>
+<p>Simple API to fluently map POCO properties to database columns when using Dapper.</p>
+</blockquote>
+<p><a href="https://github.com/henkmollema/Dapper-FluentMap"><img src="https://img.shields.io/github/stars/henkmollema/Dapper-FluentMap?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Dapper.FluentMap"><img src="https://img.shields.io/nuget/dt/Dapper.FluentMap?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>SQL Query Builder</p>
+<ul>
+<li>
+<p><a href="https://github.com/sqlkata/querybuilder"><strong>SqlKata</strong></a></p>
+<blockquote>
+<p>SqlKata Query Builder is a powerful SQL Query Builder written in C#.</p>
+</blockquote>
+<p><a href="https://github.com/sqlkata/querybuilder"><img src="https://img.shields.io/github/stars/sqlkata/querybuilder?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/SqlKata"><img src="https://img.shields.io/nuget/dt/SqlKata?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/gambarra/ExpressionExtensionSQL"><strong>ExpressionExtensionSQL</strong></a></p>
+<blockquote>
+<p>ExpressionExtensionSQL is a NuGet library which you can add to your project to achieve lambda expression in SQL code. <a href="https://www.nuget.org/packages/ExpressionExtensionSQL.Dapper">Dapper Extension</a></p>
+</blockquote>
+<p><a href="https://github.com/gambarra/ExpressionExtensionSQL"><img src="https://img.shields.io/github/stars/gambarra/ExpressionExtensionSQL?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/ExpressionExtensionSQL"><img src="https://img.shields.io/nuget/dt/ExpressionExtensionSQL?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="nosql"><a class="header" href="#nosql">NoSQL</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/elastic/elasticsearch-net"><strong>Elastic</strong></a></p>
+<blockquote>
+<p>Exposes all the Elasticsearch API endpoints but leaves you in control of building the request and response bodies. </p>
+</blockquote>
+<p><a href="https://github.com/elastic/elasticsearch-net"><img src="https://img.shields.io/github/stars/elastic/elasticsearch-net?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Elasticsearch.Net"><img src="https://img.shields.io/nuget/dt/Elasticsearch.Net?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/StackExchange/StackExchange.Redis"><strong>StackExchange.Redis</strong></a></p>
+<blockquote>
+<p>High performance Redis client, incorporating both synchronous and asynchronous usage.</p>
+</blockquote>
+<p><a href="https://github.com/StackExchange/StackExchange.Redis"><img src="https://img.shields.io/github/stars/StackExchange/StackExchange.Redis?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/StackExchange.Redis"><img src="https://img.shields.io/nuget/dt/StackExchange.Redis?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="mongodb"><a class="header" href="#mongodb">MongoDb</a></h3>
+<ul>
+<li>
+<p>MongoDb Helpers/Repository</p>
+<ul>
+<li>
+<p><a href="https://github.com/Mongo2Go/Mongo2Go"><strong>Mongo2Go</strong></a></p>
+<blockquote>
+<p>MongoDB for integration tests &amp; local debugging</p>
+</blockquote>
+<p><a href="https://github.com/Mongo2Go/Mongo2Go"><img src="https://img.shields.io/github/stars/Mongo2Go/Mongo2Go?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Mongo2Go"><img src="https://img.shields.io/nuget/dt/Mongo2Go?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/alexandre-spieser/mongodb-generic-repository"><strong>MongoDbGenericRepository</strong></a></p>
+<blockquote>
+<p>An example of generic repository implementation using the MongoDB C# Sharp 2.0 driver (async).</p>
+</blockquote>
+<p><a href="https://github.com/alexandre-spieser/mongodb-generic-repository"><img src="https://img.shields.io/github/stars/alexandre-spieser/mongodb-generic-repository?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MongoDbGenericRepository"><img src="https://img.shields.io/nuget/dt/MongoDbGenericRepository?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>MongoDb Framework</p>
+<ul>
+<li>
+<p><a href="https://github.com/TurnerSoftware/MongoFramework"><strong>MongoFramework</strong></a></p>
+<blockquote>
+<p>An &quot;Entity Framework&quot;-like interface for MongoDB.</p>
+</blockquote>
+<p><a href="https://github.com/TurnerSoftware/MongoFramework"><img src="https://img.shields.io/github/stars/TurnerSoftware/MongoFramework?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MongoFramework"><img src="https://img.shields.io/nuget/dt/MongoFramework?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>MongoDb Identity Integration</p>
+<ul>
+<li>
+<p><a href="https://github.com/alexandre-spieser/AspNetCore.Identity.MongoDbCore"><strong>AspNetCore.Identity.MongoDbCore</strong></a></p>
+<blockquote>
+<p>A MongoDb UserStore and RoleStore adapter for Microsoft.AspNetCore.Identity 2.0. Allows you to use MongoDb instead of SQL server with Microsoft.AspNetCore.Identity 2.0.</p>
+</blockquote>
+<p><a href="https://github.com/alexandre-spieser/AspNetCore.Identity.MongoDbCore"><img src="https://img.shields.io/github/stars/alexandre-spieser/AspNetCore.Identity.MongoDbCore?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/AspNetCore.Identity.MongoDbCore"><img src="https://img.shields.io/nuget/dt/AspNetCore.Identity.MongoDbCore?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>MongoDb Migrations</p>
+<ul>
+<li>
+<p><a href="https://bitbucket.org/i_am_a_kernel/mongodbmigrations/src/master/"><strong>MongoDBMigrations</strong></a></p>
+<blockquote>
+<p>MongoDbMigrations uses the official MongoDB C# Driver to migrate your documents in your mongo database via useful fluent API.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/MongoDBMigrations"><img src="https://img.shields.io/nuget/dt/MongoDBMigrations?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="messaging-and-queue"><a class="header" href="#messaging-and-queue">Messaging and Queue</a></h3>
+<ul>
+<li>
+<p>Commands/Events Dispatcher</p>
+<ul>
+<li>
+<p><a href="https://github.com/jbogard/MediatR"><strong>MediatR</strong></a></p>
+<blockquote>
+<p>Simple, unambitious mediator implementation in .NET</p>
+</blockquote>
+<p><a href="https://github.com/jbogard/MediatR"><img src="https://img.shields.io/github/stars/jbogard/MediatR?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/mediatr"><img src="https://img.shields.io/nuget/dt/mediatr?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/BrighterCommand/Brighter"><strong>Brighter</strong></a></p>
+<blockquote>
+<p>The Command Dispatcher pattern is an addition to the Command design pattern that decouples the dispatcher for a service from its execution.</p>
+</blockquote>
+<p><a href="https://github.com/BrighterCommand/Brighter"><img src="https://img.shields.io/github/stars/BrighterCommand/Brighter?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/paramore.brighter"><img src="https://img.shields.io/nuget/dt/paramore.brighter?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Message Bus</p>
+<ul>
+<li>
+<p><a href="https://github.com/confluentinc/confluent-kafka-dotnet"><strong>Confluent.Kafka</strong></a></p>
+<blockquote>
+<p>Confluent's Apache Kafka .NET client.</p>
+</blockquote>
+<p><a href="https://github.com/confluentinc/confluent-kafka-dotnet"><img src="https://img.shields.io/github/stars/confluentinc/confluent-kafka-dotnet?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Confluent.Kafka"><img src="https://img.shields.io/nuget/dt/Confluent.Kafka?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/criteo/kafka-sharp"><strong>kafka-sharp</strong></a></p>
+<blockquote>
+<p>A .NET implementation of the Apache Kafka client side protocol geared toward performance (both throughput and memory wise). It is especially suited for scenarios where applications are streaming a large number of messages across a fair number of topics.</p>
+</blockquote>
+<p><a href="https://github.com/criteo/kafka-sharp"><img src="https://img.shields.io/github/stars/criteo/kafka-sharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/kafka-sharp"><img src="https://img.shields.io/nuget/dt/kafka-sharp?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/rabbitmq/rabbitmq-dotnet-client"><strong>RabbitMQ.Client</strong></a></p>
+<blockquote>
+<p>RabbitMQ .NET client</p>
+</blockquote>
+<p><a href="https://github.com/rabbitmq/rabbitmq-dotnet-client"><img src="https://img.shields.io/github/stars/rabbitmq/rabbitmq-dotnet-client?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/RabbitMQ.Client"><img src="https://img.shields.io/nuget/dt/RabbitMQ.Client?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Service Bus</p>
+<ul>
+<li>
+<p><a href="https://github.com/MassTransit/MassTransit"><strong>MassTransit</strong></a></p>
+<blockquote>
+<p>MassTransit is a free, open-source distributed application framework for .NET. MassTransit makes it easy to create applications and services that leverage message-based, loosely-coupled asynchronous communication for higher availability, reliability, and scalability.</p>
+</blockquote>
+<p><a href="https://github.com/MassTransit/MassTransit"><img src="https://img.shields.io/github/stars/MassTransit/MassTransit?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MassTransit"><img src="https://img.shields.io/nuget/dt/MassTransit?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/Particular/NServiceBus"><strong>NServiceBus</strong></a></p>
+<blockquote>
+<p>MassTransit is a free, open-source distributed application framework for .NET. MassTransit makes it easy to create applications and services that leverage message-based, loosely-coupled asynchronous communication for higher availability, reliability, and scalability.</p>
+</blockquote>
+<p><a href="https://github.com/Particular/NServiceBus"><img src="https://img.shields.io/github/stars/Particular/NServiceBus?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NServiceBus"><img src="https://img.shields.io/nuget/dt/NServiceBus?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="api-and-rpc"><a class="header" href="#api-and-rpc">API and RPC</a></h3>
+<ul>
+<li>
+<p>API Frameworks</p>
+<ul>
+<li>
+<p><a href="https://github.com/ServiceStack/ServiceStack"><strong>ServiceStack</strong></a></p>
+<blockquote>
+<p>ServiceStack is a simple and fast alternative to WCF, MVC and Web API in one cohesive framework for all your services and web apps that's intuitive and Easy to use!</p>
+</blockquote>
+<p><a href="https://github.com/ServiceStack/ServiceStack"><img src="https://img.shields.io/github/stars/ServiceStack/ServiceStack?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/ServiceStack"><img src="https://img.shields.io/nuget/dt/ServiceStack?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/OData/odata.net"><strong>Microsoft.OData.Core</strong></a></p>
+<blockquote>
+<p>Open Data Protocol - .NET Libraries and Frameworks </p>
+</blockquote>
+<p><a href="https://github.com/OData/odata.net"><img src="https://img.shields.io/github/stars/OData/odata.net?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Microsoft.OData.Core"><img src="https://img.shields.io/nuget/dt/Microsoft.OData.Core?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>gRPC</p>
+<ul>
+<li>
+<p><a href="https://github.com/grpc/grpc"><strong>Grpc.Core</strong></a></p>
+<blockquote>
+<p>A C# implementation of gRPC based on the native gRPC Core library.</p>
+</blockquote>
+<p><a href="https://github.com/grpc/grpc"><img src="https://img.shields.io/github/stars/grpc/grpc?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Grpc.Core"><img src="https://img.shields.io/nuget/dt/Grpc.Core?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>GraphQL</p>
+<ul>
+<li>
+<p><a href="https://github.com/ChilliCream/hotchocolate"><strong>HotChocolate</strong></a></p>
+<blockquote>
+<p>The Hot Chocolate GraphQL query execution engine and query validation.</p>
+</blockquote>
+<p><a href="https://github.com/ChilliCream/hotchocolate"><img src="https://img.shields.io/github/stars/ChilliCream/hotchocolate?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/HotChocolate"><img src="https://img.shields.io/nuget/dt/HotChocolate?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/graphql-dotnet/graphql-dotnet"><strong>GraphQL for .NET</strong></a></p>
+<blockquote>
+<p>An implementation of Facebook's GraphQL in .NET.</p>
+</blockquote>
+<p><a href="https://github.com/graphql-dotnet/graphql-dotnet"><img src="https://img.shields.io/github/stars/graphql-dotnet/graphql-dotnet?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/GraphQL/"><img src="https://img.shields.io/nuget/dt/GraphQL?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>WCF - SOAP</p>
+<ul>
+<li>
+<p><a href="https://github.com/DigDes/SoapCore"><strong>SoapCore</strong></a></p>
+<blockquote>
+<p>SOAP protocol middleware for ASP.NET Core.</p>
+</blockquote>
+<p><a href="https://github.com/DigDes/SoapCore"><img src="https://img.shields.io/github/stars/DigDes/SoapCore?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/SoapCore"><img src="https://img.shields.io/nuget/dt/SoapCore?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="http-client--rest"><a class="header" href="#http-client--rest">Http Client / REST</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/reactiveui/refit"><strong>Refit</strong></a></p>
+<blockquote>
+<p>The automatic type-safe REST library for Xamarin and .NET</p>
+</blockquote>
+<p><a href="https://github.com/reactiveui/refit"><img src="https://img.shields.io/github/stars/reactiveui/refit?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Refit"><img src="https://img.shields.io/nuget/dt/Refit?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/canton7/RestEase"><strong>RestEase</strong></a></p>
+<blockquote>
+<p>Easy-to-use typesafe REST API client library, which is simple and customisable.</p>
+</blockquote>
+<p><a href="https://github.com/canton7/RestEase"><img src="https://img.shields.io/github/stars/canton7/RestEase?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/RestEase"><img src="https://img.shields.io/nuget/dt/RestEase?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/restsharp/RestSharp"><strong>RestSharp</strong></a></p>
+<blockquote>
+<p>Simple REST and HTTP API Client for .NET</p>
+</blockquote>
+<p><a href="https://github.com/restsharp/RestSharp"><img src="https://img.shields.io/github/stars/restsharp/RestSharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/RestSharp"><img src="https://img.shields.io/nuget/dt/RestSharp?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="mail-and-smtp-server"><a class="header" href="#mail-and-smtp-server">Mail and SMTP Server</a></h3>
+<ul>
+<li>
+<p>Mail</p>
+<ul>
+<li>
+<p><a href="https://github.com/jstedfast/MailKit"><strong>MailKit</strong></a></p>
+<blockquote>
+<p>MailKit is an Open Source cross-platform .NET mail-client library that is based on MimeKit and optimized for mobile devices.</p>
+</blockquote>
+<p><a href="https://github.com/jstedfast/MailKit"><img src="https://img.shields.io/github/stars/jstedfast/MailKit?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MailKit"><img src="https://img.shields.io/nuget/dt/MailKit?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Mail Service SDK</p>
+<ul>
+<li>
+<p><a href="https://github.com/sendgrid/sendgrid-csharp"><strong>Sendgrid</strong></a></p>
+<blockquote>
+<p>The Official Twilio SendGrid Led, Community Driven C#, .NET Standard, .NET Core API Library.</p>
+</blockquote>
+<p><a href="https://github.com/sendgrid/sendgrid-csharp"><img src="https://img.shields.io/github/stars/sendgrid/sendgrid-csharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/SendGrid"><img src="https://img.shields.io/nuget/dt/SendGrid?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/sendgrid/smtpapi-csharp"><strong>SendGrid.SmtpApi</strong></a></p>
+<blockquote>
+<p>Easily build SendGrid SMTPAPI headers.</p>
+</blockquote>
+<p><a href="https://github.com/sendgrid/smtpapi-csharp"><img src="https://img.shields.io/github/stars/sendgrid/smtpapi-csharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/SendGrid.SmtpApi"><img src="https://img.shields.io/nuget/dt/SendGrid.SmtpApi?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/sendgrid/csharp-http-client"><strong>SendGrid.CSharp.HTTP.Client</strong></a></p>
+<blockquote>
+<p>A Simple Fluent REST API Client.</p>
+</blockquote>
+<p><a href="https://github.com/sendgrid/csharp-http-client"><img src="https://img.shields.io/github/stars/sendgrid/csharp-http-client?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/SendGrid.CSharp.HTTP.Client"><img src="https://img.shields.io/nuget/dt/SendGrid.CSharp.HTTP.Client?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>SMTP Server and POP3</p>
+<ul>
+<li>
+<p><a href="https://github.com/cmendible/netDumbster"><strong>netDumbster</strong></a></p>
+<blockquote>
+<p>netDumbster is a .NET Fake SMTP Server clone of the popular Dumbster.</p>
+</blockquote>
+<p><a href="https://github.com/cmendible/netDumbster"><img src="https://img.shields.io/github/stars/cmendible/netDumbster?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/netDumbster"><img src="https://img.shields.io/nuget/dt/netDumbster?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="security"><a class="header" href="#security">Security</a></h3>
+<ul>
+<li>
+<p>Security Libraries</p>
+<ul>
+<li>
+<p><a href="https://github.com/NWebsec/NWebsec"><strong>NWebsec</strong></a></p>
+<blockquote>
+<p>NWebsec consists of several security libraries for ASP.NET applications.</p>
+</blockquote>
+<p><a href="https://github.com/NWebsec/NWebsec"><img src="https://img.shields.io/github/stars/NWebsec/NWebsec?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NWebsec.AspNetCore.Core"><img src="https://img.shields.io/nuget/dt/NWebsec.AspNetCore.Core?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Authentication and Authorization</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity"><strong>Microsoft.AspNetCore.Identity</strong></a></p>
+<blockquote>
+<p>ASP.NET Core Identity is the membership system for building ASP.NET Core web applications, including membership, login, and user data. ASP.NET Core Identity allows you to add login features to your application and makes it easy to customize data about the logged in user.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/Microsoft.AspNetCore.Identity"><img src="https://img.shields.io/nuget/dt/Microsoft.AspNetCore.Identity?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/IdentityServer/IdentityServer4"><strong>IdentityServer4</strong></a></p>
+<blockquote>
+<p>IdentityServer is a free, open source OpenID Connect and OAuth 2.0 framework for ASP.NET Core.</p>
+</blockquote>
+<p><a href="https://github.com/IdentityServer/IdentityServer4"><img src="https://img.shields.io/github/stars/IdentityServer/IdentityServer4?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/IdentityServer4"><img src="https://img.shields.io/nuget/dt/IdentityServer4?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Captcha</p>
+<ul>
+<li>
+<p><a href="https://github.com/PaulMiami/reCAPTCHA"><strong>PaulMiami.AspNetCore.Mvc.Recaptcha</strong></a></p>
+<blockquote>
+<p>The reCAPTCHA 2.0 for ASPNET Core.</p>
+</blockquote>
+<p><a href="https://github.com/PaulMiami/reCAPTCHA"><img src="https://img.shields.io/github/stars/PaulMiami/reCAPTCHA?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/PaulMiami.AspNetCore.Mvc.Recaptcha"><img src="https://img.shields.io/nuget/dt/PaulMiami.AspNetCore.Mvc.Recaptcha?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Password Valdiator/Generator</p>
+<ul>
+<li>
+<p><a href="https://github.com/prjseal/PasswordGenerator"><strong>PasswordGenerator</strong></a></p>
+<blockquote>
+<p>A library which generates random passwords with different settings to meet the OWASP requirements.</p>
+</blockquote>
+<p><a href="https://github.com/prjseal/PasswordGenerator"><img src="https://img.shields.io/github/stars/prjseal/PasswordGenerator?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/PasswordGenerator"><img src="https://img.shields.io/nuget/dt/PasswordGenerator?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Cryptography</p>
+<ul>
+<li>
+<p><a href="https://github.com/novotnyllc/bc-csharp"><strong>Portable.BouncyCastle</strong></a></p>
+<blockquote>
+<p>A library which generates random passwords with different settings to meet the OWASP requirements.</p>
+</blockquote>
+<p><a href="https://github.com/novotnyllc/bc-csharp"><img src="https://img.shields.io/github/stars/novotnyllc/bc-csharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Portable.BouncyCastle"><img src="https://img.shields.io/nuget/dt/Portable.BouncyCastle?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="compression"><a class="header" href="#compression">Compression</a></h3>
+<ul>
+<li>
+<p>Zip Compression</p>
+<ul>
+<li>
+<p><a href="https://github.com/icsharpcode/SharpZipLib"><strong>SharpZipLib</strong></a></p>
+<blockquote>
+<p>#ziplib is a Zip, GZip, Tar and BZip2 library written entirely in C# for the .NET platform.</p>
+</blockquote>
+<p><a href="https://github.com/icsharpcode/SharpZipLib"><img src="https://img.shields.io/github/stars/icsharpcode/SharpZipLib?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/SharpZipLib"><img src="https://img.shields.io/nuget/dt/SharpZipLib?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Compression Algorithms</p>
+<ul>
+<li>
+<p><a href="https://github.com/XieJJ99/brotli.net"><strong>Brotli.NET</strong></a></p>
+<blockquote>
+<p>The .NET implementation of the brotli algorithm, provides similar interface to Google official API.</p>
+</blockquote>
+<p><a href="https://github.com/XieJJ99/brotli.net"><img src="https://img.shields.io/github/stars/XieJJ99/brotli.net?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Brotli.NET"><img src="https://img.shields.io/nuget/dt/Brotli.NET?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="csv-excel-word-and-pdf"><a class="header" href="#csv-excel-word-and-pdf">CSV, Excel, Word, and PDF</a></h3>
+<ul>
+<li>
+<p>CSV</p>
+<ul>
+<li>
+<p><a href="https://github.com/JoshClose/CsvHelper"><strong>CsvHelper</strong></a></p>
+<blockquote>
+<p>Library to help reading and writing CSV files</p>
+</blockquote>
+<p><a href="https://github.com/JoshClose/CsvHelper"><img src="https://img.shields.io/github/stars/JoshClose/CsvHelper?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/CsvHelper"><img src="https://img.shields.io/nuget/dt/CsvHelper?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Excel</p>
+<ul>
+<li>
+<p><a href="https://github.com/EPPlusSoftware/EPPlus"><strong>EPPlus</strong></a></p>
+<blockquote>
+<p>Create advanced Excel spreadsheets using .NET</p>
+</blockquote>
+<p><a href="https://github.com/EPPlusSoftware/EPPlus"><img src="https://img.shields.io/github/stars/EPPlusSoftware/EPPlus?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/EPPlus"><img src="https://img.shields.io/nuget/dt/EPPlus?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/nissl-lab/npoi"><strong>NPOI</strong></a></p>
+<blockquote>
+<p>a .NET library that can read/write Office formats without Microsoft Office installed. No COM+, no interop.</p>
+</blockquote>
+<p><a href="https://github.com/nissl-lab/npoi"><img src="https://img.shields.io/github/stars/nissl-lab/npoi?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NPOI"><img src="https://img.shields.io/nuget/dt/NPOI?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Word</p>
+<ul>
+<li>
+<p><a href="https://github.com/xceedsoftware/DocX"><strong>DocX</strong></a></p>
+<blockquote>
+<p>DocX is a .NET library that allows developers to manipulate Microsoft Word files, in an easy and intuitive manner. DocX is fast, lightweight and best of all it does not require Microsoft Word or Office to be installed.</p>
+</blockquote>
+<p><a href="https://github.com/xceedsoftware/DocX"><img src="https://img.shields.io/github/stars/xceedsoftware/DocX?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/DocX"><img src="https://img.shields.io/nuget/dt/DocX?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/nissl-lab/npoi"><strong>NPOI</strong></a></p>
+<blockquote>
+<p>a .NET library that can read/write Office formats without Microsoft Office installed. No COM+, no interop.</p>
+</blockquote>
+<p><a href="https://github.com/nissl-lab/npoi"><img src="https://img.shields.io/github/stars/nissl-lab/npoi?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NPOI"><img src="https://img.shields.io/nuget/dt/NPOI?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>PDF</p>
+<ul>
+<li>
+<p>Reporting</p>
+<ul>
+<li>
+<p><a href="https://github.com/FastReports/FastReport"><strong>FastReport</strong></a></p>
+<blockquote>
+<p>FastReport provides free open source report generator for .NET 5/.NET Core/.NET Framework. You can use the FastReport Open Source in MVC, Web API, console applications.</p>
+</blockquote>
+<p><a href="https://github.com/FastReports/FastReport"><img src="https://img.shields.io/github/stars/FastReports/FastReport?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/FastReport.OpenSource/"><img src="https://img.shields.io/nuget/dt/FastReport.OpenSource?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/VahidN/PdfReport.Core"><strong>PdfReport.Core</strong></a></p>
+<blockquote>
+<p>PdfReport.Core is a code first reporting engine, which is built on top of the iTextSharp.LGPLv2.Core and EPPlus.Core libraries</p>
+</blockquote>
+<p><a href="https://github.com/VahidN/PdfReport.Core"><img src="https://img.shields.io/github/stars/VahidN/PdfReport.Core?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/PdfRpt.Core/"><img src="https://img.shields.io/nuget/dt/PdfRpt.Core?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Renderers</p>
+<ul>
+<li>
+<p><a href="https://github.com/rdvojmoc/DinkToPdf"><strong>DinkToPdf</strong></a></p>
+<blockquote>
+<p>.NET Core P/Invoke wrapper for wkhtmltopdf library that uses Webkit engine to convert HTML pages to PDF.</p>
+</blockquote>
+<p><a href="https://github.com/rdvojmoc/DinkToPdf"><img src="https://img.shields.io/github/stars/rdvojmoc/DinkToPdf?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/DinkToPdf"><img src="https://img.shields.io/nuget/dt/DinkToPdf?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Create, Edit and Extract</p>
+<ul>
+<li>
+<p><a href="https://github.com/itext/itext7-dotnet"><strong>itext7</strong></a></p>
+<blockquote>
+<p>iText 7 allows you to build custom PDF scenarios for web, mobile, desktop or cloud apps in .NET.</p>
+</blockquote>
+<p><a href="https://github.com/itext/itext7-dotnet"><img src="https://img.shields.io/github/stars/itext/itext7-dotnet?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/itext7"><img src="https://img.shields.io/nuget/dt/itext7?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="datetime"><a class="header" href="#datetime">DateTime</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/nodatime/nodatime"><strong>NodaTime</strong></a></p>
+<blockquote>
+<p>A better date and time API for .NET</p>
+</blockquote>
+<p><a href="https://github.com/nodatime/nodatime"><img src="https://img.shields.io/github/stars/nodatime/nodatime?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NodaTime"><img src="https://img.shields.io/nuget/dt/NodaTime?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/joaomatossilva/DateTimeExtensions"><strong>DateTimeExtensions</strong></a></p>
+<blockquote>
+<p>This project is a merge of several common DateTime operations on the form of extensions to System.DateTime, including natural date difference text (precise and human rounded), holidays and working days calculations on several culture locales.</p>
+</blockquote>
+<p><a href="https://github.com/joaomatossilva/DateTimeExtensions"><img src="https://img.shields.io/github/stars/joaomatossilva/DateTimeExtensions?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/DateTimeExtensions"><img src="https://img.shields.io/nuget/dt/DateTimeExtensions?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="linq"><a class="header" href="#linq">Linq</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/morelinq/MoreLINQ"><strong>MoreLinq</strong></a></p>
+<blockquote>
+<p>Extensions to LINQ to Objects.</p>
+</blockquote>
+<p><a href="https://github.com/morelinq/MoreLINQ"><img src="https://img.shields.io/github/stars/morelinq/MoreLINQ?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/morelinq"><img src="https://img.shields.io/nuget/dt/morelinq?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="reflection-and-expression"><a class="header" href="#reflection-and-expression">Reflection and Expression</a></h3>
+<ul>
+<li>
+<p>Reflection</p>
+<ul>
+<li>
+<p><a href="https://github.com/mgravell/fast-member"><strong>FastMember</strong></a></p>
+<blockquote>
+<p>In .NET reflection is slow... well, kinda slow. If you need access to the members of an arbitrary type, with the type and member-names known only at runtime - then it is frankly hard (especially for DLR types). This library makes such access easy and fast.</p>
+</blockquote>
+<p><a href="https://github.com/mgravell/fast-member"><img src="https://img.shields.io/github/stars/mgravell/fast-member?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/FastMember"><img src="https://img.shields.io/nuget/dt/FastMember?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Expression</p>
+<ul>
+<li>
+<p><a href="https://github.com/zzzprojects/System.Linq.Dynamic.Core"><strong>System.Linq.Dynamic.Core</strong></a></p>
+<blockquote>
+<p>This is a .NET Standard / .NET Core port of the the Microsoft assembly for the .NET 4.0 Dynamic language functionality. <a href="https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.DynamicLinq">EF Core Extension</a></p>
+</blockquote>
+<p><a href="https://github.com/zzzprojects/System.Linq.Dynamic.Core"><img src="https://img.shields.io/github/stars/zzzprojects/System.Linq.Dynamic.Core?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/System.Linq.Dynamic.Core"><img src="https://img.shields.io/nuget/dt/System.Linq.Dynamic.Core?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Expression Builder</p>
+<ul>
+<li>
+<p><a href="https://github.com/castle-it/dynamic-linq-query-builder"><strong>Castle.DynamicLinqQueryBuilder</strong></a></p>
+<blockquote>
+<p>A truly generic and dynamic linq query builder to compliment jQuery QueryBuilder and other dynamic linq query generation needs.</p>
+</blockquote>
+<p><a href="https://github.com/castle-it/dynamic-linq-query-builder"><img src="https://img.shields.io/github/stars/castle-it/dynamic-linq-query-builder?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Castle.DynamicLinqQueryBuilder"><img src="https://img.shields.io/nuget/dt/Castle.DynamicLinqQueryBuilder?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Expressions Interpreter/Evaluator</p>
+<ul>
+<li>
+<p><a href="https://eval-expression.net"><strong>Z.Expressions.Eval</strong></a></p>
+<blockquote>
+<p>Evaluate, Compile and Execute C# code at runtime.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/Z.Expressions.Eval"><img src="https://img.shields.io/nuget/dt/Z.Expressions.Eval?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="validation"><a class="header" href="#validation">Validation</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/FluentValidation/FluentValidation"><strong>FluentValidation</strong></a></p>
+<blockquote>
+<p>A popular .NET validation library for building strongly-typed validation rules.</p>
+</blockquote>
+<p><a href="https://github.com/FluentValidation/FluentValidation"><img src="https://img.shields.io/github/stars/FluentValidation/FluentValidation?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/FluentValidation"><img src="https://img.shields.io/nuget/dt/FluentValidation?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="htmlparser"><a class="header" href="#htmlparser">HtmlParser</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/zzzprojects/html-agility-pack"><strong>HtmlAgilityPack</strong></a></p>
+<blockquote>
+<p>HAP is an HTML parser written in C# to read/write DOM and supports plain XPATH or XSLT.</p>
+</blockquote>
+<p><a href="https://github.com/zzzprojects/html-agility-pack"><img src="https://img.shields.io/github/stars/zzzprojects/html-agility-pack?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/HtmlAgilityPack"><img src="https://img.shields.io/nuget/dt/HtmlAgilityPack?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/AngleSharp/AngleSharp"><strong>AngleSharp</strong></a></p>
+<blockquote>
+<p>The ultimate angle brackets parser library parsing HTML5, MathML, SVG and CSS to construct a DOM based on the official W3C specifications.</p>
+</blockquote>
+<p><a href="https://github.com/AngleSharp/AngleSharp"><img src="https://img.shields.io/github/stars/AngleSharp/AngleSharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/AngleSharp"><img src="https://img.shields.io/nuget/dt/AngleSharp?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="profling-tracing-and-metrics"><a class="header" href="#profling-tracing-and-metrics">Profling, Tracing, and Metrics</a></h3>
+<ul>
+<li>
+<p>Profiling/Monitoring</p>
+<ul>
+<li>
+<p><a href="https://github.com/MiniProfiler/dotnet"><strong>MiniProfiler</strong></a></p>
+<blockquote>
+<p>A simple but effective mini-profiler for ASP.NET (and Core) websites.</p>
+</blockquote>
+<p><a href="https://github.com/MiniProfiler/dotnet"><img src="https://img.shields.io/github/stars/MiniProfiler/dotnet?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MiniProfiler.AspNetCore.Mvc"><img src="https://img.shields.io/nuget/dt/MiniProfiler.AspNetCore.Mvc?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Tracing</p>
+<ul>
+<li>
+<p><a href="https://github.com/prometheus-net/prometheus-net"><strong>prometheus-net</strong></a></p>
+<blockquote>
+<p>.NET library to instrument your code with Prometheus metrics.</p>
+</blockquote>
+<p><a href="https://github.com/prometheus-net/prometheus-net"><img src="https://img.shields.io/github/stars/prometheus-net/prometheus-net?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/prometheus-net"><img src="https://img.shields.io/nuget/dt/prometheus-net?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Metrics</p>
+<ul>
+<li>
+<p><a href="https://github.com/AppMetrics/AppMetrics"><strong>App.Metrics</strong></a></p>
+<blockquote>
+<p>App Metrics is an open-source and cross-platform .NET library used to record and report metrics within an application.</p>
+</blockquote>
+<p><a href="https://github.com/AppMetrics/AppMetrics"><img src="https://img.shields.io/github/stars/AppMetrics/AppMetrics?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/App.Metrics"><img src="https://img.shields.io/nuget/dt/App.Metrics?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="caching"><a class="header" href="#caching">Caching</a></h3>
+<ul>
+<li>
+<p>InMemory</p>
+<ul>
+<li>
+<p><a href="https://docs.microsoft.com/aspnet/core/performance/caching/memory"><strong>Microsoft.Extensions.Caching.Memory</strong></a></p>
+<blockquote>
+<p>In-memory cache implementation of Microsoft.Extensions.Caching.Memory.IMemoryCache.</p>
+</blockquote>
+<p><a href="https://www.nuget.org/packages/Microsoft.Extensions.Caching.Memory"><img src="https://img.shields.io/nuget/dt/Microsoft.Extensions.Caching.Memory?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Distributed</p>
+<ul>
+<li>
+<p><a href="https://github.com/StackExchange/StackExchange.Redis"><strong>StackExchange.Redis</strong></a></p>
+<blockquote>
+<p>High performance Redis client, incorporating both synchronous and asynchronous usage.</p>
+</blockquote>
+<p><a href="https://github.com/StackExchange/StackExchange.Redis"><img src="https://img.shields.io/github/stars/StackExchange/StackExchange.Redis?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/StackExchange.Redis"><img src="https://img.shields.io/nuget/dt/StackExchange.Redis?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/ServiceStack/ServiceStack.Redis"><strong>ServiceStack.Redis</strong></a></p>
+<blockquote>
+<p>ServiceStack Redis Client is a simple, high-performance and feature-rich Client for Redis with native support and high-level abstractions for serializing POCOs and Complex Types.</p>
+</blockquote>
+<p><a href="https://github.com/ServiceStack/ServiceStack.Redis"><img src="https://img.shields.io/github/stars/ServiceStack/ServiceStack.Redis?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/ServiceStack.Redis"><img src="https://img.shields.io/nuget/dt/ServiceStack.Redis?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a> </p>
+</li>
+</ul>
+</li>
+<li>
+<p>Caching Frameworks</p>
+<ul>
+<li>
+<p><a href="https://github.com/MichaCo/CacheManager"><strong>CacheManager.Core</strong></a></p>
+<blockquote>
+<p>CacheManager is an open source caching abstraction layer for .NET written in C#. It supports various cache providers and implements many advanced features.</p>
+</blockquote>
+<p><a href="https://github.com/MichaCo/CacheManager"><img src="https://img.shields.io/github/stars/MichaCo/CacheManager?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/CacheManager.Core"><img src="https://img.shields.io/nuget/dt/CacheManager.Core?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/jodydonetti/ZiggyCreatures.FusionCache"><strong>FusionCache</strong></a></p>
+<blockquote>
+<p>FusionCache is an easy to use, high performance and robust cache with an optional distributed 2nd layer and some advanced features.</p>
+</blockquote>
+<p><a href="https://github.com/jodydonetti/ZiggyCreatures.FusionCache"><img src="https://img.shields.io/github/stars/jodydonetti/ZiggyCreatures.FusionCache?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://github.com/jodydonetti/ZiggyCreatures.FusionCache"><img src="https://img.shields.io/nuget/dt/ZiggyCreatures.FusionCache?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Second Level Cache</p>
+<ul>
+<li>
+<p><a href="https://github.com/VahidN/EFCoreSecondLevelCacheInterceptor"><strong>EF Core Second Level Cache Interceptor</strong></a></p>
+<blockquote>
+<p>Entity Framework Core Second Level Caching Library.</p>
+</blockquote>
+<p><a href="https://github.com/VahidN/EFCoreSecondLevelCacheInterceptor"><img src="https://img.shields.io/github/stars/VahidN/EFCoreSecondLevelCacheInterceptor?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/EFCoreSecondLevelCacheInterceptor"><img src="https://img.shields.io/nuget/dt/EFCoreSecondLevelCacheInterceptor?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="testing"><a class="header" href="#testing">Testing</a></h3>
+<ul>
+<li>
+<p>Test Frameworks</p>
+<ul>
+<li>
+<p><a href="https://github.com/xunit/xunit"><strong>xUnit</strong></a></p>
+<blockquote>
+<p>xUnit is a developer testing framework, built to support Test Driven Development, with a design goal of extreme simplicity and alignment with framework features.</p>
+</blockquote>
+<p><a href="https://github.com/xunit/xunit"><img src="https://img.shields.io/github/stars/xunit/xunit?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/xunit"><img src="https://img.shields.io/nuget/dt/xunit?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/nunit/nunit"><strong>NUnit</strong></a></p>
+<blockquote>
+<p>NUnit is a unit-testing framework for all .NET languages.</p>
+</blockquote>
+<p><a href="https://github.com/nunit/nunit"><img src="https://img.shields.io/github/stars/nunit/nunit?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NUnit"><img src="https://img.shields.io/nuget/dt/NUnit?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc"><strong>MyTested.AspNetCore.Mvc</strong></a></p>
+<blockquote>
+<p>MyTested.AspNetCore.Mvc is a strongly-typed unit testing library providing an easy fluent interface to test the ASP.NET Core framework, perfectly suitable for 			both MVC and API scenarios. It is testing framework agnostic so that you can combine it with a test runner of your choice (e.g. xUnit, NUnit, etc.).</p>
+</blockquote>
+<p><a href="https://github.com/ivaylokenov/MyTested.AspNetCore.Mvc"><img src="https://img.shields.io/github/stars/ivaylokenov/MyTested.AspNetCore.Mvc?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MyTested.AspNetCore.Mvc/"><img src="https://img.shields.io/nuget/dt/MyTested.AspNetCore.Mvc?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Asserations</p>
+<ul>
+<li>
+<p><a href="https://github.com/fluentassertions/fluentassertions"><strong>FluentAssertions</strong></a></p>
+<blockquote>
+<p>A very extensive set of extension methods that allow you to more naturally specify the expected outcome of a TDD or BDD-style unit tests. </p>
+</blockquote>
+<p><a href="https://github.com/fluentassertions/fluentassertions"><img src="https://img.shields.io/github/stars/fluentassertions/fluentassertions?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/FluentAssertions"><img src="https://img.shields.io/nuget/dt/FluentAssertions?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Mocking</p>
+<ul>
+<li>
+<p><a href="https://github.com/moq/moq4"><strong>Moq</strong></a></p>
+<blockquote>
+<p>The most popular and friendly mocking library for .NET</p>
+</blockquote>
+<p><a href="https://github.com/moq/moq4"><img src="https://img.shields.io/github/stars/moq/moq4?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Moq"><img src="https://img.shields.io/nuget/dt/Moq?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/FakeItEasy/FakeItEasy"><strong>FakeItEasy</strong></a></p>
+<blockquote>
+<p>A .NET dynamic fake library for creating all types of fake objects, mocks, stubs etc.</p>
+</blockquote>
+<p><a href="https://github.com/FakeItEasy/FakeItEasy"><img src="https://img.shields.io/github/stars/FakeItEasy/FakeItEasy?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/FakeItEasy"><img src="https://img.shields.io/nuget/dt/FakeItEasy?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/nsubstitute/NSubstitute"><strong>NSubstitute</strong></a></p>
+<blockquote>
+<p>A friendly substitute for .NET mocking libraries.</p>
+</blockquote>
+<p><a href="https://github.com/nsubstitute/NSubstitute"><img src="https://img.shields.io/github/stars/nsubstitute/NSubstitute?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NSubstitute"><img src="https://img.shields.io/nuget/dt/NSubstitute?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Fixture - Data Generator</p>
+<ul>
+<li>
+<p><a href="https://github.com/AutoFixture/AutoFixture"><strong>AutoFixture</strong></a></p>
+<blockquote>
+<p>AutoFixture makes it easier for developers to do Test-Driven Development by automating non-relevant Test Fixture Setup, allowing the Test Developer to focus on the essentials of each test case.</p>
+</blockquote>
+<p><a href="https://github.com/AutoFixture/AutoFixture"><img src="https://img.shields.io/github/stars/AutoFixture/AutoFixture?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/AutoFixture"><img src="https://img.shields.io/nuget/dt/AutoFixture?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/nbuilder/nbuilder"><strong>NBuilder</strong></a></p>
+<blockquote>
+<p>Through a fluent, extensible interface, NBuilder allows you to rapidly create test data, automatically assigning values to properties and public fields that are one of the built in .NET data types (e.g. ints and strings). NBuilder allows you to override for properties you are interested in using lambda expressions.</p>
+</blockquote>
+<p><a href="https://github.com/nbuilder/nbuilder"><img src="https://img.shields.io/github/stars/nbuilder/nbuilder?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/nbuilder"><img src="https://img.shields.io/nuget/dt/nbuilder?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Helpers</p>
+<ul>
+<li>
+<p><a href="https://github.com/jbogard/Respawn"><strong>Respawn</strong></a></p>
+<blockquote>
+<p>Respawn is a small utility to help in resetting test databases to a clean state. Instead of deleting data at the end of a test or rolling back a transaction, Respawn resets the database back to a clean checkpoint by intelligently deleting data from tables.</p>
+</blockquote>
+<p><a href="https://github.com/jbogard/Respawn"><img src="https://img.shields.io/github/stars/jbogard/Respawn?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Respawn"><img src="https://img.shields.io/nuget/dt/Respawn?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>HttpClient Mocking</p>
+<ul>
+<li>
+<p><a href="https://github.com/richardszalay/mockhttp"><strong>RichardSzalay.MockHttp</strong></a></p>
+<blockquote>
+<p>MockHttp is a testing layer for Microsoft's HttpClient library. It allows stubbed responses to be configured for matched HTTP requests and can be used to test your application's service layer.</p>
+</blockquote>
+<p><a href="https://github.com/richardszalay/mockhttp"><img src="https://img.shields.io/github/stars/richardszalay/mockhttp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/RichardSzalay.MockHttp"><img src="https://img.shields.io/nuget/dt/RichardSzalay.MockHttp?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>EF/Queryable Mocking</p>
+<ul>
+<li>
+<p><a href="https://github.com/zzzprojects/EntityFramework-Effort"><strong>Effort.EF6</strong></a></p>
+<blockquote>
+<p>Effort is a powerful tool that enables a convenient way to create automated tests for Entity Framework based applications. <a href="https://entityframework-effort.net">Learn more</a></p>
+</blockquote>
+<p><a href="https://github.com/zzzprojects/EntityFramework-Effort"><img src="https://img.shields.io/github/stars/zzzprojects/EntityFramework-Effort?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Effort.EF6"><img src="https://img.shields.io/nuget/dt/Effort.EF6?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/romantitov/MockQueryable"><strong>MockQueryable</strong></a></p>
+<blockquote>
+<p>Moking Entity Framework Core operations such as ToListAsync, FirstOrDefaultAsync etc.</p>
+</blockquote>
+<p><a href="https://github.com/romantitov/MockQueryable"><img src="https://img.shields.io/github/stars/romantitov/MockQueryable?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/MockQueryable.Core"><img src="https://img.shields.io/nuget/dt/MockQueryable.Core?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Temp Database</p>
+<ul>
+<li>
+<p><a href="https://github.com/JonPSmith/EfCore.TestSupport"><strong>EfCore.TestSupport</strong></a></p>
+<blockquote>
+<p>Tools for helping in unit testing applications that use Entity Framework Core.</p>
+</blockquote>
+<p><a href="https://github.com/JonPSmith/EfCore.TestSupport"><img src="https://img.shields.io/github/stars/JonPSmith/EfCore.TestSupport?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/EfCore.TestSupport"><img src="https://img.shields.io/nuget/dt/EfCore.TestSupport?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/Mongo2Go/Mongo2Go"><strong>Mongo2Go</strong></a></p>
+<blockquote>
+<p>MongoDB for integration tests (.NET Core)</p>
+</blockquote>
+<p><a href="https://github.com/Mongo2Go/Mongo2Go"><img src="https://img.shields.io/github/stars/Mongo2Go/Mongo2Go?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://nuget.org/packages/Mongo2Go"><img src="https://img.shields.io/nuget/dt/Mongo2Go?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Log Testing</p>
+<ul>
+<li>
+<p><a href="https://github.com/trbenning/serilog-sinks-xunit"><strong>Serilog.Sinks.XUnit</strong></a></p>
+<blockquote>
+<p>The xunit test output sink for Serilog.</p>
+</blockquote>
+<p><a href="https://github.com/trbenning/serilog-sinks-xunit"><img src="https://img.shields.io/github/stars/trbenning/serilog-sinks-xunit?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Serilog.Sinks.XUnit"><img src="https://img.shields.io/nuget/dt/Serilog.Sinks.XUnit?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Snapshot Testing</p>
+<ul>
+<li>
+<p><a href="https://github.com/SwissLife-OSS/snapshooter"><strong>Snapshooter</strong></a></p>
+<blockquote>
+<p>Snapshooter is a flexible snapshot testing tool to simplify the result validation in your unit tests in .NET</p>
+</blockquote>
+<p><a href="https://github.com/SwissLife-OSS/snapshooter"><img src="https://img.shields.io/github/stars/SwissLife-OSS/snapshooter?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Snapshooter"><img src="https://img.shields.io/nuget/dt/Snapshooter?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>BDD Testing</p>
+<ul>
+<li>
+<p><a href="https://github.com/SpecFlowOSS/SpecFlow"><strong>SpecFlow</strong></a></p>
+<blockquote>
+<p>SpecFlow is a pragmatic BDD solution for .NET. It provides test automation for .NET (.NET Framework, .NET Core and Mono), based on the Gherkin specification language and integrates to Visual Studio.</p>
+</blockquote>
+<p><a href="https://github.com/SpecFlowOSS/SpecFlow"><img src="https://img.shields.io/github/stars/SpecFlowOSS/SpecFlow?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/SpecFlow"><img src="https://img.shields.io/nuget/dt/SpecFlow?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>UI Testing</p>
+<ul>
+<li>
+<p><a href="https://github.com/SeleniumHQ/selenium"><strong>Selenium.WebDriver</strong></a></p>
+<blockquote>
+<p>Selenium is a set of different software tools each with a different approach to supporting browser automation. These tools are highly flexible, allowing many options for locating and manipulating elements within a browser, and one of its key features is the support for automating multiple browser platforms.</p>
+</blockquote>
+<p><a href="https://github.com/SeleniumHQ/selenium"><img src="https://img.shields.io/github/stars/SeleniumHQ/selenium?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Selenium.WebDriver"><img src="https://img.shields.io/nuget/dt/Selenium.WebDriver?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/hardkoded/puppeteer-sharp"><strong>Puppeteer Sharp</strong></a></p>
+<blockquote>
+<p>Headless Chrome .NET API</p>
+</blockquote>
+<p><a href="https://github.com/hardkoded/puppeteer-sharp"><img src="https://img.shields.io/github/stars/hardkoded/puppeteer-sharp?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/PuppeteerSharp"><img src="https://img.shields.io/nuget/dt/PuppeteerSharp?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Code Coverage</p>
+<ul>
+<li>
+<p><a href="https://github.com/coverlet-coverage/coverlet"><strong>Coverlet</strong></a></p>
+<blockquote>
+<p>Cross platform code coverage for .NET</p>
+</blockquote>
+<p><a href="https://github.com/coverlet-coverage/coverlet"><img src="https://img.shields.io/github/stars/coverlet-coverage/coverlet?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/coverlet.collector"><img src="https://img.shields.io/nuget/dt/coverlet.collector?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/danielpalme/ReportGenerator"><strong>ReportGenerator</strong></a></p>
+<blockquote>
+<p>Powerful code coverage visualization, ReportGenerator converts coverage reports generated by coverlet, OpenCover, dotCover, Visual Studio, NCover, Cobertura, JaCoCo, Clover, gcov or lcov into human readable reports in various formats.</p>
+</blockquote>
+<p><a href="https://github.com/danielpalme/ReportGenerator"><img src="https://img.shields.io/github/stars/danielpalme/ReportGenerator?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/ReportGenerator"><img src="https://img.shields.io/nuget/dt/ReportGenerator?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>XUnit Extensions\Helpers</p>
+<ul>
+<li>
+<p><a href="https://github.com/xunit/xunit.analyzers"><strong>xunit.analyzers</strong></a></p>
+<blockquote>
+<p>Code Analyzers for projects using xUnit.net that help find and fix frequent issues when writing tests.</p>
+</blockquote>
+<p><a href="https://github.com/xunit/xunit.analyzers"><img src="https://img.shields.io/github/stars/xunit/xunit.analyzers?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/xunit.analyzers"><img src="https://img.shields.io/nuget/dt/xunit.analyzers?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/brendanconnolly/Xunit.Categories"><strong>xunit.categories</strong></a></p>
+<blockquote>
+<p>Friendlier attributes to help categorize your tests.</p>
+</blockquote>
+<p><a href="https://github.com/brendanconnolly/Xunit.Categories"><img src="https://img.shields.io/github/stars/brendanconnolly/Xunit.Categories?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/xunit.categories"><img src="https://img.shields.io/nuget/dt/xunit.categories?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="openapi"><a class="header" href="#openapi">OpenAPI</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore"><strong>Swagger (Swashbuckle)</strong></a></p>
+<blockquote>
+<p>Swagger tooling for API's built with ASP.NET Core. Generate beautiful API documentation, including a UI to explore and test operations, directly from your routes, controllers and models.</p>
+</blockquote>
+<p><a href="https://github.com/domaindrivendev/Swashbuckle.AspNetCore"><img src="https://img.shields.io/github/stars/domaindrivendev/Swashbuckle.AspNetCore?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/swashbuckle.aspnetcore"><img src="https://img.shields.io/nuget/dt/swashbuckle.aspnetcore?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/RicoSuter/NSwag"><strong>NSwag</strong></a></p>
+<blockquote>
+<p>The OpenAPI/Swagger API toolchain for .NET and TypeScript.</p>
+</blockquote>
+<p><a href="https://github.com/RicoSuter/NSwag"><img src="https://img.shields.io/github/stars/RicoSuter/NSwag?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NSwag.AspNetCore"><img src="https://img.shields.io/nuget/dt/NSwag.AspNetCore?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h3 id="logging"><a class="header" href="#logging">Logging</a></h3>
+<ul>
+<li>
+<p>Logging libraries</p>
+<ul>
+<li>
+<p><a href="https://github.com/serilog/serilog"><strong>Serilog</strong></a></p>
+<blockquote>
+<p>Serilog is a diagnostic logging library for .NET applications. It is easy to set up, has a clean API, and runs on all recent .NET platforms.</p>
+</blockquote>
+<p><a href="https://github.com/serilog/serilog"><img src="https://img.shields.io/github/stars/serilog/serilog?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/serilog"><img src="https://img.shields.io/nuget/dt/serilog?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+<li>
+<p><a href="https://github.com/NLog/NLog"><strong>NLog</strong></a></p>
+<blockquote>
+<p>NLog is a free logging platform for .NET with rich log routing and management capabilities. It makes it easy to produce and manage high-quality logs for your application regardless of its size or complexity.</p>
+</blockquote>
+<p><a href="https://github.com/NLog/NLog"><img src="https://img.shields.io/github/stars/NLog/NLog?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/NLog"><img src="https://img.shields.io/nuget/dt/NLog?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Logging Management</p>
+<ul>
+<li>
+<p><a href="https://github.com/getsentry/sentry-dotnet"><strong>Sentry</strong></a></p>
+<blockquote>
+<p>Open-source error tracking that helps developers monitor and fix crashes in real time.</p>
+</blockquote>
+<p><a href="https://github.com/getsentry/sentry-dotnet"><img src="https://img.shields.io/github/stars/getsentry/sentry-dotnet?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/Sentry"><img src="https://img.shields.io/nuget/dt/Sentry?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="templating"><a class="header" href="#templating">Templating</a></h3>
+<ul>
+<li>
+<p>Template Engine</p>
+<ul>
+<li>
+<p><a href="https://github.com/dotliquid/dotliquid"><strong>DotLiquid</strong></a></p>
+<blockquote>
+<p>.NET Port of Tobias Lütke's Liquid template language.</p>
+</blockquote>
+<p><a href="https://github.com/dotliquid/dotliquid"><img src="https://img.shields.io/github/stars/dotliquid/dotliquid?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/DotLiquid"><img src="https://img.shields.io/nuget/dt/DotLiquid?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Razor Templating (Core)</p>
+<ul>
+<li>
+<p><a href="https://github.com/toddams/RazorLight"><strong>RazorLight</strong></a></p>
+<blockquote>
+<p>Template engine based on Microsoft's Razor parsing engine for .NET Core.</p>
+</blockquote>
+<p><a href="https://github.com/toddams/RazorLight"><img src="https://img.shields.io/github/stars/toddams/RazorLight?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/RazorLight"><img src="https://img.shields.io/nuget/dt/RazorLight?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>Razor Templating MVC5</p>
+<ul>
+<li>
+<p><a href="https://github.com/Antaris/RazorEngine"><strong>RazorEngine</strong></a></p>
+<blockquote>
+<p>Open source templating engine based on Microsoft's Razor parsing engine.</p>
+</blockquote>
+<p><a href="https://github.com/Antaris/RazorEngine"><img src="https://img.shields.io/github/stars/Antaris/RazorEngine?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/RazorEngine"><img src="https://img.shields.io/nuget/dt/RazorEngine?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="console"><a class="header" href="#console">Console</a></h3>
+<ul>
+<li>
+<p><a href="https://github.com/spectresystems/spectre.console"><strong>Spectre.Console</strong></a></p>
+<blockquote>
+<p>A library that makes it easier to create beautiful, cross platform, console applications.</p>
+</blockquote>
+<p><a href="https://github.com/spectresystems/spectre.console"><img src="https://img.shields.io/github/stars/spectresystems/spectre.console?label=Stars&amp;logo=github&amp;cacheSeconds=3600" alt="GitHub Stars" /></a>
+<a href="https://www.nuget.org/packages/spectre.console"><img src="https://img.shields.io/nuget/dt/spectre.console?label=Downloads&amp;logo=nuget&amp;cacheSeconds=3600" alt="NuGet Downloads" /></a></p>
+</li>
+</ul>
+<h2 id="contribution"><a class="header" href="#contribution">Contribution</a></h2>
+<p>Contributions are always welcome! Feel free to open an <a href="https://github.com/mjebrahimi/Awesome-DotNet-Packages/issues/new">issue</a> or create a pull request.</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p><a href="https://creativecommons.org/publicdomain/zero/1.0"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg" alt="CC0" /></a></p>
+<p>To the extent possible under law, <a href="https://github.com/mjebrahimi">Mohammad Javad Ebrahimi</a> has waived all copyright and related or neighboring rights to this work.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="nodejs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="opensource.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="nodejs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="opensource.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,1582 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>speakers - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html" class="active"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="awesome-speakers"><a class="header" href="#awesome-speakers">Awesome Speakers <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome" /></a></a></h1>
+<blockquote>
+<p>Awesome speakers in the programming and design communities</p>
+</blockquote>
+<p>Let's make it more transparent and easy to find awesome speakers for meetups and conferences! This list of speakers, their contact details and the topics they talk about is a start towards this goal.</p>
+<p>Please add to the list and help make the community better connected and richer.</p>
+<h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
+<ul>
+<li><a href="#africa">Africa</a></li>
+<li><a href="#asia">Asia</a></li>
+<li><a href="#australia">Australia</a></li>
+<li><a href="#europe">Europe</a></li>
+<li><a href="#north-america">North America</a></li>
+<li><a href="#south-america">South America</a></li>
+</ul>
+<h1 id="africa"><a class="header" href="#africa">Africa</a></h1>
+<h2 id="nigeria-"><a class="header" href="#nigeria-">Nigeria 🇳🇬</a></h2>
+<h3 id="lagos"><a class="header" href="#lagos">Lagos</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mazibayo" height="70px" width="70px" align="left" alt="" />
+<p><strong>Adebayo Opesanya</strong><br />
+Topics: JavaScript, Node.js, TypeScript, Testing, Community<br />
+https://twitter.com/mazibayo</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/AnayoOleru" height="70px" width="70px" align="left" alt="" />
+<p><strong>Anayo Oleru</strong><br />
+Topics: JavaScript, Node.js, TypeScript, Testing, React, Redux, React Native, Open Source, PWAs<br />
+https://twitter.com/AnayoOleru</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/codebeast" height="70px" width="70px" align="left" alt="" />
+<p><strong>Christian Nwamba</strong><br />
+Topics: JavaScript, React, Vue, Angular, PWAs, CSS, Standards<br />
+https://twitter.com/codebeast</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ireaderinokun" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ire Aderinokun</strong><br />
+Topics: Progressive Web Apps, CSS, Standards<br />
+https://twitter.com/ireaderinokun</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/unicodeveloper" height="70px" width="70px" align="left" alt="" />
+<p><strong>Otemuyiwa Prosper</strong><br />
+Topics: JavaScript, React, Vue, Angular, PWAs, PHP, Laravel<br />
+https://twitter.com/unicodeveloper</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/developerayo" height="70px" width="70px" align="left" alt="" />
+<p><strong>Shodipo Ayomide</strong><br />
+Topics: PHP, JavaScript, React, Vue.js, PWAs, Testing, Open Source, Performance<br />
+https://twitter.com/developerayo</p>
+<h2 id="south-africa-"><a class="header" href="#south-africa-">South Africa 🇿🇦</a></h2>
+<h3 id="johannesburg"><a class="header" href="#johannesburg">Johannesburg</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/riggaroo" height="70px" width="70px" align="left" alt="" />
+<p><strong>Rebecca Franks</strong><br />
+Topics: Android, Android Things, Firebase, IoT<br />
+https://twitter.com/riggaroo</p>
+<h1 id="asia"><a class="header" href="#asia">Asia</a></h1>
+<h2 id="india-"><a class="header" href="#india-">India 🇮🇳</a></h2>
+<h3 id="bangalore"><a class="header" href="#bangalore">Bangalore</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ashrith_kulai" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ashrith Kulai</strong><br />
+Topics: Progressive Web Apps, Polymer, Web Components, Web Performance, Build Tools<br />
+https://twitter.com/ashrith_kulai</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/baps_patil" height="70px" width="70px" align="left" alt="" />
+<p><strong>Bapusaheb Patil</strong><br />
+Topics: Android, Kotlin, Java, Asynchronous Programming, Mobile UX Design, Mobile Performance<br />
+https://twitter.com/baps_patil</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kranirudha" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kumar Anirudha</strong><br />
+Topics: Python, Node.js, Blockchain, Architecture, Cryptocurrency<br />
+https://twitter.com/kranirudha</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/siddharthkp" height="70px" width="70px" align="left" alt="" />
+<p><strong>Siddharth Kshetrapal</strong><br />
+Topics: CSS, Web Performance, React, CSS in JS, Node, Testing<br />
+https://twitter.com/siddharthkp</p>
+<h3 id="indore"><a class="header" href="#indore">Indore</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/MohitRajput987" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mohit Rajput</strong><br />
+Topics: Android, Java, Kotlin, Flutter, Blockchain<br />
+https://twitter.com/MohitRajput987</p>
+<h3 id="mumbai"><a class="header" href="#mumbai">Mumbai</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/jayeshkattar" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jayesh Katta Ramalingaiah</strong><br />
+Topics: Rust, Android, Angular, React, Web VR, Project Things, Common Voice, Web Compatibility<br />
+https://twitter.com/jayeshkattar</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/manjula_dube" height="70px" width="70px" align="left" alt="" />
+<p><strong>Manjula Dube</strong><br />
+Topics: JavaScript, React, Progressive Web Apps, Node, Testing<br />
+https://twitter.com/manjula_dube</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/neeharv" height="70px" width="70px" align="left" alt="" />
+<p><strong>Neehar Venugopal</strong><br />
+Topics: Code Splitting, Standards<br />
+https://twitter.com/neeharv</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/chatsidhartha" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sidhartha Chatterjee</strong><br />
+Topics: React, Progressive Web Apps, Web Performance<br />
+https://twitter.com/chatsidhartha</p>
+<h3 id="new-delhi"><a class="header" href="#new-delhi">New Delhi</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/amdsouza92" height="70px" width="70px" align="left" alt="" />
+<p><strong>Arun Michael Dsouza</strong><br />
+Topics: webpack, React, ES6, Tooling, CSS<br />
+https://twitter.com/amdsouza92</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/aviaryan123" height="70px" width="70px" align="left" alt="" />
+<p><strong>Avi Aryan</strong><br />
+Topics: Mobile Web, PWAs, Flask, Blockchain<br />
+https://twitter.com/aviaryan123</p>
+<h2 id="indonesia-"><a class="header" href="#indonesia-">Indonesia 🇮🇩</a></h2>
+<h3 id="jakarta"><a class="header" href="#jakarta">Jakarta</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/fransallen" height="70px" width="70px" align="left" alt="" />
+<p><strong>Frans Allen</strong><br />
+Topics: CDN, Cloud, SaaS, DNS, Web Performance &amp; Security<br />
+https://twitter.com/fransallen</p>
+<h2 id="lebanon-"><a class="header" href="#lebanon-">Lebanon 🇱🇧</a></h2>
+<h3 id="tyre"><a class="header" href="#tyre">Tyre</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sarasoueidan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sara Soueidan</strong><br />
+Topics: Animations, CSS, SVG<br />
+https://twitter.com/sarasoueidan</p>
+<h2 id="pakistan-"><a class="header" href="#pakistan-">Pakistan 🇵🇰</a></h2>
+<h3 id="karachi"><a class="header" href="#karachi">Karachi</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ArbazPirwani" height="70px" width="70px" align="left" alt="" />
+<p><strong>Arbaz Pirwani</strong><br />
+Topics: Android, Kotlin, Java<br />
+https://twitter.com/ArbazPirwani</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bhattieric" height="70px" width="70px" align="left" alt="" />
+<p><strong>Eric Bhatti</strong><br />
+Topics: Android, Java, Kotlin, Firebase<br />
+https://twitter.com/bhattieric</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mashhoodr" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mashhood Rastgar</strong><br />
+Topics: Progressive Web Apps, Angular, Firebase<br />
+https://twitter.com/mashhoodr</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/smkamranqadri" height="70px" width="70px" align="left" alt="" />
+<p><strong>Muhammad Kamran</strong><br />
+Topics: Angular, Redux, RxJS, Flutter, Dart, React Native, JavaScript, TypeScript, Linux<br />
+https://twitter.com/smkamranqadri</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/narainsagar" height="70px" width="70px" align="left" alt="" />
+<p><strong>Narain Sagar</strong><br />
+Topics: Angular, JavaScript, TypeScript, Node.js, Docker, Continuous Integration, Tooling, Automation Testing<br />
+https://twitter.com/narainsagar</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/_nasirhm_" height="70px" width="70px" align="left" alt="" />
+<p><strong>Nasir Hussain</strong><br />
+Topics: Web Design, Blockchain, Python, IoT, Continous Integration, Developer Ecosystems<br />
+<a href="https://twitter.com/_nasirhm_">https://twitter.com/_nasirhm_</a></p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/WajahatKarim" height="70px" width="70px" align="left" alt="" />
+<p><strong>Wajahat Karim</strong><br />
+Topics: Android, Open Source, Java, Kotlin<br />
+https://twitter.com/WajahatKarim</p>
+<h2 id="singapore-"><a class="header" href="#singapore-">Singapore 🇸🇬</a></h2>
+<h3 id="singapore"><a class="header" href="#singapore">Singapore</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/renettarenula" height="70px" width="70px" align="left" alt="" />
+<p><strong>Aysha Anggraini</strong><br />
+Topics: CSS, Animations<br />
+https://twitter.com/renettarenula</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/hj_chen" height="70px" width="70px" align="left" alt="" />
+<p><strong>Chen Hui Jing</strong><br />
+Topics: CSS<br />
+https://twitter.com/hj_chen</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/zellwk" height="70px" width="70px" align="left" alt="" />
+<p><strong>Zell Liew</strong><br />
+Topics: CSS, JavaScript<br />
+https://twitter.com/zellwk</p>
+<h1 id="australia"><a class="header" href="#australia">Australia</a></h1>
+<h2 id="australia-"><a class="header" href="#australia-">Australia 🇦🇺</a></h2>
+<h3 id="melbourne"><a class="header" href="#melbourne">Melbourne</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/glenmaddern" height="70px" width="70px" align="left" alt="" />
+<p><strong>Glen Maddern</strong><br />
+Topics: CSS, Styled Components, React, JavaScript<br />
+https://twitter.com/glenmaddern</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/fox" height="70px" width="70px" align="left" alt="" />
+<p><strong>Karolina Szczur</strong><br />
+Topics: CSS, HTML, Web, Inclusivity, Diversity<br />
+https://twitter.com/fox</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/markdalgleish" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mark Dalgleish</strong><br />
+Topics: Design Systems, Web Design<br />
+https://twitter.com/markdalgleish</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/philnash" height="70px" width="70px" align="left" alt="" />
+<p><strong>Phil Nash</strong><br />
+Topics: JavaScript, Web Development, Progressive Web Apps<br />
+https://twitter.com/philnash</p>
+<h1 id="europe"><a class="header" href="#europe">Europe</a></h1>
+<h2 id="austria-"><a class="header" href="#austria-">Austria 🇦🇹</a></h2>
+<h3 id="linz"><a class="header" href="#linz">Linz</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ddprrt" height="70px" width="70px" align="left" alt="" />
+<p><strong>Stefan Baumgartner</strong><br />
+Topics: Web Ops, JavaScript, CSS, Tooling<br />
+https://twitter.com/ddprrt</p>
+<h3 id="salzburg"><a class="header" href="#salzburg">Salzburg</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/lisi_linhart" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lisi Linhart</strong><br />
+Topics: CSS, Web Animations<br />
+https://twitter.com/lisi_linhart</p>
+<h3 id="vienna"><a class="header" href="#vienna">Vienna</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bolonio" height="70px" width="70px" align="left" alt="" />
+<p><strong>Adrián Bolonio</strong><br />
+Topics: React, JavaScript, Accessibility<br />
+https://twitter.com/bolonio</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sharifsbeat" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ali Sharif</strong><br />
+Topics: Functional Programming, Agile, Product Development<br />
+https://twitter.com/sharifsbeat</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/okonetchnikov" height="70px" width="70px" align="left" alt="" />
+<p><strong>Andrey Okonetchnikov</strong><br />
+Topics: CSS in JS, Linting, Tooling<br />
+https://twitter.com/okonetchnikov</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/christophrumpel" height="70px" width="70px" align="left" alt="" />
+<p><strong>Christoph Rumpel</strong><br />
+Topics: PHP, Laravel, Chatbots<br />
+https://twitter.com/christophrumpel</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/eva_trostlos" height="70px" width="70px" align="left" alt="" />
+<p><strong>Eva Lettner</strong><br />
+Topics: CSS, Web<br />
+https://twitter.com/eva_trostlos</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/glnnrys" height="70px" width="70px" align="left" alt="" />
+<p><strong>Glenn Reyes</strong><br />
+Topics: Code Splitting, React<br />
+https://twitter.com/glnnrys</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mrozilla" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jan Hruby</strong><br />
+Topics: React, Redux, CSS in JS, React Native, Serverless, GraphQL<br />
+https://twitter.com/mrozilla</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/karlhorky" height="70px" width="70px" align="left" alt="" />
+<p><strong>Karl Horky</strong><br />
+Topics: Tooling, Standards, Intersectionality, OSS, Psychology<br />
+https://twitter.com/karlhorky</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mmatuzo" height="70" align="left" alt="">
+<p><strong>Manuel Matuzović</strong><br />
+Topics: CSS, Grid, Accessibility<br />
+https://twitter.com/mmatuzo</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mxbck" height="70px" width="70px" align="left" alt="" />
+<p><strong>Max Böck</strong><br />
+Topics: CSS, JavaScript, Progressive Web Apps<br />
+https://twitter.com/mxbck</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mxstbr" height="70px" width="70px" align="left" alt="" />
+<p><strong>Max Stoiber</strong><br />
+Topics: React, Styled Components, OSS<br />
+https://twitter.com/mxstbr</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/nikgraf" height="70px" width="70px" align="left" alt="" />
+<p><strong>Nik Graf</strong><br />
+Topics: ReasonML, Serverless, GraphQL, Virtual Reality, React<br />
+https://twitter.com/nikgraf</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/glyphe" height="70px" width="70px" align="left" alt="" />
+<p><strong>Oliver Schöndorfer</strong><br />
+Topics: Typography, CSS<br />
+https://twitter.com/glyphe</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ryyppy" height="70px" width="70px" align="left" alt="" />
+<p><strong>Patrick Stapfer</strong><br />
+Topics: ReasonML, Static Typing, Flow<br />
+https://twitter.com/ryyppy</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ferakpeter" height="70px" width="70px" align="left" alt="" />
+<p><strong>Peter Ferak</strong><br />
+Topics: Functional Programming, Computer Science<br />
+https://twitter.com/ferakpeter</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/thefubhy" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sebastian Siemssen</strong><br />
+Topics: React, GraphQL, Tooling<br />
+https://twitter.com/thefubhy</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/thecurlydev" height="70px" width="70px" align="left" alt="" />
+<p><strong>Timo Obereder</strong><br />
+Topics: React, Composition, Android, RXJava, Kotlin<br />
+https://twitter.com/thecurlydev</p>
+<h2 id="belgium-"><a class="header" href="#belgium-">Belgium 🇧🇪</a></h2>
+<h3 id="hasselt"><a class="header" href="#hasselt">Hasselt</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sambego" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sam Bellen</strong><br />
+Topics: Web Audio, Browser APIs<br />
+https://twitter.com/sambego</p>
+<h2 id="bulgaria-"><a class="header" href="#bulgaria-">Bulgaria 🇧🇬</a></h2>
+<h3 id="sofia"><a class="header" href="#sofia">Sofia</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/rstankov" height="70px" width="70px" align="left" alt="" />
+<p><strong>Radoslav Stankov</strong><br />
+Topics: React, Redux, Ruby, Testing, GraphQL<br />
+https://twitter.com/rstankov</p>
+<h2 id="czech-republic-"><a class="header" href="#czech-republic-">Czech Republic 🇨🇿</a></h2>
+<h3 id="prague"><a class="header" href="#prague">Prague</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kettanaito" height="70px" width="70px" align="left" alt="" />
+<p><strong>Artem Zakharchenko</strong><br />
+Topics: React, Forms, CSS Grid<br />
+https://twitter.com/kettanaito</p>
+<h2 id="denmark-"><a class="header" href="#denmark-">Denmark 🇩🇰</a></h2>
+<h3 id="copenhagen"><a class="header" href="#copenhagen">Copenhagen</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mafintosh" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mathias Buus</strong><br />
+Topics: Peer to Peer, Node.js<br />
+https://twitter.com/mafintosh</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/enthusiasto" height="70px" width="70px" align="left" alt="" />
+<p><strong>Olga Dmitricenko</strong><br />
+Topics: Virtual Reality, Web Image Processing<br />
+https://twitter.com/enthusiasto</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tereza_sokol" height="70px" width="70px" align="left" alt="" />
+<p><strong>Tereza Sokol</strong><br />
+Topics: Elm, Visualizations<br />
+https://twitter.com/tereza_sokol</p>
+<h2 id="finland-"><a class="header" href="#finland-">Finland 🇫🇮</a></h2>
+<h3 id="helsinki"><a class="header" href="#helsinki">Helsinki</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/eemeli_aro" height="70px" width="70px" align="left" alt="" />
+<p><strong>Eemeli Aro</strong><br />
+Topics: Open Source, React, YAML<br />
+https://twitter.com/eemeli_aro</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/pakastin" height="70px" width="70px" align="left" alt="" />
+<p><strong>Juha Lindstedt</strong><br />
+Topics: JavaScript, RE:DOM, Progressive Web Apps, Performance, Standards, CSS, Node.js<br />
+https://twitter.com/pakastin</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/plrdev" height="70px" width="70px" align="left" alt="" />
+<p><strong>Juha Linnanen</strong><br />
+Topics: React Native, TypeScript, GraphQL<br />
+https://twitter.com/plrdev</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/hamatti" height="70px" width="70px" align="left" alt="" />
+<p><strong>Juha-Matti Santala</strong><br />
+Topics: Community building, Documentation, JavaScript, Programming<br />
+https://twitter.com/Hamatti</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/maaretp" height="70px" width="70px" align="left" alt="" />
+<p><strong>Maaret Pyhäjärvi</strong><br />
+Topics: Testing<br />
+https://twitter.com/maaretp</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/varya_en" height="70px" width="70px" align="left" alt="" />
+<p><strong>Varya Stepanova</strong><br />
+Topics: CSS in JS, Style Guides, Visual Regression Testing<br />
+https://twitter.com/varya_en</p>
+<h3 id="rautalampi"><a class="header" href="#rautalampi">Rautalampi</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bebraw" height="70px" width="70px" align="left" alt="" />
+<p><strong>Juho Vepsäläinen</strong><br />
+Topics: 3D Graphics, Business, JavaScript, React, webpack, Writing<br />
+https://twitter.com/bebraw</p>
+<h2 id="france-"><a class="header" href="#france-">France 🇫🇷</a></h2>
+<h3 id="lille"><a class="header" href="#lille">Lille</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/EmmanuelDemey" height="70px" width="70px" align="left" alt="" />
+<p><strong>Emmanuel Demey</strong><br />
+Topics: Angular, JavaScript, Progressive Web Apps, Vue, React, Elasticsearch<br />
+https://twitter.com/EmmanuelDemey</p>
+<h3 id="paris"><a class="header" href="#paris">Paris</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/manekinekko" height="70px" width="70px" align="left" alt="" />
+<p><strong>Wassim Chegham</strong><br />
+Topics: Angular, JavaScript, Progressive Web Apps, Chatbots, Firebase, Cloud, Internet of Things<br />
+https://twitter.com/manekinekko</p>
+<h3 id="strasbourg"><a class="header" href="#strasbourg">Strasbourg</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/svensauleau" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sven Sauleau</strong><br />
+Topics: JavaScript (Babel), Artificial Intelligence, Linux, Cloud, Ops, Computer Science<br />
+https://twitter.com/svensauleau</p>
+<h2 id="germany-"><a class="header" href="#germany-">Germany 🇩🇪</a></h2>
+<h3 id="augsburg"><a class="header" href="#augsburg">Augsburg</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/Jhnnns" height="70px" width="70px" align="left" alt="" />
+<p><strong>Johannes Ewald</strong><br />
+Topics: Tooling, Standards, webpack<br />
+https://twitter.com/Jhnnns</p>
+<h3 id="berlin"><a class="header" href="#berlin">Berlin</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/allyelle" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ally Long</strong><br />
+Topics: CSS, Performance<br />
+https://twitter.com/allyelle</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/iamsapegin" height="70px" width="70px" align="left" alt="" />
+<p><strong>Artem Sapegin</strong><br />
+Topics: Styleguides, UI, CSS<br />
+https://twitter.com/iamsapegin</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sonniesedge" height="70px" width="70px" align="left" alt="" />
+<p><strong>Charlie Owen</strong><br />
+Topics: CSS, Accessibility<br />
+https://twitter.com/sonniesedge</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/HernanMagrini" height="70px" width="70px" align="left" alt="" />
+<p><strong>Hernán Magrini</strong><br />
+Topics: Web Performance, Service Workers<br />
+https://twitter.com/HernanMagrini</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/KittyGiraudel" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kitty Giraudel</strong><br />
+Topics: Accessibility, Diversity, Inclusivity<br />
+https://twitter.com/KittyGiraudel</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/Lugotype" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lu Yu</strong><br />
+Topics: Graphic Design, Typography, Branding, User Experience<br />
+https://twitter.com/Lugotype</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ManuelBieh" height="70px" width="70px" align="left" alt="" />
+<p><strong>Manuel Bieh</strong><br />
+Topics: React, JavaScript, Code Quality, Clean Code, Leadership, Developer Experience<br />
+https://twitter.com/ManuelBieh</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/nataliepis" height="70px" width="70px" align="left" alt="" />
+<p><strong>Natalie Pistunovich</strong><br />
+Topics: Mobile Apps, Go<br />
+https://twitter.com/nataliepis</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/oleg008" height="70px" width="70px" align="left" alt="" />
+<p><strong>Oleg Slobodskoi</strong><br />
+Topics: CSS in JS, React<br />
+https://twitter.com/oleg008</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/robinpokorny" height="70px" width="70px" align="left" alt="" />
+<p><strong>Robin Pokorny</strong><br />
+Topics: Jest, React, AMP, Elm<br />
+https://twitter.com/robinpokorny</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/NikkitaFTW" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sara Vieira</strong><br />
+Topics: Styleguides, React, CSS, Preact, CSS-in-JS<br />
+https://twitter.com/NikkitaFTW</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/Srushtika" height="70px" width="70px" align="left" alt="" />
+<p><strong>Srushtika Neelakantam</strong><br />
+Topics: WebVR, A-Frame, Realtime Web, JavaScript Frameworks<br />
+https://twitter.com/Srushtika</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tejaskumar_" height="70px" width="70px" align="left" alt="" />
+<p><strong>Tejas Kumar</strong><br />
+Topics: JavaScript, React, WebAssembly, Community, Teams, Humanities<br />
+<a href="https://twitter.com/tejaskumar_">https://twitter.com/tejaskumar_</a></p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/yoshuawuyts" height="70px" width="70px" align="left" alt="" />
+<p><strong>Yoshua Wuyts</strong><br />
+Topics: Frameworks, Simplicity, Standards, Libraries<br />
+https://twitter.com/yoshuawuyts</p>
+<h3 id="düsseldorf"><a class="header" href="#düsseldorf">Düsseldorf</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/iamjoyheron" height="70px" width="70px" align="left" alt="" />
+<p><strong>Joy Heron</strong><br />
+Topics: Clojure, Web Apps, Security<br />
+https://twitter.com/iamjoyheron</p>
+<h3 id="freiburg"><a class="header" href="#freiburg">Freiburg</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/smashingmag" height="70px" width="70px" align="left" alt="" />
+<p><strong>Vitaly Friedman</strong><br />
+Topics: Web Design, Web Development, Responsive Web Design<br />
+https://twitter.com/smashingmag</p>
+<h3 id="hamburg"><a class="header" href="#hamburg">Hamburg</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/marionebl" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mario Nebl</strong><br />
+Topics: JavaScript, Node, JS Architecture<br />
+https://twitter.com/marionebl</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/aemkei" height="70px" width="70px" align="left" alt="" />
+<p><strong>Martin Kleppe</strong><br />
+Topics: Weird JS<br />
+https://twitter.com/aemkei</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/PalmaSwell" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mauricio Palma</strong><br />
+Topics: CSS, JavaScript<br />
+https://twitter.com/PalmaSwell</p>
+<h3 id="höchst-im-odenwald"><a class="header" href="#höchst-im-odenwald">Höchst im Odenwald</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/TimPietrusky" height="70px" width="70px" align="left" alt="" />
+<p><strong>Tim Pietrusky</strong><br />
+Topics: JS Art, JS Music, JavaScript<br />
+https://twitter.com/TimPietrusky</p>
+<h3 id="karlsruhe"><a class="header" href="#karlsruhe">Karlsruhe</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/robinweser" height="70px" width="70px" align="left" alt="" />
+<p><strong>Robin Weser</strong><br />
+Topics: CSS, CSS in JS, React<br />
+https://twitter.com/robinweser</p>
+<h3 id="munich"><a class="header" href="#munich">Munich</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/fhinkel" height="70px" width="70px" align="left" alt="" />
+<p><strong>Franziska Hinkelmann</strong><br />
+Topics: Node, V8<br />
+https://twitter.com/fhinkel</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mathias" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mathias Bynens</strong><br />
+Topics: JavaScript (TC39), V8, Chrome<br />
+https://twitter.com/mathias</p>
+<h2 id="greece-"><a class="header" href="#greece-">Greece 🇬🇷</a></h2>
+<h3 id="athens"><a class="header" href="#athens">Athens</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/NickPalladinos" height="70px" width="70px" align="left" alt="" />
+<p><strong>Nick Palladinos</strong><br />
+Topics: F#<br />
+https://twitter.com/NickPalladinos</p>
+<h2 id="ireland-"><a class="header" href="#ireland-">Ireland 🇮🇪</a></h2>
+<h3 id="cork"><a class="header" href="#cork">Cork</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/DaveJ" height="70px" width="70px" align="left" alt="" />
+<p><strong>Dave Jeffery</strong><br />
+Topics: JavaScript, Electron, Node.js<br />
+https://twitter.com/DaveJ</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/eoins" height="70px" width="70px" align="left" alt="" />
+<p><strong>Eoin Shanaghy</strong><br />
+Topics: Java, Elixir, Node.js<br />
+https://twitter.com/eoins</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sugrue" height="70px" width="70px" align="left" alt="" />
+<p><strong>James Sugrue</strong><br />
+Topics: Swift, JavaScript, Java<br />
+https://twitter.com/sugrue</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tech_fort" height="70px" width="70px" align="left" alt="" />
+<p><strong>Joe Minichino</strong><br />
+Topics: Artificial Intelligence, Machine Learning, Databases, JavaScript, Python<br />
+https://twitter.com/tech_fort</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/aetheon" height="70px" width="70px" align="left" alt="" />
+<p><strong>Oscar Brito</strong><br />
+Topics: Linux, Node.js, JavaScript, Python<br />
+https://twitter.com/aetheon</p>
+<h3 id="dublin"><a class="header" href="#dublin">Dublin</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/dhigit9" height="70px" width="70px" align="left" alt="" />
+<p><strong>Anton Whalley</strong><br />
+Topics: Node.js, Decentralization, FreeBSD, Open Source<br />
+https://twitter.com/dhigit9</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/augeva" height="70px" width="70px" align="left" alt="" />
+<p><strong>Augusto Evangelisti</strong><br />
+Topics: Testing, Agile, Bitcoin<br />
+https://twitter.com/augeva</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/barryosull" height="70px" width="70px" align="left" alt="" />
+<p><strong>Barry O'Sullivan</strong><br />
+Topics: PHP, Testing, Domain-Driven Design, Event Sourcing<br />
+https://twitter.com/barryosull</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/real_ate" height="70px" width="70px" align="left" alt="" />
+<p><strong>Chris Manson</strong><br />
+Topics: JavaScript, Ember, React<br />
+https://twitter.com/real_ate</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/cianmm" height="70px" width="70px" align="left" alt="" />
+<p><strong>Cian Mac Mahon</strong><br />
+Topics: JavaScript, React<br />
+https://twitter.com/cianmm</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/claudiopro" height="70px" width="70px" align="left" alt="" />
+<p><strong>Claudio Procida</strong><br />
+Topics: JavaScript, React, Node.js, Diversity<br />
+https://twitter.com/claudiopro</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/donovanh" height="70px" width="70px" align="left" alt="" />
+<p><strong>Donovan Hutchinson</strong><br />
+Topics: HTML, CSS, JavaScript<br />
+https://twitter.com/donovanh</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/opinionatedpie" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ingrid Epure</strong><br />
+Topics: Security, Psychology<br />
+https://twitter.com/opinionatedpie</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/johnbrett_" height="70px" width="70px" align="left" alt="" />
+<p><strong>John Brett</strong><br />
+Topics: JavaScript, hapi, Nomad Work, Bitcoin<br />
+<a href="https://twitter.com/johnbrett_">https://twitter.com/johnbrett_</a></p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/loige" height="70px" width="70px" align="left" alt="" />
+<p><strong>Luciano Mammino</strong><br />
+Topics: Node.js, Design Patterns, Serverless, JSON Web Tokens, Universal JavaScript<br />
+https://twitter.com/loige</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/Lynsey_Duncan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lynsey Duncan</strong><br />
+Topics: UX, UI, Design Systems<br />
+https://twitter.com/Lynsey_Duncan</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/princessmaja" height="70px" width="70px" align="left" alt="" />
+<p><strong>Maja Grubic</strong><br />
+Topics: Node.js, JavaScript, React, Monitoring, D3, SVG<br />
+https://twitter.com/princessmaja</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mariocasciaro" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mario Casciaro</strong><br />
+Topics: Node.js, JavaScript, Design Patterns, Startups<br />
+https://twitter.com/mariocasciaro</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/micflan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Michael Flanagan</strong><br />
+Topics: PHP, JavaScript, REST, Testing<br />
+https://twitter.com/micflan</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mustafaturan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mustafa Turan</strong><br />
+Topics: Elixir, Ruby, Functional Programming<br />
+https://twitter.com/mustafaturan</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/PadraigOBrien" height="70px" width="70px" align="left" alt="" />
+<p><strong>Padraig O'Brien</strong><br />
+Topics: Serverless, Big Data, Databases<br />
+https://twitter.com/PadraigOBrien</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/CatKlavier" height="70px" width="70px" align="left" alt="" />
+<p><strong>Panpan Lin</strong><br />
+Topics: JavaScript, GraphQL, Swift, Hackathons<br />
+https://twitter.com/CatKlavier</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/patocallaghan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Pat O'Callaghan</strong><br />
+Topics: JavaScript, Node.js, Ember<br />
+https://twitter.com/patocallaghan</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/serifritsch" height="70px" width="70px" align="left" alt="" />
+<p><strong>Serena Fritsch</strong><br />
+Topics: JavaScript, Ember, Developer Workflows<br />
+https://twitter.com/serifritsch</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/malyw" height="70px" width="70px" align="left" alt="" />
+<p><strong>Serg Hospodarets</strong><br />
+Topics: JavaScript, CSS, CSS Houdini<br />
+https://twitter.com/malyw</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tomwillfixit" height="70px" width="70px" align="left" alt="" />
+<p><strong>Thomas Shaw</strong><br />
+Topics: Docker, Jenkins, Devops<br />
+https://twitter.com/tomwillfixit</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/brikis98" height="70px" width="70px" align="left" alt="" />
+<p><strong>Yevgeniy Brikman</strong><br />
+Topics: Terraform, Devops, Scalability<br />
+https://twitter.com/brikis98</p>
+<h3 id="galway"><a class="header" href="#galway">Galway</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/markconroy" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mark Conroy</strong><br />
+Topics: Frontend, Drupal, Web Development<br />
+https://twitter.com/markconroy</p>
+<h3 id="waterford"><a class="header" href="#waterford">Waterford</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/rjrodger" height="70px" width="70px" align="left" alt="" />
+<p><strong>Richard Rodger</strong><br />
+Topics: Node.js, Microservices<br />
+https://twitter.com/rjrodger</p>
+<h2 id="israel-"><a class="header" href="#israel-">Israel 🇮🇱</a></h2>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/nirgn975" height="70px" width="70px" align="left" alt="" />
+<p><strong>Nir Galon</strong><br />
+Topics: Python, API Star, Open Source, Node.js, Angular<br />
+https://twitter.com/nirgn975</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/nirkaufman" height="70px" width="70px" align="left" alt="" />
+<p><strong>Nir Kaufman</strong><br />
+Topics: Angular, Firebase, Redux<br />
+https://twitter.com/nirkaufman</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/UriShaked" height="70px" width="70px" align="left" alt="" />
+<p><strong>Uri Shaked</strong><br />
+Topics: Web Bluetooth, WebVR, Angular, Internet of Things with JavaScript<br />
+https://twitter.com/UriShaked</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/yoniweisbrod" height="70px" width="70px" align="left" alt="" />
+<p><strong>Yoni Weisbrod</strong><br />
+Topics: React, MobX, MobX State Tree, React-Native<br />
+https://twitter.com/yoniweisbrod</p>
+<h2 id="italy-"><a class="header" href="#italy-">Italy 🇮🇹</a></h2>
+<h3 id="milan"><a class="header" href="#milan">Milan</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/granze" height="70px" width="70px" align="left" alt="" />
+<p><strong>Maurizio Mangione</strong><br />
+Topics: Web Components, Polymer, Progressive Web Apps<br />
+https://twitter.com/granze</p>
+<h2 id="verona"><a class="header" href="#verona">Verona</a></h2>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/cef62" height="70px" width="70px" align="left" alt="" />
+<p><strong>Matteo Ronchi</strong><br />
+Topics: React, JavaScript, Flow, Web Architectures, Frontend Ops<br />
+https://twitter.com/cef62</p>
+<h2 id="netherlands-"><a class="header" href="#netherlands-">Netherlands 🇳🇱</a></h2>
+<h3 id="amsterdam"><a class="header" href="#amsterdam">Amsterdam</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kureevalexey" height="70px" width="70px" align="left" alt="" />
+<p><strong>Alexey Kureev</strong><br />
+Topics: React Native<br />
+https://twitter.com/kureevalexey</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/carmenpopoviciu" height="70px" width="70px" align="left" alt="" />
+<p><strong>Carmen Popoviciu</strong><br />
+Topics: Angular, JavaScript, Machine Learning, Neural Networks, Polymer, Web Components<br />
+https://twitter.com/carmenpopoviciu</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/chidinmako" height="70px" width="70px" align="left" alt="" />
+<p><strong>Chidinma Kalu</strong><br />
+Topics: JavaScript, TypeScript, Python, Machine Learning<br />
+https://twitter.com/chidinmako</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/JoubranJad" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jad Joubran</strong><br />
+Topics: Progressive Web Apps, Web Performance, JavaScript<br />
+https://twitter.com/JoubranJad</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/udezekene" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kene Udeze</strong><br />
+Topics: Design, CSS, Accessibility, Inclusive Design<br />
+https://twitter.com/udezekene</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mweststrate" height="70px" width="70px" align="left" alt="" />
+<p><strong>Michel Weststrate</strong><br />
+Topics: MobX, React, mobx-state-tree, Typescript, Open Source<br />
+https://twitter.com/mweststrate</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/narendra_shetty" height="70px" width="70px" align="left" alt="" />
+<p><strong>Narendra Shetty</strong><br />
+Topics: React, Progressive Web Apps<br />
+https://twitter.com/narendra_shetty</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ppk" height="70px" width="70px" align="left" alt="" />
+<p><strong>Peter-Paul Koch</strong><br />
+Topics: HTML, CSS, JavaScript, Cross-Browser Compatibility<br />
+https://twitter.com/ppk</p>
+<h3 id="bergambacht"><a class="header" href="#bergambacht">Bergambacht</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/stefannhs" height="70px" width="70px" align="left" alt="" />
+<p><strong>Stefan Nieuwenhuis</strong><br />
+Topics: Angular, Web Components, Frontend Architecture, Microservices, Monorepos, Design Systems<br />
+https://twitter.com/stefannhs</p>
+<h3 id="breda"><a class="header" href="#breda">Breda</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/detonite" height="70px" width="70px" align="left" alt="" />
+<p><strong>Job van Achterberg</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/detonite/</p>
+<h3 id="gouda"><a class="header" href="#gouda">Gouda</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/rowdyrabouw" height="70px" width="70px" align="left" alt="" />
+<p><strong>Rowdy Rabouw</strong><br />
+Topics: NativeScript, Browser APIs<br />
+https://twitter.com/rowdyrabouw</p>
+<h3 id="papendrecht"><a class="header" href="#papendrecht">Papendrecht</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/gklijs" height="70px" width="70px" align="left" alt="" />
+<p><strong>Gerard Klijs</strong><br />
+Topics: Clojure, Rust, GraphQL, Apache Kafka<br />
+https://twitter.com/gklijs</p>
+<h3 id="zwolle"><a class="header" href="#zwolle">Zwolle</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/NorbertdeLangen" height="70px" width="70px" align="left" alt="" />
+<p><strong>Norbert de Langen</strong><br />
+Topics: Component Libraries, React, Storybook, Open Source, Communities<br />
+https://twitter.com/NorbertdeLangen</p>
+<h2 id="norway-"><a class="header" href="#norway-">Norway 🇳🇴</a></h2>
+<h3 id="oslo"><a class="header" href="#oslo">Oslo</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/antonbabenko" height="70px" width="70px" align="left" alt="" />
+<p><strong>Anton Babenko</strong><br />
+Topics: Terraform, AWS, Devops<br />
+https://twitter.com/antonbabenko</p>
+<h2 id="poland-"><a class="header" href="#poland-">Poland 🇵🇱</a></h2>
+<h3 id="gdańsk"><a class="header" href="#gdańsk">Gdańsk</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kejt_bw" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kasia Jastrzębska</strong><br />
+Topics: React, Redux, Async, CSS in JS, ClojureScript<br />
+https://twitter.com/kejt_bw</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/thekitze" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kitze</strong><br />
+Topics: MobX, State Management, GraphQL, CSS in JS<br />
+https://twitter.com/thekitze</p>
+<h3 id="krakow"><a class="header" href="#krakow">Krakow</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/szynszyliszys" height="70px" width="70px" align="left" alt="" />
+<p><strong>Anna Migas</strong><br />
+Topics: HTML, CSS, JavaScript, Web Animations, Web Performance<br />
+https://twitter.com/szynszyliszys</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kaapa_s" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kacper Sokołowski</strong><br />
+Topics: JavaScript, Security, Service Workers<br />
+https://twitter.com/kaapa_s</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kdzwinel" height="70px" width="70px" align="left" alt="" />
+<p><strong>Konrad Dzwinel</strong><br />
+Topics: Developer Tools, JavaScript<br />
+https://twitter.com/kdzwinel</p>
+<h3 id="poznań"><a class="header" href="#poznań">Poznań</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tlakomy" height="70px" width="70px" align="left" alt="" />
+<p><strong>Tomasz Łakomy</strong><br />
+Topics: React, Virtual Reality, jQuery<br />
+https://twitter.com/tlakomy</p>
+<h3 id="warsaw"><a class="header" href="#warsaw">Warsaw</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/aganaplocha" height="70px" width="70px" align="left" alt="" />
+<p><strong>Aga Naplocha</strong><br />
+Topics: CSS, Teaching Web Technologies<br />
+https://twitter.com/aganaplocha</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tomasz_ducin" height="70px" width="70px" align="left" alt="" />
+<p><strong>Tomasz Ducin</strong><br />
+Topics: JavaScript, TypeScript, React, Angular, RxJS, Async, Architecture<br />
+https://twitter.com/tomasz_ducin</p>
+<h3 id="wrocław"><a class="header" href="#wrocław">Wrocław</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ferrannp" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ferran Negre</strong><br />
+Topics: React Native, React, Testing, JavaScript, Android<br />
+https://twitter.com/ferrannp</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/grabbou" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mike Grabowski</strong><br />
+Topics: React Native, JavaScript, Tooling<br />
+https://twitter.com/grabbou</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/thymikee" height="70px" width="70px" align="left" alt="" />
+<p><strong>Michał Pierzchała</strong><br />
+Topics: React Native, Jest, Testing, CSS<br />
+https://twitter.com/thymikee</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/michal_chudziak" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mike Chudziak</strong><br />
+Topics: React, React Native, iOS, Android<br />
+https://twitter.com/michal_chudziak</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/satya164" height="70px" width="70px" align="left" alt="" />
+<p><strong>Satyajit Sahoo</strong><br />
+Topics: React, React Native, CSS in JS, Tooling<br />
+https://twitter.com/satya164</p>
+<h2 id="portugal-"><a class="header" href="#portugal-">Portugal 🇵🇹</a></h2>
+<h3 id="aveiro"><a class="header" href="#aveiro">Aveiro</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/FilipaLacerda" height="70px" width="70px" align="left" alt="" />
+<p><strong>Filipa Lacerda</strong><br />
+Topics: Vue, Vuex<br />
+https://twitter.com/FilipaLacerda</p>
+<h3 id="lisbon"><a class="header" href="#lisbon">Lisbon</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sericaia" height="70px" width="70px" align="left" alt="" />
+<p><strong>Daniela Matos de Carvalho</strong><br />
+Topics: Web protocols, Web security, JavaScript, React, Node.js, Offline First<br />
+https://twitter.com/sericaia</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/daviddias" height="70px" width="70px" align="left" alt="" />
+<p><strong>David Dias</strong><br />
+Topics: IPFS, Peer to Peer, JavaScript, Node.js<br />
+https://twitter.com/daviddias</p>
+<h3 id="porto"><a class="header" href="#porto">Porto</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/maskedwarrior" height="70px" width="70px" align="left" alt="" />
+<p><strong>Miguel Andrade</strong><br />
+Topics: Ember, JavaScript<br />
+https://twitter.com/maskedwarrior</p>
+<h2 id="romania-"><a class="header" href="#romania-">Romania 🇷🇴</a></h2>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/martonkodok" height="70px" width="70px" align="left" alt="" />
+<p><strong>Márton Kodok</strong><br />
+Topics: BigQuery, Databases, Voice Based Interfaces, Cloud, Architecture<br />
+https://twitter.com/martonkodok</p>
+<h2 id="russia-"><a class="header" href="#russia-">Russia 🇷🇺</a></h2>
+<h3 id="moscow"><a class="header" href="#moscow">Moscow</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/nikitonsky" height="70px" width="70px" align="left" alt="" />
+<p><strong>Nikita Prokopov</strong><br />
+Topics: Clojure, DataScript, Rum, FiraCode, AnyBar<br />
+https://twitter.com/nikitonsky</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/elixir_lang_mos" height="70px" width="70px" align="left" alt="" />
+<p><strong>Nikita Sobolev</strong><br />
+Topics: Elixir, Python, JavaScript, Management, RSDP<br />
+https://twitter.com/elixir_lang_mos</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ai_boy" height="70px" width="70px" align="left" alt="" />
+<p><strong>Oleksii Okhrymenko</strong><br />
+Topics: Angular, JavaScript, RxJS, i18n, HTML, CSS<br />
+https://twitter.com/ai_boy</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/chicoxyzzy" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sergey Rubanov</strong><br />
+Topics: Standards, Web Assembly<br />
+https://twitter.com/chicoxyzzy</p>
+<h3 id="st-petersburg"><a class="header" href="#st-petersburg">St. Petersburg</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/pepelsbey_" height="70px" width="70px" align="left" alt="" />
+<p><strong>Vadim Makeev</strong><br />
+Topics: HTML, CSS, Web Standards, Accessibility<br />
+<a href="https://twitter.com/pepelsbey_">https://twitter.com/pepelsbey_</a></p>
+<h2 id="serbia-"><a class="header" href="#serbia-">Serbia 🇷🇸</a></h2>
+<h3 id="belgrade"><a class="header" href="#belgrade">Belgrade</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/simalexan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Aleksandar Simovic</strong><br />
+Topics: Serverless<br />
+https://twitter.com/simalexan</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/slobodan_" height="70px" width="70px" align="left" alt="" />
+<p><strong>Slobodan Stojanović</strong><br />
+Topics: Serverless, Offline Web, Chat Bots<br />
+<a href="https://twitter.com/slobodan_">https://twitter.com/slobodan_</a></p>
+<h2 id="spain-"><a class="header" href="#spain-">Spain 🇪🇸</a></h2>
+<h3 id="alicante"><a class="header" href="#alicante">Alicante</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/flaviocorpa" height="70px" width="70px" align="left" />
+<p><strong>Flavio Corpa</strong><br />
+Topics: JavaScript, Functional Programming<br />
+https://twitter.com/flaviocorpa</p>
+<h3 id="córdoba"><a class="header" href="#córdoba">Córdoba</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/javivelasco" height="70px" width="70px" align="left" alt="" />
+<p><strong>Javi Velasco</strong><br />
+Topics: React, CSS in JS, React Toolbox<br />
+https://twitter.com/javivelasco</p>
+<h3 id="madrid"><a class="header" href="#madrid">Madrid</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/D3DVincent" height="70px" width="70px" align="left" alt="" />
+<p><strong>Vincenzo Chianese</strong><br />
+Topics: WebAPI, Microservices, JavaScript<br />
+https://twitter.com/D3DVincent</p>
+<h3 id="santander"><a class="header" href="#santander">Santander</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/erikras" height="70px" width="70px" align="left" alt="" />
+<p><strong>Erik Rasmussen</strong><br />
+Topics: React, Redux, Redux-Form, Forms<br />
+https://twitter.com/erikras</p>
+<h2 id="sweden"><a class="header" href="#sweden">Sweden</a></h2>
+<h3 id="stockholm"><a class="header" href="#stockholm">Stockholm</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/muhd_ahsanayaz" height="70px" width="70px" align="left" alt="" />
+<p><strong>Muhammad Ahsan Ayaz</strong><br />
+Topics: JavaScript, Angular, Node.js, Ionic, Firebase, Stencil, Progressive Web Apps<br />
+https://twitter.com/muhd_ahsanayaz</p>
+<h2 id="switzerland-"><a class="header" href="#switzerland-">Switzerland 🇨🇭</a></h2>
+<h3 id="zurich"><a class="header" href="#zurich">Zurich</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/g33konaut" height="70px" width="70px" align="left" alt="" />
+<p><strong>Martin Splitt</strong><br />
+Topics: Virtual Reality, Web Performance<br />
+https://twitter.com/g33konaut</p>
+<h2 id="ukraine-"><a class="header" href="#ukraine-">Ukraine 🇺🇦</a></h2>
+<h3 id="chernivtsi"><a class="header" href="#chernivtsi">Chernivtsi</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/denysdovhan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Denys Dovhan</strong><br />
+Topics: JavaScript, DevTools, Shell scripting<br />
+https://twitter.com/denysdovhan</p>
+<h3 id="kharkiv"><a class="header" href="#kharkiv">Kharkiv</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/xanf_ua" height="70px" width="70px" align="left" alt="" />
+<p><strong>Illya Klymov</strong><br />
+Topics: Teaching, Coaching, JavaScript<br />
+https://twitter.com/xanf_ua</p>
+<h3 id="kyiv"><a class="header" href="#kyiv">Kyiv</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/shvaikalesh" height="70px" width="70px" align="left" alt="" />
+<p><strong>Aleksey Shvayka</strong><br />
+Topics: Browsers, Web Standards, Open Source, Front End, Smalltalk<br />
+<a href="https://twitter.com/shvaikalesh">https://twitter.com/shvaikalesh_</a></p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/listochkin" height="70px" width="70px" align="left" alt="" />
+<p><strong>Andrey Listochkin</strong><br />
+Topics: Rust, JavaScript, Skills, Architecture<br />
+https://twitter.com/listochkin</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/eagleeye_s" height="70px" width="70px" align="left" alt="" />
+<p><strong>Andrii Shumada</strong><br />
+Topics: JavaScript, Node.js, Streams<br />
+https://twitter.com/eagleeye_s</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/SilentImp" height="70px" width="70px" align="left" alt="" />
+<p><strong>Anton Nemtsev</strong><br />
+Topics: HTML, CSS, Web Standards<br />
+https://twitter.com/SilentImp</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/yavorsky_" height="70px" width="70px" align="left" alt="" />
+<p><strong>Artem Yavorsky</strong><br />
+Topics: Babel, ECMAScript, Compilers<br />
+<a href="https://twitter.com/yavorsky_">https://twitter.com/yavorsky_</a></p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/roman01la" height="70px" width="70px" align="left" alt="" />
+<p><strong>Roman Liutikov</strong><br />
+Topics: ClojureScript, React, Compilers<br />
+https://twitter.com/roman01la</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tshemsedinov" height="70px" width="70px" align="left" alt="" />
+<p><strong>Timur Shemsedinov</strong><br />
+Topics: Node.js, Programming, JavaScript, Highload<br />
+https://twitter.com/tshemsedinov</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mourner" height="70px" width="70px" align="left" alt="" />
+<p><strong>Vladimir Agafonkin</strong><br />
+Topics: Maps, Algorithms<br />
+https://twitter.com/mourner</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/akella" height="70px" width="70px" align="left" alt="" />
+<p><strong>Yuri Artyukh</strong><br />
+Topics: HTML, CSS, JavaScript, WebGL<br />
+https://twitter.com/akella</p>
+<h3 id="vinnytsia"><a class="header" href="#vinnytsia">Vinnytsia</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/denar90_" height="70px" width="70px" align="left" alt="" />
+<p><strong>Artem Denysov</strong><br />
+Topics: Web Performance, Dev Tools<br />
+<a href="https://twitter.com/denar90_">https://twitter.com/denar90_</a></p>
+<h3 id="odessa"><a class="header" href="#odessa">Odessa</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/geek_timofey" height="70px" width="70px" align="left" alt="" />
+<p><strong>Timofey Lavrenyuk</strong><br />
+Topics: Progressive Web Apps, Modern Browser APIs<br />
+https://twitter.com/geek_timofey</p>
+<h2 id="united-kingdom-"><a class="header" href="#united-kingdom-">United Kingdom 🇬🇧</a></h2>
+<h3 id="birmingham"><a class="header" href="#birmingham">Birmingham</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/brucel" height="70px" width="70px" align="left" alt="" />
+<p><strong>Bruce Lawson</strong><br />
+Topics: Standards, Performance<br />
+https://twitter.com/brucel</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sil" height="70px" width="70px" align="left" alt="" />
+<p><strong>Stuart Langridge</strong><br />
+Topics: JavaScript, HTML, Open Source<br />
+https://twitter.com/sil</p>
+<h3 id="brighton"><a class="header" href="#brighton">Brighton</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/adactio" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jeremy Keith</strong><br />
+Topics: Standards, Web Development, Web Design, CSS, Accessibility<br />
+https://twitter.com/adactio</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/paulrobertlloyd" height="70px" width="70px" align="left" alt="" />
+<p><strong>Paul Robert Lloyd</strong><br />
+Topics: Design, Web Design, Architecture, Design Systems, Trains<br />
+https://twitter.com/paulrobertlloyd</p>
+<h3 id="bristol"><a class="header" href="#bristol">Bristol</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/LeonieWatson" height="70px" width="70px" align="left" alt="" />
+<p><strong>Léonie Watson</strong><br />
+Topics: Accessibility, Web Standards, Screen Readers<br />
+https://twitter.com/LeonieWatson</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/rachelandrew" height="70px" width="70px" align="left" alt="" />
+<p><strong>Rachel Andrew</strong><br />
+Topics: CSS<br />
+https://twitter.com/rachelandrew</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/Rumyra" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ruth John</strong><br />
+Topics: Browser Technologies, Web Audio, Web MIDI<br />
+https://twitter.com/Rumyra</p>
+<h3 id="leighton-buzzard"><a class="header" href="#leighton-buzzard">Leighton Buzzard</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/cjforms" height="70px" width="70px" align="left" alt="" />
+<p><strong>Caroline Jarrett</strong><br />
+Topics: Forms Usability, User Research<br />
+https://twitter.com/cjforms</p>
+<h3 id="leeds"><a class="header" href="#leeds">Leeds</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/LukeB_UK" height="70px" width="70px" align="left" alt="" />
+<p><strong>Luke Bonaccorsi</strong><br />
+Topics: Node, JavaScript, Automation<br />
+https://twitter.com/LukeB_UK</p>
+<h3 id="london"><a class="header" href="#london">London</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/lady_ada_king" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ada Rose Cannon</strong><br />
+Topics: HTML, CSS, JavaScript, WebVR, Web Technologies, Progressive Web Apps<br />
+https://twitter.com/lady_ada_king</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/cirpo" height="70px" width="70px" align="left" alt="" />
+<p><strong>Alessandro Cinelli</strong><br />
+Topics: JavaScript<br />
+https://twitter.com/cirpo</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/alex_lobera" height="70px" width="70px" align="left" alt="" />
+<p><strong>Alex Lobera</strong><br />
+Topics: JavaScript, React, Redux, GraphQL<br />
+https://twitter.com/alex_lobera</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/iotwatch" height="70px" width="70px" align="left" alt="" />
+<p><strong>Alexandra Deschamps-Sonsino</strong><br />
+Topics: Internet of Things, Smart Homes, Connected Devices<br />
+https://twitter.com/iotwatch</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/craftui" height="70px" width="70px" align="left" alt="" />
+<p><strong>Alla Kholmatova</strong><br />
+Topics: Design Systems<br />
+https://twitter.com/craftui</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/triblondon" height="70px" width="70px" align="left" alt="" />
+<p><strong>Andrew Betts</strong><br />
+Topics: Networks, Performance, Web<br />
+https://twitter.com/triblondon</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/lithinn" height="70px" width="70px" align="left" alt="" />
+<p><strong>Anna Doubková</strong><br />
+Topics: React, Testing<br />
+https://twitter.com/lithinn</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bodil" height="70px" width="70px" align="left" alt="" />
+<p><strong>Bodil Stokke</strong><br />
+Topics: Programming, Functional Programming<br />
+https://twitter.com/bodil</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/chris_noring" height="70px" width="70px" align="left" alt="" />
+<p><strong>Chris Noring</strong><br />
+Topics: JavaScript, RxJS, Angular, React<br />
+https://twitter.com/chris_noring</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/areaweb" height="70px" width="70px" align="left" alt="" />
+<p><strong>Cristiano Rastelli</strong><br />
+Topics: CSS, CSS in JS<br />
+https://twitter.com/areaweb</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/dan_abramov" height="70px" width="70px" align="left" alt="" />
+<p><strong>Dan Abramov</strong><br />
+Topics: JavaScript, React, Redux, Tooling<br />
+https://twitter.com/dan_abramov</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/Folletto" height="70px" width="70px" align="left" alt="" />
+<p><strong>Davide 'Folletto' Casali</strong><br />
+Topics: Design, User Experience, Management, Leadership, Startups<br />
+https://twitter.com/Folletto</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/gerardsans" height="70px" width="70px" align="left" alt="" />
+<p><strong>Gerard Sans</strong><br />
+Topics: Angular, React, GraphQL, CSS Animations, RxJS<br />
+https://twitter.com/gerardsans</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/gojkoadzic" height="70px" width="70px" align="left" alt="" />
+<p><strong>Gojko Adzic</strong><br />
+Topics: Testing, Requirements, Serverless<br />
+https://twitter.com/gojkoadzic</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/jevakallio" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jani Eväkallio</strong><br />
+Topics: Self-Development, Programming<br />
+https://twitter.com/jevakallio</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/MicheleBertoli" height="70px" width="70px" align="left" alt="" />
+<p><strong>Michele Bertoli</strong><br />
+Topics: React, Testing<br />
+https://twitter.com/MicheleBertoli</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/_philpl" height="70px" width="70px" align="left" alt="" />
+<p><strong>Phil Plückthun</strong><br />
+Topics: React, CSS in JS<br />
+https://twitter.com/_philpl</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/saniyusuf" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sani Yusuf</strong><br />
+Topics: Ionic, Angular, JavaScript, Progressive Web Apps<br />
+https://twitter.com/saniyusuf</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sebawita" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sebastian Witalec</strong><br />
+Topics: NativeScript, Angular, Bots, JavaScript<br />
+https://twitter.com/sebawita</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/yaili" height="70px" width="70px" align="left" alt="" />
+<p><strong>Inayaili de León</strong><br />
+Topics: Design Systems, Responsive Web Design, Design Leadership, UI<br />
+https://twitter.com/yaili</p>
+<h2 id="norwich"><a class="header" href="#norwich">Norwich</a></h2>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/heydonworks" height="70px" width="70px" align="left" alt="" />
+<p><strong>Heydon Pickering</strong><br />
+Topics: Accessibility, Performance, Web<br />
+https://twitter.com/heydonworks</p>
+<h2 id="oxford"><a class="header" href="#oxford">Oxford</a></h2>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ninjanails" height="70px" width="auto" align="left" />
+<p><strong>Seren Davies</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/ninjanails</p>
+<h1 id="north-america"><a class="header" href="#north-america">North America</a></h1>
+<h2 id="canada-"><a class="header" href="#canada-">Canada 🇨🇦</a></h2>
+<h3 id="hamilton"><a class="header" href="#hamilton">Hamilton</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/wesbos" height="70px" width="70px" align="left" alt="" />
+<p><strong>Wes Bos</strong><br />
+Topics: JavaScript, CSS, Tooling<br />
+https://twitter.com/wesbos</p>
+<h3 id="kingston"><a class="header" href="#kingston">Kingston</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/svinkle" height="70px" width="70px" align="left" alt="">
+<p><strong>Scott Vinkle</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/svinkle</p>
+<h3 id="montréal"><a class="header" href="#montréal">Montréal</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/AurelienLoyer" height="70px" width="70px" align="left" alt="">
+<p><strong>Aurélien Loyer</strong><br />
+Topics: JavaScript, Angular, Vue.js, Node.js, TypeScript, IoT<br />
+https://twitter.com/AurelienLoyer</p>
+<h3 id="ottawa"><a class="header" href="#ottawa">Ottawa</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/shehackspurple" height="70px" width="70px" align="left" alt="">
+<p><strong>Tanya Janca</strong><br />
+Topics: InfoSec, Web App Security<br />
+https://twitter.com/shehackspurple</p>
+<h3 id="toronto"><a class="header" href="#toronto">Toronto</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/brnnbrn" height="70px" width="70px" align="left" alt="" />
+<p><strong>Brenna O'Brien</strong><br />
+Topics: Motivation, Psychology, Developer Culture, Public Speaking<br />
+https://twitter.com/brnnbrn</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/halathinkeths" height="70px" width="70px" align="left" alt="" />
+<p><strong>Hala Anwar</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/halathinkeths</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/tiffhaxell" height="70px" width="70px" align="left" alt="" />
+<p><strong>Tiff Nogueira</strong><br />
+Topics: CSS Grids, React, Redux, Firebase, Flexbox<br />
+https://twitter.com/tiffhaxell</p>
+<h2 id="united-states-of-america-"><a class="header" href="#united-states-of-america-">United States of America 🇺🇸</a></h2>
+<h3 id="boston"><a class="header" href="#boston">Boston</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ericwbailey" height="70px" width="70px" align="left" alt="" />
+<p><strong>Eric Bailey</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/ericwbailey</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bahmutov" height="70px" width="70px" align="left" alt="" />
+<p><strong>Gleb Bahmutov</strong><br />
+Topics: Computer Science, JavaScript, Reactive Programming<br />
+https://twitter.com/bahmutov</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/leaverou" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lea Verou</strong><br />
+Topics: CSS, HTML<br />
+https://twitter.com/leaverou</p>
+<h3 id="buffalo"><a class="header" href="#buffalo">Buffalo</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/aardrian" height="70px" width="70px" align="left" alt="" />
+<p><strong>Adrian Roselli</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/aardrian</p>
+<h3 id="carlsbad"><a class="header" href="#carlsbad">Carlsbad</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mjackson" height="70px" width="70px" align="left" alt="" />
+<p><strong>Michael Jackson</strong><br />
+Topics: React, JavaScript, React Router<br />
+https://twitter.com/mjackson</p>
+<h3 id="cedar-rapids"><a class="header" href="#cedar-rapids">Cedar Rapids</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/levibostian" height="70px" width="70px" align="left" alt="" />
+<p><strong>Levi Bostian</strong><br />
+Topics: Android, RxJava, Kotlin, Freelancing, Swift, iOS, Productivity, Startups, Bootstrapping
+https://twitter.com/levibostian</p>
+<h3 id="cincinnati"><a class="header" href="#cincinnati">Cincinnati</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/gigasquid" height="70px" width="70px" align="left" alt="">
+<p><strong>Carin Meier</strong><br />
+Topics: Clojure, Machine Learning, Programming<br />
+https://twitter.com/gigasquid</p>
+<h3 id="chapel-hill"><a class="header" href="#chapel-hill">Chapel Hill</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/shepazu" height="70px" width="70px" align="left" />
+<p><strong>Doug Schepers</strong><br />
+Topics: Data visualization, Accessibility, SVG<br />
+https://twitter.com/shepazu</p>
+<h3 id="chicago"><a class="header" href="#chicago">Chicago</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/KarlLHughes" height="70px" width="70px" align="left" />
+<p><strong>Karl Hughes</strong><br />
+Topics: Microservices, PHP, JavaScript, Docker<br />
+https://twitter.com/KarlLHughes</p>
+<h3 id="denver"><a class="header" href="#denver">Denver</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mirisuzanne" height="70px" width="70px" align="left" alt="" />
+<p><strong>Miriam Suzanne</strong><br />
+Topics: CSS, Sass, Architecture, Design Systems<br />
+https://twitter.com/mirisuzanne</p>
+<h3 id="madison"><a class="header" href="#madison">Madison</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/cariefisher" height="70px" width="70px" align="left" alt="" />
+<p><strong>Carie Fisher</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/cariefisher</p>
+<h3 id="nashville"><a class="header" href="#nashville">Nashville</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/Aimee_Knight" height="70px" width="70px" align="left" alt="" />
+<p><strong>Aimee Knight</strong><br />
+Topics: JavaScript, CSS, Angular, Growing Junior Developers<br />
+https://twitter.com/Aimee_Knight</p>
+<h3 id="new-jersey"><a class="header" href="#new-jersey">New Jersey</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ken_wheeler" height="70px" width="70px" align="left" alt="" />
+<p><strong>Ken Wheeler</strong><br />
+Topics: React, React Native, ReasonML<br />
+https://twitter.com/ken_wheeler</p>
+<h3 id="new-orleans"><a class="header" href="#new-orleans">New Orleans</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/GantLaborde" height="70px" width="70px" align="left" alt="" />
+<p><strong>Gant Laborde</strong><br />
+Topics: JavaScript, React Native, Leadership, Redux, Open Source, Tooling, Public Speaking<br />
+https://twitter.com/GantLaborde</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/thegreengreek" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sia Karamalegos</strong><br />
+Topics: React, JavaScript, React Native, Front-End Performance<br />
+https://twitter.com/thegreengreek</p>
+<h3 id="new-york-city"><a class="header" href="#new-york-city">New York City</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/andrey_sitnik" height="70px" width="70px" align="left" alt="">
+<p><strong>Andrey Sitnik</strong><br />
+Topics: PostCSS, CRDT<br />
+https://twitter.com/sitnikcode</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/swannodette" height="70px" width="70px" align="left" alt="" />
+<p><strong>David Nolen</strong><br />
+Topics: Clojure, ClojureScript, Om, Functional Programming, Computer Science<br />
+https://twitter.com/swannodette</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/broccolini" height="70px" width="70px" align="left" alt="" />
+<p><strong>Diana Mounter</strong><br />
+Topics: Design Systems, CSS, Product Design<br />
+https://twitter.com/broccolini</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/left_pad" height="70px" width="70px" align="left" alt="" />
+<p><strong>Henry Zhu</strong><br />
+Topics: Open Source, Babel<br />
+https://twitter.com/left_pad</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/jaredpalmer" height="70px" width="70px" align="left" alt="">
+<p><strong>Jared Palmer</strong><br />
+Topics: React, React Native, Developer Tools, Forms, TypeScript, CSS<br />
+https://twitter.com/jaredpalmer</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/jensimmons" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jen Simmons</strong><br />
+Topics: Design, CSS, HTML, Web<br />
+https://twitter.com/jensimmons</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/joe_sepi" height="70px" width="70px" align="left" alt="" />
+<p><strong>Joe Sepi</strong><br />
+Topics: Open Source, Community, Node.js, JavaScript<br />
+https://twitter.com/joe_sepi</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kurtiskemple" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kurtis Kemple</strong><br />
+Topics: React, React Native, GraphQL, Universal Components<br />
+https://twitter.com/kurtiskemple</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/lara_hogan" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lara Hogan</strong><br />
+Topics: Design, Performance, Engineering Management, Public Speaking<br />
+https://twitter.com/lara_hogan</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kosamari" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mariko Kosaka</strong><br />
+Topics: HTML, CSS, JavaScript, Web<br />
+https://twitter.com/kosamari</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/peggyrayzis" height="70px" width="70px" align="left" alt="" />
+<p><strong>Peggy Rayzis</strong><br />
+Topics: React, React Native, GraphQL<br />
+https://twitter.com/peggyrayzis</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/swyx" height="70px" width="70px" align="left" alt="" />
+<p><strong>Shawn Wang</strong><br />
+Topics: React, Serverless, JAMstack<br />
+https://twitter.com/swyx</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/una" height="70px" width="70px" align="left" alt="">
+<p><strong>Una Kravets</strong><br />
+Topics: CSS, Web<br />
+https://twitter.com/una</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bitandbang" height="70px" width="70px" align="left" alt="">
+<p><strong>Tierney Cyren</strong><br />
+Topics: Node.js, JavaScript, CLI tools, Developer Tools, Open Source, Community<br />
+https://twitter.com/bitandbang</p>
+<h3 id="mountain-view"><a class="header" href="#mountain-view">Mountain View</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/addyosmani" height="70px" width="70px" align="left" alt="" />
+<p><strong>Addy Osmani</strong><br />
+Topics: Chrome DevTools, Performance<br />
+https://twitter.com/addyosmani</p>
+<h3 id="omaha"><a class="header" href="#omaha">Omaha</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/courtneyheitman" height="70px" width="70px" align="left" alt="" />
+<p><strong>Courtney Heitman</strong><br />
+Topics: UX Development, Usability, Accessibility, Scrum, Agile<br />
+https://twitter.com/courtneyheitman</p>
+<h3 id="palo-alto"><a class="header" href="#palo-alto">Palo Alto</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/paul_irish" height="70px" width="70px" align="left" alt="" />
+<p><strong>Paul Irish</strong><br />
+Topics: Developer Tools<br />
+https://twitter.com/paul_irish</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/_chenglou" height="70px" width="70px" align="left" alt="" />
+<p><strong>Cheng Lou</strong><br />
+Topics: ReasonML, React, Software Philosophy<br />
+https://twitter.com/_chenglou</p>
+<h3 id="philadelphia"><a class="header" href="#philadelphia">Philadelphia</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/lispardi" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lis Pardi</strong><br />
+Topics: Web<br />
+https://twitter.com/lispardi</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/rtfeldman" height="70px" width="70px" align="left" alt="" />
+<p><strong>Richard Feldman</strong><br />
+Topics: Elm<br />
+https://twitter.com/rtfeldman</p>
+<h3 id="pittsburgh"><a class="header" href="#pittsburgh">Pittsburgh</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/brad_frost" height="70px" width="70px" align="left" alt="" />
+<p><strong>Brad Frost</strong><br />
+Topics: Web Design, Atomic Design, Web Development<br />
+https://twitter.com/brad_frost</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/linclark" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lin Clark</strong><br />
+Topics: React, WebAssembly, Browsers Internals<br />
+https://twitter.com/linclark</p>
+<h3 id="portland"><a class="header" href="#portland">Portland</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/joeseifi" height="70px" width="70px" align="left" alt="" />
+<p><strong>Joe Seifi</strong><br />
+Topics: CSS-in-JS, JavaScript, React<br />
+https://twitter.com/joeseifi</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kyleshevlin" height="70px" width="70px" align="left" alt="" />
+<p><strong>Kyle Shevlin</strong><br />
+Topics: React, Redux, JavaScript<br />
+https://twitter.com/kyleshevlin</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/micahgodbolt" height="70px" width="70px" align="left" alt="" />
+<p><strong>Micah Godbolt</strong><br />
+Topics: Frontend Architecture, CSS, Design Systems<br />
+https://twitter.com/micahgodbolt</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/shanselman" height="70px" width="70px" align="left" alt="" />
+<p><strong>Scott Hanselman</strong><br />
+Topics: .NET, Azure<br />
+https://twitter.com/shanselman</p>
+<img src="https://avatars1.githubusercontent.com/u/1166226?s=460&v=4" height="70px" width="70px" align="left" alt="" />
+<p><strong>Violet Peña</strong><br />
+Topics: React, Socket.IO, Storybook, Accessibility<br />
+<a href="https://github.com/vgpena">github.com/vgpena</a></p>
+<h3 id="redwood-city"><a class="header" href="#redwood-city">Redwood City</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/jessebeach" height="70px" width="70px" align="left" alt="">
+<p><strong>Jesse Beach</strong><br />
+Topics: Accessibility, React<br />
+https://twitter.com/jessebeach</p>
+<h3 id="salt-lake-city"><a class="header" href="#salt-lake-city">Salt Lake City</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/kentcdodds" height="70px" width="70px" align="left" alt="">
+<p><strong>Kent C. Dodds</strong><br />
+Topics: OSS, React, Testing<br />
+https://twitter.com/kentcdodds</p>
+<h3 id="san-francisco"><a class="header" href="#san-francisco">San Francisco</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/adammenges" height="70px" width="70px" align="left" alt="" />
+<p><strong>Adam Menges</strong><br />
+Topics: Artificial Intelligence, Design, Computer Science<br />
+https://twitter.com/adammenges</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/slightlylate" height="70px" width="70px" align="left" alt="" />
+<p><strong>Alex Russell</strong><br />
+Topics: Performance, Mobile Web, Progressive Web Apps, Web Standards<br />
+https://twitter.com/slightlylate</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/AnjanaVakil" height="70px" width="70px" align="left" alt="" />
+<p><strong>Anjana Vakil</strong><br />
+Topics: Programming Language Paradigms, Functional Programming (with JavaScript)<br />
+https://twitter.com/AnjanaVakil</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bethdean" height="70px" width="70px" align="left" alt="" />
+<p><strong>Beth Dean</strong><br />
+Topics: Design, Illustration<br />
+https://twitter.com/bethdean</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/bcherny" height="70px" width="70px" align="left" alt="" />
+<p><strong>Boris Cherny</strong><br />
+Topics: TypeScript, React, Computer Science<br />
+https://twitter.com/bcherny</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/brynn" height="70px" width="70px" align="left" alt="" />
+<p><strong>Brynn Evans</strong><br />
+Topics: Design, Management<br />
+https://twitter.com/brynn</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/cordeliadillon" height="70px" width="70px" align="left" alt="" />
+<p><strong>Cordelia Dillon</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/cordeliadillon</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/standardista" height="70px" width="70px" align="left" alt="" />
+<p><strong>Estelle Weyl</strong><br />
+Topics: CSS, Performance, Responsive Web Design<br />
+https://twitter.com/standardista</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/FrancesCoronel" height="70px" width="70px" align="left" alt="" />
+<p><strong>Frances Coronel</strong><br />
+Topics: Progressive Web Apps, TypeScript, Web Design, Open Source<br />
+https://twitter.com/FrancesCoronel</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/AGambit95" height="70px" width="70px" align="left" alt="" />
+<p><strong>Gregory Shehet</strong><br />
+Topics: Functional Reactive Programming, MobX, CSS in JS, React<br />
+https://twitter.com/AGambit95</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/jhusain" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jafar Husain</strong><br />
+Topics: JavaScript, ES7, Observables, Reactive Programming, Falcor<br />
+https://twitter.com/jhusain</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mybluewristband" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jennifer Wong</strong><br />
+Topics: Design Systems<br />
+https://twitter.com/mybluewristband</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/jongold" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jon Gold</strong><br />
+Topics: Design, Design Systems, React, Artificial Intelligence<br />
+https://twitter.com/jongold</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/lisaychuang" height="70px" width="70px" align="left" alt="" />
+<p><strong>Lisa Huang</strong><br />
+Topics: AMP, Offline-First Mobile Apps, React<br />
+https://twitter.com/lisaychuang</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/mike_matas" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mike Matas</strong><br />
+Topics: Human Interface Design<br />
+https://twitter.com/mike_matas</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/MinaMarkham" height="70px" width="70px" align="left" alt="" />
+<p><strong>Mina Markham</strong><br />
+Topics: CSS Architecture, Sass, Community, Design Systems<br />
+https://twitter.com/MinaMarkham</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/notwaldorf" height="70px" width="70px" align="left" alt="" />
+<p><strong>Monica Dinculescu</strong><br />
+Topics: Web Components, Polymer, Emoji<br />
+https://twitter.com/notwaldorf</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/gdi2290" height="70px" width="70px" align="left" alt="" />
+<p><strong>Patrick Stapleton</strong><br />
+Topics: OSS, Serverless, GraphQL, Vue.js, React, Angular, TypeScript<br />
+https://twitter.com/gdi2290</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/iam_preethi" height="70px" width="70px" align="left" alt="" />
+<p><strong>Preethi Kasireddy</strong><br />
+Topics: Machine Learning, Natural Language Processing, React<br />
+https://twitter.com/iam_preethi</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sarah_edo" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sarah Drasner</strong><br />
+Topics: CSS, SVG, Animations, Vue.js, React<br />
+https://twitter.com/sarah_edo</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sgrove" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sean Grove</strong><br />
+Topics: GraphQL, ReasonML, OCaml<br />
+https://twitter.com/sgrove</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/stefsull" height="70px" width="70px" align="left" alt="" />
+<p><strong>Stephanie Rewis</strong><br />
+Topics: Design Systems, CSS<br />
+https://twitter.com/stefsull</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ladyleet" height="70px" width="70px" align="left" alt="" />
+<p><strong>Tracy Lee</strong><br />
+Topics: Reactive Programming, Angular, Ember.js<br />
+https://twitter.com/ladyleet</p>
+<h3 id="seattle"><a class="header" href="#seattle">Seattle</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/DevWithTheHair" height="70px" width="70px" align="left" alt="" />
+<p><strong>Jaime Lopez</strong><br />
+Topics: iOS, Swift, Software Architecture, Development Processes<br />
+https://twitter.com/DevWithTheHair</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/ShellELittle" height="70px" width="70px" align="left" alt="" />
+<p><strong>Shell Little</strong><br />
+Topics: Accessibility<br />
+https://twitter.com/ShellELittle</p>
+<h1 id="south-america"><a class="header" href="#south-america">South America</a></h1>
+<h2 id="argentina-"><a class="header" href="#argentina-">Argentina 🇦🇷</a></h2>
+<h3 id="buenos-aires"><a class="header" href="#buenos-aires">Buenos Aires</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/evaferreira92" height="70px" width="70px" align="left" alt="" />
+<p><strong>Evangelina Ferreira</strong><br />
+Topics: CSS, Animations<br />
+https://twitter.com/evaferreira92</p>
+<h2 id="brazil-"><a class="header" href="#brazil-">Brazil 🇧🇷</a></h2>
+<h3 id="belo-horizonte"><a class="header" href="#belo-horizonte">Belo Horizonte</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/obetomuniz" height="70px" width="70px" align="left" alt="" />
+<p><strong>Beto Muniz</strong><br />
+Topics: React, JavaScript, Progressive Web Apps, Polymer, Community<br />
+https://twitter.com/obetomuniz</p>
+<h3 id="curitiba"><a class="header" href="#curitiba">Curitiba</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/fdaciuk" height="70px" width="70px" align="left" alt="" />
+<p><strong>Fernando Daciuk</strong><br />
+Topics: React, JavaScript<br />
+https://twitter.com/fdaciuk</p>
+<h3 id="joinville"><a class="header" href="#joinville">Joinville</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/nexwire" height="70px" width="70px" align="left" alt="" />
+<p><strong>Marcelo Camargo</strong><br />
+Topics: Functional Programming, Compilers, Type Theory, Category Theory, Lambda Calculus<br />
+https://twitter.com/nexwire</p>
+<h3 id="rio-de-janeiro"><a class="header" href="#rio-de-janeiro">Rio de Janeiro</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/raphamorims" height="70px" width="70px" align="left" alt="" />
+<p><strong>Raphael Amorim</strong><br />
+Topics: React, JavaScript, jQuery<br />
+https://twitter.com/raphamorims</p>
+<h3 id="são-paulo"><a class="header" href="#são-paulo">São Paulo</a></h3>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/carolcode" height="70px" width="70px" align="left" alt="" />
+<p><strong>Caroline Soares</strong><br />
+Topics: Frontend development, woman's inspiration, JavaScript, CSS<br />
+https://twitter.com/carolcode</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/fembernardo" height="70px" width="70px" align="left" alt="" />
+<p><strong>Fernanda Bernardo</strong><br />
+Topics: CSS, JavaScript, HTML<br />
+https://twitter.com/fembernardo</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/JoaoVictor_AC" height="70px" width="70px" align="left" alt="" />
+<p><strong>João Victor Dias</strong><br />
+Topics: Computer Vision, Keras, CNN, R, Data Science path<br />
+https://twitter.com/JoaoVictor_AC</p>
+<img src="https://res.cloudinary.com/dsscw65fc/image/twitter_name/sseraphini" height="70px" width="70px" align="left" alt="" />
+<p><strong>Sibelius Seraphini</strong><br />
+Topics: React, React Native, Node.js, GraphQL, Relay Modern, Open Source, Machine Learning, Blockchain<br />
+https://twitter.com/sseraphini</p>
+<h1 id="license"><a class="header" href="#license">License</a></h1>
+<p><a href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg" alt="CC0" /></a></p>
+<p>To the extent possible under law, <a href="https://github.com/karlhorky">Karl Horky</a> has waived all copyright and related or neighboring rights to this work.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="slack.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="split-keyboards.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="slack.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="split-keyboards.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

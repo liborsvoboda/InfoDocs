@@ -1,0 +1,40 @@
+.case-studies {
+    text-align:center;
+    width: 80%;
+
+    &__gallery {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        list-style: none;
+        padding: 0px;
+    }
+
+    &__shot {
+        max-width: 100%;
+        margin-top: 40px;
+        margin-bottom: 20px;
+
+         @media (--min-large-screen) {
+            padding-left: 10px;
+            padding-right: 10px;
+         }
+    }
+
+    &__logo {
+        display:block;
+        margin: 0 auto;
+        min-width: 150px;
+        max-width: 150px;
+    }
+
+    &__seemore {
+        display: block;
+        margin-top: 30px;
+        font-size: 14px;
+    }
+
+    &__try {
+        margin-top: 44px;
+    }
+}

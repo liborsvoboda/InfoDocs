@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/trac/">
+<meta property="og:title" content="NGINX Unit: Trac">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="WordPress" href="../wordpress/" />
+<link rel="prev" title="Roundcube" href="../roundcube/" />
+
+<title>Trac — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../#applications">Applications</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../apollo/">Apollo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bugzilla/">Bugzilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasette/">Datasette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dokuwiki/">DokuWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../drupal/">Drupal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../grafana/">Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../jira/">Jira</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../joomla/">Joomla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mailman/">Mailman Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../matomo/">Matomo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mediawiki/">MediaWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mercurial/">Mercurial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../modx/">MODX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../moin/">MoinMoin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../nextcloud/">NextCloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../opengrok/">OpenGrok</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../phpbb/">phpBB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../phpmyadmin/">phpMyAdmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../plone/">Plone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../redmine/">Redmine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../reviewboard/">Review Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../roundcube/">Roundcube</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Trac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../wordpress/">WordPress</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="trac">
+<h1>Trac<a class="headerlink" href="#trac" title="Permalink to this heading">§</a></h1>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">So far, Unit doesn’t support handling the <strong>REMOTE_USER</strong> headers
+directly, so authentication should be implemented via external means.  For
+example, consider using <a class="reference external" href="https://pypi.org/project/trac-oidc/">trac-oidc</a> or
+<a class="reference external" href="https://trac-hacks.org/wiki/OAuth2Plugin">OAuth2Plugin</a>.</p>
+</div>
+<p>To run the <a class="reference external" href="https://trac.edgewall.org">Trac</a> issue tracking system using
+Unit:</p>
+<ol class="arabic">
+<li><p class="first">Install <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">Unit</span></a> with a Python 2 language module.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As of now, Trac <a class="reference external" href="https://trac.edgewall.org/ticket/12130">doesn’t fully support</a> Python 3.  Mind that Python 2
+is officially deprecated.</p>
+</div>
+</li>
+<li><p class="first">Prepare and activate a <a class="reference external" href="https://virtualenv.pypa.io/en/latest/">virtual environment</a> to contain your installation
+(assuming <strong class="program">virtualenv</strong> is installed):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class=nxt_ph title="Path to the application directory; use a real path in your configuration">/path/to/app/</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class=nxt_ph title="Path to the application directory; use a real path in your configuration">/path/to/app/</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>virtualenv<span class="w"> </span>venv
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</pre></div>
+</div>
+</li>
+<li><p class="first">Next, <a class="reference external" href="https://trac.edgewall.org/wiki/TracInstall">install Trac</a> and its
+optional dependencies, then initialize a <a class="reference external" href="https://trac.edgewall.org/wiki/TracEnvironment">Trac environment</a> and deploy static files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>Trac
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>babel<span class="w"> </span>docutils<span class="w"> </span>genshi<span class="w"> </span><span class="se">\</span>
+<span class="w">              </span>pygments<span class="w"> </span>pytz<span class="w"> </span>textile<span class="w">             </span><span class="c1"># optional dependencies</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span><span class=nxt_ph title="Arbitrary directory name">static/</span><span class="w">                                 </span><span class="c1"># will store Trac&#39;s /chrome/ tree</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir<span class="w"> </span><span class=nxt_ph title="Arbitrary directory name">trac_env/</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trac-admin<span class="w"> </span>trac_env/<span class="w"> </span>initenv<span class="w">                  </span><span class="c1"># initialize Trac environment</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>trac-admin<span class="w"> </span>trac_env/<span class="w"> </span>deploy<span class="w"> </span>static/<span class="w">           </span><span class="c1"># extract Trac&#39;s static files</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mv<span class="w"> </span>static/htdocs<span class="w"> </span>static/chrome<span class="w">                </span><span class="c1"># align static file paths</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rm<span class="w"> </span>-rf<span class="w"> </span>static/cgi-bin/<span class="w">                        </span><span class="c1"># remove unneeded files</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>deactivate
+</pre></div>
+</div>
+</li>
+<li><p class="first">Unit <a class="reference internal" href="../../configuration/#configuration-python"><span class="std std-ref">uses WSGI</span></a> to run Python apps, so a
+<a class="reference external" href="https://trac.edgewall.org/wiki/1.3/TracModWSGI#Averybasicscript">wrapper</a>
+script is required to run Trac as a Unit app; let’s save it as
+<strong>/path/to/app/trac_wsgi.py</strong>.  Here, the <strong>application</strong> callable
+serves as the entry point for the app:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">trac.web.main</span>
+
+<span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="n">environ</span><span class="p">[</span><span class="s2">&quot;trac.locale&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;en_US.UTF8&quot;</span>
+    <span class="k">return</span> <span class="n">trac</span><span class="o">.</span><span class="n">web</span><span class="o">.</span><span class="n">main</span><span class="o">.</span><span class="n">dispatch_request</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run the following command so Unit can access <span class=nxt_hint title="If the application uses several directories, run the command for each one">
+                         the application directory</span>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>chown<span class="w"> </span>-R<span class="w"> </span><span class=nxt_hint title="User and group that Unit's router runs as by default">unit:unit</span><span class="w"> </span><span class=nxt_ph title="Path to the application files such as /data/www/app/; use a real path in your commands">/path/to/app/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <strong>unit:unit</strong> user-group pair is available only with <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">official
+packages</span></a>, Docker <a class="reference internal" href="../../installation/#installation-docker"><span class="std std-ref">images</span></a>, and some <a class="reference internal" href="../../installation/#installation-community-repos"><span class="std std-ref">third-party repos</span></a>.  Otherwise, account names may differ; run
+the <strong class="program">ps aux | grep unitd</strong> command to be sure.</p>
+</div>
+<p>For further details, including permissions, see the <a class="reference internal" href="../security/#security-apps"><span class="std std-ref">security checklist</span></a>.</p>
+</li>
+<li><p class="first">Next, <a class="reference internal" href="../../configuration/#configuration-python"><span class="std std-ref">prepare</span></a> the Trac configuration for Unit
+(use real values for <strong>share</strong>, <strong>path</strong>, <strong>home</strong>,
+<strong>module</strong>, <strong>TRAC_ENV</strong>, and <strong>PYTHON_EGG_CACHE</strong>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;*:80&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;routes&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/chrome/*&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;<span class=nxt_hint title="Serves matching static files">share</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the static files; use a real path in your configuration">/path/to/app/static</span><span class=nxt_var>$uri</span>&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/trac&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+
+<span class="w">    </span><span class="nt">&quot;applications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;trac&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;python 2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the application directory; use a real path in your configuration">/path/to/app/</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;home&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the application directory; use a real path in your configuration">/path/to/app/</span>venv/&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_hint title="WSGI module basename from Step 4 with extension omitted">trac_wsgi</span>&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;environment&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;TRAC_ENV&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the Trac environment; use a real path in your configuration">/path/to/app/trac_env/</span>&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;PYTHON_EGG_CACHE&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the Python egg cache for Trac; use a real path in your configuration">/path/to/app/trac_env/</span>eggs/&quot;</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The route serves requests for static files in Trac’s <strong>/chrome/</strong>
+<a class="reference external" href="https://trac.edgewall.org/wiki/TracDev/TracURLs">hierarchy</a> from the
+<strong>static/</strong> directory.</p>
+</li>
+<li><p class="first">Upload the updated configuration.  Assuming the JSON above was added to
+<code class="file docutils literal notranslate"><span class="pre">config.json</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@config.json<span class="w"> </span>--unix-socket<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w"> </span><span class=nxt_hint title="Path to the config section in Unit's control API">http://localhost/config/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference internal" href="../../controlapi/#configuration-socket"><span class="std std-ref">control socket</span></a> path may vary; run
+<strong class="program">unitd -h</strong> or see <a class="reference internal" href="../source/#source-startup"><span class="std std-ref">Startup and Shutdown</span></a> for details.</p>
+</div>
+<p>After a successful update, Trac should be available on the listener’s IP
+address and port:</p>
+<a class="reference internal image-reference" href="../../_images/trac.png"><img alt="Trac on Unit - New Ticket Screen" src="../../_images/trac.png" style="width: 100%;" /></a>
+</li>
+</ol>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\trac.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

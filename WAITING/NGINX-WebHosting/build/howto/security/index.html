@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/security/">
+<meta property="og:title" content="NGINX Unit: Security Checklist">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Walkthrough" href="../walkthrough/" />
+<link rel="prev" title="App Samples" href="../samples/" />
+
+<title>Security Checklist — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Security Checklist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#update-unit-regularly">Update Unit Regularly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#secure-socket-and-state">Secure Socket and State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-ssl-tls">Configure SSL/TLS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#error-proof-your-routes">Error-Proof Your Routes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protect-app-data">Protect App Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prune-debug-and-access-logs">Prune Debug and Access Logs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#add-restrictions-isolation">Add Restrictions, Isolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="security-checklist">
+<h1>Security Checklist<a class="headerlink" href="#security-checklist" title="Permalink to this heading">§</a></h1>
+<p>At its core, Unit has security as one of its top priorities; our development
+follows the appropriate best practices focused on making the code robust and
+solid.  However, even the most hardened system requires proper setup,
+configuration, and maintenance.</p>
+<p>This guide lists the steps to protect your Unit from installation to individual
+app configuration.</p>
+<div class="section" id="update-unit-regularly">
+<span id="security-update"></span><h2>Update Unit Regularly<a class="headerlink" href="#update-unit-regularly" title="Permalink to this heading">§</a></h2>
+<p><strong>Rationale</strong>: Each release introduces <a class="reference external" href="/CHANGES.txt">bug fixes and new
+features</a> that improve your installation’s security.</p>
+<p><strong>Actions</strong>: Follow our latest <a class="reference external" href="https://mailman.nginx.org/mailman3/lists/unit.nginx.org/">news</a> and upgrade to new
+versions shortly after they are released.</p>
+<details id=sec-updates_
+            onclick="window.location.hash='#sec-updates'">
+            <summary><span>Details</span></summary><div class="docutils container">
+<p>Specific upgrade steps depend on your installation method:</p>
+<ul class="simple">
+<li>The recommended option is to use our official <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">packages</span></a> or Docker <a class="reference internal" href="../../installation/#installation-docker"><span class="std std-ref">images</span></a>; with them, it’s just a matter of updating
+<strong>unit-*</strong> packages with your package manager of choice or
+switching to a newer image.</li>
+<li>If you use a third-party installation <a class="reference internal" href="../../installation/#installation-community-repos"><span class="std std-ref">method</span></a>, consult the maintainer’s documentation
+for details.</li>
+<li>If you install Unit from <a class="reference internal" href="../../installation/#source"><span class="std std-ref">source files</span></a>,
+rebuild and reinstall Unit and its modules from scratch.</li>
+</ul>
+</div>
+</details></div>
+<div class="section" id="secure-socket-and-state">
+<span id="security-socket-state"></span><h2>Secure Socket and State<a class="headerlink" href="#secure-socket-and-state" title="Permalink to this heading">§</a></h2>
+<p><strong>Rationale</strong>: Your <a class="reference internal" href="../source/#source-dir"><span class="std std-ref">control socket and state directory</span></a> provide unlimited access to Unit’s configuration, which
+calls for stringent protection.</p>
+<p><strong>Actions</strong>: Default configuration in our <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">official packages</span></a> is usually sufficient; if you use another
+installation method, ensure the control socket and the state directory are
+safe.</p>
+<details id=sec-socket_
+            onclick="window.location.hash='#sec-socket'">
+            <summary><span>Control Socket</span></summary><div class="docutils container">
+<p>If you use a UNIX control socket, ensure it is available to <strong>root</strong>
+only:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>-h
+
+<span class="go">      ...</span>
+<span class="go">      --control ADDRESS    set address of control API socket</span>
+<span class="go">                           default: &quot;unix:<span class=nxt_ph title="Build-time setting, can be overridden">/default/path/to/control.unit.sock</span>&quot;</span>
+
+<span class="gp">$ </span>ps<span class="w"> </span>ax<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>unitd
+
+<span class="go">      ... unit: main v1.33.0 [... --control <span class=nxt_ph title="Make sure to check for runtime overrides">/path/to/control.sock</span> ...]</span>
+
+<span class="gp"># </span>ls<span class="w"> </span>-l<span class="w"> </span><span class=nxt_ph title="If it's overridden, use the runtime setting">/path/to/control.unit.sock</span>
+
+<span class="go">      srw------- 1 root root 0 ... /path/to/control.unit.sock</span>
+</pre></div>
+</div>
+<p>UNIX domain sockets aren’t network accessible; for remote access, use
+<a class="reference internal" href="../integration/#nginx-secure-api"><span class="std std-ref">NGINX</span></a> or a solution such as SSH:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ssh<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class=nxt_hint title="Local socket">./here.sock</span>:<span class=nxt_ph title="Socket on the Unit server; use a real path in your command">/path/to/control.unit.sock</span><span class="w"> </span>root@<span class=nxt_hint title="Unit server hostname">unit.example.com</span><span class="w"> </span><span class="p">&amp;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_hint title="Use the local socket to configure Unit">./here.sock</span>
+
+<span class="go">      {</span>
+<span class="go">          &quot;certificates&quot;: {},</span>
+<span class="go">          &quot;config&quot;: {</span>
+<span class="go">              &quot;listeners&quot;: {},</span>
+<span class="go">              &quot;applications&quot;: {}</span>
+<span class="go">          }</span>
+<span class="go">      }</span>
+</pre></div>
+</div>
+<p>If you prefer an IP-based control socket, avoid public IPs; they expose the
+<a class="reference internal" href="../../controlapi/#configuration-api"><span class="std std-ref">control API</span></a> and all its capabilities.  This means
+your Unit instance can be manipulated by whoever is physically able to
+connect:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>unitd<span class="w"> </span>--control<span class="w"> </span><span class="m">203</span>.0.113.14:8080
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span><span class="m">203</span>.0.113.14:8080
+
+<span class="go">      {</span>
+<span class="go">          &quot;certificates&quot;: {},</span>
+<span class="go">          &quot;config&quot;: {</span>
+<span class="go">              &quot;listeners&quot;: {},</span>
+<span class="go">              &quot;applications&quot;: {}</span>
+<span class="go">          }</span>
+<span class="go">      }</span>
+</pre></div>
+</div>
+<p>Instead, opt for the loopback address to ensure all access is local to your
+server:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>unitd<span class="w"> </span>--control<span class="w"> </span><span class="m">127</span>.0.0.1:8080
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span><span class="m">203</span>.0.113.14:8080
+
+<span class="go">    curl: (7) Failed to connect to 203.0.113.14 port 8080: Connection refused</span>
+</pre></div>
+</div>
+<p>However, any processes local to the same system can access the local socket,
+which calls for additional measures.  A go-to solution would be using NGINX
+to <a class="reference internal" href="../integration/#nginx-secure-api"><span class="std std-ref">proxy</span></a> Unit’s control API.</p>
+</div>
+</details><details id=sec-state_
+            onclick="window.location.hash='#sec-state'">
+            <summary><span>State Directory</span></summary><div class="docutils container">
+<p>The state directory stores Unit’s internal configuration between launches.
+Avoid manipulating it or relying on its contents even if tempted to do so.
+Instead, use only the control API to manage Unit’s configuration.</p>
+<p>Also, the state directory should be available only to <strong>root</strong> (or the
+user that the <strong>main</strong> <a class="reference internal" href="#security-apps"><span class="std std-ref">process</span></a> runs as):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>-h
+
+<span class="go">      ...</span>
+<span class="go">      --state DIRECTORY    set state directory name</span>
+<span class="go">                           default: &quot;<span class=nxt_ph title="Build-time setting, can be overridden">/default/path/to/unit/state/</span>&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ps<span class="w"> </span>ax<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>unitd
+
+<span class="go">      ... unit: main v1.33.0 [... --state <span class=nxt_ph title="Make sure to check for runtime overrides">/path/to/unit/state/</span> ...]</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>ls<span class="w"> </span>-l<span class="w"> </span><span class=nxt_ph title="If it's overridden, use the runtime setting">/path/to/unit/state/</span>
+
+<span class="go">      drwx------ 2 root root 4096 ...</span>
+</pre></div>
+</div>
+</div>
+</details></div>
+<div class="section" id="configure-ssl-tls">
+<span id="security-ssl"></span><h2>Configure SSL/TLS<a class="headerlink" href="#configure-ssl-tls" title="Permalink to this heading">§</a></h2>
+<p><strong>Rationale</strong>: To protect your client connections in production scenarios,
+configure SSL certificate bundles for your Unit installation.</p>
+<p><strong>Actions</strong>: For details, see <a class="reference internal" href="../../certificates/#configuration-ssl"><span class="std std-ref">SSL/TLS certificates</span></a> and <a class="reference internal" href="../certbot/"><span class="doc">TLS with Certbot</span></a>.</p>
+</div>
+<div class="section" id="error-proof-your-routes">
+<span id="security-routes"></span><h2>Error-Proof Your Routes<a class="headerlink" href="#error-proof-your-routes" title="Permalink to this heading">§</a></h2>
+<p><strong>Rationale</strong>: Arguably, <a class="reference internal" href="../../configuration/#configuration-routes"><span class="std std-ref">routes</span></a> are the most
+flexible and versatile part of the Unit configuration.  Thus, they must be as
+clear and robust as possible to avoid loose ends and gaping holes.</p>
+<p><strong>Actions</strong>: Familiarize yourself with the <a class="reference internal" href="../../configuration/#configuration-routes-matching"><span class="std std-ref">matching</span></a> logic and double-check all <a class="reference internal" href="../../configuration/#configuration-routes-matching-patterns"><span class="std std-ref">patterns</span></a> that you use.</p>
+<details id=sec-routes_
+            onclick="window.location.hash='#sec-routes'">
+            <summary><span>Details</span></summary><div class="docutils container">
+<p>Some considerations:</p>
+<ul class="simple">
+<li>Mind that <a class="reference internal" href="../../configuration/#configuration-variables"><span class="std std-ref">variables</span></a> contain arbitrary
+user-supplied request values; variable-based <strong>pass</strong> values in
+<a class="reference internal" href="../../configuration/#configuration-listeners"><span class="std std-ref">listeners</span></a> and <a class="reference internal" href="../../configuration/#configuration-routes-action"><span class="std std-ref">routes</span></a> must account for malicious requests, or the
+requests must be properly filtered.</li>
+<li>Create <a class="reference internal" href="../../configuration/#configuration-routes-matching"><span class="std std-ref">matching rules</span></a> to
+formalize the restrictions of your Unit instance and the apps it runs.</li>
+<li>Configure <a class="reference internal" href="../../configuration/#configuration-static"><span class="std std-ref">shares</span></a> only for directories and
+files you intend to make public.</li>
+</ul>
+</div>
+</details></div>
+<div class="section" id="protect-app-data">
+<span id="security-apps"></span><h2>Protect App Data<a class="headerlink" href="#protect-app-data" title="Permalink to this heading">§</a></h2>
+<p><strong>Rationale</strong>: Unit’s architecture involves many processes that operate
+together during app delivery; improper process permissions can make sensitive
+files available across apps or even publicly.</p>
+<p><strong>Actions</strong>: Properly configure your app directories and shares: apps and the
+router process need access to them.  Still, avoid loose rights such as the
+notorious <strong>777</strong>, instead assigning them on a need-to-know basis.</p>
+<details id=sec-files_
+            onclick="window.location.hash='#sec-files'">
+            <summary><span>File Permissions</span></summary><div class="docutils container">
+<p>To configure file permissions for your apps, check Unit’s build-time and
+run-time options first:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>-h
+
+<span class="go">      ...</span>
+<span class="go">      --user USER          set non-privileged processes to run as specified user</span>
+<span class="go">                           default: &quot;<span class=nxt_ph title="Build-time setting, can be overridden">unit_user</span>&quot;</span>
+
+<span class="go">      --group GROUP        set non-privileged processes to run as specified group</span>
+<span class="go">                           default: user&#39;s primary group</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ps<span class="w"> </span>ax<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>unitd
+
+<span class="go">      ... unit: main v1.33.0 [... --user <span class=nxt_ph title="Make sure to check for runtime overrides">unit_user</span> --group <span class=nxt_ph title="Make sure to check for runtime overrides">unit_group</span> ...]</span>
+</pre></div>
+</div>
+<p>In particular, this is the account the router process runs as.  Use this
+information to set up permissions for the app code or binaries and shared
+static files.  The main idea is to limit each app to its own files and
+directories while simultaneously allowing Unit’s router process to access
+static files for all apps.</p>
+<p>Specifically, the requirements are as follows:</p>
+<ul class="simple">
+<li>All apps should run as different users so that the permissions can be
+configured properly.  Even if you run a single app, it’s reasonable to
+create a dedicated user for added flexibility.</li>
+<li>An app’s code or binaries should be reachable for the user the app runs
+as; the static files should be reachable for the router process.  Thus,
+each part of an app’s directory path must have execute permissions
+assigned for the respective users.</li>
+<li>An app’s directories should not be available to other apps or
+non-privileged system users. The router process should be able to access
+the app’s static file directories.  Accordingly, the app’s directories
+must have read and execute permissions assigned for the respective users.</li>
+<li>The files and directories that the app is designed to update should
+be writable only for the user the app runs as.</li>
+<li>The app code should be readable (and executable in case of <a class="reference internal" href="../modules/#modules-ext"><span class="std std-ref">external</span></a> apps) for the user the app runs as; the static content
+should be readable for the router process.</li>
+</ul>
+<p>A detailed walkthrough to guide you through each requirement:</p>
+<ol class="arabic">
+<li><p class="first">If you have several independent apps, running them with a single user
+account poses a security risk.  Consider adding a separate system user
+and group per each app:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Add user account without home directory">useradd</span><span class="w"> </span>-M<span class="w"> </span>app_user
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>groupadd<span class="w"> </span>app_group
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Deny interactive login">usermod</span><span class="w"> </span>-L<span class="w"> </span>app_user
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Add user to the group">usermod</span><span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>app_group<span class="w"> </span>app_user
+</pre></div>
+</div>
+<p>Even if you run a single app, this helps if you add more apps or need to
+decouple permissions later.</p>
+</li>
+<li><p class="first">It’s important to add Unit’s non-privileged user account to <em>each</em> app
+group:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>app_group<span class="w"> </span>unit_user
+</pre></div>
+</div>
+<p>Thus, Unit’s router process can access each app’s directory and serve
+files from each app’s shares.</p>
+</li>
+<li><p class="first">A frequent source of issues is the lack of permissions for directories
+inside a directory path needed to run the app, so check for that if in
+doubt.  Assuming your app code is stored at <strong>/path/to/app/</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>ls<span class="w"> </span>-l<span class="w"> </span>/
+
+<span class="go">      <span class=nxt_hint title="Permissions are OK">drwxr-xr-x</span>  some_user some_group  path</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>ls<span class="w"> </span>-l<span class="w"> </span>/path/
+
+<span class="go">      <span class=nxt_hint title="Permissions are too restrictive">drwxr-x---</span>  some_user some_group  to</span>
+</pre></div>
+</div>
+<p>This may be a problem because the <strong>to/</strong> directory isn’t owned by
+<strong>app_user:app_group</strong> and denies all permissions to non-owners (as
+the <strong>---</strong> sequence tells us), so a fix can be warranted:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Add read/execute permissions for non-owners">chmod</span><span class="w"> </span>o+rx<span class="w"> </span>/path/to/
+</pre></div>
+</div>
+<p>Another solution is to add <strong>app_user</strong> to <strong>some_group</strong>
+(assuming this was not done before):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>some_group<span class="w"> </span>app_user
+</pre></div>
+</div>
+</li>
+<li><p class="first">Having checked the directory tree, assign ownership and permissions for
+your app’s directories, making them reachable for Unit and the app:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Assign ownership for the app code">chown</span><span class="w"> </span>-R<span class="w"> </span>app_user:app_group<span class="w"> </span><span class=nxt_ph title="Path to the application directory; use a real path in your command">/path/to/app/</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Assign ownership for the static files">chown</span><span class="w"> </span>-R<span class="w"> </span>app_user:app_group<span class="w"> </span><span class=nxt_ph title="Can be outside the app directory tree; use a real path in your command">/path/to/static/app/files/</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>find<span class="w"> </span><span class=nxt_ph title="Path to the application directory; use a real path in your command">/path/to/app/</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-exec<span class="w"> </span><span class=nxt_hint title="Add read/execute permissions to app code directories for user and group">chmod</span><span class="w"> </span><span class="nv">u</span><span class="o">=</span>rx,g<span class="o">=</span>rx,o<span class="o">=</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>find<span class="w"> </span><span class=nxt_ph title="Can be outside the app directory tree; use a real path in your command">/path/to/static/app/files/</span><span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-exec<span class="w"> </span><span class=nxt_hint title="Add read/execute permissions to static file directories for user and group">chmod</span><span class="w"> </span><span class="nv">u</span><span class="o">=</span>rx,g<span class="o">=</span>rx,o<span class="o">=</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If the app needs to update specific directories or files, make sure
+they’re writable for the app alone:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Add write permissions for the user only; the group shouldn't have them">chmod</span><span class="w"> </span>u+w<span class="w"> </span><span class=nxt_ph title="Repeat for each file or directory that must be writable">/path/to/writable/file/or/directory/</span>
+</pre></div>
+</div>
+<p>In case of a writable directory, you may also want to prevent non-owners
+from messing with its files:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Sticky bit prevents non-owners from deleting or renaming files">chmod</span><span class="w"> </span>+t<span class="w"> </span><span class=nxt_ph title="Repeat for each directory that must be writable">/path/to/writable/directory/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Usually, apps store and update their data outside the app code
+directories, but some apps may mix code and data.  In such a case,
+assign permissions on an individual basis, making sure you understand
+how the app uses each file or directory: is it code, read-only
+content, or writable data.</p>
+</div>
+</li>
+<li><p class="first">For <a class="reference internal" href="../modules/#modules-emb"><span class="std std-ref">embedded</span></a> apps, it’s usually enough to make the
+app code and the static files readable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>find<span class="w"> </span><span class=nxt_ph title="Path to the application's code directory; use a real path in your command">/path/to/app/code/</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span><span class=nxt_hint title="Add read rights to app code for user and group">chmod</span><span class="w"> </span><span class="nv">u</span><span class="o">=</span>r,g<span class="o">=</span>r,o<span class="o">=</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>find<span class="w"> </span><span class=nxt_ph title="Can be outside the app directory tree; use a real path in your command">/path/to/static/app/files/</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span><span class=nxt_hint title="Add read rights to static files for user and group">chmod</span><span class="w"> </span><span class="nv">u</span><span class="o">=</span>r,g<span class="o">=</span>r,o<span class="o">=</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">For <a class="reference internal" href="../modules/#modules-emb"><span class="std std-ref">external</span></a> apps, additionally make the app code or
+binaries executable:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>find<span class="w"> </span><span class=nxt_ph title="Path to the application directory; use a real path in your command">/path/to/app/</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span><span class=nxt_hint title="Add read and execute rights to app code for user and group">chmod</span><span class="w"> </span><span class="nv">u</span><span class="o">=</span>rx,g<span class="o">=</span>rx,o<span class="o">=</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>find<span class="w"> </span><span class=nxt_ph title="Can be outside the app directory tree; use a real path in your command">/path/to/static/app/files/</span><span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span><span class=nxt_hint title="Add read rights to static files for user and group">chmod</span><span class="w"> </span><span class="nv">u</span><span class="o">=</span>r,g<span class="o">=</span>r,o<span class="o">=</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">To run a single app, <a class="reference internal" href="../../configuration/"><span class="doc">configure</span></a> Unit as follows:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;<span class=nxt_hint title="Or another suitable socket address">*:80</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;routes&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;share&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Router process needs read and execute permissions to serve static content from this directory">/path/to/static/app/files/</span><span class=nxt_var>$uri</span>&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/app&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+
+<span class="w">    </span><span class="nt">&quot;applications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app_user&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app_group&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">To run several apps side by side, <a class="reference internal" href="../../configuration/"><span class="doc">configure</span></a>
+them with appropriate user and group names.  The following
+configuration distinguishes apps based on the request URI, but you can
+implement another scheme such as different listeners:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;<span class=nxt_hint title="Or another suitable socket address">*:80</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;routes&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_hint title="Arbitrary matching condition">/app1/*</span>&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+
+<span class="w">            </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;share&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Router process needs read and execute permissions to serve static content from this directory">/path/to/static/app1/files/</span><span class=nxt_var>$uri</span>&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/app1&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_hint title="Arbitrary matching condition">/app2/*</span>&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+
+<span class="w">            </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;share&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Router process needs read and execute permissions to serve static content from this directory">/path/to/static/app2/files/</span><span class=nxt_var>$uri</span>&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;fallback&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/app2&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+
+<span class="w">    </span><span class="nt">&quot;applications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;app1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app_user1&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app_group1&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+
+<span class="w">        </span><span class="nt">&quot;app2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;...&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app_user2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;app_group2&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As usual with permissions, different steps may be required if you use
+ACLs.</p>
+</div>
+</div>
+</details><details id=sec-app-internals_
+            onclick="window.location.hash='#sec-app-internals'">
+            <summary><span>App Internals</span></summary><div class="docutils container">
+<p>Unfortunately, quite a few web apps are built in a manner that mixes their
+source code, data, and configuration files with static content, which calls
+for complex access restrictions.  The situation is further aggravated by the
+inevitable need for maintenance activities that may leave a footprint of
+extra files and directories unrelated to the app’s operation.  The issue has
+several aspects:</p>
+<ul class="simple">
+<li>Storage of code and data at the same locations, which usually happens by
+(insufficient) design.  You neither want your internal data and code files
+to be freely downloadable nor your user-uploaded data to be executable as
+code, so configure your routes and apps to prevent both.</li>
+<li>Exposure of configuration data.  Your app-specific settings, <strong>.ini</strong>
+or <strong>.htaccess</strong> files, and credentials are best kept hidden from
+prying eyes, and your routing configuration should reflect that.</li>
+<li>Presence of hidden files from versioning, backups by text editors, and
+other temporary files.  Instead of carving your configuration around
+these, it’s best to keep your app free of them altogether.</li>
+</ul>
+<p>If these can’t be avoided, investigate the inner workings of the app to
+prevent exposure, for example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;<span class=nxt_hint title="Handles requests that target PHP scripts to avoid having them served as static files">uri</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;*.php&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;*.php/*&quot;</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+
+<span class="w">                </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/app/direct&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;<span class=nxt_hint title="Protects files and directories best kept hidden">uri</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;<span class=nxt_hint title="Restricts access to a directory with sensitive data">!/sensitive/*</span>&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;<span class=nxt_hint title="Restricts access to a directory with sensitive data">!/data/*</span>&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;<span class=nxt_hint title="Restricts access to a specific file">!/app_config_values.ini</span>&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;<span class=nxt_hint title="Restricts access to hidden files and directories">!*/.*</span>&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;<span class=nxt_hint title="Restricts access to temporary files">!*~</span>&quot;</span>
+<span class="w">                    </span><span class="p">]</span>
+<span class="w">                </span><span class="p">},</span>
+
+<span class="w">                </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;<span class=nxt_hint title="Serves valid requests with static content">share</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to the application's static file directory; use a real path in your configuration">/path/to/app/static</span><span class=nxt_var>$uri</span>&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;<span class=nxt_hint title="Limits file types served from the share">types</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                        </span><span class="s2">&quot;image/*&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;text/*&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s2">&quot;application/javascript&quot;</span>
+<span class="w">                    </span><span class="p">],</span>
+
+<span class="w">                    </span><span class="nt">&quot;<span class=nxt_hint title="Relays all requests not yet served to a catch-all app target">fallback</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/app/index&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>However, this does not replace the need to set up file permissions; use both
+<a class="reference internal" href="../../configuration/#configuration-routes-matching"><span class="std std-ref">matching rules</span></a> and per-app user
+permissions to manage access.  For more info and real-life examples, refer
+to our app <a class="reference internal" href="../"><span class="doc">howtos</span></a> and the ‘File Permissions’ callout above.</p>
+</div>
+</details><details id=sec-processes_
+            onclick="window.location.hash='#sec-processes'">
+            <summary><span>Unit's Process Summary</span></summary><div class="docutils container">
+<p id="security-processes">Unit’s processes are detailed <a class="reference external" href="https://www.nginx.com/blog/introducing-nginx-unit/">elsewhere</a>, but here’s a
+synopsis of the different roles they have:</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Process</th>
+<th class="head">Privileged?</th>
+<th class="head">User and Group</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Main</td>
+<td>Yes</td>
+<td>Whoever starts the <strong>unitd</strong> executable; by default,
+<strong>root</strong>.</td>
+<td>Runs as a daemon, spawning Unit’s non-privileged and app processes;
+requires numerous system capabilities and privileges for operation.</td>
+</tr>
+<tr class="row-odd"><td>Controller</td>
+<td>No</td>
+<td>Set by <code class="xref std std-option docutils literal notranslate"><span class="pre">--user</span></code> and <code class="xref std std-option docutils literal notranslate"><span class="pre">--group</span></code> options at
+<a class="reference internal" href="../source/#source-config-src"><span class="std std-ref">build</span></a> or <a class="reference internal" href="../source/#source-startup"><span class="std std-ref">execution</span></a>; by default, <strong>unit</strong>.</td>
+<td>Serves the control API, accepting reconfiguration requests,
+sanitizing them, and passing them to other processes for
+implementation.</td>
+</tr>
+<tr class="row-even"><td>Discovery</td>
+<td>No</td>
+<td>Set by <code class="xref std std-option docutils literal notranslate"><span class="pre">--user</span></code> and <code class="xref std std-option docutils literal notranslate"><span class="pre">--group</span></code> options at
+<a class="reference internal" href="../source/#source-config-src"><span class="std std-ref">build</span></a> or <a class="reference internal" href="../source/#source-startup"><span class="std std-ref">execution</span></a>; by default, <strong>unit</strong>.</td>
+<td>Discovers the language modules in the module directory at startup,
+then quits.</td>
+</tr>
+<tr class="row-odd"><td>Router</td>
+<td>No</td>
+<td>Set by <code class="xref std std-option docutils literal notranslate"><span class="pre">--user</span></code> and <code class="xref std std-option docutils literal notranslate"><span class="pre">--group</span></code> options at
+<a class="reference internal" href="../source/#source-config-src"><span class="std std-ref">build</span></a> or <a class="reference internal" href="../source/#source-startup"><span class="std std-ref">execution</span></a>; by default, <strong>unit</strong>.</td>
+<td>Serves client requests, accepting them, processing them on the spot,
+passing them to app processes, or proxying them further; requires
+access to static content paths you configure.</td>
+</tr>
+<tr class="row-even"><td>App processes</td>
+<td>No</td>
+<td>Set by per-app <strong>user</strong> and <strong>group</strong>
+<a class="reference internal" href="../../configuration/#configuration-applications"><span class="std std-ref">options</span></a>; by default,
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--user</span></code> and <code class="xref std std-option docutils literal notranslate"><span class="pre">--group</span></code> values.</td>
+<td>Serve client requests that are routed to apps; require access to
+paths and namespaces you configure for the app.</td>
+</tr>
+</tbody>
+</table>
+<p>You can check all of the above on your system when Unit is running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ps<span class="w"> </span>aux<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>unit
+
+<span class="go">      ...</span>
+<span class="go">      root   ... unit: main v1.33.0</span>
+<span class="go">      unit   ... unit: controller</span>
+<span class="go">      unit   ... unit: router</span>
+<span class="go">      unit   ... unit: &quot;front&quot; application</span>
+</pre></div>
+</div>
+<p>The important outtake here is to understand that Unit’s non-privileged
+processes don’t require running as <strong>root</strong>.  Instead, they should have
+the minimal privileges required to operate, which so far means the ability
+to open connections and access the application code and the static files
+shared during routing.</p>
+</div>
+</details></div>
+<div class="section" id="prune-debug-and-access-logs">
+<span id="security-logs"></span><h2>Prune Debug and Access Logs<a class="headerlink" href="#prune-debug-and-access-logs" title="Permalink to this heading">§</a></h2>
+<p><strong>Rationale</strong>: Unit stores potentially sensitive data in its general and access
+logs; their size can also become a concern if debug mode is enabled.</p>
+<p><strong>Actions</strong>: Secure access to the logs and ensure they don’t exceed the allowed
+disk space.</p>
+<details id=sec-logs_
+            onclick="window.location.hash='#sec-logs'">
+            <summary><span>Details</span></summary><div class="docutils container">
+<p>Unit can maintain two different logs:</p>
+<ul class="simple">
+<li>A general-purpose log that is enabled by default and can be switched to
+debug mode for verbosity.</li>
+<li>An access log that is off by default but can be enabled via the control
+API.</li>
+</ul>
+<p>If you enable debug-mode or access logging, rotate these logs with tools
+such as <strong class="program">logrotate</strong> to avoid overgrowth.  A sample
+<strong class="program">logrotate</strong> <a class="reference external" href="https://man7.org/linux/man-pages/man8/logrotate.8.html#CONFIGURATION_FILE_DIRECTIVES">configuration</a>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class=nxt_ph title="Use a real path in your configuration">/path/to/unit.log</span> {
+    daily
+    missingok
+    rotate 7
+    compress
+    delaycompress
+    nocreate
+    notifempty
+    su root root
+    postrotate
+        if [ -f <span class=nxt_ph title="Use a real path in your configuration">/path/to/unit.pid</span> ]; then
+            <span class=nxt_hint title="Signals Unit to reopen the log">/bin/kill</span> -SIGUSR1 `cat <span class=nxt_ph title="Use a real path in your configuration">/path/to/unit.pid</span>`
+        fi
+    endscript
+}
+</pre></div>
+</div>
+<p>To figure out the log and PID file paths:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>-h
+
+<span class="go">      ...</span>
+<span class="go">      --pid FILE           set pid filename</span>
+<span class="go">                           default: &quot;<span class=nxt_ph title="Build-time setting, can be overridden">/default/path/to/unit.pid</span>&quot;</span>
+
+<span class="go">      --log FILE           set log filename</span>
+<span class="go">                           default: &quot;<span class=nxt_ph title="Build-time setting, can be overridden">/default/path/to/unit.log</span>&quot;</span>
+
+<span class="gp">$ </span>ps<span class="w"> </span>ax<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>unitd
+
+<span class="go">      ... unit: main v1.33.0 [... --pid <span class=nxt_ph title="Make sure to check for runtime overrides">/path/to/unit.pid</span> --log <span class=nxt_ph title="Make sure to check for runtime overrides">/path/to/unit.log</span> ...]</span>
+</pre></div>
+</div>
+<p>Another issue is the logs’ accessibility.  Logs are opened and updated by
+the <a class="reference internal" href="#security-apps"><span class="std std-ref">main process</span></a> that usually runs as <strong>root</strong>.
+However, to make them available for a certain consumer, you may need to
+enable access for a dedicated user that the consumer runs as.</p>
+<p>Perhaps, the most straightforward way to achieve this is to assign log
+ownership to the consumer’s account.  Suppose you have a log utility running
+as <strong>log_user:log_group</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Assign ownership to the log user">chown</span><span class="w"> </span>log_user:log_group<span class="w"> </span><span class=nxt_ph title="If it's overridden, use the runtime setting">/path/to/unit.log</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Enable access log in the Unit configuration at the given path">curl</span><span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;&quot;<span class=nxt_ph title="Use a real path in your configuration">/path/to/access.log</span>&quot;&#39;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket">/path/to/control.unit.sock</span><span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/config/access_log
+
+<span class="go">      {</span>
+<span class="go">          &quot;success&quot;: &quot;Reconfiguration done.&quot;</span>
+<span class="go">      }</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class=nxt_hint title="Assign ownership to the log user">chown</span><span class="w"> </span>log_user:log_group<span class="w"> </span><span class=nxt_ph title="Use a real path in your command">/path/to/access.log</span>
+</pre></div>
+</div>
+<p>If you change the log file ownership, adjust your <strong class="program">logrotate</strong>
+settings accordingly:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class=nxt_ph title="Use a real path in your configuration">/path/to/unit.log</span> {
+    ...
+    su log_user log_group
+    ...
+}
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As usual with permissions, different steps may be required if you use
+ACLs.</p>
+</div>
+</div>
+</details></div>
+<div class="section" id="add-restrictions-isolation">
+<span id="security-isolation"></span><h2>Add Restrictions, Isolation<a class="headerlink" href="#add-restrictions-isolation" title="Permalink to this heading">§</a></h2>
+<p><strong>Rationale</strong>: If the underlying OS allows, Unit provides features that create an
+additional level of separation and containment for your apps, such as:</p>
+<ul class="simple">
+<li>Share <a class="reference internal" href="../../configuration/#configuration-share-path"><span class="std std-ref">path restrictions</span></a></li>
+<li>Namespace and file system root <a class="reference internal" href="../../configuration/#configuration-proc-mgmt-isolation"><span class="std std-ref">isolation</span></a></li>
+</ul>
+<p><strong>Actions</strong>: For more details, see our blog posts on <a class="reference external" href="https://www.nginx.com/blog/nginx-unit-updates-for-summer-2021-now-available/#Static-Content:-Chrooting-and-Path-Restrictions">path restrictions</a>,
+<a class="reference external" href="https://www.nginx.com/blog/application-isolation-nginx-unit/">namespace</a> and
+<a class="reference external" href="https://www.nginx.com/blog/filesystem-isolation-nginx-unit/">file system</a>
+isolation.</p>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\security.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

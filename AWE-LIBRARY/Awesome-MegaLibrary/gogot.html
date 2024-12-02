@@ -1,0 +1,656 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>gogot - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html" class="active"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="awesome-godot"><a class="header" href="#awesome-godot">Awesome Godot <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome" /></a></a></h1>
+<p><a href="https://godotengine.org"><img src="godot-logo.svg" alt="Godot Engine logo" /></a></p>
+<p>A curated list of <a href="https://www.gnu.org/philosophy/free-sw.html">free/libre</a> games, plugins, add-ons and scripts for Godot.</p>
+<p>Looking for third-party programming language support in Godot?
+See <a href="https://github.com/Vivraan/godot-lang-support">Vivraan/godot-lang-support</a>.</p>
+<h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
+<ul>
+<li><a href="#games">Games</a>
+<ul>
+<li><a href="#2d">2D</a></li>
+<li><a href="#3d">3D</a></li>
+<li>[XR] (#xr)</li>
+</ul>
+</li>
+<li><a href="#projects">Projects</a></li>
+<li><a href="#templates">Templates</a></li>
+<li><a href="#demos">Demos</a></li>
+<li><a href="#tutorials">Tutorials</a></li>
+<li><a href="#plugins-and-scripts">Plugins and scripts</a></li>
+<li><a href="#modules">Modules</a></li>
+<li><a href="#gdscriptc-editor-support">GDScript/C# editor support</a></li>
+<li><a href="#godot-script-editor-syntax-themes">Godot script editor syntax themes</a></li>
+<li><a href="#unofficial-godot-builds">Unofficial Godot builds</a></li>
+<li><a href="#bash-scripts">Bash scripts</a></li>
+<li><a href="#websites">Websites</a></li>
+<li><a href="#other">Other</a></li>
+</ul>
+<h2 id="games"><a class="header" href="#games">Games</a></h2>
+<p><em>Open Source Games that use Godot.</em></p>
+<h3 id="2d"><a class="header" href="#2d">2D</a></h3>
+<h4 id="godot-42"><a class="header" href="#godot-42">Godot 4.2</a></h4>
+<ul>
+<li><a href="https://github.com/antimundo/poder-solar">Poder Solar</a> - Simple resource management game.</li>
+</ul>
+<h4 id="godot-32"><a class="header" href="#godot-32">Godot 3.2+</a></h4>
+<ul>
+<li><a href="https://github.com/WraithWinterly/Everplast">Everplast</a> - Unique 2D platforming experience filled with rage, rush, speed, and spray.</li>
+<li><a href="https://github.com/EmilienLeroy/FallingSquare">Falling Square</a> - A simple mobile game to test your reflex.</li>
+<li><a href="https://github.com/Jibby-Games/Flappy-Race">Flappy Race</a> - A 2D online multiplayer game inspired by Flappy Bird and Mario Kart for desktop and HTML5.</li>
+<li><a href="https://codeberg.org/Yeldham/librerama">Librerama</a> - A free/libre fast-paced arcade collection of mini-games.</li>
+<li><a href="https://github.com/dulvui/pocket-broomball/">Pocket Broomball</a> - The world's first broomball game, available for iOS, Android and html5.</li>
+<li><a href="https://github.com/JulianWels/portal2d">Portal 2D</a> - 2D remake of the Portal games.</li>
+<li><a href="https://zacryol.itch.io/spindle-of-serendipity">spindle of serendipity</a> - Word guessing game with customizable entries.</li>
+<li><a href="https://github.com/notapixelstudio/starship-olympics">Starship Olympics</a> - Fast-paced local party game with starships that battle in a top-down arena.</li>
+<li><a href="https://github.com/Alzter/TuxBuilder">TuxBuilder</a> - Work-in-progress reimplementation of SuperTux.</li>
+</ul>
+<h4 id="godot-31"><a class="header" href="#godot-31">Godot 3.1</a></h4>
+<ul>
+<li><a href="https://github.com/GaidamakUA/blipshift">Blipshift</a> - Simple top-down moving platforms game.</li>
+<li><a href="https://github.com/kidscancode/circle_jump">Circle Jump</a> - Mobile arcade game, addicting and enjoyable. How-to-made tutorial is available, so you can recreate it yourself and learn Godot.</li>
+<li><a href="https://github.com/wesnoth/haldric">Haldric</a> - Official work-in-progress reimplementation of Battle for Wesnoth.</li>
+<li><a href="https://github.com/securas/SealedBite">SealedBite</a> - 2D platformer game, winner of the GitHub Game Off 2019 jam.</li>
+<li><a href="https://github.com/unknown-horizons/godot-port">Unknown Horizons</a> - Official work-in-progress reimplementation of Unknown Horizons.</li>
+</ul>
+<h4 id="godot-30"><a class="header" href="#godot-30">Godot 3.0</a></h4>
+<ul>
+<li><a href="https://github.com/didier-v/breakable">Breakable</a> - A breakout-like game.</li>
+<li><a href="https://github.com/Tzoop/MemoryGame">Memory Game</a> - Simple Memory game.</li>
+</ul>
+<h4 id="godot-21"><a class="header" href="#godot-21">Godot 2.1</a></h4>
+<ul>
+<li><a href="https://github.com/vnen/blockpop">BlockPop</a> - A simple Breakout clone.</li>
+<li><a href="https://github.com/randyyaj/Bombs">Bombs</a> - Simple mobile game. You need to touch bombs to defuse them.</li>
+<li><a href="https://github.com/Hirnbix/captain-holetooth">Captain Holetooth</a> - Explorative platformer in a detailed world. Geared towards younger players.</li>
+<li><a href="https://github.com/janmarcano/Dolphin-Island-2">Dolphin Island 2</a> - Platformer game made for the A Game By It's Cover 2015 Game Jam.</li>
+<li><a href="https://github.com/akien-mga/dynadungeons">DynaDungeons</a> - Bomberman clone in a fantasy universe.</li>
+<li><a href="https://github.com/randyyaj/Kraken-Rampage">Kraken-Rampage</a> - Ludum Dare 33 entry made in 48 hours.</li>
+<li><a href="https://github.com/genete/Minehunter">Minehunter</a> - A Minesweeper clone.</li>
+<li><a href="http://kobuge-games.github.io/minilens/">Minilens</a> - Free puzzle platform game.</li>
+<li><a href="https://github.com/w84death/mountain-of-hope">Mountain of Hope</a> - Game made on Theater Game Jam (PGA 2015).</li>
+<li><a href="https://github.com/KOBUGE-Games/Ninja-Training">Ninja-Training</a> - Small running game done as 1 hour challenge.</li>
+<li><a href="https://github.com/sergicollado/no_hope_LD33">No hope</a> - Ludum Dare 33 entry made in 48 hours.</li>
+<li><a href="https://github.com/FEDE0D/Planet-Rider">Planet Rider</a> - 2D physics parkour game in an alien environment.</li>
+<li><a href="https://github.com/Calinou/platshoot">Platshoot</a> - A 2D shooter game.</li>
+<li><a href="https://github.com/KOBUGE-Incubator/ringed">Ringed</a> - Top-down shooter with extensive usage of light effects.</li>
+<li><a href="https://github.com/w84death/Tanks-of-Freedom">Tanks of Freedom</a> - Free turn-based isometric strategy game.</li>
+<li><a href="https://github.com/delstuff/threeHungryMice">Three Hungry Mice</a> - Breakout game with mice made for the Godot Engine Jam of March 2016.</li>
+</ul>
+<h3 id="3d"><a class="header" href="#3d">3D</a></h3>
+<h4 id="godot-43"><a class="header" href="#godot-43">Godot 4.3</a></h4>
+<ul>
+<li><a href="https://github.com/FOSS-Supremacy/OpenLiberty">OpenLiberty</a> - An open-source reimplementation of Grand Theft Auto III on the Godot Engine.</li>
+</ul>
+<h4 id="godot-42-1"><a class="header" href="#godot-42-1">Godot 4.2</a></h4>
+<ul>
+<li><a href="https://github.com/Nokorpo/LibreAim">LibreAim</a> - Libre FPS aim trainer made with Godot.</li>
+<li><a href="https://github.com/Quaint-Studios/Reia">Reia</a> - A free game that's an action adventure RPG for Desktop and Mobile with multiplayer, MMO, and offline support.</li>
+</ul>
+<h4 id="godot-32-1"><a class="header" href="#godot-32-1">Godot 3.2+</a></h4>
+<ul>
+<li><a href="https://github.com/dulvui/ball2box">Ball2Box</a> - Shoot the ball into the box, available for iOS, Android and html5.</li>
+<li><a href="https://github.com/FelicePollano/Boom">Boom</a> - A very simple, old fashion FPS, work-in-progress but playable.</li>
+<li><a href="https://github.com/Relintai/broken_seals">Broken Seals</a> - A work-in-progress third person action RPG with multiplayer support (needs custom engine modules).</li>
+<li><a href="https://gitlab.com/SuperTuxParty/SuperTuxParty">Super Tux Party</a> - A free/libre and open-source party game that is meant to replicate the feel of games such as Mario Party.</li>
+<li><a href="https://github.com/P1X-in/Tanks-of-Freedom-3-D">Tanks of Freedom II</a> - Free turn-based isometric strategy game in voxel art.</li>
+<li><a href="https://github.com/Revolutionary-Games/Thrive/">Thrive</a> - A free, open-source game about the evolution of life (Mono).</li>
+</ul>
+<h4 id="godot-31-1"><a class="header" href="#godot-31-1">Godot 3.1</a></h4>
+<ul>
+<li><a href="https://github.com/Azza292/RapidRescue">Rapid Rescue</a> - Rapid Rescue is a local multiplayer strategy game inspired by Labyrinth.</li>
+</ul>
+<h4 id="godot-30-1"><a class="header" href="#godot-30-1">Godot 3.0</a></h4>
+<ul>
+<li><a href="https://github.com/Bauxitedev/meteorite">Meteorite</a> - A lowres metroidvania FPS, inspired by Metroid Prime, made for LOWREZJAM 2018.</li>
+</ul>
+<h4 id="godot-21-1"><a class="header" href="#godot-21-1">Godot 2.1</a></h4>
+<ul>
+<li><a href="https://github.com/khairul169/cheese-hunter">Cheese Hunter</a> - A game for Godot Engine Jam of March 2016.</li>
+</ul>
+<h3 id="xr"><a class="header" href="#xr">XR</a></h3>
+<h4 id="godot-41"><a class="header" href="#godot-41">Godot 4.1</a></h4>
+<ul>
+<li><a href="https://github.com/surreal6/piggyRescue">Piggy Rescue</a> - Fun little example game where you chase and rescue little pigs.</li>
+</ul>
+<h4 id="godot-35"><a class="header" href="#godot-35">Godot 3.5</a></h4>
+<ul>
+<li><a href="https://github.com/NeoSpark314/BeepSaber">Beep Saber VR</a> - Beat Saber clone in Godot.</li>
+<li><a href="https://github.com/this-is-bennyk/Funkin-VR">Friday Night Funkin`</a> - VR port of the popular rhythm game.</li>
+</ul>
+<h2 id="projects"><a class="header" href="#projects">Projects</a></h2>
+<p><em>Non-game Open source projects made with Godot (tools/utilities).</em></p>
+<h4 id="godot-40"><a class="header" href="#godot-40">Godot 4.0</a></h4>
+<ul>
+<li><a href="https://github.com/lesleyrs/clipboard-narrator">Clipboard Narrator</a> - Turn any web page into an audiobook, works in the background on desktop!</li>
+<li><a href="https://github.com/MewPurPur/GodSVG">GodSVG</a> - Tool to create optimized Scalable Vector Graphics files.</li>
+</ul>
+<h4 id="godot-35-1"><a class="header" href="#godot-35-1">Godot 3.5+</a></h4>
+<ul>
+<li><a href="https://github.com/sesopenko/gatt">GATT - Godot Autotile Texture Templater</a> - A tool for generating 2x2 and 3x3 autotile tilesets in whichever size and colour needed.</li>
+</ul>
+<h4 id="godot-32-2"><a class="header" href="#godot-32-2">Godot 3.2+</a></h4>
+<ul>
+<li><a href="https://github.com/mhgolkar/Arrow">Arrow</a> - A tool to design game narratives with nodes.</li>
+<li><a href="https://github.com/alfredbaudisch/Godello">Godello</a> - A Trello-like kanban board application made with Godot. A proof of concept for complex non-game applications with Godot, as well real-time online interactions between multiple users. Includes backend code.</li>
+<li><a href="https://github.com/mbrlabs/Lorien">Lorien</a> - Infinite-canvas drawing/whiteboarding app for Windows, Linux and macOS. Supports drawing tablets and pressure sensitivity.</li>
+<li><a href="https://github.com/RodZill4/material-maker">Material Maker</a> - Create PBR materials procedurally (similar to Substance Designer).</li>
+<li><a href="https://github.com/Orama-Interactive/Pixelorama">Pixelorama</a> - 2D pixel art editor.</li>
+<li><a href="https://github.com/protongraph/protongraph">ProtonGraph</a> - Node-based tool for procedural content creation. Like visual scripting, but for 3D model generation (needs custom engine modules).</li>
+<li><a href="https://github.com/virtual-puppet-project/vpuppr">vpuppr</a> - A cross-platform VTuber application with mulitple tracking backends.</li>
+</ul>
+<h2 id="templates"><a class="header" href="#templates">Templates</a></h2>
+<p><em>Projects to use as a base for your own games.</em></p>
+<h4 id="godot-42-2"><a class="header" href="#godot-42-2">Godot 4.2+</a></h4>
+<ul>
+<li><a href="https://github.com/godotVR/godot-xr-template">Godot XR Template</a> - Template for a multi-level XR game.</li>
+<li><a href="https://github.com/Maaack/Godot-Game-Template">Maaack's Game Template</a> - Template with a main menu, options menus, pause menu, credits, scene loader, extra tools, and an example game scene.</li>
+</ul>
+<h4 id="godot-35-2"><a class="header" href="#godot-35-2">Godot 3.5+</a></h4>
+<ul>
+<li><a href="https://github.com/bend-n/godot-template">bendn's Godot Template</a> - Game template using the <a href="https://github.com/you-win/godot-package-manager">gpm</a>, with itch.io pushing and builds automated. Starter CLI included.</li>
+</ul>
+<h4 id="godot-32-3"><a class="header" href="#godot-32-3">Godot 3.2+</a></h4>
+<ul>
+<li><a href="https://github.com/crystal-bit/godot-game-template">Crystal Bit Godot Game Template</a> - Opinionated game template. It includes continuous integration, scene loading with graphic transitions and game pause handling.</li>
+<li><a href="https://github.com/Whimfoome/godot-FirstPersonStarter">First Person Starter</a> - Template with First Person Controller, easily adjustable from the Inspector.</li>
+<li><a href="https://github.com/tavurth/godot-simple-fps-camera">Godot First Person Camera</a> - A simple FPS starter with jumping, movement, flashlight and a player character with animations.</li>
+<li><a href="https://github.com/MilkAndBanana01/godot-fps-template">Godot FPS Template</a> - A free first person game template for the Godot Engine.</li>
+<li><a href="https://github.com/tavurth/godot-game-of-life">Godot Game Of Life</a> - Conway's <em>Game of life</em> using shaders.</li>
+<li><a href="https://github.com/benmarz/minimum_game">Minimum Game</a> - Template top-down 2D pixel art game, with multiple rooms, a HUD, menus, and autosaving.</li>
+<li><a href="https://github.com/blockspacer/Godot-3.2-Multiplayer-FPS">Multiplayer First Person Shooter</a> - Multiplayer first person shooter example project.</li>
+<li><a href="https://github.com/jasonswearingen/TPS-MP">Multiplayer Third Person Shooter</a> - Multiplayer third person shooter example project.</li>
+</ul>
+<h4 id="godot-31-2"><a class="header" href="#godot-31-2">Godot 3.1</a></h4>
+<ul>
+<li><a href="https://github.com/nezvers/Godot-GameTemplate">Godot-GameTemplate</a> - Template with all necessary stuff taken care of. Designed for pixel art games.</li>
+</ul>
+<h2 id="demos"><a class="header" href="#demos">Demos</a></h2>
+<p><em>Demos to learn GDScript, its concepts, and various game features.</em></p>
+<h4 id="godot-4x"><a class="header" href="#godot-4x">Godot 4.x</a></h4>
+<ul>
+<li><a href="https://github.com/Elesh-Norn/kaleidoscope">Kaleidoscope</a> - A demo for interactive shaders in Godot.</li>
+</ul>
+<h4 id="godot-32-4"><a class="header" href="#godot-32-4">Godot 3.2+</a></h4>
+<ul>
+<li><a href="https://github.com/godotengine/godot-demo-projects">Godot Demo Projects</a> - Official Godot demo projects (everything except the TPS demo).</li>
+<li><a href="https://github.com/godotengine/tps-demo">TPS Demo</a> - Official Godot third person shooter (TPS) demo with high quality graphics.</li>
+<li><a href="https://github.com/MrEliptik/godot_experiments">Godot experiments</a> - Several 2D, 3D and VR experiments.</li>
+<li><a href="https://github.com/Relintai/the_tower">The Tower</a> - A voxel-based parkour game to show the capabilities of the Voxelman module.</li>
+</ul>
+<h4 id="godot-31-3"><a class="header" href="#godot-31-3">Godot 3.1</a></h4>
+<ul>
+<li><a href="https://github.com/godot-extended-libraries/godot-realistic-water">Realistic Water Shader</a> - Realistic 3D water shader with foam and caustics.</li>
+<li><a href="https://github.com/GDquest/godot-open-rpg">OpenRPG</a> - JRPG-style game demo and template.</li>
+<li><a href="https://github.com/Zylann/voxelgame">voxelgame</a> - Minecraft-like voxel terrain demo, utilising the godot_voxel module.</li>
+</ul>
+<h4 id="godot-30-2"><a class="header" href="#godot-30-2">Godot 3.0</a></h4>
+<ul>
+<li><a href="https://github.com/GDQuest/godot-make-pro-2d-games">Open Source A-RPG Demo</a> - RPG demo.</li>
+</ul>
+<h4 id="godot-21-2"><a class="header" href="#godot-21-2">Godot 2.1</a></h4>
+<ul>
+<li><a href="https://github.com/Calinou/fps-test">FPS Test</a> - A singleplayer FPS test. Physics work, but there are no enemies and no proper shooting.</li>
+<li><a href="https://github.com/FEDE0D/godot-pathfinding2d-demo">Pathfinding 2d</a> - A demo project demonstrating pathfinding using a tilemap.</li>
+<li><a href="https://github.com/empyreanx/godot-snapshot-interpolation-demo">UDP Snapshot interpolation</a> - Lets you connect to a server and view networked physics.</li>
+<li><a href="https://github.com/empyreanx/godot-state-sync-demo">UDP State synchronization</a> - A more efficient networking demo than the snapshot interpolation one.</li>
+<li><a href="https://github.com/toger5/Godot-Voxel-Game-MineCraftClone">Voxel Game</a> - Minecraft-like voxel terrain demo.</li>
+</ul>
+<h2 id="tutorials"><a class="header" href="#tutorials">Tutorials</a></h2>
+<blockquote>
+<p><strong>Note</strong></p>
+<p>The <a href="https://docs.godotengine.org/en/latest/community/tutorials.html">list of tutorials</a> has moved to the Godot documentation.</p>
+</blockquote>
+<h2 id="plugins-and-scripts"><a class="header" href="#plugins-and-scripts">Plugins and scripts</a></h2>
+<p><em>Scripts that let you do new stuff, or enhance Godot functionality.</em></p>
+<h4 id="various-godot-versions"><a class="header" href="#various-godot-versions">Various Godot versions</a></h4>
+<ul>
+<li><a href="https://github.com/hiulit/Godot-3-2D-Day-Night-Cycle">2D Day/Night Cycle</a> - A ☀️ Day / 🌔 Night cycle for 2D (Godot 3.x).</li>
+<li><a href="https://github.com/hiulit/Godot-3-2D-Destructible-Objects">2D Destructible Objects</a> - A script that takes a sprite, divides it into blocks and makes them explode💥 (Godot 3.x).</li>
+<li><a href="https://github.com/ThGnommy/godot_3d_auto_collision_generator">3D Auto Collision Generator</a> - Generate collision for multiple 3D objects in one click (Godot 4.x).</li>
+<li><a href="https://github.com/AndreMicheletti/godot-agones-sdk">AgonesSDK</a> - Plugin to add <a href="https://github.com/googleforgames/agones">Agones</a> SDK functionality to Godot (Godot 3.x).</li>
+<li><a href="https://github.com/ceceppa/anima">Anima</a> - Run sequential and parallel animations with less code compared to Tween (Godot 3.x).</li>
+<li><a href="https://github.com/viniciusgerevini/godot-aseprite-wizard">Aseprite Wizard</a> - Plugin for importing animations from Aseprite as SpriteFrames (Godot 3.x).</li>
+<li><a href="https://github.com/graycastle/godot-AutoColliders">AutoColliders</a> - Allows the automatic generation of colliders for Sprites, with planned expansion to handle 3D meshes in the future (Godot 3.x).</li>
+<li><a href="https://github.com/sarooptech/BoxCam2D">BoxCam2D</a> - Simplest way to implement grid-based 2D camera movement (Godot 3.x).</li>
+<li><a href="https://codeberg.org/svetogam/creverter">CReverter (Composite Reverter)</a> - Memento-based undo/redo utility that supports composition (Godot 4.x).</li>
+<li><a href="https://github.com/hiulit/Godot-3-2D-CRT-Shader">CRT Shader</a> - A Godot shader that simulates CRT Displays with many shader parameters (Godot 3.x).</li>
+<li><a href="https://github.com/blackears/cyclopsLevelBuilder">Cyclops Level Builder</a> - A level builder for quick prototypes and proof-of-concepts (Godot 4.x).</li>
+<li><a href="https://github.com/nathanhoad/godot_dialogue_manager">Dialogue Manager</a> - A simple but powerful text based branching dialogue editor and runtime (Godot 3.x, 4.x).</li>
+<li><a href="https://github.com/effekseer/EffekseerForGodot3">EffekseerForGodot3</a> - Import <a href="https://effekseer.github.io/en/">Effekseer</a> particle effects (Godot 3.x).</li>
+<li><a href="https://github.com/godotengine/escoria">Escoria</a> - Point &amp; click adventure game framework (Godot 2.1, 3.2+).</li>
+<li><a href="https://github.com/tavurth/godot-fft">Fast Fourier Transform (FFT)</a> - Fast Fourier Transform in GDScript (Godot 4.x).</li>
+<li><a href="https://github.com/friflo/Friflo.Json.Fliox/blob/main/Engine/README.md">Friflo.Engine.ECS</a> - High-performance C# ECS with simple API. Supports .NET, WASM/WebAssembly, Native AOT, Godot, Unity, MonoGame, ... (Godot 3.x, 4.x).</li>
+<li><a href="https://github.com/MikeSchulze/gdUnit3">GdUnit3</a> - Godot Unit Testing Framework (Godot 3.x).</li>
+<li><a href="https://github.com/MikeSchulze/gdUnit4">GdUnit4</a> - Godot Unit Testing Framework (Godot 4.x).</li>
+<li><a href="https://github.com/didier-v/GodotNotificationCenter">GodotNotificationCenter</a> - A notification center (Godot 3.x).</li>
+<li><a href="https://github.com/alfredbaudisch/GodotPhoenixChannels">GodotPhoenixChannels</a> - A GDScript and Godot Engine implementation for the Channels API of the Phoenix Framework (Godot 3.*).</li>
+<li><a href="https://github.com/tavurth/godot-radial-menu">Godot Radial Menu</a> - A radial menu written in shader code for performance.</li>
+<li><a href="https://kidscancode.org/godot_recipes/3.x/">Godot Recipes</a> - A large collection of tutorials and techniques, both big and small.</li>
+<li><a href="https://github.com/GDQuest/godot-shaders">Godot Shaders</a> - A large library of free and open-source shaders for 2D and 3D.</li>
+<li><a href="https://github.com/2shady4u/godot-sqlite">Godot SQLite</a> - GDNative wrapper for SQLite, making it possible to use SQLite databases as data storage in your project (Godot 3.2+).</li>
+<li><a href="https://github.com/yudinikita/godot-spin-button">Godot Spin Button</a> - Horizontal Selector with extended options (Godot 4.x).</li>
+<li><a href="https://github.com/henriquelalves/GodotTIE">GodotTIE</a> - Text Interface Engine to control text output (like in a RPG dialogue) (Godot 2.x, 3.x).</li>
+<li><a href="https://github.com/TeddyDD/gterm">gterm</a> - GUI control that draws something similar to *nix terminal emulators (Godot &gt;= 2.1).</li>
+<li><a href="https://github.com/bitwes/Gut">GUT</a> - Utility for writing unit tests in GDScript (Godot 3.x).</li>
+<li><a href="https://github.com/Zylann/godot_heightmap_plugin">HTerrain</a> - Heightmap-based terrain. Supports texture painting, colouring, holes, level of detail and grass (Godot 3.x, 4.x).</li>
+<li><a href="https://github.com/nklbdev/godot-4-importality">Importality</a> - raster graphics and animations importers: Aseprite, Krita, Pencil2D, Piskel, Pixelorama and others (Godot 4.x).</li>
+<li><a href="https://github.com/Larpon/ingrid">InGrid</a> - Infinite scrolling grid (Godot 3.x).</li>
+<li><a href="https://github.com/nathanhoad/godot_input_helper">Input Helper</a> - A helper for detecting input devices and remapping controls (Godot 3.x, 4.x).</li>
+<li><a href="https://github.com/you-win/obs-websocket-gd">obs-websocket-gd</a> - Script and editor plugin to control Open Broadcaster Software from Godot via obs-websocket (Godot 3.x).</li>
+<li><a href="https://github.com/Vahera/godot-orchestrator">Orchestrator</a> - Dialog and visual-scripting subsystem for 2D and 3D games (Godot 4.x).</li>
+<li><a href="https://github.com/ShomyKohai/quest-system">QuestSystem</a> - A simple and extensible quest manager and creator (Godot 4.x).</li>
+<li><a href="https://github.com/jotson/ridiculous_coding">Ridiculous Coding</a> - Makes your coding experience in Godot 1000× more ridiculous (Godot 3.x).</li>
+<li><a href="https://github.com/glass-brick/Scene-Manager">Scene Manager</a> - Make nice and customizable scene transitions in one line of code (Godot 3.x, 4.0.alpha).</li>
+<li><a href="https://github.com/dploeger/godot-scrollingbackground">Scrolling Background</a> - A scrolling background node (Godot 2.1,3.x).</li>
+<li><a href="https://github.com/henriquelalves/SimpleGodotCRTShader">SimpleGodotCRTShader</a> - A simple Godot shader that simulates CRT Displays (Godot 2.x, 3.x).</li>
+<li><a href="https://github.com/fbcosentino/godot-simplified-flightsim">Simplified Flight Simulation library</a> - A library that helps you create a simple airplane/helicopter/spaceship flight simulator (Godot 3.x, 4.x).</li>
+<li><a href="https://github.com/Ericdowney/SignalVisualizer">SignalVisualizer</a> - Displays the current scene's signals and connections in a easy to read graph and tree dock (Godot 4.x).</li>
+<li><a href="https://github.com/SirRamEsq/SmartShape2D">SmartShape2D</a> - A 2D terrain tool (Godot 3.x, 4.x).</li>
+<li><a href="https://github.com/HeavenMercy/StoryTeller-Engine">StoryTeller Engine</a> - Dialog and interactive fiction engine (Godot 3.x).</li>
+<li><a href="https://github.com/vnen/godot-tiled-importer">Tiled importer</a> - Import maps from <a href="https://www.mapeditor.org/">Tiled</a> (Godot 3.x).</li>
+<li><a href="https://github.com/HeavenMercy/TileSet-Builder-Godot-Plugin">TileSet Builder</a> - Quickly build tilesets with style (Godot 3.x).</li>
+<li><a href="https://github.com/MarcoFazioRandom/Virtual-Joystick-Godot">Virtual Joystick</a> - A virtual joystick for touchscreens. Simple to use and with useful options (Godot 3.x, 4.x).</li>
+</ul>
+<h4 id="godot-42-3"><a class="header" href="#godot-42-3">Godot 4.2+</a></h4>
+<ul>
+<li><a href="https://github.com/Goutte/godot-addon-animated-shape-2d">AnimatedShape2D</a> - Animate a CollisionShape2D along with the frames of an AnimatedSprite2D.</li>
+<li><a href="https://codeberg.org/svetogam/cslocator">CSLocator (Contextual Service Locator)</a> - Provides a clean interface to register and find objects through the scene tree like localized singletons.</li>
+<li><a href="https://github.com/Rubonnek/dialogue-engine">Dialogue Engine</a> - Minimalistic dialogue engine that fits into your GUI nodes and automatically graphs the branching dialogues for easy debugging.</li>
+<li><a href="https://github.com/Iakobs/godot-play-game-services">Godot Google Play Game Services</a> - Integrate Google Play Games Services in your Godot game.</li>
+<li><a href="https://github.com/godotvr/godot-xr-tools">Godot XR Tools</a> - Basic components for XR development.</li>
+<li><a href="https://github.com/limbonaut/limboai">LimboAI</a> - Behavior trees and state machines. Comes with editor, visual debugger, comprehensive demo and tutorial.</li>
+<li><a href="https://github.com/Maaack/Godot-Game-Template">Maaack's Game Template Plugin</a> - Template with a main menu, options menus, pause menu, credits, scene loader, extra tools, and an example game scene.</li>
+<li><a href="https://github.com/Maaack/Godot-Menus-Template">Maaack's Menus Template</a> - Template with a main menu, options menus, credits, and a scene loader.</li>
+<li><a href="https://github.com/Maaack/Godot-Scene-Loader">Maaack's Scene Loader</a> - Scene loader that includes a loading screen, progress bar, and error handling.</li>
+<li><a href="https://github.com/pixelpen-dev/pixelpen">PixelPen</a> - Pixel art drawing and animation: Common drawing tools such as selection, shape creation, mirroring, tiling, and animation features within the Godot editor.</li>
+<li><a href="https://github.com/spimort/TerraBrush">TerraBrush</a> - Minimal Terrain heightmap editor that features sculpting, painting textures, LOD, and MultiZones.</li>
+</ul>
+<h4 id="godot-32-5"><a class="header" href="#godot-32-5">Godot 3.2+</a></h4>
+<ul>
+<li><a href="https://github.com/godot-extended-libraries/godot-antialiased-line2d">AntialiasedLine2D</a> - Higher-quality antialiased Line2D and Polygon2D drawing compared to the default Godot implementation (GLES3 + GLES2, all platforms).</li>
+<li><a href="https://github.com/awkwardpolygons/cartographer">Cartographer</a> - Heightmap-based 3D terrain editor.</li>
+<li><a href="https://github.com/mohammedzero43/CSGExport-Godot">CSG Mesh Exporter (.OBJ)</a> - Export CSG nodes to OBJ meshes to improve editing performance.</li>
+<li><a href="https://github.com/fenix-hub/godot-engine.code-snapshot">Code Snapshot</a> - A plugin which lets you take beautified screenshots of your code within the editor.</li>
+<li><a href="https://github.com/fractilegames/godot-gles2-debanding-material">Debanding Material Shader</a> - Simple material shader with added debanding noise, for use with the GLES2 renderer as it doesn't support full-screen debanding.</li>
+<li><a href="https://github.com/hiulit/Delaunator-GDScript">Delaunator GDScript</a> - A GDScript library for Delaunay triangulation of 2D points.</li>
+<li><a href="https://github.com/coppolaemilio/dialogic">Dialogic</a> - Create dialogs, characters and scenes to display conversations.</li>
+<li><a href="https://github.com/MatejSloboda/Dijkstra_map_for_Godot">Dijkstra map for Godot</a> - A GDNative project for Godot game engine, that introduces Dijktra Map pathfinding node.</li>
+<li><a href="https://github.com/3ddelano/discord.gd">Discord.gd</a> - Discord bot API wrapper. Make bots in 100% GDScript.</li>
+<li><a href="https://github.com/funexpected/flash-tools">Funexpected Flash Tools</a> - Adobe Animate (Flash) plugin that allows you to export a project for a Godot Engine.</li>
+<li><a href="https://github.com/jegor377/godot-gdgifexporter">GDGIFExporter</a> - GIF exporter made entirely in GDScript.</li>
+<li><a href="https://github.com/fenix-hub/godot-engine.github-integration">GitHub integration</a> - Interact with GitHub without opening your browser.</li>
+<li><a href="https://github.com/TheSHEEEP/godotccd">godotccd</a> - Fast 3D collision checks in Godot using libccd.</li>
+<li><a href="https://github.com/TheSHEEEP/godotdetour">godotdetour</a> - A GDNative implementation of the detour/detourcrowd library.</li>
+<li><a href="https://github.com/LennyPhoenix/GodotDiscordSDK">GodotDiscordSDK</a> - A GDNative wrapper for the Discord Game SDK, adding support for its functionality in GDScript without recompiling the engine (as opposed to something like godotcord which is a custom engine module).</li>
+<li><a href="https://github.com/ACB-prgm/Godot_GamePad">Godot GamePad</a> - Allows players to use their mobile devices as controllers.</li>
+<li><a href="https://github.com/you-win/godot-gif-getter">Godot Gif Getter</a> - An in-game utility for recording and saving GIFs (written in GDNative Rust).</li>
+<li><a href="https://github.com/Iakobs/godot-google-play-game-services-android-plugin">Godot Google Play Games Services</a> - Integrate Google Play Games Services in your Godot game.</li>
+<li><a href="https://github.com/paulloz/godot-ink">godot-ink</a> - A C# (Mono) plugin to integrate stories writen in <a href="https://github.com/inkle/ink">ink</a>, a scripting language for writing interactive narrative.</li>
+<li><a href="https://github.com/godot-extended-libraries/godot-next">Godot NExt</a> - A set of basic node extensions.</li>
+<li><a href="https://github.com/kyzfrintin/Godot-Mixing-Desk">Godot Mixing Desk</a> - Make procedural sound and adaptive/procedural music with a few nodes and a couple lines of code.</li>
+<li><a href="https://github.com/31/GodotOnReady">GodotOnReady</a> - A C# (Mono) alternative to the GDScript-only <code>onready</code> keyword, without reflection.</li>
+<li><a href="https://github.com/semickolon/GodotRx">GodotRx</a> - Reactive extensions for Godot C# (Mono).</li>
+<li><a href="https://github.com/jarneson/godot-ply">godot-ply</a> - In-editor box modelling for gray boxing or prototyping 3D levels.</li>
+<li><a href="https://github.com/SoloByte/godot-polygon2d-fracture">Godot Polygon 2D Fracture</a> - Two simple scripts for fracturing and cutting polygons.</li>
+<li><a href="https://github.com/OBKF/Godot-Trail-System">Godot-Trail-System</a> - Advanced 2D/3D trail system.</li>
+<li><a href="https://github.com/mcunha-br/Godot_VirtualJoystick">Godot VirtualJoystick</a> - A simple vitual joystick for mobile devices.</li>
+<li><a href="https://github.com/Kehom/GodotAddonPack">Kehom's Godot Addon Pack</a> - A collection of addons for debugging, networking, UI, and more.</li>
+<li><a href="https://github.com/Calinou/godot-lod">Level of Detail (LOD)</a> - Level of detail add-on for meshes, lights and particles. Can improve performance in large scenes.</li>
+<li><a href="https://github.com/Kylogias/godot-line-collider-2d">Line Collider 2D</a> - A script which adds colliders that follow an array of Line2Ds (useful for prototypes).</li>
+<li><a href="https://github.com/DoubleDeez/MDFramework">MDFramework</a> - A C# multiplayer framework with additional tools (Mono).</li>
+<li><a href="https://github.com/hoontee/godot-ni-mate-motion-capture">NI mate Motion Capture</a> - Animate Skeletons with a Microsoft Kinect sensor.</li>
+<li><a href="https://github.com/DrMoriarty/nativelib">NativeLib</a> - Plugin management system designed to easily operate with native libraries for iOS/Android. It also takes care about plugin dependencies and provides hassle-free native libs updating. Attribution and analytics: Adjust, Amplitude, AppsFlyer, Flurry, GameAnalytics, Tenjin. Ads networks and mediation: AdColony, AppLovin, TapDaq. GDPR and privacy: App Tracking Transparency, Ogury. Social: Facebook. Universal backend solution: Firebase.</li>
+<li><a href="https://github.com/Shfty/qodot-plugin">Qodot</a> - Quake <code>.map</code> file support for Godot. Lets you use <a href="https://kristianduske.com/trenchbroom/">TrenchBroom</a> for level design.</li>
+<li><a href="https://github.com/HungryProton/scatter">Scatter</a> - Randomly fill an area with props or other scenes.</li>
+<li><a href="https://github.com/Arnklit/ShellFurGodot">Shell Fur</a> - 3D fur node for Godot.</li>
+<li><a href="https://github.com/Zylann/godot_tree_generator_plugin">Tree generator</a> - Tool for generating trees.</li>
+<li><a href="https://github.com/imjp94/UIDesignTool">UI Design Tool</a> - Intuitive design workflow for UIs in the editor.</li>
+<li><a href="https://github.com/SIsilicon/Godot-Volumetrics-Plugin">Volumetrics</a> - Voxel-based volumetric lighting and fog plugin.</li>
+<li><a href="https://github.com/ClarkThyLord/Voxel-Core">Voxel-Core</a> - GDScript voxel plugin for creating, importing and editing voxel content in-engine and in-game.</li>
+<li><a href="https://github.com/tomankirilov/VPainter">VPainter</a> - 3D vertex painting plugin.</li>
+<li><a href="https://github.com/Arnklit/WaterGenGodot">Waterways</a> - Tool to generate river meshes with flow and foam maps based on Bézier curves.</li>
+<li><a href="https://github.com/alessandrofama/wwise-godot-integration">Wwise</a> - Wwise audio middleware integration.</li>
+<li><a href="https://gitlab.com/atnb/xsm">XSM</a> - A fully-featured hierarchical State Machine with parallel states, easy animation, random states and more.</li>
+<li><a href="https://github.com/yumedev40/Yume-Visual-Novel-Editor">Yume Visual Novel Editor</a> - An integrated editor for creating visual novel games.</li>
+</ul>
+<h4 id="godot-31-4"><a class="header" href="#godot-31-4">Godot 3.1</a></h4>
+<ul>
+<li><a href="https://github.com/utopia-rise/fmod-gdnative">FMOD GDNative</a> - Plugin to use the FMOD audio engine in GDScript.</li>
+</ul>
+<h4 id="godot-30-3"><a class="header" href="#godot-30-3">Godot 3.0</a></h4>
+<ul>
+<li><a href="https://github.com/droxpopuli/gdstats">gdstats</a> - A library of pseudorandom number generators for common statistical distributions.</li>
+</ul>
+<h4 id="godot-21-3"><a class="header" href="#godot-21-3">Godot 2.1</a></h4>
+<ul>
+<li><a href="https://github.com/leezh/autotile">Auto Tile Layer</a> - Allows automatic 2D tiling using RPG Maker's Autotile format.</li>
+<li><a href="https://github.com/marcosbitetti/grass_plugin_4_godot">Grass Plugin</a> - A plugin to handle huge amounts of grass, foliages and other vegetations.</li>
+<li><a href="https://gitlab.com/shine-upon-thee/joystick">SUTjoystick</a> - Easy gamepad support for GNU/Linux and Windows.</li>
+</ul>
+<h4 id="godot-version-unknown"><a class="header" href="#godot-version-unknown">Godot version unknown</a></h4>
+<ul>
+<li><a href="https://godotengine.org/qa/438/camera2d-screen-shake-extension">Camera2D Screen Shake</a> - Screen shake effect for Camera2D.</li>
+<li><a href="https://github.com/impmja/godot-easing">Easing Script</a> - A port of the Robert Penner's equations for easing.</li>
+<li><a href="https://github.com/NangiDev/GDSerCommPlugin">GDSerCommPlugin</a> - A plugin to read Arduino serial input (needs custom engine modules).</li>
+<li><a href="https://github.com/GodotExplorer/gdutils">gdutils</a> - Utilities for Godot written in GDScript.</li>
+<li><a href="https://github.com/vini-guerrero/Godot_Game_Tools">Godot Game Tools</a> - Blender plugin to ease importing assets into Godot.</li>
+<li><a href="https://github.com/ScyDev/Godot-Scripts">Polygon Merge</a> - Merge polygons.</li>
+<li><a href="https://github.com/OvermindDL1/Godot-Helpers">Simplex 2D/3D</a> - Simplex deterministic noise functions.</li>
+<li><a href="https://gist.github.com/Calinou/27e979ab0a35500c3381">Tileset Builder</a> - Build tilesets.</li>
+</ul>
+<h2 id="modules"><a class="header" href="#modules">Modules</a></h2>
+<p><em>Stuff integrated into Godot core (C++).</em></p>
+<h4 id="various-godot-versions-1"><a class="header" href="#various-godot-versions-1">Various Godot versions</a></h4>
+<ul>
+<li><a href="https://github.com/Relintai/entity_spell_system">Entity Spell System</a> - An entity and spell system for complex (optionally multiplayer) RPGs (Godot 3.2, 4.0).</li>
+<li><a href="https://github.com/Xrayez/godot-anl">godot-anl</a> - A wrapper for <a href="https://github.com/JTippetts/accidental-noise-library">Accidental Noise Library</a> with a visual noise editing support.</li>
+<li><a href="https://github.com/appsinacup/godot-box2d">godot-box2d</a> - A <a href="https://github.com/erincatto/box2d">Box2D</a> physics server for Godot (Godot 4.2).</li>
+<li><a href="https://github.com/godot-jolt/godot-jolt">godot-jolt</a> - Allows you to use the <a href="https://github.com/jrouwe/JoltPhysics">Jolt Physics Engine</a> (Godot 4.2).</li>
+<li><a href="https://github.com/WeaselGames/godot_luaAPI">godot-luaAPI</a> - Module for creating sandboxed modding APIs with Lua (Godot 3.2+, 4.0).</li>
+<li><a href="https://github.com/appsinacup/godot-rapier-2d">godot-rapier-2d</a> - A 2D <a href="https://github.com/dimforge/rapier">Rapier</a> physics server for Godot (Godot 4.2).</li>
+<li><a href="https://github.com/touilleMan/godot-python">godot-python</a> - Python support for Godot 3.</li>
+<li><a href="https://github.com/Zylann/godot_voxel">godot-voxel</a> - Module for creating volumetric worlds (Godot 3.1+).</li>
+<li><a href="https://github.com/PerduGames/gdnet3">Gdnet for Godot 3</a> - An ENet wrapper for Godot 3.</li>
+<li><a href="https://github.com/Mestima/GodotHook">GodotHook</a> - A lite custom event system for Godot Engine (Godot 3.x, 4.x).</li>
+<li><a href="https://github.com/Gramps/GodotSteam">GodotSteam</a> - Steam API library binding for Godot. Supports Windows, macOS and Linux (Godot 3.x).</li>
+<li><a href="https://github.com/Relintai/texture_packer">Texture Packer</a> - Tools to layer, pack, and merge textures at runtime (Godot 3.2+, 4.0).</li>
+<li><a href="https://github.com/Relintai/voxelman">Voxelman</a> - A voxel engine with more focus on editor integration, gameplay-related features, and extendability (Godot 3.2+, 4.0).</li>
+</ul>
+<h4 id="godot-40-1"><a class="header" href="#godot-40-1">Godot 4.0</a></h4>
+<ul>
+<li><a href="https://github.com/summertimejordi/fmod_gd4">FMOD GD4</a> - FMOD Studio API integration.</li>
+<li><a href="https://github.com/GodotECS/godex">Godex</a> - An entity component system library.</li>
+</ul>
+<h4 id="godot-32-6"><a class="header" href="#godot-32-6">Godot 3.2+</a></h4>
+<ul>
+<li><a href="https://github.com/funexpected/godot-flash-module">Flash Module</a> - Use Adobe Animate (Flash) projects in Godot.</li>
+<li><a href="https://github.com/lupoglaz/GodotAIGym">GodotAIGym</a> - Make your Godot project into an OpenAI Gym environment to train RL models with PyTorch.</li>
+<li><a href="https://github.com/drachenfrucht1/godotcord">godotcord</a> - A wrapper for the <a href="https://discord.com/developers/docs/game-sdk/sdk-starter-guide">Discord Game SDK</a>.</li>
+<li><a href="https://github.com/Wild-Pluto/godot-apple-id">godot-apple-id</a> - Module for sign in with Apple in Godot.</li>
+<li><a href="https://github.com/tavurth/godot-simple-state">godot-simple-state</a> - A minimal finite state machine using nodes, perfect for Jam games.</li>
+<li><a href="https://github.com/cj-dimaggio/godot-slicer">Godot-Slicer</a> - A port of <a href="https://github.com/DavidArayan/ezy-slice">Ezy-Slicer</a> for Godot.</li>
+<li><a href="https://github.com/goostengine/goost">Goost</a> - A general-purpose, extensible and customizable extension.</li>
+<li><a href="https://github.com/sebastian-heinz/portaudio">PortAudio</a> - Wrapper methods and Godot-friendly types to use <a href="http://www.portaudio.com">PortAudio</a>.</li>
+<li><a href="https://github.com/menip/godot_speech_to_text">Speech to Text</a> - Captures the user's microphone input and converts it to text.</li>
+<li><a href="https://github.com/you-win/spout-gd">spout-gd</a> - Share OpenGL textures across Windows applications through your GPU using <a href="https://github.com/leadedge/Spout2">Spout</a>.</li>
+</ul>
+<h4 id="godot-31-5"><a class="header" href="#godot-31-5">Godot 3.1</a></h4>
+<ul>
+<li><a href="https://github.com/alexfonseka/godot-fmod-integration">FMOD Integration</a> - Module to integrate the FMOD audio engine in Godot.</li>
+</ul>
+<h4 id="godot-version-unknown-1"><a class="header" href="#godot-version-unknown-1">Godot version unknown</a></h4>
+<ul>
+<li><a href="https://github.com/Faless/godot-enet-better">godot-enet-better</a> - A better ENet module for high-performance multiplayer games with Godot.</li>
+<li><a href="https://github.com/antarktikali/godot-opencv-gpu-perspective">Head tracking using OpenCV</a></li>
+<li><a href="https://github.com/oamldev/oamlGodotModule">Open Adaptive Music Library</a></li>
+<li><a href="https://github.com/GodotExplorer/NativeDialogs">NativeDialogs</a> - Using native dialogs in Godot.</li>
+<li><a href="https://github.com/empyreanx/rawpacker">RawPacker</a> - Simple binary packing/unpacking for RawArray.</li>
+<li><a href="https://github.com/GodotExplorer/spine">spine</a> - <a href="http://esotericsoftware.com/">Spine</a> animation support module.</li>
+<li><a href="https://github.com/laverneth/water">WaterSplash 2D node</a></li>
+</ul>
+<h2 id="gdscriptc-editor-support"><a class="header" href="#gdscriptc-editor-support">GDScript/C# editor support</a></h2>
+<p><em>Add-ons for text editors that implement GDScript or C# support.</em></p>
+<ul>
+<li><a href="https://atom.io/packages/lang-gdscript">Atom</a> - Syntax highlighting.</li>
+<li><a href="https://github.com/godotengine/emacs-gdscript-mode">Emacs</a> - Syntax highlighting, code folding, indentation and autocompletion.</li>
+<li><a href="https://github.com/haimat/GDScript-Geany">Geany</a> - Syntax highlighting.</li>
+<li><a href="https://github.com/haimat/GDScript-gedit">Gedit</a> - Syntax highlighting.</li>
+<li><a href="https://github.com/exigow/intellij-gdscript">IntelliJ IDEA</a> - Syntax highlighting and autocompletion.</li>
+<li><a href="https://github.com/JetBrains/godot-support">JetBrains Rider (C#)</a> - Syntax highlighting, autocompletion and run configurations.</li>
+<li><a href="https://github.com/Skytrias/gdscript-kak">Kakoune</a> - Syntax highlighting.</li>
+<li><a href="https://github.com/GodotID/nano-gdscript">GNU Nano</a> - Syntax highlighting.</li>
+<li><a href="https://github.com/beefsack/GDScript-sublime">Sublime Text</a> - Syntax highlighting.</li>
+<li><a href="https://github.com/habamax/vim-godot">Vim</a> - Syntax highlighting, autocompletion and linting using the LSP server provided by the Godot editor. Also supports the Godot shader language.</li>
+<li>Visual Studio Code
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools">godot-tools Visual Studio Code Extension</a> - A complete set of tools to code games with Godot Engine in Visual Studio Code. Includes a GDScript language client.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=neikeq.godot-csharp-vscode">C# Tools for Godot Visual Studio Code Extension</a> - Debugger and utilities for working with Godot C# projects in VSCode.</li>
+<li><a href="https://github.com/bitwes/gut-extension">GUT Visual Studio Code Extension</a> - Run GUT framework unit/integration tests directly from the Visual Studio Code Editors.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=Razoric.gdscript-toolkit-formatter">gdformat Visual Studio Code Extension</a> - Formatter for GDScript in Visual Studio Code (Godot 3.x).</li>
+</ul>
+</li>
+</ul>
+<h2 id="godot-script-editor-syntax-themes"><a class="header" href="#godot-script-editor-syntax-themes">Godot script editor syntax themes</a></h2>
+<p><em>Alternative themes for the built-in script editor.</em></p>
+<ul>
+<li><a href="https://github.com/Calinou/base16-godot">base16-godot</a> - All <a href="https://github.com/chriskempson/base16">base16</a> themes.</li>
+<li><a href="https://github.com/godotengine/godot-syntax-themes">Godot syntax themes</a> - 13 syntax themes including Ayu Mirage, Darcula, Gruvbox Dark, Monokai, One Dark, Solarized, and more.</li>
+<li><a href="https://github.com/Geequlim/godot-themes/tree/master/syntax">Syntax themes by Geequlim</a> - Chester, Google Code Light and Monokai.</li>
+</ul>
+<h2 id="unofficial-godot-builds"><a class="header" href="#unofficial-godot-builds">Unofficial Godot builds</a></h2>
+<p><em>Those builds will let you use recent versions of Godot Git, but they may be less stable than official ones – use at your own risk.</em></p>
+<ul>
+<li><a href="https://hugo.pro/projects/godot-builds/">Calinou's builds</a> - Mainly master branch, other branches can be found <a href="https://archive.hugo.pro/builds/godot/">here</a>.</li>
+<li><a href="https://ifiregames.itch.io/stern-flowers-chibifire-com-godot-engine">iFire's builds</a> - Distributed via Itch.io (automatic updates with <a href="https://itch.io/app">app</a>), master branch only.</li>
+<li><a href="https://github.com/hiulit/Unofficial-Godot-Engine-Raspberry-Pi">Raspberry Pi 4 builds</a> - ARM builds of Godot Engine for the Raspberry Pi 4.</li>
+<li><a href="https://github.com/bend-n/godot-builds">bend-n's 2D builds</a> - Godot builds <a href="https://docs.godotengine.org/en/stable/development/compiling/optimizing_for_size.html">optimized for size</a> with <a href="https://github.com/bend-n/godot-builds/blob/main/.github/2d-build-modules.py">these modules disabled</a>. Also includes misc non breaking patches.</li>
+</ul>
+<h2 id="bash-scripts"><a class="header" href="#bash-scripts">Bash scripts</a></h2>
+<p><em>Bash scripts can be placed in <code>~/.local/bin</code>.</em></p>
+<ul>
+<li><a href="https://github.com/aaronfranke/Linux-tools/blob/master/all-distros/build-godot">build-godot</a> - (and <a href="https://github.com/aaronfranke/Linux-tools/blob/master/all-distros/build-godot-mono">build-godot-mono</a>) Scripts that compile and run Godot, attempting to install dependencies if needed.</li>
+<li><a href="https://github.com/adolson/godot-stuff/blob/master/godot.sh">godot.sh</a> - Script that automatically downloads and launches latest version of Godot, or compiles and launches the Git <code>master</code> branch.</li>
+<li><a href="https://github.com/nsrosenqvist/godot-wrapper">godot-wrapper</a> - Script that helps Debian and Ubuntu users install and use Godot.</li>
+<li><a href="https://github.com/adolson/godot-stuff/blob/master/replicate-file.sh">replicate-file.sh</a> - Script to update copies of a file with one master file.</li>
+</ul>
+<h2 id="websites"><a class="header" href="#websites">Websites</a></h2>
+<ul>
+<li><a href="https://godotengine.org/asset-library/asset">Godot Asset Library</a> - Official Godot Asset Library. Includes user-created games, projects, templates, demos, tutorials, plugins, and scripts.</li>
+<li><a href="https://godotshaders.com/">Godot Shaders</a> - A community-driven shader library for the Godot game engine.</li>
+<li><a href="https://godotes.com/">Godotes</a> - Weekly micro data analysis reports about the Godot engine and its ecosystem.</li>
+</ul>
+<h2 id="other"><a class="header" href="#other">Other</a></h2>
+<p><em>Other stuff.</em></p>
+<ul>
+<li><a href="https://github.com/HaSa1002/codetranslator">codetranslator</a> - Translates GDScript to C# (WIP).</li>
+<li><a href="https://github.com/kiriri/gd2cs.py">gd2cs.py</a> - Python script that converts GDScript code to C# (WIP).</li>
+<li><a href="https://www.npmjs.com/package/@gd-com/utils"><code>gd-com</code> npm package</a> - Communicate with Godot clients using Node.js.</li>
+<li><a href="https://github.com/bend-n/godot-actions">godot-actions</a> - Composite actions for exporting, setting up, and pushing Godot projects to itch.io through Github Actions.</li>
+<li><a href="https://github.com/aBARICHELLO/godot-ci">godot-ci</a> - Docker image to export Godot games through CI. Includes GitLab CI script example.</li>
+<li><a href="https://github.com/Scony/godot-gdscript-toolkit">godot-gdscript-toolkit</a> - Independent set of command line tools for working with GDScript - parser, linter and formatter (Godot 3.x).</li>
+<li><a href="https://github.com/hiulit/RetroPie-Godot-Game-Engine-Emulator">RetroPie Godot Game Engine &quot;Emulator&quot;</a> - A scriptmodule to install a Godot &quot;emulator&quot; for RetroPie.</li>
+<li><a href="https://github.com/adolson/godot-stuff/blob/master/strip-to-frames.pl">strip-to-frames.pl</a> - Perl script to split a grid spritesheet image into numbered individual frame files.</li>
+<li><a href="https://github.com/you-win/godot-package-manager">Godot Package Manager</a> - Package manager for Godot using npm.</li>
+<li><a href="https://github.com/zfoo-project/zfoo">zfoo</a> - Java game server framework for Godot, including GDScript serialization and deserialization.</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="gitpod.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="gpt3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="gitpod.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="gpt3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,6 @@
+import "../input-common"
+import "../tag"
+import "../button"
+import "../default-icons"
+import "./tag-input.js"
+import "./tag-input.less"

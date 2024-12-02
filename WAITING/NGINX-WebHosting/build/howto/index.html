@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/">
+<meta property="og:title" content="NGINX Unit: How-to">
+<meta content="Run a variety of frameworks and applications, use Unit with Docker, build custom modules, and resolve other issues." name="og:description" />
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Unit in Docker" href="docker/" />
+<link rel="prev" title="CLI (unitctl)" href="../unitctl/" />
+
+<title>How-to — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../">
+            <img src="../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">How-to</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#frameworks">Frameworks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bottle/">Bottle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cakephp/">CakePHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="catalyst/">Catalyst</a></li>
+<li class="toctree-l3"><a class="reference internal" href="codeigniter/">CodeIgniter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="django/">Django</a></li>
+<li class="toctree-l3"><a class="reference internal" href="djangochannels/">Django Channels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="express/">Express</a></li>
+<li class="toctree-l3"><a class="reference internal" href="falcon/">Falcon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fastapi/">FastAPI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="flask/">Flask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="guillotina/">Guillotina</a></li>
+<li class="toctree-l3"><a class="reference internal" href="koa/">Koa</a></li>
+<li class="toctree-l3"><a class="reference internal" href="laravel/">Laravel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lumen/">Lumen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pyramid/">Pyramid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quart/">Quart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="responder/">Responder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rails/">Ruby on Rails</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sanic/">Sanic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="springboot/">Spring Boot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="starlette/">Starlette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symfony/">Symfony</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yii/">Yii</a></li>
+<li class="toctree-l3"><a class="reference internal" href="zope/">Zope</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#applications">Applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apollo/">Apollo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bugzilla/">Bugzilla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datasette/">Datasette</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dokuwiki/">DokuWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="drupal/">Drupal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grafana/">Grafana</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jira/">Jira</a></li>
+<li class="toctree-l3"><a class="reference internal" href="joomla/">Joomla</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mailman/">Mailman Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="matomo/">Matomo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mediawiki/">MediaWiki</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mercurial/">Mercurial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="modx/">MODX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="moin/">MoinMoin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nextcloud/">NextCloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="opengrok/">OpenGrok</a></li>
+<li class="toctree-l3"><a class="reference internal" href="phpbb/">phpBB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="phpmyadmin/">phpMyAdmin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plone/">Plone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="redmine/">Redmine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reviewboard/">Review Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="roundcube/">Roundcube</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trac/">Trac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wordpress/">WordPress</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="how-to">
+<h1>How-to<a class="headerlink" href="#how-to" title="Permalink to this heading">§</a></h1>
+<p>This section describes various real-life situations and issues that you may
+experience with Unit.</p>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><a class="reference internal" href="docker/"><span class="doc">Unit in Docker</span></a>: Configure a standalone Unit or a Unit-run app in a Docker
+container.</li>
+<li><a class="reference internal" href="source/"><span class="doc">Building From Source</span></a>: Build Unit and its language modules from source code.</li>
+<li><a class="reference internal" href="ansible/"><span class="doc">Unit in Ansible</span></a>: Use a third-party Ansible collection to automate Unit
+deployment.</li>
+<li><a class="reference internal" href="integration/"><span class="doc">NGINX Integration</span></a>: Front or secure Unit with NGINX.</li>
+<li><a class="reference internal" href="certbot/"><span class="doc">TLS with Certbot</span></a>: Use EFF’s Certbot with Unit to simplify certificate
+manipulation.</li>
+<li><a class="reference internal" href="modules/"><span class="doc">Working With Language Modules</span></a>: Build new modules or prepare custom packages for
+Unit.</li>
+<li><a class="reference internal" href="samples/"><span class="doc">App Samples</span></a>: Reuse sample app configurations for all languages
+supported by Unit.</li>
+<li><a class="reference internal" href="security/"><span class="doc">Security Checklist</span></a>: Recommendations and considerations for hardening Unit.</li>
+<li><a class="reference internal" href="walkthrough/"><span class="doc">Walkthrough</span></a>: Follow an end-to-end guide to application configuration
+in Unit.</li>
+</ul>
+<div class="section" id="frameworks">
+<span id="howto-frameworks"></span><h2>Frameworks<a class="headerlink" href="#frameworks" title="Permalink to this heading">§</a></h2>
+<p>With Unit, you can configure a diverse range of applications based on the
+following frameworks:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bottle/">Bottle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cakephp/">CakePHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="catalyst/">Catalyst</a></li>
+<li class="toctree-l1"><a class="reference internal" href="codeigniter/">CodeIgniter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="django/">Django</a></li>
+<li class="toctree-l1"><a class="reference internal" href="djangochannels/">Django Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="express/">Express</a></li>
+<li class="toctree-l1"><a class="reference internal" href="falcon/">Falcon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fastapi/">FastAPI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="flask/">Flask</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guillotina/">Guillotina</a></li>
+<li class="toctree-l1"><a class="reference internal" href="koa/">Koa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="laravel/">Laravel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lumen/">Lumen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyramid/">Pyramid</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quart/">Quart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="responder/">Responder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rails/">Ruby on Rails</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sanic/">Sanic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="springboot/">Spring Boot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="starlette/">Starlette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="symfony/">Symfony</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yii/">Yii</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zope/">Zope</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="applications">
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">§</a></h2>
+<p>You can also make use of detailed setup instructions for popular web apps such
+as:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apollo/">Apollo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bugzilla/">Bugzilla</a></li>
+<li class="toctree-l1"><a class="reference internal" href="datasette/">Datasette</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dokuwiki/">DokuWiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="drupal/">Drupal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grafana/">Grafana</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jira/">Jira</a></li>
+<li class="toctree-l1"><a class="reference internal" href="joomla/">Joomla</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mailman/">Mailman Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="matomo/">Matomo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mediawiki/">MediaWiki</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mercurial/">Mercurial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modx/">MODX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="moin/">MoinMoin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nextcloud/">NextCloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opengrok/">OpenGrok</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phpbb/">phpBB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="phpmyadmin/">phpMyAdmin</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plone/">Plone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="redmine/">Redmine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reviewboard/">Review Board</a></li>
+<li class="toctree-l1"><a class="reference internal" href="roundcube/">Roundcube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="trac/">Trac</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wordpress/">WordPress</a></li>
+</ul>
+</div>
+<p>If you are interested in a specific use case not yet listed here, please <a class="reference external" href="https://github.com/nginx/unit-docs/issues">post
+a feature request</a> on GitHub.</p>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\index.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

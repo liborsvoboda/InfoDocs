@@ -1,0 +1,146 @@
+.videoformatsupport-container {
+	min-width: 384px;
+	max-width: 1424px;
+}
+
+.videoformatsupport-container a,
+.videoformatsupport-container a:visited,
+.videoformatsupport-container a:hover {
+    color: #008bd5;
+}
+
+@media screen and (max-width: 480px) {
+	.videoformatsupport-container {
+        padding: 0;
+        width: 384px;
+    }
+}
+
+.videoformatsupport-container h2 {
+    font-size: 14pt;
+    font-weight: normal;
+}
+
+.demo-introduction {
+    margin-top: 24px;
+}
+
+.demo-details {
+    margin: 0;
+    padding: 0.25in 0.5in 0 0;
+}
+
+.videocontainer {
+    margin: 0.25in 0.5in 0 0;
+    float: left;
+}
+
+.videoformatsupport-container video,
+.videoformatsupport-container object,
+.videoformatsupport-container embed {
+    background-color: #333;
+}
+
+.h264high,
+.h264baseline,
+.webm {
+    background-color: #dedede;
+    border: solid 1px #666;
+}
+
+.videoheader {
+    margin: 0 0 2px 0;
+    padding: 0;
+}
+
+.videomarkup {
+    margin: 4px 0 0 0;
+    padding: 0;
+}
+
+.sorry {
+    background-color: #dedede;
+    border: solid 1px white;
+    padding: 8px;
+}
+
+.install-web-m {
+    display: none;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.install-web-m-image {
+    border: none;
+}
+
+.clear {
+    clear: both;
+}
+
+/*  set the default widths to our min-size */
+
+.videoformatsupport-container video,
+.videoformatsupport-container object,
+.videoformatsupport-container embed,
+.videoheader,
+.videomarkup {
+    width: 384px;
+}
+
+.videoformatsupport-container video,
+.videoformatsupport-container object,
+.videoformatsupport-container embed {
+    height: 216px;
+}
+
+.sorry {
+    width: 366px;
+    height: 198px;
+}
+
+/* wider: bigger video */
+
+@media screen and (min-width: 1168px) {
+    .videoformatsupport-container video,
+    .videoformatsupport-container object,
+    .videoformatsupport-container embed,
+    .videoheader,
+    .videomarkup {
+        width: 512px;
+    }
+
+    .videoformatsupport-container video,
+    .videoformatsupport-container object,
+    .videoformatsupport-container embed{
+        height: 288px;
+    }
+
+    .sorry {
+        width: 494px;
+        height: 270px;
+    }
+}
+
+/* still wider: even bigger video */
+
+@media screen and (min-width: 1424px) {
+    .videoformatsupport-container video,
+    .videoformatsupport-container object,
+    .videoformatsupport-container embed,
+    .videoheader,
+    .videomarkup {
+        width: 640px;
+    }
+
+    .videoformatsupport-container video,
+    .videoformatsupport-container object,
+    .videoformatsupport-container embed {
+        height: 360px;
+    }
+
+    .sorry {
+        width: 622px;
+        height: 342px;
+    }
+}

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+    <!-- Project properties -->
+    <PropertyGroup>
+        <AssemblyName>MahApps.Metro</AssemblyName>
+        <Title>MahApps.Metro</Title>
+        <RootNamespace>MahApps.Metro</RootNamespace>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <DefineConstants>$(DefineConstants);INTERNAL_NULLABLE_ATTRIBUTES</DefineConstants>
+        <TargetFrameworks>net462;net6.0-windows</TargetFrameworks>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ControlzEx" />
+        <PackageReference Include="XAMLTools.MSBuild" PrivateAssets="all" IncludeAssets="build" />
+        <PackageReference Include="Microsoft.Windows.CsWin32">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup Condition="$(DefineConstants.Contains(NETCOREAPP)) == false">
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+        <Reference Include="System.Configuration" />
+    </ItemGroup>
+
+    <!-- Items include -->
+    <ItemGroup>
+        <None Include="VisualStudioToolsManifest.xml" Pack="true" PackagePath="tools" />
+        <UpToDateCheckInput Include="**/*.xaml" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Lang\ColorNames.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>ColorNames.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Lang\MultiSelectionComboBox.Designer.cs">
+          <DesignTime>True</DesignTime>
+          <AutoGen>True</AutoGen>
+          <DependentUpon>MultiSelectionComboBox.resx</DependentUpon>
+        </Compile>
+        <EmbeddedResource Update="Lang\ColorNames.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>ColorNames.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Update="Lang\MultiSelectionComboBox.resx">
+          <Generator>PublicResXFileCodeGenerator</Generator>
+          <LastGenOutput>MultiSelectionComboBox.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <XAMLColorSchemeGeneratorItems Include="Styles\Themes\Theme.Template.xaml">
+            <ParametersFile>Styles\Themes\GeneratorParameters.json</ParametersFile>
+            <OutputPath>Styles\Themes</OutputPath>
+        </XAMLColorSchemeGeneratorItems>
+    </ItemGroup>
+
+</Project>

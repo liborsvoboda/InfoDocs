@@ -1,0 +1,540 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>falsehood - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html" class="active"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="awesome-falsehood"><a class="header" href="#awesome-falsehood">Awesome Falsehood <a href="https://github.com/sindresorhus/awesome"><img src="https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg" alt="Awesome" /></a> <a href="https://travis-ci.org/kdeldycke/awesome-falsehood"><img src="https://travis-ci.org/kdeldycke/awesome-falsehood.svg?branch=master" alt="Build Status" /></a></a></h1>
+<p>A curated list of awesome falsehoods programmers believe in.</p>
+<blockquote>
+<p>The logic of the world is prior to all truth and falsehood.</p>
+<ul>
+<li>Ludwig Wittgenstein</li>
+</ul>
+</blockquote>
+<h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
+<ul>
+<li><a href="#foreword">Foreword</a></li>
+</ul>
+<hr />
+<ul>
+<li><a href="#meta">Meta</a></li>
+<li><a href="#arts">Arts</a></li>
+<li><a href="#business">Business</a></li>
+<li><a href="#dates-and-time">Dates and Time</a></li>
+<li><a href="#emails">Emails</a></li>
+<li><a href="#geography">Geography</a></li>
+<li><a href="#human-identity">Human Identity</a></li>
+<li><a href="#internationalization">Internationalization</a></li>
+<li><a href="#multimedia">Multimedia</a></li>
+<li><a href="#networks">Networks</a></li>
+<li><a href="#phone-numbers">Phone Numbers</a></li>
+<li><a href="#postal-addresses">Postal Addresses</a></li>
+<li><a href="#science">Science</a></li>
+<li><a href="#society">Society</a></li>
+<li><a href="#software-engineering">Software Engineering</a></li>
+<li><a href="#typography">Typography</a></li>
+</ul>
+<hr />
+<ul>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#good-candidates">Good Candidates</a>
+<ul>
+<li><a href="#falsehood-articles"><em>Falsehood</em> Articles</a></li>
+<li><a href="#libraries">Libraries</a></li>
+<li><a href="#data-structures">Data Structures</a></li>
+</ul>
+</li>
+<li><a href="#license">License</a></li>
+</ul>
+<h2 id="foreword"><a class="header" href="#foreword">Foreword</a></h2>
+<p><em>Falsehood</em> articles are a form of commentary on a particular subject, and are
+appreciated by the developer community at large for their effectiveness and
+terseness. They're a convenient written form to approach an unfamiliar domain
+by dispelling myths, point out common pitfalls, show inconsistencies and
+subtleties.</p>
+<p>In a sense, <em>Falsehood</em> articles are a suite of wordy unit-tests covering
+extensive edge-cases provided by real-world usage.</p>
+<h2 id="meta"><a class="header" href="#meta">Meta</a></h2>
+<ul>
+<li><a href="https://spaceninja.com/2015/12/07/falsehoods-programmers-believe/">Falsehoods Programmers
+Believe</a> - A
+brief list of common falsehoods. A great overview and quick introduction into
+the world of falsehoods.</li>
+<li><a href="https://chiselapp.com/user/ttmrichter/repository/gng/doc/trunk/output/falsehoods.html">Falsehoods About
+Programming</a> -
+A humbling and fun list on programming and programmers themselves.</li>
+<li><a href="https://kevin.deldycke.com/2016/12/falsehoods-programmers-believe-about-falsehoods-lists/">Falsehoods About Falsehoods
+Lists</a> -
+Meta commentary on how these falsehoods shouldn't be handled.</li>
+</ul>
+<h2 id="arts"><a class="header" href="#arts">Arts</a></h2>
+<ul>
+<li><a href="https://literateprogrammer.blogspot.fr/2016/07/falsehoods-programmers-believe-about.html">Falsehoods About
+Music</a> -
+False assumption that might be made in codifying music.</li>
+<li><a href="http://artsy.github.io/blog/2018/04/18/programmer-misconceptions-about-art/">Falsehoods About Art</a> –
+Common misconceptions about art.</li>
+</ul>
+<h2 id="business"><a class="header" href="#business">Business</a></h2>
+<ul>
+<li><a href="http://wiesmann.codiferes.net/wordpress/?p=22201">Falsehoods About Online
+Shopping</a> - Covers prices,
+currencies and inventory.</li>
+<li><a href="https://gist.github.com/rgs/6509585">Falsehoods About
+Prices</a> - Covers currencies, amounts and
+localization.</li>
+<li><a href="https://github.com/globalcitizen/php-iban/blob/master/docs/FALSEHOODS.md">Falsehoods About
+IBANs</a> -
+International Bank Account Numbers are not immune to mistakes.</li>
+<li><a href="https://web.archive.org/web/20170114022820/https://medium.com/@creatrixtiara/falsehoods-programmers-believe-about-job-applicants-99280437c616">Falsehoods About Job
+Applicants</a> -
+Assumptions about job applicants and their job histories aren’t necessarily
+true.</li>
+<li><a href="http://exple.tive.org/blarg/2016/09/22/falsehoods-programmers-believe-about-economics/">Falsehoods About
+Economics</a> -
+Economics are not simple or rational.</li>
+<li><a href="http://unicode.org/cldr/trac/browser/tags/release-31/common/supplemental/supplementalData.xml#L81">CLDR currency
+definitions</a> -
+Currency validity date ranges overlap due to revolts, invasions, new
+constitutions, and slow planned adoption.</li>
+<li><a href="https://github.com/commerceguys/tax"><code>tax</code></a> - A PHP 5.4+ tax management
+library.</li>
+</ul>
+<h2 id="dates-and-time"><a class="header" href="#dates-and-time">Dates and Time</a></h2>
+<ul>
+<li><a href="http://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time">Falsehoods About
+Time</a> -
+Seminal article on dates and time.</li>
+<li><a href="http://infiniteundo.com/post/25509354022/more-falsehoods-programmers-believe-about-time">More Falsehoods About
+Time</a> -
+Part. 2 of the article above.</li>
+<li><a href="https://www.creativedeletion.com/2015/01/28/falsehoods-programmers-date-time-zones.html">Falsehoods About Time and Time
+Zones</a> -
+Another takes on time-related falsehoods, with an emphasis on time zones.</li>
+<li><a href="https://gist.github.com/thanatos/eee17100476a336a711e">Critique of Falsehoods About
+Time</a> - Takes on the
+first article above and provides an explanation of each falsehood, with more
+context and external resources.</li>
+<li><a href="http://yourcalendricalfallacyis.com">Your Calendrical Fallacy Is Thinking…</a> -
+List covering intercalation and cultural influence, made by a community of iOS
+and macOS developers.</li>
+<li><a href="https://www.iana.org/time-zones">Time Zone Database</a> - Code and data that
+represent the history of local time for many representative locations around
+the globe.</li>
+<li><a href="http://naggum.no/lugm-time.html">The Long, Painful History of Time</a> - Most
+of the idiosyncrasies in time keeping can find an explanation in history.</li>
+<li><a href="https://qntm.org/calendar">You Advocate a Calendar Reform</a> - Your idea will
+not work. This article tells you why.</li>
+<li><a href="https://qntm.org/abolish">So You Want to Abolish Time Zones</a> – Abolishing
+timezones may sound like a good idea, but there are quite a few complications
+that make it not quite so.</li>
+<li><a href="https://www.youtube.com/watch?v=-5wpm-gesOY">The Problem with Time &amp; Timezones</a> -
+A video about why you should never, ever deal with timezones if you can help
+it.</li>
+<li><a href="http://digital.vpr.net/post/rounding-error-computer-code-leads-26000-overcollection-labor-department">$26,000 Overcollection by Labor
+Department</a> -
+The consequence of wrong calendar accounting.</li>
+<li><a href="https://ericasadun.com/2018/12/25/iso-8601-yyyy-yyyy-and-why-your-year-may-be-wrong/">ISO-8601, YYYY, yyyy, and why your year may be 
+wrong</a> -
+String formatting of date is hard.</li>
+</ul>
+<h2 id="emails"><a class="header" href="#emails">Emails</a></h2>
+<ul>
+<li><a href="https://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx/">I Knew How to Validate an Email Address Until I Read the
+RFC</a> -
+Provides intricate examples that are unsuspected valid email addresses
+according the RFC-822.</li>
+<li><a href="https://fosdem.org/2018/schedule/event/email_address_quiz/">So you think you can validate email addresses (FOSDEM 2018)</a> -
+Presentation of edge-case email addresses and why you should not use regex to parse them.</li>
+</ul>
+<h2 id="geography"><a class="header" href="#geography">Geography</a></h2>
+<ul>
+<li><a href="http://wiesmann.codiferes.net/wordpress/?p=15187">Falsehoods About
+Geography</a> - Takes on places,
+their names and locations.</li>
+<li><a href="http://www.atlefren.net/post/2014/09/falsehoods-programmers-believe-about-maps/">Falsehoods About
+Maps</a> -
+Covers coordinates, projection and GIS.</li>
+</ul>
+<h2 id="human-identity"><a class="header" href="#human-identity">Human Identity</a></h2>
+<ul>
+<li><a href="https://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/">Falsehoods About
+Names</a> -
+The article that started it all.</li>
+<li><a href="https://gist.github.com/garbados/f82604ea639e0e47bf44">Falsehoods About
+Gender</a> - Gender is part
+of human identity and has its own subtleties.</li>
+<li><a href="https://qntm.org/gay">Gay Marriage: The Database Engineering Perspective</a> -
+How to store a marriage in a database while addressing most of the falsehoods
+about gender, naming and relationships.</li>
+<li><a href="https://shkspr.mobi/blog/2017/03/falsehoods-programmers-believe-about-families/">Falsehoods Programmers Believe About
+Families</a> -
+You can't really define a family with strict rules.</li>
+<li><a href="https://www.w3.org/International/questions/qa-personal-names">Personal Names Around the
+World</a> - How do
+people's names differ around the world, and what are the implications for the
+Web?</li>
+<li><a href="https://xkcd.com/327/">XKCD #327: Exploits of a
+Mom</a> - Funny take on how implementation of a falsehood
+might lead to security holes.</li>
+<li><a href="https://www.wired.com/2015/11/null/">Hello, I’m Mr. Null. My Name Makes Me Invisible to
+Computers</a> - Real-life example on how
+implemented falsehood has negative impact on someone's life.</li>
+<li><a href="https://www.hl7.org/implement/standards/product_brief.cfm?product_id=186">HL7 v3
+RIM</a> -
+A flexible data model for representing human names.</li>
+<li><a href="https://developer.apple.com/library/ios/documentation/Miscellaneous/Reference/NSPersonNameComponentsFormatter_Class/index.html">Apple iOS
+<code>NSPersonNameComponentsFormatter</code></a> -
+Localized representations of the components of a person’s name.</li>
+<li><a href="https://skylarmacdonald.com/falsehoods/">Falsehoods About Me</a> - Issues at the
+intersection of names and gender and internationalisation.</li>
+</ul>
+<h2 id="internationalization"><a class="header" href="#internationalization">Internationalization</a></h2>
+<ul>
+<li><a href="http://garbled.benhamill.com/2017/04/18/falsehoods-programmers-believe-about-language">Falsehoods About
+Language</a> -
+Translating a software from English is not as straightforward as it seems to
+be.</li>
+<li><a href="https://github.com/patch/i18n-testing">i18n Testing Data</a> - Real-word
+international and diverse name data for unit testing and QA.</li>
+<li><a href="https://www.youtube.com/watch?v=0j74jcxSunY">Internationalis(z)ing Code</a> -
+A video about things you need to keep in mind when internationalizing your
+code.</li>
+</ul>
+<h2 id="multimedia"><a class="header" href="#multimedia">Multimedia</a></h2>
+<ul>
+<li><a href="https://haasn.xyz/posts/2016-12-25-falsehoods-programmers-believe-about-%5Bvideo-stuff%5D.html">Falsehoods About
+Video</a> -
+Cover it all: video decoding and playback, files, image scaling, color spaces
+and conversion, displays and subtitles.</li>
+</ul>
+<h2 id="networks"><a class="header" href="#networks">Networks</a></h2>
+<ul>
+<li><a href="http://blog.erratasec.com/2012/06/falsehoods-programmers-believe-about.html">Falsehoods About
+Networks</a> -
+Covers TCP, DHCP, DNS, VLANs and IPv4/v6.</li>
+<li><a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">Fallacies of Distributed
+Computing</a> -
+Assumptions that programmers new to distributed applications invariably make.</li>
+</ul>
+<h2 id="phone-numbers"><a class="header" href="#phone-numbers">Phone Numbers</a></h2>
+<ul>
+<li><a href="https://github.com/googlei18n/libphonenumber/blob/master/FALSEHOODS.md">Falsehoods About Phone
+Numbers</a> -
+Covers phone numbers, their representation and meaning.</li>
+<li><a href="https://github.com/googlei18n/libphonenumber"><code>libphonenumber</code></a> - Google's
+common Java, C++ and JavaScript library for parsing, formatting, and validating
+international phone numbers. Also available for
+<a href="https://github.com/twcclegg/libphonenumber-csharp">C#</a>,
+<a href="https://github.com/iziz/libPhoneNumber-iOS">Objective-C</a>,
+<a href="https://github.com/daviddrysdale/python-phonenumbers">Python</a>,
+<a href="https://github.com/sstephenson/global_phone">Ruby</a> and
+<a href="https://github.com/giggsey/libphonenumber-for-php">PHP</a>.</li>
+</ul>
+<h2 id="postal-addresses"><a class="header" href="#postal-addresses">Postal Addresses</a></h2>
+<ul>
+<li><a href="https://www.mjt.me.uk/posts/falsehoods-programmers-believe-about-addresses/">Falsehoods About
+Addresses</a> -
+Covers streets, postal codes, buildings, cities and countries.</li>
+<li><a href="https://twitter.com/loriskumo/status/735851511331356672">Letter Delivered Despite No Name, No
+Address</a> - Ultimate
+falsehood about postal addresses: you do not need one.</li>
+<li><a href="https://smartystreets.com/articles/regular-expressions-for-street-addresses">Regex and Postal
+Addresses</a> -
+Why regular expressions and street addresses do not mix.</li>
+<li><a href="https://github.com/googlei18n/libaddressinput"><code>libaddressinput</code></a> - Google's
+common C++ and Java library for parsing, formatting, and validating
+international postal addresses.</li>
+<li><a href="https://github.com/commerceguys/addressing"><code>addressing</code></a> - A PHP 5.4+
+addressing library, powered by Google's dataset.</li>
+<li><a href="https://github.com/scaleway/postal-address"><code>postal-address</code></a> - Python
+module to parse, normalize and render postal addresses.</li>
+<li><a href="https://github.com/Boostport/address"><code>address</code></a> - Go library to validate
+and format addresses using Google's dataset.</li>
+</ul>
+<h2 id="science"><a class="header" href="#science">Science</a></h2>
+<ul>
+<li><a href="https://www.stevemoser.org/posts/dev/falsehoods-programmers-believe-about-systems-of-measurement.html">Falsehoods About Systems of
+Measurement</a> -
+On working with systems of measurement and converting between them.</li>
+</ul>
+<h2 id="society"><a class="header" href="#society">Society</a></h2>
+<ul>
+<li><a href="https://twitter.com/oliver_dw/status/737930439575404544">Falsehoods About Political
+Appointments</a> -
+Designing election systems has its own tricks.</li>
+<li><a href="https://gist.github.com/Su-Shee/5d1a417fa9de19c15477">Falsehoods About Women In
+Tech</a> - Myth about women
+in STEM (Science, Technology, Engineering, Math) industries.</li>
+</ul>
+<h2 id="software-engineering"><a class="header" href="#software-engineering">Software Engineering</a></h2>
+<ul>
+<li><a href="https://github.com/xenoterracide/falsehoods/blob/master/versions.md">Falsehoods About
+Versions</a> -
+Attributing an identity to a software release might be harder than thought.</li>
+<li><a href="https://pozorvlak.livejournal.com/174763.html">Falsehoods About Build
+Systems</a> - Building software is
+hard. Building software that builds software is harder.</li>
+<li><a href="https://yakking.branchable.com/posts/falsehoods-programmers-believe-about-file-paths/">Myths About File
+Paths</a> -
+Diversity of file-systems and OSes makes file paths a little harder than we
+might think of.</li>
+<li><a href="http://slinkp.com/falsehoods-programmers-believe-about-apis.html">Falsehoods About REST
+APIs</a> -
+Pitfalls to be mindful of when creating and documenting APIs.</li>
+<li><a href="https://donatstudios.com/Falsehoods-Programmers-Believe-About-CSVs">Falsehoods About
+CSVs</a> -
+While RFC4180 to exists, it is far from definitive and goes largely ignored.</li>
+<li><a href="https://meta-package-manager.readthedocs.io/en/develop/falsehoods.html">Falsehoods About Package
+Managers</a> -
+Covers package and their managers.</li>
+<li><a href="https://club.ministryoftesting.com/t/falsehoods-testers-believe/1371">Falsehoods About
+Testing</a> -
+An attempt to establish a list of falsehoods about testing.</li>
+<li><a href="https://github.com/minimaxir/big-list-of-naughty-strings">Big List of Naughty
+Strings</a> - Challenge
+your assumptions about strings.</li>
+<li><a href="https://apenwarr.ca/log/20181113">Popular misconceptions about mtime</a> - Part
+of a post on why file mtime comparison could be considered harmful.</li>
+<li><a href="https://www.hezmatt.org/~mpalmer/blog/2018/12/12/falsehoods-programmers-believe-about-pagination.html">Falsehoods About
+Pagination</a> - 
+Why your pagination algorithm is giving someone (possibly you) a headache.</li>
+<li><a href="http://geocar.sdf1.org/numbers.html">9999999999999999.0 - 9999999999999998.0</a> - A
+kind of falsehood on numbers, and floats vs decimals.</li>
+</ul>
+<h2 id="typography"><a class="header" href="#typography">Typography</a></h2>
+<ul>
+<li><a href="https://github.com/RoelN/Font-Falsehoods">Falsehoods About Fonts</a> -
+Assumptions about typography on the web and in desktop applications.</li>
+</ul>
+<h2 id="contributing"><a class="header" href="#contributing">Contributing</a></h2>
+<p>Your contributions are always welcome! Please take a look at the <a href="CONTRIBUTING.html">contribution
+guidelines</a> first.</p>
+<h2 id="good-candidates"><a class="header" href="#good-candidates">Good Candidates</a></h2>
+<p>Here is a non-restrictive list of items which are good candidates for inclusion
+in this awesome list.</p>
+<h3 id="falsehood-articles"><a class="header" href="#falsehood-articles"><em>Falsehood</em> Articles</a></h3>
+<p>Articles following the <em>falsehood</em> scheme are prime candidates for inclusion in
+this awesome list.</p>
+<p>These articles starts with the hypothesis that developers have a naive, simple
+view of the subject at hand. Then proceed to list a set of candid assumptions
+that might be held by such programmers. Each one is intentionally false, and
+sometimes illustrated by a counter-example.</p>
+<p>A list of falsehood is crafted as a progression that is designed to refine
+concepts. Having read the whole list of falsehood, the reader should possess a
+global, if not complete, overview of the domain being targeted by the article,
+including most, if not all, its pitfalls, edges-cases and inconsistencies.</p>
+<p>In the worst case, these articles might provoke an emotional reaction and cause
+flipping table. <code>(╯°□°)╯︵ ┻━┻</code></p>
+<p>Articles featuring items that are applicable to a product and a product only
+can't really be considered as generic falsehood articles and should be avoided.</p>
+<h3 id="libraries"><a class="header" href="#libraries">Libraries</a></h3>
+<p>When possible, we provide a list of programming libraries or modules that may
+solve, or try to, the complexities and idiosyncrasies pointed by the
+<em>falsehood</em> articles above.</p>
+<p>So we can put back tables in place. <code>┬─┬ ノ( ゜-゜ノ)</code></p>
+<h3 id="data-structures"><a class="header" href="#data-structures">Data Structures</a></h3>
+<p>Data models and structures generic enough to cover and address most of the
+falsehoods are also welcome in this page.</p>
+<h2 id="license"><a class="header" href="#license">License</a></h2>
+<p><a href="https://creativecommons.org/publicdomain/zero/1.0/"><img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg" alt="CC0" /></a></p>
+<p>Content of this repository is licensed under the <a href="https://creativecommons.org/publicdomain/zero/1.0/">Creative Commons CC0
+license</a>.</p>
+<p>To the extent possible under law, <a href="https://kevin.deldycke.com">Kevin Deldycke</a>
+has waived all copyright and related or neighboring rights to this work.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="editorjs.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="github-vue.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="editorjs.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="github-vue.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

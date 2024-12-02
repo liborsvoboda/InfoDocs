@@ -1,0 +1,22 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+  <TemplateData>
+    <DefaultName>Window MahApps.Metro (WPF).xaml</DefaultName>
+    <Name>Window MahApps.Metro (WPF)</Name>
+    <Description>Blank MahApps.Metro Window</Description>
+    <ProjectType>CSharp</ProjectType>
+    <SortOrder>10</SortOrder>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <References>
+      <Reference>
+        <Assembly>MahApps.Metro</Assembly>
+      </Reference>
+      <Reference>
+        <Assembly>System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35</Assembly>
+      </Reference>
+    </References>
+    <ProjectItem SubType="Designer" TargetFileName="$fileinputname$.xaml" ReplaceParameters="true">MainWindow.xaml</ProjectItem>
+    <ProjectItem SubType="Code" TargetFileName="$fileinputname$.xaml.cs" ReplaceParameters="true">MainWindow.xaml.cs</ProjectItem>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,657 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>AI - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html" class="active"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="awesome-ai"><a class="header" href="#awesome-ai">Awesome AI</a></h1>
+<blockquote>
+<p>A curated list of awesome things related to artificial intelligence (AI).</p>
+</blockquote>
+<p><a href="#conversational-ai">conversational AI</a> - <a href="#all-in-one-tools">All-in-one tools</a> - <a href="#ai-search-engine">AI Search Engine</a> - <a href="#writing-tools">writing tools</a> - <a href="#video-tools">video tools</a> - <a href="#audio-tools">audio tools</a> - <a href="#images-tools">images tools</a> - <a href="#commerce--marketing-tools">commerce &amp; marketing tools</a> - <a href="#design-tools">design tools</a> - <a href="#coding-tools">Coding tools</a> - <a href="#color-tools">color tools</a> - <a href="#miscellaneous">miscellaneous</a></p>
+<h2 id="conversational-ai"><a class="header" href="#conversational-ai">conversational AI</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://chat.openai.com/?ref=awe50meAI">ChatGPT</a></td><td></td></tr>
+<tr><td><a href="https://chat.d-id.com/?ref=awe50meAI">Chat D-ID</a></td><td></td></tr>
+<tr><td><a href="https://cloud.google.com/dialogflow/?ref=awe50meAI">Dialogflow</a></td><td></td></tr>
+<tr><td><a href="https://www.ibm.com/products/watson-assistant/?ref=awe50meAI">Watson Assistant</a></td><td></td></tr>
+<tr><td><a href="https://dev.botframework.com/?ref=awe50meAI">Microsoft Bot Framework</a></td><td></td></tr>
+<tr><td><a href="https://rasa.com/?ref=awe50meAI">Rasa</a></td><td>Conversational AI Platform</td></tr>
+<tr><td><a href="https://botpress.com/?ref=awe50meAI">botpress</a></td><td></td></tr>
+<tr><td><a href="https://hellotars.com/?ref=awe50meAI">TARS</a></td><td></td></tr>
+<tr><td><a href="https://landbot.io/ai/?ref=awe50meAI">Landbot AI</a></td><td></td></tr>
+<tr><td><a href="https://snatchbot.me/?ref=awe50meAI">SnatchBot</a></td><td></td></tr>
+<tr><td><a href="https://www.botstar.com/?ref=awe50meAI">Botstar</a></td><td></td></tr>
+<tr><td><a href="https://askyourpdf.com/?ref=awe50meAI">Ask Your PDF</a></td><td></td></tr>
+<tr><td><a href="https://www.perplexity.ai/?ref=awe50meAI">perplexity</a></td><td>Where knowledge begins</td></tr>
+<tr><td><a href="https://hints.so/?ref=awe50meAI">Hints</a></td><td>AI Assistant that integrates with any software to perform tasks on your behalf</td></tr>
+<tr><td><a href="https://chatspot.ai/?ref=awe50meAI">ChatSpot</a></td><td>ChatSpot = ChatGPT + the power of HubSpot CRM</td></tr>
+<tr><td><a href="https://askthee.vercel.app/?ref=awe50meAI">AskThee?</a></td><td>Ever wanted to ask a question to a big thinker, artist or scientist? now is your chance.</td></tr>
+<tr><td><a href="https://www.user.com/en/ai-chat/?ref=awe50meAI">Ai Chat from User.com</a></td><td>Automate your customer support instantly with AI</td></tr>
+<tr><td><a href="https://www.chatpdf.com/?ref=awe50meAI">ChatPDF</a></td><td>Chat with any PDF!</td></tr>
+<tr><td><a href="https://www.chatbase.co/?ref=awe50meAI">Chatbase</a></td><td>Train ChatGPT on your data and add it to your website</td></tr>
+<tr><td><a href="https://huberman.rile.yt/?ref=awe50meAI">Huberman AI</a></td><td>Use AI to explore the wisdom of The Huberman Lab.</td></tr>
+<tr><td><a href="https://aiintern.io/?ref=awe50meAI">ai intern</a></td><td>With AI Intern skip the grind and focus on the big picture.</td></tr>
+<tr><td><a href="https://www.chatbotui.com/?ref=awe50meAI">Chatbot UI</a></td><td>Chatbot UI is an open source clone of OpenAI's ChatGPT UI.</td></tr>
+<tr><td><a href="https://www.usechannel.com/?ref=awe50meAI">Channel</a></td><td>Ask any data question, in plain English.</td></tr>
+<tr><td><a href="https://wonderchat.io/?ref=awe50meAI">wonderchat</a></td><td>Instantly build an AI chatbot with your knowledge base</td></tr>
+<tr><td><a href="https://monica.im/?ref=awe50meAI">Monica</a></td><td>YOUR CHATGPT POWERED AI ASSISTANT ON ALL WEBSITES</td></tr>
+<tr><td><a href="https://alicent.ai/?ref=awe50meAI">alicent</a></td><td>A Gorgeous Extension for ChatGPT</td></tr>
+<tr><td><a href="https://godmode.space/?ref=awe50meAI">godmode</a></td><td></td></tr>
+<tr><td><a href="https://www.pagelines.com/?ref=awe50meAI">PageLines</a></td><td>AI Agents to Enhance Your Website</td></tr>
+</tbody></table>
+</div>
+<h2 id="all-in-one-tools"><a class="header" href="#all-in-one-tools">All-in-one tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://www.airops.com/?ref=awe50meAI">airOps</a></td><td>Deploy task-specific AI where you need it most with AirOps Apps. Install and configure in minutes, scalable, and available everywhere.</td></tr>
+<tr><td><a href="https://huggingface.co/?ref=awe50meAI">Hugging Face</a></td><td>The AI community building the future.</td></tr>
+<tr><td><a href="https://www.fotor.com/?ref=awe50meAI">fotor</a></td><td>Online photo editor for everyone</td></tr>
+<tr><td><a href="https://www.kittl.com/?ref=awe50meAI">Kittl</a></td><td>Speed up your workflows with Kittl's AI-powered design tools and gain instant access to a ton of stunning illustrations, fonts, photos, icons, and textures.</td></tr>
+<tr><td><a href="https://clipdrop.co/?ref=awe50meAI">clipdrop</a></td><td>Create stunning visuals in seconds</td></tr>
+<tr><td><a href="https://replicate.com/?ref=awe50meAI">Replicate</a></td><td>Machine learning doesn’t need to be so hard.</td></tr>
+</tbody></table>
+</div>
+<h2 id="ai-search-engine"><a class="header" href="#ai-search-engine">AI Search Engine</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://www.phind.com/?ref=awe50meAI">phind</a></td><td>The AI search engine for developers.</td></tr>
+<tr><td><a href="https://you.com/?ref=awe50meAI">you</a></td><td>The AI Search Engine You Control</td></tr>
+<tr><td><a href="https://iask.ai/?ref=awe50meAI">iAsk.AI</a></td><td>Ask AI Questions – Free AI Search Engine</td></tr>
+<tr><td><a href="https://komo.ai/?ref=awe50meAI">komo</a></td><td>Komo search - Ai Search &amp; Explore</td></tr>
+<tr><td><a href="https://andisearch.com/?ref=awe50meAI">Andi</a></td><td>Welcome to the next generation of search using the power of AI</td></tr>
+</tbody></table>
+</div>
+<h2 id="writing-tools"><a class="header" href="#writing-tools">writing tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://www.jounce.ai/?ref=awe50meAI">Jounce</a></td><td>Free AI copywriting and artwork for marketers</td></tr>
+<tr><td><a href="https://writerly.ai/?ref=awe50meAI">writerly</a></td><td>Writerly artificial intelligence (AI)</td></tr>
+<tr><td><a href="https://cohesive.so/?ref=awe50meAI">Cohesive</a></td><td>Create magical content with the most powerful AI editor</td></tr>
+<tr><td><a href="https://www.grammarly.com/?ref=awe50meAI">grammarly</a></td><td>Compose bold, clear, mistake-free writing with Grammarly’s AI-powered writing assistant.</td></tr>
+<tr><td><a href="https://www.copy.ai/?ref=awe50meAI">copy ai</a></td><td>Write better marketing copy and content with AI</td></tr>
+<tr><td><a href="https://www.jasper.ai/?ref=awe50meAI">jasper AI</a></td><td>Jasper - AI Copywriting &amp; Content Generation for Teams</td></tr>
+<tr><td><a href="https://www.markcopy.ai/?ref=awe50meAI">markcopy ai</a></td><td>Write Content 10x Faster</td></tr>
+<tr><td><a href="https://rytr.me/?ref=awe50meAI">rytr</a></td><td>Rytr - Best AI Writer, Content Generator &amp; Writing Assistant</td></tr>
+<tr><td><a href="https://simplified.com/ai-writer/?ref=awe50meAI">simplified ai-writer</a></td><td>Write Instant Marketing Copy with the Free AI Copywriting Generator</td></tr>
+<tr><td><a href="https://www.frase.io/?ref=awe50meAI">frase</a></td><td>Frase</td></tr>
+<tr><td><a href="https://requstory.com/?ref=awe50meAI">requstory</a></td><td>WRITE BETTER USER STORIES.</td></tr>
+<tr><td><a href="https://www.marketmuse.com/?ref=awe50meAI">marketmuse</a></td><td>AI Content Planning and Optimization Software</td></tr>
+<tr><td><a href="https://www.wordtune.com/?ref=awe50meAI">wordtune</a></td><td>Your thoughts in words</td></tr>
+<tr><td><a href="https://inferkit.com/?ref=awe50meAI">inferkit</a></td><td>InferKit offers a web interface and API for AI–based text generators. Whether you're a novelist looking for inspiration, or an app developer, there's something for you.</td></tr>
+<tr><td><a href="https://goose.ai/?ref=awe50meAI">goose ai</a></td><td>Fully managed NLP-as-a-Service delivered via API, at 30% the cost. It's time to migrate.</td></tr>
+<tr><td><a href="https://writesonic.com/?ref=awe50meAI">writesonic</a></td><td>Writesonic - Best AI Writer, Copywriting &amp; Paraphrasing Tool</td></tr>
+<tr><td><a href="https://textcortex.com/?ref=awe50meAI">textcortex</a></td><td>One AI Tool To Write All Your Content</td></tr>
+<tr><td><a href="https://ideasai.com/?ref=awe50meAI">ideas AI</a></td><td>Ideas on this page are 100% generated by OpenAI's GPT-3, an artifically intelligent deep learning model, without human involvement, and trained by you and 1,399,670+ other people who liked or disliked ideas.</td></tr>
+<tr><td><a href="https://www.sudowrite.com/?ref=awe50meAI">sudowrite</a></td><td>Bust writer’s block with our magical writing AI.</td></tr>
+<tr><td><a href="https://www.ghostwrite.rip/?ref=awe50meAI">GhostWrite</a></td><td>More time for the conversations that matter to you.</td></tr>
+<tr><td><a href="https://nichesss.com/?ref=awe50meAI">nichesss</a></td><td>Write anything 10x faster.</td></tr>
+<tr><td><a href="https://www.flowrite.com/?ref=awe50meAI">flowrite</a></td><td>Flowrite helps you write your daily emails and messages 5x faster across Google Chrome.</td></tr>
+<tr><td><a href="https://chibi.ai/?ref=awe50meAI">chibi ai</a></td><td>Now anyone can have a writing assistant.</td></tr>
+<tr><td><a href="https://copysmith.ai/?ref=awe50meAI">copysmith</a></td><td>Copysmith is the AI content creation solution for Enterprise &amp; eCommerce</td></tr>
+<tr><td><a href="https://copymatic.ai/?ref=awe50meAI">copymatic ai</a></td><td>Generate Content &amp; Copy In Seconds with AI</td></tr>
+<tr><td><a href="https://www.hypotenuse.ai/?ref=awe50meAI">hypotenuse</a></td><td>Let AI write your content in seconds. Without writer’s block.</td></tr>
+<tr><td><a href="https://www.longshot.ai/?ref=awe50meAI">longshot ai</a></td><td>Create blogs that humans and search engines love using Artificial Intelligence</td></tr>
+<tr><td><a href="https://unbounce.com/product/smart-copy/?ref=awe50meAI">unbounce smart copy</a></td><td>Wherever You Type, Smart Copy Writes</td></tr>
+<tr><td><a href="https://www.scalenut.com/?ref=awe50meAI">scalenut</a></td><td>Tell Better Stories at Scale</td></tr>
+<tr><td><a href="https://www.neuraltext.com/?ref=awe50meAI">NeuralText</a></td><td>NeuralText - AI Writing Assistant and tools for SEO</td></tr>
+<tr><td><a href="https://www.closerscopy.com/?ref=awe50meAI">closerscopy</a></td><td>AI Copywriting Robot - ClosersCopy</td></tr>
+<tr><td><a href="https://inkforall.com/?ref=awe50meAI">inkforall</a></td><td>INK – World’s Best AI Content Assistant for Marketing &amp; SEO</td></tr>
+<tr><td><a href="https://www.peppertype.ai/?ref=awe50meAI">peppertype</a></td><td>Create Quality Content Faster</td></tr>
+<tr><td><a href="https://ai-writer.com/?ref=awe50meAI">ai-writer</a></td><td>AI-Writer is the most accurate content generation platform, using state-of-the-art AI writing models to generate articles from just a headline.</td></tr>
+<tr><td><a href="https://getgenie.ai/?ref=awe50meAI">GetGenie</a></td><td>The WordPress AI SuperApp for Content &amp; SEO</td></tr>
+<tr><td><a href="https://www.articleforge.com/?ref=awe50meAI">Article Forge</a></td><td>High quality, AI content generator - Article Forge</td></tr>
+<tr><td><a href="https://prowritingaid.com/?ref=awe50meAI">ProWritingAid</a></td><td>ProWritingAid: AI Writing Assistant Software</td></tr>
+<tr><td><a href="https://quillbot.com/?ref=awe50meAI">QuillBot</a></td><td>QuillBot's AI-powered paraphrasing tool will enhance your writing</td></tr>
+<tr><td><a href="https://writerzen.net/?ref=awe50meAI">WriterZen</a></td><td>Proficient SEO Content Workflow Software</td></tr>
+<tr><td><a href="https://www.writecream.com/?ref=awe50meAI">Writecream</a></td><td>Writecream - Best AI Writer &amp; Content Generator - Writecream</td></tr>
+<tr><td><a href="https://www.outranking.io/?ref=awe50meAI">outranking</a></td><td>Outranking helps content teams achieve predictable content success with AI assistance.</td></tr>
+<tr><td><a href="https://www.lately.ai/?ref=awe50meAI">lately</a></td><td>Spend 84% Less Time Writing Content</td></tr>
+<tr><td><a href="https://wordai.com/?ref=awe50meAI">wordai</a></td><td>10x Your Content Output With AI.</td></tr>
+<tr><td><a href="https://www.craftly.ai/?ref=awe50meAI">craftly</a></td><td>Changing the way the world writes.</td></tr>
+<tr><td><a href="https://seo.ai/?ref=awe50meAI">SEO AI</a></td><td>The #1 AI Writer For SEO</td></tr>
+<tr><td><a href="https://contentatscale.ai/?ref=awe50meAI">content at scale</a></td><td>AI Content Generator for Quality SEO Long Form Blog Posts</td></tr>
+<tr><td><a href="https://jenni.ai/?ref=awe50meAI">jenni</a></td><td>Supercharge your writing with jenni AI</td></tr>
+<tr><td><a href="https://taskade.com/?ref=awe50meAI">Taskade</a></td><td>AI outlining and mind mapping tool for teams with real-time editing and chat.</td></tr>
+<tr><td><a href="https://wordkraft.ai/?ref=awe50meAI">wordkraft</a></td><td>Create High-Quality Content Instantly With AI</td></tr>
+<tr><td><a href="https://merlin.foyer.work/?ref=awe50meAI">merlin</a></td><td>Open AI’s GPT powered extension to use anywhere!</td></tr>
+<tr><td><a href="https://www.kickresume.com/en/?ref=awe50meAI">kickresume</a></td><td>Let artificial intelligence write your resume.</td></tr>
+<tr><td><a href="https://aiseo.ai/?ref=awe50meAI">AISEO</a></td><td>AISEO - AI writing assistant, Copywriting &amp; Paraphrasing Tool</td></tr>
+<tr><td><a href="https://yaara.ai/?ref=awe50meAI">yaara.ai</a></td><td>The Future Of Writing is Finally Here</td></tr>
+<tr><td><a href="https://chatgptwriter.ai/?ref=Awe50meAI">ChatGPT Writer</a></td><td>Free Chrome extension to generate entire emails and messages using ChatGPT AI. All sites are supported and enhanced support for Gmail.</td></tr>
+<tr><td><a href="https://focusflow.ai/?ref=awe50meAI">FocusFlow</a></td><td>Track your daily progress, highlights, and improvements in just 20 seconds.</td></tr>
+<tr><td><a href="https://novelai.net/?ref=awe50meAI">NovelAI</a></td><td>The AI Storyteller</td></tr>
+<tr><td><a href="https://narrato.io/?ref=awe50meAI">narrato</a></td><td>AI Content Creation and Collaboration Platform</td></tr>
+<tr><td><a href="https://writeme.ai/?ref=awe50meAI">WriteMe</a></td><td>WriteMe.ai - Ai Writer - Content Writing Assistant &amp; Creator</td></tr>
+<tr><td><a href="https://www.getmagical.com/ai?ref=awe50meAI">Magical AI</a></td><td>Call on Magical AI to do all the work stuff you hate doing. Create messages from scratch, update forms instantly, and automate annoying tasks—anywhere, anytime.</td></tr>
+<tr><td><a href="https://bearly.ai/?ref=awe50meAI">Bearly</a></td><td>Bearly makes you 10x faster by adding the state of the art AI to your workflow. Reading, writing, and content creation all one shortcut away.</td></tr>
+<tr><td><a href="https://www.stealthgpt.ai/?ref=awe50meAI">StealthGPT</a></td><td>Write Using AI, Get Human Written Results</td></tr>
+<tr><td><a href="https://resumeworded.com/?ref=awe50meAI">resume worded</a></td><td>Improve your resume and LinkedIn profile</td></tr>
+<tr><td><a href="https://detangle.ai/?ref=awe50meAI">detangle</a></td><td>Summarize any video, audio or text</td></tr>
+<tr><td><a href="https://usemelville.com/?ref=awe50meAI">melville</a></td><td>Create amazing show notes 10x faster with AI.</td></tr>
+<tr><td><a href="https://www.swellai.com/?ref=awe50meAI">Swell AI</a></td><td>Automate writing podcast show notes, articles, social posts and more.</td></tr>
+<tr><td><a href="https://www.scalenut.com/?ref=awe50meAI">Scalenut</a></td><td>Scalenut: AI powered SEO and Content Marketing Platform</td></tr>
+<tr><td><a href="https://sheetplus.ai/">Sheet+</a></td><td>Write Google Sheets &amp; Excel formulas 10x faster with AI</td></tr>
+<tr><td><a href="https://finalscout.com/?ref=awe50meAI">FinalScout</a></td><td>ChatGPT-Powered Email Finding &amp; Outreach at Scale</td></tr>
+<tr><td><a href="https://www.hyperwriteai.com/?ref=awe50meAI">HyperWrite</a></td><td>Your personal AI writing assistant</td></tr>
+<tr><td><a href="https://maker.ai/?ref=awe50meAI">maker.ai</a></td><td>Generate written &amp; visual content in seconds through cutting-edge artificial intelligence. Make magical conten</td></tr>
+<tr><td><a href="https://thundercontent.com/?ref=awe50meAI">Thundercontent</a></td><td>Create any content with Artificial Intelligence in minutes</td></tr>
+<tr><td><a href="https://autowrite.app/?ref=awe50meAI">Autowrite app</a></td><td>Create Human-like Search Engine Optimized Articles</td></tr>
+<tr><td><a href="https://www.postgeniusapp.com/?ref=awe50meAI">postGenius</a></td><td>Generate your next post using chatGPT</td></tr>
+<tr><td><a href="https://postwise.ai/?ref=awe50meAI">postwise</a></td><td>Write Viral Tweets in Seconds</td></tr>
+<tr><td><a href="https://writesparkle.ai/?ref=awe50meAI">WriteSparkle</a></td><td>Discover AI-Driven Brilliance, streamline your content creation process by seamlessly integrating Writesparkle with your favorite tools and platforms.</td></tr>
+<tr><td><a href="https://flawlessly.ai/?ref=awe50meAI">flawlessly ai</a></td><td>Flawlessly.Ai transforms your spelling, grammar, tone, and style into professional text in seconds.</td></tr>
+<tr><td><a href="https://pdfpeer.com/">PDFPeer</a></td><td>Engage with your PDFs: summarize, ask questions, and simplify tasks!</td></tr>
+</tbody></table>
+</div>
+<h2 id="video-tools"><a class="header" href="#video-tools">video tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://www.deepbrain.io/aistudios?ref=awe50meAI">Deepbrain ai - ai studios</a></td><td>Create AI-generated videos using basic text instantly</td></tr>
+<tr><td><a href="https://www.supercreator.ai/?ref=awe50meAI">Supercreator.ai</a></td><td>Create short form videos 10x faster using artificial intelligence</td></tr>
+<tr><td><a href="https://www.veed.io/?ref=awe50meAI">veed io</a></td><td>VEED - Edit, Record &amp; Livestream Video - Online</td></tr>
+<tr><td><a href="https://runwayml.com/?ref=awe50meAI">runway</a></td><td>Everything you need to make content, fast.</td></tr>
+<tr><td><a href="https://fliki.ai/?ref=awe50meAI">Fliki</a></td><td>Turn text into videos with AI voices</td></tr>
+<tr><td><a href="https://www.synthesia.io/?ref=awe50meAI">synthesia</a></td><td>Create videos from plain text in minutes</td></tr>
+<tr><td><a href="https://www.descript.com/?ref=awe50meAI">descript</a></td><td>All-in-one video &amp; audio editing, as easy as a doc.</td></tr>
+<tr><td><a href="https://typecast.ai/?ref=awe50meAI">typecast ai</a></td><td>Video creation made simple with AI voices and avatars</td></tr>
+<tr><td><a href="https://www.bhuman.ai/?ref=awe50meAI">bhuman ai</a></td><td>Produce a single video and personalize it for thousands of recipients. Deliver over any channel and measure results instantly.</td></tr>
+<tr><td><a href="https://jellysmack.com/?ref=awe50meAI">Jellysmack</a></td><td>Creator Content Amplification &amp; Solutions</td></tr>
+<tr><td><a href="https://plask.ai/?ref=awe50meAI">plask</a></td><td>AI-powered Mocap Animation Tool</td></tr>
+<tr><td><a href="https://www.rokoko.com/products/video/?ref=awe50meAI">Rokoko video</a></td><td>Rokoko Video Free AI motion capture</td></tr>
+<tr><td><a href="https://www.topazlabs.com/topaz-video-ai/?ref=awe50meAI">Topaz Video AI</a></td><td>Production-grade AI models for professional use cases</td></tr>
+<tr><td><a href="https://www.steve.ai/?ref=awe50meAI">Steve AI</a></td><td>Free AI Video Maker App</td></tr>
+<tr><td><a href="https://elai.io/?ref=awe50meAI">elai</a></td><td>Create AI videos from just text.</td></tr>
+<tr><td><a href="https://pictory.ai/?ref=awe50meAI">pictory</a></td><td>Video Marketing Made EASY</td></tr>
+<tr><td><a href="https://lumen5.com/?ref=awe50meAI">Lumen5</a></td><td>Lumen5 - Video Maker</td></tr>
+<tr><td><a href="https://www.wisecut.video/?ref=awe50meAI">wisecut</a></td><td>Wisecut</td></tr>
+<tr><td><a href="https://synths.video/?ref=awe50meAI">synths video</a></td><td>Convert articles into video in 1-click</td></tr>
+<tr><td><a href="https://invideo.io/?ref=awe50meAI">invideo</a></td><td>Create publish-worthy videos on day one</td></tr>
+<tr><td><a href="https://www.gliacloud.com/en/?ref=awe50meAI">GliaCloud</a></td><td>Generate videos from news content, social posts, live sport events, and statistical data in minutes!</td></tr>
+<tr><td><a href="https://synthesys.io/ai-video/?ref=awe50meAI">synthesys</a></td><td>Transform Your Text to a Realistic Virtual Video</td></tr>
+<tr><td><a href="https://www.beey.io/en/?ref=awe50meAI">beey</a></td><td>Beey.io – Beey automatically converts your audio and video files to text.</td></tr>
+<tr><td><a href="https://www.papercup.com/?ref=awe50meAI">papercup</a></td><td>AI Powered Dubbing</td></tr>
+<tr><td><a href="https://www.heyfriday.ai/home/?ref=awe50meAI">Friday</a></td><td>Less Writing, More Inspiration.</td></tr>
+<tr><td><a href="https://www.movio.la/?ref=awe50meAI">Movio</a></td><td>Create Engaging Videos 10x Faster with AI</td></tr>
+<tr><td><a href="https://www.clip.fm/?ref=awe50meAI">clip.fm</a></td><td>Turn podcasts into viral clips with one click.</td></tr>
+<tr><td><a href="https://www.d-id.com/?ref=awe50meAI">D-ID</a></td><td>Digital People Text-to-Video</td></tr>
+<tr><td><a href="https://vidyo.ai/?ref=awe50meAI">vidyo.ai</a></td><td>Make short videos from long ones instantly</td></tr>
+<tr><td><a href="https://www.rephrase.ai/studio/?ref=awe50meAI">Rephrase Studio</a></td><td>Rephrase Studio is a self-serve text-to-video generation platform that eliminates the complexity of video production, enabling you to create professional-looking videos at scale.</td></tr>
+<tr><td><a href="https://alpha.genmo.ai/?ref=awe50meAI">Genmo</a></td><td>Go beyond 2D. Create videos from text with AI.</td></tr>
+<tr><td><a href="https://riverside.fm/?ref=awe50meAI">riverside</a></td><td>Automatically transcribe your audio and video recordings in seconds with our AI-powered technology. It's accurate, reliable, and supports more than 100 languages.</td></tr>
+<tr><td><a href="https://zoomscape.ai/?ref=awe50meAI">Zoomscape.ai</a></td><td>Create stunning Zoom backgrounds with AI</td></tr>
+<tr><td><a href="https://morise.ai/?ref=awe50meAI">Morise.ai</a></td><td>You make the videos, AI will make them go viral</td></tr>
+<tr><td><a href="https://www.rask.ai/?ref=awe50meAI">Rask</a></td><td>Localize videos. Fast. Fun. With AI</td></tr>
+<tr><td><a href="https://www.heygen.com/">HeyGen</a></td><td>CREATE ENGAGING VIDEOS 10X FASTER WITH AI</td></tr>
+<tr><td><a href="https://2short.ai/?ref=awe50meAI">2short.ai</a></td><td>Elevate your YT content with AI generated shorts</td></tr>
+<tr><td><a href="https://eightify.app/?ref=awe50meAI">Eightify</a></td><td>YouTube summaries powered by ChatGPT</td></tr>
+</tbody></table>
+</div>
+<h2 id="audio-tools"><a class="header" href="#audio-tools">audio tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://podcast.adobe.com/?ref=awe50meAI">Adobe Podcast</a></td><td>AI-powered audio recording and editing, all on the web</td></tr>
+<tr><td><a href="https://play.ht/?ref=awe50meAI">play ht</a></td><td>AI powered text to voice generator</td></tr>
+<tr><td><a href="https://murf.ai/?ref=awe50meAI">Murf AI</a></td><td>AI Voice Generator: Versatile Text to Speech Software</td></tr>
+<tr><td><a href="https://www.resemble.ai/?ref=awe50meAI">resemble ai</a></td><td>Your Complete Generative Voice AI Toolkit</td></tr>
+<tr><td><a href="https://wellsaidlabs.com/?ref=awe50meAI">wellsaid</a></td><td>Convert text to voice in real time</td></tr>
+<tr><td><a href="https://www.voicemod.net/?ref=awe50meAI">voicemod</a></td><td>Free Real-Time Voice Changer</td></tr>
+<tr><td><a href="https://www.assemblyai.com/?ref=awe50meAI">assemblyai</a></td><td>Transcribe and understand audio with a single AI-powered API</td></tr>
+<tr><td><a href="https://songdonkey.ai/?ref=awe50meAI">songdonkey</a></td><td>Extract vocals and instruments with artificial intelligence</td></tr>
+<tr><td><a href="https://krisp.ai/?ref=awe50meAI">krisp ai</a></td><td>Krisp’s AI removes background voices, noises and echo from all your calls, giving you peace of mind.</td></tr>
+<tr><td><a href="https://aloud.area120.google.com/?ref=awe50meAI">aloud</a></td><td>Aloud - dubbing for everyone</td></tr>
+<tr><td><a href="https://www.listnr.tech/?ref=awe50meAI">listnr</a></td><td>Generate realistic Text to Speech (TTS) audio using our AI Voice Generator with the best synthetic voices.</td></tr>
+<tr><td><a href="https://www.lovo.ai/?ref=awe50meAI">lovo</a></td><td>LOVO AI</td></tr>
+<tr><td><a href="https://speechelo.com/?ref=awe50meAI">speechelo</a></td><td>Instantly Generate Voice from Text 100% Human-Sounding voiceover with only 3 clicks!</td></tr>
+<tr><td><a href="https://bigspeak.ai/?ref=awe50meAI">bigspeak</a></td><td>Generate English speech from text</td></tr>
+<tr><td><a href="https://speechify.com/?ref=awe50meAI">speechify</a></td><td>Power through docs, articles, PDFs, email — anything you read — by listening with our leading text-to-speech reader.</td></tr>
+<tr><td><a href="https://sonix.ai/?ref=awe50meAI">sonix ai</a></td><td>Automatically convert audio and video to text: Fast, Accurate, &amp; Affordable</td></tr>
+<tr><td><a href="https://speakai.co/?ref=awe50meAI">speak ai</a></td><td>Get transcription, research, data analysis and NLP software from Speak Ai</td></tr>
+<tr><td><a href="https://www.rev.com/?ref=awe50meAI">rev com</a></td><td>Transcribe Speech to Text</td></tr>
+<tr><td><a href="https://scribie.com/?ref=awe50meAI">scribie</a></td><td>Audio/Video Transcription</td></tr>
+<tr><td><a href="https://verbit.ai/?ref=awe50meAI">verbit</a></td><td>Captioning &amp; Transcription That’s Built for Business</td></tr>
+<tr><td><a href="https://fireflies.ai/?ref=awe50meAI">fireflies</a></td><td>Automatically record and transcribe meetings</td></tr>
+<tr><td><a href="https://otter.ai/?ref=awe50meAI">otter</a></td><td>Capture and share insights from your meetings</td></tr>
+<tr><td><a href="https://www.voicera.co/?ref=awe50meAI">voicera</a></td><td>Give voice to your articles and blogs.</td></tr>
+<tr><td><a href="https://revoicer.com/?ref=awe50meAI">revoicer</a></td><td>The most realistic AI Text To Speech online</td></tr>
+<tr><td><a href="https://beta.elevenlabs.io/?ref=awe50meAI">elevenlabs</a></td><td>The most realistic and versatile AI speech software, ever. Eleven brings the most compelling, rich and lifelike voices to creators and publishers seeking the ultimate tools for storytelling.</td></tr>
+<tr><td><a href="https://soundraw.io/?ref=awe50meAI">soundraw</a></td><td>AI Music Generator</td></tr>
+<tr><td><a href="https://voicepen.ai/?ref=awe50meAI">VoicePen</a></td><td>Audio to Blog Post, in minutes</td></tr>
+<tr><td><a href="https://podcastle.ai/?ref=awe50meAI">podcastle</a></td><td>The One-Stop Shop for Broadcast Storytelling</td></tr>
+<tr><td><a href="https://www.beatoven.ai/?ref=awe50meAI">beatoven.ai</a></td><td>Create customisable royalty free music that elevates your story</td></tr>
+<tr><td><a href="https://www.altered.ai/?ref=awe50meAI">altered</a></td><td>Professional Ai Voice Changer Software and Services</td></tr>
+<tr><td><a href="https://mubert.com/?ref=awe50meAI">Mubert</a></td><td>Human AI Generative Music For your video content, podcasts and apps</td></tr>
+<tr><td><a href="https://www.listener.fm/?ref=awe50meAI">listener.fm</a></td><td>Elevate Your Podcast Post-Production Process with AI-Generated Titles, Descriptions, and Show Notes</td></tr>
+<tr><td><a href="https://www.shownotes.io/?ref=awe50meAI">Shownotes</a></td><td>Summarize a podcast episode with help from chatGPT.</td></tr>
+<tr><td><a href="https://usemood.us/?ref=awe50meAI">Mood</a></td><td>Amplify your podcast to 1 billion audiences with generative AI.</td></tr>
+<tr><td><a href="https://cleanvoice.ai/?ref=awe50meAI">Cleanvoice</a></td><td>Cleanvoice is an artificial intelligence which removes filler sounds, stuttering and mouth sounds from your podcast or audio recording</td></tr>
+<tr><td><a href="https://www.snipd.com/ai-podcast-summaries/?ref=awe50meAI">snipd - AI Podcast Summaries</a></td><td>Introducing Snipd's AI-generated Podcast  Summaries</td></tr>
+<tr><td><a href="https://www.koolio.ai/?ref=awe50meAI">koolio.ai</a></td><td>the future of podcast creation.</td></tr>
+<tr><td><a href="https://www.sumly.ai/?ref=awe50meAI">sumly.ai</a></td><td>AI-generated podcast summaries delivered straight to your inbox.</td></tr>
+<tr><td><a href="https://podsqueeze.com/?ref=awe50meAI">podsqueeze</a></td><td>Generate shownotes, timestamps, newsletters and more for your podcast with one click!</td></tr>
+<tr><td><a href="https://www.dubb.media/?ref=awe50meAI">Dubb</a></td><td>An automated, easy-to-use assistant that generates marketing content for your podcast. Dubb turns your podcast episodes into show notes, social media posts, newsletter content, transcripts, and more.</td></tr>
+<tr><td><a href="https://www.deciphr.ai/?ref=awe50meAI">deciphr</a></td><td>Powered by deep AI, Deciphr timestamps and summarizes your entire podcast transcript for you. In less time than it takes to make coffee. And it's completely free.</td></tr>
+<tr><td><a href="https://www.typestudio.co/?ref=awe50meAI">type studio</a></td><td>Type Studio is a fast, simple, and joyful way to edit and grow your podcasts, streams, and interviews.</td></tr>
+<tr><td><a href="https://cybervoice.io/en/?ref=awe50meAI">steosvoice</a></td><td>Your High-Quality Neural Voice AI</td></tr>
+<tr><td><a href="https://hello.fathom.fm/?ref=awe50meAI">fathom</a></td><td>Discover podcasts at the speed of thought with mind-blowing AI-powered Search, Transcripts, Chapters, Clipping, and Highlights.</td></tr>
+<tr><td><a href="https://wavtool.com/?ref=awe50meAI">wavtool</a></td><td>AI-accelerated music production. Make high-quality music with an AI assistant. In the browser, for free.</td></tr>
+<tr><td><a href="https://www.decoherence.co/?ref=awe50meAI">decoherence</a></td><td>Make AI Music Videos</td></tr>
+</tbody></table>
+</div>
+<h2 id="images-tools"><a class="header" href="#images-tools">images tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://letsenhance.io/?ref=awe50meAI">letsenhance</a></td><td>Automatic AI editor to increase image resolution without losing quality</td></tr>
+<tr><td><a href="https://facet.ai/?ref=awe50meAI">facet ai</a></td><td>Facet is the first AI-powered image editor, empowering artists to do what they do best: create.</td></tr>
+<tr><td><a href="https://www.remove.bg/?ref=awe50meAI">remove bg</a></td><td>Remove backgrounds 100% automatically in 5 seconds with one click</td></tr>
+<tr><td><a href="https://prophotos.ai/?ref=awe50meAI">ProPhotos</a></td><td>Upgrade your professional image with AI-powered headshots.</td></tr>
+<tr><td><a href="https://remini.ai/?ref=awe50meAI">remini ai</a></td><td>The only photo enhancer you'll ever need</td></tr>
+<tr><td><a href="https://avatarai.me/?ref=awe50meAI">avatar ai</a></td><td>Create your own photorealistic AI Avatars</td></tr>
+<tr><td><a href="https://photosonic.writesonic.com/?ref=awe50meAI">photosonic</a></td><td>The AI that paints your dreams with pixels - for FREE.</td></tr>
+<tr><td><a href="https://aipicasso.studio.site/?ref=awe50meAI">ai picasso</a></td><td>Create Art with Powerful AI</td></tr>
+<tr><td><a href="https://www.upscale.media/?ref=awe50meAI">upscale</a></td><td>Upscale and Enhance Your Images for FREE</td></tr>
+<tr><td><a href="https://imglarger.com/?ref=awe50meAI">ai image enlarger</a></td><td>All-in-one AI toolkits help you enhance and upscale images. Increases image resolution without losing quality</td></tr>
+<tr><td><a href="https://github.com/jantic/DeOldify/?ref=awe50meAI">DeOldify</a></td><td>A Deep Learning based project for colorizing and restoring old images (and video!)</td></tr>
+<tr><td><a href="https://imagecolorizer.com/?ref=awe50meAI">imagecolorizer</a></td><td>We use AI technology to restore old photos automatically</td></tr>
+<tr><td><a href="https://www.evoto.ai/?ref=awe50meAI">evoto</a></td><td>EVOTO, AI-powered Image Editor</td></tr>
+<tr><td><a href="https://imagineme.app/ref/3/?ref=awe50meAI">imagineme</a></td><td>Personal AI Art Generator</td></tr>
+<tr><td><a href="https://www.restorephotos.io/?ref=awe50meAI">restorephotos.io</a></td><td>Restoring old photos using AI for everyone.</td></tr>
+<tr><td><a href="https://www.booth.ai/?ref=awe50meAI">booth ai</a></td><td>Create pro quality product photography with AI</td></tr>
+<tr><td><a href="https://phosus.com/?ref=awe50meAI">phosus</a></td><td>AI-Powered Image Enhancement Tools and API Provider</td></tr>
+<tr><td><a href="https://vance.ai/?ref=awe50meAI">Vance.AI</a></td><td>Upscale Image with AI</td></tr>
+<tr><td><a href="https://www.bing.com/images/create/?ref=awe50meAI">Image Creator from Microsoft Bing</a></td><td>Create images from words with AI</td></tr>
+<tr><td><a href="https://www.bluewillow.ai/?ref=awe50meAI">BlueWillow</a></td><td>BlueWillow</td></tr>
+<tr><td><a href="https://ai.nero.com/?ref=awe50meAI">Nero AI</a></td><td>Enlarge your images without losing quality, automatically detect thousands of images and categorize your albums.</td></tr>
+<tr><td><a href="https://removal.ai/?ref=awe50meAI">removal.ai</a></td><td>Remove Background From Image for Free Using Artificial Intelligence</td></tr>
+<tr><td><a href="https://www.zmo.ai/background-ai/?ref=awe50meAI">ZMO.AI</a></td><td>Background Generator &amp; Remover</td></tr>
+<tr><td><a href="https://stablediffusionweb.com/?ref=awe50meAI">Stable Diffusion</a></td><td>Stable Diffusion is a latent text-to-image diffusion model capable of generating photo-realistic images given any text input, cultivates autonomous freedom to produce incredible imagery, empowers billions of people to create stunning art within seconds.</td></tr>
+<tr><td><a href="https://playgroundai.com/?ref=awe50meAI">Playground AI</a></td><td>Create any image from your imagination</td></tr>
+</tbody></table>
+</div>
+<h2 id="commerce--marketing-tools"><a class="header" href="#commerce--marketing-tools">commerce &amp; marketing tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://www.syte.ai/?ref=awe50meAI">syte ai</a></td><td>The World's #1 Product Discovery Platform for eCommerce</td></tr>
+<tr><td><a href="https://nureply.com/?ref=awe50meAI">nureply</a></td><td>Get 2.4x More Replies and Revenue with Cold Emails Powered by Advanced AI</td></tr>
+<tr><td><a href="https://www.zoho.com/zia/?ref=awe50meAI">zia by zoho</a></td><td>Meet Zia, the AI-powered assistant for your business</td></tr>
+<tr><td><a href="https://app.adzis.com/?ref=awe50meAI">Adzis app</a></td><td>AI Content Generator App for eCommerce - Adzis</td></tr>
+<tr><td><a href="https://www.ocoya.com/?ref=awe50meAI">ocaya</a></td><td>Become a Social Media Genius</td></tr>
+<tr><td><a href="https://on-page.ai/?ref=awe50meAI">On-Page.ai</a></td><td>On-Page SEO Optimization Tool Helps You Rank - On-Page.ai</td></tr>
+<tr><td><a href="https://sapling.ai/?ref=awe50meAI">sapling</a></td><td>AI messaging assistant for customer-facing teams. Respond twice as fast.</td></tr>
+<tr><td><a href="https://heyday.hootsuite.com/?ref=awe50meAI">heyday</a></td><td>Drive more e-commerce sales and deliver five-star customer service at scale with our conversational AI chatbot.</td></tr>
+<tr><td><a href="https://www.linkfluence.com/?ref=awe50meAI">linkfluence</a></td><td>Enterprise Social Intelligence at Scale</td></tr>
+<tr><td><a href="https://phrasee.co/?ref=awe50meAI">phrasee</a></td><td>Get more clicks, conversions, and customers with AI-optimized content</td></tr>
+<tr><td><a href="https://ai.human.marketing/?ref=awe50meAI">human marketing</a></td><td>AI Marketing Software That Gets Predictably Better Results</td></tr>
+<tr><td><a href="https://www.acrolinx.com/?ref=awe50meAI">acrolinx</a></td><td>The road to happy customers is paved with amazing content</td></tr>
+<tr><td><a href="https://www.marketmuse.com/?ref=awe50meAI">marketmuse</a></td><td>Most content strategies are built on generic data and opinions.</td></tr>
+<tr><td><a href="https://www.liveperson.com/?ref=awe50meAI">liveperson</a></td><td>Conversational AI that’s anything but artificial</td></tr>
+<tr><td><a href="https://albert.ai/?ref=awe50meAI">albert</a></td><td>albert is your self-learning digital marketing ally</td></tr>
+<tr><td><a href="https://www.clickable.so/?ref=awe50meAI">clickable</a></td><td>Generate ads in seconds with AI</td></tr>
+<tr><td><a href="https://www.hellorobin.ai/?ref=awe50meAI">Robin</a></td><td>The Future of Sales Automation.</td></tr>
+<tr><td><a href="https://www.meetcody.ai/?ref=awe50meAI">cody</a></td><td>Cody is an intelligent AI assistant like ChatGPT – with the added benefit of being able to train it on your business, your team, your processes, and your clients with your own knowledge base. Use Cody to support your team, answer questions, help with creative work, troubleshoot issues, and brainstorm ideas.</td></tr>
+<tr><td><a href="https://www.tugan.ai/?ref=awe50meAI">Tugan.ai</a></td><td>Enter a URL or TOPIC To Generate Your Marketing Emails Instantly With AI</td></tr>
+<tr><td><a href="https://marketingcopilotai.com/?ref=awe50meAI">Marketing Co-pilot AI</a></td><td>The Better Way to Do Marketing</td></tr>
+<tr><td><a href="https://oneword.domains/domains-gpt/?ref=awe50meAI">Domains GPT</a></td><td>Generate brandable &amp; memorable domain names using AI. Powered by OpenAI and Vercel Edge Functions.</td></tr>
+</tbody></table>
+</div>
+<h2 id="design-tools"><a class="header" href="#design-tools">design tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://www.photoroom.com/?ref=awe50meAI">PhotoRoom</a></td><td>PhotoRoom - Remove Background and Create Product Pictures</td></tr>
+<tr><td><a href="https://www.iconifyai.com/?ref=awe50meAI">IconifyAI.com</a></td><td>Create an Icon that truly represents your app with AI</td></tr>
+<tr><td><a href="https://www.beautiful.ai/?ref=awe50meAI">beautiful ai</a></td><td>Presentation software that designs for you.</td></tr>
+<tr><td><a href="https://avatarai.me/?ref=awe50meAI">avatarai</a></td><td>Create your own AI-generated avatars</td></tr>
+<tr><td><a href="https://www.profilepicture.ai/?ref=awe50meAI">profilepicture</a></td><td></td></tr>
+<tr><td><a href="https://picofme.io/?ref=awe50meAI">picofme</a></td><td>Just AI profile picture maker</td></tr>
+<tr><td><a href="https://withpoly.com/?ref=awe50meAI">withpoly</a></td><td>Generate 3D Design Assets in Seconds with AI</td></tr>
+<tr><td><a href="https://www.craiyon.com/?ref=awe50meAI">craiyon</a></td><td>Free online AI image generator from text</td></tr>
+<tr><td><a href="https://neural.love/?ref=awe50meAI">neural love</a></td><td>Online video, images and audio enhancement powered by AI</td></tr>
+<tr><td><a href="https://imagen-ai.com/?ref=awe50meAI">Imagen AI</a></td><td>Imagen - Personalized Photo Editing Assistant</td></tr>
+<tr><td><a href="https://nightcafe.studio/?ref=awe50meAI">nightcafe studio</a></td><td>AI Art Generator</td></tr>
+<tr><td><a href="https://www.autodraw.com/?ref=awe50meAI">autodraw</a></td><td>AutoDraw is a new kind of drawing tool. It pairs machine learning with drawings from talented artists to help everyone create anything visual, fast.</td></tr>
+<tr><td><a href="https://ai-draw.tokyo/en/?ref=awe50meAI">ai draw</a></td><td>Convert your photo into line drawing.</td></tr>
+<tr><td><a href="https://hotpot.ai/?ref=awe50meAI">hotpot ai</a></td><td>Hotpot helps you create amazing graphics, pictures, and text.</td></tr>
+<tr><td><a href="https://pixray.gob.io/?ref=awe50meAI">pixray text to image / pixel art</a></td><td></td></tr>
+<tr><td><a href="https://designs.ai/?ref=awe50meAI">designs ai</a></td><td>Create logos, videos, banners, mockups with A.I. in 2 minutes</td></tr>
+<tr><td><a href="https://durable.co/ai-website-builder/?ref=awe50meAI">durable website builder</a></td><td>Build a website in 30 seconds using artificial intelligence</td></tr>
+<tr><td><a href="https://makelogoai.com/?ref=awe50meAI">makelogo ai</a></td><td>Uniques logos, for less than a coffee</td></tr>
+<tr><td><a href="https://creator.nightcafe.studio/?ref=awe50meAI">nightcafe</a></td><td>Create amazing artworks using the power of Artificial Intelligence.</td></tr>
+<tr><td><a href="https://openai.com/dall-e-2/?ref=awe50meAI">DALL·E 2 </a></td><td>DALL·E 2 is a new AI system that can create realistic images and art from a description in natural language.</td></tr>
+<tr><td><a href="https://deepdreamgenerator.com/?ref=awe50meAI">deep dream generator</a></td><td>HUMAN AI COLLABORATION</td></tr>
+<tr><td><a href="https://dream.ai/?ref=awe50meAI">dream ai</a></td><td>High Quality Artwork In Seconds</td></tr>
+<tr><td><a href="https://starryai.com/?ref=awe50meAI">starryai</a></td><td>Create Art with AI</td></tr>
+<tr><td><a href="https://www.artbreeder.com/?ref=awe50meAI">artbreeder</a></td><td>craft ai art like never before</td></tr>
+<tr><td><a href="https://looka.com/?ref=awe50meAI">looka</a></td><td>Use Looka's AI-powered platform to design a logo and build a brand you love.</td></tr>
+<tr><td><a href="https://www.logoai.com/?ref=awe50meAI">logoAI</a></td><td>Let AI-powered logo maker generate your new logo, create matching stationery, and design a brand you love!</td></tr>
+<tr><td><a href="https://logomaster.ai/?ref=awe50meAI">logomaster AI</a></td><td>Powered by AI,logomaster.ai helps business owners create beautiful logos.</td></tr>
+<tr><td><a href="https://durable.co/?ref=awe50meAI">durable</a></td><td>The AI website builder that generates an entire business website with images and copy in seconds.</td></tr>
+<tr><td><a href="https://midjourney.com/?ref=awe50meAI">midjourney</a></td><td></td></tr>
+<tr><td><a href="https://magicstudio.com/?ref=awe50meAI">magicstudio</a></td><td>Powered by AI, Created by You</td></tr>
+<tr><td><a href="https://pfpmaker.com/?ref=awe50meAI">pfpmaker</a></td><td>Make your new profile picture with AI</td></tr>
+<tr><td><a href="https://uizard.io/?ref=awe50meAI">uizard</a></td><td>Uizard</td></tr>
+<tr><td><a href="https://ando.studio/?ref=awe50meAI">ando</a></td><td>Your AI design copilot.</td></tr>
+<tr><td><a href="https://pixelz.ai/?ref=awe50meAI">pixelz</a></td><td>PIXELZ AI AVATAR &amp; IMAGE GENERATOR</td></tr>
+<tr><td><a href="https://makelogo.ai/?ref=awe50meAI">makelogoai</a></td><td>Make Unique logos with AI.</td></tr>
+<tr><td><a href="https://withflair.ai/?ref=awe50meAI">flair</a></td><td>the AI Design Tool for Branded Content.</td></tr>
+<tr><td><a href="https://magician.design/?ref=awe50meAI">magician</a></td><td>A magical design tool for Figma powered by AI.</td></tr>
+<tr><td><a href="https://www.usegalileo.ai/?ref=awe50meAI">Galileo AI</a></td><td>Galileo AI creates delightful, editable UI designs from a simple text description. It empowers you to design faster than ever.</td></tr>
+<tr><td><a href="https://stockimg.ai/?ref=awe50meAI">stockimg</a></td><td>AI image generation for teams - You can easily generate AI logo, AI book covers, AI posters and more - Stockimg AI</td></tr>
+<tr><td><a href="https://pixlr.com/?ref=awe50meAI">pixlr</a></td><td>AI powered photo editor, animation and design.</td></tr>
+<tr><td><a href="https://brandmark.io/?ref=awe50meAI">brandmark</a></td><td>Brandmark Logo Maker - the most advanced AI logo design tool</td></tr>
+<tr><td><a href="https://illustroke.com/?ref=awe50meAI">illustroke</a></td><td>Stunning vector illustrations from text prompts</td></tr>
+<tr><td><a href="https://www.slidesai.io/?ref=awe50meAI">slides AI</a></td><td>Create Presentations Slides with AI in seconds</td></tr>
+<tr><td><a href="https://cleanup.pictures/?ref=awe50meAI">Cleanup.pictures</a></td><td>Remove any unwanted object, defect, people or text from your pictures in seconds</td></tr>
+<tr><td><a href="https://snapedit.app/?ref=awe50meAI">SnapEdit</a></td><td>Remove Object from photo</td></tr>
+<tr><td><a href="https://ui-ai.com/">UI-AI</a></td><td>User Interface Artificial Intelligence</td></tr>
+<tr><td><a href="https://whimsical.com/ai-mind-maps/?ref=awe50meAI">Whimsical AI for Mind Maps</a></td><td>Fresh ideas at your fingertips</td></tr>
+<tr><td><a href="https://www.adobe.com/sensei/generative-ai/firefly.html/?ref=Awe50meAI">Adobe Firefly</a></td><td>AI Art Generator</td></tr>
+<tr><td><a href="https://www.ailabtools.com/?ref=awe50meAI">AILab Tools</a></td><td></td></tr>
+<tr><td><a href="https://imgcreator.zmo.ai/?ref=awe50meAI0">IMGCREATOR</a></td><td>All-in-one AI Design Art Generator</td></tr>
+<tr><td><a href="https://www.vizcom.ai/?ref=awe50meAI">vizcom</a></td><td>see your drawings come to life in seconds.</td></tr>
+<tr><td><a href="https://www.storyd.ai/?ref=awe50meAI">storyd</a></td><td>AI POWERED PRESENTATIONS</td></tr>
+<tr><td><a href="https://picwish.com/?ref=awe50meAI">PicWish</a></td><td>PicWish AI Photo Editor</td></tr>
+<tr><td><a href="https://www.figmaai.io/?ref=awe50meAI">Figma AI</a></td><td>Integrate GPT Chat into your Figma workflow</td></tr>
+<tr><td><a href="https://beta.dreamstudio.ai/?ref=awe50meAI">DreamStudio</a></td><td>Tap into the power of our generative text-to-image suite to create new and unique designs.</td></tr>
+<tr><td><a href="https://leonardo.ai/?ref=awe50meAI">Leonardo.Ai</a></td><td>Create stunning game assets with AI.</td></tr>
+<tr><td><a href="https://spline.design/ai/?ref=awe50meAI">Spline AI</a></td><td>The power of AI is coming to the 3rd dimension. Generate objects, animations, and textures using prompts.</td></tr>
+<tr><td><a href="https://www.nvidia.com/en-us/studio/canvas/?ref=awe50meAI">NVIDIA Canvas</a></td><td>Use AI to turn simple brushstrokes into realistic landscape images. Create backgrounds quickly, or speed up your concept exploration so you can spend more time visualizing ideas.</td></tr>
+<tr><td><a href="https://thumbly.ai/?ref=awe50meAI">Thumbly</a></td><td>Create YouTube thumbnails that get clicks</td></tr>
+<tr><td><a href="https://www.stylized.ai/?ref=awe50meAI">stylized</a></td><td>A new way to take product photos.</td></tr>
+</tbody></table>
+</div>
+<h2 id="coding-tools"><a class="header" href="#coding-tools">Coding tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://github.com/features/copilot/?ref=awe50meAI">GitHub copilot</a></td><td>Your AI pair programmer</td></tr>
+<tr><td><a href="https://www.tabnine.com/?ref=awe50meAI">tabnine</a></td><td>AI assistant for software developers</td></tr>
+<tr><td><a href="https://go.deepopinion.ai/?ref=awe50meAI">deepOpinion</a></td><td>No-code AI for automation professionals</td></tr>
+<tr><td><a href="https://aws.amazon.com/codewhisperer/?ref=awe50meAI">Amazon CodeWhisperer</a></td><td>Build applications faster and more securely with your AI coding companion</td></tr>
+<tr><td><a href="https://developer.android.com/studio/preview/studio-bot/?ref=awe50meAI">Android Studio Bot</a></td><td>Studio Bot is your coding companion for Android development.</td></tr>
+<tr><td><a href="https://flatlogic.com/blog/chatgpt-flatlogic-generate-fully-functioning-web-apps-based-on-description">Flatlogic</a></td><td>generate fully-functioning web apps in minutes with OpenAI, simply by describing the app in English!</td></tr>
+<tr><td><a href="https://fronty.com/?ref=awe50meAI">Fronty</a></td><td>convert image to HTML CSS</td></tr>
+<tr><td><a href="https://sourceai.dev/?ref=awe50meAI">SourceAI</a></td><td>Ai-Powered Code Generator</td></tr>
+<tr><td><a href="https://www.microapp.ai/build">Microapp</a></td><td>AI-Powered Component Generator</td></tr>
+<tr><td><a href="https://www.gitfluence.com/?ref=awe50meAI">GitFluence</a></td><td>Find the Git Command You Need Now!</td></tr>
+<tr><td><a href="https://bloop.ai/?ref=awe50meAI">bloop.</a></td><td>bloop is a code-search engine that uses GPT-4 to answer questions about your code. Search both your local and remote repositories with natural language, regex and filtered queries.</td></tr>
+<tr><td><a href="https://www.codium.ai/?ref=awe50meAI">codium</a></td><td>Generating meaningful tests for busy devs</td></tr>
+<tr><td><a href="https://useadrenaline.com/app?ref=awe50meAI">drenaline</a></td><td>An AI-powered debugger   <a href="https://github.com/shobrook/adrenaline/">GitHub repository</a></td></tr>
+<tr><td><a href="https://aicode-weld.vercel.app/?ref=awe50meAI">AI CODE</a></td><td>Turn text into HTML&amp;CSS with AI</td></tr>
+<tr><td><a href="https://stunning.so/?ref=awe50meAI">Stunning.so</a></td><td>Build websites with AI.i</td></tr>
+<tr><td><a href="https://codeium.com/?ref=awe50meAI">codeium</a></td><td>AI-Powered Autocomplete</td></tr>
+<tr><td><a href="https://replit.com/site/ghostwriter/?ref=awe50meAI">Ghostwriter</a></td><td>Meet Ghostwriter, your partner in code.</td></tr>
+<tr><td><a href="https://lightning.ai/?ref=awe50meAI">Lightning AI</a></td><td>The platform for teams to build AI, without the headaches</td></tr>
+<tr><td><a href="https://github.com/fengyiqicoder/CommitAi-Free?ref=awe50meAI">CommitAI</a></td><td>Let AI Handle Your Commit Messages</td></tr>
+<tr><td><a href="https://www.codewand.co/?ref=awe50meAI">Codewand</a></td><td>Use GPT-4 to build software with natural language.</td></tr>
+<tr><td><a href="https://github.com/avsthiago/kopylot?ref=awe50meAI">kopylot</a></td><td>An AI-Powered assistant for Kubernetes developers</td></tr>
+<tr><td><a href="https://hashnode.com/rix/?ref=awe50meAI">Rix</a></td><td>The Ultimate AI-Powered Chatbot for Developers</td></tr>
+<tr><td><a href="https://kodezi.com/?ref=awe50meAI">Kodezi</a></td><td>Kodezi is a AI developer tool platform that auto-corrects your code in real-time. We’re on a mission to 10x productivity in programming!</td></tr>
+<tr><td><a href="https://bard.google.com/?ref=awe50meAI">Google Bard</a></td><td>Meet Bard: your creative and helpful collaborator, here to supercharge your imagination, boost your productivity, and bring your ideas to life.</td></tr>
+<tr><td><a href="https://www.safurai.com/?ref=awe50meAI">Safurai</a></td><td>Safurai is the AI Code Assistant that saves you time in changing, optimizing, and searching code.</td></tr>
+<tr><td><a href="https://10web.io/?ref=awe50meAI">10Web</a></td><td>AI-Powered WordPress Platform</td></tr>
+<tr><td><a href="https://www.codium.ai/?ref=awe50meAI">codium</a></td><td>Generating meaningful tests for busy devs</td></tr>
+<tr><td><a href="https://www.useblackbox.io/?ref=awe50meAI">blackbox AI</a></td><td>{Code} As Fast As You Think.</td></tr>
+<tr><td><a href="https://zzzcode.ai/?ref=awe50meAI">ZZZ Code AI</a></td><td>Website to ask any programming question or get a code generated by AI</td></tr>
+</tbody></table>
+</div>
+<h2 id="color-tools"><a class="header" href="#color-tools">color tools</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="http://colormind.io/?ref=awe50meAI">colormind</a></td><td>Colormind - the AI powered color palette generator</td></tr>
+<tr><td><a href="https://huemint.com/?ref=awe50meAI">Huemint</a></td><td>AI color palette generator</td></tr>
+<tr><td><a href="https://www.khroma.co/?ref=awe50meAI">khroma</a></td><td>Khroma - The AI color tool for designers</td></tr>
+<tr><td><a href="https://colorgpt.vercel.app/?ref=awe50meAI">ColorGPT</a></td><td>Generating color name captured from real-world using AI</td></tr>
+<tr><td><a href="https://chroma.szhao.dev/?ref=awe50meAI">Chroma AI</a></td><td>Generate gradients based on your mood</td></tr>
+<tr><td><a href="https://www.patterned.ai/?ref=awe50meAI">PatternedAI</a></td><td>Generate unique patterns for your product using AI!</td></tr>
+</tbody></table>
+</div>
+<h2 id="miscellaneous"><a class="header" href="#miscellaneous">miscellaneous</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Awesome</th><th>Description</th></tr></thead><tbody>
+<tr><td><a href="https://www.browse.ai/?ref=awe50meAI">Browse AI</a></td><td>The easiest way to extract and monitor data from any website.</td></tr>
+<tr><td><a href="https://grow.google/certificates/interview-warmup/?ref=awe50meAI">interview-warmup by google</a></td><td></td></tr>
+<tr><td><a href="https://www.fastoutreach.ai/?ref=awe50meAI">fastoutreach</a></td><td>The smartest AI personalization tool for entrepreneurs.</td></tr>
+<tr><td><a href="https://getleon.ai/?ref=awe50meAI">getleon</a></td><td>Leon is your open-source personal assistant who can live on your server.</td></tr>
+<tr><td><a href="https://github.com/openai/whisper/?ref=awe50meAI">Open AI Whisper</a></td><td>Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multi-task model that can perform multilingual speech recognition as well as speech translation and language identification.</td></tr>
+<tr><td><a href="https://lightning.ai/echo/view/home/?ref=awe50meAI">lightning echo</a></td><td>Transcription. simple and open-source.  <a href="https://lightning.ai/apps/?ref=awe50meAI">more lightning apps</a></td></tr>
+<tr><td><a href="https://unschooler.me/?ref=awe50meAI">unschooler</a></td><td>Personal AI-mentor helps you to find and pursue a new career.</td></tr>
+<tr><td><a href="https://namelix.com/?ref=awe50meAI">namelix</a></td><td>generate a short, brandable business name using artificial intelligence</td></tr>
+<tr><td><a href="https://lens-ai.com/?ref=awe50meAI">lens ai</a></td><td>AI-powered contextual computer vision ad solution</td></tr>
+<tr><td><a href="https://www.ai21.com/?ref=awe50meAI">ai21</a></td><td>When Machines Become Thought Partners</td></tr>
+<tr><td><a href="https://cohere.ai/?ref=awe50meAI">co:here ai</a></td><td>Making NLP part of every developer's toolkit</td></tr>
+<tr><td><a href="https://openai.com/api/?ref=awe50meAI">open ai</a></td><td>Build next-gen apps with OpenAI’s powerful models.</td></tr>
+<tr><td><a href="https://zyro.com/tools/?ref=awe50meAI">zyro ai tools</a></td><td>Free AI tools to set your business up for success</td></tr>
+<tr><td><a href="https://www.personal.ai/?ref=awe50meAI">personal ai</a></td><td>Generate new ideas, recall key concepts, and write original content and at the speed of thought.</td></tr>
+<tr><td><a href="https://www.monterey.ai/?ref=awe50meAI">monterey ai</a></td><td>Copilot for Product Development</td></tr>
+<tr><td><a href="https://www.kalendar.ai/?ref=awe50meAI">kalendar ai</a></td><td>Book new revenue on autopilot with AI</td></tr>
+<tr><td><a href="https://www.akkio.com/?ref=awe50meAI">akkio</a></td><td>Modern Business Runs on AI</td></tr>
+<tr><td><a href="https://www.meetcortex.com/?ref=awe50meAI">cortex</a></td><td>Enhance Your Creative with Powerful AI</td></tr>
+<tr><td><a href="https://www.validatorai.com/?ref=awe50meAI">validatorAI</a></td><td>Validate and receive constructive feedback on any startup idea, powered by AI!</td></tr>
+<tr><td><a href="https://www.namingmagic.com/?ref=awe50meAI">naming magic</a></td><td>Use AI to name your company and find a domain.</td></tr>
+<tr><td><a href="https://www.poised.com/?ref=awe50meAI">poised</a></td><td>Poised is the AI-powered communication coach that helps you speak with confidence and clarity.</td></tr>
+<tr><td><a href="https://get.mem.ai/?ref=awe50meAI">mem</a></td><td>Mem is the world's first AI-powered workspace that's personalized to you. Amplify your creativity, automate the mundane, and stay organized automatically.</td></tr>
+<tr><td><a href="https://beta.tome.app/?ref=awe50meAI">tome</a></td><td>Unlock your best work with Tome's AI-powered storytelling format.</td></tr>
+<tr><td><a href="https://customgpt.ai/?ref=awe50meAI">custom GPT</a></td><td>Build Your Own ChatBOT With Your Data</td></tr>
+<tr><td><a href="https://rationale.jina.ai/?ref=awe50meAI">rationale</a></td><td>a revolutionary AI to assist business owners, managers, and individuals in making tough decisions.</td></tr>
+<tr><td><a href="https://www.roomgpt.io/?ref=awe50meAI">roomGPT.io</a></td><td>Generating dream rooms using AI for everyone.</td></tr>
+<tr><td><a href="https://addcontext.xyz/?ref=awe50meAI">addcontext</a></td><td>Context is your AI-powered assistant for learning from your favorite websites, e-books, podcasts, videos, and more.</td></tr>
+<tr><td><a href="https://usecontext.io/?ref=awe50meAI">context</a></td><td>A brain for your business.</td></tr>
+<tr><td><a href="https://tldv.io/?ref=awe50meAI">tl;dv</a></td><td>AI-Powered Meeting Recorder for Zoom and Google Meet - tl;dv</td></tr>
+<tr><td><a href="https://ttree.ai/?ref=awe50meAI">ttree</a></td><td>A fulfilling job is one step closer to a more inspiring and purposeful life. At ttree, we build AI-powered technology to match talent with the best opportunities out there.</td></tr>
+<tr><td><a href="https://www.bardeen.ai/?ref=awe50meAI">bardeen</a></td><td>Automate your manual tasks</td></tr>
+<tr><td><a href="https://www.humata.ai/?ref=awe50meAI">HUMATA</a></td><td>Ask AI anything about your files</td></tr>
+<tr><td><a href="https://www.onestafinance.com/?ref=awe50meAI">Onesta</a></td><td>Take control of your Financial Future</td></tr>
+<tr><td><a href="https://www.wheretoai.com/?ref=awe50meAI">Where To AI!</a></td><td>Welcome to Where To AI! Through the power of AI you will discover new destinations, create unforgettable memories and find the best places to stay.</td></tr>
+<tr><td><a href="https://www.castmagic.io/?ref=awe50meAI">castmagic</a></td><td>Podcast show notes &amp; content in a click</td></tr>
+<tr><td><a href="https://aigiftforyou.com/?ref=awe50meAI">AI Gift For You</a></td><td>AI Gift For You - Finding the perfect gift just got easier!</td></tr>
+<tr><td><a href="https://timegpt.vercel.app/?ref=awe50meAI">TimeGPT</a></td><td>An AI-powered date and time converter. Enter a prompt to get started.   <a href="https://github.com/Spiderpig86/TimeGPT">GitHub repository</a></td></tr>
+<tr><td><a href="https://www.promptpal.net/?ref=awe50meAI">PromptPal</a></td><td>The destination for the best prompts for marketers, writers, designers, and more to get the most out of ChatGPT</td></tr>
+<tr><td><a href="https://www.harvey.ai/?ref=awe50meAI">Harvey.</a></td><td>Harvey</td></tr>
+<tr><td><a href="https://getengageai.com/?ref=awe50meAI">Engage AI</a></td><td></td></tr>
+<tr><td><a href="https://suggestai.co/?ref=awe50meAI">Suggest AI</a></td><td>Suggest AI is a machine learning powered personalization engine offering a product portfolio customized for online businesses</td></tr>
+<tr><td><a href="https://reflect.app/?ref=awe50reAI">Reflect</a></td><td></td></tr>
+<tr><td><a href="https://waitroom.com/?ref=awe50meAI">waitroom</a></td><td>The solution to better meetings</td></tr>
+<tr><td><a href="https://oneword.domains/domains-gpt/?ref=awe50meAI">Domains GPT</a></td><td>Generate brandable &amp; memorable domain names using AI. Powered by OpenAI and Vercel Edge Functions.</td></tr>
+<tr><td><a href="https://gamma.app/?ref=awe50meAI">Gamma</a></td><td>A new medium for presenting ideas. Powered by AI.</td></tr>
+<tr><td><a href="https://www.kickresume.com/en/ai-resume-writer/?ref=awe50meAI">kickresume</a></td><td>Automate your CV creation with our AI resume builder.</td></tr>
+<tr><td><a href="https://stability.ai/?ref=awe50meAI">stability.ai</a></td><td>AI by the people for the people</td></tr>
+<tr><td><a href="https://www.enhanceai.dev/?ref=awe50meAI">EnhaceAI</a></td><td>Add AI Autocomplete to any website in 2 minutes</td></tr>
+<tr><td><a href="https://www.june.so/ai?ref=awe50meAI">June</a></td><td>A new way to do product analytics</td></tr>
+<tr><td><a href="https://www.avoma.com/v3?ref=awe50meAI">Avoma</a></td><td>AI Meeting assistance and collaboration, reimagined.</td></tr>
+<tr><td><a href="https://speakaide.com/?ref=awe50meAI">SpeakAide</a></td><td>Take your public speaking to the next level with SpeakAide's AI script writing and teleprompter tool.</td></tr>
+<tr><td><a href="https://powermodeai.com/?ref=awe50meAI">PowerMode</a></td><td>PowerMode is your AI co-founder that will help you ideate and pitch your startup.</td></tr>
+<tr><td><a href="https://books.google.com/talktobooks/?ref=awe50meAI">Talk to Books</a></td><td>Browse passages from books using experimental AI</td></tr>
+<tr><td><a href="https://www.sheetai.app/?ref=awe50meAI">SheetAI</a></td><td>AI inside Spreadsheets</td></tr>
+<tr><td><a href="https://tripnotes.ai/app/?ref=awe50meAI">Tripnotes</a></td><td>Intelligent Travel Planner</td></tr>
+<tr><td><a href="https://www.decktopus.com/?ref=awe50meAI">Decktopus AI</a></td><td>World's #1 AI-Powered Presentation Generator</td></tr>
+<tr><td><a href="https://www.banterai.app/?ref=awe50meAI">Banter AI</a></td><td>Call up your favorite celebrities Scary realistic AI</td></tr>
+<tr><td><a href="https://tweetmonk.com/?ref=awe50meAI">tweetmonk_</a></td><td>Maximize your Twitter reach with our intelligent editor - create and schedule engaging tweets and threads to boost your growth.</td></tr>
+<tr><td><a href="https://agentgpt.reworkd.ai/?ref=awe50meAI">AgentGPT</a></td><td>Assemble, configure, and deploy autonomous AI Agents in your browser.</td></tr>
+<tr><td><a href="https://www.chatshape.com/?ref=awe50meAI">Chatshape</a></td><td>Build AI Chatbots from your content, remarkably fast</td></tr>
+<tr><td><a href="https://numerous.ai/?ref=awe50meAI">numerous.ai</a></td><td>Extract text, categorize, generate formulas, and use ChatGPT right inside your spreadsheet</td></tr>
+<tr><td><a href="https://www.glass.ai/?ref=awe50meAI">glass.ai</a></td><td>Transforming sector and company research with AI</td></tr>
+<tr><td><a href="https://rockset.com/?ref=awe50meAI">ROCKSET</a></td><td>Build blazing fast search and AI applications in record time</td></tr>
+</tbody></table>
+</div>
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="summary.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="algolia.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="summary.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="algolia.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

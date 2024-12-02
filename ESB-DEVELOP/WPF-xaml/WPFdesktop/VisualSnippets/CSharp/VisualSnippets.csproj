@@ -1,0 +1,54 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <!-- MSBUILD Project File -->
+  <PropertyGroup>
+    <DefaultClrNameSpace>SDKSample</DefaultClrNameSpace>
+    <AssemblyName>VisualSnippets</AssemblyName>
+    <TargetType>winexe</TargetType>
+    <Configuration>Release</Configuration>
+    <HostInBrowser>False</HostInBrowser>
+    <SchemaVersion>2.0</SchemaVersion>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <RootNamespace>SDKSample</RootNamespace>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <ProductVersion>10.0.20821</ProductVersion>
+    <ProjectGuid>{C0D4B19C-0EF2-43F5-AA10-99C7180A4EA0}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="MyApp.xaml" />
+    <Page Include="DrawingVisual.xaml" />
+    <Page Include="Page1.xaml" />
+    <Page Include="Window1.xaml" />
+    <Page Include="Window2.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DrawingVisual.xaml.cs">
+      <DependentUpon>DrawingVisual.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Snippets.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+</Project>

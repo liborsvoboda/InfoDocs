@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/samples/">
+<meta property="og:title" content="NGINX Unit: App Samples">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Security Checklist" href="../security/" />
+<link rel="prev" title="Working With Language Modules" href="../modules/" />
+
+<title>App Samples — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App Samples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#go">Go</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#java">Java</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#node-js">Node.js</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#perl">Perl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php">PHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#python">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ruby">Ruby</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webassembly-wasm">WebAssembly (Wasm)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#web-assembly-wasm-wasi-component">wasm-wasi-component</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web-assembly-unit-wasm">unit-wasm</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="app-samples">
+<h1>App Samples<a class="headerlink" href="#app-samples" title="Permalink to this heading">§</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">These steps assume Unit was already <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">installed</span></a> with the language module for each app.</p>
+</div>
+<div class="section" id="go">
+<span id="sample-go"></span><h2>Go<a class="headerlink" href="#go" title="Permalink to this heading">§</a></h2>
+<p>Let’s configure the following basic app, saved as <strong>/www/app.go</strong>:</p>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;io&quot;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span>
+<span class="w">    </span><span class="s">&quot;unit.nginx.org/go&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">io</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello, Go on Unit!&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">unit</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>First, create a <a class="reference external" href="https://go.dev/blog/using-go-modules">Go module</a>, <code class="samp docutils literal notranslate"><span class="pre">go</span>
+<span class="pre">get</span></code> Unit’s package, and build your application:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>go<span class="w"> </span>mod<span class="w"> </span>init<span class="w"> </span><span class=nxt_ph title="Your Go module designation">example.com/app</span>
+<span class="gp">$ </span>go<span class="w"> </span>get<span class="w"> </span>unit.nginx.org/go@1.33.0
+<span class="gp">$ </span>go<span class="w"> </span>build<span class="w"> </span>-o<span class="w"> </span>/www/app<span class="w"> </span>/www/app.go
+</pre></div>
+</div>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-go"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+  &quot;listeners&quot;: {
+      &quot;*:8080&quot;: {
+          &quot;pass&quot;: &quot;applications/go&quot;
+      }
+  },
+  &quot;applications&quot;: {
+      &quot;go&quot;: {
+          &quot;type&quot;: &quot;external&quot;,
+          &quot;working_directory&quot;: &quot;/www/&quot;,
+          &quot;executable&quot;: &quot;/www/app&quot;
+      }
+  }
+  }&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+
+<span class="go">    Hello, Go on Unit!</span>
+</pre></div>
+</div>
+<p>Try this sample out with the Dockerfile <a class="reference download internal" download="" href="../../_downloads/55f3fadb10a1bec1c359757ae72cb998/Dockerfile.go.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> or use a more elaborate app example:</p>
+<div class="highlight-go notranslate"><div class="highlight"><pre><span></span><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;crypto/sha256&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="s">&quot;fmt&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="s">&quot;io&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="s">&quot;io/ioutil&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="s">&quot;encoding/json&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="s">&quot;net/http&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="s">&quot;strings&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="s">&quot;unit.nginx.org/go&quot;</span>
+<span class="p">)</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">formatRequest</span><span class="p">(</span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nx">h</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">m</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">t</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nb">make</span><span class="p">(</span><span class="kd">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kd">interface</span><span class="p">{})</span>
+
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;message&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;Unit reporting&quot;</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;agent&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;NGINX Unit 1.33.0&quot;</span>
+
+<span class="w">    </span><span class="nx">body</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ioutil</span><span class="p">.</span><span class="nx">ReadAll</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">)</span>
+
+<span class="w">    </span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;sha256&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%x&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">sha256</span><span class="p">.</span><span class="nx">Sum256</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">m</span><span class="p">[</span><span class="s">&quot;body&quot;</span><span class="p">])))</span>
+
+<span class="w">    </span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Marshal</span><span class="p">(</span><span class="nx">m</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="nx">name</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Header</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">h</span><span class="p">[</span><span class="nx">strings</span><span class="p">.</span><span class="nx">ToUpper</span><span class="p">(</span><span class="nx">name</span><span class="p">)]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">Header</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="nx">_</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">Unmarshal</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">t</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">t</span><span class="p">[</span><span class="s">&quot;headers&quot;</span><span class="p">]</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">h</span>
+
+<span class="w">    </span><span class="nx">js</span><span class="p">,</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">json</span><span class="p">.</span><span class="nx">MarshalIndent</span><span class="p">(</span><span class="nx">t</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;    &quot;</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">&quot;%s&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">js</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">http</span><span class="p">.</span><span class="nx">HandleFunc</span><span class="p">(</span><span class="s">&quot;/&quot;</span><span class="p">,</span><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;application/json; charset=utf-8&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="nx">io</span><span class="p">.</span><span class="nx">WriteString</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">formatRequest</span><span class="p">(</span><span class="nx">r</span><span class="p">))</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="nx">unit</span><span class="p">.</span><span class="nx">ListenAndServe</span><span class="p">(</span><span class="s">&quot;:8080&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="java">
+<span id="sample-java"></span><h2>Java<a class="headerlink" href="#java" title="Permalink to this heading">§</a></h2>
+<p>Let’s configure the following basic app, saved as <strong>/www/index.jsp</strong>:</p>
+<div class="highlight-jsp notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">language</span><span class="o">=</span><span class="s">&quot;java&quot;</span><span class="w"> </span><span class="n">contentType</span><span class="o">=</span><span class="s">&quot;text/plain&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%=</span><span class="w"> </span><span class="s">&quot;Hello, JSP on Unit!&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+</pre></div>
+</div>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-java"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+  &quot;listeners&quot;: {
+      &quot;*:8080&quot;: {
+          &quot;pass&quot;: &quot;applications/java&quot;
+      }
+  },
+  &quot;applications&quot;: {
+      &quot;java&quot;: {
+          &quot;type&quot;: &quot;java&quot;,
+          &quot;webapp&quot;: &quot;/www/&quot;
+      }
+  }
+  }&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+
+<span class="go">    Hello, JSP on Unit!</span>
+</pre></div>
+</div>
+<p>Try this sample out with the Dockerfile <a class="reference download internal" download="" href="../../_downloads/ff1c18f7e9e3429b93de06ac50b4f5df/Dockerfile.java.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> or use a more elaborate app example (you’ll
+need to <a class="reference external" href="https://cliftonlabs.github.io/json-simple/">download</a> and <a class="reference internal" href="../../configuration/#configuration-java"><span class="std std-ref">add</span></a> the <strong class="program">json-simple</strong> library to your app’s
+<strong>classpath</strong> option):</p>
+<div class="highlight-jsp notranslate"><div class="highlight"><pre><span></span><span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">language</span><span class="o">=</span><span class="s">&quot;java&quot;</span><span class="w"> </span><span class="n">contentType</span><span class="o">=</span><span class="s">&quot;application/json; charset=utf-8&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;com.github.cliftonlabs.json_simple.JsonObject&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;com.github.cliftonlabs.json_simple.Jsoner&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;java.io.BufferedReader&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;java.math.BigInteger&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;java.nio.charset.StandardCharsets&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;java.security.MessageDigest&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%@</span><span class="w"> </span><span class="n">page</span><span class="w"> </span><span class="n">import</span><span class="o">=</span><span class="s">&quot;java.util.Enumeration&quot;</span><span class="w"> </span><span class="k">%&gt;</span>
+<span class="k">&lt;%</span>
+<span class="n">JsonObject</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonObject</span><span class="p">();</span>
+
+<span class="n">r</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Unit reporting&quot;</span><span class="p">);</span>
+<span class="n">r</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;agent&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;NGINX Unit 1.33.0&quot;</span><span class="p">);</span>
+
+<span class="n">JsonObject</span><span class="w"> </span><span class="n">headers</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonObject</span><span class="p">();</span>
+<span class="n">Enumeration</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getHeaderNames</span><span class="p">();</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">h</span><span class="p">.</span><span class="na">hasMoreElements</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="p">)</span><span class="n">h</span><span class="p">.</span><span class="na">nextElement</span><span class="p">();</span>
+<span class="w">    </span><span class="n">headers</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getHeader</span><span class="p">(</span><span class="n">name</span><span class="p">));</span>
+<span class="p">}</span>
+<span class="n">r</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;headers&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">headers</span><span class="p">);</span>
+
+<span class="n">BufferedReader</span><span class="w">  </span><span class="n">br</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">request</span><span class="p">.</span><span class="na">getReader</span><span class="p">();</span>
+<span class="n">String</span><span class="w">          </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="n">String</span><span class="w">          </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">br</span><span class="p">.</span><span class="na">readLine</span><span class="p">();</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">line</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">body</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">line</span><span class="p">;</span>
+<span class="w">    </span><span class="n">line</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">br</span><span class="p">.</span><span class="na">readLine</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="n">r</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">body</span><span class="p">);</span>
+
+<span class="n">MessageDigest</span><span class="w">   </span><span class="n">md</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MessageDigest</span><span class="p">.</span><span class="na">getInstance</span><span class="p">(</span><span class="s">&quot;SHA-256&quot;</span><span class="p">);</span>
+<span class="kt">byte</span><span class="o">[]</span><span class="w">          </span><span class="n">bytes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">md</span><span class="p">.</span><span class="na">digest</span><span class="p">(</span><span class="n">body</span><span class="p">.</span><span class="na">getBytes</span><span class="p">(</span><span class="n">StandardCharsets</span><span class="p">.</span><span class="na">UTF_8</span><span class="p">));</span>
+<span class="n">BigInteger</span><span class="w">      </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">BigInteger</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">bytes</span><span class="p">);</span>
+<span class="n">StringBuilder</span><span class="w">   </span><span class="n">hex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">StringBuilder</span><span class="p">(</span><span class="n">number</span><span class="p">.</span><span class="na">toString</span><span class="p">(</span><span class="mi">16</span><span class="p">));</span>
+<span class="n">r</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">&quot;sha256&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">hex</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+
+<span class="n">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">Jsoner</span><span class="p">.</span><span class="na">prettyPrint</span><span class="p">((</span><span class="n">Jsoner</span><span class="p">.</span><span class="na">serialize</span><span class="p">(</span><span class="n">r</span><span class="p">))));</span>
+<span class="k">%&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="node-js">
+<span id="sample-nodejs"></span><h2>Node.js<a class="headerlink" href="#node-js" title="Permalink to this heading">§</a></h2>
+<p>Let’s configure the following basic app, saved as <strong>/www/app.js</strong>:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env node</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s2">&quot;<span class=nxt_hint title="It's important to use unit-http instead of the regular http module">unit-http</span>&quot;</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="p">});</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s2">&quot;Hello, Node.js on Unit!&quot;</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Make it executable and link the Node.js language package you’ve <a class="reference internal" href="../../installation/#installation-nodejs-package"><span class="std std-ref">installed</span></a> earlier:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>/www
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>chmod<span class="w"> </span>+x<span class="w"> </span>app.js
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>npm<span class="w"> </span>link<span class="w"> </span>unit-http
+</pre></div>
+</div>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-nodejs"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+  &quot;listeners&quot;: {
+      &quot;*:8080&quot;: {
+          &quot;pass&quot;: &quot;applications/node&quot;
+      }
+  },
+  &quot;applications&quot;: {
+      &quot;node&quot;: {
+          &quot;type&quot;: &quot;external&quot;,
+          &quot;working_directory&quot;: &quot;/www/&quot;,
+          &quot;executable&quot;: &quot;app.js&quot;
+      }
+  }
+  }&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+
+<span class="go">    Hello, Node.js on Unit!</span>
+</pre></div>
+</div>
+<p>Try this sample out with the Dockerfile <a class="reference download internal" download="" href="../../_downloads/b9d463a96f334c8dbf77fc013ace1ea6/Dockerfile.nodejs.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> or use a more elaborate app example:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env node</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="nx">cr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;crypto&quot;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">bd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">&quot;body&quot;</span><span class="p">)</span>
+<span class="nx">require</span><span class="p">(</span><span class="s2">&quot;unit-http&quot;</span><span class="p">).</span><span class="nx">createServer</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">bd</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="nx">body</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;application/json; charset=utf-8&quot;</span><span class="p">})</span>
+
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="s2">&quot;agent&quot;</span><span class="o">:</span><span class="w">    </span><span class="s2">&quot;NGINX Unit 1.33.0&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;message&quot;</span><span class="o">:</span><span class="w">  </span><span class="s2">&quot;Unit reporting&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="nx">r</span><span class="p">[</span><span class="s2">&quot;headers&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">headers</span>
+<span class="w">        </span><span class="nx">r</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">body</span>
+<span class="w">        </span><span class="nx">r</span><span class="p">[</span><span class="s2">&quot;sha256&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">cr</span><span class="p">.</span><span class="nx">createHash</span><span class="p">(</span><span class="s2">&quot;sha256&quot;</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]).</span><span class="nx">digest</span><span class="p">(</span><span class="s2">&quot;hex&quot;</span><span class="p">)</span>
+
+<span class="w">        </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">r</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;    &quot;</span><span class="p">).</span><span class="nx">toString</span><span class="p">(</span><span class="s2">&quot;utf8&quot;</span><span class="p">))</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}).</span><span class="nx">listen</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can run a version of the same app <a class="reference internal" href="../../configuration/#configuration-nodejs-loader"><span class="std std-ref">without</span></a> requiring the <strong>unit-http</strong> module
+explicitly.</p>
+</div>
+</div>
+<div class="section" id="perl">
+<span id="sample-perl"></span><h2>Perl<a class="headerlink" href="#perl" title="Permalink to this heading">§</a></h2>
+<p>Let’s configure the following basic app, saved as <strong>/www/app.psgi</strong>:</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="k">my</span><span class="w"> </span><span class="nv">$app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sub</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s">&quot;200&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="p">[</span><span class="w"> </span><span class="s">&quot;Content-Type&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;text/plain&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">        </span><span class="p">[</span><span class="w"> </span><span class="s">&quot;Hello, Perl on Unit!&quot;</span><span class="w"> </span><span class="p">],</span>
+<span class="w">    </span><span class="p">];</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-perl"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+  &quot;listeners&quot;: {
+      &quot;*:8080&quot;: {
+          &quot;pass&quot;: &quot;applications/perl&quot;
+      }
+  },
+  &quot;applications&quot;: {
+      &quot;perl&quot;: {
+          &quot;type&quot;: &quot;perl&quot;,
+          &quot;working_directory&quot;: &quot;/www/&quot;,
+          &quot;script&quot;: &quot;/www/app.psgi&quot;
+      }
+  }
+  }&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+
+<span class="go">    Hello, Perl on Unit!</span>
+</pre></div>
+</div>
+<p>Try this sample out with the Dockerfile <a class="reference download internal" download="" href="../../_downloads/ce271af7025309218beb94578326a881/Dockerfile.perl.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> or use a more elaborate app example:</p>
+<div class="highlight-perl notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="w"> </span><span class="nn">strict</span><span class="p">;</span>
+
+<span class="k">use</span><span class="w"> </span><span class="nn">Digest::SHA</span><span class="w"> </span><span class="sx">qw(sha256_hex)</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="nn">JSON</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="nn">Plack</span><span class="p">;</span>
+<span class="k">use</span><span class="w"> </span><span class="nn">Plack::Request</span><span class="p">;</span>
+
+<span class="k">my</span><span class="w"> </span><span class="nv">$app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">sub</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">my</span><span class="w"> </span><span class="nv">$env</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">shift</span><span class="p">;</span>
+<span class="w">    </span><span class="k">my</span><span class="w"> </span><span class="nv">$req</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">Plack::Request</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">(</span><span class="nv">$env</span><span class="p">);</span>
+<span class="w">    </span><span class="k">my</span><span class="w"> </span><span class="nv">$res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">$req</span><span class="o">-&gt;</span><span class="n">new_response</span><span class="p">(</span><span class="mi">200</span><span class="p">);</span>
+<span class="w">    </span><span class="nv">$res</span><span class="o">-&gt;</span><span class="n">header</span><span class="p">(</span><span class="s">&quot;Content-Type&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;application/json; charset=utf-8&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">my</span><span class="w"> </span><span class="nv">$r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;message&quot;</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;Unit reporting&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;agent&quot;</span><span class="w">     </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;NGINX Unit 1.33.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;headers&quot;</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="nv">$req</span><span class="o">-&gt;</span><span class="nn">headers</span><span class="o">-&gt;</span><span class="n">psgi_flatten</span><span class="p">(),</span>
+<span class="w">        </span><span class="s">&quot;body&quot;</span><span class="w">      </span><span class="o">=&gt;</span><span class="w"> </span><span class="nv">$req</span><span class="o">-&gt;</span><span class="n">content</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;sha256&quot;</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">sha256_hex</span><span class="p">(</span><span class="nv">$req</span><span class="o">-&gt;</span><span class="n">content</span><span class="p">),</span>
+<span class="w">    </span><span class="p">};</span>
+
+<span class="w">    </span><span class="k">my</span><span class="w"> </span><span class="nv">$json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nn">JSON</span><span class="o">-&gt;</span><span class="k">new</span><span class="p">();</span>
+<span class="w">    </span><span class="nv">$res</span><span class="o">-&gt;</span><span class="n">body</span><span class="p">(</span><span class="nv">$json</span><span class="o">-&gt;</span><span class="nn">utf8</span><span class="o">-&gt;</span><span class="nn">pretty</span><span class="o">-&gt;</span><span class="n">encode</span><span class="p">(</span><span class="nv">$r</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nv">$res</span><span class="o">-&gt;</span><span class="n">finalize</span><span class="p">();</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="php">
+<span id="sample-php"></span><h2>PHP<a class="headerlink" href="#php" title="Permalink to this heading">§</a></h2>
+<p>Let’s configure the following basic app, saved as <strong>/www/index.php</strong>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="s2">&quot;Hello, PHP on Unit!&quot;</span><span class="p">;</span> <span class="cp">?&gt;</span>
+</pre></div>
+</div>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-php"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+  &quot;listeners&quot;: {
+      &quot;*:8080&quot;: {
+          &quot;pass&quot;: &quot;applications/php&quot;
+      }
+  },
+  &quot;applications&quot;: {
+      &quot;php&quot;: {
+          &quot;type&quot;: &quot;php&quot;,
+          &quot;root&quot;: &quot;/www/&quot;
+      }
+  }
+  }&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+
+$ curl http://localhost:8080
+
+    Hello, PHP on Unit!
+</pre></div>
+</div>
+<p>Try this sample out with the Dockerfile <a class="reference download internal" download="" href="../../_downloads/077feed4aa66df9c8eba6520fdfcae65/Dockerfile.php.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> or use a more elaborate app example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nb">header</span><span class="p">(</span><span class="s2">&quot;Content-Type: application/json; charset=utf-8&quot;</span><span class="p">);</span>
+
+<span class="nv">$r</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span>
+   <span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Unit reporting&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;agent&quot;</span>   <span class="o">=&gt;</span> <span class="s2">&quot;NGINX Unit 1.33.0&quot;</span>
+<span class="p">);</span>
+
+<span class="k">foreach</span> <span class="p">(</span><span class="nv">$_SERVER</span> <span class="k">as</span> <span class="nv">$header</span> <span class="o">=&gt;</span> <span class="nv">$value</span><span class="p">)</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nb">strpos</span><span class="p">(</span><span class="nv">$header</span><span class="p">,</span> <span class="s2">&quot;HTTP_&quot;</span><span class="p">)</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span>
+      <span class="nv">$r</span><span class="p">[</span><span class="s2">&quot;headers&quot;</span><span class="p">][</span><span class="nv">$header</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+
+<span class="nv">$r</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s2">&quot;php://input&quot;</span><span class="p">);</span>
+<span class="nv">$r</span><span class="p">[</span><span class="s2">&quot;sha256&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="s2">&quot;sha256&quot;</span><span class="p">,</span> <span class="nv">$r</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]);</span>
+
+<span class="k">echo</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nv">$r</span><span class="p">,</span> <span class="nx">JSON_PRETTY_PRINT</span> <span class="o">|</span> <span class="nx">JSON_UNESCAPED_SLASHES</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="python">
+<span id="sample-python"></span><h2>Python<a class="headerlink" href="#python" title="Permalink to this heading">§</a></h2>
+<p>Let’s configure the following basic app, saved as <strong>/www/wsgi.py</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">environ</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="n">start_response</span><span class="p">(</span><span class="s2">&quot;200 OK&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span> <span class="s2">&quot;text/plain&quot;</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="sa">b</span><span class="s2">&quot;Hello, Python on Unit!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-python"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+  &quot;listeners&quot;: {
+      &quot;*:8080&quot;: {
+          &quot;pass&quot;: &quot;applications/python&quot;
+      }
+  },
+  &quot;applications&quot;: {
+      &quot;python&quot;: {
+          &quot;type&quot;: &quot;python&quot;,
+          &quot;path&quot;: &quot;/www/&quot;,
+          &quot;module&quot;: &quot;wsgi&quot;
+      }
+  }
+  }&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+
+<span class="go">    Hello, Python on Unit!</span>
+</pre></div>
+</div>
+<p>Try this sample out with the Dockerfile <a class="reference download internal" download="" href="../../_downloads/8b892abde1148c9ef4f41e16953cd590/Dockerfile.python.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> or use a more elaborate app example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">hashlib</span><span class="o">,</span> <span class="nn">json</span>
+
+<span class="k">def</span> <span class="nf">application</span><span class="p">(</span><span class="n">env</span><span class="p">,</span> <span class="n">start_response</span><span class="p">):</span>
+    <span class="n">start_response</span><span class="p">(</span><span class="s2">&quot;200 OK&quot;</span><span class="p">,</span> <span class="p">[(</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;application/json; charset=utf-8&quot;</span><span class="p">)])</span>
+
+    <span class="n">r</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">r</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Unit reporting&quot;</span>
+    <span class="n">r</span><span class="p">[</span><span class="s2">&quot;agent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NGINX Unit 1.33.0&quot;</span>
+
+    <span class="n">r</span><span class="p">[</span><span class="s2">&quot;headers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="p">[</span><span class="n">_</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">env</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span> <span class="k">if</span> <span class="n">_</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;HTTP_&quot;</span><span class="p">)]:</span>
+        <span class="n">r</span><span class="p">[</span><span class="s2">&quot;headers&quot;</span><span class="p">][</span><span class="n">header</span><span class="p">]</span> <span class="o">=</span> <span class="n">env</span><span class="p">[</span><span class="n">header</span><span class="p">]</span>
+
+    <span class="nb">bytes</span> <span class="o">=</span> <span class="n">env</span><span class="p">[</span><span class="s2">&quot;wsgi.input&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">r</span><span class="p">[</span><span class="s2">&quot;body&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">r</span><span class="p">[</span><span class="s2">&quot;sha256&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">sha256</span><span class="p">(</span><span class="nb">bytes</span><span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ruby">
+<span id="sample-ruby"></span><h2>Ruby<a class="headerlink" href="#ruby" title="Permalink to this heading">§</a></h2>
+<p>Let’s configure the following basic app, saved as <strong>/www/config.ru</strong>:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Proc</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">env</span><span class="o">|</span>
+<span class="w">    </span><span class="o">[</span><span class="s2">&quot;200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;Content-Type&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;Hello, Ruby on Unit!&quot;</span><span class="o">]]</span>
+<span class="k">end</span>
+
+<span class="n">run</span><span class="w"> </span><span class="n">app</span>
+</pre></div>
+</div>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-ruby"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+  &quot;listeners&quot;: {
+      &quot;*:8080&quot;: {
+          &quot;pass&quot;: &quot;applications/ruby&quot;
+      }
+  },
+  &quot;applications&quot;: {
+      &quot;ruby&quot;: {
+          &quot;type&quot;: &quot;ruby&quot;,
+          &quot;working_directory&quot;: &quot;/www/&quot;,
+          &quot;script&quot;: &quot;config.ru&quot;
+      }
+  }
+  }&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+
+<span class="go">    Hello, Ruby on Unit!</span>
+</pre></div>
+</div>
+<p>Try this sample out with the Dockerfile <a class="reference download internal" download="" href="../../_downloads/57c3dbaa35e8622ad7cfc7dd1b281c01/Dockerfile.ruby.txt"><code class="xref download docutils literal notranslate"><span class="pre">here</span></code></a> or use a more elaborate app example:</p>
+<div class="highlight-ruby notranslate"><div class="highlight"><pre><span></span><span class="nb">require</span><span class="w"> </span><span class="s2">&quot;digest&quot;</span>
+<span class="nb">require</span><span class="w"> </span><span class="s2">&quot;json&quot;</span>
+
+<span class="n">app</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">Proc</span><span class="o">.</span><span class="n">new</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="o">|</span><span class="n">env</span><span class="o">|</span>
+<span class="w">    </span><span class="n">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">env</span><span class="o">[</span><span class="s2">&quot;rack.input&quot;</span><span class="o">].</span><span class="n">read</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;message&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;Unit reporting&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;agent&quot;</span><span class="w">   </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;NGINX Unit 1.33.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;body&quot;</span><span class="w">    </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">body</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;headers&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="n">env</span><span class="o">.</span><span class="n">select</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="o">|</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="o">|</span><span class="w"> </span><span class="n">key</span><span class="o">.</span><span class="n">include?</span><span class="p">(</span><span class="s2">&quot;HTTP_&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="s2">&quot;sha256&quot;</span><span class="w">  </span><span class="o">=&gt;</span><span class="w"> </span><span class="no">Digest</span><span class="o">::</span><span class="no">SHA256</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="o">[</span><span class="s2">&quot;200&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s2">&quot;Content-Type&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s2">&quot;application/json; charset=utf-8&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="o">[</span><span class="no">JSON</span><span class="o">.</span><span class="n">pretty_generate</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="o">]]</span>
+<span class="k">end</span><span class="p">;</span>
+
+<span class="n">run</span><span class="w"> </span><span class="n">app</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="webassembly-wasm">
+<span id="sample-wasm"></span><h2>WebAssembly (Wasm)<a class="headerlink" href="#webassembly-wasm" title="Permalink to this heading">§</a></h2>
+<div class="nxt_tabs nxt_toc docutils container">
+<input name=web-assembly type=radio
+            id=web-assembly_0 class=nojs checked/>
+            <label for=web-assembly_0 id=web-assembly-wasm-wasi-component>
+            <a href=#web-assembly-wasm-wasi-component onclick="nxt_tab_click(event)">wasm-wasi-component</a></label><div class="docutils container">
+<p>Instead of dealing with bytecode,
+let’s build a Unit-capable Rust app
+and compile it into a WebAssembly (Wasm) component.</p>
+<p>Make sure you have the Rust toolchain (cargo, rustc, etc.) installed.
+We recommend using <a class="reference external" href="https://rustup.rs/">rustup</a> to get started.</p>
+<p>This example was built with <strong>rustc</strong> version 1.76.0.</p>
+<p>Start by adding the wasm32-wasi support as a compilation target for <strong>rustc</strong></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>wasm32-wasi
+</pre></div>
+</div>
+<p>Next, install cargo component. This simplifies building a WebAssembly
+component from Rust Code, making it the recommended method.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cargo<span class="w"> </span>install<span class="w"> </span>cargo-component
+</pre></div>
+</div>
+<p>Currently, the fastest way to get started with WebAssembly components using WASI
+0.2 wasi-http API is the <strong>hello-wasi-http</strong> demo application by
+Dan Gohman. Clone the repository and build the component running
+the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/sunfishcode/hello-wasi-http
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>hello-wasi-http
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cargo<span class="w"> </span>component<span class="w"> </span>build
+</pre></div>
+</div>
+<p>The output of the build command should be similar to this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cargo<span class="w"> </span>component<span class="w"> </span>build
+<span class="go">Compiling hello-wasi-http v0.0.0 (/home/unit-build/hello-wasi-http)</span>
+<span class="go">Finished dev [unoptimized + debuginfo] target(s) in 0.17s</span>
+<span class="go">Creating component /home/unit-build/hello-wasi-http/target/wasm32-wasi/debug/hello_wasi_http.wasm</span>
+<span class="gp">$</span>
+</pre></div>
+</div>
+<p>This creates a WebAssembly component you can deploy on Unit using the
+following Unit configuration. Make sure you point the <strong>component</strong> path
+to the WebAssembly component you have just created. Create a
+<strong>config.json</strong> file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">   </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;127.0.0.1:8080&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;applications/wasm&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">},</span>
+<span class="w">   </span><span class="nt">&quot;applications&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;wasm&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;wasm-wasi-component&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;component&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/home/unit-build/hello-wasi-http/target/wasm32-wasi/debug/hello_wasi_http.wasm&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">   </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Apply the Unit configuration by using the CLI:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitc<span class="w"> </span>/config<span class="w"> </span>&lt;<span class="w"> </span>config.json
+</pre></div>
+</div>
+<p>Or by sending it manually to Units control API:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cat<span class="w"> </span>config.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>-d<span class="w"> </span>@-<span class="w"> </span>--unix-socket<span class="w"> </span>/path/to/control.unit.sock<span class="w"> </span>http://localhost/config/
+</pre></div>
+</div>
+<p>Congratulations! You have created your very first WebAssembly component
+on Unit! Send a GET Request to your configured listener.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+</pre></div>
+</div>
+</div>
+<input name=web-assembly type=radio
+            id=web-assembly_1 class=nojs />
+            <label for=web-assembly_1 id=web-assembly-unit-wasm>
+            <a href=#web-assembly-unit-wasm onclick="nxt_tab_click(event)">unit-wasm</a></label><div class="docutils container">
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unit 1.32.0 and later support the WebAssembly component
+Model and WASI 0.2 APIs.
+We recommend to use the new implementation.</p>
+</div>
+<p>Instead of dealing with bytecode, let’s build a Unit-capable
+Rust app and compile it into WebAssembly.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, WebAssembly support is provided as a Technology Preview.
+This includes support
+for compiling Rust and C code into Unit-compatible WebAssembly,
+using our SDK in the form of the the <strong class="program">libunit-wasm</strong> library.
+For details, see our <strong class="program">unit-wasm</strong>
+<a class="reference external" href="https://github.com/nginx/unit-wasm">repository</a>
+on GitHub.</p>
+</div>
+<p>First, install the WebAssembly-specific Rust tooling:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rustup<span class="w"> </span>target<span class="w"> </span>add<span class="w"> </span>wasm32-wasi
+</pre></div>
+</div>
+<p>Next, initialize a new Rust project with a library target
+(apps are loaded by Unit’s WebAssembly module as dynamic libraries).
+Then, add our <strong>unit-wasm</strong> crate
+to enable the <strong class="program">libunit-wasm</strong> library:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cargo<span class="w"> </span>init<span class="w"> </span>--lib<span class="w"> </span>wasm_on_unit
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>wasm_on_unit/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cargo<span class="w"> </span>add<span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<p>Append the following to <strong>Cargo.toml</strong>:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[lib]</span>
+<span class="n">crate-type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;cdylib&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Save some sample code from our <strong class="program">unit-wasm</strong> repo as <strong>src/lib.rs</strong>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wget -O src/lib.rs https://raw.githubusercontent.com/nginx/unit-wasm/main/examples/rust/echo-request/src/lib.rs</span>
+</pre></div>
+</div>
+<p>Build the Rust module with WebAssembly as the target:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>cargo<span class="w"> </span>build<span class="w"> </span>--target<span class="w"> </span>wasm32-wasi
+</pre></div>
+</div>
+<p>This yields the
+<strong>target/wasm32-wasi/debug/wasm_on_unit.wasm</strong> file
+(path may depend on other options).</p>
+<p>Upload the <a class="reference internal" href="../../configuration/#configuration-wasm"><span class="std std-ref">app config</span></a> to Unit and test it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span># curl -X PUT --data-binary &#39;{
+      &quot;listeners&quot;: {
+         &quot;127.0.0.1:8080&quot;: {
+            &quot;pass&quot;: &quot;applications/wasm&quot;
+         }
+      },
+
+      &quot;applications&quot;: {
+         &quot;wasm&quot;: {
+            &quot;type&quot;: &quot;wasm&quot;,
+            &quot;module&quot;: &quot;<span class=nxt_ph title="app directory">/path/to/wasm_on_unit</span>/target/wasm32-wasi/debug/wasm_on_unit.wasm&quot;,
+            &quot;request_handler&quot;: &quot;uwr_request_handler&quot;,
+            &quot;malloc_handler&quot;: &quot;luw_malloc_handler&quot;,
+            &quot;free_handler&quot;: &quot;luw_free_handler&quot;,
+            &quot;module_init_handler&quot;: &quot;uwr_module_init_handler&quot;,
+            &quot;module_end_handler&quot;: &quot;uwr_module_end_handler&quot;
+         }
+      }
+}&#39; --unix-socket <span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span> http://localhost/config/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>http://localhost:8080
+
+<span class="go">      * Welcome to WebAssembly in Rust on Unit! [libunit-wasm (0.3.0/0x00030000)] *</span>
+
+<span class="go">      [Request Info]</span>
+<span class="go">      REQUEST_PATH = /</span>
+<span class="go">      METHOD       = GET</span>
+<span class="go">      VERSION      = HTTP/1.1</span>
+<span class="go">      QUERY        =</span>
+<span class="go">      REMOTE       = 127.0.0.1</span>
+<span class="go">      LOCAL_ADDR   = 127.0.0.1</span>
+<span class="go">      LOCAL_PORT   = 8080</span>
+<span class="go">      SERVER_NAME  = localhost</span>
+
+<span class="go">      [Request Headers]</span>
+<span class="go">      Host = localhost:8080</span>
+<span class="go">      User-Agent = curl/8.2.1</span>
+<span class="go">      Accept = */*</span>
+</pre></div>
+</div>
+<p>Further,
+you can research the Unit-based WebAssembly app internals in more depth.
+Clone the <strong class="program">unit-wasm</strong> repository
+and build the examples in C and Rust
+(may require <strong class="program">clang</strong> and <strong class="program">lld</strong>):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/nginx/unit-wasm/
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>unit-wasm
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span><span class="nb">help</span><span class="w">                                               </span><span class="c1"># Explore your options first</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span><span class="nv">WASI_SYSROOT</span><span class="o">=</span><span class=nxt_ph title="wasi-sysroot directory">/path/to/wasi-sysroot/</span><span class="w"> </span>examples<span class="w">       </span><span class="c1"># C examples</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>make<span class="w"> </span><span class="nv">WASI_SYSROOT</span><span class="o">=</span><span class=nxt_ph title="wasi-sysroot directory">/path/to/wasi-sysroot/</span><span class="w"> </span>examples-rust<span class="w">  </span><span class="c1"># Rust examples</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If the above commands fail like this:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">wasm-ld: error: cannot open .../lib/wasi/libclang_rt.builtins-wasm32.a: No such file or directory</span>
+<span class="go">clang: error: linker command failed with exit code 1 (use -v to see invocation)</span>
+</pre></div>
+</div>
+<p>Download and install the library to <strong class="program">clang</strong>’s run-time dependency directory:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>wget<span class="w"> </span>-O-<span class="w"> </span>https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-20/libclang_rt.builtins-wasm32-wasi-20.0.tar.gz<span class="w"> </span><span class="se">\</span>
+<span class="w">      </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>zxf<span class="w"> </span>-<span class="w">                  </span><span class="c1"># Unpacks to lib/wasi/ in the current directory</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>clang<span class="w"> </span>-print-runtime-dir<span class="w">         </span><span class="c1"># Double-check the run-time directory, which is OS-dependent</span>
+
+<span class="go">      <span class=nxt_ph title="run-time directory">/path/to/runtime/dir</span>/linux</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>mkdir<span class="w"> </span><span class=nxt_ph title="run-time directory">/path/to/runtime/dir</span>/wasi<span class="w">  </span><span class="c1"># Note the last part of the pathname</span>
+</pre></div>
+</div>
+<div class="last highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>cp<span class="w"> </span><span class=nxt_hint title="wget output above">lib/wasi/</span>libclang_rt.builtins-wasm32.a<span class="w"> </span><span class=nxt_ph title="run-time directory">/path/to/runtime/dir</span>/wasi/
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\samples.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

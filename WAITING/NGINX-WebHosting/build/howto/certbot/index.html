@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/certbot/">
+<meta property="og:title" content="NGINX Unit: TLS with Certbot">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="Working With Language Modules" href="../modules/" />
+<link rel="prev" title="NGINX Integration" href="../integration/" />
+
+<title>TLS with Certbot — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">TLS with Certbot</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#generating-certificates">Generating Certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renewing-certificates">Renewing Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../modules/">Language Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="tls-with-certbot">
+<h1>TLS with Certbot<a class="headerlink" href="#tls-with-certbot" title="Permalink to this heading">§</a></h1>
+<p>To set up <a class="reference internal" href="../../certificates/#configuration-ssl"><span class="std std-ref">SSL/TLS access in Unit</span></a>, you need
+certificate bundles.  Although you can use self-signed certificates, it’s
+advisable to obtain certificates for your website from a certificate authority
+(CA).  For this purpose, you may employ EFF’s <a class="reference external" href="https://certbot.eff.org">Certbot</a> that issues free certificates signed by <a class="reference external" href="https://letsencrypt.org">Let’s
+Encrypt</a>, a non-profit CA.</p>
+<div class="section" id="generating-certificates">
+<h2>Generating Certificates<a class="headerlink" href="#generating-certificates" title="Permalink to this heading">§</a></h2>
+<ol class="arabic">
+<li><p class="first">Install <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">Unit</span></a> on your website’s server.</p>
+</li>
+<li><p class="first">Install <a class="reference external" href="https://certbot.eff.org/instructions">Certbot</a> on the same
+server, choosing <span class="guilabel">None of the above</span> in the <span class="guilabel">Software</span>
+dropdown list and the server’s OS in the <span class="guilabel">System</span> dropdown list
+at EFF’s website.</p>
+</li>
+<li><p class="first">Run the <strong class="program">certbot</strong> utility and follow its instructions to create the
+certificate bundle.  You’ll be prompted to enter the domain name of the
+website and <a class="reference external" href="https://letsencrypt.org/docs/challenge-types/">validate domain ownership</a>; the latter can be done
+differently.  Perhaps, the easiest approach is to use the <a class="reference external" href="https://eff-certbot.readthedocs.io/en/stable/using.html#webroot">webroot</a> method
+by having Certbot store a certain file locally and then access it by your
+domain name.  First, configure Unit with a temporary route at port 80:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;listeners&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;<span class=nxt_hint title="Certbot attempts to reach the domain name at port 80">*:80</span>&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;pass&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;routes/acme&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+
+<span class="w">    </span><span class="nt">&quot;routes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;acme&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;match&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_hint title="The URI that Certbot probes to download the file">/.well-known/acme-challenge/*</span>&quot;</span>
+<span class="w">                </span><span class="p">},</span>
+
+<span class="w">                </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;share&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Arbitrary directory, preferably the one used for storing static files">/var/www/www.example.com<span class=nxt_var>$uri</span>/</span>&quot;</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Make sure the <strong>share</strong> directory is accessible for Unit’s <a class="reference internal" href="../security/#security-apps"><span class="std std-ref">router
+process</span></a> user account, usually <strong>unit:unit</strong>.</p>
+<p>Next, run <strong class="program">certbot</strong>, supplying the <strong>share</strong> directory as the
+webroot path:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>certbot<span class="w"> </span>certonly<span class="w"> </span>--webroot<span class="w"> </span>-w<span class="w"> </span><span class=nxt_ph title="Path where the file should be stored">/var/www/www.example.com/</span><span class="w"> </span>-d<span class="w"> </span><span class=nxt_ph title="Your domain name">www.example.com</span>
+</pre></div>
+</div>
+<p>If you can’t employ the previous method for some reason, try using DNS
+records to validate your domain:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>certbot<span class="w"> </span>certonly<span class="w"> </span>--manual<span class="w"> </span>--preferred-challenges<span class="w"> </span>dns<span class="w"> </span>-d<span class="w"> </span><span class=nxt_ph title="Your domain name">www.example.com</span>
+</pre></div>
+</div>
+<p>Certbot will provide instructions on updating the DNS entries to prove
+domain ownership.</p>
+<p>Any such <strong class="program">certbot</strong> command stores the resulting <strong>.pem</strong> files
+as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class=nxt_hint title="Location can be configured, see Certbot help">/etc/letsencrypt/</span>
+└── live/
+    └── <span class=nxt_hint title="Your website name">www.example.com</span>
+        ├── <span class=nxt_hint title="Leaf website certificate">cert.pem</span>
+        ├── <span class=nxt_hint title="Root CA certificate chain">chain.pem</span>
+        ├── <span class=nxt_hint title="Concatenation of the two PEMs above">fullchain.pem</span>
+        └── <span class=nxt_hint title="Your private key, must be kept secret">privkey.pem</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Certbot offers other validation methods (<a class="reference external" href="https://eff-certbot.readthedocs.io/en/stable/using.html#getting-certificates-and-choosing-plugins">authenticators</a>)
+as well, but they’re omitted here for brevity.</p>
+</div>
+</li>
+<li><p class="first">Create a certificate bundle fit for Unit and upload it to the
+<strong>certificates</strong> section of Unit’s <a class="reference internal" href="../../controlapi/#configuration-api"><span class="std std-ref">control API</span></a>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>cat<span class="w"> </span>/etc/letsencrypt/live/www.example.com/fullchain.pem<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>/etc/letsencrypt/live/www.example.com/privkey.pem<span class="w"> </span>&gt;<span class="w"> </span><span class=nxt_ph title="Arbitrary certificate bundle's filename">bundle1.pem</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@<span class=nxt_ph title="Certificate bundle's filename">bundle1.pem</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/certificates/<span class=nxt_ph title="Certificate bundle name in Unit's configuration">certbot1</span>
+
+<span class="go">       {</span>
+<span class="go">           &quot;success&quot;: &quot;Certificate chain uploaded.&quot;</span>
+<span class="go">       }</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create or update a <a class="reference internal" href="../../configuration/#configuration-listeners"><span class="std std-ref">listener</span></a> to use the
+uploaded bundle in Unit:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">&#39;{&quot;pass&quot;: &quot;applications/ssl_app&quot;, &quot;tls&quot;: {&quot;certificate&quot;: &quot;<span class=nxt_ph title="Certificate bundle name in Unit's configuration">certbot1</span>&quot;}}&#39;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">&#39;http://localhost/config/listeners/<span class=nxt_hint title="Listener's name in Unit's configuration">*:443</span>&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Try accessing your website via HTTPS:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>https://www.example.com<span class="w"> </span>-v
+
+<span class="go">      ...</span>
+<span class="go">      * TLSv1.3 (OUT), TLS handshake, Client hello (1):</span>
+<span class="go">      * TLSv1.3 (IN), TLS handshake, Server hello (2):</span>
+<span class="go">      * TLSv1.3 (IN), TLS Unknown, Certificate Status (22):</span>
+<span class="go">      * TLSv1.3 (IN), TLS handshake, Unknown (8):</span>
+<span class="go">      * TLSv1.3 (IN), TLS Unknown, Certificate Status (22):</span>
+<span class="go">      * TLSv1.3 (IN), TLS handshake, Certificate (11):</span>
+<span class="go">      * TLSv1.3 (IN), TLS Unknown, Certificate Status (22):</span>
+<span class="go">      * TLSv1.3 (IN), TLS handshake, CERT verify (15):</span>
+<span class="go">      * TLSv1.3 (IN), TLS Unknown, Certificate Status (22):</span>
+<span class="go">      * TLSv1.3 (IN), TLS handshake, Finished (20):</span>
+<span class="go">      * TLSv1.3 (OUT), TLS change cipher, Client hello (1):</span>
+<span class="go">      * TLSv1.3 (OUT), TLS Unknown, Certificate Status (22):</span>
+<span class="go">      * TLSv1.3 (OUT), TLS handshake, Finished (20):</span>
+<span class="go">      * SSL connection using TLSv1.3 / TLS_AES_256_GCM_SHA384</span>
+<span class="go">      * ALPN, server did not agree to a protocol</span>
+<span class="go">      * Server certificate:</span>
+<span class="go">      *  subject: CN=www.example.com</span>
+<span class="go">      *  start date: Sep 21 22:10:42 2020 GMT</span>
+<span class="go">      *  expire date: Dec 20 22:10:42 2020 GMT</span>
+<span class="go">      ...</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="renewing-certificates">
+<h2>Renewing Certificates<a class="headerlink" href="#renewing-certificates" title="Permalink to this heading">§</a></h2>
+<p>Certbot enables renewing the certificates <a class="reference external" href="https://eff-certbot.readthedocs.io/en/stable/using.html#renewing-certificates">manually</a>
+or <a class="reference external" href="https://eff-certbot.readthedocs.io/en/stable/using.html#automated-renewals">automatically</a>.
+For manual renewal and rollover:</p>
+<ol class="arabic">
+<li><p class="first">Repeat the preceding steps to renew the certificates and upload the new
+bundle under a different name:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>certbot<span class="w"> </span>certonly<span class="w"> </span>--standalone
+
+<span class="go">      What would you like to do?</span>
+<span class="go">      - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</span>
+<span class="go">      1: Keep the existing certificate for now</span>
+<span class="go">      2: Renew &amp; replace the cert (may be subject to CA rate limits)</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>cat<span class="w"> </span>/etc/letsencrypt/live/www.example.com/fullchain.pem<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>/etc/letsencrypt/live/www.example.com/privkey.pem<span class="w"> </span>&gt;<span class="w"> </span><span class=nxt_ph title="Arbitrary certificate bundle's filename">bundle2.pem</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@<span class=nxt_ph title="Certificate bundle's filename">bundle2.pem</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/certificates/<span class=nxt_ph title="Certificate bundle name in Unit's configuration">certbot2</span>
+
+<span class="go">       {</span>
+<span class="go">           &quot;success&quot;: &quot;Certificate chain uploaded.&quot;</span>
+<span class="go">       }</span>
+</pre></div>
+</div>
+<p>Now you have two certificate bundles uploaded; Unit knows them as
+<strong>certbot1</strong> and <strong>certbot2</strong>.  Optionally, query the
+<strong>certificates</strong> section to review common details such as expiry dates,
+subjects, or issuers:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/certificates
+</pre></div>
+</div>
+</li>
+<li><p class="first">Update the <a class="reference internal" href="../../configuration/#configuration-listeners"><span class="std std-ref">listener</span></a>, switching it to the
+renewed certificate bundle:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span><span class="s1">&#39;<span class=nxt_ph title="New certificate bundle name in Unit's configuration">certbot2</span>&#39;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">&#39;http://localhost/config/listeners/<span class=nxt_hint title="Listener's name in Unit's configuration">*:443</span>/tls/certificate&#39;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">There’s no need to shut Unit down; your server can stay online during the
+rollover.</p>
+</div>
+</li>
+<li><p class="first">Delete the expired bundle:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>DELETE<span class="w"> </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">&#39;http://localhost/certificates/<span class=nxt_ph title="Old certificate bundle name in Unit's configuration">certbot1</span>&#39;</span>
+
+<span class="go">      {</span>
+<span class="go">          &quot;success&quot;: &quot;Certificate deleted.&quot;</span>
+<span class="go">      }</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You can also make use of Unit’s <a class="reference internal" href="../../configuration/#configuration-listeners"><span class="std std-ref">SNI</span></a> support
+by configuring several certificate bundles for a listener.</p>
+<p>Suppose you’ve successfully used Certbot to obtain Let’s Encrypt
+certificates for two domains, <strong>www.example.com</strong> and
+<strong>cdn.example.com</strong>.  First, upload them to Unit using the same steps as
+earlier:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>cat<span class="w"> </span>/etc/letsencrypt/live/cdn.example.com/fullchain.pem<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>/etc/letsencrypt/live/cdn.example.com/privkey.pem<span class="w"> </span>&gt;<span class="w"> </span><span class=nxt_hint title="Arbitrary certificate bundle's filename">cdn.example.com.pem</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>cat<span class="w"> </span>/etc/letsencrypt/live/www.example.com/fullchain.pem<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>/etc/letsencrypt/live/www.example.com/privkey.pem<span class="w"> </span>&gt;<span class="w"> </span><span class=nxt_hint title="Arbitrary certificate bundle's filename">www.example.com.pem</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@<span class=nxt_hint title="Certificate bundle's filename">cdn.example.com.pem</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/certificates/<span class=nxt_hint title="Certificate bundle name in Unit's configuration">cdn.example.com</span>
+
+<span class="go">       {</span>
+<span class="go">           &quot;success&quot;: &quot;Certificate chain uploaded.&quot;</span>
+<span class="go">       }</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span>@<span class=nxt_hint title="Certificate bundle's filename">www.example.com.pem</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">       </span>http://localhost/certificates/<span class=nxt_hint title="Certificate bundle name in Unit's configuration">www.example.com</span>
+
+<span class="go">       {</span>
+<span class="go">           &quot;success&quot;: &quot;Certificate chain uploaded.&quot;</span>
+<span class="go">       }</span>
+</pre></div>
+</div>
+<p>Next, configure the listener, supplying both bundles as an array value for
+the <strong>tls/certificate</strong> option:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span>--data-binary<span class="w"> </span><span class="s1">&#39;{&quot;certificate&quot;: <span class=nxt_hint title="Certificate bundle names in Unit's configuration">["cdn.example.com", "www.example.com"]</span>}&#39;</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span>--unix-socket<span class="w"> </span><span class=nxt_ph title="Path to Unit's control socket in your installation">/path/to/control.unit.sock</span><span class="w">  </span><span class="se">\</span>
+<span class="w">      </span><span class="s1">&#39;http://localhost/config/listeners/<span class=nxt_hint title="Listener's name in Unit's configuration">*:443</span>/tls&#39;</span>
+</pre></div>
+</div>
+<p>Unit does the rest of the job, automatically figuring out which bundle to
+produce for each incoming connection to both domain names.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently, Certbot doesn’t have <a class="reference external" href="https://eff-certbot.readthedocs.io/en/stable/using.html#getting-certificates-and-choosing-plugins">installer plugins</a>
+that enable automatic certificate rollover in Unit.  However, you can set up
+Certbot’s <a class="reference external" href="https://eff-certbot.readthedocs.io/en/stable/using.html#renewing-certificates">hooks</a>
+using the commands listed here to the same effect.</p>
+</div>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\certbot.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

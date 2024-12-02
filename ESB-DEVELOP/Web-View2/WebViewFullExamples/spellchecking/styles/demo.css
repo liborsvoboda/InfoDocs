@@ -1,0 +1,12 @@
+body {
+	background-color: #fff;
+}
+
+.spellchecking-container {
+	max-width: 42em;
+}
+
+.example-words {
+	font-family: Consolas, "Courier New";
+	font-weight: bold;
+}

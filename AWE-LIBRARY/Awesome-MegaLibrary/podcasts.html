@@ -1,0 +1,872 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>podcasts - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html" class="active"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="awesome-podcasts"><a class="header" href="#awesome-podcasts">Awesome Podcasts</a></h1>
+<blockquote>
+<p>A curated list of podcasts for designers, developers, product managers, entrepreneurs, startups etc.</p>
+</blockquote>
+<h4 id="note"><a class="header" href="#note">Note</a></h4>
+<p>Due to the nature of podcasts, it is difficult to cleanly classify them into different categories. Most podcast cover a wide range of topics and it blurs the boundries between topics. This is a very broad categorization and there is bound to be some overlap between categories. For example - You may find a podcast in the design category which also talks about lifestyle and business. Incase you disagree with the categorization and feel that a certain podcasts would be a better fit in a different category, please feel free to open an issue <a href="https://github.com/Ghosh/awesome-podcasts/issues">here</a>. Pull requests are most welcome.</p>
+<h4 id="contributing"><a class="header" href="#contributing">Contributing</a></h4>
+<p>To include a podcast, please add to to the bottom of the <code>podcasts.json</code> file. <em>Detailed instructions coming soon</em></p>
+<h2 id="categories"><a class="header" href="#categories">Categories</a></h2>
+<ul>
+<li><strong><a href="#design">Design</a></strong> : User Experience, User Interface, Print Design, Graphic Design etc.</li>
+<li><strong><a href="#development">Development</a></strong> : Programming Languages, Workflows, Tools etc.</li>
+<li><strong><a href="#design-and-dev">Design and Dev</a></strong> : Front End, Design, Code etc. </li>
+<li><strong><a href="#business">Business</a></strong> : Entrepreneurship, Business, Startups, Product etc.</li>
+<li><strong><a href="#lifestyle">Lifestyle</a></strong> : Productivity, Focus, Lifestyle etc.</li>
+</ul>
+<h2 id="design"><a class="header" href="#design">Design</a></h2>
+<ul>
+<li>
+<p><strong><a href="http://99percentinvisible.org/">99% Invisible</a></strong><br />
+99% Invisible (99 Percent Invisible) is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars, KALW in San Francisco, and Radiotopia from PRX.<br />
+<a href="https://itunes.apple.com/us/podcast/id394775318">iTunes</a>
+• <a href="http://99percentinvisible.org/feed/">RSS</a>
+• <a href="https://soundcloud.com/roman-mars/">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.adventuresindesignmarket.com/">Adventures In Design</a></strong><br />
+Graphic design gossip and artistic growing pains through the eyes of two handsome DIY poster designers and their friends.<br />
+<a href="https://itunes.apple.com/us/podcast/adventures-in-design/id503341322">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://beyondthispoint.design/">Beyond This Point</a></strong><br />
+Beyond This Point is a series of conversations engaging the creative thinkers who inspire us. Each episode, Gabriel Stromberg, Creative Director of Civilization, sits down with artists, business owners, designers, and leaders of all types to put a spotlight on different ways of seeing, thinking, and making.<br />
+<a href="https://itunes.apple.com/us/podcast/beyond-this-point/id1065144310">iTunes</a>
+• <a href="https://soundcloud.com/beyondthispoint_design">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://unmatchedstyle.com/bizcraft">BizCraft</a></strong><br />
+The bi-weekly podcast. hosted by Carl Smith of nGen Works and Gene Crawford of UnmatchedStyle. The primary topic is the business side of digital design.<br />
+<a href="https://itunes.apple.com/us/podcast/unmatched-style-bizcraft/id537301913">iTunes</a>
+• <a href="http://feeds.feedburner.com/bizcraft">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://www.uie.com/brainsparks/topics/podcasts/">Brain Sparks</a></strong><br />
+This podcast is hosted by usability and UI design expert, Jared Spool. It offers tona of value with many industry leaders sharing insights on usability, UX design, and UI design.<br />
+<a href="https://itunes.apple.com/us/podcast/uie-brain-sparks-podcasts/id119728465?mt=2">iTunes</a>
+• <a href="https://www.uie.com/brainsparks/feed/podcast/">RSS</a>
+• <a href="https://subscribeonandroid.com/www.uie.com/brainsparks/feed/podcast/">Android</a></p>
+</li>
+<li>
+<p><strong><a href="http://buildandlaunch.net/">Build and Launch</a></strong><br />
+A weekly podcast focused on shipping small projects. Every week I'll take you on an adventure of launching a new project. You'll hear the launch stats, hurdles I had to overcome, and how you can learn from my mistakes.<br />
+<a href="https://itunes.apple.com/us/podcast/build-launch/id961518861">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/323/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://datastori.es/">Data Stories</a></strong><br />
+Enrico Bertini and Moritz Stefaner discuss the latest developments in data analytics, visualization and related topics.<br />
+<a href="https://itunes.apple.com/us/podcast/data-stories/id502854960?mt=2">iTunes</a>
+• <a href="http://datastori.es/feed/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://spec.fm/podcasts/design-details">Design Details</a></strong><br />
+A show about the people who design our favorite products. Hosted by Bryn Jackson and Brian Lovin.<br />
+<a href="https://itunes.apple.com/us/podcast/design-details/id947191070">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/1034/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://designobserver.com/topic/designmatters/1039">Design Matters</a></strong><br />
+Design Matters with Debbie Millman is a thought-provoking internet podcast, which profiles industry-leading graphic designers, change agents, artists, writers and educators.<br />
+<a href="https://itunes.apple.com/au/podcast/design-matters-debbie-millman/id328074695">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.designreviewpodcast.com/">Design Review</a></strong><br />
+A weekly podcast about products from a unique designer perspective! Your hosts are Chris Liu and Jonathan Shariat. Each week, we will go through a product and talk about the experience and hopefully it will be interesting and informative, along with entertaining! So join us here every week!<br />
+<a href="https://itunes.apple.com/us/podcast/design-review/id947753823?mt=2">iTunes</a>
+• <a href="http://www.designreviewpodcast.com/design-review.rss">RSS</a>
+• <a href="https://soundcloud.com/design-review">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://incrementalux.com/podcast/">Incremental UX</a></strong><br />
+Hosted by Vinay Raghu. This podcast learns from people in the industry. Hour long episodes dive deep into specific topics with industry experts<br />
+<a href="https://itunes.apple.com/us/podcast/incrementalux-podcast/id1035443799">iTunes</a>
+• <a href="http://feeds.feedburner.com/incrementalux">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://bjango.com/articles/iterate/">Iterate Podcast</a></strong><br />
+Iterate is a fortnightly podcast, focusing on mobile and app design for all iOS, Mac, Android and other platforms.<br />
+<a href="https://itunes.apple.com/us/podcast/iterate/id447063932">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.muleradio.net/mistakes/">Let's Make Mistakes</a></strong><br />
+Award-winning designer Mike Montiero of Mule Design Studios talks shop with an assorted collection of co-hosts about standard design concepts, from ideation to implementation, and how to leverage every ounce of creativity throughout the process.<br />
+<a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=432550963">iTunes</a>
+• <a href="http://feeds.muleradio.net/mistakes">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.motionandmeaning.io/">Motion and Meaning</a></strong><br />
+Motion and Meaning is a podcast about motion design for digital designers brought to you by Val Head and Cennydd Bowles.<br />
+<a href="https://itunes.apple.com/us/podcast/motion-and-meaning-podcast/id1010491067?mt=2">iTunes</a>
+• <a href="http://feeds.soundcloud.com/users/soundcloud:users:152665386/sounds.rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://onedesign.guide/">One Design Podcast</a></strong><br />
+A fortnightly discussion about digital design with Kris Jeary, Bridget Tann and Andrew Fairlie<br />
+<a href="https://itunes.apple.com/gb/podcast/one-design-podcast/id967765318">iTunes</a>
+• <a href="http://onedesign.libsyn.com/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://seanwes.com/podcast/">Seanwes Podcast</a></strong><br />
+Join entrepreneurs Sean McCabe and Ben Toalson as they let you inside their discussions on the many facets of making a living online. You'll come away from every episode with something of value that you can apply to your business. Tangible insights on creativity and business every single Wednesday and Friday.<br />
+<a href="https://itunes.apple.com/us/podcast/seanwes-podcast/id685421236">iTunes</a>
+• <a href="http://seanwes.com/feed/podcast">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://tentative.fm/">Tentative</a></strong><br />
+Tentative is a podcast about digital product design, hosted by thoughtbot designers Reda Lemeden &amp; Kyle Fiedler.<br />
+<a href="https://itunes.apple.com/us/podcast/tentative/id978483997">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/1088/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.freshtilledsoil.com/category/podcast/">The Dirt Show</a></strong><br />
+The Dirt Show is a podcast hosted by the team behind the UX design agency, Fresh Tilled Soil. One cool thing about this podcast is some topics follow a mini-series format, with multiple episodes and different guests talking about the same topic. For example, they have a mini-series on topics such as &quot;designing your career&quot; and &quot;designing the future&quot;.<br />
+<a href="https://itunes.apple.com/us/podcast/fresh-tilled-soil-podcast/id569204776">iTunes</a>
+• <a href="http://feeds.feedburner.com/FreshTilledSoilPodcast">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://theuxintern.com/">The UX Intern</a></strong><br />
+A monthly podcast interviewing seasoned User Experience Designers from the perspective of a UX Intern.<br />
+<a href="https://itunes.apple.com/us/podcast/the-ux-intern/id684613036">iTunes</a>
+• <a href="http://theuxintern.com/itunes-feed/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://5by5.tv/webahead">The Web Ahead</a></strong><br />
+Conversations with world experts on changing technologies and future of the web. The Web Ahead is your shortcut to keeping up. Hosted by Jen Simmons.<br />
+<a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=464936442">iTunes</a>
+• <a href="http://feeds.5by5.tv/webahead">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.typeradio.org/">Typeradio</a></strong><br />
+Typeradio is a regular podcast station that covers all things type, including fonts, typography and trends.<br />
+<a href="https://itunes.apple.com/us/podcast/typeradio-podcast/id77801288?mt=2">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://userdefenders.com/">UX Defenders</a></strong><br />
+This podcast is aimed at highlighting those leading the way in their craft by diving deeper into who they are, and what makes them tick/successful, in order to inspire and equip those aspiring to do the same.<br />
+<a href="https://itunes.apple.com/us/podcast/user-defenders-podcast-inspiring/id1055121160?mt=2&amp;ls=1">iTunes</a>
+• <a href="http://userdefenders.com/podcast/feed/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://uxdiscoverysession.com/">UX Discovery Session</a></strong><br />
+A discovery session is an opportunity to learn about a relevant topic, generate ideas that expand a new technique or practice, or brainstorm concepts and ideas for the next new thing.<br />
+<a href="https://itunes.apple.com/ca/podcast/discovery-session...-by-gerard/id693746926?mt=2&amp;ign-mpt=uo%3D4">iTunes</a>
+• <a href="https://soundcloud.com/uxdiscoverysession">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://uxmastery.com/category/podcast/">UX Mastery</a></strong><br />
+UX Mastery is a website that hosts a lot of useful articles and content related to user experience design. The site also has an infrequently updated podcast.<br />
+• <a href="http://uxmastery.libsyn.com/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://uxpod.com/">UX Pod</a></strong><br />
+Gerry Gaffney set up the User Experience podcast in 2006, with a view to providing a platform for discussing topics of interest to practitioners or others with an interest in UX.<br />
+<a href="https://itunes.apple.com/podcast/uxpod-user-experience-podcast/id163924332?mt=2">iTunes</a>
+• <a href="http://uxpod.com/feed/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://uxpodcast.com/">UX Podcast</a></strong><br />
+UX Podcast is for people passionate about balancing business, technology and users within the realm of digital media. Moving the conversation beyond the traditional realm of User Experience.<br />
+<a href="https://itunes.apple.com/us/podcast/ux-podcast/id438896324?mt=2">iTunes</a>
+• <a href="http://feeds.feedburner.com/uxpodcast">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.uxandgrowth.com/">UX and Growth</a></strong><br />
+Every Monday, HubSpot Design, UX, &amp; Growth geeks Matt Rheault, Austin Knight, and Geoff Daigle sit down for a couple of beers while discussing User Experience and Growth tactics.<br />
+<a href="https://itunes.apple.com/us/podcast/ux-and-growth-podcast/id1016143291?mt=2">iTunes</a>
+• <a href="https://soundcloud.com/ux-and-growth">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="https://workingfile.co/">Working File</a></strong><br />
+A podcast about design practice and its relationship to the world.<br />
+<a href="https://itunes.apple.com/us/podcast/working-file/id1095159618">iTunes</a>
+• <a href="http://feed.workingfile.co/workingfile">RSS</a>
+• <a href="https://soundcloud.com/workingfile">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://younggunsshow.com/">Young Guns Show</a></strong><br />
+The Young Guns Show aims to feature and inspire the young guns in the web industry — the guys and gals that aren't waiting for &quot;someday&quot; to do amazing things.<br />
+<a href="https://itunes.apple.com/us/podcast/young-guns-show/id507917469">iTunes</a>
+• <a href="http://feeds.feedburner.com/younggunsshow">RSS</a></p>
+</li>
+</ul>
+<h2 id="development"><a class="header" href="#development">Development</a></h2>
+<ul>
+<li>
+<p><strong><a href="https://devchat.tv/adventures-in-angular">Adventures in Angular</a></strong><br />
+A weekly show dedicated to the AngularJS framework<br />
+<a href="https://itunes.apple.com/us/podcast/adventures-in-angular/id907361052?mt=2">iTunes</a>
+• <a href="http://feeds.feedwrench.com/AdventuresInAngular.rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://buildphase.fm/">Build Phase</a></strong><br />
+Build Phase is a weekly technical podcast discussing iOS development and design. Hosted by iOS developers Mark Adams and Gordon Fontenot; they discuss code, design, and creating great iOS apps<br />
+<a href="https://itunes.apple.com/us/podcast/build-phase/id681232605">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/272/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://descriptive.audio/">Descriptive</a></strong><br />
+Descriptive is a weekly technical interview podcast with people from the JavaScript and web development world<br />
+<a href="https://itunes.apple.com/de/podcast/descriptive/id926224392?l=en">iTunes</a>
+• <a href="http://feed.descriptive.audio/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.newrustacean.com/">New Rustacean</a></strong><br />
+Documenting a journey into a new programming language—with source code, examples, and almost certainly some out-and-out hilarities along the way.<br />
+<a href="https://itunes.apple.com/us/podcast/new-rustacean/id1041815075">iTunes</a>
+• <a href="http://www.newrustacean.com/feed.xml">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://nodeup.com/">Node Up</a></strong><br />
+NodeUp is a podcast about Node.js<br />
+<a href="https://itunes.apple.com/us/podcast/nodeup/id447667314?mt=2">iTunes</a>
+• <a href="http://feeds.feedburner.com/NodeUp">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://www.phproundtable.com/">PHP Roundtable</a></strong><br />
+The PHP Roundtable is a podcast of web developers discussing PHP, JavaScript, community, open source, and anything else PHP nerds care about.<br />
+<a href="https://itunes.apple.com/us/podcast/the-php-roundtable/id972248395">iTunes</a>
+• <a href="http://feeds.feedburner.com/PhpRoundtable">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://phptownhall.com/">PHP Townhall</a></strong><br />
+Town Hall a way for PHP developers to raise questions about current events (or upcoming things) in the PHP community, with different guests each week.<br />
+<a href="https://itunes.apple.com/us/podcast/php-town-hall/id585240066?mt=2">iTunes</a>
+• <a href="http://feeds.feedburner.com/phptownhall/drDl">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://podcastinit.com/">Podcast.<strong>init</strong></a></strong><br />
+This is a long form podcast about Python and the people who make it great. We conduct interviews about projects and topics that are of particular interest to people in the Python community.<br />
+<a href="https://itunes.apple.com/us/podcast/podcast.-init/id981834425">iTunes</a>
+• <a href="http://podcastinit.podbean.com/feed/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://devchat.tv/react-native-radio">React Native Radio</a></strong><br />
+A weekly show dedicated to building apps with React Native<br />
+<a href="https://itunes.apple.com/us/podcast/react-native-radio/id1058647602?mt=2">iTunes</a>
+• <a href="https://devchat.tv/react-native-radio">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://reactpodcast.com/">React Podcast</a></strong><br />
+The only podcast covering the latest in the reactjs ecosystem<br />
+<a href="https://itunes.apple.com/us/podcast/react-podcast/id995869265">iTunes</a>
+• <a href="http://feeds.feedburner.com/reactjspodcast">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://ruby5.codeschool.com/">Ruby5</a></strong><br />
+The latest news in the Ruby and Rails community. This podcast is produced and distributed by Code School.<br />
+<a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=327234205">iTunes</a>
+• <a href="https://ruby5.codeschool.com/feed.rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.talkingcode.com/">Talking Code</a></strong><br />
+The Talking Code podcast contains short expert interviews that help you decode what developers are saying. We help non-technical founders, designers, project managers, or anyone who needs a 30,000 foot view of how to run a successful software company.<br />
+<a href="https://itunes.apple.com/us/podcast/talking-code/id988073177">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/150/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://bikeshed.fm/">The Bike Shed</a></strong><br />
+On The Bike Shed, hosts Derek Prior, Sean Griffin, Laila Winner, and guests discuss their development experience and challenges with Ruby, Rails, JavaScript, and whatever else is drawing their attention, admiration, or ire this week.<br />
+<a href="https://itunes.apple.com/us/podcast/the-bike-shed/id935763119">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/282/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://changelog.com/podcast/">The Changelog</a></strong><br />
+Open source moves fast. The Changelog covers what's fresh and new<br />
+<a href="https://itunes.apple.com/podcast/the-changelog/id341623264">iTunes</a>
+• <a href="http://feeds.5by5.tv/changelog">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://laracasts.simplecast.fm/">The Laracasts Snippet</a></strong><br />
+The Laracasts snippet, each episode, offers a single thought on some aspect of web development. Nothing more, nothing less. Hosted by Jeffrey Way.<br />
+<a href="https://itunes.apple.com/us/podcast/the-laracasts-snippet/id1059530816">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/1486/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.laravelpodcast.com/">The Laravel Podcast</a></strong><br />
+The Laravel Podcast brings you Laravel and PHP development news and discussion. The podcast is hosted by Matt Stauffer and regular guests include Taylor Otwell (the creator of Laravel) and Jeffrey Way (the creator of Laracasts).<br />
+<a href="https://itunes.apple.com/us/podcast/the-laravel-podcast/id653204183">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/351/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://devchat.tv/ruby-rogues">The Ruby Rogues</a></strong><br />
+A weekly discussion by Ruby developers about programming, life, and careers.<br />
+<a href="https://itunes.apple.com/us/podcast/ruby-rogues/id705335155">iTunes</a>
+• <a href="http://feeds.feedwrench.com/RubyRogues.rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.weboftomorrowpodcast.com/">Web of Tomorrow</a></strong><br />
+A podcast about JavaScript, web development, web design, and technology.<br />
+<a href="https://itunes.apple.com/us/podcast/web-of-tomorrow/id1033636563">iTunes</a>
+• <a href="http://www.weboftomorrowpodcast.com/feed.rss">RSS</a></p>
+</li>
+</ul>
+<h2 id="design-and-dev"><a class="header" href="#design-and-dev">Design and Dev</a></h2>
+<ul>
+<li>
+<p><strong><a href="http://responsivewebdesign.com/podcast/">A Responsive Web Design Podcast</a></strong><br />
+A podcast from Karen McGrane and Ethan Marcotte, who interview people who make responsive designs happen.<br />
+<a href="https://itunes.apple.com/us/podcast/a-responsive-design-podcast/id910013523?mt=2">iTunes</a>
+• <a href="http://responsivewebdesign.com/podcast/feed.xml">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.imore.com/debug">Debug</a></strong><br />
+Debug is a conversational interview show about developing software and services, primarily for iPhone, iPad, Mac, and gaming.<br />
+<a href="https://itunes.apple.com/us/podcast/debug/id578812394">iTunes</a>
+• <a href="http://feeds.feedburner.com/debugshow">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://spec.fm/podcasts/immutable">Immutable</a></strong><br />
+A short, weekly show about design and development hosted by Sam Soffes &amp; Bryn Jackson.<br />
+<a href="https://itunes.apple.com/us/podcast/immutable/id1035147995">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/1332/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://layout.fm/">Layout</a></strong><br />
+Layout is a weekly podcast about design, technology, programming and everything else.<br />
+<a href="https://itunes.apple.com/ca/podcast/layout/id1050276556">iTunes</a>
+• <a href="http://layout.fm/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.narwhals.cool/">Narwhals</a></strong><br />
+A podcast about design, development, business, family and fun. Join Drew Wilson and Keiran Flanigan as they share their experience on making a living building products.<br />
+<a href="https://itunes.apple.com/us/podcast/narwhals/id901582087">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/187/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.pagebreakpodcast.com/">PageBreak Podcast</a></strong><br />
+Pagebreak is an audio podcast hosted by Liz Andrade and Niki Brown. Discussions pertain to Freelance, Design, Development, Marketing and other such things.<br />
+<a href="https://itunes.apple.com/podcast/pagebreak-podcast/id390204762">iTunes</a>
+• <a href="http://feeds.feedburner.com/pagebreakpodcast">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://shoptalkshow.com/">ShopTalk</a></strong><br />
+ShopTalk is a podcast about front end web design, development and UX. Each week Chris Coyier and Dave Rupert are joined by a special guest to talk shop and answer listener submitted questions.<br />
+<a href="https://itunes.apple.com/podcast/id493890455">iTunes</a>
+• <a href="http://shoptalkshow.com/feed/podcast/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://styleguides.io/podcast/">Style Guide</a></strong><br />
+A small batch podcast hosted by Anna Debenham and Brad Frost, dedicated to talking about style guides, pattern libraries and building effective interface systems.<br />
+<a href="https://itunes.apple.com/gb/podcast/the-style-guide-podcast/id960374773">iTunes</a>
+• <a href="http://feeds.soundcloud.com/users/soundcloud:users:134239947/sounds.rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://5by5.tv/bigwebshow">The Big Web Show</a></strong><br />
+The award winning Big Web Show features special guests and topics like web publishing, art direction, content strategy, typography, web technology, and more. It's everything web that matters.<br />
+<a href="https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewPodcast?id=370445683">iTunes</a>
+• <a href="http://feeds.5by5.tv/bigwebshow">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://boagworld.com/show/">The Boagworld Web Show</a></strong><br />
+Boagworld is a podcast about digital for all those involved in designing, developing or running a website on a daily basis. It offers practical advice, news, tools, review and interviews with leading figures in the web design community. Covering everything from usability and design to marketing and strategy, this show has something for everything. This award winning podcast is the longest running web design podcast with over 380 episodes.<br />
+<a href="https://itunes.apple.com/gb/podcast/the-boagworld-show/id411449225">iTunes</a>
+• <a href="http://feeds.feedburner.com/boagworldpodcast/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://thedeependdesign.com/graphic-design-podcast/">The Deeply Graphic Designcast</a></strong><br />
+The Deeply Graphic DesignCast is a podcast aimed at graphic and web designers with a simple philosophy: to talk about all the things that they don’t teach in design school. Every episode tackles a new design related topic, and the hosts engage in a roundtable discussion on the topic at hand, offering the benefit of their experience, “tips from the trenches,” and above all, lively conversation that people actually look forward to listening to. In addition to the topic of the day, the gang gets the audience involved by answering a listener-submitted question every single episode.<br />
+<a href="https://itunes.apple.com/us/podcast/the-deep-end-design-podcasts/id494747654?mt=2">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="https://viewsourc.es/">Viewsources Podcat</a></strong><br />
+Viewsources Podcast is another podcast about front-end development and web design. They discuss the important posts and links circulating among our peers and tackle issues that we find ourselves working through day in and day out. Viewsources is hosted by Tim Evko, Charles Peters &amp; Brad Cerasani.<br />
+<a href="https://itunes.apple.com/us/podcast/viewsources-podcast/id999191388">iTunes</a>
+• <a href="http://feeds.feedburner.com/ViewsourcesPodcast?format=xml">RSS</a></p>
+</li>
+</ul>
+<h2 id="business"><a class="header" href="#business">Business</a></h2>
+<ul>
+<li>
+<p><strong><a href="http://www.binpress.com/blog/category/podcast/">Binpress Podcast</a></strong><br />
+A podcast about making and selling digital products. Marketing, distribution and other tips around helping you build and sell digital products<br />
+<a href="https://itunes.apple.com/us/podcast/the-binpress-podcast/id897178291">iTunes</a>
+• <a href="http://www.binpress.com/blog/category/podcast/feed/">Android</a></p>
+</li>
+<li>
+<p><strong><a href="http://bootstrappedweb.com/">Bootstrapped Web</a></strong><br />
+Bootstrapped Web is for entrepreneurs bootstrapping their startups, who believe that the best way to get to where we're going is to learn by doing. Conversations, case studies, and interviews with entrepreneurs who are building profitable businesses online.<br />
+<a href="https://itunes.apple.com/us/podcast/bootstrapped-web-for-entrepreneurs/id657005810">iTunes</a>
+• <a href="http://feeds.feedburner.com/bootstrappedweb-podcast">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.chasingproduct.com/">Chasing Product</a></strong><br />
+The Chasing Product podcast helps consultants and freelancers transition from client work to releasing bootstrapped software products. If you want to get out of client work and in to product work, then you are Chasing Product.<br />
+<a href="https://itunes.apple.com/us/podcast/chasing-product/id698528921">iTunes</a>
+• <a href="http://feeds.feedburner.com/chasingproduct">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://blog.codepen.io/radio/">CodePen Radio</a></strong><br />
+Chris Coyier, Alex Vazquez, and Tim Sabat, the co-founders of CodePen talk about the ins and outs of running a web software business.<br />
+<a href="https://itunes.apple.com/us/podcast/codepen-radio/id824437159">iTunes</a>
+• <a href="http://blog.codepen.io/feed/podcast/">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://gobecollective.com/series/converge-podcast/">Converge Podcast</a></strong><br />
+The Business of Creativity Podcast, hosted by Dane Sanders, explores the concentric circles of creating great things and finding innovative ways to profit from those creations.<br />
+<a href="https://itunes.apple.com/us/podcast/converge-business-creativity/id601885274">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://drt.fm/">Dorm Room Tycoon</a></strong><br />
+Interviews that cut to the chase and extract wisdom. Learning from the most influential innovators. Hosted by William Channer.<br />
+<a href="https://itunes.apple.com/gb/podcast/dorm-room-tycoon/id355125543">iTunes</a>
+• <a href="https://soundcloud.com/dormroomtycoon">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://giantrobots.fm/">Giant Robots Smashing into other Giant Robots Podcast</a></strong><br />
+The Giant Robots Smashing into Other Giant Robots podcast is a weekly technical podcast discussing development, design, and the business of software development. Hosted by Ben Orenstein, who is joined each week by developers and designers from thoughtbot and beyond.<br />
+<a href="https://itunes.apple.com/us/podcast/giant-robots-smashing-into/id535121941">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/271/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.prodmgmttalk.com/">Global Product Management Talk</a></strong><br />
+Forwarding the movement for product excellence. Discussions about the art, craft and profession for managing products that contribute value. All aspects of customer development, user experience, product innovation, design, development, marketing and scaling.<br />
+<a href="https://itunes.apple.com/us/podcast/global-product-management/id464701967">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://gomedia.com/zine/podcast/">Go Media</a></strong><br />
+Go Media's Bryan Garvin sits down with members of the Go Media team and community to discuss the business of design and how to improve the quality of your work and life.<br />
+<a href="https://itunes.apple.com/podcast/id561456109">iTunes</a>
+• <a href="http://gomedia.com/zine/podcast/feed/">RSS</a>
+• <a href="https://soundcloud.com/go_media">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="https://www.intercom.io/podcast">Inside Intercom</a></strong><br />
+Conversations with practitioners from the worlds of product management, design, startups and marketing.<br />
+<a href="https://itunes.apple.com/ie/podcast/inside-intercom-podcast/id996103731">iTunes</a>
+• <a href="https://soundcloud.com/intercom/">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://pencilvspixel.com/">Pencil vs Pixel</a></strong><br />
+Pencil vs Pixel is where creation meets creators. A podcast and resource for the originators, the tinkerers, the makers of the world to share the process, the principle and the payoff in doing what we do. It’s the juncture of idea and result, where builders and doers of things both analog and digital discuss the way we make things, experience challenges and wins.<br />
+<a href="https://itunes.apple.com/us/podcast/pencil-vs-pixel/id731298028#">iTunes</a>
+• <a href="https://soundcloud.com/pencilvspixel">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="https://www.producthunt.com/radio">Product Hunt Radio</a></strong><br />
+Product Hunt Radio (PHR) is for the product geeks. Each week Ryan Hoover and Erik Torenberg are joined by founders, investors, and product people in the startup community &amp; beyond to chat about products, technology, and the people who make them.<br />
+<a href="https://itunes.apple.com/us/podcast/product-hunt/id862714883">iTunes</a>
+• <a href="https://soundcloud.com/product-hunt">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://productpeople.tv/">Product People</a></strong><br />
+A podcast focused on great products and the people who make them<br />
+<a href="https://itunes.apple.com/us/podcast/product-people/id585390927">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://recode.net/podcasts/">Re/code Decode</a></strong><br />
+One of tech's most prominent journalists, Kara Swisher is known for her insightful reporting and straight-shooting style. Listen in as she hosts hard-hitting interviews about the week in tech with influential business leaders and outspoken personalities from media, politics and more.<br />
+<a href="https://itunes.apple.com/us/podcast/re-code-decode/id1011668648?mt=2">iTunes</a>
+• <a href="http://feeds.feedburner.com/Recode-Decode">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://resourcefuldesigner.com/">Resourceful Designer</a></strong><br />
+Wouldn't it be nice if you could spend more time designing and less time worrying about your design business? Resourceful Designer offers tips, tricks and resources to help streamline your graphic design and web design business so you can get back to what you do best… Designing! Let me know what topics you would like me to cover by emailing feedback@resourcefuldesigner.com<br />
+<a href="https://itunes.apple.com/ca/podcast/resourceful-designer-resources/id1040570923">iTunes</a>
+• <a href="http://resourcefuldesigner.libsyn.com/rss">RSS</a>
+• <a href="http://subscribeonandroid.com/resourcefuldesigner.libsyn.com/rss">Android</a></p>
+</li>
+<li>
+<p><strong><a href="https://gimletmedia.com/show/startup/">Startup Podcast</a></strong><br />
+A series about what it's really like to start a business.<br />
+<a href="https://itunes.apple.com/us/podcast/startup-podcast/id913805339">iTunes</a>
+• <a href="http://feeds.gimletmedia.com/hearstartup">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.businessology.biz/show/">The Businessology Show</a></strong><br />
+A podcast about the business of design, and the design of business.<br />
+<a href="https://itunes.apple.com/us/podcast/the-businessology-show/id595500099">iTunes</a>
+• <a href="http://www.spreaker.com/show/635488/episodes/feed">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://thedistance.com/">The Distance</a></strong><br />
+The Distance features stories of private businesses that have been operating for at least 25 years and the people who got them there. Hear business owners share their stories of hard work, survival and building something that lasts. The Distance is a production of Basecamp, the company behind the leading project management app.<br />
+<a href="https://itunes.apple.com/us/podcast/the-distance/id964627137">iTunes</a>
+• <a href="http://feeds.soundcloud.com/users/soundcloud:users:135305991/sounds.rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://fizzle.co/show">The Fizzle Show</a></strong><br />
+The Fizzle Show is a podcast for creative entrepreneurs and honest business builders who want to earn a living doing something they care about.<br />
+<a href="https://itunes.apple.com/us/podcast/fizzle-show-honest-online/id656726654">iTunes</a>
+• <a href="http://feeds.soundcloud.com/users/soundcloud:users:71269227/sounds.rss">RSS</a>
+• <a href="https://soundcloud.com/fizzleco/sets/the-fizzle-show">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="https://devchat.tv/freelancers">The Freelancers' Show</a></strong><br />
+Weekly discussion by freelancers and professionals about running a business, finding clients, marketing, and lifestyle related to being a freelancer.<br />
+<a href="https://itunes.apple.com/us/podcast/the-freelancers-show/id715647197?mt=2">iTunes</a>
+• <a href="http://feeds.feedwrench.com/TheFreelancersShow.rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://thepitch.fm/">The Pitch</a></strong><br />
+The show where founders pitch their startups to investors. We find early stage startups, listen to their pitch and help them raise money from our audience of angel investors.<br />
+<a href="https://itunes.apple.com/us/podcast/the-pitch/id1008577710">iTunes</a>
+• <a href="http://feeds.thepitch.fm/thepitchvc">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://rocketship.fm/">The Rocketship Podcast</a></strong><br />
+Get actionable advice and incredible insights from the business leaders of today and tomorrow. From growth-hacking to sales, customer service to company culture, Rocketship.fm delivers it all every Tuesday and Thursday each week.<br />
+<a href="https://itunes.apple.com/us/podcast/rocketship-podcast-startups/id808014240">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/62/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://thestartupchat.com/">The Startup Chat</a></strong><br />
+Unfiltered insights and actionable advice straight from the trenches of startup and business life. The show hosts, Steli Efti and Hiten Shah, are both serial entrepreneurs who have founded multi-million dollar SaaS startups. Being busy CEOs of fast-growing companies, they know the value of your time and make sure you get the most out of each 22 minute episode.<br />
+<a href="https://itunes.apple.com/us/podcast/startup-chat-steli-hiten/id997616345?mt=2">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.thetwentyminutevc.com/category/podcast/">The Twenty Minute VC</a></strong><br />
+The Twenty Minute VC takes you inside the world of Venture Capital, Startup Funding and The Pitch. The Twenty Minute VC provides an instructional guide as to what it takes to get employed in the Venture Capital industry, with VCs giving specific advice on how to get noticed from the crowd and increasing your chances of employment.<br />
+<a href="https://itunes.apple.com/in/podcast/twenty-minute-vc-venture-capital/id958230465?mt=2">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.thisisproductmanagement.com/">This is Product Management</a></strong><br />
+This is Product Management interviews brilliant minds across numerous disciplines that fuel modern product teams. From design to statistics, we've got you covered.<br />
+<a href="https://itunes.apple.com/us/podcast/this-is-product-management/id975284403">iTunes</a>
+• <a href="http://alphaux.libsyn.com/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.theverge.com/whatstech">What's Tech?</a></strong><br />
+We live in the future, where drones skim the sky, corporations enter the space race, and smart watches track our every movement. But how? And why? What's Tech invites experts to explain the technology bit by bit, in clear, brief, enjoyable audio nuggets. These days, technology is everywhere. Let's make sense of what's around us.<br />
+<a href="https://itunes.apple.com/us/podcast/whats-tech/id966621017?mt=2">iTunes</a>
+• <a href="http://feeds.podtrac.com/SCOrL45pOotI">RSS</a>
+• <a href="https://soundcloud.com/whatstech">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://workingoutpodcast.com/">Working Out</a></strong><br />
+Join Ashley Baxter and Paddy Donnelly on a journey to figure out how to create a business doing what you love. Is it possible to make a living from your hobby? On Working out, Ashley &amp; Paddy discuss their own personal journeys in creating their passion-based business. This is about the expedition, the here and now, the daily challenges and achievements towards getting paid for your passion.<br />
+<a href="https://itunes.apple.com/gb/podcast/working-out/id875239968">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/128/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://workmode.show/">Workmode</a></strong><br />
+A series of conversations with leading design, tech and cultural creators on how they work. Hosted by Alex Nemeroff, Co-Founder of Dynamo, a digital agency in Montreal, Canada.<br />
+<a href="https://itunes.apple.com/us/podcast/workmode/id1149475096">iTunes</a>
+• <a href="http://feeds.soundcloud.com/users/soundcloud:users:121517753/sounds.rss">RSS</a>
+• <a href="https://goo.gl/app/playmusic?ibi=com.google.PlayMusic&amp;isi=691797987&amp;ius=googleplaymusic&amp;link=https://play.google.com/music/m/Ijzdk64m3vfnuohvqwwl5rn56au?t=Workmode">Android</a>
+• <a href="https://soundcloud.com/dynamo-14">Soundcloud</a></p>
+</li>
+</ul>
+<h2 id="lifestyle"><a class="header" href="#lifestyle">Lifestyle</a></h2>
+<ul>
+<li>
+<p><strong><a href="http://99u.com/category/podcast">99U</a></strong><br />
+Once in a while, 99U sits down with a leading creative, thinker, or entrepreneur to delve deep into their one-of-a-kind insights about the creative process.<br />
+<a href="https://itunes.apple.com/in/podcast/the-99u-podcast/id886171440?mt=2">iTunes</a>
+• <a href="https://soundcloud.com/99u">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://heritageradionetwork.org/series/after-the-jump/">After the Jump</a></strong><br />
+Through a series of interviews with designers, store owners and up-and-coming members of the creative community, Grace will delve deeper into the world of independent artists. From exploring the day-to-day lives of contemporary makers to discussing the challenges they face, After the Jump will take the conversation off the screen and into real life.<br />
+<a href="https://itunes.apple.com/us/podcast/after-the-jump/id523653429?mt=2">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://5by5.tv/b2w">Back to Work</a></strong><br />
+Back to Work is an award winning talk show with Merlin Mann and Dan Benjamin discussing productivity, communication, work, barriers, constraints, tools, and more.<br />
+<a href="https://itunes.apple.com/podcast/back-to-work/id415535037">iTunes</a>
+• <a href="http://feeds.5by5.tv/b2w">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.developertea.com/">Developer Tea</a></strong><br />
+Developer Tea is a podcast for web and software developers hosted by a developer that you can listen to in less than 10 minutes. The show will cover a wide variety of topics related to the career of being a developer.<br />
+<a href="https://itunes.apple.com/us/podcast/developer-tea/id955596067?mt=2">iTunes</a>
+• <a href="http://feeds.feedburner.com/developertea">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://spec.fm/podcasts/does-not-compute">Does Not Compute</a></strong><br />
+A weekly chat about the lives and workflows of modern web developers, hosted by Sean Washington &amp; Paul Straw.<br />
+<a href="https://itunes.apple.com/us/podcast/does-not-compute/id1048731980">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/1386/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://greyscalegorilla.com/">Greyscalegorilla Podcast</a></strong><br />
+Nick Campbell's Show about How to Be Creative and Get Paid<br />
+<a href="https://itunes.apple.com/podcast/id433976980">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://hacktostart.com/">Hack to Start</a></strong><br />
+A podcast focused on interesting people and the innovative ways they achieve success.<br />
+<a href="https://itunes.apple.com/ca/podcast/hacktostart/id929857801">iTunes</a>
+• <a href="http://hacktostart.com/rss/">RSS</a>
+• <a href="https://soundcloud.com/hacktostart">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.happymondaypodcast.com/">Happy Monday</a></strong><br />
+A new, short-burst, industry podcast available every Monday from 7am GMT.<br />
+<a href="https://itunes.apple.com/us/podcast/happy-monday/id586131811">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/3/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.travandlos.com/">Late Nights with Trav and Los</a></strong><br />
+Join Travis and Carlos for a late night discussion about being a healthy and productive professional in todays creative economy. Casual, fun, educational (maybe).<br />
+<a href="https://itunes.apple.com/us/podcast/late-nights-with-trav-and-los/id944869246">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/311/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="https://www.relay.fm/mpu">Mac Power User</a></strong><br />
+Learn about getting the most from your Apple technology with focused topics and workflow guests. Creating Mac Power Users, one geek at a time since 2009.<br />
+<a href="https://itunes.apple.com/us/podcast/mac-power-users/id458066753?mt=2">iTunes</a>
+• <a href="https://www.relay.fm/mpu/feed">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.vanschneider.com/show/">Nice To Meet You</a></strong><br />
+Nice To Meet You is a personal conversation based podcasts with makers, creators and no bullshitters<br />
+<a href="https://itunes.apple.com/us/podcast/nice-to-meet-you/id1050960981?mt=2">iTunes</a>
+• <a href="https://soundcloud.com/tobiasvanschneider">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://goodstuff.fm/nbsp">Non Breaking Space Show</a></strong><br />
+Seeking out the best, brightest, and smartest creative people on digital art, design, and development. From workflows to life hacks, we examine why they do what they do and how they did it. Hosted by Chris Enns, Christopher Schmitt and Sam Kapila.<br />
+<a href="https://itunes.apple.com/us/podcast/the-non-breaking-space-show/id507162981">iTunes</a>
+• <a href="http://feeds.goodstuff.fm/nbsp">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://revisionpath.com/">Revision Path</a></strong><br />
+A weekly showcase of the world's Black graphic designers, web designers, and web developers.<br />
+<a href="https://itunes.apple.com/us/podcast/revision-path/id834173190">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/102/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.accidentalcreative.com/category/podcasts/">The Accidental Creative</a></strong><br />
+The Accidental Creative podcast shares how to build practical, everyday practices that help you stay prolific, brilliant and healthy in life and work.<br />
+<a href="https://itunes.apple.com/us/podcast/accidental-creative-creativity/id93424211?mt=2">iTunes</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.thebalance.cc/">The Balance</a></strong><br />
+Discussing the balance between creativity &amp; everything that fuels it<br />
+<a href="https://itunes.apple.com/us/podcast/the-blnce-podcast/id668468786?mt=2">iTunes</a>
+• <a href="http://feeds.feedburner.com/TheBlnce">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://avclark.com/tgm/">The Gently Mad</a></strong><br />
+The Gently Mad is a show about life, business &amp; entrepreneurship without the bullshit. New episodes every Monday, Wednesday and Friday.<br />
+<a href="https://itunes.apple.com/us/podcast/gently-mad-life-business-entrepreneurship/id950222137">iTunes</a>
+• <a href="http://tgmpodcast.libsyn.com/rss">RSS</a>
+• <a href="https://soundcloud.com/thegentlymad">Soundcloud</a></p>
+</li>
+<li>
+<p><strong><a href="http://www.muleradio.net/newdisruptors/">The New Disruptors</a></strong><br />
+The New Disruptors tells stories that provide practical inspiration about the way that creative people and producers connect with audiences to perform, cajole, convince, sell, and interact using new methods. Hosted by Glenn Fleishman, a regular contributor to The Economist and the editor and publisher of The Magazine. Produced by Aperiodical LLC.<br />
+<a href="https://itunes.apple.com/us/podcast/id584939697">iTunes</a>
+• <a href="http://feeds.newdisrupt.org/nd">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://thestart.fm/">The Start</a></strong><br />
+The Start is a podcast focused on creative individuals and their growth in the industry, from the very beginning.<br />
+<a href="https://itunes.apple.com/us/podcast/the-start/id852802179">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/122/rss">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://thisdeveloperslife.com/">This Developer's Life</a></strong><br />
+A podcast about developers and their lives.<br />
+<a href="https://itunes.apple.com/us/podcast/this-developers-life/id389727545">iTunes</a>
+• <a href="http://feeds.feedburner.com/thisdeveloperslife">RSS</a></p>
+</li>
+<li>
+<p><strong><a href="http://spec.fm/podcasts/vicarious">Vicarious</a></strong><br />
+Pop culture through the lens of design and vice versa.<br />
+<a href="https://itunes.apple.com/us/podcast/vicarious/id1055180013">iTunes</a>
+• <a href="http://simplecast.fm/podcasts/1457/rss">RSS</a></p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="osint.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="postHtml.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="osint.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="postHtml.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

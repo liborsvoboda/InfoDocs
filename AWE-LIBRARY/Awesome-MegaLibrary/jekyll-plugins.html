@@ -1,0 +1,600 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>jekyll-plugins - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html" class="active"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>Awesome Series @ Planet Jekyll</p>
+<p><a href="https://github.com/planetjekyll/awesome-jekyll">Jekyll</a> •
+<a href="https://github.com/planetjekyll/awesome-jekyll-themes">Jekyll Themes</a> •
+<a href="https://github.com/planetjekyll/awesome-jekyll-plugins">Jekyll Plugins</a> •
+<a href="https://github.com/planetjekyll/awesome-jekyll-editors">Jekyll Editors</a></p>
+<h1 id="awesome-gem-packaged-jekyll-plugins"><a class="header" href="#awesome-gem-packaged-jekyll-plugins">Awesome (Gem-Packaged) Jekyll Plugins</a></h1>
+<p><a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" alt="Awesome" /></a></p>
+<p>A collection of awesome Jekyll plugins adding converters, generators, filters &amp; tags,
+importers, new commands &amp; switches, and more.</p>
+<h4 id="contributions-welcome-anything-missing-send-in-a-pull-request-thanks"><a class="header" href="#contributions-welcome-anything-missing-send-in-a-pull-request-thanks"><em>Contributions welcome. Anything missing? Send in a pull request. Thanks.</em></a></h4>
+<blockquote>
+<p>Note: See the <a href="http://planetjekyll.github.io/plugins">Plugins &amp; Extensions Page @ Planet Jekyll</a> - listing all gem-packaged plugins
+listed here; add your plugin here to get added - thanks!</p>
+</blockquote>
+<h2 id="documentation"><a class="header" href="#documentation">Documentation</a></h2>
+<p>See the <a href="http://jekyllrb.com/docs/plugins">Official Plugins Page @ Jekyll Docs</a> ».</p>
+<h2 id="settings--configurations-tweaks"><a class="header" href="#settings--configurations-tweaks">Settings &amp; Configurations Tweaks</a></h2>
+<ul>
+<li><a href="https://github.com/jamesluberda/github-pages-unscramble"><strong>GitHub-Pages Unscramble</strong></a> ★3 (gem: <a href="https://rubygems.org/gems/github-pages-unscramble">github-pages-unscramble</a>) by James Luberda -- locally undoes the changes the GitHub pages plugin makes to a site's original plugin_dir and safe configuration settings and loads any file-based plugins in plugins_dir as well as any blocked plugins in _config.yml</li>
+<li><a href="https://github.com/benbalter/jekyll-default-layout"><strong>Default Layout</strong></a> ★46 (gem: <a href="https://rubygems.org/gems/jekyll-default-layout">jekyll-default-layout</a>) by Ben Balter -- silently sets default layouts for pages and posts</li>
+<li><a href="https://github.com/benbalter/jekyll-optional-front-matter"><strong>Optional Front Matter</strong></a> ★70 (gem: <a href="https://rubygems.org/gems/jekyll-optional-front-matter">jekyll-optional-front-matter</a>) by Ben Balter -- makes front matter optional for markdown files</li>
+<li><a href="https://github.com/benbalter/jekyll-title-from-headings"><strong>Title from Headings</strong></a> ★83 (gem: <a href="https://rubygems.org/gems/titles-from-headings">titles-from-headings</a>) by Ben Balter --  pull page title from first markdown heading when none is specified</li>
+<li><a href="https://github.com/benbalter/jekyll-readme-index"><strong>Readme Index</strong></a> ★71 (gem: <a href="https://rubygems.org/gems/jekyll-readme-index">jekyll-readme-index</a>) by Ben Balter -- render a project's README as the site's index</li>
+<li><a href="https://github.com/ashmaroli/jekyll-data"><strong>Data</strong></a> ★37 (gem: <a href="https://rubygems.org/gems/jekyll-data">jekyll-data</a>) by Ashwin Maroli -- read datafiles in themes</li>
+</ul>
+<h2 id="multi-language--multi-lingual"><a class="header" href="#multi-language--multi-lingual">Multi Language / Multi Lingual</a></h2>
+<ul>
+<li><a href="https://github.com/kurtsson/jekyll-multiple-languages-plugin"><strong>Multiple languages</strong></a> ★837 (gem: <a href="https://rubygems.org/gems/jekyll-multiple-languages-plugin">jekyll-multiple-languages-plugin</a>) by Martin Kurtsson -- I18n support for Jekyll and Octopress</li>
+<li><a href="https://github.com/vwochnik/jekyll-language-plugin"><strong>Language</strong></a> ★111 (gem: <a href="https://rubygems.org/gems/jekyll-language-plugin">jekyll-language-plugin</a>) by Vincent Wochnik -- multi-language plugin for posts, pages and includes</li>
+<li><a href="https://github.com/untra/polyglot"><strong>Polyglot</strong></a> ★299 (gem: <a href="https://rubygems.org/gems/jekyll-polyglot"><code>jekyll-polyglot</code></a>) by Samuel Volin -- multi-lingual and I18n support tool</li>
+<li><a href="https://github.com/KrzysiekJ/jekyll-i18n_tags"><strong>i18n Tags</strong></a> ★11 (gem: <a href="https://rubygems.org/gems/jekyll-i18n_tags">jekyll-i18n_tags</a>) -- Translate your templates.</li>
+<li><a href="https://github.com/prometheus-ev/jekyll-localization"><strong>Localization</strong></a> ★68 (gem: <a href="https://rubygems.org/gems/jekyll-localization">jekyll-localization</a>)  --  plugin that adds localization features to the rendering engine. <strong>Archived</strong></li>
+</ul>
+<h2 id="search"><a class="header" href="#search">Search</a></h2>
+<ul>
+<li><a href="https://github.com/algolia/jekyll-algolia"><strong>Algolia</strong></a> ★185 (gem: <a href="https://rubygems.org/gems/jekyll-algolia/">jekyll-algolia</a>)  --  Add fast and relevant search to your Jekyll site using the Algolia API.</li>
+<li><a href="https://github.com/omc/searchyll"><strong>Searchyll</strong></a> ★43 (gem: <a href="https://rubygems.org/gems/searchyll/">searchyll</a>) - Index your Jekyll pages to Elasticsearch, and works with Github pages.</li>
+</ul>
+<!-- add search gems here -->
+<h2 id="feeds--syndication"><a class="header" href="#feeds--syndication">Feeds &amp; Syndication</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-feed"><strong>Feed</strong></a> ★197 (gem: <a href="https://rubygems.org/gems/jekyll-feed">jekyll-feed</a>) -- a plugin to generate an Atom (RSS-like) feed of your posts   <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/feedreader/jekyll-planet"><strong>Planet</strong></a> ★2 (gem: <a href="https://rubygems.org/gems/jekyll-planet">jekyll-planet</a>) -- add articles, blogs to your site via web feeds (and planet pluto)</li>
+</ul>
+<h2 id="bibliography--citiations"><a class="header" href="#bibliography--citiations">Bibliography &amp; Citiations</a></h2>
+<ul>
+<li><a href="https://github.com/inukshuk/jekyll-scholar"><strong>Scholar</strong></a> ★974 (gem: <a href="https://rubygems.org/gems/jekyll-scholar">jekyll-scholar</a>) by Sylvester Keil  -- extensions for the blogging scholar.</li>
+<li><a href="https://github.com/rjoberon/bibsonomy-jekyll"><strong>BibSonomy</strong></a> ★5 (gem: <a href="https://rubygems.org/gems/bibsonomy-jekyll">bibsonomy-jekyll</a>) - generate publication lists from <a href="https://www.bibsonomy.org/">BibSonomy</a>.</li>
+<li><a href="https://github.com/mslinn/jekyll_quote"><strong>jekyll_quote</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_quote">jekyll_quote</a>)
+by Mike Slinn – Formats quotes with an optional citation and link in a Jekyll website.</li>
+</ul>
+<h2 id="tags--taggings-categories--categorizations"><a class="header" href="#tags--taggings-categories--categorizations">Tags &amp; Taggings, Categories &amp; Categorizations</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-archives"><strong>Archives</strong></a> ★385 (gem: <a href="https://rubygems.org/gems/jekyll-archives">jekyll-archives</a>) -- archive pages for your tags and categories  <strong>#Official</strong></li>
+<li><a href="https://github.com/pattex/jekyll-tagging"><strong>Tagging</strong></a> ★367 (gem: <a href="https://rubygems.org/gems/jekyll-tagging">jekyll-tagging</a>) -- plugin to automatically generate a tag cloud and tag pages.</li>
+<li><a href="https://github.com/toshimaru/jekyll-tagging-related_posts"><strong>Tagging Related_Posts</strong></a> ★49 (gem: <a href="https://rubygems.org/gems/jekyll-tagging-related_posts">jekyll-tagging-related_posts</a>) -- related_posts function based on tags</li>
+</ul>
+<h2 id="pagination"><a class="header" href="#pagination">Pagination</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-paginate"><strong>Paginate</strong></a> ★94 (gem: <a href="https://rubygems.org/gems/jekyll-paginate">jekyll-paginate</a>) -- pagination generator  <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/sverrirs/jekyll-paginate-v2"><strong>Paginate V2</strong></a> ★455 (gem: <a href="https://rubygems.org/gems/jekyll-paginate-v2">jekyll-paginate-v2</a>) by Sverrir Sigmundarson et al -- enhanced replacement for the old built-in jekyll-paginate</li>
+<li><a href="https://github.com/prometheus-ev/jekyll-pagination"><strong>Pagination</strong></a> ★44 (gem: <a href="https://rubygems.org/gems/jekyll-pagination">jekyll-pagination</a>) -- plugin to extend the pagination generator. <strong>Archived</strong></li>
+<li><a href="https://github.com/midnightSuyama/jekyll-paginate-category"><strong>Paginate::Category</strong></a> ★38 (gem: <a href="https://rubygems.org/gems/jekyll-paginate-category">jekyll-paginate-category</a>) -- pagination generator for category.</li>
+<li><a href="https://github.com/gouravkhunger/jekyll-auto-authors"><strong>Auto Authors</strong></a> ★7 (gem: <a href="https://rubygems.org/gems/jekyll-auto-authors">jekyll-auto-authors</a>) -- plugin to auto-generate author pages with pagination!</li>
+</ul>
+<h2 id="figures--captions"><a class="header" href="#figures--captions">Figures &amp; Captions</a></h2>
+<ul>
+<li><a href="https://github.com/lmullen/jekyll_figure"><strong>Figure Tag</strong></a> ★33 (gem: <a href="https://rubygems.org/gems/jekyll_figure">jekyll_figure</a>) -- Generate figures and captions with links to the figure in a variety of formats</li>
+<li><a href="https://github.com/paulrobertlloyd/jekyll-figure"><strong>Figure Tag</strong></a> ★47 (gem: <a href="https://rubygems.org/gems/jekyll-figure">jekyll-figure</a>) -- A liquid tag for Jekyll that generates <code>&lt;figure&gt;</code> elements.</li>
+</ul>
+<h2 id="images--pictures"><a class="header" href="#images--pictures">Images &amp; Pictures</a></h2>
+<ul>
+<li><a href="https://github.com/rbuchberger/jekyll_picture_tag"><strong>Picture Tag</strong></a> ★563 (gem: <a href="https://rubygems.org/gems/jekyll_picture_tag">jekyll_picture_tag</a>) -- Easy responsive images for Jekyll. Based on the proposed <code>&lt;picture&gt;</code> element, polyfilled with Scott Jehl's Picturefill.</li>
+<li><a href="https://github.com/wildlyinaccurate/jekyll-responsive-image"><strong>Responsive Image</strong></a> ★312 (gem: <a href="https://rubygems.org/gems/jekyll-responsive_image">jekyll-responsive_image</a>) -- Responsive images for Jekyll. Automatically resizes images, supports all responsive methods (<code>&lt;picture&gt;</code>, <code>srcset</code>, Imager.js, etc), super-flexible configuration.</li>
+<li><a href="https://github.com/GSI/jekyll_image_encode"><strong>Image Encode Tag</strong></a> ★14 (gem: <a href="https://rubygems.org/gems/jekyll_image_encode">jekyll_image_encode</a>) -- tag that renders base64 codes of images fetched from the web.</li>
+<li><a href="https://github.com/nhoizey/jekyll-cloudinary"><strong>Cloudinary</strong></a> ★86 (gem: <a href="https://rubygems.org/gems/jekyll-cloudinary">jekyll-cloudinary</a>) by Nicolas Hoizey -- tag to use Cloudinary for optimized responsive posts images.</li>
+<li><a href="https://github.com/sverrirs/jekyll-webp"><strong>WebP Image Generator</strong></a> ★49 (gem: <a href="https://rubygems.org/gems/jekyll-webp">jekyll-webp</a>) by Sverrir Sigmundarson et al -- WebP image generator that automatically generate WebP images for all images on your site and serves them when possible</li>
+<li><a href="https://github.com/generalui/jekyll-image-size"><strong>Image Size</strong></a> ★19 (gem: <a href="https://rubygems.org/gems/jekyll-image-size">jekyll-image-size</a>) - read images and output image-sizes as: opengraph tags, img-tags, css and more - with retina support</li>
+<li><a href="https://github.com/gildesmarais/jekyll-loading-lazy"><strong>Loading Lazy</strong></a> ★41 (gem: <a href="https://rubygems.org/gems/jekyll-loading-lazy">jekyll-loading-lazy</a>) -- Adds <code>loading=&quot;lazy&quot;</code> to lazily load your images and iframes without the need for JavaScript.</li>
+<li><a href="https://github.com/imgix/jekyll-imgix"><strong>jekyll-imgix</strong></a> ★49 (gem: <a href="https://rubygems.org/gems/jekyll-imgix">jekyll-imgix</a>) -- Transform, optimize, and intelligently cache your entire image library for fast websites and apps. <strong>Freemium/Commercial</strong></li>
+<li><a href="https://github.com/nhoizey/jekyll-postfiles"><strong>jekyll-postfiles</strong></a> ★109 (gem: <a href="https://rubygems.org/gems/jekyll-postfiles">jekyll-postfiles</a>) -- Ease the management of images (and other files) attached to Markdown blog posts</li>
+<li><a href="https://github.com/jayroh/jekyll-imgproxy-tag"><strong>jekyll-imgproxy-tag</strong></a> ★0 (gem: <a href="https://rubygems.org/gems/jekyll-imgproxy-tag">jekyll-imgproxy-tag</a>) -- Generate urls to secure imgproxy images.</li>
+<li><a href="https://github.com/lawmurray/jekyll-responsive-magick"><strong>jekyll-responsive-magick</strong></a> ★0 (gem: <a href="https://rubygems.org/gems/jekyll-responsive-magick">jekyll-responsive-magick</a>) -- Responsive images via <code>srcset</code>, <code>width</code> and <code>height</code> filters, automatic image resizing with ImageMagick.</li>
+<li><a href="https://github.com/mslinn/jekyll_img"><strong>jekyll_img</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_img">jekyll_img</a>)
+by Mike Slinn. –
+This versatile plugin embeds responsive images using the &lt;picture&gt; element in documents and pages with alignment options,
+flexible resizing, default styling, overridable styling, an optional caption, and an optional URL.</li>
+</ul>
+<h2 id="bundled-icons--images"><a class="header" href="#bundled-icons--images">Bundled Icons / Images</a></h2>
+<ul>
+<li><a href="https://github.com/primer/jekyll-octicons"><strong>Octicons</strong></a> ★32 (gem: <a href="https://rubygems.org/gems/jekyll-octicons">jekyll-octicons</a>) -- liquid plugin that makes including svg Octicons simple. <strong>Archived</strong></li>
+<li><a href="https://github.com/clnhlzmn/jekyll-pig"><strong>Jekyll PIG</strong></a> ★8 (gem: <a href="https://rubygems.org/gems/jekyll-pig">jekyll-pig</a>) - Uses ImageMagick and pig.js to create progressive image galleries for Jekyll sites.</li>
+</ul>
+<h2 id="videos--screencasts"><a class="header" href="#videos--screencasts">Videos &amp; Screencasts</a></h2>
+<ul>
+<li><a href="https://github.com/dommmel/jekyll-youtube"><strong>YouTube</strong></a> ★79 (gem: <a href="https://rubygems.org/gems/jekyll-youtube">jekyll-youtube</a>) -- a Liquid tag that embeds YouTube videos. The default emded markup is responsive but you can also specify your own by using an include/partial.</li>
+<li><a href="https://github.com/mnuessler/jekyll-asciinema"><strong>Asciinema</strong></a> ★37 (gem: <a href="https://rubygems.org/gems/jekyll-asciinema">jekyll-asciinema</a>) -- a tag for embedding asciicasts recorded with asciinema in your Jekyll pages.</li>
+<li><a href="https://github.com/jessp01/jekyll-react-player"><strong>ReactPlayer</strong></a> <a href="https://rubygems.org/gems/jekyll-react-player"><img src="https://img.shields.io/gem/dt/jekyll-react-player.svg" alt="Gem Version" /></a> <a href="https://badge.fury.io/rb/jekyll-react-player"><img src="https://badge.fury.io/rb/jekyll-react-player.svg" alt="Gem Version" /></a> -- a tag for embedding react-player supported formats in your Jekyll pages.</li>
+</ul>
+<h2 id="audios--podcasts"><a class="header" href="#audios--podcasts">Audios &amp; Podcasts</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll-octopod/jekyll-octopod"><strong>Octopod</strong></a> ★114 (gem: <a href="https://rubygems.org/gems/jekyll-octopod">jekyll-octopod</a>) by Stefan Haslinger, Arne Eilermann, et al -- a podcast publishing extension. <strong>Archived</strong></li>
+</ul>
+<h2 id="geocoding--maps"><a class="header" href="#geocoding--maps">Geocoding &amp; Maps</a></h2>
+<ul>
+<li><a href="https://github.com/bertrandkeller/jekyll-geocode"><strong>Geocode</strong></a> ★11 (gem: <a href="https://rubygems.org/gems/jekyll-geocode">jekyll-geocode</a>) by Bertrand Keller -- geo-encode addresses from a datafile for drawing maps</li>
+<li><a href="https://github.com/ayastreb/jekyll-maps"><strong>Maps</strong></a> ★123 (gem: <a href="https://rubygems.org/gems/jekyll-maps">jekyll-maps</a>) by Anatoliy Yastreb -- embed maps with filterable locations</li>
+</ul>
+<h2 id="markup--markdown-converters"><a class="header" href="#markup--markdown-converters">Markup &amp; Markdown Converters</a></h2>
+<ul>
+<li><a href="https://jekyll-pug.dougie.io"><strong>Pug</strong></a>, gem: <a href="https://rubygems.org/gems/jekyll-pug">jekyll-pug</a> -- convert Pug files into HTML</li>
+<li><a href="https://github.com/slim-template/jekyll-slim"><strong>Slim</strong></a> ★36, gem: <a href="https://rubygems.org/gems/jekyll-slim">jekyll-slim</a> -- Slim converter and includes for Jekyll with support for Liquid tags. <strong>Archived</strong></li>
+<li><a href="https://github.com/asciidoctor/jekyll-asciidoc"><strong>AsciiDoc</strong></a> ★276, gem: <a href="https://rubygems.org/gems/jekyll-asciidoc">jekyll-asciidoc</a> -- AsciiDoc convertor for Jekyll using Asciidoctor.</li>
+<li><a href="https://github.com/pathawks/jekyll-commonmark"><strong>Commonmark</strong></a> ★29, gem: <a href="https://rubygems.org/gems/jekyll-commonmark">jekyll-commonmark</a> -- Markdown converter that uses libcmark, the reference parser for CommonMark.</li>
+<li><a href="https://github.com/jekyll/jekyll-textile-converter"><strong>Textile</strong></a> ★15 (gem: <a href="https://rubygems.org/gems/jekyll-textile-converter">jekyll-textile-converter</a>) -- convert <code>.textile</code> files into HTML; also includes the <code>textilize</code> Liquid filter  <strong>#Official</strong></li>
+<li><a href="https://github.com/yagarea/jektex"><strong>Jektex</strong></a> ★17, gem: <a href="https://rubygems.org/gems/jektex">jektex</a> -- Jekyll plugin for blazing fast server side cached LaTeX rendering with support of macros. Enjoy comfort of latex and markdown without cluttering your site with bloated javascript.</li>
+</ul>
+<h2 id="text-filters"><a class="header" href="#text-filters">Text Filters</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-mentions"><strong>Mentions</strong></a> ★185 (gem: <a href="https://rubygems.org/gems/jekyll-mentions">jekyll-mentions</a>) -- @mentionable support for your site  <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/jekyll/jemoji"><strong>Jemoji</strong></a> ★503 (gem: <a href="https://rubygems.org/gems/jemoji">jemoji</a>) -- GitHub-flavored emoji plugin   <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/markets/jekyll-timeago"><strong>Time Ago</strong></a> ★138 (gem: <a href="https://rubygems.org/gems/jekyll-timeago">jekyll-timeago</a>) -- Converts a time value to the time ago in words.</li>
+<li><a href="https://github.com/mslinn/jekyll_time_since"><strong>jekyll_time_since</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_time_since">jekyll_time_since</a>)
+by Mike Slinn –
+Jekyll plugin that provides new Liquid filters called years_since, months_since, days_since, hours_since, minutes_since and seconds_since.</li>
+<li><a href="https://github.com/bdesham/pluralize"><strong>Pluralize</strong></a> ★28 (gem: <a href="https://rubygems.org/gems/liquid_pluralize">liquid_pluralize</a>) by Benjamin Esham -- Easily combine a number and a word into a grammatically-correct amount like “1 minute” or “2 minute<strong>s</strong>”.</li>
+<li><a href="https://github.com/bdesham/reading_time"><strong>Reading Time</strong></a> ★109 (gem: <a href="https://rubygems.org/gems/liquid_reading_time">liquid_reading_time</a>) by Benjamin Esham -- Count words and estimate reading time for a piece of text, ignoring HTML elements that are unlikely to contain running text.</li>
+<li><a href="https://github.com/toshimaru/jekyll-toc"><strong>TOC (Table of Contents)</strong></a> ★260  (gem: <a href="https://rubygems.org/gems/jekyll-toc">jekyll-toc</a>)-- A liquid filter plugin for Jekyll which generates a table of contents.</li>
+<li><a href="https://github.com/pathawks/jekyll-smartify"><strong>Smartify</strong></a> ★9 (gem: <a href="https://rubygems.org/gems/jekyll-smartify">jekyll-smartify</a>) by Pat Hawks -- SmartyPants filter. Make &quot;quotes&quot; “curly”. <strong>Archived</strong></li>
+<li><a href="https://github.com/pathawks/liquid-md5"><strong>MD5</strong></a> ★13 (gem: <a href="https://rubygems.org/gems/liquid-md5">liquid-md5</a>) by Pat Hawks  -- Returns an MD5 hash. Helpful for generating Gravatars in templates</li>
+<li><a href="https://github.com/paulrobertlloyd/jekyll-roman"><strong>Roman</strong></a> ★6  (gem: <a href="https://rubygems.org/gems/jekyll-roman">jekyll-roman</a>) by Paul Robert Lloyd -- A liquid filter for Jekyll that converts numbers into Roman numerals</li>
+<li><a href="https://github.com/myles/jekyll-typogrify"><strong>Typogrify</strong></a> ★26 (gem: <a href="https://rubygems.org/gems/jekyll-typogrify">jekyll-typogrify</a>) by Myles Braithwaite -- A Jekyll plugin that brings the functions of typogruby.</li>
+<li><a href="https://github.com/vwochnik/jekyll-email-protect"><strong>Email Protect</strong></a> ★75 (gem: <a href="https://rubygems.org/gems/jekyll-email-protect">jekyll-email-protect</a>) by Vincent Wochnik -- Email protection liquid filter for Jekyll</li>
+<li><a href="https://github.com/gemfarmer/jekyll-liquify"><strong>Jekyll Liquify</strong></a> ★25 (gem: <a href="https://rubygems.org/gems/jekyll-liquify">jekyll-liquify</a>) a filter that parses Liquid from front matter</li>
+<li><a href="https://www.mslinn.com/jekyll_plugins/#jekyll_from_to_until"><strong>jekyll_from_to_until</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_from_to_until">jekyll_from_to_until</a>)
+by Mike Slinn. –
+Provides filters that return portions of a multiline string:
+<ul>
+<li><code>from</code> – returns the portion beginning with the line that satisfies a regular expression to the end of the multiline string.</li>
+<li><code>to</code> – returns the portion from the first line to the line that satisfies a regular expression, including the matched line.</li>
+<li><code>until</code> – returns the portion from the first line to the line that satisfies a regular expression, excluding the matched line.</li>
+</ul>
+</li>
+<li><a href="https://www.mslinn.com/jekyll_plugins/#basename"><strong>jekyll_basename_dirname</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_basename_dirname">jekyll_basename_dirname</a>)
+by Mike Slinn –
+Provides filters that return portions of a string:
+<code>basename</code>, <code>dirname</code> and <code>basename_without_extension</code>.</li>
+<li><a href="https://www.mslinn.com/jekyll_plugins/#begin_end"><strong>jekyll_begin_end</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_begin_end">jekyll_begin_end</a>)
+by Mike Slinn –
+These filters return portions of a string:
+<code>begins_with</code>, <code>does_not_begin_with</code>, <code>ends_with</code>, <code>does_not_end_with</code>, and <code>append_suffix_if_does_not_start_with</code>.</li>
+</ul>
+<h2 id="tags"><a class="header" href="#tags">Tags</a></h2>
+<ul>
+<li>
+<p><a href="https://github.com/jekyll/jekyll-gist"><strong>Gist</strong></a> ★234 (gem: <a href="https://rubygems.org/gems/jekyll-gist">jekyll-gist</a>) -- Liquid tag for displaying GitHub Gists   <strong>#Official</strong> <strong>#GitHub Pages</strong></p>
+</li>
+<li>
+<p><a href="https://github.com/rob-murray/jekyll-twitter-plugin"><strong>Twitter</strong></a> ★225 (gem: <a href="https://rubygems.org/gems/jekyll-twitter-plugin">jekyll-twitter-plugin</a>) by Robert Murray -- A Liquid tag plugin that renders Tweets from Twitter API. Currently supports the oEmbed API.</p>
+</li>
+<li>
+<p><a href="https://github.com/rustygeldmacher/jekyll-contentblocks"><strong>Content Blocks</strong></a> ★144 (gem: <a href="https://rubygems.org/gems/jekyll-contentblocks">jekyll-contentblocks</a>) by Rusty Geldmacher  -- Lets you use Rails-like content_for tags in your templates, for passing content from your posts up to your layouts.</p>
+</li>
+<li>
+<p><a href="https://github.com/okeeblow/jekyll-beastiepress"><strong>Beastie Press</strong></a> ★7  (gem: <a href="https://rubygems.org/gems/jekyll-beastiepress">jekyll-beastiepress</a>) -- FreeBSD utility tags.</p>
+</li>
+<li>
+<p><a href="https://github.com/sectore/jekyll-swfobject"><strong>SWF Object</strong></a> ★5 (gem: <a href="https://rubygems.org/gems/jekyll-swfobject">jekyll-swfobject</a>) -- Liquid plugin for embedding Adobe Flash files (.swf) using SWFObject.</p>
+</li>
+<li>
+<p><a href="https://github.com/GSI/jekyll_date_chart"><strong>Date Chart</strong></a> ★9 (gem: <a href="https://rubygems.org/gems/jekyll_date_chart">jekyll_date_chart</a>) -- Block that renders date line charts based on textile-formatted tables.</p>
+</li>
+<li>
+<p><a href="https://github.com/GSI/jekyll_quick_man"><strong>Quick Man</strong></a> ★7 (gem: <a href="https://rubygems.org/gems/jekyll_quick_man">jekyll_quick_man</a>) -- Tag that renders pretty links to man page sources on the internet.</p>
+</li>
+<li>
+<p><a href="https://github.com/bwillis/jekyll-github-sample"><strong>GitHub Sample Tag</strong></a> ★57 (gem: <a href="https://rubygems.org/gems/jekyll_github_sample">jekyll_github_sample</a>) -- A liquid tag to include a sample of a github repo file in your Jekyll site.</p>
+</li>
+<li>
+<p><a href="https://github.com/rob-murray/jekyll-version-plugin"><strong>Project Version Tag</strong></a> ★28 (gem: <a href="https://rubygems.org/gems/jekyll_version_plugin">jekyll_version_plugin</a>) -- A Liquid tag plugin that renders a version identifier for your Jekyll site sourced from the git repository containing your code.</p>
+</li>
+<li>
+<p><a href="https://github.com/bdesham/inline_highlight"><strong>Inline Highlight</strong></a> ★26 (gem: <a href="https://rubygems.org/gems/jekyll_inline_highlight">jekyll_inline_highlight</a>)  -- a tag for inline syntax highlighting.</p>
+</li>
+<li>
+<p><a href="https://github.com/jasonbellamy/jekyll-mermaid"><strong>Mermaid</strong></a> ★97 (gem: <a href="https://rubygems.org/gems/jekyll-mermaid">jekyll-mermaid</a>) -- Simplify the creation of mermaid diagrams and flowcharts in your posts and pages.</p>
+</li>
+<li>
+<p><a href="https://github.com/vfalanis/jekyll-giphy"><strong>Giphy</strong></a> ★16 (gem: <a href="https://rubygems.org/gems/jekyll-giphy">jekyll-giphy</a>) --  a plugin for embedding random giphy GIFs on Jekyll sites according to a user defined topic.</p>
+</li>
+<li>
+<p><a href="https://github.com/yegor256/jekyll-plantuml"><strong>PlantUML</strong></a> ★39 (gem: <a href="https://rubygems.org/gems/jekyll-plantuml">jekyll-plantuml</a>) -- Tag that renders UML diagrams using <a href="http://plantuml.com/">PlantUML</a>.</p>
+</li>
+<li>
+<p><a href="https://github.com/18F/jekyll-oembed"><strong>Jekyll oEmbed</strong></a> ★8 (gem: <a href="https://rubygems.org/gems/jekyll_oembed">jekyll_oembed</a>) -- The tag version of <a href="https://github.com/ruby-oembed/ruby-oembed">ruby-oembed</a>, letting you easily get embeddable HTML representations of supported web pages, based on their URLs. <strong>Archived</strong></p>
+</li>
+<li>
+<p><a href="https://github.com/MihajloNesic/jekyll-pdf-embed"><strong>Jekyll PDF Embed</strong></a> ★35 (gem: <a href="https://rubygems.org/gems/jekyll-pdf-embed">jekyll-pdf-embed</a>) - Plugin for embedding PDF files to any page or post</p>
+</li>
+<li>
+<p><a href="https://github.com/kinduff/jekyll-github-chart"><strong>Jekyll Github Chart</strong></a> ★4 (gem: <a href="https://rubygems.org/gems/jekyll-github-chart">jekyll-github-chart</a>) - Plugin to generate an SVG of Github contributions data</p>
+</li>
+<li>
+<p><a href="https://github.com/chaelcodes/jekyll-twitch"><strong>Jekyll Twitch</strong></a> ★6 (gem: <a href="https://rubygems.org/gems/jekyll-twitch">jekyll-twitch</a>) - Embed Twitch clips, vods, collections, and even broadcasts!</p>
+</li>
+<li>
+<p><a href="https://github.com/flant/jekyll_include_plugin"><strong>Jekyll Include</strong></a> ★12 (gem: <a href="https://rubygems.org/gems/jekyll_include_plugin">jekyll_include_plugin</a>) - Plugin for including local/remote file contents (or a part of it) into your pages.</p>
+</li>
+<li>
+<p><a href="https://www.mslinn.com/jekyll_plugins/#flexibleInclude"><strong>jekyll_flexible_include</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_flexible_include">jekyll_flexible_include</a>)
+by Mike Slinn. <br>
+Jekyll's built-in include tag does not support including files outside of the <code>_includes</code> folder.
+This plugin supports 4 types of includes:</p>
+<ul>
+<li>Relative paths.</li>
+<li>Absolute paths, with optional security.</li>
+<li>Paths relative to the user home directory, with optional security.</li>
+<li>Executable commands, with optional security.</li>
+</ul>
+<p>Paths support environment variables expansion.
+Also supports highlighting text matching a regex, and dark mode.</p>
+</li>
+<li>
+<p><a href="https://github.com/erikw/jekyll-glossary_tooltip"><strong>Glossary Tooltip Tag</strong></a> ★7 (gem: <a href="https://rubygems.org/gems/jekyll-glossary_tooltip">jekyll-glossary_tooltip</a>) by Erik Westrup - A tag for showing a tooltip with glossary term definitions on mouse hover. Common terms are defined in a shared file that can be re-used across all pages.</p>
+</li>
+<li>
+<p><a href="https://www.mslinn.com/jekyll_plugins/#archiveDisplay"><strong>jekyll_archive_display</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_archive_display">jekyll_archive_display</a>)
+by Mike Slinn –
+Jekyll tag plugin that lists the names and contents of each entry in a <code>tar</code> file.</p>
+</li>
+<li>
+<p><a href="https://www.mslinn.com/jekyll_plugins/#archive_create"><strong>jekyll_download_link</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_download_link">jekyll_download_link</a>)
+by Mike Slinn –
+Generates a link to download a file.
+The path can be absolute or relative to the website.</p>
+</li>
+<li>
+<p><a href="https://github.com/mslinn/jekyll_href"><strong>jekyll_href</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_href">jekyll_href</a>)
+by Mike Slinn. <br>
+This plugin provides a versatile Jekyll tag that generates an a HTML href that defaults to <code>target=&quot;_blank&quot;</code> and <code>rel=&quot;nofollow&quot;</code>.
+URLs can contain environment variable references.
+Also provides a convenient way to generate formatted and clickable URIs.
+Features optional automatically-generated soft hyphens.
+The <code>href</code> tags in a page can be summarized by the <code>href_summary</code> tag.</p>
+</li>
+<li>
+<p><a href="https://github.com/mslinn/jekyll_outline"><strong>jekyll_outline</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_outline">jekyll_outline</a>)
+by Mike Slinn –
+Organizes the index of a collection into chapters.</p>
+</li>
+<li>
+<p><a href="https://github.com/mslinn/jekyll_pre"><strong>jekyll_pre</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_pre">jekyll_pre</a>)
+by Mike Slinn –
+Jekyll tags for HTML &lt;pre/&gt;; copy content button, unselectable text, and incorporating command-line output into documents.</p>
+</li>
+</ul>
+<h2 id="search-engine-optimization-seo--redirects"><a class="header" href="#search-engine-optimization-seo--redirects">Search Engine Optimization (SEO) &amp; Redirects</a></h2>
+<ul>
+<li><a href="https://github.com/skatkov/jekyll-news-sitemap"><strong>Jekyll::NewsSitemap</strong></a> ★6 (gem: <a href="https://rubygems.org/gems/jekyll-news-sitemap">jekyll-news-sitemap</a>) -- Jekyll plugin to silently generate Google News Sitemap based on posts  <strong>#Official</strong> <strong>#GitHub Pages</strong> <strong>Archived</strong></li>
+<li><a href="https://github.com/jekyll/jekyll-seo-tag"><strong>SEO Tag</strong></a> ★1.4k (gem: <a href="https://rubygems.org/gems/jekyll-seo-tag">jekyll-seo-tag</a>) -- a plugin to add metadata tags for search engines and social networks to better index and display your site's content   <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/jekyll/jekyll-sitemap"><strong>Sitemap Generator</strong></a> ★851 (gem: <a href="https://rubygems.org/gems/jekyll-sitemap">jekyll-sitemap</a>) -- a plugin to silently generate a sitemaps.org compliant sitemap for your site  <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/jekyll/jekyll-redirect-from"><strong>Redirect From</strong></a> ★691 (gem: <a href="https://rubygems.org/gems/jekyll-redirect-from">jekyll-redirect-from</a>) -- seamlessly specify multiple redirections URLs for your pages and posts <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/erikw/jekyll-google_search_console_verification_file"><strong>Google Search Console Verification File Generator</strong></a> ★3 (gem: <a href="https://rubygems.org/gems/jekyll-google_search_console_verification_file">jekyll-google_search_console_verification_file</a>) by Erik Westrup - A very simple plugin that will generate a Google Search Console <a href="https://support.google.com/webmasters/answer/9008080?hl=en">verification file</a> to your <code>_site/</code> directory in a Jekyll project. This file is used by Google to verify that you own the site and could look for example like <code>googlef47733b3288357e4.html</code>.</li>
+</ul>
+<h2 id="analytics"><a class="header" href="#analytics">Analytics</a></h2>
+<ul>
+<li><a href="https://github.com/hendrik91/jekyll-analytics"><strong>Analytics</strong></a> ★191 (gem: <a href="https://rubygems.org/gems/jekyll-analytics">jekyll-analytics</a>) by Hendrik Schneider -- adds webtracking easily to your site; supports multiple trackers like Google Analytics, Piwik, etc.</li>
+</ul>
+<h2 id="generators"><a class="header" href="#generators">Generators</a></h2>
+<ul>
+<li><a href="https://github.com/yihangho/emoji-for-jekyll"><strong>Emoji</strong></a> ★85, gem: <a href="https://rubygems.org/gems/emoji_for_jekyll">emoji_for_jekyll</a> -- seamlessly enable emoji for all posts and pages</li>
+<li><a href="https://github.com/ivantsepp/jekyll-autolink_email"><strong>Autolink Email</strong></a> ★13, gem: <a href="https://rubygems.org/gems/jekyll-autolink_email">jekyll-autolink_email</a> by Ivan Tse -- Autolink your emails.</li>
+<li><a href="https://github.com/ivantsepp/jekyll-git_metadata"><strong>Git Metadata</strong></a> ★67, gem: <a href="https://rubygems.org/gems/jekyll-git_metadata">jekyll-git_metadata</a>  by Ivan Tse -- expose Git metadata for your templates</li>
+<li><a href="https://github.com/merlos/jekyll-auto-image"><strong>Auto Image</strong></a> ★77, gem: <a href="https://rubygems.org/gems/jekyll-auto-image">jekyll-auto-image</a>  by Merlos -- gets the first image of a post; useful to list your posts with images or to add twitter cards to your site</li>
+<li><a href="https://github.com/webchef/jekyll-umlauts"><strong>Umlauts</strong></a> ★8, gem: <a href="https://rubygems.org/gems/jekyll-umlauts">jekyll-umlauts</a>  by Arne Gockeln -- this generator replaces all german umlauts (äöüß) case sensitive with html</li>
+<li><a href="https://github.com/lazee/premonition"><strong>Premonition</strong></a> ★38, gem: <a href="https://rubygems.org/gems/premonition">premonition</a>  by Jakob Vad Nielsen -- Converts blockquotes into customizable styled markup blocks, like notes or warnings.</li>
+<li><a href="https://github.com/avillafiorita/jekyll-datapage_gen"><strong>Jekyll Data Pages Generator</strong></a> ★336, gem: <a href="https://rubygems.org/gems/jekyll-datapage-generator">jekyll-datapage-generator</a>  by Adolfo Villafiorita -- Allows one to specify data files for which we want to generate one HTML page per record.</li>
+</ul>
+<h2 id="commands--switches"><a class="header" href="#commands--switches">Commands &amp; Switches</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-compose"><strong>Compose</strong></a> ★540 (gem: <a href="https://rubygems.org/gems/jekyll-compose">jekyll-compose</a>) -- streamline your writing with these commands  <strong>#Official</strong></li>
+<li><a href="https://github.com/JustinAiken/jekyll-gitlab-letsencrypt"><strong>jekyll-gitlab-letsencrypt</strong></a> ★60 (gem: <a href="https://rubygems.org/gems/jekyll-gitlab-letsencrypt">jekyll-gitlab-letsencrypt</a>) -- Automate letsencrypt requests/renewals for gitlab pages</li>
+</ul>
+<h2 id="importers"><a class="header" href="#importers">Importers</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-import"><strong>Importers</strong></a> ★456 (gem: <a href="https://rubygems.org/gems/jekyll-import">jekyll-import</a>) -- The &quot;import&quot; command for importing from various blogs   <strong>#Official</strong></li>
+</ul>
+<h2 id="other"><a class="header" href="#other">Other</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/github-metadata"><strong>GitHub Metadata</strong></a> ★215 (gem: <a href="https://rubygems.org/gems/jekyll-github-metadata">jekyll-github-metadata</a>) -- <code>site.github</code>   <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/jeffreytse/jekyll-spaceship"><strong>Jekyll Spaceship</strong></a> ★381 (gem: <a href="https://rubygems.org/gems/jekyll-spaceship">jekyll-spaceship</a>) -- 🚀 A Jekyll plugin to provide powerful supports for table, mathjax, plantuml, mermaid, emoji, video, youtube, vimeo, dailymotion, audio, spotify, soundcloud, etc.</li>
+<li><a href="https://github.com/prometheus-ev/jekyll-rendering"><strong>Rendering</strong></a> ★22 (gem: <a href="https://rubygems.org/gems/jekyll-rendering">jekyll-rendering</a>) -- provide alternative rendering engines. <strong>Archived</strong></li>
+<li><a href="https://github.com/contentful/jekyll-contentful-data-import"><strong>Contentful</strong></a> ★94 (gem: <a href="https://rubygems.org/gems/jekyll-contentful-data-import">jekyll-contentful-data-import</a>) -- Adds a <code>contentful</code> sub-command to Jekyll to import data from Contentful.</li>
+<li><a href="https://github.com/KrzysiekJ/jekyll-paspagon"><strong>Paspagon</strong></a> ★10 (gem: <a href="https://rubygems.org/gems/jekyll-paspagon">jekyll-paspagon</a>) -- sell your posts in various formats for cryptocurrencies.</li>
+<li><a href="https://github.com/souldanger/jekyll-pwa-workbox"><strong>PWA-Workbox</strong></a> ★22 (gem: <a href="https://rubygems.org/gems/jekyll-pwa-workbox">jekyll-pwa-workbox</a>) -- Makes your PWA/Website available offline using Workbox. Injects a precache list into the service-worker and takes care of the registration process in a secure way.</li>
+<li><a href="https://github.com/keithmifsud/jekyll-target-blank"><strong>Target Blank</strong></a> ★82 (gem: <a href="https://rubygems.org/gems/jekyll-target-blank">jekyll-target-blank</a>) -- Automatically adds <code>target=&quot;_blank&quot;</code> to external links, can add css-classes and/or various <code>rel=&quot;&quot;</code> attributes.</li>
+<li><a href="https://github.com/bmeurer/jekyll-workbox-plugin"><strong>Workbox</strong></a> ★14 (gem: <a href="https://rubygems.org/gems/jekyll-workbox-plugin">jekyll-workbox-plugin</a>) -- Generate Service Worker using Google Workbox.</li>
+<li><a href="https://github.com/mslinn/jekyll_bootstrap5_tabs"><strong>Bootstrap 5 Tabs</strong></a> (gem: <a href="https://rubygems.org/gems/jekyll_bootstrap5_tabs">jekyll_bootstrap5_tabs</a>) – Enables Bootstrap 5 tabs in Jekyll content.</li>
+<li><a href="https://github.com/ntsd/jekyll-http-request"><strong>jekyll-http-request</strong></a> (gem: <a href="https://rubygems.org/gems/jekyll-http-request">jekyll-http-request</a>) by Jirawat Boonkumnerd -- Liquid Filter for HTTP requests, helps get HTTP response data to the page content and cache.</li>
+</ul>
+<h2 id="assets--converters--minifiers"><a class="header" href="#assets--converters--minifiers">Assets &amp; Converters &amp; Minifiers</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-sass-converter"><strong>Sass Converter</strong></a> ★154 (gem: <a href="https://rubygems.org/gems/jekyll-sass-converter">jekyll-sass-converter</a>) -- a Sass converter <strong>#Official</strong> <strong>#GitHub Pages</strong></li>
+<li><a href="https://github.com/jekyll/jekyll-assets"><strong>Assets 3</strong></a> ★1.1k (gem: <a href="https://rubygems.org/gems/jekyll-assets">jekyll-assets</a>) -- asset pipelines  <strong>#Official</strong></li>
+<li><a href="https://github.com/kitsched/japr"><strong>Asset Pipeline Reborn</strong></a> ★52 (gem: <a href="https://rubygems.org/gems/japr">japr</a>) - powerful asset pipeline that collects, converts and compresses JavaScript and CSS assets.</li>
+<li><a href="https://github.com/tkareine/jekyll-minibundle"><strong>Mini Bundle</strong></a> ★67 (gem: <a href="https://rubygems.org/gems/jekyll-minibundle">jekyll-minibundle</a>) -- asset bundling and cache busting using external minification tool of your choice. No gem dependencies.</li>
+<li><a href="https://github.com/digitalsparky/jekyll-minifier"><strong>Minifier</strong></a> ★232 (gem: <a href="https://rubygems.org/gems/jekyll-minifier">jekyll-minifier</a>) -- minifies HTML, XML, CSS, and Javascript both inline and as separate files utilising yui-compressor and htmlcompressor.</li>
+<li><a href="https://github.com/vwochnik/jekyll-autoprefixer"><strong>Autoprefixer</strong></a> ★64 (gem: <a href="https://rubygems.org/gems/jekyll-autoprefixer">jekyll-autoprefixer</a>)  -- autoprefixer integration for Jekyll</li>
+<li><a href="https://www.mslinn.com/jekyll_plugins/#archive_create"><strong>jekyll_archive_create</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_archive_create">jekyll_archive_create</a>)
+by Mike Slinn –
+Makes <code>tar</code> and <code>zip</code> files based on <code>_config.yml</code> entries.</li>
+<li><a href="https://github.com/mscharley/jekyll-compass"><strong>Compass</strong></a> ★57 (gem: <a href="https://rubygems.org/gems/jekyll-compass">jekyll-compass</a> -- easily integrate Compass and Sass with your site. <strong>Archived</strong></li>
+</ul>
+<!-- new list; use new category for js only converter- why? why not?? -->
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-coffeescript"><strong>Coffeescript</strong></a> ★44 (gem: <a href="https://rubygems.org/gems/jekyll-coffeescript">jekyll-coffeescript</a>) -- a CoffeeScript converter  <strong>#Official</strong></li>
+<li><a href="https://github.com/jekyll/jekyll-opal"><strong>Opal</strong></a> ★34 (gem: <a href="https://rubygems.org/gems/jekyll-opal">jekyll-opal</a>) -- convert your Ruby into JavaScript using Opal  <strong>#Official</strong></li>
+</ul>
+<h2 id="coding-support-for-plugins--liquid-programming"><a class="header" href="#coding-support-for-plugins--liquid-programming">Coding Support for Plugins &amp; Liquid Programming</a></h2>
+<ul>
+<li><a href="https://github.com/mslinn/jekyll_all_collections"><strong>jekyll_all_collections</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_all_collections">jekyll_all_collections</a>)
+by Mike Slinn – If your Jekyll website has several collections,
+this plugin provides an aggregated collection.</li>
+<li><a href="http://localhost:4001/jekyll/3000-jekyll-plugins.html#draft"><strong>jekyll_draft</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_draft">jekyll_draft</a>)
+by Mike Slinn –
+This plugin’s filters provide a simple means for marking draft pages in development mode.</li>
+<li><a href="https://github.com/mslinn/jekyll_plugin_logger"><strong>jekyll_plugin_logger</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_plugin_logger">jekyll_plugin_logger</a>)
+by Mike Slinn –
+Colored Jekyll logging for plugins.</li>
+<li><a href="https://github.com/mslinn/jekyll_plugin_support"><strong>jekyll_plugin_support</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_plugin_support">jekyll_plugin_support</a>)
+by Mike Slinn –
+Ruby gem that facilitates writing and testing Jekyll plugins.</li>
+<li><a href="https://github.com/mslinn/jekyll_nth"><strong>jekyll_nth</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_nth">jekyll_nth</a>)
+by Mike Slinn –
+Liquid filter that returns item <code>n</code> of a Ruby array, origin 1.</li>
+<li><a href="https://github.com/mslinn/jekyll_random_hex"><strong>jekyll_random_hex</strong></a>
+(gem: <a href="https://rubygems.org/gems/jekyll_random_hex">jekyll_random_hex</a>)
+by Mike Slinn –
+Outputs a string of random hexadecimal characters of any length.</li>
+</ul>
+<h2 id="authentication--authorization"><a class="header" href="#authentication--authorization">Authentication &amp; Authorization</a></h2>
+<ul>
+<li><a href="https://github.com/benbalter/jekyll-auth"><strong>GitHub OAuth</strong></a> ★821 (gem: <a href="https://rubygems.org/gems/jekyll-auth">jekyll-auth</a>) by Ben Balter et al -- use GitHub OAuth to serve a protected site to your GitHub org</li>
+</ul>
+<h2 id="admin--visual-editors"><a class="header" href="#admin--visual-editors">Admin &amp; Visual Editors</a></h2>
+<ul>
+<li>
+<p><a href="https://github.com/jekyll/jekyll-admin"><strong>Admin</strong></a> ★2.6k (gem: <a href="https://rubygems.org/gems/jekyll-admin">jekyll-admin</a>) by Ben Balter, Mert Kahyaoğlu et al -- adds a traditional content management system-style graphical interface to author content and administer sites  <strong>#Official</strong></p>
+</li>
+<li>
+<p><a href="https://github.com/ashmaroli/jekyll-manager"><strong>Manager</strong></a> ★51 (gem: <a href="https://rubygems.org/gems/jekyll-manager">jekyll-manager</a>) by Ashwin Maroli -- An administrative framework for Jekyll sites, Jekyll Manager is essentially Jekyll Admin repackaged with some alterations.</p>
+</li>
+</ul>
+<h2 id="watch--live-reload"><a class="header" href="#watch--live-reload">Watch &amp; Live Reload</a></h2>
+<ul>
+<li><a href="https://github.com/jekyll/jekyll-watch"><strong>Watch</strong></a> ★88 (gem: <a href="https://rubygems.org/gems/jekyll-watch">jekyll-watch</a>) -- rebuild your site when a file changes with the <code>--watch</code> switch <strong>#Official</strong></li>
+<li><a href="https://github.com/awood/hawkins"><strong>Hawkins</strong></a> ★57 (gem: <a href="https://rubygems.org/gems/hawkins">hawkins</a>) -- adds a <code>liveserve</code> sub-command to Jekyll that incorporates LiveReload into your pages while you preview them.  No more hitting the refresh button in your browser! <strong>Archived</strong></li>
+</ul>
+<h2 id="testing--proofing"><a class="header" href="#testing--proofing">Testing &amp; Proofing</a></h2>
+<ul>
+<li><a href="https://github.com/18F/jekyll_frontmatter_tests"><strong>Front Matter Tests</strong></a> ★28 (gem: <a href="https://rubygems.org/gems/jekyll_frontmatter_tests">jekyll_frontmatter_tests</a>) by Greg Boone et al -- tests the front matter of posts and other collection documents against a schema. <strong>Archived</strong></li>
+</ul>
+<h2 id="upload--deploy"><a class="header" href="#upload--deploy">Upload &amp; Deploy</a></h2>
+<ul>
+<li><a href="https://github.com/jeffreytse/jekyll-deploy-action"><strong>Jekyll Deploy Action</strong></a> ★177 (<a href="https://github.com/jeffreytse/jekyll-deploy-action">jekyll-deploy-action</a>) -- 🪂  A Github Action to deploy the Jekyll site conveniently for GitHub Pages.</li>
+<li><a href="https://github.com/vwochnik/jekyll-deploy"><strong>Deploy</strong></a> ★33 (gem: <a href="https://rubygems.org/gems/jekyll-deploy">jekyll-deploy</a>) -- adds a <code>deploy</code> command</li>
+<li><a href="https://github.com/ZhgChgLi/ZMediumToJekyll"><strong>ZMediumToJekyll</strong></a> ★3 -- A public GitHub template repo that can help you easily move your Medium posts to a Jekyll blog and keep them in sync in the future, by simply click 'Use this template' to get started!</li>
+</ul>
+<h2 id="debugging"><a class="header" href="#debugging">Debugging</a></h2>
+<ul>
+<li><a href="https://github.com/gemfarmer/jekyll-debug"><strong>Jekyll Debug</strong></a> ★12 (gem: <a href="https://rubygems.org/gems/jekyll-debug">jekyll-debug</a>) a filter that allows a user to debug liquid filters and tags at runtime</li>
+</ul>
+<h2 id="more"><a class="header" href="#more">More</a></h2>
+<blockquote>
+<p>Note: For all jekyll plugin scripts &amp; pasties, see the <a href="PASTIES.html">scripts &amp; pasties</a> page.</p>
+</blockquote>
+<h2 id="meta"><a class="header" href="#meta">Meta</a></h2>
+<p><strong>License</strong></p>
+<p>The awesome list is dedicated to the public domain. Use it as you please with no restrictions whatsoever.</p>
+<p><strong>Questions? Comments?</strong></p>
+<p>Post them to the <a href="http://talk.jekyllrb.com">jekyll talk forum</a>. Thanks!</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="jekyll-editors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="jekyll-themes.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="jekyll-editors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="jekyll-themes.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

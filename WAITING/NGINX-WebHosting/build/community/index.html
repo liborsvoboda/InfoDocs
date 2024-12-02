@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/community/">
+<meta property="og:title" content="NGINX Unit: Community">
+<meta content="Take part in the discussion or join our development and documentation efforts." name="og:description" />
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="prev" title="Troubleshooting" href="../troubleshooting/" />
+
+<title>Community — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../">
+            <img src="../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Community</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#meetings-and-discussions">Meetings and discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-bugs-and-issues">Reporting bugs and issues</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reporting-security-concerns">Reporting security concerns</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-code">Source Code</a></li>
+</ul>
+</li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="community">
+<span id="id1"></span><h1>Community<a class="headerlink" href="#community" title="Permalink to this heading">§</a></h1>
+<div class="section" id="meetings-and-discussions">
+<h2>Meetings and discussions<a class="headerlink" href="#meetings-and-discussions" title="Permalink to this heading">§</a></h2>
+<p>We hold semi-regular meetings on Zoom
+to discuss all things related to Unit
+with our tightly knit and vibrant community.</p>
+<p>Recorded sessions:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=EZbcc6D03Io">NGINX Unit Community Call No.1</a></li>
+</ul>
+</div>
+<div class="section" id="reporting-bugs-and-issues">
+<h2>Reporting bugs and issues<a class="headerlink" href="#reporting-bugs-and-issues" title="Permalink to this heading">§</a></h2>
+<ul class="simple">
+<li>You can report issues and bugs on the
+<a class="reference external" href="https://github.com/nginx/unit/issues">Issues</a> section of the Unit repo.</li>
+<li>If you have found a fix or want to suggest a change to the code,
+you can open a <a class="reference external" href="https://github.com/nginx/unit/pulls">pull request</a>
+on the Unit repo.</li>
+</ul>
+</div>
+<div class="section" id="reporting-security-concerns">
+<h2>Reporting security concerns<a class="headerlink" href="#reporting-security-concerns" title="Permalink to this heading">§</a></h2>
+<p>Please report any security-related issues concerning Unit to
+<a class="reference external" href="mailto:security-alert&#37;&#52;&#48;nginx&#46;org">security-alert<span>&#64;</span>nginx<span>&#46;</span>org</a>.
+For our mutual convenience, specifically mention <strong>NGINX Unit</strong> in the subject and, if possible, provide a
+<a class="reference external" href="https://www.first.org/cvss/">CVSS score</a>.</p>
+</div>
+<div class="section" id="contributing">
+<h2>Contributing<a class="headerlink" href="#contributing" title="Permalink to this heading">§</a></h2>
+<p>We welcome contributions to the NGINX Unit project.</p>
+<p>If you have a feature request or want to suggest an improvement, please submit a pull request on the
+<a class="reference external" href="https://github.com/nginx/unit/pulls">unit repo</a>.</p>
+<p>Please review the <a class="reference external" href="https://github.com/nginx/unit/blob/master/CONTRIBUTING.md">Contributing Guidelines</a>
+before submitting your pull request.</p>
+<p>You can also ask questions and discuss your suggestions for Unit by:</p>
+<ul class="simple">
+<li>Visiting the <a class="reference external" href="https://github.com/nginx/unit/discussions">Discussions section</a>
+of the Unit repo.</li>
+<li>Subscribing to the <a class="reference external" href="https://mailman.nginx.org/mailman3/lists/unit.nginx.org/">unit&#64;nginx.org mailing list</a>
+and posting your ideas there.</li>
+</ul>
+<p>If you are interested in contributing to the <strong>Unit documentation</strong>,
+or find a typo or an error in the docs, you can submit a pull request on the
+<a class="reference external" href="https://github.com/nginx/unit-docs/pulls">unit-docs repo</a>.</p>
+</div>
+<div class="section" id="source-code">
+<h2>Source Code<a class="headerlink" href="#source-code" title="Permalink to this heading">§</a></h2>
+<p>The source code for the NGINX Unit project is available on GitHub.</p>
+<table border="1" class="docutils align-default">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Repository</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="https://github.com/nginx/unit">github.com/nginx/unit</a></td>
+<td>The repository for the NGINX Unit project source code.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="https://github.com/nginx/unit-docs">github.com/nginx/unit-docs</a></td>
+<td>The source code for the NGINX Unit documentation you are currently reading.</td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="https://github.com/nginx/unit/tree/master/tools">github.com/nginx/unit/tree/master/tools</a></td>
+<td>Source code for the NGINX Unit command-line tools.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/community.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

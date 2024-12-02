@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/howto/modules/">
+<meta property="og:title" content="NGINX Unit: Working With Language Modules">
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="App Samples" href="../samples/" />
+<link rel="prev" title="TLS with Certbot" href="../certbot/" />
+
+<title>Working With Language Modules — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../../">
+            <img src="../../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../">About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../keyfeatures/">Key features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../">How-to</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../docker/">Unit in Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source/">Building From Source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ansible/">Unit in Ansible</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/">NGINX Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certbot/">TLS with Certbot</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Language Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#external-language-modules">External Language Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#embedded-language-modules">Embedded Language Modules</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#packaging-custom-modules">Packaging Custom Modules</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../samples/">App Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/">Security Checklist</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../walkthrough/">Walkthrough</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#frameworks">Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#applications">Applications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="working-with-language-modules">
+<h1>Working With Language Modules<a class="headerlink" href="#working-with-language-modules" title="Permalink to this heading">§</a></h1>
+<p>Languages supported by Unit fall into these two categories:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#modules-ext"><span class="std std-ref">External</span></a> (Go, Node.js): Run outside Unit with an
+interface layer to the native runtime.</li>
+<li><a class="reference internal" href="#modules-emb"><span class="std std-ref">Embedded</span></a> (Java, Perl, PHP, Python, Ruby, WebAssembly):
+Execute in runtimes that Unit loads at startup.</li>
+</ul>
+<p>For any specific language and its version, Unit needs a language module.</p>
+<div class="section" id="external-language-modules">
+<span id="modules-ext"></span><h2>External Language Modules<a class="headerlink" href="#external-language-modules" title="Permalink to this heading">§</a></h2>
+<p>External modules are regular language libraries or packages that you install
+like any other.  They provide common web functionality, communicating with Unit
+from the app’s runspace.</p>
+<p>In Go, Unit support is implemented with a package that you <a class="reference internal" href="../../configuration/#configuration-go"><span class="std std-ref">import</span></a> in your apps to make them Unit-aware.</p>
+<p>In Node.js, Unit is supported by an <strong class="program">npm</strong>-hosted <a class="reference external" href="https://www.npmjs.com/package/unit-http">package</a> that you <a class="reference internal" href="../../configuration/#configuration-nodejs"><span class="std std-ref">require</span></a> in your app code.  You can <a class="reference internal" href="../../installation/#installation-nodejs-package"><span class="std std-ref">install</span></a> the package from the <strong class="program">npm</strong> repository;
+otherwise, <a class="reference internal" href="../source/#modules-nodejs"><span class="std std-ref">build</span></a> it for your version of
+Node.js using Unit’s sources.</p>
+<p>For WebAssembly, Unit delegates bytecode execution to the
+<a class="reference external" href="https://wasmtime.dev/">Wasmtime</a>
+runtime that is installed with the
+<a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">language module</span></a>
+module or during
+a <a class="reference internal" href="../source/#source-wasm"><span class="std std-ref">source build</span></a>.</p>
+</div>
+<div class="section" id="embedded-language-modules">
+<span id="modules-emb"></span><h2>Embedded Language Modules<a class="headerlink" href="#embedded-language-modules" title="Permalink to this heading">§</a></h2>
+<p>Embedded modules are shared libraries that Unit loads at startup.  Query Unit
+to find them in your system:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>-h
+
+<span class="go">       ...</span>
+<span class="go">      --log FILE           set log filename</span>
+<span class="go">                           default: &quot;<span class=nxt_ph title="This is the default log path which can be overridden at runtime">/default/path/to/unit.log</span>&quot;</span>
+
+<span class="go">      --modules DIRECTORY  set modules directory name</span>
+<span class="go">                           default: &quot;<span class=nxt_ph title="This is the default modules path which can be overridden at runtime">/default/modules/path/</span>&quot;</span>
+
+<span class="gp">$ </span><span class=nxt_hint title="Check whether the defaults were overridden at launch">ps ax | grep unitd</span>
+<span class="go">      ...</span>
+<span class="go">      unit: main v1.33.0 [unitd --log <span class=nxt_ph title="If this option is set, its value is used at runtime">/runtime/path/to/unit.log</span> --modules <span class=nxt_ph title="If this option is set, its value is used at runtime">/runtime/modules/path/</span> ... ]</span>
+
+<span class="gp">$ </span>ls<span class="w"> </span><span class=nxt_ph title="Use runtime value if the default was overridden">/path/to/modules</span>
+
+<span class="go">      java.unit.so  php.unit.so     ruby.unit.so  wasm_wasi_component.unit.so</span>
+<span class="go">      perl.unit.so  python.unit.so  wasm.unit.so</span>
+</pre></div>
+</div>
+<p>To clarify the module versions, check the <a class="reference internal" href="../../troubleshooting/#troubleshooting-log"><span class="std std-ref">Unit log</span></a>
+to see which modules were loaded at startup:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>less<span class="w"> </span><span class=nxt_ph title="Path to log can be determined in the same manner as above">/path/to/unit.log</span>
+<span class="go">      ...</span>
+<span class="go">      discovery started</span>
+<span class="go">      module: &lt;language&gt; &lt;version&gt; &quot;/path/to/modules/&lt;module name&gt;.unit.so&quot;</span>
+<span class="go">      ...</span>
+</pre></div>
+</div>
+<p>If a language version is not listed, Unit can’t run apps that rely on it;
+however, you can add new modules:</p>
+<ul class="simple">
+<li>If possible, use the official <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">language packages</span></a> for easy integration and maintenance.</li>
+<li>If you installed Unit via a <a class="reference internal" href="../../installation/#installation-community-repos"><span class="std std-ref">third-party repo</span></a>, check whether a suitable language package is
+available there.</li>
+<li>If you want a customized yet reusable solution, <a class="reference internal" href="#modules-pkg"><span class="std std-ref">prepare</span></a>
+your own package to be installed beside Unit.</li>
+</ul>
+<div class="section" id="packaging-custom-modules">
+<span id="modules-pkg"></span><h3>Packaging Custom Modules<a class="headerlink" href="#packaging-custom-modules" title="Permalink to this heading">§</a></h3>
+<p>There’s always a chance that you need to run a language version that isn’t yet
+available among the official Unit <a class="reference internal" href="../../installation/#installation-precomp-pkgs"><span class="std std-ref">packages</span></a>
+but still want to benefit from the convenience of a packaged installation.  In
+this case, you can build your own package to be installed alongside the
+official distribution, adding the latter as a prerequisite.</p>
+<p>Here, we are packaging a custom PHP&nbsp;7.3 <a class="reference internal" href="../source/#modules-php"><span class="std std-ref">module</span></a> to be installed next to the official Unit package;
+adjust the command samples as needed to fit your scenario.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For details of building Unit language modules, see the source code
+<a class="reference internal" href="../source/#source-modules"><span class="std std-ref">howto</span></a>; it also describes building
+<a class="reference internal" href="../source/"><span class="doc">Unit</span></a> itself.  For more packaging examples, see our package
+<a class="reference external" href="https://github.com/nginx/unit/tree/master/pkg">sources</a>.</p>
+</div>
+<div class="nxt_tabs nxt_toc docutils container" id="modules-rpm">
+<span id="modules-deb"></span><input name=packages type=radio
+            id=packages_0 class=nojs checked/>
+            <label for=packages_0 id=packages-deb>
+            <a href=#packages-deb onclick="nxt_tab_click(event)">.deb</a></label><div class="docutils container">
+<p>Assuming you are packaging for the current system and have the official
+Unit package installed:</p>
+<ol class="arabic">
+<li><p class="first">Make sure to install the <a class="reference internal" href="../source/#source-prereq-build"><span class="std std-ref">prerequisites</span></a> for the package.  In our example,
+it’s PHP&nbsp;7.3 on Debian&nbsp;10:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Needed to install the php7.3 package from the PHP repo">ca-certificates apt-transport-https debian-archive-keyring</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>curl<span class="w"> </span>--output<span class="w"> </span>/usr/share/keyrings/php-keyring.gpg<span class="w">  </span><span class="se">\</span>
+<span class="w">      </span><span class=nxt_hint title="Adding the repo key to make it usable">https://packages.sury.org/php/apt.gpg</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;deb [signed-by=/usr/share/keyrings/php-keyring.gpg]  \</span>
+<span class="s2">      https://packages.sury.org/php/ buster main&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/apt/sources.list.d/php.list
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span>php7.3
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>apt<span class="w"> </span>install<span class="w"> </span><span class=nxt_hint title="Needed to build the module and the package">php-dev libphp-embed</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a staging directory for your package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">export</span><span class="w"> </span><span class="nv">UNITTMP</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span>/tmp<span class="w"> </span>-t<span class="w"> </span>unit.XXXXXX<span class="k">)</span>
+<span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$UNITTMP</span>/unit-php7.3/DEBIAN
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$UNITTMP</span>
+</pre></div>
+</div>
+<p>This creates a folder structure fit for <strong class="program">dpkg-deb</strong>; the
+<strong>DEBIAN</strong> folder will store the package definition.</p>
+</li>
+<li><p class="first">Run <strong class="program">unitd --version</strong> and note the <strong class="program">./configure</strong>
+<a class="reference internal" href="../source/#source-config-src"><span class="std std-ref">flags</span></a> for later use, omitting
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--ld-opt</span></code> and <code class="xref std std-option docutils literal notranslate"><span class="pre">--njs</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>--version
+
+<span class="go">    unit version: 1.33.0</span>
+<span class="go">    configured as ./configure <span class=nxt_ph title="Note the flags, omitting --ld-opt and --njs">FLAGS</span></span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Download Unit’s sources, <a class="reference internal" href="../source/#source-modules"><span class="std std-ref">configure</span></a>
+and build your custom module, then put it where Unit will find it:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>curl<span class="w"> </span>-O<span class="w"> </span>https://sources.nginx.org/unit/unit-1.33.0.tar.gz
+<span class="gp">$ </span>tar<span class="w"> </span>xzf<span class="w"> </span>unit-1.33.0.tar.gz<span class="w">                                 </span><span class="c1"># Puts Unit&#39;s sources in the unit-1.33.0 subdirectory</span>
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>unit-1.33.0
+<span class="gp">$ </span>./configure<span class="w"> </span><span class=nxt_ph title="The ./configure flags, except for --ld-opt and --njs">FLAGS W/O --LD-OPT & --NJS</span><span class="w">                     </span><span class="c1"># Use the ./configure flags noted in the previous step</span>
+<span class="gp">$ </span>./configure<span class="w"> </span>php<span class="w"> </span>--module<span class="o">=</span>php7.3<span class="w"> </span>--config<span class="o">=</span>php-config<span class="w">        </span><span class="c1"># Configures the module itself</span>
+<span class="gp">$ </span>make<span class="w"> </span>php7.3<span class="w">                                                </span><span class="c1"># Builds the module in the build/ subdirectory</span>
+<span class="gp">$ </span>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nv">$UNITTMP</span>/unit-php7.3/<span class=nxt_ph title="Path to Unit's language modules">MODULESPATH</span><span class="w">                  </span><span class="c1"># Use the module path set by ./configure or by default</span>
+<span class="gp">$ </span>mv<span class="w"> </span>build/php7.3.unit.so<span class="w"> </span><span class="nv">$UNITTMP</span>/unit-php7.3/<span class=nxt_ph title="Path to Unit's language modules">MODULESPATH</span><span class="w">   </span><span class="c1"># Adds the module to the package</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a <strong>$UNITTMP/unit-php7.3/DEBIAN/control</strong> <a class="reference external" href="https://www.debian.org/doc/debian-policy/ch-controlfields.html">file</a>,
+listing <strong>unit</strong> with other dependencies:</p>
+<div class="highlight-control notranslate"><div class="highlight"><pre><span></span><span class="k">Package</span><span class="w">: </span><span class="s">unit-php7.3</span>
+<span class="k">Version</span>: <span class="m">1.33.0</span>
+<span class="k">Comment0</span><span class="w">: </span><span class="s">Use Unit&#39;s package version for consistency: &#39;apt show unit | grep Version&#39;</span>
+<span class="k">Architecture</span><span class="w">: </span><span class="s">amd64</span>
+<span class="k">Comment1</span><span class="w">: </span><span class="s">To get current architecture, run &#39;dpkg --print-architecture&#39;</span>
+<span class="k">Comment2</span><span class="w">: </span><span class="s">For a list of other options, run &#39;dpkg-architecture -L&#39;</span>
+<span class="k">Depends</span>: <span class="nf">unit</span> (<span class="o">=</span> <span class="m">1.33.0-1~buster</span>), <span class="nf">php7.3</span>, <span class="nf">libphp-embed</span>
+<span class="k">Comment3</span><span class="w">: </span><span class="s">Specify Unit&#39;s package version to avoid issues when Unit updates</span>
+<span class="k">Comment4</span><span class="w">: </span><span class="s">Again, run &#39;apt show unit | grep Version&#39; to get this value</span>
+<span class="k">Maintainer</span>: Jane Doe <span class="gs">&lt;j.doe@example.com&gt;</span>
+<span class="k">Description</span><span class="gs">: Custom PHP 7.3 language module for NGINX Unit 1.33.0</span>
+</pre></div>
+</div>
+<p>Save and close the file.</p>
+</li>
+<li><p class="first">Build and install the package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>dpkg-deb<span class="w"> </span>-b<span class="w"> </span><span class="nv">$UNITTMP</span>/unit-php7.3
+<span class="gp"># </span>dpkg<span class="w"> </span>-i<span class="w"> </span><span class="nv">$UNITTMP</span>/unit-php7.3.deb
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<input name=packages type=radio
+            id=packages_1 class=nojs />
+            <label for=packages_1 id=packages-rpm>
+            <a href=#packages-rpm onclick="nxt_tab_click(event)">.rpm</a></label><div class="docutils container">
+<p>Assuming you are packaging for the current system and have the official
+Unit package installed:</p>
+<ol class="arabic">
+<li><p class="first">Make sure to install the <a class="reference internal" href="../source/#source-prereq-build"><span class="std std-ref">prerequisites</span></a> for the package.  In our example,
+it’s PHP&nbsp;7.3 on Fedora&nbsp;30:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>php-7.3.8
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>php-devel<span class="w"> </span>php-embedded
+</pre></div>
+</div>
+</li>
+<li><p class="first">Install RPM development tools and prepare the directory structure:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>rpmdevtools
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rpmdev-setuptree
+</pre></div>
+</div>
+</li>
+<li><p class="first">Create a <strong>.spec</strong> <a class="reference external" href="https://rpm-packaging-guide.github.io/#what-is-a-spec-file">file</a>
+to store build commands for your custom package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>~/rpmbuild/SPECS
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rpmdev-newspec<span class="w"> </span>unit-php7.3
+</pre></div>
+</div>
+</li>
+<li><p class="first">Run <strong class="program">unitd --version</strong> and note the <strong class="program">./configure</strong>
+<a class="reference internal" href="../source/#source-config-src"><span class="std std-ref">flags</span></a> for later use, omitting
+<code class="xref std std-option docutils literal notranslate"><span class="pre">--ld-opt</span></code> and <code class="xref std std-option docutils literal notranslate"><span class="pre">--njs</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>unitd<span class="w"> </span>--version
+
+<span class="go">    unit version: 1.33.0</span>
+<span class="go">    configured as ./configure <span class=nxt_ph title="Note the flags, omitting --ld-opt and --njs">FLAGS</span></span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Edit the <strong>unit-php7.3.spec</strong> file, adding the commands that
+download Unit’s sources, <a class="reference internal" href="../source/#source-modules"><span class="std std-ref">configure</span></a> and build your custom module, then
+put it where Unit will find it:</p>
+<div class="highlight-spec notranslate"><div class="highlight"><pre><span></span><span class="gh">Name</span><span class="p">:</span><span class="w">           </span>unit-php7.3
+<span class="gh">Version</span><span class="p">:</span><span class="w">        </span>1.33.0
+<span class="c"># Use Unit&#39;s package version for consistency: &#39;yum info unit | grep Version&#39;</span>
+<span class="gh">Release</span><span class="p">:</span><span class="w">        </span>1<span class="nv">%{?dist}</span>
+<span class="gh">Summary</span><span class="p">:</span><span class="w">        </span>Custom<span class="w"> </span>language<span class="w"> </span>module<span class="w"> </span>for<span class="w"> </span>NGINX<span class="w"> </span>Unit
+
+<span class="gh">License</span><span class="p">:</span><span class="w">        </span>ASL<span class="w"> </span>2.0
+<span class="c"># Unit uses ASL 2.0; your license depends on the language you are packaging</span>
+<span class="gh">URL</span><span class="p">:</span><span class="w">            </span>https://example.com
+<span class="gh">BuildRequires</span><span class="p">:</span><span class="w">  </span>gcc
+<span class="gh">BuildRequires</span><span class="p">:</span><span class="w">  </span>make
+<span class="gh">BuildRequires</span><span class="p">:</span><span class="w">  </span>php-devel
+<span class="gh">BuildRequires</span><span class="p">:</span><span class="w">  </span>php-embedded
+<span class="gh">Requires</span><span class="p">:</span><span class="w">       </span>unit<span class="w"> </span>=<span class="w"> </span>1.33.0
+<span class="c"># Specify Unit&#39;s package version to avoid issues when Unit updates</span>
+<span class="c"># Again, run &#39;yum info unit | grep Version&#39; to get this value</span>
+<span class="gh">Requires</span><span class="p">:</span><span class="w">       </span>php<span class="w"> </span>&gt;=<span class="w"> </span>7.3
+<span class="gh">Requires</span><span class="p">:</span><span class="w">       </span>php-embedded
+
+<span class="nd">%description</span>
+Custom<span class="w"> </span>language<span class="w"> </span>module<span class="w"> </span>for<span class="w"> </span>NGINX<span class="w"> </span>Unit<span class="w"> </span>1.33.0<span class="w"> </span>(https://unit.nginx.org).
+
+Maintainer:<span class="w"> </span>Jane<span class="w"> </span>Doe<span class="w"> </span>&lt;j.doe@example.com&gt;
+
+<span class="nd">%prep</span>
+curl<span class="w"> </span>-O<span class="w"> </span>https://sources.nginx.org/unit/unit-1.33.0.tar.gz
+<span class="c"># Downloads Unit&#39;s sources</span>
+tar<span class="w"> </span>--strip-components=1<span class="w"> </span>-xzf<span class="w"> </span>unit-1.33.0.tar.gz
+<span class="c"># Extracts them locally for compilation steps in the %build section</span>
+
+<span class="nd">%build</span>
+./configure<span class="w"> </span><span class=nxt_ph title="The ./configure flags, except for --ld-opt and --njs">FLAGS W/O --LD-OPT & --NJS</span>
+<span class="c"># Configures the build; use the ./configure flags noted in the previous step</span>
+./configure<span class="w"> </span>php<span class="w"> </span>--module=php7.3<span class="w"> </span>--config=php-config
+<span class="c"># Configures the module itself</span>
+make<span class="w"> </span>php7.3
+<span class="c"># Builds the module</span>
+
+<span class="nd">%install</span>
+DESTDIR=<span class="kc">%{buildroot}</span><span class="w"> </span>make<span class="w"> </span>php7.3-install
+<span class="c"># Adds the module to the package</span>
+
+<span class="nd">%files</span>
+<span class="k">%attr</span>(0755,<span class="w"> </span>root,<span class="w"> </span>root)<span class="w"> </span><span class="s2">&quot;<span class=nxt_ph title="Path to Unit's language modules">MODULESPATH</span>/php7.3.unit.so&quot;</span>
+<span class="c"># Lists the module as package contents to include it in the package build</span>
+<span class="c"># Use the module path set by ./configure or by default</span>
+</pre></div>
+</div>
+<p>Save and close the file.</p>
+</li>
+<li><p class="first">Build and install the package:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>rpmbuild<span class="w"> </span>-bb<span class="w"> </span>unit-php7.3.spec
+
+<span class="go">    ...</span>
+<span class="go">    Wrote: /home/user/rpmbuild/RPMS/&lt;arch&gt;/unit-php7.3-&lt;moduleversion&gt;.&lt;arch&gt;.rpm</span>
+<span class="go">    ...</span>
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/home/user/rpmbuild/RPMS/&lt;arch&gt;/unit-php7.3-&lt;moduleversion&gt;.&lt;arch&gt;.rpm
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/howto\modules.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

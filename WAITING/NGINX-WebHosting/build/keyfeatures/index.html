@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- TrustArc handles cookie consent and is a prerequisite for loading Tealium -->
+<script async="async" src="https://consent.trustarc.com/notice?domain=f5.com&c=teconsent&js=nj&noticeType=bb&text=true&gtm=1" crossorigin=""></script>
+<!-- Tealium profile utag.sync.js script -->
+<script src="https://mktg.tags.f5.com/nginx-unit/prod/utag.sync.js"></script>
+<!-- End TrustArc/Tealium -->
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://unit.nginx.org/keyfeatures/">
+<meta property="og:title" content="NGINX Unit: Key features">
+<meta content="A detailed inventory of Unit's key features." name="og:description" />
+
+<meta property="og:image" content="http://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:secure_url" content="https://unit.nginx.org/_static/logo.png?e39b3bbae06cd8bdb5a7814270161b52">
+<meta property="og:image:width" content="988">
+<meta property="og:image:height" content="357">
+<meta property="og:image:alt" content="NGINX Unit logo" />
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+
+<style>
+/* open-sans-regular - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('OpenSans'), local('Open Sans'), local('Open Sans Regular'), local('OpenSans-Regular'),
+       url('../_static/open-sans-v40-latin_latin-ext-regular.woff2?058e68d126ca347a4db54933db4738db') format('woff2');
+}
+
+/* open-sans-italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('OpenSansItalic'), local('Open Sans Italic'), local('OpenSans Italic'), local('OpenSans-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-italic.woff2?86b58c2ae26455092651312b8582674f') format('woff2');
+}
+
+/* open-sans-700 - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('OpenSansBold'), local('Open Sans Bold'), local('OpenSans Bold'), local('OpenSans-Bold'),
+       url('../_static/open-sans-v40-latin_latin-ext-700.woff2?40654e941d643aead74c5d6a56a38c6b') format('woff2');
+}
+
+/* open-sans-700italic - latin_latin-ext */
+@font-face {
+  font-display: swap;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('OpenSansBoldItalic'), local('Open Sans Bold Italic'), local('OpenSans Bold Italic'), local('OpenSans-BoldItalic'), local('OpenSans-Bold-Italic'),
+       url('../_static/open-sans-v40-latin_latin-ext-700italic.woff2?e4fada57efe79e0fb447a7dc076a568b') format('woff2');
+}
+
+</style>
+<link rel="stylesheet" href="../_static/style.css?02b1052daea25a810283ecaa29bc2462" />
+<link rel="icon" href="../_static/icon.png?26255dfe9094cf47412c8b5d3757467b" />
+<link rel="alternate" type="application/rss+xml" title="Subscribe to NGINX Unit News" href="https://unit.nginx.org/rss.xml" />
+<script async src="../_static/script.js?8dc8ff30c396ce882326156b1581000a"></script>
+<link rel="next" title="News" href="../news/" />
+<link rel="prev" title="Universal web app server" href="../" />
+
+<title>Key features — NGINX Unit</title>
+</head>
+<body>
+<!-- Tealium Universal Tag -->
+<script type="text/javascript">
+  (function(a,b,c,d) {
+      a='//mktg.tags.f5.com/nginx-unit/prod/utag.js';
+      b=document;c='script';d=b.createElement(c);d.src=a;
+      d.type='text/java'+c;d.async=true;
+      a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a)})();
+</script>
+<!-- End Tealium Universal Tag -->
+
+<!-- Global banner goes here
+    <div id="rennab"><a href="BANNER LINK">BANNER TEXT</a></div>
+-->
+<div id="main">
+<div id="side">
+    <h1>
+        <a href="../">
+            <img src="../_static/logo.svg?ea753eb2210f855447af3b2367898f85" alt="NGINX Unit" />
+        </a>
+        
+        <div id="version_link" title="Released on Sep 18, 2024">
+         <a style="text-decoration:none;" href="../news/2024/unit-1.33.0-released/">v. 1.33.0</a>
+         </div>
+    </h1>
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">About</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Key features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#flexibility">Flexibility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#performance">Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#security-robustness">Security &amp; robustness</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-app-languages">Supported app languages</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../news/">News</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controlapi/">Control API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../scripting/">Scripting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../certificates/">SSL/TLS certificates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../statusapi/">Status API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../unitctl/">CLI (unitctl)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/">How-to</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community/">Community</a></li>
+</ul>
+
+</div>
+<div id="content">
+    
+  <div class="section" id="key-features">
+<h1>Key features<a class="headerlink" href="#key-features" title="Permalink to this heading">§</a></h1>
+<p>From the start,
+our vision for Unit was
+versatility,
+speed,
+and reliability.
+Here’s how we
+tackle these goals.</p>
+<div class="section" id="flexibility">
+<h2>Flexibility<a class="headerlink" href="#flexibility" title="Permalink to this heading">§</a></h2>
+<ul class="simple">
+<li>The
+<a class="reference internal" href="../controlapi/#configuration-api"><span class="std std-ref">entire configuration</span></a>
+is managed dynamically over HTTP
+via a friendly
+<a class="reference internal" href="../controlapi/#configuration-mgmt"><span class="std std-ref">RESTful JSON API</span></a>.</li>
+<li>Updates to the configuration
+are performed granularly at runtime
+with zero interruption.</li>
+<li>Requests are
+<a class="reference internal" href="../configuration/#configuration-routes"><span class="std std-ref">routed</span></a>
+between
+<a class="reference internal" href="../configuration/#configuration-static"><span class="std std-ref">static content</span></a>,
+upstream
+<a class="reference internal" href="../configuration/#configuration-proxy"><span class="std std-ref">servers</span></a>,
+and local
+<a class="reference internal" href="../configuration/#configuration-applications"><span class="std std-ref">apps</span></a>.</li>
+<li>Request filtering and dispatching uses elaborate
+<a class="reference internal" href="../configuration/#configuration-routes-matching"><span class="std std-ref">matching rules</span></a>
+that enable
+<a class="reference internal" href="../configuration/#configuration-routes-matching-patterns"><span class="std std-ref">regular expressions</span></a>,
+<a class="reference internal" href="../configuration/#configuration-response-headers"><span class="std std-ref">response header</span></a> awareness,
+and
+<strong class="program">njs</strong>
+<a class="reference internal" href="../scripting/"><span class="doc">scripting</span></a>.</li>
+<li>Apps in multiple languages and language versions run
+<a class="reference internal" href="../configuration/#configuration-applications"><span class="std std-ref">side by side</span></a>.</li>
+<li>Server-side <a class="reference internal" href="../configuration/#configuration-wasm"><span class="std std-ref">WebAssembly</span></a>
+is natively supported.</li>
+<li>Common
+<a class="reference internal" href="../howto/#howto-frameworks"><span class="std std-ref">language-specific APIs</span></a>
+for all supported languages run seamlessly.</li>
+<li>Upstream
+<a class="reference internal" href="../configuration/#configuration-upstreams"><span class="std std-ref">server groups</span></a>
+provide dynamic load balancing
+using a weighted round-robin method.</li>
+<li>Originating IP identification
+<a class="reference internal" href="../configuration/#configuration-listeners-xff"><span class="std std-ref">supports</span></a>
+<strong>X-Forwarded-For</strong> and similar header fields.</li>
+</ul>
+</div>
+<div class="section" id="performance">
+<h2>Performance<a class="headerlink" href="#performance" title="Permalink to this heading">§</a></h2>
+<ul class="simple">
+<li>Requests are asynchronously processed in threads
+with efficient event loops
+(<strong class="program">epoll</strong>, <strong class="program">kqueue</strong>).</li>
+<li>Syscalls and data copy operations
+are kept to a necessary minimum.</li>
+<li>10,000 inactive HTTP keep-alive connections
+take up only a few MBs of memory.</li>
+<li>Router and app processes rely on low-latency IPC
+built with lock-free queues
+over shared memory.</li>
+<li>Built-in
+<a class="reference internal" href="../statusapi/#configuration-stats"><span class="std std-ref">statistics</span></a>
+provide insights
+into Unit’s performance.</li>
+<li>The number of per-app processes
+is defined statically or
+<a class="reference internal" href="../configuration/#configuration-proc-mgmt-prcs"><span class="std std-ref">scales</span></a>
+preemptively
+within given limits.</li>
+<li>App and instance usage statistics
+are collected and
+<a class="reference internal" href="../statusapi/#configuration-stats"><span class="std std-ref">exposed</span></a>
+via the API.</li>
+<li>Multithreaded request processing
+is supported for
+<a class="reference internal" href="../configuration/#configuration-java"><span class="std std-ref">Java</span></a>,
+<a class="reference internal" href="../configuration/#configuration-perl"><span class="std std-ref">Perl</span></a>,
+<a class="reference internal" href="../configuration/#configuration-python"><span class="std std-ref">Python</span></a>,
+and
+<a class="reference internal" href="../configuration/#configuration-ruby"><span class="std std-ref">Ruby</span></a>
+apps.</li>
+</ul>
+</div>
+<div class="section" id="security-robustness">
+<h2>Security &amp; robustness<a class="headerlink" href="#security-robustness" title="Permalink to this heading">§</a></h2>
+<ul class="simple">
+<li>Client connections
+are handled
+by a separate non-privileged router process.</li>
+<li>Low-resource conditions
+(out of memory or descriptors)
+and app crashes
+are handled gracefully.</li>
+<li><a class="reference internal" href="../certificates/#configuration-ssl"><span class="std std-ref">SSL/TLS</span></a>
+with
+<a class="reference internal" href="../configuration/#configuration-listeners-ssl"><span class="std std-ref">SNI</span></a>,
+<a class="reference internal" href="../configuration/#configuration-listeners-ssl-sessions"><span class="std std-ref">session cache and tickets</span></a>
+is integrated
+(OpenSSL&nbsp;1.0.1 and later).</li>
+<li>Different apps
+are isolated
+in separate processes.</li>
+<li>Apps can be additionally containerized
+with namespace and file system
+<a class="reference internal" href="../configuration/#configuration-proc-mgmt-isolation"><span class="std std-ref">isolation</span></a>.</li>
+<li>Static file serving benefits from
+<a class="reference internal" href="../configuration/#configuration-share-path"><span class="std std-ref">chrooting</span></a>,
+symlink and mount point
+<a class="reference internal" href="../configuration/#configuration-share-resolution"><span class="std std-ref">traversal restrictions</span></a>.</li>
+</ul>
+</div>
+<div class="section" id="supported-app-languages">
+<h2>Supported app languages<a class="headerlink" href="#supported-app-languages" title="Permalink to this heading">§</a></h2>
+<p>Unit interoperates with:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.nginx.com/blog/nginx-unit-adds-assembly-language-support/">Binary-compiled languages</a>
+in general:
+using the embedded <strong class="program">libunit</strong> library.</li>
+<li><a class="reference internal" href="../configuration/#configuration-go"><span class="std std-ref">Go</span></a>:
+by
+<a class="reference internal" href="../configuration/#updating-go-apps"><span class="std std-ref">overriding</span></a>
+the <strong class="program">http</strong> module.</li>
+<li><a class="reference internal" href="../configuration/#configuration-nodejs"><span class="std std-ref">JavaScript (Node.js)</span></a>:
+by automatically
+<a class="reference internal" href="../installation/#installation-nodejs-package"><span class="std std-ref">overloading</span></a>
+the <strong class="program">http</strong> and <strong class="program">websocket</strong> modules.</li>
+<li><a class="reference internal" href="../configuration/#configuration-java"><span class="std std-ref">Java</span></a>:
+by using the Servlet Specification 3.1 and WebSocket APIs.</li>
+<li><a class="reference internal" href="../configuration/#configuration-perl"><span class="std std-ref">Perl</span></a>:
+by using PSGI.</li>
+<li><a class="reference internal" href="../configuration/#configuration-php"><span class="std std-ref">PHP</span></a>:
+by using a custom SAPI module.</li>
+<li><a class="reference internal" href="../configuration/#configuration-python"><span class="std std-ref">Python</span></a>:
+by using WSGI or ASGI
+with WebSocket support.</li>
+<li><a class="reference internal" href="../configuration/#configuration-ruby"><span class="std std-ref">Ruby</span></a>:
+by using the Rack API.</li>
+<li><a class="reference internal" href="../configuration/#configuration-wasm"><span class="std std-ref">WebAssembly</span></a>:
+by using Wasmtime.</li>
+</ul>
+</div>
+</div>
+
+
+    
+    <div class="nxt_edit_link"><a href="https://github.com/nginx/unit-docs/edit/main/source/keyfeatures.rst"><div></div>Edit this page</a></div>
+    
+    
+    <div class="nxt_discuss_link"><a href="https://github.com/nginx/unit/discussions/"><div></div>Discuss on GitHub</a></div>
+    
+    <p id="footer">
+        © 2017-2024 <a href="https://www.nginx.com/">NGINX, Inc.</a>
+    </p>
+    <p id="tecookie">
+        <!-- TrustArc cookie preferences link -->
+        <span id="teconsent"></span>
+        <!-- End TrustArc cookie preferences link -->
+    </p>
+</div>
+</div>
+<!-- TrustArc cookie consent -->
+<div id="consent_blackbar" style="position:fixed;top:0px;width:100%">
+<!-- End TrustArc cookie consent -->
+</body>
+</html>

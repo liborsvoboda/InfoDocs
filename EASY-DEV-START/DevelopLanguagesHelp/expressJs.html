@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>expressJs - EIC&amp;ESB Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EIC&amp;ESB Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded "><a href="adonisJs.html"><strong aria-hidden="true">1.</strong> adonisJs</a></li><li class="chapter-item expanded "><a href="aws.html"><strong aria-hidden="true">2.</strong> aws</a></li><li class="chapter-item expanded "><a href="cSharp.html"><strong aria-hidden="true">3.</strong> cSharp</a></li><li class="chapter-item expanded "><a href="curl.html"><strong aria-hidden="true">4.</strong> curl</a></li><li class="chapter-item expanded "><a href="docker.html"><strong aria-hidden="true">5.</strong> docker</a></li><li class="chapter-item expanded "><a href="elasticsearch.html"><strong aria-hidden="true">6.</strong> elasticsearch</a></li><li class="chapter-item expanded "><a href="expressJs.html" class="active"><strong aria-hidden="true">7.</strong> expressJs</a></li><li class="chapter-item expanded "><a href="gcloud.html"><strong aria-hidden="true">8.</strong> gcloud</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">9.</strong> git</a></li><li class="chapter-item expanded "><a href="golang.html"><strong aria-hidden="true">10.</strong> golang</a></li><li class="chapter-item expanded "><a href="java.html"><strong aria-hidden="true">11.</strong> java</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">12.</strong> javascript</a></li><li class="chapter-item expanded "><a href="kubernetes.html"><strong aria-hidden="true">13.</strong> kubernetes</a></li><li class="chapter-item expanded "><a href="laravel.html"><strong aria-hidden="true">14.</strong> laravel</a></li><li class="chapter-item expanded "><a href="mongodb.html"><strong aria-hidden="true">15.</strong> mongodb</a></li><li class="chapter-item expanded "><a href="mysql.html"><strong aria-hidden="true">16.</strong> mysql</a></li><li class="chapter-item expanded "><a href="nginx.html"><strong aria-hidden="true">17.</strong> nginx</a></li><li class="chapter-item expanded "><a href="nodeJs.html"><strong aria-hidden="true">18.</strong> nodeJs</a></li><li class="chapter-item expanded "><a href="php.html"><strong aria-hidden="true">19.</strong> php</a></li><li class="chapter-item expanded "><a href="pm2.html"><strong aria-hidden="true">20.</strong> pm2</a></li><li class="chapter-item expanded "><a href="puppeteer.html"><strong aria-hidden="true">21.</strong> puppeteer</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">22.</strong> python</a></li><li class="chapter-item expanded "><a href="ubuntu.html"><strong aria-hidden="true">23.</strong> ubuntu</a></li><li class="chapter-item expanded "><a href="vscode.html"><strong aria-hidden="true">24.</strong> vscode</a></li><li class="chapter-item expanded "><a href="xml.html"><strong aria-hidden="true">25.</strong> xml</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>/* *******************************************************************************************</p>
+<ul>
+<li>API</li>
+<li>http://expressjs.com/en/api.html</li>
+<li>******************************************************************************************* */
+<code>npm i express --save</code> or<code>yarn add -D express``(-D saves it as a dev dependency)</code>
+<code>yarn add -D @types/express``(Installing for TS)</code></li>
+</ul>
+<p>const express = require(&quot;express&quot;); // Importing the express library.
+const app = express(); // Intializing the imported express application</p>
+<p>/* *******************************************************************************************</p>
+<ul>
+<li>GLOBAL OBJECTS</li>
+<li>http://expressjs.com/en/api.html#express.json</li>
+<li>******************************************************************************************* */</li>
+</ul>
+<p><code>Methods</code>;</p>
+<p><code>express.json([options]);</code></p>
+<p>options: `
+inflate                   // to manage the deflated bodies like enabling and disabling</p>
+<p>limit                     // Controls the maximum request body size.</p>
+<p>reviver                   // It is passed directly to JSON.parse as an second argument</p>
+<p>type                      // This is used to determine the type of middleware will parse</p>
+<p>verify                    // It is an undefined function which used to verify the middleware parsing.</p>
+<p>`;</p>
+<p><code>express.raw([options]);</code></p>
+<p>options: `
+inflate                   // to manage the deflated bodies like enabling and disabling</p>
+<p>limit                     // Controls the maximum request body size.</p>
+<p>type                      // This is used to determine the type of middleware will parse</p>
+<p>verify                    // It is an undefined function which used to verify the middleware parsing.
+`;</p>
+<p><code>express.Router([options]);</code></p>
+<p>options: `
+caseSensitive             //Enables case sensitivity</p>
+<p>mergeParams               //if param names of child and parent are conflicted then the child takes the precedence</p>
+<p>strict                    // Enables Strict routing
+`;</p>
+<p><code>express.static(root, [options]);</code></p>
+<p>options: `
+dotfiles                 // determines how dotfiles are used</p>
+<p>etag                     // Operates etag generation</p>
+<p>extensions               // Operates file extension fallback</p>
+<p>fallthrough              //	Enable or disable the immutable directive in the Cache-Control response header</p>
+<p>index                    // sends the specified directory index file</p>
+<p>LastModified             // sets the Last-Modified header to the last modified date</p>
+<p>setHeaders               // Function for setting HTTP headers to serve with the file
+`;</p>
+<p><code>express.text([options]);</code></p>
+<p>options: `
+defaultCharset          // Sets the default charset for the text context.</p>
+<p>inflate                 // to manage the deflated bodies like enabling and disabling</p>
+<p>limit                   // Controls the maximum request body size.</p>
+<p>type                    // This is used to determine the type of middleware will parse</p>
+<p>verify                  // It is an undefined function which used to verify the middleware parsing.
+`;</p>
+<p><code>express.urlencoded([options]);</code></p>
+<p>options: `
+extended                // it allows to choose between parsing the URL-encoded data or the qs library</p>
+<p>parameterLimit          // It controls the no of params.</p>
+<p>inflate                 // to manage the deflated bodies like enabling and disabling</p>
+<p>limit                   // Controls the maximum request body size.</p>
+<p>type                    // This is used to determine the type of middleware will parse</p>
+<p>verify                  // It is an undefined function which used to verify the middleware parsing.
+`;</p>
+<p><code>Application`````; Properties</code>app.local`;</p>
+<p>`app.locals.title = &quot;My Cheatsheet&quot;;</p>
+<p>console.dir(app.locals.title)<code>;                     </code>// Creating objects with local variables`</p>
+<p>app.mountpath`</p>
+<p><code>app.mountpath</code>const admin = express()
+admin.get('/', function(req,res){
+console.log(admin.mountpath)
+res.send('Admin Homepage')
+})</p>
+<p>app.use('<admin dir>', admin)<code>;                    </code>// Mounting a sub - app`</p>
+<p><code>Event</code></p>
+<p><code>admin.on('mount', (parent){ console.log('Admin Mounted') })</code>                                                <code>// Mounting on a parent app</code></p>
+<p><code>Methods</code>
+<code>app.get('/', function(req, res){ res.send('GET request to message') })</code>                                               <code>// get requests to the specified path</code></p>
+<p><code>app.post('/', function(req,res){ res.send('POST request to a webpage') })</code>                                               <code>// post request to the specified path</code></p>
+<p><code>app.put('/', function(req,res){ res.send('PUT request to a webpage') })</code>                                               <code>// post request to the specified path</code></p>
+<p><code>app.delete('/', function(req,res){ res.send('DELETE request to a webpage') })</code>                                               <code>// delete request to the specified path</code></p>
+<p><code>app.all('/', function(req,res,next){ console.log('Accessing the secret section....') next() })</code>                                               <code>// Routing all types of HTTP request</code></p>
+<p><code>app.param('user', function(req,res,next){ User.find(id, function(err, user){ if(err){ next(err) } else if (user){ req.user = user next() } else { next(new Error('Failed to load user')) } }) })</code>                                               <code>// Adding callback trigger to route parameters</code></p>
+<p><code>app.use(function(req,res,next){ res.send('Hey There!') })</code>                                               <code>// To Invoke the middleware layer that you want to add</code></p>
+<p><code>Request</code>
+<code>Methods</code></p>
+<p><code>req.get('content-type')</code>                         <code>// Returns the specified HTTP req header</code></p>
+<p><code>req.accepts('html')</code>                             <code>// Checks if the specified content types are available or not</code></p>
+<p><code>req.is('json')</code>                                  <code>// Requests the matching content-type</code></p>
+<p><code>var range = req.range(1000) if (range.type === 'bytes'){ range.forEach(function(r){ // Your code }) }</code>                                                <code>// Range header parser</code></p>
+<p><code>Properties</code></p>
+<p><code>req.param('name')</code>                               <code>// Requests the param name when present</code></p>
+<p><code>app.post('/', function (req, res, next) { console.log(req.body) res.json(req.body) })</code>                                                <code>// Data submitted in the request body</code></p>
+<p><code>console.dir(req.cookies.name)</code>                    <code>// Contains cookies sent by the request</code></p>
+<p><code>console.dir(req.query.q)</code>                         <code>// Query string parameter in the route</code></p>
+<p><code>console.log(req.route) res.send('GET')</code>                                   <code>// Outputs all the layer, methods, path</code></p>
+<p><code>console.dir(req.signedCookies.user)</code>              <code>// Logs all the signed cookies sent by the request</code></p>
+<p><code>Response</code>
+<code>Methods</code></p>
+<p><code>res.redirect('https://google.com')</code>               <code>// Redirects to the intended page</code></p>
+<p><code>res.send({message: 'Awesome Stuffs'})</code>            <code>// Response to the webpage</code> </p>
+<p><code>res.json({alert: 'awesomecheatsheets'})</code>          <code>// Response in JSON type</code></p>
+<p><code>const file = req.params.name; res.sendFile(file, options, function(err){ if(err){ next(err) }else{ console.log('Sent:', file) } })</code>                                                <code>// Sends file to the intended path</code></p>
+<p><code>res.render('index')</code>                              <code>// Rendering the intended file</code></p>
+<p><code>BodyParser</code></p>
+<p><code>const BodyParser = require('body-parser') app.use(BodyParser.json()) app.use(BodyParser.urlencoded({ extended: true }))</code>                                               <code>// Parses incoming request bodies</code></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="elasticsearch.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="gcloud.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="elasticsearch.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="gcloud.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

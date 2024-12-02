@@ -1,0 +1,477 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>editorjs - Inteli Doc Generator</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="Inteli Doc Generator">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="summary.html">summary</a></li><li class="chapter-item expanded "><a href="AI.html"><strong aria-hidden="true">1.</strong> AI</a></li><li class="chapter-item expanded "><a href="algolia.html"><strong aria-hidden="true">2.</strong> algolia</a></li><li class="chapter-item expanded "><a href="badges.html"><strong aria-hidden="true">3.</strong> badges</a></li><li class="chapter-item expanded "><a href="beginners.html"><strong aria-hidden="true">4.</strong> beginners</a></li><li class="chapter-item expanded "><a href="black-friday.html"><strong aria-hidden="true">5.</strong> black-friday</a></li><li class="chapter-item expanded "><a href="bridgeNET.html"><strong aria-hidden="true">6.</strong> bridgeNET</a></li><li class="chapter-item expanded "><a href="browserify.html"><strong aria-hidden="true">7.</strong> browserify</a></li><li class="chapter-item expanded "><a href="c-sharp.html"><strong aria-hidden="true">8.</strong> c-sharp</a></li><li class="chapter-item expanded "><a href="chatgp.html"><strong aria-hidden="true">9.</strong> chatgp</a></li><li class="chapter-item expanded "><a href="chatgpt-prompts.html"><strong aria-hidden="true">10.</strong> chatgpt-prompts</a></li><li class="chapter-item expanded "><a href="chrome-devtools.html"><strong aria-hidden="true">11.</strong> chrome-devtools</a></li><li class="chapter-item expanded "><a href="cli-apps.html"><strong aria-hidden="true">12.</strong> cli-apps</a></li><li class="chapter-item expanded "><a href="courses.html"><strong aria-hidden="true">13.</strong> courses</a></li><li class="chapter-item expanded "><a href="dotnet-core.html"><strong aria-hidden="true">14.</strong> dotnet-core</a></li><li class="chapter-item expanded "><a href="dotnet.html"><strong aria-hidden="true">15.</strong> dotnet</a></li><li class="chapter-item expanded "><a href="echarts.html"><strong aria-hidden="true">16.</strong> echarts</a></li><li class="chapter-item expanded "><a href="eCommerce.html"><strong aria-hidden="true">17.</strong> eCommerce</a></li><li class="chapter-item expanded "><a href="editorjs.html" class="active"><strong aria-hidden="true">18.</strong> editorjs</a></li><li class="chapter-item expanded "><a href="falsehood.html"><strong aria-hidden="true">19.</strong> falsehood</a></li><li class="chapter-item expanded "><a href="github-vue.html"><strong aria-hidden="true">20.</strong> github-vue</a></li><li class="chapter-item expanded "><a href="gitpod.html"><strong aria-hidden="true">21.</strong> gitpod</a></li><li class="chapter-item expanded "><a href="gogot.html"><strong aria-hidden="true">22.</strong> gogot</a></li><li class="chapter-item expanded "><a href="gpt3.html"><strong aria-hidden="true">23.</strong> gpt3</a></li><li class="chapter-item expanded "><a href="hacking.html"><strong aria-hidden="true">24.</strong> hacking</a></li><li class="chapter-item expanded "><a href="hyperterm.html"><strong aria-hidden="true">25.</strong> hyperterm</a></li><li class="chapter-item expanded "><a href="ilp.html"><strong aria-hidden="true">26.</strong> ilp</a></li><li class="chapter-item expanded "><a href="interledger.html"><strong aria-hidden="true">27.</strong> interledger</a></li><li class="chapter-item expanded "><a href="interview-question.html"><strong aria-hidden="true">28.</strong> interview-question</a></li><li class="chapter-item expanded "><a href="javascript-learning.html"><strong aria-hidden="true">29.</strong> javascript-learning</a></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">30.</strong> javascript</a></li><li class="chapter-item expanded "><a href="jekyll-editors.html"><strong aria-hidden="true">31.</strong> jekyll-editors</a></li><li class="chapter-item expanded "><a href="jekyll-plugins.html"><strong aria-hidden="true">32.</strong> jekyll-plugins</a></li><li class="chapter-item expanded "><a href="jekyll-themes.html"><strong aria-hidden="true">33.</strong> jekyll-themes</a></li><li class="chapter-item expanded "><a href="jekyll.html"><strong aria-hidden="true">34.</strong> jekyll</a></li><li class="chapter-item expanded "><a href="main.html"><strong aria-hidden="true">35.</strong> main</a></li><li class="chapter-item expanded "><a href="master.html"><strong aria-hidden="true">36.</strong> master</a></li><li class="chapter-item expanded "><a href="metalsmith.html"><strong aria-hidden="true">37.</strong> metalsmith</a></li><li class="chapter-item expanded "><a href="microsoft.html"><strong aria-hidden="true">38.</strong> microsoft</a></li><li class="chapter-item expanded "><a href="naturalLangProcess.html"><strong aria-hidden="true">39.</strong> naturalLangProcess</a></li><li class="chapter-item expanded "><a href="newsletters.html"><strong aria-hidden="true">40.</strong> newsletters</a></li><li class="chapter-item expanded "><a href="nodejs.html"><strong aria-hidden="true">41.</strong> nodejs</a></li><li class="chapter-item expanded "><a href="Nugets.html"><strong aria-hidden="true">42.</strong> Nugets</a></li><li class="chapter-item expanded "><a href="opensource.html"><strong aria-hidden="true">43.</strong> opensource</a></li><li class="chapter-item expanded "><a href="osint.html"><strong aria-hidden="true">44.</strong> osint</a></li><li class="chapter-item expanded "><a href="podcasts.html"><strong aria-hidden="true">45.</strong> podcasts</a></li><li class="chapter-item expanded "><a href="postHtml.html"><strong aria-hidden="true">46.</strong> postHtml</a></li><li class="chapter-item expanded "><a href="powershell.html"><strong aria-hidden="true">47.</strong> powershell</a></li><li class="chapter-item expanded "><a href="puppetier.html"><strong aria-hidden="true">48.</strong> puppetier</a></li><li class="chapter-item expanded "><a href="python.html"><strong aria-hidden="true">49.</strong> python</a></li><li class="chapter-item expanded "><a href="research.html"><strong aria-hidden="true">50.</strong> research</a></li><li class="chapter-item expanded "><a href="ripple.html"><strong aria-hidden="true">51.</strong> ripple</a></li><li class="chapter-item expanded "><a href="selfhosted.html"><strong aria-hidden="true">52.</strong> selfhosted</a></li><li class="chapter-item expanded "><a href="shell.html"><strong aria-hidden="true">53.</strong> shell</a></li><li class="chapter-item expanded "><a href="slack.html"><strong aria-hidden="true">54.</strong> slack</a></li><li class="chapter-item expanded "><a href="speakers.html"><strong aria-hidden="true">55.</strong> speakers</a></li><li class="chapter-item expanded "><a href="split-keyboards.html"><strong aria-hidden="true">56.</strong> split-keyboards</a></li><li class="chapter-item expanded "><a href="sysadmin.html"><strong aria-hidden="true">57.</strong> sysadmin</a></li><li class="chapter-item expanded "><a href="tauri.html"><strong aria-hidden="true">58.</strong> tauri</a></li><li class="chapter-item expanded "><a href="terraform.html"><strong aria-hidden="true">59.</strong> terraform</a></li><li class="chapter-item expanded "><a href="visualstudiocode.html"><strong aria-hidden="true">60.</strong> visualstudiocode</a></li><li class="chapter-item expanded "><a href="vue-3.html"><strong aria-hidden="true">61.</strong> vue-3</a></li><li class="chapter-item expanded "><a href="vue.html"><strong aria-hidden="true">62.</strong> vue</a></li><li class="chapter-item expanded "><a href="web-browsers.html"><strong aria-hidden="true">63.</strong> web-browsers</a></li><li class="chapter-item expanded "><a href="web-editor.html"><strong aria-hidden="true">64.</strong> web-editor</a></li><li class="chapter-item expanded "><a href="workflow.html"><strong aria-hidden="true">65.</strong> workflow</a></li><li class="chapter-item expanded "><a href="wysiwyg.html"><strong aria-hidden="true">66.</strong> wysiwyg</a></li><li class="spacer"></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Inteli Doc Generator</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p><a href="https://editorjs.io/"><img src="./assets/editor-awesome.png" alt="" /></a></p>
+<h1 id="awesome-editorjs"><a class="header" href="#awesome-editorjs">Awesome Editor.js <a href="https://awesome.re"><img src="https://awesome.re/badge-flat.svg" alt="Awesome" /></a></a></h1>
+<blockquote>
+<p>A curated list of awesome Editor.js tools, libraries and resources.</p>
+</blockquote>
+<p>Inspired by the <a href="https://github.com/sindresorhus/awesome">awesome</a> list. Feel free to improve this list by contributing!</p>
+<h2 id="contents"><a class="header" href="#contents">Contents</a></h2>
+<ul>
+<li><a href="#tools">Tools</a>
+<ul>
+<li><a href="#block-tools">Block Tools</a>
+<ul>
+<li><a href="#text-and-typography">Text and typography</a></li>
+<li><a href="#lists">Lists</a></li>
+<li><a href="#media--embed">Media &amp; Embed</a></li>
+<li><a href="#table">Table</a></li>
+<li><a href="#code">Code</a></li>
+<li><a href="#button">Button</a></li>
+<li><a href="#layout">Layout</a></li>
+</ul>
+</li>
+<li><a href="#inline-tools">Inline Tools</a></li>
+<li><a href="#block-tune-tools">Block Tune Tools</a></li>
+<li><a href="#plugins">Plugins</a></li>
+</ul>
+</li>
+<li><a href="#libraries">Libraries</a>
+<ul>
+<li><a href="#javascript">JavaScript</a>
+<ul>
+<li><a href="#vuejs">Vue.js</a></li>
+<li><a href="#react">React</a></li>
+<li><a href="#react-native">React Native</a></li>
+<li><a href="#angular">Angular</a></li>
+<li><a href="#svelte">Svelte</a></li>
+</ul>
+</li>
+<li><a href="#php">PHP</a></li>
+<li><a href="#python">Python</a></li>
+<li><a href="#ruby">Ruby</a></li>
+<li><a href="#go">Go</a></li>
+<li><a href="#swift">Swift</a></li>
+<li><a href="#kotlin">Kotlin</a></li>
+<li><a href="#plugins-for-cms">Plugins for CMS</a></li>
+</ul>
+</li>
+<li><a href="#tutorials-and-sources">Tutorials and sources</a></li>
+<li><a href="#projects-using-editorjs">Projects Using Editor.js</a>
+<ul>
+<li><a href="#open-source-projects">Open source projects</a></li>
+</ul>
+</li>
+</ul>
+<!-- * [Apps / Websites](#apps-websites) -->
+<!-- * [Commercial Products](#commercial-products) -->
+<h2 id="tools"><a class="header" href="#tools">Tools</a></h2>
+<h3 id="block-tools"><a class="header" href="#block-tools">Block Tools</a></h3>
+<h4 id="text-and-typography"><a class="header" href="#text-and-typography">Text and typography</a></h4>
+<ul>
+<li><a href="https://github.com/editor-js/paragraph">@editorjs/paragraph</a> — text block base tool </li>
+<li><a href="https://github.com/editor-js/header">@editorjs/header</a> — header block</li>
+<li><a href="https://github.com/editor-js/quote">@editorjs/quote</a> — tool for quotes</li>
+<li><a href="https://github.com/editor-js/warning">@editorjs/warning</a> — warning tool can be used as editorials notifications or appeals</li>
+<li><a href="https://github.com/editor-js/delimiter">@editorjs/delimiter</a> — delimiter tool</li>
+<li><a href="https://github.com/vishaltelangre/editorjs-alert">editorjs-alert</a> - tool for adding colorful alert messages</li>
+<li><a href="https://github.com/wandersonsousa/header-with-alignment">header-with-alignment</a> - header block base tool with alignment control</li>
+<li><a href="https://github.com/kaaaaaaaaaaai/paragraph-with-alignment">paragraph-with-alignment</a> - text block base tool with alignment control. FYI <a href="https://github.com/kaaaaaaaaaaai/editorjs-alignment-blocktune">editorjs-alignment-blocktune</a></li>
+<li><a href="https://github.com/Aleksst95/header-with-anchor">header-with-anchor</a> - header block with the ability to set an anchor text</li>
+<li><a href="https://github.com/kommitters/editorjs-toggle-block">editorjs-toggle-block</a> - tool for nesting blocks in a toggleable element</li>
+<li><a href="https://github.com/etozhealkhipce/editorjs-aitext">editorjs-aitext</a> - ai suggestions tool based on paragraph tool and openai node lib</li>
+<li><a href="https://github.com/EmersonMatias/title-editorjs">title-editorjs</a> - Provides Title (headings) Blocks for the Editor.js with various settings like H1...H6, colors (red, pink, purple...) and text-align. It is compatible with react and typescript, without causing typing errors.</li>
+</ul>
+<h4 id="lists"><a class="header" href="#lists">Lists</a></h4>
+<ul>
+<li><a href="https://github.com/editor-js/list">@editorjs/list</a> — ordered or unordered (bulleted) lists</li>
+<li><a href="https://github.com/editor-js/nested-list">@editorjs/nested-list</a> — Multi-leveled lists</li>
+<li><a href="https://github.com/editor-js/checklist">@editorjs/checklist</a> — checklists for your texts</li>
+<li><a href="https://github.com/calumk/editorjs-nested-checklist">@calumk/editorjs-nested-checklist</a> — Nested Checklists for your texts</li>
+</ul>
+<h4 id="media--embed"><a class="header" href="#media--embed">Media &amp; Embed</a></h4>
+<ul>
+<li><a href="https://github.com/editor-js/image">@editorjs/image</a> — image block</li>
+<li><a href="https://github.com/editor-js/simple-image">@editorjs/simple-image</a> — add images to article by pasting image URLs. no server-side uploader required</li>
+<li><a href="https://github.com/editor-js/link">@editorjs/link</a> — link with preview</li>
+<li><a href="https://github.com/editor-js/attaches">@editorjs/attaches</a> — attach files to your article</li>
+<li><a href="https://github.com/editor-js/embed">@editorjs/embed</a> — pasted patterns handling and inserts iframe with embedded content</li>
+<li><a href="https://github.com/PaulKinlan/simple-image">simple-image-editorjs</a> — fork of the SimpleImage repository. It adds in extra functionality such as a toolbar to add images (rather than just drag and drop) and uses blob URL's to improve memory usage</li>
+<li><a href="https://github.com/kommitters/editorjs-inline-image">editorjs-inline-image</a> — embed images from image files, URLs or Unsplash</li>
+<li><a href="https://github.com/mr8bit/carousel-editorjs">mr8bit/carousel-editorjs</a> — Carousel/Gallery Block for the Editor.js</li>
+<li><a href="https://github.com/mdgaziur/EditorJS-LaTeX">mdgaziur/EditorJS-LaTeX</a> — LaTeX block support for EditorJS</li>
+<li><a href="https://gitlab.com/rodrigoodhin/editorjs-image-gallery">rodrigoodhin/editorjs-image-gallery</a> — image gallery block</li>
+<li><a href="https://github.com/naduma/editorjs-mermaid">naduma/editorjs-mermaid</a> — Mermaid Block for Editor.js</li>
+<li><a href="https://github.com/VolgaIgor/editorjs-gallery">VolgaIgor/editorjs-gallery</a> — Gallery Block with multiloading and sorting</li>
+<li><a href="https://github.com/AnatoliyKozlov/editorjs-telegram-post">AnatoliyKozlov/editorjs-telegram-post</a> — Telegram Post widget</li>
+<li><a href="https://github.com/renanrider/editorjs-audio-player">renanrider/editorjs-audio-player</a> - Simple Audio Tool, works only with pasted URLs with audio src and requires no server-side uploader.</li>
+<li><a href="https://github.com/sureshHARDIYA/flipboxplus">sureshHARDIYA/flipboxplus</a> - Configurable carousel that allows to add, edit, delete slides. Slides are configured to display as flipbox. </li>
+<li><a href="https://github.com/kaaaaaaaaaaai/image-with-link">image-with-link</a> - upload image with link. forked by official image plugin</li>
+</ul>
+<h4 id="table"><a class="header" href="#table">Table</a></h4>
+<ul>
+<li><a href="https://github.com/editor-js/table">@editorjs/table</a> — table constructor tool</li>
+<li><a href="https://github.com/4rw44z/editorjs-table">editorjs-table</a> - Table contructor tool with great editing row/column options.</li>
+</ul>
+<h4 id="code"><a class="header" href="#code">Code</a></h4>
+<ul>
+<li><a href="https://github.com/editor-js/code">@editorjs/code</a> — tools for code examples</li>
+<li><a href="https://github.com/editor-js/raw">@editorjs/raw</a> — include raw HTML code to your article</li>
+<li><a href="https://github.com/paraswaykole/editor-js-code">editor-js-code</a> — a fork of Code Tool for the Editor.js that allows to include code examples along with language codes that are supported by PrismJs in your articles</li>
+<li><a href="https://github.com/alexiej/editorjs-codemirror">editorjs-codemirror</a> — Code Mirror for the Editor.js allows to include code examples in your articles.</li>
+<li><a href="https://github.com/BomdiZane/codebox">@bomdi/codebox</a> — code syntax highlighting tool for Editor.js</li>
+<li><a href="https://github.com/calumk/editorjs-codeflask">@calumk/editorjs-codeflask</a> — Beautiful code highlighting, with linenumbers, and language support. Powered by Codeflask + PrismJs</li>
+<li><a href="https://github.com/hsnfirdaus/ace-code-editorjs">ace-code-editorjs</a> — Ace Code Editor block for the Editor.js with language selection.</li>
+<li><a href="https://github.com/rajatxs/editor-js-code">@rxpm/editor-js-code</a> - Custom Code Plugin adds code examples to articles with a language dropdown.</li>
+</ul>
+<h4 id="button"><a class="header" href="#button">Button</a></h4>
+<ul>
+<li><a href="https://github.com/kaaaaaaaaaaai/editorjs-button">editorjs-button</a> — Create a button with a link and text.</li>
+</ul>
+<h4 id="layout"><a class="header" href="#layout">Layout</a></h4>
+<ul>
+<li><a href="https://github.com/hata6502/editorjs-layout">editorjs-layout</a> — Layout block tool for Editor.js.</li>
+<li><a href="https://github.com/calumk/editorjs-columns">@calumk/editorjs-columns</a> — Multi-Column Layout tool, using nested editorJs Instances</li>
+</ul>
+<h3 id="inline-tools"><a class="header" href="#inline-tools">Inline Tools</a></h3>
+<ul>
+<li><a href="https://github.com/editor-js/marker">@editorjs/marker</a> — tool for highlighting text-fragments</li>
+<li><a href="https://github.com/editor-js/inline-code">@editorjs/inline-code</a> — tool for marking monospace code-fragments</li>
+<li><a href="https://github.com/editor-js/underline">@editorjs/underline</a> — underlining text fragments</li>
+<li><a href="https://github.com/editor-js/link-autocomplete">@editorjs/link-autocomplete</a> — an upgraded version of base inline link tool with your server's search</li>
+<li><a href="https://github.com/trinhtam/editorjs-hyperlink">editorjs-hyperlink</a> — a tool link with target &amp; rel attribute for Editor.js</li>
+<li><a href="https://www.npmjs.com/package/editorjs-inline-spoiler-tool">editorjs-inline-spoiler-tool</a> — inline text spoiler</li>
+<li><a href="https://github.com/natterstefan/editorjs-inline-tool">editorjs-inline-tool</a> — create an inline tool for (editorjs.io) with text formatting tags (eg. bold, strong, em, u, ...)</li>
+<li><a href="https://github.com/hata6502/editorjs-inline">editorjs-inline</a> — Inline-Editor.js Tool for Editor.js</li>
+<li><a href="https://github.com/hata6502/editorjs-inline-template">editorjs-inline-template</a> — Inline-template Tool for Editor.js</li>
+<li><a href="https://github.com/hata6502/editorjs-style">editorjs-style</a> — Inline-style Tool for Editor.js</li>
+<li><a href="https://github.com/maziyank/editorjs-change-case">editorjs-change-case</a> — change case Tool for the Editor.js</li>
+<li><a href="https://github.com/kommitters/editorjs-tooltip">editorjs-tooltip</a> — Tool for adding tooltips in EditorJS</li>
+<li><a href="https://www.npmjs.com/package/@sotaproject/strikethrough">@sotaproject/strikethrough</a> - tool for strikethrough text</li>
+<li><a href="https://www.npmjs.com/package/editorjs-text-color-plugin">editorjs-text-color-plugin</a> - Inline tool for coloring/marking selected text with customized colors</li>
+<li><a href="https://github.com/VolgaIgor/editorjs-annotation">VolgaIgor/editorjs-annotation</a> — Tool for adding an extended annotation to any text in EditorJS blocks</li>
+<li><a href="https://github.com/osain-az/editorjs-comment">editorjs-comment</a> - Tool that allows you to add comment to editorjs</li>
+</ul>
+<h3 id="block-tune-tools"><a class="header" href="#block-tune-tools">Block Tune Tools</a></h3>
+<ul>
+<li><a href="https://github.com/editor-js/text-variant-tune">@editorjs/text-variant-tune</a> — Block Tune for text variants: Call-out, Citation, Details</li>
+<li><a href="https://github.com/kaaaaaaaaaaai/editorjs-alignment-blocktune">editorjs-alignment-blocktune</a> — Add text alignment to any Block Tools.</li>
+<li><a href="https://github.com/VolgaIgor/editorjs-anchor">VolgaIgor/editorjs-anchor</a> — Add anchor field to any Block Tools</li>
+<li><a href="https://github.com/VolgaIgor/editorjs-notice">VolgaIgor/editorjs-notice</a> — Highlight or hide with caption any Editor.js block</li>
+<li><a href="https://www.npmjs.com/package/editorjs-indent-tune">editorjs-indent-tune</a> - Block Tune for indenting any type of block</li>
+</ul>
+<h3 id="plugins"><a class="header" href="#plugins">Plugins</a></h3>
+<ul>
+<li><a href="https://github.com/kommitters/editorjs-drag-drop">editorjs-drag-drop</a> — Drag/Drop feature for Editor.js</li>
+<li><a href="https://github.com/kommitters/editorjs-undo">editorjs-undo</a> — Undo/Redo feature for Editor.js</li>
+<li><a href="https://github.com/stejul/editorjs-markdown-parser">editorjs-markdown-parser</a> - Two plugins which allow you to export/import Markdown file</li>
+</ul>
+<h2 id="libraries"><a class="header" href="#libraries">Libraries</a></h2>
+<h3 id="javascript"><a class="header" href="#javascript">JavaScript</a></h3>
+<ul>
+<li><a href="https://github.com/MichaelMikeJones/editorjs-parser">editorjs-parser</a> — a library to parse Editorjs clean data to HTML in Node and Browser</li>
+<li><a href="https://github.com/pavittarx/editorjs-html">editorjs-html</a> — a utility to parse editorjs clean data to HTML</li>
+<li><a href="https://github.com/vorjyga/editorjs-to-html">editorjs-to-html</a> — editorjs format parser to html with saving editorjs markup format</li>
+<li><a href="https://github.com/WebJeffery/editor-js-component">editor-js-component</a> - an editorjs library that can use Vue and React frameworks</li>
+</ul>
+<h4 id="vuejs"><a class="header" href="#vuejs">Vue.js</a></h4>
+<ul>
+<li><a href="https://gist.github.com/bettysteger/d7f2b1a52bb1c23a0c24f3a9ff5832d9">Editorjs.vue</a> - Vue 3 SFC for Editor.js using v-model with custom Vue component using Video.js</li>
+<li><a href="https://github.com/ChangJoo-Park/vue-editor-js">vue-editor-js</a> — editor.js for Vue users</li>
+</ul>
+<h4 id="react"><a class="header" href="#react">React</a></h4>
+<ul>
+<li><a href="https://github.com/Jungwoo-An/react-editor-js">react-editor-js</a> — the unofficial editor-js component for React</li>
+<li><a href="https://github.com/stfy/react-editor.js">@stfy/react-editor.js</a> — React wrapper component for Editor.js</li>
+<li><a href="https://github.com/moveyourdigital/editorjs-blocks-react-renderer">editorjs-blocks-react-renderer</a> - React component to render blocks to semantic HTML5 tags</li>
+<li><a href="https://github.com/etozhealkhipce/editorjs-react">editorjs-react</a> — Editor.js React parser to parse Editor.js data to JSX components</li>
+</ul>
+<h4 id="react-native"><a class="header" href="#react-native">React Native</a></h4>
+<ul>
+<li><a href="https://github.com/Hidekih/editorjs-viewer-native">editorjs-viewer-native</a> — A React Native solution to parse outputData generated by Editor.Js</li>
+</ul>
+<h4 id="angular"><a class="header" href="#angular">Angular</a></h4>
+<ul>
+<li><a href="https://www.npmjs.com/package/@tinynodes/ngx-editorjs">@tinynodes/ngx-editorjs</a> — This library provides Angular support for EditorJS.</li>
+</ul>
+<h4 id="svelte"><a class="header" href="#svelte">Svelte</a></h4>
+<ul>
+<li><a href="https://github.com/pouchcms/sveditorjs">sveditorjs</a> — This library provides svelte support for EditorJS.</li>
+</ul>
+<h3 id="php"><a class="header" href="#php">PHP</a></h3>
+<ul>
+<li><a href="https://github.com/editor-js/editorjs-php">editorjs-php</a> — server-side data validation, HTML sanitization and convertation output JSON to the Block objects</li>
+<li><a href="https://github.com/AlexSabur/orchid-editorjs-field">orchid-editorjs-field</a></li>
+<li><a href="https://github.com/zakurdaev/yii2-editorjs-widget">yii2-editorjs-widget</a> — Editor.js widget for Yii 2</li>
+<li><a href="https://github.com/tbmatuka/EditorjsBundle">EditorjsBundle</a> — Symfony bundle for Editor.js</li>
+<li><a href="https://github.com/advoor/nova-editor-js">nova-editor-js</a> — Editor JS field for Laravel Nova</li>
+<li><a href="https://github.com/Archakov06/codex-to-html">codex-to-html</a> — Converter EditorJS JSON to HTML</li>
+<li><a href="https://github.com/Wamoco/magento2-editorjs">magento2-editorjs</a> — Editor.js module for Magento 2</li>
+<li><a href="https://github.com/SyntaxPhoenix/editorjs-symfony-parser-bundle">editorjs-symfony-parser-bundle</a> — Editor.js-Bundle for Symfony to parse blocks created with Editor.js</li>
+<li><a href="https://filamentphp.com/plugins/msuhels-editorjs">rahmanramsi/filament-editorjs</a> - Editor JS for <a href="https://filamentphp.com">filamentphp</a></li>
+<li><a href="https://github.com/bumpcore/editor.php">bumpcore/editor.php</a> - An advanced library for parsing and manipulating Editor.js output using either vanilla PHP or Laravel.</li>
+<li><a href="https://github.com/Edd-G/editorjs-simple-html-parser">editorjs-simple-html-parser</a> - 2 way parser for Editor.js: JSON to HTML &amp; HTML to JSON</li>
+</ul>
+<h3 id="python"><a class="header" href="#python">Python</a></h3>
+<ul>
+<li><a href="https://github.com/2ik/django-editorjs-fields">django-editorjs-fields</a> — Editor.js integration for Django</li>
+<li><a href="https://github.com/SKevo18/pyEditorJS">pyEditorJS</a> - A very simple Editor.js parser written in pure Python</li>
+</ul>
+<h3 id="ruby"><a class="header" href="#ruby">Ruby</a></h3>
+<ul>
+<li><a href="https://rubygems.org/gems/editor_js">editor_js</a> — it validates, parses, and renders content from editorjs</li>
+<li><a href="https://github.com/ceritium/render_editorjs">render_editorjs</a> — A modular and customizable Ruby renderer for Editor.js</li>
+</ul>
+<h3 id="go"><a class="header" href="#go">Go</a></h3>
+<ul>
+<li><a href="https://github.com/micheleriva/editorjs-go">micheleriva/editorjs-go</a> — Fast markdown/HTML generator for Editor.js</li>
+<li><a href="https://github.com/davidscottmills/goeditorjs">davidscottmills/goeditorjs</a> - An extensible HTML/markdown generator for editorjs.</li>
+<li><a href="https://gitlab.com/rodrigoodhin/go-editorjs-parser">rodrigoodhin/go-editorjs-parser</a> — A Golang library which converts Editor.js JSON output to pure Markdown or HTML.</li>
+</ul>
+<h3 id="swift"><a class="header" href="#swift">Swift</a></h3>
+<ul>
+<li><a href="https://github.com/Upstarts/editor.js-kit-ios">editor.js-kit-ios</a> - iOS framework for parsing and rendering blocks</li>
+</ul>
+<h3 id="kotlin"><a class="header" href="#kotlin">Kotlin</a></h3>
+<ul>
+<li><a href="https://github.com/Upstarts/editor.js-kit-android">editor.js-kit-android</a> - Android framework for parsing and rendering blocks</li>
+</ul>
+<h3 id="plugins-for-cms"><a class="header" href="#plugins-for-cms">Plugins for CMS</a></h3>
+<ul>
+<li><a href="https://wpfronteditor.com/">Front Editor</a> - Front Editor plugin for <a href="https://wordpress.com">WordPress</a></li>
+<li><a href="https://octobercms.com/plugin/reazzon-editor">EditorJS</a> - Backend formwidget for <a href="https://octobercms.com">OctoberCMS</a></li>
+<li><a href="https://github.com/melishev/strapi-plugin-react-editorjs">Strapi-EditorJS</a> - Replace <a href="https://strapi.io">Strapi</a> default WYSIWYG editor with Editor.js.</li>
+<li><a href="https://pushword.piedweb.com/extension/admin-block-editor">Admin Block Editor</a> - Admin plugin for <a href="https://pushword.piedweb.com">Pushword CMS</a> (based on symfony)</li>
+<li><a href="https://github.com/dimitrov-adrian/directus-extension-editorjs-interface">Editor.js - Directus Extension</a> - Add an Editor.js interface to <a href="https://github.com/directus/directus">Directus</a></li>
+<li><a href="https://github.com/Edd-G/cot-editorjs">Cotonti CMF Editor.js plugin</a> - Content editor plugin for <a href="https://www.cotonti.com">Cotonti CMF</a></li>
+</ul>
+<h2 id="tutorials-and-sources"><a class="header" href="#tutorials-and-sources">Tutorials and sources</a></h2>
+<ul>
+<li><a href="https://editorjs.io">editorjs.io</a> — offical docs</li>
+<li><a href="https://www.walkthrough.so/pblc/snKICMzxzedr/codelab-integrating-editor-js-into-your-react-application">Tutorial: Integrating Editor.js into your react application</a></li>
+<li><a href="https://www.walkthrough.so/pblc/QCawSCKwOQLn/creating-a-custom-editorjs-block-tool-with-react">Tutorial: Creating a custom editorjs block tool with React</a></li>
+<li><a href="https://github.com/hata6502/editorjs-examples">editorjs-examples</a> — Examples of using Editor.js</li>
+</ul>
+<h2 id="projects-using-editorjs"><a class="header" href="#projects-using-editorjs">Projects Using Editor.js</a></h2>
+<p>👉 <a href="https://github.com/editor-js/awesome-editorjs/edit/master/readme.md">Add your project!</a></p>
+<ul>
+<li><a href="https://newsletter.page">Newsletter.page</a> -  A platform for sending email newsletters</li>
+<li><a href="https://irensystem.ru">IrenSystem</a> -  System for business - allows you to work with clients, managers, contractors and suppliers</li>
+<li><a href="https://www.writebeemy.com/">beemy</a> - Dedicated blog builder to better manage content</li>
+<li><a href="https://notice.studio">Notice.studio</a> - CMS &amp; component editor that blends in your website</li>
+<li><a href="https://poda.io">Poda</a> — Project planning and roadmaping</li>
+<li><a href="https://slid.cc">Slid</a> - Video note-taking tool for online learners.</li>
+<li><a href="https://unicornplatform.com/">Unicorn Platform</a> - Create landing pages and write blogs.</li>
+<li><a href="https://www.marsx.dev/">MarsX</a> - AI/NoCode/ProCode builder.</li>
+<li><a href="http://walkthrough.so/">Walkthrough</a> - Write great codelab style tutorials.</li>
+<li><a href="https://drafts.surge.sh/">Drafts</a> - Web based text editor for writing quick drafts</li>
+<li><a href="https://cai.so">Cai</a> - AI Writer, Content Generator &amp; Writing Assistant</li>
+<li><a href="https://chronopin.com">Chronopin</a> - Track the release dates of your favorite games and interests. Also share, review, and comment on your posts with a like-minded community.</li>
+<li><a href="https://contractify.io">Contractify</a> - Contract management software for e-signing, managing and automating all your contracts online</li>
+<li><a href="https://tulsk.io">Tulsk</a> - AI-powered project management tool designed to simplify your workflow.</li>
+<li><a href="https://github.com/kvgc/WebResearcherJS-extension">WebResearcherJS</a> -  Firefox extension which allows users to take notes on webpages</li>
+</ul>
+<h3 id="open-source-projects"><a class="header" href="#open-source-projects">Open source projects</a></h3>
+<ul>
+<li><a href="https://frappeframework.com/docs/v14/user/en/desk/workspace/customization#customizing-workspace-page">frappeframework.com</a> - A meta data based framework which has workspace feature which uses Editor.js </li>
+<li><a href="https://automad.org">automad.org</a> — a flat-file content management system and template engine</li>
+<li><a href="https://github.com/codex-team/codex.docs">CodeX Docs</a> — documentation engine</li>
+<li><a href="https://github.com/codex-team/codex.media">CodeX Media</a> — platform for building modern website for educational or media organizations</li>
+<li><a href="https://github.com/codex-team/codex.notes">CodeX Notes</a> — crossplatform desktop notes application based on Electron and Editor.js</li>
+<li><a href="https://noter.sambitsahoo.com">Noter</a> - A State of the Art realtime and collaborative note taking platform</li>
+<li><a href="https://github.com/enassi/enassi">enassi</a> - Encryption assistant that encrypts and stores your notes and files.</li>
+<li><a href="https://notebook.sanchezcarlosjr.com/">EvaNotebook</a> - A collaborative peer-to-peer notebook for Web Technologies</li>
+</ul>
+<!--
+### Apps/Websites
+-->
+<p><a href="#contents">Back to top</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="eCommerce.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="falsehood.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="eCommerce.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="falsehood.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>
