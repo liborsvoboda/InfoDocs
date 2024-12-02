@@ -1,0 +1,807 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HamburgerMenu - EIC&amp;ESB Dokumentace</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EasyITcenter &amp; EasySYSTEMbuilder Dokumentace">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded "><a href="Badged.html"><strong aria-hidden="true">1.</strong> Badged</a></li><li class="chapter-item expanded "><a href="ColorPicker.html"><strong aria-hidden="true">2.</strong> ColorPicker</a></li><li class="chapter-item expanded "><a href="ContentControlEx.html"><strong aria-hidden="true">3.</strong> ContentControlEx</a></li><li class="chapter-item expanded "><a href="CustomValidationPopup.html"><strong aria-hidden="true">4.</strong> CustomValidationPopup</a></li><li class="chapter-item expanded "><a href="DateTimePicker.html"><strong aria-hidden="true">5.</strong> DateTimePicker</a></li><li class="chapter-item expanded "><a href="dropdownbutton.html"><strong aria-hidden="true">6.</strong> dropdownbutton</a></li><li class="chapter-item expanded "><a href="flipview.html"><strong aria-hidden="true">7.</strong> flipview</a></li><li class="chapter-item expanded "><a href="flyouts.html"><strong aria-hidden="true">8.</strong> flyouts</a></li><li class="chapter-item expanded "><a href="FontIcon.html"><strong aria-hidden="true">9.</strong> FontIcon</a></li><li class="chapter-item expanded "><a href="HamburgerMenu.html" class="active"><strong aria-hidden="true">10.</strong> HamburgerMenu</a></li><li class="chapter-item expanded "><a href="HotKeyBox.html"><strong aria-hidden="true">11.</strong> HotKeyBox</a></li><li class="chapter-item expanded "><a href="MetroAnimatedSingleRowTabControl.html"><strong aria-hidden="true">12.</strong> MetroAnimatedSingleRowTabControl</a></li><li class="chapter-item expanded "><a href="MetroAnimatedTabControl.html"><strong aria-hidden="true">13.</strong> MetroAnimatedTabControl</a></li><li class="chapter-item expanded "><a href="MetroContentControl.html"><strong aria-hidden="true">14.</strong> MetroContentControl</a></li><li class="chapter-item expanded "><a href="MetroHeader.html"><strong aria-hidden="true">15.</strong> MetroHeader</a></li><li class="chapter-item expanded "><a href="MetroNavigationWindow.html"><strong aria-hidden="true">16.</strong> MetroNavigationWindow</a></li><li class="chapter-item expanded "><a href="metroprogressbar.html"><strong aria-hidden="true">17.</strong> metroprogressbar</a></li><li class="chapter-item expanded "><a href="MetroTabControl.html"><strong aria-hidden="true">18.</strong> MetroTabControl</a></li><li class="chapter-item expanded "><a href="MetroTabItem.html"><strong aria-hidden="true">19.</strong> MetroTabItem</a></li><li class="chapter-item expanded "><a href="MetroThumbContentControl.html"><strong aria-hidden="true">20.</strong> MetroThumbContentControl</a></li><li class="chapter-item expanded "><a href="metrowindow.html"><strong aria-hidden="true">21.</strong> metrowindow</a></li><li class="chapter-item expanded "><a href="MultiFrameImage.html"><strong aria-hidden="true">22.</strong> MultiFrameImage</a></li><li class="chapter-item expanded "><a href="MultiSelectionComboBox.html"><strong aria-hidden="true">23.</strong> MultiSelectionComboBox</a></li><li class="chapter-item expanded "><a href="numericupdown.html"><strong aria-hidden="true">24.</strong> numericupdown</a></li><li class="chapter-item expanded "><a href="progressring.html"><strong aria-hidden="true">25.</strong> progressring</a></li><li class="chapter-item expanded "><a href="rangeslider.html"><strong aria-hidden="true">26.</strong> rangeslider</a></li><li class="chapter-item expanded "><a href="splitbutton.html"><strong aria-hidden="true">27.</strong> splitbutton</a></li><li class="chapter-item expanded "><a href="SplitView.html"><strong aria-hidden="true">28.</strong> SplitView</a></li><li class="chapter-item expanded "><a href="tile.html"><strong aria-hidden="true">29.</strong> tile</a></li><li class="chapter-item expanded "><a href="TimePicker.html"><strong aria-hidden="true">30.</strong> TimePicker</a></li><li class="chapter-item expanded "><a href="toggleswitch.html"><strong aria-hidden="true">31.</strong> toggleswitch</a></li><li class="chapter-item expanded "><a href="transitioningcontentcontrol.html"><strong aria-hidden="true">32.</strong> transitioningcontentcontrol</a></li><li class="chapter-item expanded "><a href="WindowButtonCommands.html"><strong aria-hidden="true">33.</strong> WindowButtonCommands</a></li><li class="chapter-item expanded "><a href="WindowCommands.html"><strong aria-hidden="true">34.</strong> WindowCommands</a></li><li class="chapter-item expanded "><a href="1.html"><strong aria-hidden="true">35.</strong> 1</a></li><li class="chapter-item expanded "><a href="custom-dialogs.html"><strong aria-hidden="true">36.</strong> custom-dialogs</a></li><li class="chapter-item expanded "><a href="dialogsettings.html"><strong aria-hidden="true">37.</strong> dialogsettings</a></li><li class="chapter-item expanded "><a href="input-dialog.html"><strong aria-hidden="true">38.</strong> input-dialog</a></li><li class="chapter-item expanded "><a href="login-dialogs.html"><strong aria-hidden="true">39.</strong> login-dialogs</a></li><li class="chapter-item expanded "><a href="message-dialog.html"><strong aria-hidden="true">40.</strong> message-dialog</a></li><li class="chapter-item expanded "><a href="mvvm-dialog.html"><strong aria-hidden="true">41.</strong> mvvm-dialog</a></li><li class="chapter-item expanded "><a href="progress-dialogs.html"><strong aria-hidden="true">42.</strong> progress-dialogs</a></li><li class="chapter-item expanded "><a href="2.html"><strong aria-hidden="true">43.</strong> 2</a></li><li class="chapter-item expanded "><a href="migration-to-v2.0.html"><strong aria-hidden="true">44.</strong> migration-to-v2.0</a></li><li class="chapter-item expanded "><a href="quick-start.html"><strong aria-hidden="true">45.</strong> quick-start</a></li><li class="chapter-item expanded "><a href="3.html"><strong aria-hidden="true">46.</strong> 3</a></li><li class="chapter-item expanded "><a href="buttons.html"><strong aria-hidden="true">47.</strong> buttons</a></li><li class="chapter-item expanded "><a href="calendar.html"><strong aria-hidden="true">48.</strong> calendar</a></li><li class="chapter-item expanded "><a href="checkbox.html"><strong aria-hidden="true">49.</strong> checkbox</a></li><li class="chapter-item expanded "><a href="combobox.html"><strong aria-hidden="true">50.</strong> combobox</a></li><li class="chapter-item expanded "><a href="datagrid.html"><strong aria-hidden="true">51.</strong> datagrid</a></li><li class="chapter-item expanded "><a href="datagridcolumns.html"><strong aria-hidden="true">52.</strong> datagridcolumns</a></li><li class="chapter-item expanded "><a href="datepicker.html"><strong aria-hidden="true">53.</strong> datepicker</a></li><li class="chapter-item expanded "><a href="expander.html"><strong aria-hidden="true">54.</strong> expander</a></li><li class="chapter-item expanded "><a href="gridsplitter.html"><strong aria-hidden="true">55.</strong> gridsplitter</a></li><li class="chapter-item expanded "><a href="groupbox.html"><strong aria-hidden="true">56.</strong> groupbox</a></li><li class="chapter-item expanded "><a href="hyperlink.html"><strong aria-hidden="true">57.</strong> hyperlink</a></li><li class="chapter-item expanded "><a href="listbox.html"><strong aria-hidden="true">58.</strong> listbox</a></li><li class="chapter-item expanded "><a href="listview.html"><strong aria-hidden="true">59.</strong> listview</a></li><li class="chapter-item expanded "><a href="menus.html"><strong aria-hidden="true">60.</strong> menus</a></li><li class="chapter-item expanded "><a href="page.html"><strong aria-hidden="true">61.</strong> page</a></li><li class="chapter-item expanded "><a href="passwordbox.html"><strong aria-hidden="true">62.</strong> passwordbox</a></li><li class="chapter-item expanded "><a href="progressbar.html"><strong aria-hidden="true">63.</strong> progressbar</a></li><li class="chapter-item expanded "><a href="radiobutton.html"><strong aria-hidden="true">64.</strong> radiobutton</a></li><li class="chapter-item expanded "><a href="scrollbars.html"><strong aria-hidden="true">65.</strong> scrollbars</a></li><li class="chapter-item expanded "><a href="slider.html"><strong aria-hidden="true">66.</strong> slider</a></li><li class="chapter-item expanded "><a href="statusbar.html"><strong aria-hidden="true">67.</strong> statusbar</a></li><li class="chapter-item expanded "><a href="tabcontrol.html"><strong aria-hidden="true">68.</strong> tabcontrol</a></li><li class="chapter-item expanded "><a href="text.html"><strong aria-hidden="true">69.</strong> text</a></li><li class="chapter-item expanded "><a href="textbox.html"><strong aria-hidden="true">70.</strong> textbox</a></li><li class="chapter-item expanded "><a href="togglebutton.html"><strong aria-hidden="true">71.</strong> togglebutton</a></li><li class="chapter-item expanded "><a href="toolbar.html"><strong aria-hidden="true">72.</strong> toolbar</a></li><li class="chapter-item expanded "><a href="tooltip.html"><strong aria-hidden="true">73.</strong> tooltip</a></li><li class="chapter-item expanded "><a href="treeview.html"><strong aria-hidden="true">74.</strong> treeview</a></li><li class="chapter-item expanded "><a href="validation.html"><strong aria-hidden="true">75.</strong> validation</a></li><li class="chapter-item expanded "><a href="4.html"><strong aria-hidden="true">76.</strong> 4</a></li><li class="chapter-item expanded "><a href="clean.html"><strong aria-hidden="true">77.</strong> clean</a></li><li class="chapter-item expanded "><a href="vs.html"><strong aria-hidden="true">78.</strong> vs</a></li><li class="chapter-item expanded "><a href="win10.html"><strong aria-hidden="true">79.</strong> win10</a></li><li class="chapter-item expanded "><a href="winui.html"><strong aria-hidden="true">80.</strong> winui</a></li><li class="chapter-item expanded "><a href="5.html"><strong aria-hidden="true">81.</strong> 5</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">82.</strong> index</a></li><li class="chapter-item expanded "><a href="thememanager.html"><strong aria-hidden="true">83.</strong> thememanager</a></li><li class="chapter-item expanded "><a href="6.html"><strong aria-hidden="true">84.</strong> 6</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Dokumentace</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2>Title: HamburgerMenu
+Description: The HamburgerMenu control</h2>
+<p>The <code>HamburgerMenu</code> control provides an easy-to-use, side-bar menu which users can show or hide by using a Hamburger button. By tapping the icon, it opens up a side menu with a selection of options or additional pages.</p>
+<p>The 3-line Hamburger menu icon, allows developers to pack more features into their apps or navigation. The tiny icon takes up a minimal amount of screen real estate and creates a clean, minimalist look.</p>
+<p>Developers can place menu specific content, navigation, images, text or custom controls.</p>
+<h1 id="example"><a class="header" href="#example">Example</a></h1>
+<p><img src="images/hamburgermenu.gif" alt="HamburgerMenu" /></p>
+<h2 id="example-code"><a class="header" href="#example-code">Example Code</a></h2>
+<p>This sample demonstrates how to add custom menu items to the <code>HamburgerMenu</code> control.</p>
+<pre><code class="language-xml">&lt;Controls:MetroWindow ...
+                      xmlns:Controls=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot;
+                      xmlns:iconPacks=&quot;http://metro.mahapps.com/winfx/xaml/iconpacks&quot;&gt;
+
+  &lt;Controls:MetroWindow.Resources&gt;
+    &lt;ResourceDictionary&gt;
+
+      &lt;!--  Place for the DataTemplates for the menu items (see below)  --&gt;
+
+    &lt;/ResourceDictionary&gt;
+  &lt;/Controls:MetroWindow.Resources&gt;
+
+  &lt;Controls:HamburgerMenu x:Name=&quot;HamburgerMenuControl&quot;
+                          DisplayMode=&quot;CompactOverlay&quot;
+                          HamburgerWidth=&quot;48&quot;
+                          ItemInvoked=&quot;HamburgerMenuControl_OnItemInvoked&quot;
+                          ItemTemplate=&quot;{StaticResource HamburgerMenuItem}&quot;
+                          OptionsItemTemplate=&quot;{StaticResource HamburgerOptionsMenuItem}&quot;&gt;
+    &lt;!--  Header  --&gt;
+    &lt;Controls:HamburgerMenu.HamburgerMenuHeaderTemplate&gt;
+      &lt;DataTemplate&gt;
+        &lt;TextBlock HorizontalAlignment=&quot;Center&quot;
+                   VerticalAlignment=&quot;Center&quot;
+                   FontSize=&quot;16&quot;
+                   Foreground=&quot;White&quot;
+                   Text=&quot;Pictures&quot; /&gt;
+      &lt;/DataTemplate&gt;
+    &lt;/Controls:HamburgerMenu.HamburgerMenuHeaderTemplate&gt;
+
+    &lt;!--  Items  --&gt;
+    &lt;Controls:HamburgerMenu.ItemsSource&gt;
+      &lt;Controls:HamburgerMenuItemCollection&gt;
+        &lt;Controls:HamburgerMenuGlyphItem Glyph=&quot;/Assets/Photos/BigFourSummerHeat.png&quot; Label=&quot;Big four summer heat&quot; /&gt;
+        &lt;Controls:HamburgerMenuGlyphItem Glyph=&quot;/Assets/Photos/BisonBadlandsChillin.png&quot; Label=&quot;Bison badlands Chillin&quot; /&gt;
+        &lt;Controls:HamburgerMenuGlyphItem Glyph=&quot;/Assets/Photos/GiantSlabInOregon.png&quot; Label=&quot;Giant slab in Oregon&quot; /&gt;
+        &lt;Controls:HamburgerMenuGlyphItem Glyph=&quot;/Assets/Photos/LakeAnnMushroom.png&quot; Label=&quot;Lake Ann Mushroom&quot; /&gt;
+      &lt;/Controls:HamburgerMenuItemCollection&gt;
+    &lt;/Controls:HamburgerMenu.ItemsSource&gt;
+
+    &lt;!--  Options  --&gt;
+    &lt;Controls:HamburgerMenu.OptionsItemsSource&gt;
+      &lt;Controls:HamburgerMenuItemCollection&gt;
+
+        &lt;Controls:HamburgerMenuIconItem Label=&quot;About&quot;&gt;
+          &lt;Controls:HamburgerMenuIconItem.Icon&gt;
+            &lt;iconPacks:PackIconMaterial Width=&quot;22&quot;
+                                        Height=&quot;22&quot;
+                                        HorizontalAlignment=&quot;Center&quot;
+                                        VerticalAlignment=&quot;Center&quot;
+                                        Kind=&quot;Help&quot; /&gt;
+          &lt;/Controls:HamburgerMenuIconItem.Icon&gt;
+          &lt;Controls:HamburgerMenuIconItem.Tag&gt;
+            &lt;TextBlock HorizontalAlignment=&quot;Center&quot;
+                       VerticalAlignment=&quot;Center&quot;
+                       FontSize=&quot;28&quot;
+                       FontWeight=&quot;Bold&quot;&gt;
+                About
+            &lt;/TextBlock&gt;
+          &lt;/Controls:HamburgerMenuIconItem.Tag&gt;
+        &lt;/Controls:HamburgerMenuIconItem&gt;
+
+      &lt;/Controls:HamburgerMenuItemCollection&gt;
+    &lt;/Controls:HamburgerMenu.OptionsItemsSource&gt;
+
+    &lt;!--  Content  --&gt;
+    &lt;Controls:HamburgerMenu.ContentTemplate&gt;
+      &lt;DataTemplate&gt;
+        &lt;Grid x:Name=&quot;ContentGrid&quot;&gt;
+          &lt;Grid.RowDefinitions&gt;
+            &lt;RowDefinition Height=&quot;48&quot; /&gt;
+            &lt;RowDefinition /&gt;
+          &lt;/Grid.RowDefinitions&gt;
+          &lt;Border Grid.Row=&quot;0&quot;
+                  Margin=&quot;-1 0 -1 0&quot;
+                  Background=&quot;#7A7A7A&quot;&gt;
+            &lt;TextBlock x:Name=&quot;Header&quot;
+                       HorizontalAlignment=&quot;Center&quot;
+                       VerticalAlignment=&quot;Center&quot;
+                       FontSize=&quot;24&quot;
+                       Foreground=&quot;White&quot;
+                       Text=&quot;{Binding Label}&quot; /&gt;
+          &lt;/Border&gt;
+          &lt;Controls:TransitioningContentControl Grid.Row=&quot;1&quot;
+                                                Content=&quot;{Binding}&quot;
+                                                RestartTransitionOnContentChange=&quot;True&quot;
+                                                Transition=&quot;Default&quot;&gt;
+
+            &lt;Controls:TransitioningContentControl.Resources&gt;
+              &lt;DataTemplate DataType=&quot;{x:Type Controls:HamburgerMenuGlyphItem}&quot;&gt;
+                  &lt;Image Source=&quot;{Binding Glyph, Mode=OneWay, Converter={converters:NullToUnsetValueConverter}}&quot; /&gt;
+              &lt;/DataTemplate&gt;
+
+              &lt;DataTemplate DataType=&quot;{x:Type Controls:HamburgerMenuIconItem}&quot;&gt;
+                  &lt;ContentControl Content=&quot;{Binding Tag, Mode=OneWay}&quot;
+                                  Focusable=&quot;True&quot;
+                                  IsTabStop=&quot;False&quot; /&gt;
+              &lt;/DataTemplate&gt;
+            &lt;/Controls:TransitioningContentControl.Resources&gt;
+
+          &lt;/Controls:TransitioningContentControl&gt;
+        &lt;/Grid&gt;
+      &lt;/DataTemplate&gt;
+    &lt;/Controls:HamburgerMenu.ContentTemplate&gt;
+  &lt;/Controls:HamburgerMenu&gt;
+
+&lt;/Controls:MetroWindow&gt;
+</code></pre>
+<p>In order to render the items like in the sample above, you need to declare DataTemplate for both item types.</p>
+<pre><code class="language-xml">&lt;Controls:MetroWindow.Resources&gt;
+  &lt;ResourceDictionary&gt;
+
+    &lt;!--  This is the template for all menu items. In this sample we use the glyph items.  --&gt;
+    &lt;DataTemplate x:Key=&quot;HamburgerMenuItem&quot; DataType=&quot;{x:Type Controls:HamburgerMenuGlyphItem}&quot;&gt;
+      &lt;DockPanel Height=&quot;48&quot; LastChildFill=&quot;True&quot;&gt;
+        &lt;Grid x:Name=&quot;IconPart&quot;
+              Width=&quot;{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=CompactPaneLength}&quot;
+              DockPanel.Dock=&quot;Left&quot;&gt;
+          &lt;Image Margin=&quot;12&quot;
+                 HorizontalAlignment=&quot;Center&quot;
+                 VerticalAlignment=&quot;Center&quot;
+                 Source=&quot;{Binding Glyph}&quot; /&gt;
+        &lt;/Grid&gt;
+        &lt;TextBlock x:Name=&quot;TextPart&quot;
+                   VerticalAlignment=&quot;Center&quot;
+                   FontSize=&quot;16&quot;
+                   Text=&quot;{Binding Label}&quot; /&gt;
+      &lt;/DockPanel&gt;
+      &lt;DataTemplate.Triggers&gt;
+        &lt;DataTrigger Binding=&quot;{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=PanePlacement}&quot; Value=&quot;Right&quot;&gt;
+          &lt;Setter TargetName=&quot;IconPart&quot; Property=&quot;DockPanel.Dock&quot; Value=&quot;Right&quot; /&gt;
+          &lt;Setter TargetName=&quot;TextPart&quot; Property=&quot;Margin&quot; Value=&quot;8 0 0 0&quot; /&gt;
+        &lt;/DataTrigger&gt;
+      &lt;/DataTemplate.Triggers&gt;
+    &lt;/DataTemplate&gt;
+
+    &lt;!--  This is the template for the option menu item  --&gt;
+    &lt;DataTemplate x:Key=&quot;HamburgerOptionsMenuItem&quot; DataType=&quot;{x:Type Controls:HamburgerMenuIconItem}&quot;&gt;
+      &lt;DockPanel Height=&quot;48&quot; LastChildFill=&quot;True&quot;&gt;
+        &lt;ContentControl x:Name=&quot;IconPart&quot;
+                        Width=&quot;{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=CompactPaneLength}&quot;
+                        Content=&quot;{Binding Icon}&quot;
+                        DockPanel.Dock=&quot;Left&quot;
+                        Focusable=&quot;False&quot;
+                        IsTabStop=&quot;False&quot; /&gt;
+        &lt;TextBlock x:Name=&quot;TextPart&quot;
+                   VerticalAlignment=&quot;Center&quot;
+                   FontSize=&quot;16&quot;
+                   Text=&quot;{Binding Label}&quot; /&gt;
+      &lt;/DockPanel&gt;
+      &lt;DataTemplate.Triggers&gt;
+        &lt;DataTrigger Binding=&quot;{Binding RelativeSource={RelativeSource AncestorType={x:Type Controls:HamburgerMenu}}, Path=PanePlacement}&quot; Value=&quot;Right&quot;&gt;
+          &lt;Setter TargetName=&quot;IconPart&quot; Property=&quot;DockPanel.Dock&quot; Value=&quot;Right&quot; /&gt;
+          &lt;Setter TargetName=&quot;TextPart&quot; Property=&quot;Margin&quot; Value=&quot;8 0 0 0&quot; /&gt;
+        &lt;/DataTrigger&gt;
+      &lt;/DataTemplate.Triggers&gt;
+    &lt;/DataTemplate&gt;
+
+  &lt;/ResourceDictionary&gt;
+&lt;/Controls:MetroWindow.Resources&gt;
+</code></pre>
+<p>You can navigate to the items by using the following code.</p>
+<pre><code class="language-csharp">private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
+{
+  this.HamburgerMenuControl.Content = e.InvokedItem;
+
+  if (!e.IsItemOptions &amp;&amp; this.HamburgerMenuControl.IsPaneOpen)
+  {
+    // You can close the menu if an item was selected
+    // this.HamburgerMenuControl.SetCurrentValue(HamburgerMenuControl.IsPaneOpenProperty, false);
+  }
+}
+</code></pre>
+<h1 id="properties"><a class="header" href="#properties">Properties</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>CanResizeOpenPane</td><td>bool</td><td>Gets or Sets whether the open pane can be resized by the user. The default value is false.</td></tr>
+<tr><td>CompactPaneLength</td><td>double</td><td>Gets or sets the width of the pane when in its compact display mode.</td></tr>
+<tr><td>ContentTransition</td><td><code>TransitionType</code></td><td>Gets or sets the <code>TransitionType</code> for the TransitioningContentControl which shows the selected menu item content.</td></tr>
+<tr><td>DisplayMode</td><td><code>SplitViewDisplayMode</code></td><td>Gets or sets a value that specifies how the pane and content areas are shown.</td></tr>
+<tr><td>HamburgerButtonHelpText</td><td>string</td><td>Gets or sets the AutomationProperties.HelpTextProperty for the HamburgerMenu button.</td></tr>
+<tr><td>HamburgerButtonName</td><td>string</td><td>Gets or sets theAutomationProperties.NameProperty for the HamburgerMenu button.</td></tr>
+<tr><td>HamburgerButtonStyle</td><td>Style</td><td>Gets or sets the FrameworkElement.Style for the HamburgerMenu button.</td></tr>
+<tr><td>HamburgerButtonTemplate</td><td>DataTemplate</td><td>Gets or sets the ContentControl.ContentTemplate for the HamburgerMenu button.</td></tr>
+<tr><td>HamburgerHeight</td><td>double</td><td>Gets or sets the FrameworkElement.Height for the HamburgerMenu button.</td></tr>
+<tr><td>HamburgerMargin</td><td>Thickness</td><td>Gets or sets the margin for the HamburgerMenu button.</td></tr>
+<tr><td>HamburgerMenuHeaderTemplate</td><td>DataTemplate</td><td>Gets or sets the ContentControl.ContentTemplate for the HamburgerMenu pane header.</td></tr>
+<tr><td>HamburgerVisibility</td><td>Visibility</td><td>Gets or sets the UIElement.Visibility for the HamburgerMenu button.</td></tr>
+<tr><td>HamburgerWidth</td><td>double</td><td>Gets or sets HamburgerMenu button's FrameworkElement.Width.</td></tr>
+<tr><td>HeaderItemContainerStyle</td><td>Style</td><td>Gets or sets the Style used for each header item.</td></tr>
+<tr><td>IsPaneOpen</td><td>bool</td><td>Gets or sets a value indicating whether the pane is expanded to its full width.</td></tr>
+<tr><td>ItemCommand</td><td>ICommand</td><td>Gets or sets a ICommand which will be executed if an item was clicked by the user.</td></tr>
+<tr><td>ItemCommandParameter</td><td>object</td><td>Gets or sets the ICommand parameter which will be passed by the ItemCommand.</td></tr>
+<tr><td>ItemContainerStyle</td><td>Style</td><td>Gets or sets the Style used for each item.</td></tr>
+<tr><td>ItemFocusVisualStyle</td><td>Style</td><td>Gets or sets the default FocusVisualStyle for a HamburgerMenuItem. This style can be override at the HamburgerMenuItem style by setting the FocusVisualStyle property.</td></tr>
+<tr><td>Items</td><td>ItemCollection</td><td>Gets the collection used to generate the content of the items list.</td></tr>
+<tr><td>ItemsSource</td><td>object</td><td>Gets or sets an object source used to generate the content of the menu.</td></tr>
+<tr><td>ItemTemplate</td><td>DataTemplate</td><td>Gets or sets the DataTemplate used to display each item.</td></tr>
+<tr><td>ItemTemplateSelector</td><td>DataTemplateSelector</td><td>Gets or sets the DataTemplateSelector used to display each item.</td></tr>
+<tr><td>MaximumOpenPaneLength</td><td>double</td><td>Gets or sets the maximum width of the SplitView pane when it's fully expanded.</td></tr>
+<tr><td>MinimumOpenPaneLength</td><td>double</td><td>Gets or sets the minimum width of the SplitView pane when it's fully expanded.</td></tr>
+<tr><td>OpenPaneLength</td><td>double</td><td>Gets or sets the width of the pane when it's fully expanded.</td></tr>
+<tr><td>OptionsItemCommand</td><td>ICommand</td><td>Gets or sets a ICommand which will be executed if an options item was clicked by the user.</td></tr>
+<tr><td>OptionsItemCommandParameter</td><td>object</td><td>Gets or sets the ICommand parameter which will be passed by the OptionsItemCommand.</td></tr>
+<tr><td>OptionsItemContainerStyle</td><td>Style</td><td>Gets or sets the Style used for each item in the options.</td></tr>
+<tr><td>OptionsItems</td><td>ItemCollection</td><td>Gets the collection used to generate the content of the option list.</td></tr>
+<tr><td>OptionsItemsSource</td><td>object</td><td>Gets or sets an object source used to generate the content of the options.</td></tr>
+<tr><td>OptionsItemTemplate</td><td>DataTemplate</td><td>Gets or sets the DataTemplate used to display each item in the options.</td></tr>
+<tr><td>OptionsItemTemplateSelector</td><td>DataTemplateSelector</td><td>Gets or sets the DataTemplateSelector used to display each item in the options.</td></tr>
+<tr><td>OptionsVisibility</td><td>Visibility</td><td>Gets or sets the Visibility of the options menu.</td></tr>
+<tr><td>PaneBackground</td><td>Brush</td><td>Gets or sets the Brush to apply to the background of the pane area of the HamburgerMenu.</td></tr>
+<tr><td>PaneForeground</td><td>Brush</td><td>Gets or sets the Brush to apply to the foreground of the pane area of the HamburgerMenu.</td></tr>
+<tr><td>PaneHeaderMargin</td><td>Thickness</td><td>Gets or sets the margin for the pane header.</td></tr>
+<tr><td>PaneMargin</td><td>Thickness</td><td>Gets or sets the margin for the SplitView pane.</td></tr>
+<tr><td>PanePlacement</td><td><code>SplitViewPanePlacement</code></td><td>Gets or sets a value that specifies whether the pane is shown on the right or on left side of the HamburgerMenu.</td></tr>
+<tr><td>ResizeThumbStyle</td><td>Style</td><td>Gets or Sets the Style for the resizing Thumb (type of MetroThumb)</td></tr>
+<tr><td>SelectedIndex</td><td>int</td><td>Gets or sets the selected menu index.</td></tr>
+<tr><td>SelectedItem</td><td>object</td><td>Gets or sets the selected menu item.</td></tr>
+<tr><td>SelectedOptionsIndex</td><td>int</td><td>Gets or sets the selected options menu index.</td></tr>
+<tr><td>SelectedOptionsItem</td><td>object</td><td>Gets or sets the selected options menu item.</td></tr>
+<tr><td>SeparatorItemContainerStyle</td><td>Style</td><td>Gets or sets the Style used for each separator item.</td></tr>
+<tr><td>ShowSelectionIndicator</td><td>bool</td><td>Gets or sets whether a selection indicator will be shown on the HamburgerMenuItem.</td></tr>
+<tr><td>VerticalScrollBarOnLeftSide</td><td>bool</td><td>Gets or sets whether the ScrollBar of the HamburgerMenu is on the left side or on the right side of the menu items.</td></tr>
+</tbody></table>
+</div>
+<h1 id="events"><a class="header" href="#events">Events</a></h1>
+<div class="table-wrapper"><table><thead><tr><th>Event</th><th>Description</th></tr></thead><tbody>
+<tr><td>HamburgerButtonClick</td><td>Event raised when the hamburger menu button is clicked</td></tr>
+<tr><td>ItemClick</td><td>Event raised when an item is clicked</td></tr>
+<tr><td>ItemInvoked</td><td>Event raised when an item is invoked</td></tr>
+<tr><td>OptionsItemClick</td><td>Event raised when an options' item is clicked</td></tr>
+</tbody></table>
+</div>
+<h1 id="navigation-example"><a class="header" href="#navigation-example">Navigation Example</a></h1>
+<p><img src="images/hamburgermenunavi.gif" alt="HamburgerMenuNavi" /></p>
+<h2 id="navigation-example-code"><a class="header" href="#navigation-example-code">Navigation Example Code</a></h2>
+<p>This sample demonstrates how to use the <code>HamburgerMenu</code> control with a Frame inside. The complete sample is available at <a href="https://github.com/punker76/code-samples/tree/main/MahAppsMetroHamburgerMenuNavigation">this repository</a>.</p>
+<pre><code class="language-xml">&lt;controls:MetroWindow x:Class=&quot;MahAppsMetroHamburgerMenuNavigation.MainWindow&quot;
+                      xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+                      xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+                      xmlns:controls=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot;
+                      xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
+                      xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+                      xmlns:viewModels=&quot;clr-namespace:MahAppsMetroHamburgerMenuNavigation.ViewModels&quot;
+                      Title=&quot;MainWindow&quot;
+                      Width=&quot;600&quot;
+                      Height=&quot;450&quot;
+                      GlowBrush=&quot;{DynamicResource MahApps.Brushes.AccentBase}&quot;
+                      WindowStartupLocation=&quot;CenterScreen&quot;
+                      WindowTransitionsEnabled=&quot;False&quot;
+                      mc:Ignorable=&quot;d&quot;&gt;
+
+  &lt;controls:MetroWindow.DataContext&gt;
+    &lt;viewModels:ShellViewModel /&gt;
+  &lt;/controls:MetroWindow.DataContext&gt;
+
+  &lt;controls:MetroWindow.LeftWindowCommands&gt;
+    &lt;controls:WindowCommands ShowSeparators=&quot;False&quot;&gt;
+      &lt;Button x:Name=&quot;GoBackButton&quot;
+              Width=&quot;{Binding ElementName=HamburgerMenuControl, Path=CompactPaneLength}&quot;
+              AutomationProperties.Name=&quot;Go back&quot;
+              Click=&quot;GoBack_OnClick&quot;&gt;
+        &lt;controls:FontIcon AutomationProperties.Name=&quot;Go back icon&quot;
+                           FontSize=&quot;14&quot;
+                           Glyph=&quot;&amp;#xE72B;&quot; /&gt;
+      &lt;/Button&gt;
+    &lt;/controls:WindowCommands&gt;
+  &lt;/controls:MetroWindow.LeftWindowCommands&gt;
+
+  &lt;controls:MetroWindow.Resources&gt;
+
+    &lt;DataTemplate x:Key=&quot;MenuItemTemplate&quot; DataType=&quot;{x:Type viewModels:MenuItem}&quot;&gt;
+      &lt;Grid Height=&quot;48&quot;&gt;
+        &lt;Grid.ColumnDefinitions&gt;
+          &lt;ColumnDefinition Width=&quot;{Binding RelativeSource={RelativeSource AncestorType={x:Type controls:HamburgerMenu}}, Path=CompactPaneLength, Mode=OneWay}&quot; /&gt;
+          &lt;ColumnDefinition /&gt;
+        &lt;/Grid.ColumnDefinitions&gt;
+        &lt;ContentControl Grid.Column=&quot;0&quot;
+                        HorizontalAlignment=&quot;Center&quot;
+                        VerticalAlignment=&quot;Center&quot;
+                        Content=&quot;{Binding Icon}&quot;
+                        Focusable=&quot;False&quot; /&gt;
+        &lt;TextBlock Grid.Column=&quot;1&quot;
+                   VerticalAlignment=&quot;Center&quot;
+                   FontSize=&quot;16&quot;
+                   Text=&quot;{Binding Label}&quot; /&gt;
+      &lt;/Grid&gt;
+    &lt;/DataTemplate&gt;
+
+    &lt;Style BasedOn=&quot;{StaticResource {x:Type Frame}}&quot; TargetType=&quot;{x:Type Frame}&quot;&gt;
+      &lt;Setter Property=&quot;Background&quot; Value=&quot;{DynamicResource MahApps.Brushes.Accent4}&quot; /&gt;
+      &lt;Setter Property=&quot;ClipToBounds&quot; Value=&quot;True&quot; /&gt;
+      &lt;Setter Property=&quot;ContentTemplate&quot;&gt;
+        &lt;Setter.Value&gt;
+          &lt;DataTemplate&gt;
+            &lt;controls:TransitioningContentControl Content=&quot;{Binding}&quot;
+                                                  RestartTransitionOnContentChange=&quot;True&quot;
+                                                  Transition=&quot;Custom&quot;&gt;
+              &lt;controls:TransitioningContentControl.CustomVisualStates&gt;
+                &lt;VisualState x:Name=&quot;CustomTransition&quot;&gt;
+                  &lt;Storyboard&gt;
+                    &lt;DoubleAnimationUsingKeyFrames BeginTime=&quot;00:00:00&quot;
+                                                   Storyboard.TargetName=&quot;CurrentContentPresentationSite&quot;
+                                                   Storyboard.TargetProperty=&quot;(UIElement.Opacity)&quot;&gt;
+                      &lt;SplineDoubleKeyFrame KeyTime=&quot;00:00:00&quot; Value=&quot;0&quot; /&gt;
+                      &lt;SplineDoubleKeyFrame KeyTime=&quot;00:00:00.150&quot; Value=&quot;1&quot; /&gt;
+                    &lt;/DoubleAnimationUsingKeyFrames&gt;
+                    &lt;DoubleAnimationUsingKeyFrames BeginTime=&quot;00:00:00&quot;
+                                                   Storyboard.TargetName=&quot;CurrentContentPresentationSite&quot;
+                                                   Storyboard.TargetProperty=&quot;(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)&quot;&gt;
+                      &lt;SplineDoubleKeyFrame KeyTime=&quot;00:00:00&quot; Value=&quot;200&quot; /&gt;
+                      &lt;SplineDoubleKeyFrame KeySpline=&quot;0.1, 0.9, 0.2, 1&quot;
+                                            KeyTime=&quot;00:00:00.300&quot;
+                                            Value=&quot;0&quot; /&gt;
+                    &lt;/DoubleAnimationUsingKeyFrames&gt;
+
+                    &lt;DoubleAnimationUsingKeyFrames BeginTime=&quot;00:00:00&quot;
+                                                   Storyboard.TargetName=&quot;PreviousContentPresentationSite&quot;
+                                                   Storyboard.TargetProperty=&quot;(UIElement.Opacity)&quot;&gt;
+                      &lt;SplineDoubleKeyFrame KeyTime=&quot;00:00:00&quot; Value=&quot;0&quot; /&gt;
+                    &lt;/DoubleAnimationUsingKeyFrames&gt;
+                  &lt;/Storyboard&gt;
+                &lt;/VisualState&gt;
+              &lt;/controls:TransitioningContentControl.CustomVisualStates&gt;
+            &lt;/controls:TransitioningContentControl&gt;
+          &lt;/DataTemplate&gt;
+        &lt;/Setter.Value&gt;
+      &lt;/Setter&gt;
+    &lt;/Style&gt;
+
+  &lt;/controls:MetroWindow.Resources&gt;
+
+  &lt;controls:HamburgerMenu x:Name=&quot;HamburgerMenuControl&quot;
+                          DisplayMode=&quot;CompactInline&quot;
+                          IsPaneOpen=&quot;False&quot;
+                          ItemInvoked=&quot;HamburgerMenuControl_OnItemInvoked&quot;
+                          ItemTemplate=&quot;{StaticResource MenuItemTemplate}&quot;
+                          ItemsSource=&quot;{Binding Menu}&quot;
+                          OptionsItemTemplate=&quot;{StaticResource MenuItemTemplate}&quot;
+                          OptionsItemsSource=&quot;{Binding OptionsMenu}&quot; /&gt;
+
+&lt;/controls:MetroWindow&gt;
+</code></pre>
+<p>Using this Frame object, you can navigate to your pages by using the following code.</p>
+<pre><code class="language-csharp">using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Navigation;
+using MahApps.Metro.Controls;
+using MenuItem = MahAppsMetroHamburgerMenuNavigation.ViewModels.MenuItem;
+
+namespace MahAppsMetroHamburgerMenuNavigation
+{
+  /// &lt;summary&gt;
+  /// Interaction logic for MainWindow.xaml
+  /// &lt;/summary&gt;
+  public partial class MainWindow : MetroWindow
+  {
+    private readonly Navigation.NavigationServiceEx navigationServiceEx;
+
+    public MainWindow()
+    {
+      this.InitializeComponent();
+
+      this.navigationServiceEx = new Navigation.NavigationServiceEx();
+      this.navigationServiceEx.Navigated += this.NavigationServiceEx_OnNavigated;
+      this.HamburgerMenuControl.Content = this.navigationServiceEx.Frame;
+
+      // Navigate to the home page.
+      this.Loaded += (sender, args) =&gt; this.navigationServiceEx.Navigate(new Uri(&quot;Views/MainPage.xaml&quot;, UriKind.RelativeOrAbsolute));
+    }
+
+    private void HamburgerMenuControl_OnItemInvoked(object sender, HamburgerMenuItemInvokedEventArgs e)
+    {
+      if (e.InvokedItem is MenuItem menuItem &amp;&amp; menuItem.IsNavigation)
+      {
+        this.navigationServiceEx.Navigate(menuItem.NavigationDestination);
+      }
+    }
+
+    private void NavigationServiceEx_OnNavigated(object sender, NavigationEventArgs e)
+    {
+      // select the menu item
+      this.HamburgerMenuControl.SelectedItem = this.HamburgerMenuControl
+                                                   .Items
+                                                   .OfType&lt;MenuItem&gt;()
+                                                   .FirstOrDefault(x =&gt; x.NavigationDestination == e.Uri);
+      this.HamburgerMenuControl.SelectedOptionsItem = this.HamburgerMenuControl
+                                                          .OptionsItems
+                                                          .OfType&lt;MenuItem&gt;()
+                                                          .FirstOrDefault(x =&gt; x.NavigationDestination == e.Uri);
+
+      // or when using the NavigationType on menu item
+      // this.HamburgerMenuControl.SelectedItem = this.HamburgerMenuControl
+      //                                              .Items
+      //                                              .OfType&lt;MenuItem&gt;()
+      //                                              .FirstOrDefault(x =&gt; x.NavigationType == e.Content?.GetType());
+      // this.HamburgerMenuControl.SelectedOptionsItem = this.HamburgerMenuControl
+      //                                                     .OptionsItems
+      //                                                     .OfType&lt;MenuItem&gt;()
+      //                                                     .FirstOrDefault(x =&gt; x.NavigationType == e.Content?.GetType());
+
+      // update back button
+      this.GoBackButton.Visibility = this.navigationServiceEx.CanGoBack ? Visibility.Visible : Visibility.Collapsed;
+    }
+
+    private void GoBack_OnClick(object sender, RoutedEventArgs e)
+    {
+      this.navigationServiceEx.GoBack();
+    }
+  }
+}
+</code></pre>
+<p>The <code>MenuItem</code> is derived from the <code>HamburgerMenuIconItem</code> class and adds the <code>NavigationDestination</code> and <code>NavigationType</code> properties for this navigation sample.</p>
+<pre><code class="language-csharp">using System;
+using System.Windows;
+using MahApps.Metro.Controls;
+
+namespace MahAppsMetroHamburgerMenuNavigation.ViewModels
+{
+  public class MenuItem : HamburgerMenuIconItem
+  {
+    public static readonly DependencyProperty NavigationDestinationProperty = DependencyProperty.Register(
+      nameof(NavigationDestination), typeof(Uri), typeof(MenuItem), new PropertyMetadata(default(Uri)));
+
+    public Uri NavigationDestination
+    {
+      get =&gt; (Uri)this.GetValue(NavigationDestinationProperty);
+      set =&gt; this.SetValue(NavigationDestinationProperty, value);
+    }
+
+    public static readonly DependencyProperty NavigationTypeProperty = DependencyProperty.Register(
+      nameof(NavigationType), typeof(Type), typeof(MenuItem), new PropertyMetadata(default(Type)));
+
+    public Type NavigationType
+    {
+      get =&gt; (Type)this.GetValue(NavigationTypeProperty);
+      set =&gt; this.SetValue(NavigationTypeProperty, value);
+    }
+
+    public bool IsNavigation =&gt; this.NavigationDestination != null;
+  }
+}
+</code></pre>
+<p>The <code>ShellViewModel</code> defines the Items and OptionsItems for the <code>HamburgerMenu</code>. The <code>BindableBase</code> class implements the <code>INotifyPropertyChanged</code> with a helper method <code>SetProperty</code>. This sample uses the <a href="https://github.com/MahApps/MahApps.Metro.IconPacks">IconPacks</a> NuGet package, so you need to add this to your project.</p>
+<pre><code class="language-csharp">using System;
+using System.Collections.ObjectModel;
+using MahApps.Metro.IconPacks;
+using MahAppsMetroHamburgerMenuNavigation.Mvvm;
+using MahAppsMetroHamburgerMenuNavigation.Views;
+
+namespace MahAppsMetroHamburgerMenuNavigation.ViewModels
+{
+  public class ShellViewModel : BindableBase
+  {
+    private static readonly ObservableCollection&lt;MenuItem&gt; AppMenu = new ObservableCollection&lt;MenuItem&gt;();
+    private static readonly ObservableCollection&lt;MenuItem&gt; AppOptionsMenu = new ObservableCollection&lt;MenuItem&gt;();
+
+    public ObservableCollection&lt;MenuItem&gt; Menu =&gt; AppMenu;
+
+    public ObservableCollection&lt;MenuItem&gt; OptionsMenu =&gt; AppOptionsMenu;
+
+    public ShellViewModel()
+    {
+      // Build the menus
+      this.Menu.Add(new MenuItem()
+                    {
+                      Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.BugSolid },
+                      Label = &quot;Bugs&quot;,
+                      NavigationType = typeof(BugsPage),
+                      NavigationDestination = new Uri(&quot;Views/BugsPage.xaml&quot;, UriKind.RelativeOrAbsolute)
+                    });
+      this.Menu.Add(new MenuItem()
+                    {
+                      Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.UserSolid },
+                      Label = &quot;User&quot;,
+                      NavigationType = typeof(UserPage),
+                      NavigationDestination = new Uri(&quot;Views/UserPage.xaml&quot;, UriKind.RelativeOrAbsolute)
+                    });
+      this.Menu.Add(new MenuItem()
+                    {
+                      Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CoffeeSolid },
+                      Label = &quot;Break&quot;,
+                      NavigationType = typeof(BreakPage),
+                      NavigationDestination = new Uri(&quot;Views/BreakPage.xaml&quot;, UriKind.RelativeOrAbsolute)
+                    });
+      this.Menu.Add(new MenuItem()
+                    {
+                      Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.FontAwesomeBrands },
+                      Label = &quot;Awesome&quot;,
+                      NavigationType = typeof(AwesomePage),
+                      NavigationDestination = new Uri(&quot;Views/AwesomePage.xaml&quot;, UriKind.RelativeOrAbsolute)
+                    });
+
+      this.OptionsMenu.Add(new MenuItem()
+                           {
+                             Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.CogsSolid },
+                             Label = &quot;Settings&quot;,
+                             NavigationType = typeof(SettingsPage),
+                             NavigationDestination = new Uri(&quot;Views/SettingsPage.xaml&quot;, UriKind.RelativeOrAbsolute)
+                           });
+      this.OptionsMenu.Add(new MenuItem()
+                           {
+                             Icon = new PackIconFontAwesome() { Kind = PackIconFontAwesomeKind.InfoCircleSolid },
+                             Label = &quot;About&quot;,
+                             NavigationType = typeof(AboutPage),
+                             NavigationDestination = new Uri(&quot;Views/AboutPage.xaml&quot;, UriKind.RelativeOrAbsolute)
+                           });
+    }
+  }
+}
+</code></pre>
+<p>The <code>NavigationServiceEx</code> is a helper class with a Frame to allow easy navigation in this sample.</p>
+<pre><code class="language-csharp">using System;
+using System.Windows.Controls;
+using System.Windows.Navigation;
+
+namespace MahAppsMetroHamburgerMenuNavigation.Navigation
+{
+  public class NavigationServiceEx
+  {
+    public event NavigatedEventHandler Navigated;
+
+    public event NavigationFailedEventHandler NavigationFailed;
+
+    private Frame _frame;
+
+    public Frame Frame
+    {
+      get
+      {
+        if (this._frame == null)
+        {
+          this._frame = new Frame() { NavigationUIVisibility = NavigationUIVisibility.Hidden };
+          this.RegisterFrameEvents();
+        }
+
+        return this._frame;
+      }
+      set
+      {
+        this.UnregisterFrameEvents();
+        this._frame = value;
+        this.RegisterFrameEvents();
+      }
+    }
+
+    public bool CanGoBack =&gt; this.Frame.CanGoBack;
+
+    public bool CanGoForward =&gt; this.Frame.CanGoForward;
+
+    public void GoBack() =&gt; this.Frame.GoBack();
+
+    public void GoForward() =&gt; this.Frame.GoForward();
+
+    public bool Navigate(Uri sourcePageUri, object extraData = null)
+    {
+      if (this.Frame.CurrentSource != sourcePageUri)
+      {
+        return this.Frame.Navigate(sourcePageUri, extraData);
+      }
+
+      return false;
+    }
+
+    public bool Navigate(Type sourceType)
+    {
+      if (this.Frame.NavigationService?.Content?.GetType() != sourceType)
+      {
+        return this.Frame.Navigate(Activator.CreateInstance(sourceType));
+      }
+
+      return false;
+    }
+
+    private void RegisterFrameEvents()
+    {
+      if (this._frame != null)
+      {
+        this._frame.Navigated += this.Frame_Navigated;
+        this._frame.NavigationFailed += this.Frame_NavigationFailed;
+      }
+    }
+
+    private void UnregisterFrameEvents()
+    {
+      if (this._frame != null)
+      {
+        this._frame.Navigated -= this.Frame_Navigated;
+        this._frame.NavigationFailed -= this.Frame_NavigationFailed;
+      }
+    }
+
+    private void Frame_NavigationFailed(object sender, NavigationFailedEventArgs e) =&gt; this.NavigationFailed?.Invoke(sender, e);
+
+    private void Frame_Navigated(object sender, NavigationEventArgs e) =&gt; this.Navigated?.Invoke(sender, e);
+  }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="FontIcon.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="HotKeyBox.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="FontIcon.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="HotKeyBox.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

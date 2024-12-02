@@ -1,0 +1,786 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ColorPicker - EIC&amp;ESB Dokumentace</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EasyITcenter &amp; EasySYSTEMbuilder Dokumentace">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded "><a href="Badged.html"><strong aria-hidden="true">1.</strong> Badged</a></li><li class="chapter-item expanded "><a href="ColorPicker.html" class="active"><strong aria-hidden="true">2.</strong> ColorPicker</a></li><li class="chapter-item expanded "><a href="ContentControlEx.html"><strong aria-hidden="true">3.</strong> ContentControlEx</a></li><li class="chapter-item expanded "><a href="CustomValidationPopup.html"><strong aria-hidden="true">4.</strong> CustomValidationPopup</a></li><li class="chapter-item expanded "><a href="DateTimePicker.html"><strong aria-hidden="true">5.</strong> DateTimePicker</a></li><li class="chapter-item expanded "><a href="dropdownbutton.html"><strong aria-hidden="true">6.</strong> dropdownbutton</a></li><li class="chapter-item expanded "><a href="flipview.html"><strong aria-hidden="true">7.</strong> flipview</a></li><li class="chapter-item expanded "><a href="flyouts.html"><strong aria-hidden="true">8.</strong> flyouts</a></li><li class="chapter-item expanded "><a href="FontIcon.html"><strong aria-hidden="true">9.</strong> FontIcon</a></li><li class="chapter-item expanded "><a href="HamburgerMenu.html"><strong aria-hidden="true">10.</strong> HamburgerMenu</a></li><li class="chapter-item expanded "><a href="HotKeyBox.html"><strong aria-hidden="true">11.</strong> HotKeyBox</a></li><li class="chapter-item expanded "><a href="MetroAnimatedSingleRowTabControl.html"><strong aria-hidden="true">12.</strong> MetroAnimatedSingleRowTabControl</a></li><li class="chapter-item expanded "><a href="MetroAnimatedTabControl.html"><strong aria-hidden="true">13.</strong> MetroAnimatedTabControl</a></li><li class="chapter-item expanded "><a href="MetroContentControl.html"><strong aria-hidden="true">14.</strong> MetroContentControl</a></li><li class="chapter-item expanded "><a href="MetroHeader.html"><strong aria-hidden="true">15.</strong> MetroHeader</a></li><li class="chapter-item expanded "><a href="MetroNavigationWindow.html"><strong aria-hidden="true">16.</strong> MetroNavigationWindow</a></li><li class="chapter-item expanded "><a href="metroprogressbar.html"><strong aria-hidden="true">17.</strong> metroprogressbar</a></li><li class="chapter-item expanded "><a href="MetroTabControl.html"><strong aria-hidden="true">18.</strong> MetroTabControl</a></li><li class="chapter-item expanded "><a href="MetroTabItem.html"><strong aria-hidden="true">19.</strong> MetroTabItem</a></li><li class="chapter-item expanded "><a href="MetroThumbContentControl.html"><strong aria-hidden="true">20.</strong> MetroThumbContentControl</a></li><li class="chapter-item expanded "><a href="metrowindow.html"><strong aria-hidden="true">21.</strong> metrowindow</a></li><li class="chapter-item expanded "><a href="MultiFrameImage.html"><strong aria-hidden="true">22.</strong> MultiFrameImage</a></li><li class="chapter-item expanded "><a href="MultiSelectionComboBox.html"><strong aria-hidden="true">23.</strong> MultiSelectionComboBox</a></li><li class="chapter-item expanded "><a href="numericupdown.html"><strong aria-hidden="true">24.</strong> numericupdown</a></li><li class="chapter-item expanded "><a href="progressring.html"><strong aria-hidden="true">25.</strong> progressring</a></li><li class="chapter-item expanded "><a href="rangeslider.html"><strong aria-hidden="true">26.</strong> rangeslider</a></li><li class="chapter-item expanded "><a href="splitbutton.html"><strong aria-hidden="true">27.</strong> splitbutton</a></li><li class="chapter-item expanded "><a href="SplitView.html"><strong aria-hidden="true">28.</strong> SplitView</a></li><li class="chapter-item expanded "><a href="tile.html"><strong aria-hidden="true">29.</strong> tile</a></li><li class="chapter-item expanded "><a href="TimePicker.html"><strong aria-hidden="true">30.</strong> TimePicker</a></li><li class="chapter-item expanded "><a href="toggleswitch.html"><strong aria-hidden="true">31.</strong> toggleswitch</a></li><li class="chapter-item expanded "><a href="transitioningcontentcontrol.html"><strong aria-hidden="true">32.</strong> transitioningcontentcontrol</a></li><li class="chapter-item expanded "><a href="WindowButtonCommands.html"><strong aria-hidden="true">33.</strong> WindowButtonCommands</a></li><li class="chapter-item expanded "><a href="WindowCommands.html"><strong aria-hidden="true">34.</strong> WindowCommands</a></li><li class="chapter-item expanded "><a href="1.html"><strong aria-hidden="true">35.</strong> 1</a></li><li class="chapter-item expanded "><a href="custom-dialogs.html"><strong aria-hidden="true">36.</strong> custom-dialogs</a></li><li class="chapter-item expanded "><a href="dialogsettings.html"><strong aria-hidden="true">37.</strong> dialogsettings</a></li><li class="chapter-item expanded "><a href="input-dialog.html"><strong aria-hidden="true">38.</strong> input-dialog</a></li><li class="chapter-item expanded "><a href="login-dialogs.html"><strong aria-hidden="true">39.</strong> login-dialogs</a></li><li class="chapter-item expanded "><a href="message-dialog.html"><strong aria-hidden="true">40.</strong> message-dialog</a></li><li class="chapter-item expanded "><a href="mvvm-dialog.html"><strong aria-hidden="true">41.</strong> mvvm-dialog</a></li><li class="chapter-item expanded "><a href="progress-dialogs.html"><strong aria-hidden="true">42.</strong> progress-dialogs</a></li><li class="chapter-item expanded "><a href="2.html"><strong aria-hidden="true">43.</strong> 2</a></li><li class="chapter-item expanded "><a href="migration-to-v2.0.html"><strong aria-hidden="true">44.</strong> migration-to-v2.0</a></li><li class="chapter-item expanded "><a href="quick-start.html"><strong aria-hidden="true">45.</strong> quick-start</a></li><li class="chapter-item expanded "><a href="3.html"><strong aria-hidden="true">46.</strong> 3</a></li><li class="chapter-item expanded "><a href="buttons.html"><strong aria-hidden="true">47.</strong> buttons</a></li><li class="chapter-item expanded "><a href="calendar.html"><strong aria-hidden="true">48.</strong> calendar</a></li><li class="chapter-item expanded "><a href="checkbox.html"><strong aria-hidden="true">49.</strong> checkbox</a></li><li class="chapter-item expanded "><a href="combobox.html"><strong aria-hidden="true">50.</strong> combobox</a></li><li class="chapter-item expanded "><a href="datagrid.html"><strong aria-hidden="true">51.</strong> datagrid</a></li><li class="chapter-item expanded "><a href="datagridcolumns.html"><strong aria-hidden="true">52.</strong> datagridcolumns</a></li><li class="chapter-item expanded "><a href="datepicker.html"><strong aria-hidden="true">53.</strong> datepicker</a></li><li class="chapter-item expanded "><a href="expander.html"><strong aria-hidden="true">54.</strong> expander</a></li><li class="chapter-item expanded "><a href="gridsplitter.html"><strong aria-hidden="true">55.</strong> gridsplitter</a></li><li class="chapter-item expanded "><a href="groupbox.html"><strong aria-hidden="true">56.</strong> groupbox</a></li><li class="chapter-item expanded "><a href="hyperlink.html"><strong aria-hidden="true">57.</strong> hyperlink</a></li><li class="chapter-item expanded "><a href="listbox.html"><strong aria-hidden="true">58.</strong> listbox</a></li><li class="chapter-item expanded "><a href="listview.html"><strong aria-hidden="true">59.</strong> listview</a></li><li class="chapter-item expanded "><a href="menus.html"><strong aria-hidden="true">60.</strong> menus</a></li><li class="chapter-item expanded "><a href="page.html"><strong aria-hidden="true">61.</strong> page</a></li><li class="chapter-item expanded "><a href="passwordbox.html"><strong aria-hidden="true">62.</strong> passwordbox</a></li><li class="chapter-item expanded "><a href="progressbar.html"><strong aria-hidden="true">63.</strong> progressbar</a></li><li class="chapter-item expanded "><a href="radiobutton.html"><strong aria-hidden="true">64.</strong> radiobutton</a></li><li class="chapter-item expanded "><a href="scrollbars.html"><strong aria-hidden="true">65.</strong> scrollbars</a></li><li class="chapter-item expanded "><a href="slider.html"><strong aria-hidden="true">66.</strong> slider</a></li><li class="chapter-item expanded "><a href="statusbar.html"><strong aria-hidden="true">67.</strong> statusbar</a></li><li class="chapter-item expanded "><a href="tabcontrol.html"><strong aria-hidden="true">68.</strong> tabcontrol</a></li><li class="chapter-item expanded "><a href="text.html"><strong aria-hidden="true">69.</strong> text</a></li><li class="chapter-item expanded "><a href="textbox.html"><strong aria-hidden="true">70.</strong> textbox</a></li><li class="chapter-item expanded "><a href="togglebutton.html"><strong aria-hidden="true">71.</strong> togglebutton</a></li><li class="chapter-item expanded "><a href="toolbar.html"><strong aria-hidden="true">72.</strong> toolbar</a></li><li class="chapter-item expanded "><a href="tooltip.html"><strong aria-hidden="true">73.</strong> tooltip</a></li><li class="chapter-item expanded "><a href="treeview.html"><strong aria-hidden="true">74.</strong> treeview</a></li><li class="chapter-item expanded "><a href="validation.html"><strong aria-hidden="true">75.</strong> validation</a></li><li class="chapter-item expanded "><a href="4.html"><strong aria-hidden="true">76.</strong> 4</a></li><li class="chapter-item expanded "><a href="clean.html"><strong aria-hidden="true">77.</strong> clean</a></li><li class="chapter-item expanded "><a href="vs.html"><strong aria-hidden="true">78.</strong> vs</a></li><li class="chapter-item expanded "><a href="win10.html"><strong aria-hidden="true">79.</strong> win10</a></li><li class="chapter-item expanded "><a href="winui.html"><strong aria-hidden="true">80.</strong> winui</a></li><li class="chapter-item expanded "><a href="5.html"><strong aria-hidden="true">81.</strong> 5</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">82.</strong> index</a></li><li class="chapter-item expanded "><a href="thememanager.html"><strong aria-hidden="true">83.</strong> thememanager</a></li><li class="chapter-item expanded "><a href="6.html"><strong aria-hidden="true">84.</strong> 6</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Dokumentace</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2>Title: ColorPicker
+Description: The documentation for the ColorPicker, ColorCanvas, ColorPalette and ColorEyeDropper</h2>
+<h1 id="table-of-content"><a class="header" href="#table-of-content">Table of content</a></h1>
+<!-- Start Document Outline -->
+<ul>
+<li><a href="#table-of-content">Table of content</a></li>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#colornamesdictionary-and-colorhelper">ColorNamesDictionary and ColorHelper</a>
+<ul>
+<li><a href="#looking-up-a-color-name">Looking up a color name</a></li>
+<li><a href="#getting-a-color-from-a-given-name">Getting a color from a given name</a>
+<ul>
+<li><a href="#examples">Examples</a></li>
+</ul>
+</li>
+<li><a href="#how-to-provide-custom-color-names">How to provide custom color names</a>
+<ul>
+<li><a href="#example">Example</a></li>
+</ul>
+</li>
+<li><a href="#provide-translations-for-a-language-of-your-choice">Provide translations for a language of your choice</a></li>
+<li><a href="#use-your-own-colorhelper">Use your own <code>ColorHelper</code></a></li>
+</ul>
+</li>
+<li><a href="#colorcanvas">ColorCanvas</a>
+<ul>
+<li><a href="#the-user-interface">The user interface</a></li>
+<li><a href="#properties">Properties</a></li>
+<li><a href="#events">Events</a></li>
+<li><a href="#dynamicresources">DynamicResources</a></li>
+<li><a href="#example-1">Example</a></li>
+</ul>
+</li>
+<li><a href="#colorpalette">ColorPalette</a>
+<ul>
+<li><a href="#the-user-interface-1">The user interface</a></li>
+<li><a href="#properties-1">Properties</a></li>
+<li><a href="#dynamicresources-1">DynamicResources</a></li>
+<li><a href="#example-2">Example</a></li>
+<li><a href="#build-in-color-palettes">Build in color palettes</a></li>
+</ul>
+</li>
+<li><a href="#coloreyedropper">ColorEyeDropper</a>
+<ul>
+<li><a href="#the-user-interface-2">The user interface</a></li>
+<li><a href="#properties-2">Properties</a></li>
+<li><a href="#events-1">Events</a></li>
+<li><a href="#example-3">Example</a></li>
+</ul>
+</li>
+<li><a href="#colorpicker">ColorPicker</a>
+<ul>
+<li><a href="#the-user-interface-3">The user interface</a></li>
+<li><a href="#properties-3">Properties</a></li>
+<li><a href="#events-2">Events</a></li>
+<li><a href="#dynamicresources-2">DynamicResources</a></li>
+<li><a href="#example-4">Example</a>
+<ul>
+<li><a href="#basic-example">Basic example</a></li>
+<li><a href="#using-the-selectedcolorchanged-event">Using the <code>SelectedColorChanged</code>-Event</a></li>
+<li><a href="#customizing-the-content-of-the-color-picker">Customizing the content of the color picker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- End Document Outline -->
+<hr />
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>The <code>ColorPicker</code> controls can be used to select any <code>System.Windows.Media.Color</code> (in this document simply called <code>Color</code>). There are four different controls available to select a <code>Color</code>.</p>
+<div class="table-wrapper"><table><thead><tr><th>Control</th><th>Use case</th></tr></thead><tbody>
+<tr><td><a href="#colorcanvas"><code>ColorCanvas</code></a></td><td>Select a <code>Color</code> by specifying its <a href="https://en.wikipedia.org/wiki/RGB_color_model">ARGB</a> or <a href="https://en.wikipedia.org/wiki/HSL_and_HSV">AHSV</a> channels.</td></tr>
+<tr><td><a href="#colorpalette"><code>ColorPalette</code></a></td><td>Select a <code>Color</code> from predefined colors presented in a special <code>ListBox</code>.</td></tr>
+<tr><td><a href="#coloreyedropper"><code>ColorEyeDropper</code></a></td><td>Select a <code>Color</code> from anywhere on the screen.</td></tr>
+<tr><td><a href="#colorpicker"><code>ColorPicker</code></a></td><td>A combination of the three controls above presented in a <code>ComboBox</code> like control.</td></tr>
+</tbody></table>
+</div>
+<h1 id="colornamesdictionary-and-colorhelper"><a class="header" href="#colornamesdictionary-and-colorhelper">ColorNamesDictionary and ColorHelper</a></h1>
+<p>Colors may have a name which is localize-able if you want to. The color names are stored in a <code>Dictionary&lt;Color?, string&gt;</code> which is used to get the name of the provided <code>Color</code>. </p>
+<h2 id="looking-up-a-color-name"><a class="header" href="#looking-up-a-color-name">Looking up a color name</a></h2>
+<p>If you want to look up a name of a given <code>Color</code> in code behind use this line: </p>
+<pre><code class="language-csharp">string nameOfTheColor = MahApps.Metro.Controls.ColorHelper.DefaultInstance.GetColorName(myColor, theDictionaryToUse);
+</code></pre>
+<p>:::{.alert .alert-info}
+<em><strong>Note</strong></em><br />
+If you set the second parameter to 'null' the default dictionary will be used.
+:::</p>
+<h2 id="getting-a-color-from-a-given-name"><a class="header" href="#getting-a-color-from-a-given-name">Getting a color from a given name</a></h2>
+<p>You can also get back the color by looking up its name. The routine will first check the dictionary for the first occurrence of the given name and if it was not found it will try to use <a href="docs.microsoft.com/en-us/dotnet/api/system.windows.media.colorconverter.convertfromstring"><code>ColorConverter.ConvertFromString</code></a> which also accepts the HTML-Notation of the <code>Color</code>. If the <code>Color</code> cannot be found it will return null.</p>
+<h3 id="examples"><a class="header" href="#examples">Examples</a></h3>
+<pre><code class="language-csharp">Color? myColor = MahApps.Metro.Controls.ColorHelper.DefaultInstance.ColorFromString(myColorName, theDictionaryToUse);
+
+// this will look up the German word &quot;Blau&quot; and returns blue color
+Color? myColor = MahApps.Metro.Controls.ColorHelper.DefaultInstance.ColorFromString(&quot;Blau&quot;, null);
+
+// this will look up the HTML-notation &quot;#FF000000&quot; and returns black color
+Color? myColor = MahApps.Metro.Controls.ColorHelper.DefaultInstance.ColorFromString(&quot;#FF000000&quot;, null);
+</code></pre>
+<p>:::{.alert .alert-info}
+<em><strong>Note</strong></em><br />
+If you set the second parameter to 'null' the default dictionary will be used.
+:::</p>
+<h2 id="how-to-provide-custom-color-names"><a class="header" href="#how-to-provide-custom-color-names">How to provide custom color names</a></h2>
+<p>You can change the build in dictionary via <code>MahApps.Metro.Controls.ColorHelper.ColorNamesDictionary</code> by adding, removing or changing any color name. You can also create your own <code>Dictionary&lt;Color?, string&gt;</code> anywhere in your <code>Model</code> or <code>ViewModel</code> to provide your own color names. That way you can use also different dictionaries for different <code>ColorPicker</code>.</p>
+<h3 id="example"><a class="header" href="#example">Example</a></h3>
+<pre><code class="language-csharp">Dictionary&lt;Color?, string&gt; myColorNames = new Dictionary&lt;Color?, string&gt;()
+{
+    { Colors.Green, &quot;every thing is fine&quot; }, 
+    { Colors.Yellow, &quot;warning&quot; },
+    { Colors.Red, &quot;error&quot; }
+};
+
+public Dictionary&lt;Color?, string&gt; MyColorNames
+{
+    get { return myColorNames; }    
+}
+</code></pre>
+<pre><code class="language-xml">&lt;!-- example usage --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+&lt;mah:ColorPicker ColorNamesDictionary=&quot;{Binding MyColorNames}&quot; /&gt;
+</code></pre>
+<h2 id="provide-translations-for-a-language-of-your-choice"><a class="header" href="#provide-translations-for-a-language-of-your-choice">Provide translations for a language of your choice</a></h2>
+<p>Currently implemented color languages are</p>
+<ul>
+<li>English</li>
+<li>German</li>
+</ul>
+<p>You can help providing translations to the build in dictionary.</p>
+<p>We recommend using the <a href="https://marketplace.visualstudio.com/items?itemName=TomEnglert.ResXManager">ResXManager</a>.</p>
+<h2 id="use-your-own-colorhelper"><a class="header" href="#use-your-own-colorhelper">Use your own <code>ColorHelper</code></a></h2>
+<p>The <code>ColorHelper</code> can be derived from which lets you create your own logic for <code>ColorFromString</code> and <code>GetColorName</code>:</p>
+<pre><code class="language-csharp">// Add this to your using-section
+using MahApps.Metro.Controls;
+
+namespace MyNamespace
+{
+    public class MyColorHelper : ColorHelper
+    {
+        public static new readonly MyColorHelper DefaultInstance = new();
+
+        public override Color? ColorFromString(string? colorName, Dictionary&lt;Color, string&gt;? colorNamesDictionary)
+        {
+            // Your logic goes here
+            return myFoundColor;
+        }
+    
+        public override string? GetColorName(Color? color, Dictionary&lt;Color, string&gt;? colorNamesDictionary, bool useAlphaChannel)
+        {
+            // Your logic goes here
+            return theNameOfMyColor;
+        }
+    }
+}
+</code></pre>
+<p>You can then use this class like every other Property:</p>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;mah:ColorPicker ColorHelper=&quot;[[Bind here to your ColorHelper]]&quot; /&gt;
+&lt;mah:ColorCanvas ColorHelper=&quot;[[Bind here to your ColorHelper]]&quot; /&gt;
+&lt;mah:ColorPalette ColorHelper=&quot;[[Bind here to your ColorHelper]]&quot; /&gt;
+
+&lt;!-- example usage --&gt;
+&lt;!-- xmlns:my=&quot;clr-namespace:MyNamespace;assembly=YourAssembly&quot; --&gt;
+&lt;mah:ColorPicker ColorHelper=&quot;{Binding Source={x:Static my:MyColorHelper.DefaultInstance}}&quot; /&gt;
+</code></pre>
+<h1 id="colorcanvas"><a class="header" href="#colorcanvas">ColorCanvas</a></h1>
+<p>The <code>ColorCanvas</code> control lets the user select a <code>Color</code> by the following options:</p>
+<ul>
+<li>Changing the ARGB-Values</li>
+<li>Changing the HSV-Values</li>
+<li>Entering the color name or HTML-notation</li>
+<li>Picking a color from anywhere of the screen</li>
+</ul>
+<h2 id="the-user-interface"><a class="header" href="#the-user-interface">The user interface</a></h2>
+<p><img src="images/ColorPicker_ColorCanvas_Numbered.png" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th>No.</th><th>Description</th></tr></thead><tbody>
+<tr><td>01</td><td>Red color channel from 0 to 255</td></tr>
+<tr><td>02</td><td>Green color channel from 0 to 255</td></tr>
+<tr><td>03</td><td>Blue color channel from 0 to 255</td></tr>
+<tr><td>04</td><td>Hue channel from 0° to 360°</td></tr>
+<tr><td>05</td><td>Saturation channel from 0% to 100%</td></tr>
+<tr><td>06</td><td>Value channel from 0% to 100 %</td></tr>
+<tr><td>07</td><td>Alpha channel from 0 to 255</td></tr>
+<tr><td>08</td><td>The color name or HTML-notation</td></tr>
+<tr><td>09</td><td>A <a href="#coloreyedropper"><code>ColorEyeDropper</code></a> to select a color from anywhere of the screen</td></tr>
+<tr><td>10</td><td>Select the saturation and value by moving the cross-hair in horizontally and vertically direction</td></tr>
+<tr><td>11</td><td>A preview of the selected color</td></tr>
+</tbody></table>
+</div>
+<h2 id="properties"><a class="header" href="#properties">Properties</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>SelectedColor</td><td>Color?</td><td>Gets or sets the selected color</td></tr>
+<tr><td>DefaultColor</td><td>Color?</td><td>Gets or sets the default color if the <code>SelectedColor</code> is <code>null</code></td></tr>
+<tr><td>SelectedHSVColor</td><td>HSVColor</td><td>Gets the selected color as <code>HSVColor</code></td></tr>
+<tr><td>ColorName</td><td>string</td><td>Gets or sets the name of the selected color <a href="#colornamesdictionary-and-colorhelper">(see also <code>ColorHelper</code>)</a></td></tr>
+<tr><td>ColorNamesDictionary</td><td>Dictionary&lt;Color?, string&gt;</td><td>Gets or sets the <code>Dictionary&lt;Color?, string&gt;</code> used to get or set the <code>ColorName</code> <a href="#colornamesdictionary-and-colorhelper">(see also <code>ColorHelper</code>)</a></td></tr>
+<tr><td>A</td><td>byte</td><td>Gets or sets the alpha channel</td></tr>
+<tr><td>R</td><td>byte</td><td>Gets or sets the red channel</td></tr>
+<tr><td>G</td><td>byte</td><td>Gets or sets the green channel</td></tr>
+<tr><td>B</td><td>byte</td><td>Gets or sets the blue-channel</td></tr>
+<tr><td>Hue</td><td>double</td><td>Gets or sets the hue channel</td></tr>
+<tr><td>Saturation</td><td>double</td><td>Gets or sets the Saturation-channel</td></tr>
+<tr><td>Value</td><td>double</td><td>Gets or sets the Value-channel</td></tr>
+<tr><td>LabelAlphaChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the Alpha-channel</td></tr>
+<tr><td>LabelRedChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the Red-channel</td></tr>
+<tr><td>LabelGreenChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the Green-channel</td></tr>
+<tr><td>LabelBlueChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the Blue-channel</td></tr>
+<tr><td>LabelHueChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the Hue-channel</td></tr>
+<tr><td>LabelSaturationChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the Saturation-channel</td></tr>
+<tr><td>LabelValueChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the Value-channel</td></tr>
+<tr><td>LabelColorPreview</td><td>string</td><td>Gets or sets the <code>Label</code> for the preview field</td></tr>
+<tr><td>LabelColorName</td><td>string</td><td>Gets or sets the <code>Label</code> for the color name</td></tr>
+<tr><td>AreRgbChannelsVisible</td><td>bool</td><td>Gets or sets if the slider for the <code>RGB</code>-channels are visible. The default is <code>true</code></td></tr>
+<tr><td>AreHsvChannelsVisible</td><td>bool</td><td>Gets or sets if the slider for the <code>HSV</code>-channels are visible. The default is <code>true</code></td></tr>
+<tr><td>IsAlphaChannelVisible</td><td>bool</td><td>Gets or sets if the slider for the <code>Alpha</code>-channel isvisible. The default is <code>true</code></td></tr>
+<tr><td>IsColorNameVisible</td><td>bool</td><td>Gets or sets if the entry for the <code>ColorName</code> is visible. The default is <code>true</code></td></tr>
+<tr><td>IsEyeDropperVisible</td><td>bool</td><td>Gets or sets if the <code>EyeDropper</code> is visible. The default is <code>true</code></td></tr>
+<tr><td>ColorHelper</td><td>ColorHelper</td><td>Gets or sets the  <a href="#colornamesdictionary-and-colorhelper">ColorHelper</a> to use</td></tr>
+</tbody></table>
+</div>
+<h2 id="events"><a class="header" href="#events">Events</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Event</th><th>Description</th></tr></thead><tbody>
+<tr><td><code>SelectedColorChanged</code></td><td>Occurs when the <code>SelectedColor</code> changed</td></tr>
+</tbody></table>
+</div>
+<h2 id="dynamicresources"><a class="header" href="#dynamicresources">DynamicResources</a></h2>
+<p>You can override the following <code>Resources</code> to modify the appearance of the <code>ColorCanvas</code> further. </p>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>MahApps.Brushes.Tile</td><td>Brush</td><td>Overrides the checkered <code>Brush</code> which is visible if the color is transparent</td></tr>
+<tr><td>MahApps.DataTemplates.ColorPicker.NoColor</td><td>DataTemplate</td><td>Overrides the <code>DataTemplate</code> of the preview if no color is selected</td></tr>
+<tr><td>MahApps.Styles.Slider.ColorComponent.ARGB</td><td>Style</td><td>Overrides the <code>Style</code> of the A-, R-, G- and B-<code>Slider</code></td></tr>
+<tr><td>MahApps.Styles.Slider.ColorComponent.Hue</td><td>Style</td><td>Overrides the <code>Style</code> of the Hue-Slider</td></tr>
+<tr><td>MahApps.Styles.Slider.ColorComponent.SV</td><td>Style</td><td>Overrides the <code>Style</code> of the S- and V-<code>Slider</code></td></tr>
+<tr><td>MahApps.Styles.ColorEyeDropper.ColorCanvas</td><td>Style</td><td>Overrides the Style of the <code>ColorEyeDropper</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="example-1"><a class="header" href="#example-1">Example</a></h2>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;mah:ColorCanvas x:Name=&quot;ColorCanvasExample&quot;
+                 SelectedColor=&quot;Blue&quot;
+                 DefaultColor=&quot;Transparent&quot;
+                 LabelAlphaChannel=&quot;Alpha&quot;
+                 LabelBlueChannel=&quot;Blue&quot;
+                 LabelGreenChannel=&quot;Green&quot;
+                 LabelRedChannel=&quot;Red&quot; /&gt;
+</code></pre>
+<h1 id="colorpalette"><a class="header" href="#colorpalette">ColorPalette</a></h1>
+<p>The <code>ColorPalette</code> control can be used to present the user a swatch of predefined colors. As this control is derived from <code>System.Windows.Controls.ListBox</code> you can use all functionality know from the <code>ListBox</code> control.</p>
+<h2 id="the-user-interface-1"><a class="header" href="#the-user-interface-1">The user interface</a></h2>
+<p><img src="images/ColorPicker_ColorPalette_Numbered.png" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th>No</th><th>Description</th></tr></thead><tbody>
+<tr><td>01</td><td>The header of the <code>ColorPalette</code></td></tr>
+<tr><td>02</td><td>Displays the available colors</td></tr>
+<tr><td>03</td><td>The currently selected color is highlighted</td></tr>
+</tbody></table>
+</div>
+<h2 id="properties-1"><a class="header" href="#properties-1">Properties</a></h2>
+<p>The available colors can be either added directly to the <code>Items</code> or by binding to the <code>ItemsSource</code>. The selection can be handled by binding to <code>SelectedValue</code>, <code>SelectedItem</code> or <code>SelectedIndex</code>. </p>
+<p>In addition to this the <code>ColorPalette</code> provides the following properties.</p>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>Header</td><td>object</td><td>Gets or sets the header content</td></tr>
+<tr><td>HeaderTemplate</td><td>DataTemplate</td><td>Gets or sets the header template</td></tr>
+<tr><td>ColorNamesDictionary</td><td>Dictionary&lt;Color?, string&gt;</td><td>Gets or sets the <code>Dictionary&lt;Color?, string&gt;</code> used to get or set the ColorName <a href="#colornamesdictionary-and-colorhelper">(see also <code>ColorHelper</code>)</a></td></tr>
+<tr><td>ColorHelper</td><td>ColorHelper</td><td>Gets or sets the  <a href="#colornamesdictionary-and-colorhelper">ColorHelper</a> to use</td></tr>
+</tbody></table>
+</div>
+<h2 id="dynamicresources-1"><a class="header" href="#dynamicresources-1">DynamicResources</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>MahApps.Sizes.ColorListBox.ItemWidth</td><td>double</td><td>Overrides the width of the items</td></tr>
+<tr><td>MahApps.Sizes.ColorListBox.ItemHeight</td><td>double</td><td>Overrides the height of the items</td></tr>
+<tr><td>MahApps.Brushes.Tile.Small</td><td>Brush</td><td>Overrides the checkered Brush which is visible if the color is transparent</td></tr>
+<tr><td>MahApps.Styles.ListBoxItem.ColorPaletteItem</td><td>Style</td><td>Overrides the <code>Style</code> of the items</td></tr>
+<tr><td>MahApps.Templates.ColorPaletteItem</td><td>DataTemplate</td><td>Overrides the <code>DataTemplate</code> of the items</td></tr>
+<tr><td>MahApps.Styles.ColorPalette</td><td>Style</td><td>Overrides the default <code>Style</code> for the <code>ColorPalette</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="example-2"><a class="header" href="#example-2">Example</a></h2>
+<p>The below example shows how to use the <code>ColorPalette</code> via setting the <code>ItemsSource</code> to a build in <code>ColorPalette</code>. </p>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;mah:ColorPalette Header=&quot;An Example Palette&quot; 
+                  ItemsSource=&quot;{x:Static mah:BuildInColorPalettes.WpfColorsPalette}&quot; /&gt;
+</code></pre>
+<p>:::{.alert .alert-info}
+<em><strong>Note</strong></em><br />
+MahApps provides <a href="#build-in-color-palettes">build in color palettes</a>
+:::</p>
+<p>The second example shows how to add colors directly in <code>XAML</code>.</p>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;mah:ColorPalette Header=&quot;A second Example Palette&quot; &gt;
+    &lt;Color&gt;Red&lt;/Color&gt;
+    &lt;Color&gt;Green&lt;/Color&gt;
+    &lt;Color&gt;Blue&lt;/Color&gt;
+&lt;/mah:ColorPalette&gt;
+</code></pre>
+<h2 id="build-in-color-palettes"><a class="header" href="#build-in-color-palettes">Build in color palettes</a></h2>
+<p>MahApps provides the following build in ColorPalettes:</p>
+<ul>
+<li>WpfColorsPalette (all colors in <code>Sytem.Windows.Media.Colors</code>)</li>
+<li>StandardColorsPalette (the primary colors)</li>
+<li>RecentColors (used to store the recently selected colors)</li>
+</ul>
+<p>All build in <code>ColorPalettes</code> are internally an <code>ObservableCollection</code>, so you can modify them to your needs.</p>
+<h1 id="coloreyedropper"><a class="header" href="#coloreyedropper">ColorEyeDropper</a></h1>
+<p>The <code>ColorEyeDropper</code> control lets the user select a <code>Color</code> with the mouse directly from anywhere on the screen, even outside of your <code>Application</code>. As this control is derived from <code>System.Windows.Controls.Button</code> you can use all functionality know from the <code>Button</code> control.</p>
+<h2 id="the-user-interface-2"><a class="header" href="#the-user-interface-2">The user interface</a></h2>
+<p>If the user presses the left mouse button on the <code>ColorEyeDropper</code> the cursor will change to an eye-dropper symbol and a preview popup will appear. Now the user needs to keep the mouse pressed while dragging the mouse to the desired pixel. A magnifier with a cross hair helps getting the exact pixel position. As soon as the user releases the left mouse button the <code>SelectedColor</code> will get updated. </p>
+<p><img src="images/ColorPicker_ColorEyeDropper_Numbered.png" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th>No</th><th>Description</th></tr></thead><tbody>
+<tr><td>01</td><td>The <code>Button</code> to start the <code>ColorEyeDropper</code></td></tr>
+<tr><td>02</td><td>The cursor while selecting a color</td></tr>
+<tr><td>03</td><td>A preview of the selected color</td></tr>
+<tr><td>04</td><td>A magnifier with a cross hair</td></tr>
+</tbody></table>
+</div>
+<p><img src="images/ColorPicker_ColorEyeDropper_Running.png" alt="" /></p>
+<h2 id="properties-2"><a class="header" href="#properties-2">Properties</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>SelectedColor</td><td>Color?</td><td>Gets or sets the selected color</td></tr>
+<tr><td>PreviewImageOuterPixelCount</td><td>int</td><td>Gets or sets how many pixels the preview magnifier should render around the curent mouse position. The default is <code>2</code></td></tr>
+<tr><td>EyeDropperCursor</td><td>Cursor</td><td>Gets or sets the <code>Cursor</code> when in selection mode</td></tr>
+<tr><td>PreviewContentTemplate</td><td>DataTemplate</td><td>Gets or sets the <code>DataTemplate</code> of the preview <code>Popup</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="events-1"><a class="header" href="#events-1">Events</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Event</th><th>Description</th></tr></thead><tbody>
+<tr><td>SelectedColorChanged</td><td>Occurs when the <code>SelectedColor</code> changed</td></tr>
+</tbody></table>
+</div>
+<h2 id="example-3"><a class="header" href="#example-3">Example</a></h2>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;mah:ColorEyeDropper Content=&quot;This is my EyeDropper&quot;
+                     SelectedColor=&quot;{Binding Path=MyColorToBind}&quot; /&gt;
+</code></pre>
+<p>If you want to modify the preview template please take a look to the below example. It shows how to make a circular magnifier with the preview color shown in the outer circle.</p>
+<p><img src="images/ColorPicker_ColorEyeDropper_CustomPreviewTemplate.png" alt="" /></p>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+&lt;!-- xmlns:po=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation/options&quot; --&gt;
+
+&lt;mah:ColorEyeDropper Content=&quot;{iconPacks:Material Kind=Eyedropper}&quot;
+                     SelectedColor=&quot;{DynamicResource MahApps.Colors.AccentBase}&quot;&gt;
+    &lt;mah:ColorEyeDropper.PreviewContentTemplate&gt;
+        &lt;DataTemplate DataType=&quot;{x:Type mah:ColorEyePreviewData}&quot;&gt;
+            &lt;Border Width=&quot;62&quot;
+                    Height=&quot;62&quot;
+                    Padding=&quot;0&quot;
+                    BorderBrush=&quot;{Binding PreviewBrush}&quot;
+                    BorderThickness=&quot;5&quot;
+                    CornerRadius=&quot;{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={mah:SizeToCornerRadiusConverter}}&quot;&gt;
+                &lt;Grid HorizontalAlignment=&quot;Center&quot; VerticalAlignment=&quot;Center&quot;&gt;
+                    &lt;Grid.Clip&gt;
+                        &lt;EllipseGeometry Center=&quot;25,25&quot;
+                                         RadiusX=&quot;25&quot;
+                                         RadiusY=&quot;25&quot; /&gt;
+                    &lt;/Grid.Clip&gt;
+                    &lt;Image x:Name=&quot;PART_PreviewImage&quot;
+                           Width=&quot;50&quot;
+                           Height=&quot;50&quot;
+                           RenderOptions.BitmapScalingMode=&quot;NearestNeighbor&quot;
+                           Source=&quot;{Binding PreviewImage}&quot; /&gt;
+                    &lt;Path Stroke=&quot;{Binding PreviewBrush, Converter={x:Static mah:BackgroundToForegroundConverter.Instance}}&quot; StrokeThickness=&quot;1&quot;&gt;
+                        &lt;Path.Data&gt;
+                            &lt;PathGeometry po:Freeze=&quot;true&quot; Figures=&quot; m 0 25 20 0  m 5 5 0 20  m 5 -25 20 0  m -25 -25 0 20 m -5 0 H20 H30 V30 H20 z&quot; /&gt;
+                        &lt;/Path.Data&gt;
+                    &lt;/Path&gt;
+                &lt;/Grid&gt;
+            &lt;/Border&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/mah:ColorEyeDropper.PreviewContentTemplate&gt;
+&lt;/mah:ColorEyeDropper&gt;
+</code></pre>
+<p>:::{.alert .alert-info}
+<em><strong>Note</strong></em><br />
+The <code>DataTemplate</code> should be designed for this <code>DataType</code>:  <code>MahApps.Metro.Controls.ColorEyePreviewData</code>
+:::</p>
+<h1 id="colorpicker"><a class="header" href="#colorpicker">ColorPicker</a></h1>
+<p>This control lets the user select a <code>Color</code> in a <code>ComboBox</code>-like control. The user can either select a <code>Color</code> from a predefined <a href="#colorpalette"><code>ColorPalette</code></a> or select a custom one in a <a href="#colorcanvas"><code>ColorCanvas</code></a>.</p>
+<h2 id="the-user-interface-3"><a class="header" href="#the-user-interface-3">The user interface</a></h2>
+<p><img src="images/ColorPicker_Opened_Numbered.png" alt="" /></p>
+<div class="table-wrapper"><table><thead><tr><th>No</th><th>Description</th></tr></thead><tbody>
+<tr><td>01</td><td>Press the arrow to open or close the drop down</td></tr>
+<tr><td>02</td><td>Select between the predefined colors tab and the advanced tab</td></tr>
+<tr><td>03</td><td>Displays the selected color</td></tr>
+<tr><td>04</td><td>Optional: Shows a floating watermark</td></tr>
+<tr><td>05</td><td>Optional: A clear button to reset the <code>SelectedColor</code> either to <code>DefaultColor</code> or <code>null</code></td></tr>
+</tbody></table>
+</div>
+<h2 id="properties-3"><a class="header" href="#properties-3">Properties</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>SelectedColor</td><td>Color?</td><td>Gets or sets the selected color</td></tr>
+<tr><td>DefaultColor</td><td>Color?</td><td>Gets or sets the default color if the <code>SelectedColor</code> is <code>null</code></td></tr>
+<tr><td>SelectedHSVColor</td><td>HSVColor</td><td>Gets the selected color as <code>HSVColor</code></td></tr>
+<tr><td>ColorName</td><td>string</td><td>Gets or sets the name of the selected color <a href="#colornamesdictionary-and-colorhelper">(see also <code>ColorHelper</code>)</a></td></tr>
+<tr><td>ColorNamesDictionary</td><td>Dictionary&lt;Color?, string&gt;</td><td>Gets or sets the <code>Dictionary&lt;Color?, string&gt;</code> used to get or set the <code>ColorName</code> <a href="#colornamesdictionary-and-colorhelper">(see also <code>ColorHelper</code>)</a></td></tr>
+<tr><td>A</td><td>byte</td><td>Gets or sets the alpha channel</td></tr>
+<tr><td>R</td><td>byte</td><td>Gets or sets the red channel</td></tr>
+<tr><td>G</td><td>byte</td><td>Gets or sets the green channel</td></tr>
+<tr><td>B</td><td>byte</td><td>Gets or sets the blue-channel</td></tr>
+<tr><td>Hue</td><td>double</td><td>Gets or sets the hue channel</td></tr>
+<tr><td>Saturation</td><td>double</td><td>Gets or sets the Saturation-channel</td></tr>
+<tr><td>Value</td><td>double</td><td>Gets or sets the Value-channel</td></tr>
+<tr><td>AddToRecentColorsTrigger</td><td>AddToRecentColorsTrigger</td><td>Gets or sets the <a href="#addtorecentcolorstrigger"><code>AddToRecentColorsTrigger</code></a></td></tr>
+<tr><td>LabelAlphaChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the alpha-channel</td></tr>
+<tr><td>LabelRedChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the red-channel</td></tr>
+<tr><td>LabelGreenChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the green-channel</td></tr>
+<tr><td>LabelBlueChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the blue-channel</td></tr>
+<tr><td>LabelHueChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the hue-channel</td></tr>
+<tr><td>LabelSaturationChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the saturation-channel</td></tr>
+<tr><td>LabelValueChannel</td><td>string</td><td>Gets or sets the <code>Label</code> for the value-channel</td></tr>
+<tr><td>LabelColorPreview</td><td>string</td><td>Gets or sets the <code>Label</code> for the preview field</td></tr>
+<tr><td>LabelColorName</td><td>string</td><td>Gets or sets the <code>Label</code> for the color name</td></tr>
+<tr><td>ColorPalettesTabHeader</td><td>object</td><td>Gets or sets the <code>Header</code> of the <code>ColorPalettes</code>-tab</td></tr>
+<tr><td>ColorPalettesTabHeaderTemplate</td><td>DataTemplate</td><td>Gets or sets the <code>DataTemplate</code> for the <code>Header</code> of the <code>ColorPalettes</code>-tab</td></tr>
+<tr><td>AdvancedTabHeader</td><td>object</td><td>Gets or sets the <code>Header</code> of the <code>ColorCanvas</code>-tab</td></tr>
+<tr><td>AdvancedTabHeaderTemplate</td><td>DataTemplate</td><td>Gets or sets the <code>DataTemplate</code> for the <code>Header</code> of the <code>ColorCanvas</code>-tab</td></tr>
+<tr><td>DropDownHeight</td><td>double</td><td>Gets or sets the height of the <code>DropDown</code></td></tr>
+<tr><td>DropDownWidth</td><td>double</td><td>Gets or sets the width of the <code>DropDown</code></td></tr>
+<tr><td>IsDropDownOpen</td><td>bool</td><td>Gets or sets whether the <code>DropDown</code> is open</td></tr>
+<tr><td>IsAdvancedTabVisible</td><td>bool</td><td>Gets or sets whether the advanced tab is visible</td></tr>
+<tr><td>IsColorPalettesTabVisible</td><td>bool</td><td>Gets or sets whether the standard tab is visible</td></tr>
+<tr><td>AreRgbChannelsVisible</td><td>bool</td><td>Gets or sets if the slider for the <code>RGB</code>-channels are visible. The default is <code>true</code></td></tr>
+<tr><td>AreHsvChannelsVisible</td><td>bool</td><td>Gets or sets if the slider for the <code>HSV</code>-channels are visible. The default is <code>true</code></td></tr>
+<tr><td>IsAlphaChannelVisible</td><td>bool</td><td>Gets or sets if the slider for the <code>Alpha</code>-channel is visible. The default is <code>true</code></td></tr>
+<tr><td>IsColorNameVisible</td><td>bool</td><td>Gets or sets if the entry for the <code>ColorName</code> is visible. The default is <code>true</code></td></tr>
+<tr><td>IsEyeDropperVisible</td><td>bool</td><td>Gets or sets if the <code>EyeDropper</code> is visible. The default is <code>true</code></td></tr>
+<tr><td>TabControlStyle</td><td>Style</td><td>Gets or sets the <code>Style</code> for the <code>TabControl</code> inside the <code>DropDown</code></td></tr>
+<tr><td>TabItemStyle</td><td>Style</td><td>Gets or sets the <code>Style</code> for the <code>TabItems</code> inside the <code>DropDown</code></td></tr>
+<tr><td>ColorHelper</td><td>ColorHelper</td><td>Gets or sets the  <a href="#colornamesdictionary-and-colorhelper">ColorHelper</a> to use</td></tr>
+<tr><td>CloseOnSelectedColorChanged</td><td>bool</td><td>Gets or sets whether the <code>DropDown</code> should close after a color was selected from a <code>ColorPalette</code>. The default is <code>false</code></td></tr>
+</tbody></table>
+</div>
+<p>The <code>ColorPicker</code> can hold up to five different <a href="#colorpalette"><code>ColorPalettes</code></a> which can be controlled by the following properties. As the properties repeat for all five <code>ColorPalettes</code> we use <b>[###ColorPalette]</b> as a placeholder. In your code please replace it with one of these names: </p>
+<ul>
+<li>StandardColorPalette</li>
+<li>AvailableColorPalette</li>
+<li>RecentColorPalette</li>
+<li>CustomColorPalette01</li>
+<li>CustomColorPalette02</li>
+</ul>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td><b>[###ColorPalette]</b>Header</td><td>object</td><td>Gets or sets the header content of the <code>ColorPalette</code></td></tr>
+<tr><td><b>[###ColorPalette]</b>HeaderTemplate</td><td>DataTemplate</td><td>Gets or sets the header content template of the <code>ColorPalette</code></td></tr>
+<tr><td><b>[###ColorPalette]</b>ItemsSource</td><td>IEnumerable</td><td>Gets or sets the <code>ItemsSource</code> of the <code>ColorPalette</code></td></tr>
+<tr><td><b>[###ColorPalette]</b>Style</td><td>Style</td><td>Gets or sets the <code>Style</code> of the <code>ColorPalette</code></td></tr>
+<tr><td>Is<b>[###ColorPalette]</b>Visible</td><td>bool</td><td>Gets or sets whether the <code>ColorPalette</code> is visible</td></tr>
+</tbody></table>
+</div>
+<p>The <code>RecentColorPalette</code> is a special <code>ColorPalette</code> which is used to store the recent selected colors. To control the behavior of this <code>ColorPalette</code> you can use these two properties.</p>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>AddToRecentColorsTrigger</td><td>Enum</td><td>Gets or sets the trigger when the <code>RecentColorsPalette</code> should be updated. Possible values are <code>Never</code>, <code>ColorPickerClosed</code> or <code>SelectedColorChanged</code>. The default is <code>ColorPickerClosed</code></td></tr>
+<tr><td>MaximumRecentColorsCount</td><td>int</td><td>This is an attached property which gets or sets the maximum number of recent color items. If the number stored in the <code>RecentColorPalette</code> exceeds this value the oldest entries will be removed.</td></tr>
+</tbody></table>
+</div>
+<h2 id="events-2"><a class="header" href="#events-2">Events</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Event</th><th>Description</th></tr></thead><tbody>
+<tr><td>DropDownOpened</td><td>Occurs when the <code>DropDown</code> opened</td></tr>
+<tr><td>DropDownClosed</td><td>Occurs when the <code>DropDown</code> closed</td></tr>
+<tr><td>SelectedColorChanged</td><td>Occurs when the <code>SelectedColor</code>-Property changed</td></tr>
+</tbody></table>
+</div>
+<h2 id="dynamicresources-2"><a class="header" href="#dynamicresources-2">DynamicResources</a></h2>
+<div class="table-wrapper"><table><thead><tr><th>Key</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>MahApps.Templates.ColorPickerContent.ColorAndName</td><td>DataTemplate</td><td>Overrides the default <code>DataTemplate</code> for the <code>SelectedColorTemplate</code>-Property</td></tr>
+<tr><td>MahApps.Brushes.Tile</td><td>Brush</td><td>Overrides the checkered Brush which is visible if the color is transparent</td></tr>
+<tr><td>MahApps.Styles.TabControl.ColorPicker</td><td>Style</td><td>Overrides the <code>Style</code> for the <code>TabControl</code> inside the <code>DropDown</code></td></tr>
+<tr><td>MahApps.Styles.ToggleButton.ColorPickerDropDown</td><td>Style</td><td>Overrides the <code>Style</code> for the <code>ColorPicker</code>-<code>ToggleButton</code></td></tr>
+<tr><td>MahApps.Styles.ColorPalette.ColorPickerDropDown</td><td>Style</td><td>Overrides the <code>Style</code> for the <code>ColorPicker</code>-<a href="#colorpalette"><code>ColorPalette</code></a></td></tr>
+</tbody></table>
+</div>
+<h2 id="example-4"><a class="header" href="#example-4">Example</a></h2>
+<h3 id="basic-example"><a class="header" href="#basic-example">Basic example</a></h3>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;mah:ColorPicker SelectedColor=&quot;{Binding myColor}&quot; 
+                 mah:TextBoxHelper.ClearTextButton=&quot;True&quot;
+                 mah:TextBoxHelper.UseFloatingWatermark=&quot;True&quot;
+                 mah:TextBoxHelper.Watermark=&quot;Select a color&quot;
+                 AddToRecentColorsTrigger=&quot;SelectedColorChanged&quot; /&gt;
+</code></pre>
+<h3 id="using-the-selectedcolorchanged-event"><a class="header" href="#using-the-selectedcolorchanged-event">Using the <code>SelectedColorChanged</code>-Event</a></h3>
+<p>The following example shows how the <code>SelectedColorChanged</code>-Event can be used to create a custom theme. </p>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;mah:ColorPicker SelectedColorChanged=&quot;ColorPicker_SelectedColorChanged&quot;
+                 mah:TextBoxHelper.ClearTextButton=&quot;True&quot;
+                 mah:TextBoxHelper.UseFloatingWatermark=&quot;True&quot;
+                 mah:TextBoxHelper.Watermark=&quot;Select a color&quot;
+                 AddToRecentColorsTrigger=&quot;SelectedColorChanged&quot; /&gt;
+</code></pre>
+<p>The event event is handled in the code behind section:</p>
+<pre><code class="language-csharp">// Make sure you have addes these usings into your usings section
+using ControlzEx.Theming;
+using System.Windows;
+using System.Windows.Media;
+
+private void ColorPicker_SelectedColorChanged(object sender, RoutedPropertyChangedEventArgs&lt;Color?&gt; e)
+{
+    if (e.NewValue.HasValue)
+    {
+        Theme newTheme = new Theme(name: &quot;CustomTheme&quot;,
+                                   displayName: &quot;CustomTheme&quot;,
+                                   baseColorScheme: &quot;Light&quot;,
+                                   colorScheme: &quot;CustomAccent&quot;,
+                                   primaryAccentColor: e.NewValue.Value,
+                                   showcaseBrush: new SolidColorBrush(e.NewValue.Value),
+                                   isRuntimeGenerated: true,
+                                   isHighContrast: false);
+
+        ThemeManager.Current.ChangeTheme(Application.Current, newTheme);
+    }
+}
+</code></pre>
+<p><img src="images/ColorPicker_ThemeExample.png" alt="" /></p>
+<h3 id="customizing-the-content-of-the-color-picker"><a class="header" href="#customizing-the-content-of-the-color-picker">Customizing the content of the color picker</a></h3>
+<p>This section shows how the content (<strong><code>03</code></strong> in the picture below) can be customized</p>
+<p><img src="images/ColorPicker_Opened_Numbered.png" alt="" /></p>
+<p>There are also some build-in <code>DataTemplate</code>s: <a href="https://github.com/MahApps/MahApps.Metro/blob/a636cc8295742a230682ad7c5033cf4520b0916c/src/MahApps.Metro/Themes/ColorPicker/ColorPicker.xaml#L13-L64">MahApps.Metro Source ▶ Themes ▶ ColorPicker ▶ ColorPicker.xaml</a></p>
+<p><code>ColorAndName</code> (default)</p>
+<pre><code class="language-xml">&lt;mah:ColorPicker Width=&quot;150&quot;
+                 SelectedColor=&quot;red&quot;
+                 SelectedColorTemplate=&quot;{DynamicResource MahApps.Templates.ColorPickerContent.ColorAndName}&quot; /&gt;
+</code></pre>
+<p><img src="images/ColorPicker_SelectedColorTemplate_ColorAndName.png" alt="" /></p>
+<p><code>ColorOnly</code></p>
+<pre><code class="language-xml">&lt;mah:ColorPicker Width=&quot;150&quot;
+                 SelectedColor=&quot;red&quot;
+                 SelectedColorTemplate=&quot;{DynamicResource MahApps.Templates.ColorPickerContent.ColorOnly}&quot; /&gt;
+</code></pre>
+<p><img src="images/ColorPicker_SelectedColorTemplate_ColorOnly.png" alt="" /></p>
+<p>A custom <code>DataTemplate</code> could look like this:</p>
+<pre><code class="language-xml">&lt;!-- make sure to add the right namespace --&gt;
+&lt;!-- xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot; --&gt;
+
+&lt;!-- Add a DataTemplate in your Resources-Section. This can be in App.xaml, MainWindow.xaml or any other place. Here we define it inside a UserControl --&gt;
+
+&lt;UserControl.Resources&gt;
+    &lt;DataTemplate x:Key=&quot;My.Datatemplates.CustomColorPickerContent&quot;&gt;
+        &lt;Grid x:Name=&quot;RootGrid&quot;&gt;
+            &lt;Grid.ColumnDefinitions&gt;
+                &lt;ColumnDefinition Width=&quot;Auto&quot; /&gt;
+                &lt;ColumnDefinition Width=&quot;*&quot; /&gt;
+            &lt;/Grid.ColumnDefinitions&gt;
+
+            &lt;mah:ClipBorder Grid.Column=&quot;0&quot;
+                            Width=&quot;80&quot;
+                            Height=&quot;80&quot;
+                            Background=&quot;{DynamicResource MahApps.Brushes.Tile.Small}&quot;
+                            BorderBrush=&quot;{DynamicResource MahApps.Brushes.Control.Border}&quot;
+                            BorderThickness=&quot;3&quot;
+                            CornerRadius=&quot;{Binding RelativeSource={RelativeSource Mode=Self}, Path=ActualHeight, Converter={mah:SizeToCornerRadiusConverter}}&quot;&gt;
+                &lt;Grid Background=&quot;{Binding Converter={x:Static mah:ColorToSolidColorBrushConverter.DefaultInstance}}&quot;&gt;
+                    &lt;TextBlock HorizontalAlignment=&quot;Center&quot;
+                               VerticalAlignment=&quot;Center&quot;
+                               Foreground=&quot;{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Grid}, Path=Background, Converter={x:Static mah:BackgroundToForegroundConverter.Instance}}&quot;
+                               Text=&quot;{Binding}&quot; /&gt;
+                &lt;/Grid&gt;
+            &lt;/mah:ClipBorder&gt;
+        &lt;/Grid&gt;
+        &lt;DataTemplate.Triggers&gt;
+            &lt;DataTrigger Binding=&quot;{Binding}&quot; Value=&quot;{x:Null}&quot;&gt;
+                &lt;Setter TargetName=&quot;RootGrid&quot; Property=&quot;Visibility&quot; Value=&quot;Collapsed&quot; /&gt;
+            &lt;/DataTrigger&gt;
+        &lt;/DataTemplate.Triggers&gt;
+    &lt;/DataTemplate&gt;
+&lt;/UserControl.Resources&gt;
+
+&lt;!-- Now we need to reference our DataTemplate either as StaticResource or DynamicResource --&gt;
+&lt;mah:ColorPicker Height=&quot;100&quot;
+                 HorizontalAlignment=&quot;Left&quot;
+                 SelectedColor=&quot;blue&quot;
+                 SelectedColorTemplate=&quot;{StaticResource My.Datatemplates.CustomColorPickerContent}&quot; /&gt;
+</code></pre>
+<p>The final result will look like this: </p>
+<p><img src="images/ColorPicker_CustomDataTemplate.png" alt="" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="Badged.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="ContentControlEx.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="Badged.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="ContentControlEx.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

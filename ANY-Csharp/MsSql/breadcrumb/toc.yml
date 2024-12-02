@@ -1,0 +1,30 @@
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+
+  - name: SQL
+    tocHref: /sql/
+    topicHref: /sql/index
+    items:
+
+    - name: APS
+      tocHref: /sql/analytics-platform-system/
+      topicHref: /sql/analytics-platform-system/index
+
+    - name: ML
+      tocHref: /sql/advanced-analytics/
+      topicHref: /sql/advanced-analytics/
+
+    - name: Connect
+      tocHref: /sql/connect/
+      topicHref: /sql/connect/sql-server-drivers
+
+    - name: SSIS
+      tocHref: /sql/integration-services/
+      topicHref: /sql/integration-services/sql-server-integration-services
+
+    - name: SSRS
+      tocHref: /sql/reporting-services/
+      topicHref: /sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports
+

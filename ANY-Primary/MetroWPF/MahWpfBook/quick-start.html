@@ -1,0 +1,407 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>quick-start - EIC&amp;ESB Dokumentace</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EasyITcenter &amp; EasySYSTEMbuilder Dokumentace">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded "><a href="Badged.html"><strong aria-hidden="true">1.</strong> Badged</a></li><li class="chapter-item expanded "><a href="ColorPicker.html"><strong aria-hidden="true">2.</strong> ColorPicker</a></li><li class="chapter-item expanded "><a href="ContentControlEx.html"><strong aria-hidden="true">3.</strong> ContentControlEx</a></li><li class="chapter-item expanded "><a href="CustomValidationPopup.html"><strong aria-hidden="true">4.</strong> CustomValidationPopup</a></li><li class="chapter-item expanded "><a href="DateTimePicker.html"><strong aria-hidden="true">5.</strong> DateTimePicker</a></li><li class="chapter-item expanded "><a href="dropdownbutton.html"><strong aria-hidden="true">6.</strong> dropdownbutton</a></li><li class="chapter-item expanded "><a href="flipview.html"><strong aria-hidden="true">7.</strong> flipview</a></li><li class="chapter-item expanded "><a href="flyouts.html"><strong aria-hidden="true">8.</strong> flyouts</a></li><li class="chapter-item expanded "><a href="FontIcon.html"><strong aria-hidden="true">9.</strong> FontIcon</a></li><li class="chapter-item expanded "><a href="HamburgerMenu.html"><strong aria-hidden="true">10.</strong> HamburgerMenu</a></li><li class="chapter-item expanded "><a href="HotKeyBox.html"><strong aria-hidden="true">11.</strong> HotKeyBox</a></li><li class="chapter-item expanded "><a href="MetroAnimatedSingleRowTabControl.html"><strong aria-hidden="true">12.</strong> MetroAnimatedSingleRowTabControl</a></li><li class="chapter-item expanded "><a href="MetroAnimatedTabControl.html"><strong aria-hidden="true">13.</strong> MetroAnimatedTabControl</a></li><li class="chapter-item expanded "><a href="MetroContentControl.html"><strong aria-hidden="true">14.</strong> MetroContentControl</a></li><li class="chapter-item expanded "><a href="MetroHeader.html"><strong aria-hidden="true">15.</strong> MetroHeader</a></li><li class="chapter-item expanded "><a href="MetroNavigationWindow.html"><strong aria-hidden="true">16.</strong> MetroNavigationWindow</a></li><li class="chapter-item expanded "><a href="metroprogressbar.html"><strong aria-hidden="true">17.</strong> metroprogressbar</a></li><li class="chapter-item expanded "><a href="MetroTabControl.html"><strong aria-hidden="true">18.</strong> MetroTabControl</a></li><li class="chapter-item expanded "><a href="MetroTabItem.html"><strong aria-hidden="true">19.</strong> MetroTabItem</a></li><li class="chapter-item expanded "><a href="MetroThumbContentControl.html"><strong aria-hidden="true">20.</strong> MetroThumbContentControl</a></li><li class="chapter-item expanded "><a href="metrowindow.html"><strong aria-hidden="true">21.</strong> metrowindow</a></li><li class="chapter-item expanded "><a href="MultiFrameImage.html"><strong aria-hidden="true">22.</strong> MultiFrameImage</a></li><li class="chapter-item expanded "><a href="MultiSelectionComboBox.html"><strong aria-hidden="true">23.</strong> MultiSelectionComboBox</a></li><li class="chapter-item expanded "><a href="numericupdown.html"><strong aria-hidden="true">24.</strong> numericupdown</a></li><li class="chapter-item expanded "><a href="progressring.html"><strong aria-hidden="true">25.</strong> progressring</a></li><li class="chapter-item expanded "><a href="rangeslider.html"><strong aria-hidden="true">26.</strong> rangeslider</a></li><li class="chapter-item expanded "><a href="splitbutton.html"><strong aria-hidden="true">27.</strong> splitbutton</a></li><li class="chapter-item expanded "><a href="SplitView.html"><strong aria-hidden="true">28.</strong> SplitView</a></li><li class="chapter-item expanded "><a href="tile.html"><strong aria-hidden="true">29.</strong> tile</a></li><li class="chapter-item expanded "><a href="TimePicker.html"><strong aria-hidden="true">30.</strong> TimePicker</a></li><li class="chapter-item expanded "><a href="toggleswitch.html"><strong aria-hidden="true">31.</strong> toggleswitch</a></li><li class="chapter-item expanded "><a href="transitioningcontentcontrol.html"><strong aria-hidden="true">32.</strong> transitioningcontentcontrol</a></li><li class="chapter-item expanded "><a href="WindowButtonCommands.html"><strong aria-hidden="true">33.</strong> WindowButtonCommands</a></li><li class="chapter-item expanded "><a href="WindowCommands.html"><strong aria-hidden="true">34.</strong> WindowCommands</a></li><li class="chapter-item expanded "><a href="1.html"><strong aria-hidden="true">35.</strong> 1</a></li><li class="chapter-item expanded "><a href="custom-dialogs.html"><strong aria-hidden="true">36.</strong> custom-dialogs</a></li><li class="chapter-item expanded "><a href="dialogsettings.html"><strong aria-hidden="true">37.</strong> dialogsettings</a></li><li class="chapter-item expanded "><a href="input-dialog.html"><strong aria-hidden="true">38.</strong> input-dialog</a></li><li class="chapter-item expanded "><a href="login-dialogs.html"><strong aria-hidden="true">39.</strong> login-dialogs</a></li><li class="chapter-item expanded "><a href="message-dialog.html"><strong aria-hidden="true">40.</strong> message-dialog</a></li><li class="chapter-item expanded "><a href="mvvm-dialog.html"><strong aria-hidden="true">41.</strong> mvvm-dialog</a></li><li class="chapter-item expanded "><a href="progress-dialogs.html"><strong aria-hidden="true">42.</strong> progress-dialogs</a></li><li class="chapter-item expanded "><a href="2.html"><strong aria-hidden="true">43.</strong> 2</a></li><li class="chapter-item expanded "><a href="migration-to-v2.0.html"><strong aria-hidden="true">44.</strong> migration-to-v2.0</a></li><li class="chapter-item expanded "><a href="quick-start.html" class="active"><strong aria-hidden="true">45.</strong> quick-start</a></li><li class="chapter-item expanded "><a href="3.html"><strong aria-hidden="true">46.</strong> 3</a></li><li class="chapter-item expanded "><a href="buttons.html"><strong aria-hidden="true">47.</strong> buttons</a></li><li class="chapter-item expanded "><a href="calendar.html"><strong aria-hidden="true">48.</strong> calendar</a></li><li class="chapter-item expanded "><a href="checkbox.html"><strong aria-hidden="true">49.</strong> checkbox</a></li><li class="chapter-item expanded "><a href="combobox.html"><strong aria-hidden="true">50.</strong> combobox</a></li><li class="chapter-item expanded "><a href="datagrid.html"><strong aria-hidden="true">51.</strong> datagrid</a></li><li class="chapter-item expanded "><a href="datagridcolumns.html"><strong aria-hidden="true">52.</strong> datagridcolumns</a></li><li class="chapter-item expanded "><a href="datepicker.html"><strong aria-hidden="true">53.</strong> datepicker</a></li><li class="chapter-item expanded "><a href="expander.html"><strong aria-hidden="true">54.</strong> expander</a></li><li class="chapter-item expanded "><a href="gridsplitter.html"><strong aria-hidden="true">55.</strong> gridsplitter</a></li><li class="chapter-item expanded "><a href="groupbox.html"><strong aria-hidden="true">56.</strong> groupbox</a></li><li class="chapter-item expanded "><a href="hyperlink.html"><strong aria-hidden="true">57.</strong> hyperlink</a></li><li class="chapter-item expanded "><a href="listbox.html"><strong aria-hidden="true">58.</strong> listbox</a></li><li class="chapter-item expanded "><a href="listview.html"><strong aria-hidden="true">59.</strong> listview</a></li><li class="chapter-item expanded "><a href="menus.html"><strong aria-hidden="true">60.</strong> menus</a></li><li class="chapter-item expanded "><a href="page.html"><strong aria-hidden="true">61.</strong> page</a></li><li class="chapter-item expanded "><a href="passwordbox.html"><strong aria-hidden="true">62.</strong> passwordbox</a></li><li class="chapter-item expanded "><a href="progressbar.html"><strong aria-hidden="true">63.</strong> progressbar</a></li><li class="chapter-item expanded "><a href="radiobutton.html"><strong aria-hidden="true">64.</strong> radiobutton</a></li><li class="chapter-item expanded "><a href="scrollbars.html"><strong aria-hidden="true">65.</strong> scrollbars</a></li><li class="chapter-item expanded "><a href="slider.html"><strong aria-hidden="true">66.</strong> slider</a></li><li class="chapter-item expanded "><a href="statusbar.html"><strong aria-hidden="true">67.</strong> statusbar</a></li><li class="chapter-item expanded "><a href="tabcontrol.html"><strong aria-hidden="true">68.</strong> tabcontrol</a></li><li class="chapter-item expanded "><a href="text.html"><strong aria-hidden="true">69.</strong> text</a></li><li class="chapter-item expanded "><a href="textbox.html"><strong aria-hidden="true">70.</strong> textbox</a></li><li class="chapter-item expanded "><a href="togglebutton.html"><strong aria-hidden="true">71.</strong> togglebutton</a></li><li class="chapter-item expanded "><a href="toolbar.html"><strong aria-hidden="true">72.</strong> toolbar</a></li><li class="chapter-item expanded "><a href="tooltip.html"><strong aria-hidden="true">73.</strong> tooltip</a></li><li class="chapter-item expanded "><a href="treeview.html"><strong aria-hidden="true">74.</strong> treeview</a></li><li class="chapter-item expanded "><a href="validation.html"><strong aria-hidden="true">75.</strong> validation</a></li><li class="chapter-item expanded "><a href="4.html"><strong aria-hidden="true">76.</strong> 4</a></li><li class="chapter-item expanded "><a href="clean.html"><strong aria-hidden="true">77.</strong> clean</a></li><li class="chapter-item expanded "><a href="vs.html"><strong aria-hidden="true">78.</strong> vs</a></li><li class="chapter-item expanded "><a href="win10.html"><strong aria-hidden="true">79.</strong> win10</a></li><li class="chapter-item expanded "><a href="winui.html"><strong aria-hidden="true">80.</strong> winui</a></li><li class="chapter-item expanded "><a href="5.html"><strong aria-hidden="true">81.</strong> 5</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">82.</strong> index</a></li><li class="chapter-item expanded "><a href="thememanager.html"><strong aria-hidden="true">83.</strong> thememanager</a></li><li class="chapter-item expanded "><a href="6.html"><strong aria-hidden="true">84.</strong> 6</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Dokumentace</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2>Order: 10
+Title: Quick Start
+Description: How to start with MahApps.Metro
+RedirectFrom: guides/quick-start.html</h2>
+<p>This guide will introduce you to how <code>MahApps.Metro</code> works and how to incorporate it into your app.</p>
+<h2 id="installation"><a class="header" href="#installation">Installation</a></h2>
+<p>You can install <code>MahApps.Metro</code> via the NuGet UI or with the Package Manager Console.</p>
+<p><img src="images/nugetinstall.png" alt="" /></p>
+<p>With the Package Manager Console:</p>
+<pre><code class="language-powershell">PM&gt; Install-Package MahApps.Metro
+</code></pre>
+<p>If you want to use a pre-release packages of <code>MahApps.Metro</code>, you need to enable <strong>Include Prerelease</strong> in the NuGet UI:</p>
+<p><img src="images/nugetinstallpre.png" alt="" /></p>
+<p>With the Package Manager Console:</p>
+<pre><code class="language-powershell">PM&gt; Install-Package MahApps.Metro -Pre
+</code></pre>
+<h2 id="mahapps-build-in-styles-and-themes"><a class="header" href="#mahapps-build-in-styles-and-themes">MahApps build-in styles and themes</a></h2>
+<p>All resources of <code>MahApp.Metro</code> are located within separate resource dictionaries. To adopt the MahApps.Metro theme, you will need to add the resource dictionaries to your <code>App.xaml</code>.</p>
+<pre><code class="language-xml">&lt;Application x:Class=&quot;SampleApp&quot;
+             xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+             xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+             StartupUri=&quot;MainWindow.xaml&quot;&gt;
+  &lt;Application.Resources&gt;
+    &lt;ResourceDictionary&gt;
+      &lt;ResourceDictionary.MergedDictionaries&gt;
+        &lt;!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! --&gt;
+        &lt;ResourceDictionary Source=&quot;pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml&quot; /&gt;
+        &lt;ResourceDictionary Source=&quot;pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml&quot; /&gt;
+        &lt;!-- Theme setting --&gt;
+        &lt;ResourceDictionary Source=&quot;pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml&quot; /&gt;
+      &lt;/ResourceDictionary.MergedDictionaries&gt;
+    &lt;/ResourceDictionary&gt;
+  &lt;/Application.Resources&gt;
+&lt;/Application&gt;
+</code></pre>
+<p>:::{.alert .alert-info}
+<em><strong>Note</strong></em><br />
+Make sure that all resource file names are Case Sensitive!
+:::</p>
+<h2 id="using-the-metrowindow"><a class="header" href="#using-the-metrowindow">Using the MetroWindow</a></h2>
+<p>To start with the full MahApps styling and full window support you need to change your normal <code>Window</code> to our <a href="/docs/controls/metrowindow">MetroWindow</a>.</p>
+<ul>
+<li>Open up your main window, normally named <code>MainWindow.xaml</code></li>
+<li>Add the namespace attribute inside the opening Window tag
+<pre><code class="language-xml">xmlns:mah=&quot;clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro&quot;
+</code></pre>
+or
+<pre><code class="language-xml">xmlns:mah=&quot;http://metro.mahapps.com/winfx/xaml/controls&quot;
+</code></pre>
+</li>
+<li>Change the <code>&lt;Window ... &lt;/Window&gt;</code> tag to <code>&lt;mah:MetroWindow ... &lt;/mah:MetroWindow&gt;</code></li>
+</ul>
+<p>Now you should have something like this (don't copy and paste this directly)</p>
+<pre><code class="language-xml">&lt;mah:MetroWindow x:Class=&quot;SampleApp.MainWindow&quot;
+                 xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+                 xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+                 xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
+                 xmlns:mah=&quot;clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro&quot;
+                 xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+                 Title=&quot;MainWindow&quot;
+                 Width=&quot;800&quot;
+                 Height=&quot;450&quot;
+                 WindowStartupLocation=&quot;CenterScreen&quot;
+                 mc:Ignorable=&quot;d&quot;&gt;
+  &lt;Grid&gt;
+    &lt;!--  Your content  --&gt;
+  &lt;/Grid&gt;
+&lt;/mah:MetroWindow&gt;
+</code></pre>
+<p>You'll also need to modify the code behind of the window file so that the base class matches the <code>MetroWindow</code> class of the XAML file.</p>
+<pre><code class="language-csharp">using MahApps.Metro.Controls;
+
+namespace SampleApp
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for MainWindow.xaml
+    /// &lt;/summary&gt;
+    public partial class MainWindow : MetroWindow
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+    }
+}
+</code></pre>
+<p>But in most cases you can just drop the base class (because this is a <code>partial</code> class the XAML should take care of this).</p>
+<pre><code class="language-csharp">namespace SampleApp
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for MainWindow.xaml
+    /// &lt;/summary&gt;
+    public partial class MainWindow
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+    }
+}
+</code></pre>
+<p>The end result will look something like this:</p>
+<p><img src="images/metrowindow.png" alt="" /></p>
+<h2 id="extend-the-metrowindow"><a class="header" href="#extend-the-metrowindow">Extend the MetroWindow</a></h2>
+<p>The <code>MetroWindow</code> can be extend and changed with some extra features.</p>
+<ol>
+<li>
+<p>The visibility of the <code>TitleBar</code> can be changed with the property <code>ShowTitleBar</code></p>
+</li>
+<li>
+<p>Use the <code>LeftWindowCommands</code> and <code>RightWindowCommands</code> to add controls to the title bar. Button, ToggleButton, SplitButton and DropDownButton will use a default style. For all other controls you must create your own styles.</p>
+</li>
+<li>
+<p>The <code>WindowButtonCommands</code> are also changable, so you can create your own Min, Max/Restore and Close button styles.<br />
+The visibility of the Min and Max / Restore buttons are also effected by the <code>ResizeMode</code>. If <code>ResizeMode=&quot;NoResize&quot;</code> the buttons are collapsed. If <code>ResizeMode=&quot;CanMinimize&quot;</code> the Max / Restore button is collapsed.</p>
+</li>
+<li>
+<p>Show a resize grip on the right bottom corner for better resizing.</p>
+</li>
+</ol>
+<p><img src="images/metrowindowext.png" alt="" /></p>
+<p>:::{.alert .alert-info}
+<em><strong>Note</strong></em><br />
+Make sure to include the <a href="https://github.com/MahApps/MahApps.Metro.IconPacks">MahApps.Metro.IconPacks</a> to get the cupcake icon.
+:::</p>
+<pre><code class="language-xml">&lt;mah:MetroWindow x:Class=&quot;SampleApp.MainWindow&quot;
+                 xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+                 xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+                 xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
+                 xmlns:iconPacks=&quot;http://metro.mahapps.com/winfx/xaml/iconpacks&quot;
+                 xmlns:mah=&quot;clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro&quot;
+                 xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+                 Title=&quot;MainWindow&quot;
+                 Width=&quot;800&quot;
+                 Height=&quot;450&quot;
+                 GlowBrush=&quot;{DynamicResource MahApps.Brushes.Accent}&quot;
+                 ResizeMode=&quot;CanResizeWithGrip&quot;
+                 WindowStartupLocation=&quot;CenterScreen&quot;
+                 mc:Ignorable=&quot;d&quot;&gt;
+
+  &lt;mah:MetroWindow.LeftWindowCommands&gt;
+    &lt;mah:WindowCommands&gt;
+      &lt;Button Click=&quot;LaunchGitHubSite&quot; ToolTip=&quot;Open up the GitHub site&quot;&gt;
+        &lt;iconPacks:PackIconModern Width=&quot;22&quot;
+                                  Height=&quot;22&quot;
+                                  Kind=&quot;SocialGithubOctocat&quot; /&gt;
+      &lt;/Button&gt;
+    &lt;/mah:WindowCommands&gt;
+  &lt;/mah:MetroWindow.LeftWindowCommands&gt;
+
+  &lt;mah:MetroWindow.RightWindowCommands&gt;
+    &lt;mah:WindowCommands&gt;
+      &lt;Button Click=&quot;DeployCupCakes&quot; Content=&quot;Deploy CupCakes&quot;&gt;
+        &lt;Button.ContentTemplate&gt;
+          &lt;DataTemplate&gt;
+            &lt;StackPanel Orientation=&quot;Horizontal&quot;&gt;
+              &lt;iconPacks:PackIconModern Width=&quot;22&quot;
+                                        Height=&quot;22&quot;
+                                        VerticalAlignment=&quot;Center&quot;
+                                        Kind=&quot;FoodCupcake&quot; /&gt;
+              &lt;TextBlock Margin=&quot;4 0 0 0&quot;
+                         VerticalAlignment=&quot;Center&quot;
+                         Text=&quot;{Binding}&quot; /&gt;
+            &lt;/StackPanel&gt;
+          &lt;/DataTemplate&gt;
+        &lt;/Button.ContentTemplate&gt;
+      &lt;/Button&gt;
+    &lt;/mah:WindowCommands&gt;
+  &lt;/mah:MetroWindow.RightWindowCommands&gt;
+
+  &lt;Grid&gt;
+    &lt;!--  Your content  --&gt;
+  &lt;/Grid&gt;
+&lt;/mah:MetroWindow&gt;
+</code></pre>
+<pre><code class="language-csharp">using System.Windows;
+using MahApps.Metro.Controls;
+
+namespace SampleApp
+{
+    /// &lt;summary&gt;
+    /// Interaction logic for MainWindow.xaml
+    /// &lt;/summary&gt;
+    public partial class MainWindow : MetroWindow
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void LaunchGitHubSite(object sender, RoutedEventArgs e)
+        {
+            // Launch the GitHub site...
+        }
+
+        private void DeployCupCakes(object sender, RoutedEventArgs e)
+        {
+            // deploy some CupCakes...
+        }
+    }
+}
+</code></pre>
+<p>You can also show an <code>Icon</code> on the title bar by setting the <code>Icon</code> property or by using the <code>IconTemplate</code> property.</p>
+<p><img src="images/metrowindowexticon.png" alt="" /></p>
+<h2 id="whats-next"><a class="header" href="#whats-next">What's Next?</a></h2>
+<p>For extended documentation, take a look at the <a href="/docs/styles">Styles</a> and <a href="/docs/controls">Controls</a> section.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="migration-to-v2.0.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="3.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="migration-to-v2.0.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="3.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>

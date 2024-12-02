@@ -1,0 +1,459 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js rust">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>MultiSelectionComboBox - EIC&amp;ESB Dokumentace</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="EasyITcenter &amp; EasySYSTEMbuilder Dokumentace">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "rust";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('rust')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="spacer"></li><li class="chapter-item expanded "><a href="Badged.html"><strong aria-hidden="true">1.</strong> Badged</a></li><li class="chapter-item expanded "><a href="ColorPicker.html"><strong aria-hidden="true">2.</strong> ColorPicker</a></li><li class="chapter-item expanded "><a href="ContentControlEx.html"><strong aria-hidden="true">3.</strong> ContentControlEx</a></li><li class="chapter-item expanded "><a href="CustomValidationPopup.html"><strong aria-hidden="true">4.</strong> CustomValidationPopup</a></li><li class="chapter-item expanded "><a href="DateTimePicker.html"><strong aria-hidden="true">5.</strong> DateTimePicker</a></li><li class="chapter-item expanded "><a href="dropdownbutton.html"><strong aria-hidden="true">6.</strong> dropdownbutton</a></li><li class="chapter-item expanded "><a href="flipview.html"><strong aria-hidden="true">7.</strong> flipview</a></li><li class="chapter-item expanded "><a href="flyouts.html"><strong aria-hidden="true">8.</strong> flyouts</a></li><li class="chapter-item expanded "><a href="FontIcon.html"><strong aria-hidden="true">9.</strong> FontIcon</a></li><li class="chapter-item expanded "><a href="HamburgerMenu.html"><strong aria-hidden="true">10.</strong> HamburgerMenu</a></li><li class="chapter-item expanded "><a href="HotKeyBox.html"><strong aria-hidden="true">11.</strong> HotKeyBox</a></li><li class="chapter-item expanded "><a href="MetroAnimatedSingleRowTabControl.html"><strong aria-hidden="true">12.</strong> MetroAnimatedSingleRowTabControl</a></li><li class="chapter-item expanded "><a href="MetroAnimatedTabControl.html"><strong aria-hidden="true">13.</strong> MetroAnimatedTabControl</a></li><li class="chapter-item expanded "><a href="MetroContentControl.html"><strong aria-hidden="true">14.</strong> MetroContentControl</a></li><li class="chapter-item expanded "><a href="MetroHeader.html"><strong aria-hidden="true">15.</strong> MetroHeader</a></li><li class="chapter-item expanded "><a href="MetroNavigationWindow.html"><strong aria-hidden="true">16.</strong> MetroNavigationWindow</a></li><li class="chapter-item expanded "><a href="metroprogressbar.html"><strong aria-hidden="true">17.</strong> metroprogressbar</a></li><li class="chapter-item expanded "><a href="MetroTabControl.html"><strong aria-hidden="true">18.</strong> MetroTabControl</a></li><li class="chapter-item expanded "><a href="MetroTabItem.html"><strong aria-hidden="true">19.</strong> MetroTabItem</a></li><li class="chapter-item expanded "><a href="MetroThumbContentControl.html"><strong aria-hidden="true">20.</strong> MetroThumbContentControl</a></li><li class="chapter-item expanded "><a href="metrowindow.html"><strong aria-hidden="true">21.</strong> metrowindow</a></li><li class="chapter-item expanded "><a href="MultiFrameImage.html"><strong aria-hidden="true">22.</strong> MultiFrameImage</a></li><li class="chapter-item expanded "><a href="MultiSelectionComboBox.html" class="active"><strong aria-hidden="true">23.</strong> MultiSelectionComboBox</a></li><li class="chapter-item expanded "><a href="numericupdown.html"><strong aria-hidden="true">24.</strong> numericupdown</a></li><li class="chapter-item expanded "><a href="progressring.html"><strong aria-hidden="true">25.</strong> progressring</a></li><li class="chapter-item expanded "><a href="rangeslider.html"><strong aria-hidden="true">26.</strong> rangeslider</a></li><li class="chapter-item expanded "><a href="splitbutton.html"><strong aria-hidden="true">27.</strong> splitbutton</a></li><li class="chapter-item expanded "><a href="SplitView.html"><strong aria-hidden="true">28.</strong> SplitView</a></li><li class="chapter-item expanded "><a href="tile.html"><strong aria-hidden="true">29.</strong> tile</a></li><li class="chapter-item expanded "><a href="TimePicker.html"><strong aria-hidden="true">30.</strong> TimePicker</a></li><li class="chapter-item expanded "><a href="toggleswitch.html"><strong aria-hidden="true">31.</strong> toggleswitch</a></li><li class="chapter-item expanded "><a href="transitioningcontentcontrol.html"><strong aria-hidden="true">32.</strong> transitioningcontentcontrol</a></li><li class="chapter-item expanded "><a href="WindowButtonCommands.html"><strong aria-hidden="true">33.</strong> WindowButtonCommands</a></li><li class="chapter-item expanded "><a href="WindowCommands.html"><strong aria-hidden="true">34.</strong> WindowCommands</a></li><li class="chapter-item expanded "><a href="1.html"><strong aria-hidden="true">35.</strong> 1</a></li><li class="chapter-item expanded "><a href="custom-dialogs.html"><strong aria-hidden="true">36.</strong> custom-dialogs</a></li><li class="chapter-item expanded "><a href="dialogsettings.html"><strong aria-hidden="true">37.</strong> dialogsettings</a></li><li class="chapter-item expanded "><a href="input-dialog.html"><strong aria-hidden="true">38.</strong> input-dialog</a></li><li class="chapter-item expanded "><a href="login-dialogs.html"><strong aria-hidden="true">39.</strong> login-dialogs</a></li><li class="chapter-item expanded "><a href="message-dialog.html"><strong aria-hidden="true">40.</strong> message-dialog</a></li><li class="chapter-item expanded "><a href="mvvm-dialog.html"><strong aria-hidden="true">41.</strong> mvvm-dialog</a></li><li class="chapter-item expanded "><a href="progress-dialogs.html"><strong aria-hidden="true">42.</strong> progress-dialogs</a></li><li class="chapter-item expanded "><a href="2.html"><strong aria-hidden="true">43.</strong> 2</a></li><li class="chapter-item expanded "><a href="migration-to-v2.0.html"><strong aria-hidden="true">44.</strong> migration-to-v2.0</a></li><li class="chapter-item expanded "><a href="quick-start.html"><strong aria-hidden="true">45.</strong> quick-start</a></li><li class="chapter-item expanded "><a href="3.html"><strong aria-hidden="true">46.</strong> 3</a></li><li class="chapter-item expanded "><a href="buttons.html"><strong aria-hidden="true">47.</strong> buttons</a></li><li class="chapter-item expanded "><a href="calendar.html"><strong aria-hidden="true">48.</strong> calendar</a></li><li class="chapter-item expanded "><a href="checkbox.html"><strong aria-hidden="true">49.</strong> checkbox</a></li><li class="chapter-item expanded "><a href="combobox.html"><strong aria-hidden="true">50.</strong> combobox</a></li><li class="chapter-item expanded "><a href="datagrid.html"><strong aria-hidden="true">51.</strong> datagrid</a></li><li class="chapter-item expanded "><a href="datagridcolumns.html"><strong aria-hidden="true">52.</strong> datagridcolumns</a></li><li class="chapter-item expanded "><a href="datepicker.html"><strong aria-hidden="true">53.</strong> datepicker</a></li><li class="chapter-item expanded "><a href="expander.html"><strong aria-hidden="true">54.</strong> expander</a></li><li class="chapter-item expanded "><a href="gridsplitter.html"><strong aria-hidden="true">55.</strong> gridsplitter</a></li><li class="chapter-item expanded "><a href="groupbox.html"><strong aria-hidden="true">56.</strong> groupbox</a></li><li class="chapter-item expanded "><a href="hyperlink.html"><strong aria-hidden="true">57.</strong> hyperlink</a></li><li class="chapter-item expanded "><a href="listbox.html"><strong aria-hidden="true">58.</strong> listbox</a></li><li class="chapter-item expanded "><a href="listview.html"><strong aria-hidden="true">59.</strong> listview</a></li><li class="chapter-item expanded "><a href="menus.html"><strong aria-hidden="true">60.</strong> menus</a></li><li class="chapter-item expanded "><a href="page.html"><strong aria-hidden="true">61.</strong> page</a></li><li class="chapter-item expanded "><a href="passwordbox.html"><strong aria-hidden="true">62.</strong> passwordbox</a></li><li class="chapter-item expanded "><a href="progressbar.html"><strong aria-hidden="true">63.</strong> progressbar</a></li><li class="chapter-item expanded "><a href="radiobutton.html"><strong aria-hidden="true">64.</strong> radiobutton</a></li><li class="chapter-item expanded "><a href="scrollbars.html"><strong aria-hidden="true">65.</strong> scrollbars</a></li><li class="chapter-item expanded "><a href="slider.html"><strong aria-hidden="true">66.</strong> slider</a></li><li class="chapter-item expanded "><a href="statusbar.html"><strong aria-hidden="true">67.</strong> statusbar</a></li><li class="chapter-item expanded "><a href="tabcontrol.html"><strong aria-hidden="true">68.</strong> tabcontrol</a></li><li class="chapter-item expanded "><a href="text.html"><strong aria-hidden="true">69.</strong> text</a></li><li class="chapter-item expanded "><a href="textbox.html"><strong aria-hidden="true">70.</strong> textbox</a></li><li class="chapter-item expanded "><a href="togglebutton.html"><strong aria-hidden="true">71.</strong> togglebutton</a></li><li class="chapter-item expanded "><a href="toolbar.html"><strong aria-hidden="true">72.</strong> toolbar</a></li><li class="chapter-item expanded "><a href="tooltip.html"><strong aria-hidden="true">73.</strong> tooltip</a></li><li class="chapter-item expanded "><a href="treeview.html"><strong aria-hidden="true">74.</strong> treeview</a></li><li class="chapter-item expanded "><a href="validation.html"><strong aria-hidden="true">75.</strong> validation</a></li><li class="chapter-item expanded "><a href="4.html"><strong aria-hidden="true">76.</strong> 4</a></li><li class="chapter-item expanded "><a href="clean.html"><strong aria-hidden="true">77.</strong> clean</a></li><li class="chapter-item expanded "><a href="vs.html"><strong aria-hidden="true">78.</strong> vs</a></li><li class="chapter-item expanded "><a href="win10.html"><strong aria-hidden="true">79.</strong> win10</a></li><li class="chapter-item expanded "><a href="winui.html"><strong aria-hidden="true">80.</strong> winui</a></li><li class="chapter-item expanded "><a href="5.html"><strong aria-hidden="true">81.</strong> 5</a></li><li class="chapter-item expanded "><a href="index.html"><strong aria-hidden="true">82.</strong> index</a></li><li class="chapter-item expanded "><a href="thememanager.html"><strong aria-hidden="true">83.</strong> thememanager</a></li><li class="chapter-item expanded "><a href="6.html"><strong aria-hidden="true">84.</strong> 6</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">EIC&amp;ESB Dokumentace</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <p>Title: MultiSelectionComboBox
+Description: The documentation for the MultiSelectionComboBox</p>
+<hr />
+<h1 id="table-of-content"><a class="header" href="#table-of-content">Table of content</a></h1>
+<!-- Start Document Outline -->
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-user-interface">The user interface</a></li>
+<li><a href="#common-properties">Common Properties</a></li>
+<li><a href="#styles">Styles</a>
+<ul>
+<li><a href="#multiselectioncombobox-styles">MultiSelectionComboBox-Styles</a></li>
+<li><a href="#itemcontainer-styles">ItemContainer-Styles</a></li>
+<li><a href="#selecteditemcontainer-styles">SelectedItemContainer-Styles</a></li>
+</ul>
+</li>
+<li><a href="#selection">Selection</a>
+<ul>
+<li><a href="#selectionmode">SelectionMode</a></li>
+<li><a href="#selecteditemsorder">SelectedItemsOrder</a></li>
+</ul>
+</li>
+<li><a href="#text-processing">Text processing</a>
+<ul>
+<li><a href="#separator">Separator</a></li>
+<li><a href="#custom-text">Custom text</a>
+<ul>
+<li><a href="#customize-the-overlay">Customize the overlay</a></li>
+</ul>
+</li>
+<li><a href="#selecting-items-from-text-input">Selecting items from text input</a>
+<ul>
+<li><a href="#basic-example">Basic Example</a></li>
+<li><a href="#custom-objecttostringcomparer-example">Custom ObjectToStringComparer Example</a></li>
+</ul>
+</li>
+<li><a href="#adding-new-items-from-text-input">Adding new items from text input</a>
+<ul>
+<li><a href="#basic-example-1">Basic Example</a></li>
+<li><a href="#custom-stringtoobjectparser-example">Custom StringToObjectParser Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- End Document Outline -->
+<hr />
+<h1 id="introduction"><a class="header" href="#introduction">Introduction</a></h1>
+<p>The <code>MultiSelectionComboBox</code> is like a normal <code>ComboBox</code>, but instead of limit the selection to one item, the user is allowed to select multiple items.</p>
+<h1 id="the-user-interface"><a class="header" href="#the-user-interface">The user interface</a></h1>
+<p><img src="images/MultiSelectionComboBox_Numbered.png" alt="MultiSelectionComboBox with numbers" /></p>
+<div class="table-wrapper"><table><thead><tr><th>No.</th><th>Description</th></tr></thead><tbody>
+<tr><td>01</td><td>Displays the selected item(s), or, if the control is in editable mode, a <code>TextBox</code> representing a concatenated <code>string</code></td></tr>
+<tr><td>02</td><td>This button opens or closes the <code>DrowDown</code> (No. 03)</td></tr>
+<tr><td>03</td><td>A <code>DropDown</code> which displays all available items. Selected items are highlighted (blue background in the sample image)</td></tr>
+</tbody></table>
+</div>
+<h1 id="common-properties"><a class="header" href="#common-properties">Common Properties</a></h1>
+<p>This control has all properties which are known from the normal <code>ComboBox</code> and in addition the following properties. </p>
+<div class="table-wrapper"><table><thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>AcceptsReturn</td><td>bool</td><td>Gets or sets if the <code>TextBox</code> accepts return (editable mode only)</td></tr>
+<tr><td>DisabledPopupOverlayContent</td><td>object?</td><td>Gets or sets the content to render above the <code>DropDown</code> when the <code>DropDown</code> is disabled (<a href="#customize-the-overlay">more</a>)</td></tr>
+<tr><td>DisabledPopupOverlayContentTemplate</td><td>DataTemplate?</td><td>Gets or sets the <code>DataTemplate</code> to render above the <code>DropDown</code> when the control has custom text (<a href="#customize-the-overlay">more</a>)</td></tr>
+<tr><td>DropDownFooterContent</td><td>object?</td><td>Gets or sets the content of the <code>DropDown</code> footer</td></tr>
+<tr><td>DropDownFooterContentStringFormat</td><td>string?</td><td>Gets or sets the string format of the <code>DropDown</code> footer</td></tr>
+<tr><td>DropDownFooterContentTemplate</td><td>DataTemplate?</td><td>Gets or sets the <code>DataTemplate</code> for the <code>DropDown</code> footer content</td></tr>
+<tr><td>DropDownFooterContentTemplateSelector</td><td>DataTemplateSelector?</td><td>Gets or sets the <code>DataTemplateSelector</code> for the <code>DropDown</code> footer content</td></tr>
+<tr><td>DropDownHeaderContent</td><td>object?</td><td>Gets or sets the content of the <code>DropDown</code> header</td></tr>
+<tr><td>DropDownHeaderContentStringFormat</td><td>string?</td><td>Gets or sets the string format of the <code>DropDown</code> header</td></tr>
+<tr><td>DropDownHeaderContentTemplate</td><td>DataTemplate?</td><td>Gets or sets the <code>DataTemplate</code> for the <code>DropDown</code> header content</td></tr>
+<tr><td>DropDownHeaderContentTemplateSelector</td><td>DataTemplateSelector?</td><td>Gets or sets the <code>DataTemplateSelector</code> for the <code>DropDown</code> header content</td></tr>
+<tr><td>EditableTextStringComparision</td><td>StringComparison</td><td>Gets or Sets the <code>StringComparison</code> that is used to check if the entered text matches to the <code>SelectedItems</code></td></tr>
+<tr><td>HasCustomText</td><td>bool</td><td>Indicates if the text is user defined. This property is read-only</td></tr>
+<tr><td>InterceptKeyboardSelection</td><td>bool</td><td>Gets or sets if the user can select items from the keyboard, e.g. with the ▲ ▼ Keys. This property is only applied when the <code>SelectionMode</code> is <code>Single</code>.</td></tr>
+<tr><td>InterceptMouseWheelSelection</td><td>bool</td><td>Gets or sets if the user can select items by mouse wheel. This property is only applied when the <code>SelectionMode</code> is <code>Single</code>.</td></tr>
+<tr><td>IsDropDownFooterVisible</td><td>bool</td><td>Gets or sets if the footer in the <code>DropDown</code> is visible</td></tr>
+<tr><td>IsDropDownHeaderVisible</td><td>bool</td><td>Gets or sets if the header in the <code>DropDown</code> is visible</td></tr>
+<tr><td>ObjectToStringComparer</td><td>ICompareObjectToString?</td><td>Gets or sets a function that is used to check if the entered text matches an object that should be selected (<a href="#selecting-items-from-text-input">more</a>)</td></tr>
+<tr><td>OrderSelectedItemsBy</td><td>SelectedItemsOrderType</td><td>Gets or sets how the <code>SelectedItems</code> should be sorted (<a href="#selecteditemsorder">more</a>).</td></tr>
+<tr><td>SelectedItemContainerStyle</td><td>Style?</td><td>Gets or sets the <code>Style</code> that is applied to the selected items</td></tr>
+<tr><td>SelectedItemContainerStyleSelector</td><td>StyleSelector?</td><td>Gets or sets the <code>StyleSelector</code> that is applied to the selected items</td></tr>
+<tr><td>SelectedItems</td><td>IList?</td><td>Gets a read-only list which holds the currently selected items.</td></tr>
+<tr><td>SelectedItemsPanelTemplate</td><td>ItemsPanelTemplate?</td><td>Gets or sets the template that defines the <code>Panel</code> that controls the layout of the selected items.</td></tr>
+<tr><td>SelectedItemStringFormat</td><td>string?</td><td>Gets or sets how to format the selected items if they are displayed as strings.</td></tr>
+<tr><td>SelectedItemTemplate</td><td>DataTemplate?</td><td>Gets or sets the <code>DataTemplate</code> used to display the <code>SelcetedItems</code></td></tr>
+<tr><td>SelectedItemTemplateSelector</td><td>DataTemplateSelector?</td><td>Gets or sets the <code>DataTemplateSelector</code> for the selected items</td></tr>
+<tr><td>SelectionMode</td><td>SelectionMode</td><td>Gets or sets the <code>SelectionMode</code></td></tr>
+<tr><td>SelectItemsFromTextInputDelay</td><td>int</td><td>Gets or Sets the delay in milliseconds to wait before the selection is updated during text input. If this value is -1 the selection will not be updated during text input. <br><div class="alert alert-info"><strong>Note</strong>: You also need to set an <code>ObjectToStringComparer</code> to get this to work. </div></td></tr>
+<tr><td>Separator</td><td>string?</td><td>Gets or sets the separator which will be used if the <code>MultiSelectionComboBox</code> is editable.</td></tr>
+<tr><td>StringToObjectParser</td><td>IParseStringToObject?</td><td>Gets or sets a parser-class that implements <code>IParseStringToObject</code> (<a href="#adding-new-items-from-text-input">more</a>)</td></tr>
+</tbody></table>
+</div>
+<h1 id="styles"><a class="header" href="#styles">Styles</a></h1>
+<h2 id="multiselectioncombobox-styles"><a class="header" href="#multiselectioncombobox-styles">MultiSelectionComboBox-Styles</a></h2>
+<p>MahApps ships two build in styles for this control.</p>
+<p>The default style (<code>MahApps.Styles.MultiSelectionComboBox</code>) wraps the selected items, if not all fits into a single line:</p>
+<p><img src="images/MultiSelectionComboBox_DefaultStyle.png" alt="" /></p>
+<p>If you want a single line you can use <code>MahApps.Styles.MultiSelectionComboBox.Horizontal</code> which will show a horizontal <code>ScrollViewer</code>, if not all items fit into the available space.</p>
+<p><img src="images/MultiSelectionComboBox_HorizontalStyle.png" alt="" /></p>
+<h2 id="itemcontainer-styles"><a class="header" href="#itemcontainer-styles">ItemContainer-Styles</a></h2>
+<p>MahApps ships two build in styles for the item container visible when the <code>DropDown</code> is open. </p>
+<p>The default style (<code>MahApps.Styles.MultiSelectionComboBoxItem</code>) looks like the one from the normal <code>ComboBox</code>. </p>
+<p>If you want to present <code>CheckBoxes</code> to the user you can use the <code>MahApps.Styles.MultiSelectionComboBoxItem.CheckBox</code> style: </p>
+<p><img src="images/MultiSelectionComboBox_DropDown_CheckBox.png" alt="" /></p>
+<h2 id="selecteditemcontainer-styles"><a class="header" href="#selecteditemcontainer-styles">SelectedItemContainer-Styles</a></h2>
+<p>Also for this MahApps ships two build in styles. Please note that these are only applied if <code>IsEditable=false</code>.</p>
+<p>The default one wraps each item in a nugget like container:</p>
+<p><img src="images/MultiSelectionComboBox_DefaultStyle.png" alt="" /></p>
+<p>If you want to provide an option to remove from the selected items you can use <code>MahApps.Styles.MulitselectionComboBoxSelectedItem.Removeable</code> which will add a delete button next to each item: </p>
+<p><img src="images/MultiSelectionComboBox_SelectedItemContainerStyle_Removeable.png" alt="" /></p>
+<h1 id="selection"><a class="header" href="#selection">Selection</a></h1>
+<h2 id="selectionmode"><a class="header" href="#selectionmode">SelectionMode</a></h2>
+<p>The <code>MultiSelectionComboBox</code> supports all <a href="https://docs.microsoft.com/en-us/dotnet/api/system.windows.controls.selectionmode"><code>SelectionModes</code></a> which are known from other controls with multi selection support (for example <code>ListBox</code>). </p>
+<h2 id="selecteditemsorder"><a class="header" href="#selecteditemsorder">SelectedItemsOrder</a></h2>
+<p>This <code>enum</code> defines how the selected items should be presented to the user. The following values are possible: </p>
+<div class="table-wrapper"><table><thead><tr><th>Value</th><th>Description</th></tr></thead><tbody>
+<tr><td>SelectedOrder</td><td>Displays the selected items in the same order as they were selected</td></tr>
+<tr><td>ItemsSourceOrder</td><td>Displays the selected items in the same order as they are stored in the <code>ItemsSource</code></td></tr>
+</tbody></table>
+</div>
+<h1 id="text-processing"><a class="header" href="#text-processing">Text processing</a></h1>
+<h2 id="separator"><a class="header" href="#separator">Separator</a></h2>
+<p>The <code>Separator</code> is used to concatenate the selected items into one single string. if the text comes from user input, the <code>Separator</code> is also used to split the input string into fragments which will be used to select the requested items. </p>
+<p>:::{.alert .alert-info}
+<strong>Note</strong>: </p>
+<p>Take care which Separator to use. Ideally it should not be a valid (sub)-string of your items, as this may mess up with selection.
+::: </p>
+<h2 id="custom-text"><a class="header" href="#custom-text">Custom text</a></h2>
+<p>If the text entered into the editable <code>TextBox</code> does not match the <code>string</code> representation of the <code>SelectedItems</code>, the <code>DropDown</code> will show an overlay above the <code>Items</code> and will disable selection. This will prevent loss any user input. The property <code>HasCustomText</code> will be set to <code>true</code> in this case. </p>
+<p><img src="images/MultiSelectionComboBox_OverlayDisabled.png" alt="" /></p>
+<p><em>Build-in overlay</em></p>
+<h3 id="customize-the-overlay"><a class="header" href="#customize-the-overlay">Customize the overlay</a></h3>
+<p>If you don't like the build-in overlay, you can roll your own as shown below. </p>
+<pre><code class="language-xml">&lt;mah:MultiSelectionComboBox ItemsSource=&quot;{Binding Animals}&quot;
+                            IsEditable=&quot;True&quot;
+                            Text=&quot;CustomText&quot; &gt;
+    &lt;mah:MultiSelectionComboBox.DisabledPopupOverlayContentTemplate&gt;
+        &lt;DataTemplate&gt;
+            &lt;!-- Note: mah:MultiSelectionComboBox.ClearContentCommand will reset the text to match the SelectedItems representation if executed --&gt;
+            &lt;Button Background=&quot;{DynamicResource MahApps.Brushes.Accent4}&quot; 
+                    BorderThickness=&quot;0&quot;
+                    Command=&quot;{x:Static mah:MultiSelectionComboBox.ClearContentCommand}&quot;&gt;
+                &lt;TextBlock Text=&quot;🤷&quot; 
+                           VerticalAlignment=&quot;Center&quot; 
+                           HorizontalAlignment=&quot;Center&quot; 
+                           FontSize=&quot;50&quot; /&gt;
+            &lt;/Button&gt;
+        &lt;/DataTemplate&gt;
+    &lt;/mah:MultiSelectionComboBox.DisabledPopupOverlayContentTemplate&gt;
+&lt;/mah:MultiSelectionComboBox&gt;
+</code></pre>
+<p>The result will look like this:</p>
+<p><img src="images/MultiSelectionComboBox_OverlayDisabled_Custom.png" alt="" /></p>
+<h2 id="selecting-items-from-text-input"><a class="header" href="#selecting-items-from-text-input">Selecting items from text input</a></h2>
+<p>If the control is editable and you have set a <code>ObjectToStringComparer</code>, the <code>MultiSelectionComboBox</code> will try to select the items from the user input. The build-in comparer will compare the input string fragments with the objects string representation while taking the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.stringcomparison"><code>StringComparison</code></a> into account. </p>
+<h3 id="basic-example"><a class="header" href="#basic-example">Basic Example</a></h3>
+<pre><code class="language-xml">&lt;!--
+    - The Separator must be defined for automatic item selection.
+    - The SelectItemsFromTextInputDelay is optional. If it is set to -1,
+      it means the items will be selected only after LostFocus.
+    - The EditableTextStringComparision is optional.
+    - We use the build in comparer (DefaultObjectToStringComparer), but you can also use your own.
+--&gt;
+
+&lt;mah:MultiSelectionComboBox ItemsSource=&quot;{Binding Animals}&quot;            
+                            SelectionMode=&quot;Multiple&quot;
+                            IsEditable=&quot;True&quot;
+                            Separator=&quot;, &quot;
+                            SelectItemsFromTextInputDelay=&quot;200&quot;
+                            EditableTextStringComparision=&quot;OrdinalIgnoreCase&quot;
+                            ObjectToStringComparer=&quot;{mah:DefaultObjectToStringComparer}&quot; /&gt;
+</code></pre>
+<h3 id="custom-objecttostringcomparer-example"><a class="header" href="#custom-objecttostringcomparer-example">Custom ObjectToStringComparer Example</a></h3>
+<p>You can use any class that implements the <code>ICompareObjectToString</code> interface to compare your items to the entered text. For this example lets assume you have the following class <code>User</code> where you want to select the items by <code>Userame</code> or <code>MailAddress</code>.</p>
+<pre><code class="language-cs">public class User
+{
+    public string Username {get; set;}
+    public string Name {get; set;}
+    public string GivenName {get; set;}
+    public string MailAddress {get; set;}
+}
+</code></pre>
+<p>We can now implement the interface as shown below: </p>
+<pre><code class="language-cs">public class MyUserToStringComparer : ICompareObjectToString
+{
+    // This function is expected to be implemented. Returns true if the item matches, otherise false.
+    public bool CheckIfStringMatchesObject(
+        string? input,                      // The text fragment to test 
+        object? objectToCompare,            // The item to test for match
+        StringComparison stringComparison,  // The string comparison to use
+        string? stringFormat)               // The string format to use
+    {
+        // we cast the object to compare to a user.
+        var user = objectToCompare as User;
+        
+        // if the input is null or the user is null we return false. 
+        if (input is null || user is null)
+        {
+            return false;
+        }
+        
+        // If either the Username or the MailAddress matches the provided  
+        // input string we return true, otherwise we return false.
+        return input.Equals(user.Username, stringComparison) 
+               || input.Equals(user.MailAddress, stringComparison);
+    }
+}
+
+</code></pre>
+<h2 id="adding-new-items-from-text-input"><a class="header" href="#adding-new-items-from-text-input">Adding new items from text input</a></h2>
+<p>If the control is editable and you have set a <code>StringToObjectParser</code>, the <code>MultiSelectionComboBox</code> will try to create a new item if the item was not found (see <a href="#selecting-items-from-text-input">Selecting items from text input</a>). The build-in parser will try to use reflection to create a new item from the input string, but you can also provide your own implementation.</p>
+<h3 id="basic-example-1"><a class="header" href="#basic-example-1">Basic Example</a></h3>
+<pre><code class="language-xml">&lt;mah:MultiSelectionComboBox ItemsSource=&quot;{Binding Animals}&quot;
+                            SelectionMode=&quot;Multiple&quot;
+                            IsEditable=&quot;True&quot;
+                            Separator=&quot;, &quot;
+                            SelectItemsFromTextInputDelay=&quot;200&quot;
+                            EditableTextStringComparision=&quot;OrdinalIgnoreCase&quot;
+                            ObjectToStringComparer=&quot;{mah:DefaultObjectToStringComparer}&quot; 
+                            StringToObjectParser=&quot;{x:Static mah:DefaultStringToObjectParser.Instance}&quot; /&gt;
+</code></pre>
+<h3 id="custom-stringtoobjectparser-example"><a class="header" href="#custom-stringtoobjectparser-example">Custom StringToObjectParser Example</a></h3>
+<p>You can use any class that implements the <code>IParseStringToObject</code> interface to parse the user input to a new object. The interface has one member called <code>TryCreateObjectFromString</code>. Let's assume we have a <code>List&lt;string&gt;</code> called <code>Animals</code>. The user can add new animals, but before adding a new animal, we want the user to confirm the input. </p>
+<pre><code class="language-cs">public class MyObjectParser : IParseStringToObject
+{
+    // This function is expected to be implemented. Returns true if the item could be created, otherise false.
+    public bool TryCreateObjectFromString(
+        string? input,                      // The input string to parse
+        out object? result,                 // return the object here if successful, otherwise return null
+        CultureInfo? culture = null,        // The culture which should be used to parse. This parameter is optional
+        string? stringFormat = null,        // The string format to apply. This parameter is optional
+        Type? elementType = null)           // The Type to which the input should be converted to. This parameter is optional
+    {
+        // if we got an empty string, we return false and set the result to null
+        if (string.IsNullOrWhiteSpace(input))
+        {
+            result = null;
+            return false;
+        }
+
+        // We ask the user for confirmation
+        if (MessageBox.Show(
+            $&quot;Do you want to add \&quot;{input}\&quot; to the animals list?&quot;, 
+            &quot;Add Animal&quot;, 
+            MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
+            // The user accepted this item. As our List contains only strings, we can just return the input string.
+            result = input;  
+            return true;
+        }
+        else
+        {
+            result = null;
+            return false;
+        }
+    }
+}
+</code></pre>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="MultiFrameImage.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="numericupdown.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="MultiFrameImage.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="numericupdown.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="./js/jquery-3.6.0.min.js"></script>
+        <script src="./js/mermaid.min.cdn.js"></script>
+        <script src="./js/globalscript.js"></script>
+
+
+    </div>
+    </body>
+</html>
